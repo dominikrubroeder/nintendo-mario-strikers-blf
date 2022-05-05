@@ -1,6 +1,22 @@
+import { useEffect, useRef } from 'react';
+import useIsOnScreen from '../hooks/useIsOnScreen';
 import BaseButton from './base/BaseButton';
+import TheCountdown from './TheCountdown';
 
-export default function TheHero() {
+export default function TheHero(props) {
+  const overserableObject = useRef();
+  const overserableObjectIsOnScreen = useIsOnScreen(overserableObject);
+
+  useEffect(() => {
+    if (overserableObjectIsOnScreen) {
+      console.log('Should not show');
+      props.setShowStickyBuyBar(false);
+    } else {
+      console.log('Should show');
+      props.setShowStickyBuyBar(true);
+    }
+  }, [overserableObjectIsOnScreen]);
+
   return (
     <section className="grid items-center justify-center h-screen p-4 overflow-hidden">
       <div className="text-center grid gap-8">
@@ -9,9 +25,13 @@ export default function TheHero() {
           src="/images/product/mario-strikers-battle-league-football-cover.jpg"
           alt="Nintendo Switch"
         />
-        <div className="grid gap-2">
+        <div className="grid gap-2 sticky top-0">
+          <TheCountdown />
           <h1>Mario Strikers: Battle League Football | Nintendo Switch</h1>
-          <div className="flex items-center justify-center">
+          <div
+            className="flex items-center justify-center"
+            ref={overserableObject}
+          >
             <BaseButton variant="contained">Button primary</BaseButton>
             <BaseButton variant="text">Button primary</BaseButton>
           </div>
