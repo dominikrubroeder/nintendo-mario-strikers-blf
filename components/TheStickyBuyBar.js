@@ -9,7 +9,6 @@ export default function TheStickyBuyBar(props) {
 
   useEffect(() => {
     setIsVisible(shouldBeVisible);
-    console.log(shouldBeVisible);
   }, [shouldBeVisible]);
 
   return (

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import useIsOnScreen from '../hooks/useIsOnScreen';
 import BaseButton from './base/BaseButton';
@@ -9,10 +10,8 @@ export default function TheHero(props) {
 
   useEffect(() => {
     if (overserableObjectIsOnScreen) {
-      console.log('Should not show');
       props.setShowStickyBuyBar(false);
     } else {
-      console.log('Should show');
       props.setShowStickyBuyBar(true);
     }
   }, [overserableObjectIsOnScreen]);
@@ -32,7 +31,12 @@ export default function TheHero(props) {
             className="flex items-center justify-center"
             ref={overserableObject}
           >
-            <BaseButton variant="contained">Button primary</BaseButton>
+            <BaseButton variant="contained">
+              <Link href="/buy-mario-strikers-battle-league-football">
+                Button primary
+              </Link>
+            </BaseButton>
+
             <BaseButton variant="text">Button primary</BaseButton>
           </div>
         </div>

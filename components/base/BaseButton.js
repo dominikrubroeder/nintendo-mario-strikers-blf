@@ -1,5 +1,6 @@
 export default function BaseButton(props) {
   const variant = props.variant;
+
   return (
     <button
       className={`transition-all ${
