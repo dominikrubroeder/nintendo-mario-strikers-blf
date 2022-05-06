@@ -46,7 +46,7 @@ export default function TheGallery() {
             <div
               key={galleryItem.src}
               style={{ backgroundImage: `url(${galleryItem.src})` }}
-              className="inline-block mr-4 w-[85vw] md:w-[95vw] h-[75vh] md:h-full bg-cover bg-center rounded-3xl"
+              className="inline-block mr-4 w-[85vw] md:w-[95vw] h-[75vh] md:h-[80vh] bg-cover bg-center rounded-3xl"
             ></div>
           );
         })}
