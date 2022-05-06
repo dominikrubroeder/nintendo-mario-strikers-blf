@@ -39,7 +39,42 @@ const DetailPage = () => {
         </div>
       </section>
 
-      <section className="h-screen flex items-center justify-center">2</section>
+      <section className="mt-20">
+        <img
+          src="/images/gallery/2x1_NSwitch_MarioStrikersBattleLeagueFootball_image1600w.jpeg"
+          alt="Mario Strikers Battle League Football"
+          className="rounded-3xl max-w-full p-4"
+        />
+      </section>
+
+      <section>
+        <div className="max-w-7xl">
+          <h3 className="mx-auto px-4 my-8 text-6xl md:text-9xl md:leading-tight text-center break-all font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent">
+            Hier ist alles erlaubt!
+          </h3>
+          <p>
+            Das neueste Spiel der Mario Strikers-Reihe erscheint für Nintendo
+            Switch!
+          </p>
+          <p>
+            Mach dich bereit für das 5-gegen-5-Spiel Strike – Wie Fußball, aber
+            mit deutlich härterer Offensive! Schieß Tore, indem du dribbelst und
+            deinen Teamkameraden die Bälle zuspielst. Benutze dabei Tacklings,
+            Items und einzigartige Fähigkeiten zum Auslösen von Spezialschüssen.
+            Sammle eine der Hyperkugeln auf dem Spielfeld ein und lade sie auf,
+            während deine Gegner abgelenkt sind, um den Hyperschuss zu
+            aktivieren – einen Spezialschuss, mit dem dir statt einem gleich
+            zwei Tore angerechnet werden! Gestalte die Ausrüstung deines Teams
+            ganz nach deinem Geschmack. Sie verändert nicht nur das Aussehen,
+            sondern auch Werte wie Tempo, Kraft und die Genauigkeit beim Passen.
+            Bis zu acht Spieler, vier in jedem Team, können auf einer Nintendo
+            Switch-Konsole* gegeneinander spielen. Zusätzlich zu den
+            Einzelspielen wird es einen Online-Club-Modus** geben – Jedem Club
+            können bis zu 20 Spieler beitreten. Versucht, zum besten Club der
+            Welt aufzusteigen!
+          </p>
+        </div>
+      </section>
       <section className="h-screen flex items-center justify-center">3</section>
       <section className="h-screen flex items-center justify-center">4</section>
     </div>
