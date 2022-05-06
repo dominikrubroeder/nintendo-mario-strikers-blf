@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.animation-delay-700 {
+  animation-delay: 700ms;
+}

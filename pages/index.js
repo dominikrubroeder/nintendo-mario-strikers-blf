@@ -1,14 +1,23 @@
 import Head from 'next/head';
-import TheFooter from '../components/layout/TheFooter';
-import TheHeader from '../components/layout/TheHeader';
 import TheStickyBuyBar from '../components/TheStickyBuyBar';
 import TheHero from '../components/TheHero';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TheGallery from '../components/TheGallery';
 import TheCommunityQuotes from '../components/TheCommunityQuotes';
+import TheLaunchScreen from '../components/TheLaunchScreen';
 
 export default function Home() {
   const [showStickyBuyBar, setShowStickyBuyBar] = useState(false);
+  const [showLaunchScreen, setShowLaunchScreen] = useState(true);
+
+  useEffect(() => {
+    const launchScreenTimeout = setTimeout(hideLaunchScreen, 1500);
+
+    function hideLaunchScreen() {
+      setShowLaunchScreen(false);
+      clearTimeout(launchScreenTimeout);
+    }
+  });
 
   return (
     <div>
@@ -20,6 +29,8 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      {showLaunchScreen && <TheLaunchScreen />}
 
       <TheHero setShowStickyBuyBar={setShowStickyBuyBar} />
 

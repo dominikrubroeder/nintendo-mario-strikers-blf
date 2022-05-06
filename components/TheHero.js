@@ -7,6 +7,7 @@ import TheCountdown from './TheCountdown';
 export default function TheHero(props) {
   const overserableObject = useRef();
   const overserableObjectIsOnScreen = useIsOnScreen(overserableObject);
+  const nintendoSwitchClickSound = useRef();
 
   useEffect(() => {
     if (overserableObjectIsOnScreen) {
@@ -15,6 +16,11 @@ export default function TheHero(props) {
       props.setShowStickyBuyBar(true);
     }
   }, [overserableObjectIsOnScreen]);
+
+  const playNintendoSwitchClickSound = () => {
+    nintendoSwitchClickSound.play();
+    console.log('Played..');
+  };
 
   return (
     <section className="grid items-center justify-center h-screen p-4 overflow-hidden">
@@ -31,7 +37,10 @@ export default function TheHero(props) {
             className="flex items-center justify-center"
             ref={overserableObject}
           >
-            <BaseButton variant="contained">
+            <BaseButton
+              variant="contained"
+              onClick={playNintendoSwitchClickSound}
+            >
               <Link href="/buy-mario-strikers-battle-league-football">
                 Button primary
               </Link>
@@ -39,6 +48,17 @@ export default function TheHero(props) {
 
             <BaseButton variant="text">Button primary</BaseButton>
           </div>
+          <audio
+            id="nintendo-switch-click-sound"
+            ref={nintendoSwitchClickSound}
+          >
+            <source
+              src="/audio/nintendo-switch-click-sound.mp3"
+              type="audio/mpeg"
+              autoPlay
+            />
+            Your browser does not support the audio element.
+          </audio>
         </div>
       </div>
     </section>
