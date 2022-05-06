@@ -1,7 +1,9 @@
 const DetailPage = () => {
   return (
     <div>
-      <h1>Detail page</h1>
+      <section className="flex items-center justify-center min-h-screen">
+        <h1>Detail page</h1>
+      </section>
     </div>
   );
 };

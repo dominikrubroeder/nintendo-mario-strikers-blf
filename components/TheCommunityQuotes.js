@@ -57,7 +57,7 @@ export default function TheCommunityQuotes() {
 
       <PulsingDots size={4} />
 
-      <div className="max-w-3xl w-full m-auto grid gap-8">
+      <div className="max-w-3xl w-full grid gap-8 px-4 m-auto">
         {communityQuotes.map((communityQuote, index) => {
           if (!communityQuote.isHighlight) {
             return (
@@ -67,12 +67,21 @@ export default function TheCommunityQuotes() {
                   index % 2 ? 'text-left' : 'text-right'
                 }`}
               >
-                <div
-                  className={`max-w-max bg-gray-100 rounded-full p-4 ${
-                    index % 2 ? 'text-left' : 'text-right ml-auto'
-                  }`}
-                >
-                  "{communityQuote.quote}"
+                <div className="flex items-center gap-2">
+                  <div
+                    className={`w-8 h-8 flex-none rounded-full bg-gray-100 ${
+                      index % 2 ? 'order-1' : 'order-2'
+                    }`}
+                  ></div>
+                  <div
+                    className={`max-w-max bg-gray-100 rounded-full p-4 ${
+                      index % 2
+                        ? 'text-left order-2'
+                        : 'text-right ml-auto order-1'
+                    }`}
+                  >
+                    <span className="mx-auto">"{communityQuote.quote}"</span>
+                  </div>
                 </div>
                 <p className="text-sm">
                   {communityQuote.platform} - {communityQuote.author}

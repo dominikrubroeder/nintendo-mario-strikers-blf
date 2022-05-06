@@ -21,19 +21,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <TheHeader />
+      <TheHero setShowStickyBuyBar={setShowStickyBuyBar} />
 
-      <main>
-        <TheHero setShowStickyBuyBar={setShowStickyBuyBar} />
+      <TheStickyBuyBar shouldBeVisible={showStickyBuyBar} />
 
-        <TheStickyBuyBar shouldBeVisible={showStickyBuyBar} />
+      <TheGallery />
 
-        <TheGallery />
-
-        <TheCommunityQuotes />
-      </main>
-
-      <TheFooter />
+      <TheCommunityQuotes />
     </div>
   );
 }
