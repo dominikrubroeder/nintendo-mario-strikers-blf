@@ -14,6 +14,7 @@ export default function BaseButton(props) {
       } ${
         variant === 'text' ? 'text-red-600 px-4 py-2 rounded-full bg-white' : ''
       }`}
+      onClick={props.onClick}
     >
       {props.children}
     </button>

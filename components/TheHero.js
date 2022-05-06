@@ -1,13 +1,15 @@
 import Link from 'next/link';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useIsOnScreen from '../hooks/useIsOnScreen';
 import BaseButton from './base/BaseButton';
 import TheCountdown from './TheCountdown';
+import TheGameTrailerOverlay from './TheGameTrailerOverlay';
 
 export default function TheHero(props) {
   const overserableObject = useRef();
   const overserableObjectIsOnScreen = useIsOnScreen(overserableObject);
   const nintendoSwitchClickSound = useRef();
+  const [showYouTubeGameTrailer, setShowYoutubeGameTrailer] = useState(false);
 
   useEffect(() => {
     if (overserableObjectIsOnScreen) {
@@ -24,6 +26,12 @@ export default function TheHero(props) {
 
   return (
     <section className="grid items-center justify-center h-screen p-4 overflow-hidden">
+      {showYouTubeGameTrailer && (
+        <TheGameTrailerOverlay
+          closeOverlay={() => setShowYoutubeGameTrailer(false)}
+        />
+      )}
+
       <div className="text-center grid gap-8">
         <img
           className="m-auto max-h-[65vh]"
@@ -44,6 +52,13 @@ export default function TheHero(props) {
               <Link href="/buy-mario-strikers-battle-league-football">
                 Button primary
               </Link>
+            </BaseButton>
+
+            <BaseButton
+              variant="text"
+              onClick={() => setShowYoutubeGameTrailer(true)}
+            >
+              Watch game trailer
             </BaseButton>
 
             <BaseButton variant="text">Button primary</BaseButton>
