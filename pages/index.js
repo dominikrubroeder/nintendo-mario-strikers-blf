@@ -5,6 +5,7 @@ import TheStickyBuyBar from '../components/TheStickyBuyBar';
 import TheHero from '../components/TheHero';
 import { useState } from 'react';
 import TheGallery from '../components/TheGallery';
+import TheCommunityQuotes from '../components/TheCommunityQuotes';
 
 export default function Home() {
   const [showStickyBuyBar, setShowStickyBuyBar] = useState(false);
@@ -29,9 +30,8 @@ export default function Home() {
 
         <TheGallery />
 
-        <section className="flex justify-center items-center h-screen">
-          2
-        </section>
+        <TheCommunityQuotes />
+
         <section className="flex justify-center items-center h-screen">
           3
         </section>
