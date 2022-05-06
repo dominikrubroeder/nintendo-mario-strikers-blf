@@ -4,6 +4,7 @@ import TheHeader from '../components/layout/TheHeader';
 import TheStickyBuyBar from '../components/TheStickyBuyBar';
 import TheHero from '../components/TheHero';
 import { useState } from 'react';
+import TheGallery from '../components/TheGallery';
 
 export default function Home() {
   const [showStickyBuyBar, setShowStickyBuyBar] = useState(false);
@@ -26,9 +27,8 @@ export default function Home() {
 
         <TheStickyBuyBar shouldBeVisible={showStickyBuyBar} />
 
-        <section className="flex justify-center items-center h-screen">
-          1
-        </section>
+        <TheGallery />
+
         <section className="flex justify-center items-center h-screen">
           2
         </section>
