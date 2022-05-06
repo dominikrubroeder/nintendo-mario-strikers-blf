@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import useIsOnScreen from '../hooks/useIsOnScreen';
 import BaseButton from './base/BaseButton';
 import TheCountdown from './TheCountdown';
@@ -19,22 +20,26 @@ export default function TheHero(props) {
     }
   }, [overserableObjectIsOnScreen]);
 
-  const playNintendoSwitchClickSound = () => {
-    nintendoSwitchClickSound.play();
-    console.log('Played..');
-  };
+  // Play nintendo switch click sound when main CTA button was clicked
+  // const playNintendoSwitchClickSound = () => {
+  //   nintendoSwitchClickSound.play();
+  //   console.log('Played..');
+  // };
 
   return (
-    <section className="grid items-center justify-center h-screen p-4 overflow-hidden">
+    <section className="grid items-center justify-center h-[95vh] p-4 overflow-hidden">
       {showYouTubeGameTrailer && (
         <TheGameTrailerOverlay
           closeOverlay={() => setShowYoutubeGameTrailer(false)}
         />
       )}
 
-      <div className="text-center grid gap-8">
-        <img
-          className="m-auto max-h-[65vh]"
+      <div className="text-center grid gap-4 md:gap-8">
+        <motion.img
+          animate={{ opacity: [0, 1], y: [-10, 0] }}
+          exit={{ opacity: [1, 0] }}
+          transition={{ delay: 1.5 }}
+          className="m-auto max-h-[65vh] pt-12 md:pt-0"
           src="/images/product/mario-strikers-battle-league-football-cover.jpg"
           alt="Nintendo Switch"
         />
@@ -42,15 +47,14 @@ export default function TheHero(props) {
           <TheCountdown />
           <h1>Mario Strikers: Battle League Football | Nintendo Switch</h1>
           <div
-            className="flex items-center justify-center"
+            className="flex items-center justify-center gap-2"
             ref={overserableObject}
           >
-            <BaseButton
-              variant="contained"
-              onClick={playNintendoSwitchClickSound}
-            >
+            <BaseButton variant="contained">
               <Link href="/buy-mario-strikers-battle-league-football">
-                Button primary
+                <div className="flex items-center gap-1">
+                  <span>Kaufen</span>
+                </div>
               </Link>
             </BaseButton>
 
@@ -58,10 +62,10 @@ export default function TheHero(props) {
               variant="text"
               onClick={() => setShowYoutubeGameTrailer(true)}
             >
-              Watch game trailer
+              <div className="flex items-center gap-1">
+                <span>Trailer ansehen</span>
+              </div>
             </BaseButton>
-
-            <BaseButton variant="text">Button primary</BaseButton>
           </div>
           <audio
             id="nintendo-switch-click-sound"

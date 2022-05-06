@@ -20,7 +20,7 @@ export default function TheStickyBuyBar(props) {
       <span>Mario Strikers: Battle League Football | Nintendo Switch</span>
       <div className="flex items-center gap-4">
         <TheCountdown />
-        <BaseButton variant="contained">Buy</BaseButton>
+        <BaseButton variant="contained">Kaufen</BaseButton>
       </div>
     </div>
   );
