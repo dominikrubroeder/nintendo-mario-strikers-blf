@@ -5,10 +5,10 @@ const PulsingDots = (props) => {
         className={`w-${props.size} h-${props.size} rounded-full bg-gradient-to-r from-red-500 to-orange-500 animate-bounce`}
       ></span>
       <span
-        className={`w-${props.size} h-${props.size} rounded-full bg-gradient-to-r from-red-500 to-orange-500 animate-bounce`}
+        className={`w-${props.size} h-${props.size} rounded-full bg-gradient-to-r from-red-500 to-orange-500 animate-bounce animation-delay-100`}
       ></span>
       <span
-        className={`w-${props.size} h-${props.size} rounded-full bg-gradient-to-r from-red-500 to-orange-500 animate-bounce`}
+        className={`w-${props.size} h-${props.size} rounded-full bg-gradient-to-r from-red-500 to-orange-500 animate-bounce animation-delay-200`}
       ></span>
     </div>
   );

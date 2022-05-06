@@ -39,14 +39,14 @@ const galleryItems = [
 
 export default function TheGallery() {
   return (
-    <section className="h-screen p-4 overflow-x-auto whitespace-nowrap">
-      <div className="h-full">
+    <section className="p-4 overflow-x-auto whitespace-nowrap">
+      <div>
         {galleryItems.map((galleryItem, index) => {
           return (
             <div
               key={galleryItem.src}
               style={{ backgroundImage: `url(${galleryItem.src})` }}
-              className="inline-block mr-4 w-[85vw] md:w-[95vw] h-full bg-cover bg-center rounded-3xl"
+              className="inline-block mr-4 w-[85vw] md:w-[95vw] h-[75vh] md:h-full bg-cover bg-center rounded-3xl"
             ></div>
           );
         })}
