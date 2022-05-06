@@ -31,10 +31,6 @@ export default function Home() {
         <TheGallery />
 
         <TheCommunityQuotes />
-
-        <section className="flex justify-center items-center h-screen">
-          3
-        </section>
       </main>
 
       <TheFooter />

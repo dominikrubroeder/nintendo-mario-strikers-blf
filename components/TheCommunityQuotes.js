@@ -1,3 +1,5 @@
+import PulsingDots from './PulsingDots';
+
 const communityQuotes = [
   {
     quote: '10/10 Hyped!',
@@ -52,6 +54,9 @@ export default function TheCommunityQuotes() {
           }
         })}
       </div>
+
+      <PulsingDots size={4} />
+
       <div className="max-w-3xl w-full m-auto grid gap-8">
         {communityQuotes.map((communityQuote, index) => {
           if (!communityQuote.isHighlight) {
