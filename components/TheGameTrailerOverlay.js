@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 const TheGameTrailerOverlay = (props) => {
   document.body.style.height = '100vh';
   document.body.style.overflow = 'hidden';
@@ -13,14 +15,17 @@ const TheGameTrailerOverlay = (props) => {
       className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
       onClick={closeOverlay}
     >
-      <iframe
+      <motion.iframe
+        animate={{ opacity: [0, 1], y: [25, 0] }}
+        exit={{ opacity: [1, 0] }}
+        transition={{ ease: 'easeOut', delay: 0.2, duration: 0.3 }}
         src="https://www.youtube-nocookie.com/embed/cZhDkYvGqZA"
         title="YouTube video player"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
         className="rounded-xl max-w-[768px] max-h-[430px] w-full h-full"
-      ></iframe>
+      ></motion.iframe>
     </div>
   );
 };

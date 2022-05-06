@@ -46,8 +46,12 @@ const communityQuotes = [
 export default function TheCommunityQuotes() {
   return (
     <section>
+      <div className="my-16">
+        <PulsingDots size={8} />
+      </div>
+
       <div className="flex flex-col items-center justify-center text-sm italic text-gray-600 mt-8">
-        Die Community schreibt... <PulsingDots size={8} />
+        Die Community schreibt...
       </div>
 
       <div>
