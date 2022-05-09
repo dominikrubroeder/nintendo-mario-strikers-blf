@@ -5,19 +5,20 @@ export default function BaseButton(props) {
     <button
       className={`transition-all ${
         variant === 'contained'
-          ? 'text-white px-4 py-2 rounded-full bg-red-600 hover:bg-red-700'
+          ? 'text-white px-4 py-2 rounded-full bg-accent hover:bg-red-700'
           : ''
       } ${
         variant === 'outlined'
-          ? 'text-red-600 px-4 py-2 rounded-full bg-white border border-red-600 hover:bg-red-600 hover:text-white'
+          ? 'text-accent px-4 py-2 rounded-full bg-white border border-red-600 hover:bg-accent hover:text-white'
           : ''
       } ${
         variant === 'text'
-          ? 'text-red-600 px-4 py-2 rounded-full bg-white transition-all duration-300 hover:bg-red-600/10'
+          ? 'text-accent px-4 py-2 rounded-full bg-white transition-all duration-300 hover:bg-accent/10'
           : ''
       }`}
       onClick={props.onClick}
     >
+      {/* Add playing sounds when button is clicked (based on currently selected theme? Mario -> It'see me, Mario, or Nintendo Switch click sound */}
       {props.children}
     </button>
   );

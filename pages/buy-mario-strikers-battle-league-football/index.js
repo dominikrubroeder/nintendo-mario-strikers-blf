@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import Head from 'next/head';
 import { useState } from 'react';
 import BuyEditionConfigOption from '../../components/buyconfig/BuyEditionConfigOption';
+import TeamConfigOption from '../../components/buyconfig/TeamConfigOption';
 import TheCountdown from '../../components/TheCountdown';
 
 const editions = [
@@ -19,8 +20,28 @@ const editions = [
   },
 ];
 
+const teams = [
+  {
+    teamTitle: 'Mario',
+  },
+  {
+    teamTitle: 'Luigi',
+  },
+  {
+    teamTitle: 'Bowser',
+  },
+];
+
 const DetailPage = () => {
   const [selectedEdition, setSelectedEdition] = useState(null);
+  const [selectedTeam, setSelectedTeam] = useState(null);
+
+  // Set theme based on selected team (nintendo character)
+  // Save selected theme to local storage
+  const setTheme = (theme) => {
+    document.body.className = `theme-${theme.toLowerCase()}`;
+    setSelectedTeam(theme.toLowerCase());
+  };
 
   return (
     <div>
@@ -44,18 +65,20 @@ const DetailPage = () => {
         />
         <div className="grid gap-12 mx-auto px-4 w-full">
           <div className="grid gap-1">
-            <h2 className="flex items-center gap-2 flex-wrap text-red-500">
+            <h2 className="flex items-center gap-2 flex-wrap text-accent">
               Nintendo Switch | 10. Juni 2022
               <span className="hidden md:inline-block"> | </span>
               <span>
                 <TheCountdown />
               </span>
             </h2>
-            <h1 className="text-3xl">Mario Strikers: Battle League Football</h1>
+            <h1 className="text-3xl">
+              Mario Strikers: Battle League Football kaufen
+            </h1>
           </div>
 
           <div className="grid gap-4">
-            <h4 className="text-xl font-bold">Wähle deine Edition:</h4>
+            <h4>Wähle deine Edition:</h4>
             <div className="grid gap-2">
               {editions.map((edition) => {
                 return (
@@ -72,6 +95,26 @@ const DetailPage = () => {
                       ))}
                     </ul>
                   </BuyEditionConfigOption>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Only show the following sections when 'nostalgie' edition is selected */}
+          <div className="grid gap-4">
+            <div className="flex justify-between items-center">
+              <h4>Wähle dein Team:</h4>
+              <p className="text-accent cursor-pointer">Warum?</p>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              {teams.map((team) => {
+                return (
+                  <TeamConfigOption
+                    key={team.teamTitle}
+                    teamTitle={team.teamTitle}
+                    onClick={() => setTheme(team.teamTitle)}
+                    selectedTeam={selectedTeam}
+                  />
                 );
               })}
             </div>

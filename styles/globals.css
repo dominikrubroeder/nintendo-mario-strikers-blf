@@ -2,6 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --nintendo-color-accent: rgb(221, 32, 32);
+  --nintendo-color-mario: rgb(221, 32, 32);
+  --nintendo-color-luigi: rgb(3, 155, 16);
+}
+
+/* Base theme: Nintendo */
+.text-accent {
+  color: var(--nintendo-color-accent);
+}
+
+.bg-accent {
+  background-color: var(--nintendo-color-accent);
+}
+
+.border-accent {
+  border-color: var(--nintendo-color-accent);
+}
+
+/* Theme: Mario */
+.theme-mario .text-accent {
+  color: var(--nintendo-color-mario);
+}
+
+.theme-mario .bg-accent {
+  background-color: var(--nintendo-color-mario);
+}
+
+.theme-mario .border-accent {
+  border-color: var(--nintendo-color-mario);
+}
+
+/* Theme: Luigi */
+.theme-luigi .text-accent {
+  color: var(--nintendo-color-luigi);
+}
+
+.theme-luigi .bg-accent {
+  background-color: var(--nintendo-color-luigi);
+}
+
+.theme-luigi .border-accent {
+  border-color: var(--nintendo-color-luigi);
+}
+
+/* Animation */
 .animation-delay-100 {
   animation-delay: 100ms;
 }
