@@ -1,9 +1,38 @@
 import { motion } from 'framer-motion';
+import Head from 'next/head';
+import { useState } from 'react';
+import BuyEditionConfigOption from '../../components/buyconfig/BuyEditionConfigOption';
 import TheCountdown from '../../components/TheCountdown';
 
+const editions = [
+  {
+    title: 'Mario Strikers: Battle League Football',
+    edition: 'Standard',
+    price: 59.99,
+    details: ['Digital Download and Hardcover'],
+  },
+  {
+    title: 'Mario Strikers: Battle League Football',
+    edition: 'Nostalgie',
+    price: 89.99,
+    details: ['Digital Download and Hardcover', '...', '...', '...'],
+  },
+];
+
 const DetailPage = () => {
+  const [selectedEdition, setSelectedEdition] = useState(null);
+
   return (
     <div>
+      <Head>
+        <title>Mario Strikers: Battle League Football kaufen | Nintendo</title>
+        <meta
+          name="description"
+          content="Nintendo's Mario Strikers: Battle League Football jetzt kaufen"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <section className="grid grid-cols-2 max-w-7xl mx-auto mt-20 px-8">
         <motion.img
           animate={{ opacity: [0, 1], y: [10, 0] }}
@@ -13,10 +42,10 @@ const DetailPage = () => {
           src="/images/product/mario-strikers-battle-league-football-cover.jpg"
           alt="Nintendo Switch"
         />
-        <div className="grid gap-4 mx-auto px-4 w-full">
+        <div className="grid gap-12 mx-auto px-4 w-full">
           <div className="grid gap-1">
             <h2 className="flex items-center gap-2 flex-wrap text-red-500">
-              Nintendo Switch | 10. Juni 2022{' '}
+              Nintendo Switch | 10. Juni 2022
               <span className="hidden md:inline-block"> | </span>
               <span>
                 <TheCountdown />
@@ -24,9 +53,30 @@ const DetailPage = () => {
             </h2>
             <h1 className="text-3xl">Mario Strikers: Battle League Football</h1>
           </div>
-          <div className="w-full h-40 rounded-3xl bg-gray-100"></div>
-          <div className="w-full h-40 rounded-3xl bg-gray-100"></div>
-          <div className="w-full h-40 rounded-3xl bg-gray-100"></div>
+
+          <div className="grid gap-4">
+            <h4 className="text-xl font-bold">Wähle deine Edition:</h4>
+            <div className="grid gap-2">
+              {editions.map((edition) => {
+                return (
+                  <BuyEditionConfigOption
+                    key={edition.edition}
+                    edition={edition.edition}
+                    price={edition.price}
+                    onClick={() => setSelectedEdition(edition.edition)}
+                    selectedEdition={selectedEdition}
+                  >
+                    <ul>
+                      {edition.details.map((detail) => (
+                        <li key={detail}>{detail}</li>
+                      ))}
+                    </ul>
+                  </BuyEditionConfigOption>
+                );
+              })}
+            </div>
+          </div>
+
           <div className="w-full h-40 rounded-3xl bg-gray-100"></div>
           <div className="w-full h-40 rounded-3xl bg-gray-100"></div>
           <div className="w-full h-40 rounded-3xl bg-gray-100"></div>
@@ -43,7 +93,7 @@ const DetailPage = () => {
         <img
           src="/images/gallery/2x1_NSwitch_MarioStrikersBattleLeagueFootball_image1600w.jpeg"
           alt="Mario Strikers Battle League Football"
-          className="rounded-3xl max-w-full p-4"
+          className="rounded-3xl max-w-full w-full p-4"
         />
       </section>
 
