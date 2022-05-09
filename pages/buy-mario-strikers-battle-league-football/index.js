@@ -1,26 +1,34 @@
 import { motion } from 'framer-motion';
 import Head from 'next/head';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import BaseButton from '../../components/base/BaseButton';
 import BuyEditionConfigOption from '../../components/buyconfig/BuyEditionConfigOption';
 import TeamConfigOption from '../../components/buyconfig/TeamConfigOption';
 import TheCountdown from '../../components/TheCountdown';
+import TheStickyBuyBar from '../../components/TheStickyBuyBar';
+import useIsOnScreen from '../../hooks/useIsOnScreen';
+
+// https://mario.fandom.com/de/wiki/Mario_Smash_Football
+// https://mario.fandom.com/de/wiki/Mario_Strikers_Charged_Football
 
 const editions = [
   {
     title: 'Mario Strikers: Battle League Football',
     edition: 'Standard',
     price: 59.99,
-    details: ['Digital Download and Hardcover'],
+    details: ['Digitaler Download und Hardcover'],
   },
   {
     title: 'Mario Strikers: Battle League Football',
     edition: 'Nostalgie',
     price: 89.99,
     details: [
-      'Digital Download and Hardcover',
+      'Digitaler Download und Hardcover',
+      "Mehr Content: Schalte die legacy Arenen aus 'Mario Strikers: Charged Football (Wii)' und 'Mario Smash Football (GameCube)' frei",
+      "Mehr Content: Schalte das 'Geheimteam' frei",
       'Merchandise Hoodie',
       'Merchandise T-Shirt',
+      'Merchandise Tischfigur',
       'Mario Strikers: Charged Football (Wii)',
       'Mario Smash Football (GameCube)',
       '...',
@@ -59,6 +67,10 @@ const DetailPage = () => {
   const [selectedEdition, setSelectedEdition] = useState(null);
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [buyable, setBuyable] = useState(false);
+  const teamSection = useRef();
+  const buyBox = useRef();
+  const [showStickyBuyBar, setShowStickyBuyBar] = useState(false);
+  const buyBoxIsOnScreen = useIsOnScreen(buyBox);
 
   const selectedEditionHandler = (edition) => {
     if (edition.toLowerCase() === 'standard') {
@@ -78,8 +90,26 @@ const DetailPage = () => {
   // Save selected theme to local storage
   const setTheme = (theme) => {
     document.body.className = `theme-${theme.toLowerCase()}`;
+
+    // Play sound of character on click
+    // Show fullscreen animated wallpaper of character on click
+
     setSelectedTeam(theme.toLowerCase());
+
+    teamSection.current.scrollIntoView({
+      behavior: 'smooth',
+    });
+
+    setBuyable(true);
   };
+
+  useEffect(() => {
+    if (buyBoxIsOnScreen) {
+      setShowStickyBuyBar(false);
+    } else {
+      setShowStickyBuyBar(true);
+    }
+  }, [buyBoxIsOnScreen]);
 
   return (
     <div>
@@ -92,12 +122,12 @@ const DetailPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section className="grid grid-cols-2 max-w-7xl mx-auto mt-20 px-8">
+      <section className="grid gap-4 md:grid-cols-2 max-w-7xl mx-auto mt-20 px-8">
         <motion.img
           animate={{ opacity: [0, 1], y: [10, 0] }}
           exit={{ opacity: [1, 0] }}
           transition={{ ease: 'easeOut' }}
-          className="sticky top-20 mx-auto max-h-[65vh] pt-12 md:pt-0"
+          className="mx-auto max-h-[65vh] md:sticky md:top-20 md:pt-0"
           src="/images/product/mario-strikers-battle-league-football-cover.jpg"
           alt="Nintendo Switch"
         />
@@ -141,7 +171,7 @@ const DetailPage = () => {
 
           {/* Only show the following sections when 'nostalgie' edition is selected */}
           {selectedEdition === 'Nostalgie' && (
-            <section className="grid gap-4">
+            <section className="grid gap-4" ref={teamSection}>
               <div className="grid gap-4">
                 <div className="flex justify-between items-center">
                   <h4>Wähle dein Team:</h4>
@@ -160,14 +190,10 @@ const DetailPage = () => {
                   })}
                 </div>
               </div>
-
-              <div className="w-full h-40 rounded-3xl bg-gray-100"></div>
-              <div className="w-full h-40 rounded-3xl bg-gray-100"></div>
-              <div className="w-full h-40 rounded-3xl bg-gray-100"></div>
             </section>
           )}
 
-          <div className="grid gap-2 bg-gray-100 rounded-3xl p-8">
+          <div className="grid gap-2 bg-gray-100 rounded-3xl p-8" ref={buyBox}>
             {buyable && <p>Lieferung am ...</p>}
             <BaseButton variant="contained" disabled={buyable ? false : true}>
               Jetzt vorbestellen
@@ -214,6 +240,8 @@ const DetailPage = () => {
       </section>
       <section className="h-screen flex items-center justify-center">3</section>
       <section className="h-screen flex items-center justify-center">4</section>
+
+      <TheStickyBuyBar shouldBeVisible={showStickyBuyBar && buyable} />
     </div>
   );
 };
