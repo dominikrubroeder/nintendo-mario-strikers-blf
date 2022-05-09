@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import Head from 'next/head';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import BaseButton from '../../components/base/BaseButton';
 import BuyEditionConfigOption from '../../components/buyconfig/BuyEditionConfigOption';
@@ -196,7 +197,7 @@ const DetailPage = () => {
           <div className="grid gap-2 bg-gray-100 rounded-3xl p-8" ref={buyBox}>
             {buyable && <p>Lieferung am ...</p>}
             <BaseButton variant="contained" disabled={buyable ? false : true}>
-              Jetzt vorbestellen
+              <Link href="/checkout">Jetzt vorbestellen</Link>
             </BaseButton>
           </div>
         </div>
@@ -241,7 +242,10 @@ const DetailPage = () => {
       <section className="h-screen flex items-center justify-center">3</section>
       <section className="h-screen flex items-center justify-center">4</section>
 
-      <TheStickyBuyBar shouldBeVisible={showStickyBuyBar && buyable} />
+      <TheStickyBuyBar
+        href="/checkout"
+        shouldBeVisible={showStickyBuyBar && buyable}
+      />
     </div>
   );
 };

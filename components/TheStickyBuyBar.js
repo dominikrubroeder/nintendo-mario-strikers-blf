@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import BaseButton from './base/BaseButton';
 import TheCountdown from './TheCountdown';
@@ -20,7 +21,13 @@ export default function TheStickyBuyBar(props) {
       <span>Mario Strikers: Battle League Football | Nintendo Switch</span>
       <div className="flex items-center justify-between w-full md:justify-end gap-4">
         <TheCountdown />
-        <BaseButton variant="contained">Kaufen</BaseButton>
+        <BaseButton variant="contained">
+          <Link
+            href={props.href || '/buy-mario-strikers-battle-league-football'}
+          >
+            Jetzt vorbestellen
+          </Link>
+        </BaseButton>
       </div>
     </div>
   );

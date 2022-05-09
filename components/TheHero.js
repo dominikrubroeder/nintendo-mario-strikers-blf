@@ -53,7 +53,7 @@ export default function TheHero(props) {
             <BaseButton variant="contained">
               <Link href="/buy-mario-strikers-battle-league-football">
                 <div className="flex items-center gap-1">
-                  <span>Kaufen</span>
+                  <span>Jetzt vorbestellen</span>
                 </div>
               </Link>
             </BaseButton>
