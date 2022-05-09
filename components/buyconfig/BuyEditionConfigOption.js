@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 export default function BuyEditionConfigOption(props) {
   return (
     <div
@@ -15,12 +13,24 @@ export default function BuyEditionConfigOption(props) {
           Mario Strikers: Battle League Football
           <small className="text-accent font-normal block">
             {props.edition} Edition
+            {props.edition === 'Nostalgie' && props.team
+              ? ` – ${props.team.toUpperCase()}`
+              : ''}
           </small>
         </h3>
+        {props.edition === 'Nostalgie' && props.team && (
+          <img
+            src={`/images/characters/${props.team
+              .replace(' ', '')
+              .toLowerCase()}-sketch.jpg`}
+            alt={props.team}
+            className="h-20"
+          />
+        )}
         {props.selectedEdition === props.edition && props.children}
       </div>
       <div>
-        <h3 className="text-xl">{props.price}</h3>
+        <h3 className="text-xl">{props.price} €</h3>
         <p className="text-sm">(inkl. MwSt.)</p>
       </div>
     </div>

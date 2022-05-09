@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Head from 'next/head';
 import { useState } from 'react';
+import BaseButton from '../../components/base/BaseButton';
 import BuyEditionConfigOption from '../../components/buyconfig/BuyEditionConfigOption';
 import TeamConfigOption from '../../components/buyconfig/TeamConfigOption';
 import TheCountdown from '../../components/TheCountdown';
@@ -16,7 +17,14 @@ const editions = [
     title: 'Mario Strikers: Battle League Football',
     edition: 'Nostalgie',
     price: 89.99,
-    details: ['Digital Download and Hardcover', '...', '...', '...'],
+    details: [
+      'Digital Download and Hardcover',
+      'Merchandise Hoodie',
+      'Merchandise T-Shirt',
+      'Mario Strikers: Charged Football (Wii)',
+      'Mario Smash Football (GameCube)',
+      '...',
+    ],
   },
 ];
 
@@ -28,13 +36,43 @@ const teams = [
     teamTitle: 'Luigi',
   },
   {
-    teamTitle: 'Bowser',
+    teamTitle: 'Yoshi',
+  },
+  {
+    teamTitle: 'Donkey Kong',
+  },
+  {
+    teamTitle: 'Wario',
+  },
+  {
+    teamTitle: 'Waluigi',
+  },
+  {
+    teamTitle: 'Peach',
+  },
+  {
+    teamTitle: 'Daisy',
   },
 ];
 
 const DetailPage = () => {
   const [selectedEdition, setSelectedEdition] = useState(null);
   const [selectedTeam, setSelectedTeam] = useState(null);
+  const [buyable, setBuyable] = useState(false);
+
+  const selectedEditionHandler = (edition) => {
+    if (edition.toLowerCase() === 'standard') {
+      document.body.className = '';
+      setSelectedTeam(null);
+      setBuyable(true);
+    }
+
+    if (edition.toLowerCase() === 'nostalgie') {
+      setBuyable(false);
+    }
+
+    setSelectedEdition(edition);
+  };
 
   // Set theme based on selected team (nintendo character)
   // Save selected theme to local storage
@@ -85,11 +123,12 @@ const DetailPage = () => {
                   <BuyEditionConfigOption
                     key={edition.edition}
                     edition={edition.edition}
+                    team={selectedTeam}
                     price={edition.price}
-                    onClick={() => setSelectedEdition(edition.edition)}
+                    onClick={() => selectedEditionHandler(edition.edition)}
                     selectedEdition={selectedEdition}
                   >
-                    <ul>
+                    <ul className="list-disc pl-4">
                       {edition.details.map((detail) => (
                         <li key={detail}>{detail}</li>
                       ))}
@@ -101,34 +140,39 @@ const DetailPage = () => {
           </div>
 
           {/* Only show the following sections when 'nostalgie' edition is selected */}
-          <div className="grid gap-4">
-            <div className="flex justify-between items-center">
-              <h4>Wähle dein Team:</h4>
-              <p className="text-accent cursor-pointer">Warum?</p>
-            </div>
-            <div className="grid grid-cols-2 gap-2">
-              {teams.map((team) => {
-                return (
-                  <TeamConfigOption
-                    key={team.teamTitle}
-                    teamTitle={team.teamTitle}
-                    onClick={() => setTheme(team.teamTitle)}
-                    selectedTeam={selectedTeam}
-                  />
-                );
-              })}
-            </div>
-          </div>
+          {selectedEdition === 'Nostalgie' && (
+            <section className="grid gap-4">
+              <div className="grid gap-4">
+                <div className="flex justify-between items-center">
+                  <h4>Wähle dein Team:</h4>
+                  <p className="text-accent text-sm cursor-pointer">Warum?</p>
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                  {teams.map((team) => {
+                    return (
+                      <TeamConfigOption
+                        key={team.teamTitle}
+                        teamTitle={team.teamTitle}
+                        onClick={() => setTheme(team.teamTitle)}
+                        selectedTeam={selectedTeam}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
 
-          <div className="w-full h-40 rounded-3xl bg-gray-100"></div>
-          <div className="w-full h-40 rounded-3xl bg-gray-100"></div>
-          <div className="w-full h-40 rounded-3xl bg-gray-100"></div>
-          <div className="w-full h-40 rounded-3xl bg-gray-100"></div>
-          <div className="w-full h-40 rounded-3xl bg-gray-100"></div>
-          <div className="w-full h-40 rounded-3xl bg-gray-100"></div>
-          <div className="w-full h-40 rounded-3xl bg-gray-100"></div>
-          <div className="w-full h-40 rounded-3xl bg-gray-100"></div>
-          <div className="w-full h-40 rounded-3xl bg-gray-100"></div>
+              <div className="w-full h-40 rounded-3xl bg-gray-100"></div>
+              <div className="w-full h-40 rounded-3xl bg-gray-100"></div>
+              <div className="w-full h-40 rounded-3xl bg-gray-100"></div>
+            </section>
+          )}
+
+          <div className="grid gap-2 bg-gray-100 rounded-3xl p-8">
+            {buyable && <p>Lieferung am ...</p>}
+            <BaseButton variant="contained" disabled={buyable ? false : true}>
+              Jetzt vorbestellen
+            </BaseButton>
+          </div>
         </div>
       </section>
 
