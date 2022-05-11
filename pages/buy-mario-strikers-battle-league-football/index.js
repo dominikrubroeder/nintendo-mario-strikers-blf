@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import BaseButton from '../../components/base/BaseButton';
 import BuyEditionConfigOption from '../../components/buyconfig/BuyEditionConfigOption';
@@ -65,6 +66,7 @@ const teams = [
 ];
 
 const DetailPage = () => {
+  const router = useRouter();
   const [selectedEdition, setSelectedEdition] = useState(null);
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [buyable, setBuyable] = useState(false);
@@ -85,23 +87,40 @@ const DetailPage = () => {
     }
 
     setSelectedEdition(edition);
+    router.push(
+      `/${router.pathname}/?edition=${edition.toLowerCase()}`,
+      undefined,
+      {
+        shallow: true,
+      }
+    );
   };
 
   // Set theme based on selected team (nintendo character)
   // Save selected theme to local storage
-  const setTheme = (theme) => {
-    document.body.className = `theme-${theme.toLowerCase()}`;
+  const setTeam = (team) => {
+    document.body.className = `team-${team.toLowerCase()}`;
 
     // Play sound of character on click
     // Show fullscreen animated wallpaper of character on click
 
-    setSelectedTeam(theme.toLowerCase());
+    setSelectedTeam(team.toLowerCase());
 
     teamSection.current.scrollIntoView({
       behavior: 'smooth',
     });
 
     setBuyable(true);
+
+    router.push(
+      `/${
+        router.pathname
+      }/?edition=${selectedEdition.toLowerCase()}?team=${team.toLowerCase()}`,
+      undefined,
+      {
+        shallow: true,
+      }
+    );
   };
 
   useEffect(() => {
@@ -184,7 +203,7 @@ const DetailPage = () => {
                       <TeamConfigOption
                         key={team.teamTitle}
                         teamTitle={team.teamTitle}
-                        onClick={() => setTheme(team.teamTitle)}
+                        onClick={() => setTeam(team.teamTitle)}
                         selectedTeam={selectedTeam}
                       />
                     );
