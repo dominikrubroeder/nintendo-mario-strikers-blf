@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import BaseButton from '../../components/base/BaseButton';
-import BuyEditionConfigOption from '../../components/buyconfig/BuyEditionConfigOption';
-import TeamConfigOption from '../../components/buyconfig/TeamConfigOption';
+import BuyEditionConfigOption from '../../components/product-detail/buy-configuration-options/BuyEditionConfigOption';
+import TeamConfigOption from '../../components/product-detail/buy-configuration-options/TeamConfigOption';
 import TheCountdown from '../../components/TheCountdown';
 import TheStickyBuyBar from '../../components/TheStickyBuyBar';
 import useIsOnScreen from '../../hooks/useIsOnScreen';
@@ -88,7 +88,7 @@ const DetailPage = () => {
 
     setSelectedEdition(edition);
     router.push(
-      `/${router.pathname}/?edition=${edition.toLowerCase()}`,
+      `${router.pathname}/?edition=${edition.toLowerCase()}`,
       undefined,
       {
         shallow: true,
@@ -113,7 +113,7 @@ const DetailPage = () => {
     setBuyable(true);
 
     router.push(
-      `/${
+      `${
         router.pathname
       }/?edition=${selectedEdition.toLowerCase()}?team=${team.toLowerCase()}`,
       undefined,

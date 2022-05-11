@@ -14,7 +14,7 @@ export default function TheStickyBuyBar(props) {
 
   return (
     <div
-      className={`fixed bottom-0 w-full grid grid-cols-2 text-sm p-4 bg-slate-100 z-40 transition-all ${
+      className={`fixed bottom-0 w-full grid gap-2 md:grid-cols-2 text-sm p-4 bg-slate-100 z-40 transition-all ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1/2'
       }`}
     >
@@ -22,7 +22,7 @@ export default function TheStickyBuyBar(props) {
         {props.team && (
           <img
             src={`/images/characters/${props.team}-sketch.jpg`}
-            class="h-12"
+            className="h-12"
           />
         )}
         <div className="grid">
@@ -40,15 +40,24 @@ export default function TheStickyBuyBar(props) {
           )}
         </div>
       </div>
-      <div className="flex items-center justify-between w-full md:justify-end gap-4">
+      <div className="flex flex-col gap-1 md:flex-row md:items-center md:justify-end md:gap-4">
         <TheCountdown />
-        <BaseButton variant="contained">
-          <Link
-            href={props.href || '/buy-mario-strikers-battle-league-football'}
+        <div className="flex gap-1">
+          <BaseButton variant="contained">
+            <Link
+              href={props.href || '/buy-mario-strikers-battle-league-football'}
+            >
+              Jetzt vorbestellen
+            </Link>
+          </BaseButton>
+          <BaseButton
+            variant="text"
+            className="text-xs"
+            onClick={() => setIsVisible(false)}
           >
-            Jetzt vorbestellen
-          </Link>
-        </BaseButton>
+            Hide
+          </BaseButton>
+        </div>
       </div>
     </div>
   );
