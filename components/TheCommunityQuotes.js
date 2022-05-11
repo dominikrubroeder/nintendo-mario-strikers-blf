@@ -58,11 +58,10 @@ export default function TheCommunityQuotes() {
         {communityQuotes.map((communityQuote) => {
           if (communityQuote.isHighlight) {
             return (
-              <div
-                key={communityQuote.quote}
-                className="mx-auto px-4 my-8 text-6xl md:text-8xl md:leading-tight text-center break-all font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent"
-              >
-                "{communityQuote.quote}"
+              <div key={communityQuote.quote}>
+                <div className="mx-auto px-4 my-8 text-6xl md:text-8xl md:leading-tight text-center break-all font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent">
+                  "{communityQuote.quote}"
+                </div>
               </div>
             );
           }

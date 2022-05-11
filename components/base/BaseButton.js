@@ -1,6 +1,14 @@
+import { useRef } from 'react';
+
 export default function BaseButton(props) {
   const variant = props.variant;
   const outterClasses = props.className;
+  const audioRef = useRef();
+
+  const onClickHandler = () => {
+    if (props.playSound) audioRef.current.play();
+    if (props.onClick) props.onClick();
+  };
 
   return (
     <button
@@ -18,9 +26,15 @@ export default function BaseButton(props) {
           : ''
       }`}
       disabled={props.disabled}
-      onClick={props.onClick}
+      onClick={onClickHandler}
     >
       {/* Add playing sounds when button is clicked (based on currently selected theme? Mario -> It'see me, Mario, or Nintendo Switch click sound */}
+      {props.playSound && (
+        <audio
+          src="/audio/nintendo-super-mario-coin.wav"
+          ref={audioRef}
+        ></audio>
+      )}
       {props.children}
     </button>
   );

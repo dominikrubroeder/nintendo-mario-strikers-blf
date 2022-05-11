@@ -9,7 +9,6 @@ import TheGameTrailerOverlay from './TheGameTrailerOverlay';
 export default function TheHero(props) {
   const overserableObject = useRef();
   const overserableObjectIsOnScreen = useIsOnScreen(overserableObject);
-  const nintendoSwitchClickSound = useRef();
   const [showYouTubeGameTrailer, setShowYoutubeGameTrailer] = useState(false);
 
   useEffect(() => {
@@ -67,17 +66,6 @@ export default function TheHero(props) {
               </div>
             </BaseButton>
           </div>
-          <audio
-            id="nintendo-switch-click-sound"
-            ref={nintendoSwitchClickSound}
-          >
-            <source
-              src="/audio/nintendo-switch-click-sound.mp3"
-              type="audio/mpeg"
-              autoPlay
-            />
-            Your browser does not support the audio element.
-          </audio>
         </div>
       </div>
     </section>

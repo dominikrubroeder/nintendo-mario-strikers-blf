@@ -41,6 +41,7 @@ const editions = [
 const teams = [
   {
     teamTitle: 'Mario',
+    sound: '/audio/nintendo-dr-mario64-woohoo-here-we-go.wav',
   },
   {
     teamTitle: 'Luigi',
@@ -99,7 +100,7 @@ const DetailPage = () => {
   // Set theme based on selected team (nintendo character)
   // Save selected theme to local storage
   const setTeam = (team) => {
-    document.body.className = `team-${team.toLowerCase()}`;
+    document.body.className = `theme-${team.toLowerCase()}`;
 
     // Play sound of character on click
     // Show fullscreen animated wallpaper of character on click
@@ -203,6 +204,7 @@ const DetailPage = () => {
                       <TeamConfigOption
                         key={team.teamTitle}
                         teamTitle={team.teamTitle}
+                        sound={team.sound}
                         onClick={() => setTeam(team.teamTitle)}
                         selectedTeam={selectedTeam}
                       />
