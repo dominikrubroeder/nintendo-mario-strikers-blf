@@ -71,3 +71,7 @@
 .text-fill-color-transparent {
   -webkit-text-fill-color: transparent;
 }
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
