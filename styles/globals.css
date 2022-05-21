@@ -3,55 +3,207 @@
 @tailwind utilities;
 
 :root {
-  --nintendo-color-accent: rgb(221, 32, 32);
-  --nintendo-color-mario: rgb(221, 32, 32);
-  --nintendo-color-luigi: #039b10;
+  --theme-accent: hsl(0, 75%, 50%);
+  --theme-mario: hsl(351, 87%, 47%);
+  --theme-mario-dark: hsl(351, 87%, 42%);
+  --theme-luigi: hsl(125, 96%, 31%);
+  --theme-luigi-dark: hsl(125, 96%, 26%);
+  --theme-peach: hsl(333, 75%, 76%);
+  --theme-peach-dark: hsl(333, 75%, 71%);
+  --theme-yoshi: hsl(89, 70%, 43%);
+  --theme-yoshi-dark: hsl(89, 70%, 38%);
+  --theme-daisy: hsl(32, 92%, 49%);
+  --theme-daisy-dark: hsl(32, 92%, 44%);
+  --theme-bowser: hsl(45, 94%, 52%);
+  --theme-bowser-dark: hsl(45, 94%, 47%);
+  --theme-wario: hsl(53, 92%, 51%);
+  --theme-wario-dark: hsl(53, 92%, 46%);
+  --theme-waluigi: hsl(269, 51%, 37%);
+  --theme-waluigi-dark: hsl(269, 51%, 32%);
+  --theme-donkey-kong: hsl(18, 92%, 31%);
+  --theme-donkey-kong-dark: hsl(18, 92%, 26%);
 }
 
 /* Base theme: Nintendo */
 .text-accent {
-  color: var(--nintendo-color-accent);
+  color: var(--theme-accent);
 }
 
 .bg-accent {
-  background-color: var(--nintendo-color-accent);
+  background-color: var(--theme-accent);
 }
 
 .border-accent {
-  border-color: var(--nintendo-color-accent);
+  border-color: var(--theme-accent);
 }
 
-/* Theme: Mario
- */
+/*
+----------
+---------------------------------------- Theme: Mario
+----------
+*/
 .theme-mario .text-accent {
-  color: var(--nintendo-color-mario);
+  color: var(--theme-mario);
 }
 
 .theme-mario .bg-accent,
 .theme-mario.bg-accent {
-  background-color: var(--nintendo-color-mario);
+  background-color: var(--theme-mario);
 }
 
 .theme-mario .border-accent {
-  border-color: var(--nintendo-color-mario);
+  border-color: var(--theme-mario);
 }
 
-/* Theme: Luigi
+/*
+----------
+---------------------------------------- Theme: Luigi
+----------
 */
 .theme-luigi .text-accent {
-  color: var(--nintendo-color-luigi);
+  color: var(--theme-luigi);
 }
 
 .theme-luigi .bg-accent,
 .theme-luigi.bg-accent {
-  background-color: var(--nintendo-color-luigi);
+  background-color: var(--theme-luigi);
 }
 
 .theme-luigi .border-accent {
-  border-color: var(--nintendo-color-luigi);
+  border-color: var(--theme-luigi);
 }
 
-/* Animation */
+/*
+----------
+---------------------------------------- Theme: Peach
+----------
+*/
+.theme-peach .text-accent {
+  color: var(--theme-peach);
+}
+
+.theme-peach .bg-accent,
+.theme-peach.bg-accent {
+  background-color: var(--theme-peach);
+}
+
+.theme-peach .border-accent {
+  border-color: var(--theme-peach);
+}
+
+/*
+----------
+---------------------------------------- Theme: Yoshi
+----------
+*/
+.theme-yoshi .text-accent {
+  color: var(--theme-yoshi);
+}
+
+.theme-yoshi .bg-accent,
+.theme-yoshi.bg-accent {
+  background-color: var(--theme-yoshi);
+}
+
+.theme-yoshi .border-accent {
+  border-color: var(--theme-yoshi);
+}
+
+/*
+----------
+---------------------------------------- Theme: Daisy
+----------
+*/
+.theme-daisy .text-accent {
+  color: var(--theme-daisy);
+}
+
+.theme-daisy .bg-accent,
+.theme-daisy.bg-accent {
+  background-color: var(--theme-daisy);
+}
+
+.theme-daisy .border-accent {
+  border-color: var(--theme-daisy);
+}
+
+/*
+----------
+---------------------------------------- Theme: Bowser
+----------
+*/
+.theme-bowser .text-accent {
+  color: var(--theme-bowser);
+}
+
+.theme-bowser .bg-accent,
+.theme-bowser.bg-accent {
+  background-color: var(--theme-bowser);
+}
+
+.theme-bowser .border-accent {
+  border-color: var(--theme-bowser);
+}
+
+/*
+----------
+---------------------------------------- Theme: Wario
+----------
+*/
+.theme-wario .text-accent {
+  color: var(--theme-wario);
+}
+
+.theme-wario .bg-accent,
+.theme-wario.bg-accent {
+  background-color: var(--theme-wario);
+}
+
+.theme-wario .border-accent {
+  border-color: var(--theme-wario);
+}
+
+/*
+----------
+---------------------------------------- Theme: Waluigi
+----------
+*/
+.theme-waluigi .text-accent {
+  color: var(--theme-waluigi);
+}
+
+.theme-waluigi .bg-accent,
+.theme-waluigi.bg-accent {
+  background-color: var(--theme-waluigi);
+}
+
+.theme-waluigi .border-accent {
+  border-color: var(--theme-waluigi);
+}
+
+/*
+----------
+---------------------------------------- Theme: Donkey Kong
+----------
+*/
+.theme-donkey-kong .text-accent {
+  color: var(--theme-donkey-kong);
+}
+
+.theme-donkey-kong .bg-accent,
+.theme-donkey-kong.bg-accent {
+  background-color: var(--theme-donkey-kong);
+}
+
+.theme-donkey-kong .border-accent {
+  border-color: var(--theme-donkey-kong);
+}
+
+/*
+----------
+---------------------------------------- ANIMATIONS
+----------
+*/
 .animation-delay-100 {
   animation-delay: 100ms;
 }

@@ -65,6 +65,9 @@ const teams = [
   {
     teamTitle: 'Daisy',
   },
+  {
+    teamTitle: 'Bowser',
+  },
 ];
 
 const DetailPage = () => {
