@@ -234,7 +234,7 @@ const DetailPage = () => {
           )}
 
           <div
-            className="grid gap-2 bg-gray-100 rounded-3xl p-8 theme-mario:text-white theme-mario:bg-mario-dark theme-luigi:text-white theme-luigi:bg-luigi-dark"
+            className="grid gap-2 bg-gray-100 bg-themed-dark rounded-3xl p-8"
             ref={buyBox}
           >
             {buyable && (

@@ -14,7 +14,7 @@ export default function TeamConfigOption(props) {
       className={`flex items-center justify-center h-56 rounded-3xl cursor-pointer border hover:border-gray-300 ${
         props.selectedTeam === props.teamTitle.toLowerCase()
           ? 'border-accent hover:border-accent theme-mario:hover:border-white theme-luigi:hover:border-white'
-          : 'border-gray-200 theme-mario:border-mario-dark theme-luigi:border-luigi-dark hover:border-white'
+          : 'border-gray-200 border-themed-dark hover:border-white'
       }`}
       onClick={onClickHandler}
     >

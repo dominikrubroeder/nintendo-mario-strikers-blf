@@ -3,8 +3,8 @@ export default function BuyEditionConfigOption(props) {
     <div
       className={`w-full border hover:border-gray-300 rounded-3xl p-8 cursor-pointer ${
         props.selectedEdition === props.edition
-          ? 'border-accent hover:border-accent theme-mario:bg-mario-dark theme-luigi:bg-luigi-dark'
-          : 'border-gray-200 theme-mario:border-mario-dark theme-luigi:border-luigi-dark'
+          ? 'border-accent hover:border-accent bg-themed-dark hover:border-themed'
+          : 'border-gray-200 border-themed-dark'
       }`}
       onClick={props.onClick}
     >

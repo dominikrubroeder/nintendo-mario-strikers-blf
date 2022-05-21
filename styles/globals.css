@@ -3,6 +3,22 @@
 @tailwind utilities;
 
 @layer components {
+  .text-themed {
+    @apply theme-mario:text-mario theme-luigi:text-luigi theme-peach:text-peach theme-yoshi:text-yoshi theme-daisy:text-daisy theme-bowser:text-bowser theme-wario:text-wario theme-waluigi:text-waluigi theme-donkey-kong:text-donkey-kong;
+  }
+
+  .text-themed-dark {
+    @apply theme-mario:text-mario-dark theme-luigi:text-luigi-dark theme-peach:text-peach-dark theme-yoshi:text-yoshi-dark theme-daisy:text-daisy-dark theme-bowser:text-bowser-dark theme-wario:text-wario-dark theme-waluigi:text-waluigi-dark theme-donkey-kong:text-donkey-kong-dark;
+  }
+
+  .border-themed {
+    @apply theme-mario:border-mario theme-luigi:border-luigi theme-peach:border-peach theme-yoshi:border-yoshi theme-daisy:border-daisy theme-bowser:border-bowser theme-wario:border-wario theme-waluigi:border-waluigi theme-donkey-kong:border-donkey-kong;
+  }
+
+  .border-themed-dark {
+    @apply theme-mario:border-mario-dark theme-luigi:border-luigi-dark theme-peach:border-peach-dark theme-yoshi:border-yoshi-dark theme-daisy:border-daisy-dark theme-bowser:border-bowser-dark theme-wario:border-wario-dark theme-waluigi:border-waluigi-dark theme-donkey-kong:border-donkey-kong-dark;
+  }
+
   .bg-themed {
     @apply theme-mario:bg-mario theme-luigi:bg-luigi theme-peach:bg-peach theme-yoshi:bg-yoshi theme-daisy:bg-daisy theme-bowser:bg-bowser theme-wario:bg-wario theme-waluigi:bg-waluigi theme-donkey-kong:bg-donkey-kong;
   }
