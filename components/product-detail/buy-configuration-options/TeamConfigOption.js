@@ -5,8 +5,8 @@ export default function TeamConfigOption(props) {
 
   const onClickHandler = () => {
     if (props.sound && localStorage.getItem('interactiveAudio') == 'true')
-      audioRef.current.play();
-    if (props.onClick) props.onClick();
+      if (props.onClick) audioRef.current.play();
+    props.onClick();
   };
 
   return (

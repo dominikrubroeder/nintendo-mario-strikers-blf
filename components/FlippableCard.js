@@ -1,17 +1,12 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 
 const FlippableCard = (props) => {
   const [showFront, setShowFront] = useState(true);
   const cardFrontRef = useRef();
 
-  useEffect(() => {
-    cardFrontRef.current.classList.toggle('rotate-180');
-    cardFrontRef.current.classList.toggle('transform-style-3d');
-  }, [showFront]);
-
   return (
     <div
-      className={`grid gap-4 max-w-md rounded-xl bg-gradient-to-r from-red-500 to-orange-500 text-white border p-8 transition-all duration-700 ${props.className}`}
+      className={`grid gap-4 relative max-w-md min-h-[35vh] rounded-xl mx-auto bg-gradient-to-r from-red-500 to-orange-500 text-white border p-8 transition-all duration-400 ${props.className}`}
       onClick={() => setShowFront((previousState) => !previousState)}
       ref={cardFrontRef}
     >
@@ -27,17 +22,22 @@ const FlippableCard = (props) => {
       {!props.flippable && (
         <h4
           className={`transition-all font-bold ${
-            showFront ? 'text-3xl leading-relaxed' : 'text-xl rotate-180'
+            showFront ? 'text-3xl leading-relaxed' : 'text-xl'
           }`}
         >
           {props.title}
         </h4>
       )}
+      <img
+        src={props.imgSrc}
+        className="absolute top-0 right-0 translate-x-1/2 w-full"
+        alt="Mario"
+      />
       <p
-        className={`transition-all rotate-180 ${
+        className={`transition-all ${
           showFront
             ? 'opacity-0 translate-y-1/4'
-            : 'opacity-100 translate-y-0 delay-[800ms]'
+            : 'opacity-100 translate-y-0 delay-400'
         }`}
       >
         {props.children}

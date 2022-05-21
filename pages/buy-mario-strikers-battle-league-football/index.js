@@ -246,28 +246,23 @@ const DetailPage = () => {
               Hier ist alles erlaubt!
             </h3>
 
-            <div className="grid gap-4 grid-cols-3">
+            <div className="grid gap-32">
               <FlippableCard
-                className="col-start-1 col-end-2 row-span-2"
                 title="Das neueste Spiel der Mario Strikers-Reihe erscheint für Nintendo
         Switch!"
                 titleSize="text-6xl"
                 flippable={false}
+                imgSrc="/images/characters/mario-sketch.png"
+                imgAlt="Mario"
               ></FlippableCard>
 
-              <FlippableCard
-                title="5 gegen 5"
-                className="col-start-2 col-end-3 row-start-1 row-end-2"
-              >
+              <FlippableCard title="5 gegen 5">
                 Mach dich bereit für das 5-gegen-5-Spiel Strike – Wie Fußball,
                 aber mit deutlich härterer Offensive! Schieß Tore, indem du
                 dribbelst und deinen Teamkameraden die Bälle zuspielst.
               </FlippableCard>
 
-              <FlippableCard
-                title="Bis zu 8 Spieler"
-                className="col-start-3 col-end-4 row-start-1 row-end-2"
-              >
+              <FlippableCard title="Bis zu 8 Spieler">
                 Bis zu acht Spieler, vier in jedem Team, können auf einer
                 Nintendo Switch-Konsole* gegeneinander spielen. Zusätzlich zu
                 den Einzelspielen wird es einen Online-Club-Modus** geben –
@@ -275,10 +270,7 @@ const DetailPage = () => {
                 besten Club der Welt aufzusteigen!
               </FlippableCard>
 
-              <FlippableCard
-                title="Tacklings, Items und einzigartige Fähigkeiten"
-                className="col-start-2 col-end-3 row-start-2 row-end-3"
-              >
+              <FlippableCard title="Tacklings, Items und einzigartige Fähigkeiten">
                 Benutze Tacklings, Items und einzigartige Fähigkeiten zum
                 Auslösen von Spezialschüssen. Sammle eine der Hyperkugeln auf
                 dem Spielfeld ein und lade sie auf, während deine Gegner
@@ -287,10 +279,7 @@ const DetailPage = () => {
                 angerechnet werden!
               </FlippableCard>
 
-              <FlippableCard
-                title="Individualisiere Dein Team!"
-                className="col-start-3 col-end-4 row-start-2 row-end-3"
-              >
+              <FlippableCard title="Individualisiere Dein Team!">
                 Gestalte die Ausrüstung deines Teams ganz nach deinem Geschmack.
                 Sie verändert nicht nur das Aussehen, sondern auch Werte wie
                 Tempo, Kraft und die Genauigkeit beim Passen.
