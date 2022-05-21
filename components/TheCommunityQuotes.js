@@ -1,6 +1,5 @@
 import AppearWhenInView from './animation/AppearWhenInView';
 import PulsingDots from './PulsingDots';
-import useThemedBackgroundStyle from '../hooks/useThemedBackground';
 
 const communityQuotes = [
   {
@@ -45,8 +44,6 @@ const communityQuotes = [
 ];
 
 export default function TheCommunityQuotes() {
-  const themedBackgroundStyle = useThemedBackgroundStyle('dark');
-
   return (
     <section>
       <div className="my-16">

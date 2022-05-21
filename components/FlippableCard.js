@@ -6,7 +6,7 @@ const FlippableCard = (props) => {
 
   return (
     <div
-      className={`grid gap-4 relative max-w-md min-h-[35vh] rounded-xl mx-auto bg-gradient-to-r from-red-500 to-orange-500 text-white border p-8 transition-all duration-400 ${props.className}`}
+      className={`grid gap-4 relative max-w-md min-h-[35vh] rounded-xl mx-auto bg-gradient-to-r from-red-500 to-orange-500 text-white p-8 transition-all duration-400 ${props.className}`}
       onClick={() => setShowFront((previousState) => !previousState)}
       ref={cardFrontRef}
     >

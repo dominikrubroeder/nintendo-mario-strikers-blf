@@ -41,32 +41,40 @@ const editions = [
 
 const teams = [
   {
-    teamTitle: 'Mario',
-    sound: '/audio/nintendo-dr-mario64-woohoo-here-we-go.wav',
+    name: 'mario',
+    sound: '/audio/sound-mario-2.mp3',
   },
   {
-    teamTitle: 'Luigi',
+    name: 'luigi',
+    sound: '/audio/sound-luigi-2.mp3',
   },
   {
-    teamTitle: 'Yoshi',
+    name: 'yoshi',
+    sound: '/audio/sound-yoshi-2.mp3',
   },
   {
-    teamTitle: 'Donkey Kong',
+    name: 'donkey-kong',
+    sound: '/audio/sound-donkey-kong-2.mp3',
   },
   {
-    teamTitle: 'Wario',
+    name: 'wario',
+    sound: '/audio/sound-wario-2.mp3',
   },
   {
-    teamTitle: 'Waluigi',
+    name: 'waluigi',
+    sound: '/audio/sound-waluigi-2.mp3',
   },
   {
-    teamTitle: 'Peach',
+    name: 'peach',
+    sound: '/audio/sound-peach-2.mp3',
   },
   {
-    teamTitle: 'Daisy',
+    name: 'daisy',
+    sound: '/audio/sound-daisy-2.mp3',
   },
   {
-    teamTitle: 'Bowser',
+    name: 'bowser',
+    sound: '/audio/sound-koopa-2.mp3',
   },
 ];
 
@@ -103,7 +111,7 @@ const DetailPage = () => {
   // Set theme based on selected team (nintendo character)
   // Save selected theme to local storage
   const setTeam = (team) => {
-    document.body.className = `themed theme-${team} bg-accent text-white`;
+    document.body.className = `themed theme-${team} bg-themed text-white`;
 
     localStorage.setItem('themed', true);
     localStorage.setItem('theme', team);
@@ -120,9 +128,7 @@ const DetailPage = () => {
     setBuyable(true);
 
     router.push(
-      `${
-        router.pathname
-      }/?edition=${selectedEdition.toLowerCase()}?team=${team}`,
+      `${router.pathname}/?edition=${selectedEdition}?team=${team}`,
       undefined,
       {
         shallow: true,
@@ -214,16 +220,18 @@ const DetailPage = () => {
               <div className="grid gap-4">
                 <div className="flex justify-between items-center">
                   <h4>Wähle dein Team:</h4>
-                  <p className="text-accent text-sm cursor-pointer">Warum?</p>
+                  <p className="text-accent themed:text-white text-sm cursor-pointer">
+                    Warum?
+                  </p>
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   {teams.map((team) => {
                     return (
                       <TeamConfigOption
-                        key={team.teamTitle}
-                        teamTitle={team.teamTitle}
+                        key={team.name}
+                        name={team.name}
                         sound={team.sound}
-                        onClick={() => setTeam(team.teamTitle.toLowerCase())}
+                        onClick={() => setTeam(team.name)}
                         selectedTeam={selectedTeam}
                       />
                     );
