@@ -198,36 +198,3 @@
 .theme-donkey-kong .border-accent {
   border-color: var(--theme-donkey-kong);
 }
-
-/*
-----------
----------------------------------------- ANIMATIONS
-----------
-*/
-.animation-delay-100 {
-  animation-delay: 100ms;
-}
-
-.animation-delay-200 {
-  animation-delay: 200ms;
-}
-
-.animation-delay-300 {
-  animation-delay: 300ms;
-}
-
-.animation-delay-400 {
-  animation-delay: 400ms;
-}
-
-.animation-delay-700 {
-  animation-delay: 700ms;
-}
-
-.text-fill-color-transparent {
-  -webkit-text-fill-color: transparent;
-}
-
-.transform-style-3d {
-  transform-style: preserve-3d;
-}

@@ -16,8 +16,8 @@ module.exports = {
         'mario-dark': '#C80E2A',
         luigi: '#08A936',
         'luigi-dark': '#07922F',
-        bowser: '#04BE14',
-        'bowser-dark': '#038C0E',
+        bowser: '#F8BE10',
+        'bowser-dark': '#E9B007',
         yoshi: '#70B921',
         'yoshi-dark': '#64A41D',
         'donkey-kong': '#983106',
@@ -45,6 +45,31 @@ module.exports = {
       addVariant('theme-waluigi', '.theme-waluigi &');
       addVariant('theme-peach', '.theme-peach &');
       addVariant('theme-daisy', '.theme-daisy &');
+    }),
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        '.animation-delay-100': {
+          'animation-delay': '100ms',
+        },
+        '.animation-delay-200': {
+          'animation-delay': '200ms',
+        },
+        '.animation-delay-300': {
+          'animation-delay': '300ms',
+        },
+        '.animation-delay-400': {
+          'animation-delay': '400ms',
+        },
+        '.animation-delay-700': {
+          'animation-delay': '700ms',
+        },
+        '.text-fill-color-transparent': {
+          '-webkit-text-fill-color': 'transparent',
+        },
+        '.transform-style-3d': {
+          'transform-style': 'preserve-3d',
+        },
+      });
     }),
   ],
 };

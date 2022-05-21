@@ -80,7 +80,7 @@ export default function TheCommunityQuotes() {
                 >
                   <div className="flex items-center gap-2">
                     <div
-                      className={`w-8 h-8 flex-none rounded-full bg-gray-100 ${
+                      className={`w-8 h-8 flex-none rounded-full bg-gray-100 theme-mario:bg-mario-dark theme-luigi:bg-luigi-dark theme-peach:bg-peach-dark theme-yoshi:bg-yoshi-dark theme-daisy:bg-daisy-dark theme-bowser:bg-bowser-dark theme-wario:bg-wario-dark theme-waluigi:bg-waluigi-dark theme-donkey-kong:bg-donkey-kong-dark ${
                         index % 2 ? 'order-1' : 'order-2'
                       }`}
                     ></div>
