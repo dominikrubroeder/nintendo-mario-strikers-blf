@@ -16,9 +16,13 @@ const TheGameTrailerOverlay = (props) => {
       onClick={closeOverlay}
     >
       <motion.iframe
-        animate={{ opacity: [0, 1], y: [25, 0] }}
-        exit={{ opacity: [1, 0] }}
-        transition={{ ease: 'easeOut', delay: 0.2, duration: 0.3 }}
+        animate={{ scale: [0.4, 1.3, 1] }}
+        transition={{
+          duration: 0.5,
+          type: 'spring',
+          stiffness: 300,
+          damping: 15,
+        }}
         src="https://www.youtube-nocookie.com/embed/cZhDkYvGqZA"
         title="YouTube video player"
         frameBorder="0"

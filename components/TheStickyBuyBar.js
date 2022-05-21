@@ -21,12 +21,12 @@ export default function TheStickyBuyBar(props) {
       <div className="flex items-center gap-2">
         {props.team && (
           <img
-            src={`/images/characters/${props.team}-sketch.jpg`}
+            src={`/images/characters/${props.team}-sketch.png`}
             className="h-12"
           />
         )}
         <div className="grid">
-          <h3 className="block themed:text-white">
+          <h3 className="block font-bold themed:text-white">
             Mario Strikers: Battle League Football | Nintendo Switch
           </h3>
           {(props.edition || props.team) && (
@@ -43,12 +43,13 @@ export default function TheStickyBuyBar(props) {
       <div className="flex flex-col gap-1 md:flex-row md:items-center md:justify-end md:gap-4">
         <TheCountdown />
         <div className="flex gap-1">
-          <BaseButton variant="contained">
-            <Link
-              href={props.href || '/buy-mario-strikers-battle-league-football'}
-            >
-              Jetzt vorbestellen
-            </Link>
+          <BaseButton
+            variant="contained"
+            isLink
+            href={props.href || '/buy-mario-strikers-battle-league-football'}
+            playSound
+          >
+            Jetzt vorbestellen
           </BaseButton>
           <BaseButton
             variant="text"

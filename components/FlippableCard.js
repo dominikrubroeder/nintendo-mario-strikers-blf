@@ -28,11 +28,13 @@ const FlippableCard = (props) => {
           {props.title}
         </h4>
       )}
-      <img
-        src={props.imgSrc}
-        className="absolute top-0 right-0 translate-x-1/2 w-full"
-        alt="Mario"
-      />
+      {props.imgSrc && (
+        <img
+          src={props.imgSrc}
+          className="absolute top-0 right-0 translate-x-1/2 w-full"
+          alt="Mario"
+        />
+      )}
       <p
         className={`transition-all ${
           showFront

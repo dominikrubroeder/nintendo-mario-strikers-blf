@@ -1,11 +1,10 @@
 import { motion } from 'framer-motion';
 import Head from 'next/head';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import BaseButton from '../../components/base/BaseButton';
 import FlippableCard from '../../components/FlippableCard';
-import BuyEditionConfigOption from '../../components/product-detail/buy-configuration-options/BuyEditionConfigOption';
+import EditionConfigOption from '../../components/product-detail/buy-configuration-options/EditionConfigOption';
 import TeamConfigOption from '../../components/product-detail/buy-configuration-options/TeamConfigOption';
 import TheCountdown from '../../components/TheCountdown';
 import TheStickyBuyBar from '../../components/TheStickyBuyBar';
@@ -53,8 +52,12 @@ const teams = [
     sound: '/audio/sound-yoshi-2.mp3',
   },
   {
-    name: 'donkey-kong',
-    sound: '/audio/sound-donkey-kong-2.mp3',
+    name: 'peach',
+    sound: '/audio/sound-peach-2.mp3',
+  },
+  {
+    name: 'daisy',
+    sound: '/audio/sound-daisy-2.mp3',
   },
   {
     name: 'wario',
@@ -65,12 +68,8 @@ const teams = [
     sound: '/audio/sound-waluigi-2.mp3',
   },
   {
-    name: 'peach',
-    sound: '/audio/sound-peach-2.mp3',
-  },
-  {
-    name: 'daisy',
-    sound: '/audio/sound-daisy-2.mp3',
+    name: 'donkey-kong',
+    sound: '/audio/sound-donkey-kong-2.mp3',
   },
   {
     name: 'bowser',
@@ -195,7 +194,7 @@ const DetailPage = () => {
             <div className="grid gap-2">
               {editions.map((edition) => {
                 return (
-                  <BuyEditionConfigOption
+                  <EditionConfigOption
                     key={edition.edition}
                     edition={edition.edition}
                     team={selectedTeam}
@@ -208,7 +207,7 @@ const DetailPage = () => {
                         <li key={detail}>{detail}</li>
                       ))}
                     </ul>
-                  </BuyEditionConfigOption>
+                  </EditionConfigOption>
                 );
               })}
             </div>
@@ -252,8 +251,15 @@ const DetailPage = () => {
                 <b>Freitag, 10. Juni 2022</b>
               </p>
             )}
-            <BaseButton variant="contained" disabled={buyable ? false : true}>
-              <Link href="/checkout">Jetzt vorbestellen</Link>
+            <BaseButton
+              variant="contained"
+              disabled={buyable ? false : true}
+              isLink
+              href="/checkout"
+              playSound
+              sound="coin"
+            >
+              Jetzt vorbestellen
             </BaseButton>
           </div>
         </div>

@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import useIsOnScreen from '../hooks/useIsOnScreen';
@@ -18,12 +17,6 @@ export default function TheHero(props) {
       props.setShowStickyBuyBar(true);
     }
   }, [overserableObjectIsOnScreen]);
-
-  // Play nintendo switch click sound when main CTA button was clicked
-  // const playNintendoSwitchClickSound = () => {
-  //   nintendoSwitchClickSound.play();
-  //   console.log('Played..');
-  // };
 
   return (
     <section className="grid items-center justify-center h-[95vh] p-4 overflow-hidden">
@@ -49,17 +42,21 @@ export default function TheHero(props) {
             className="flex items-center justify-center gap-2"
             ref={overserableObject}
           >
-            <BaseButton variant="contained">
-              <Link href="/buy-mario-strikers-battle-league-football">
-                <div className="flex items-center gap-1">
-                  <span>Jetzt vorbestellen</span>
-                </div>
-              </Link>
+            <BaseButton
+              variant="contained"
+              isLink
+              href="/buy-mario-strikers-battle-league-football"
+              playSound
+              sound="coin"
+            >
+              Jetzt vorbestellen
             </BaseButton>
 
             <BaseButton
               variant="text"
               onClick={() => setShowYoutubeGameTrailer(true)}
+              playSound
+              sound="nintendo-woho"
             >
               <div className="flex items-center gap-1">
                 <span>Trailer ansehen</span>
