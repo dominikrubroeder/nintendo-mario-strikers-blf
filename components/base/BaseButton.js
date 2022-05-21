@@ -14,15 +14,15 @@ export default function BaseButton(props) {
     <button
       className={`transition-all disabled:opacity-10 disabled:cursor-not-allowed ${
         variant === 'contained'
-          ? `text-white px-4 py-2 rounded-full bg-accent hover:bg-red-700 ${outterClasses}`
+          ? `text-white px-4 py-2 rounded-full bg-accent hover:bg-red-700 themed:bg-signal themed:hover:bg-signal-dark ${outterClasses}`
           : ''
       } ${
         variant === 'outlined'
-          ? `text-accent px-4 py-2 rounded-full bg-white border border-red-600 hover:bg-accent hover:text-white ${outterClasses}`
+          ? `text-accent themed:text-signal px-4 py-2 rounded-full bg-white border border-red-600 hover:bg-accent hover:text-white ${outterClasses}`
           : ''
       } ${
         variant === 'text'
-          ? `text-accent px-4 py-2 rounded-full transition-all duration-300 hover:bg-accent/10 ${outterClasses}`
+          ? `text-accent themed:text-signal px-4 py-2 rounded-full transition-all duration-300 hover:bg-accent/10 themed:hover:bg-signal-dark/40 ${outterClasses}`
           : ''
       }`}
       disabled={props.disabled}

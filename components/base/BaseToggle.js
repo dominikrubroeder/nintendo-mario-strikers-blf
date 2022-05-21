@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const BaseToggle = (props) => {
-  const [enabled, setEnabled] = useState(props.enabled || false);
+  const [enabled, setEnabled] = useState(props.enabled || true);
 
   const toggle = () => {
     setEnabled((previousState) => !previousState);

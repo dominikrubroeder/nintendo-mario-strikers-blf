@@ -14,7 +14,7 @@ export default function TheStickyBuyBar(props) {
 
   return (
     <div
-      className={`fixed bottom-0 w-full grid gap-2 md:grid-cols-2 text-sm p-4 bg-slate-100 z-40 transition-all ${
+      className={`fixed bottom-0 w-full grid gap-2 md:grid-cols-2 text-sm p-4 bg-slate-100 theme-mario:bg-mario-dark theme-luigi:bg-luigi-dark z-40 transition-all ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1/2'
       }`}
     >
@@ -26,12 +26,12 @@ export default function TheStickyBuyBar(props) {
           />
         )}
         <div className="grid">
-          <h3 className="block">
+          <h3 className="block themed:text-white">
             Mario Strikers: Battle League Football | Nintendo Switch
           </h3>
           {(props.edition || props.team) && (
             <div className="flex items-center">
-              <span className="text-accent">
+              <span className="text-accent themed:text-white">
                 {props.edition && props.edition} Edition
                 {props.team && ` – ${props.team.toUpperCase()}`}
                 {props.price && ` – ${props.price}€`}

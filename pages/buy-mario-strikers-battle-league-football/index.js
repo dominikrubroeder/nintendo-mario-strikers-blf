@@ -17,13 +17,13 @@ import useIsOnScreen from '../../hooks/useIsOnScreen';
 const editions = [
   {
     title: 'Mario Strikers: Battle League Football',
-    edition: 'Standard',
+    edition: 'standard',
     price: 59.99,
     details: ['Digitaler Download und Hardcover'],
   },
   {
     title: 'Mario Strikers: Battle League Football',
-    edition: 'Nostalgie',
+    edition: 'nostalgie',
     price: 89.99,
     details: [
       'Digitaler Download und Hardcover',
@@ -78,35 +78,37 @@ const DetailPage = () => {
   const buyBoxIsOnScreen = useIsOnScreen(buyBox);
 
   const selectedEditionHandler = (edition) => {
-    if (edition.toLowerCase() === 'standard') {
+    if (edition === 'standard') {
       document.body.className = '';
       setSelectedTeam(null);
       setBuyable(true);
+      localStorage.removeItem('themed');
+      localStorage.removeItem('theme');
     }
 
-    if (edition.toLowerCase() === 'nostalgie') {
+    if (edition === 'nostalgie') {
       setBuyable(false);
     }
 
     setSelectedEdition(edition);
-    router.push(
-      `${router.pathname}/?edition=${edition.toLowerCase()}`,
-      undefined,
-      {
-        shallow: true,
-      }
-    );
+
+    router.push(`${router.pathname}/?edition=${edition}`, undefined, {
+      shallow: true,
+    });
   };
 
   // Set theme based on selected team (nintendo character)
   // Save selected theme to local storage
   const setTeam = (team) => {
-    document.body.className = `theme-${team.toLowerCase()}`;
+    document.body.className = `themed theme-${team} bg-accent text-white`;
+
+    localStorage.setItem('themed', true);
+    localStorage.setItem('theme', team);
 
     // Play sound of character on click
     // Show fullscreen animated wallpaper of character on click
 
-    setSelectedTeam(team.toLowerCase());
+    setSelectedTeam(team);
 
     teamSection.current.scrollIntoView({
       behavior: 'smooth',
@@ -117,7 +119,7 @@ const DetailPage = () => {
     router.push(
       `${
         router.pathname
-      }/?edition=${selectedEdition.toLowerCase()}?team=${team.toLowerCase()}`,
+      }/?edition=${selectedEdition.toLowerCase()}?team=${team}`,
       undefined,
       {
         shallow: true,
@@ -125,6 +127,7 @@ const DetailPage = () => {
     );
   };
 
+  // Buy box instructions on observer status changes
   useEffect(() => {
     if (buyBoxIsOnScreen) {
       setShowStickyBuyBar(false);
@@ -132,6 +135,17 @@ const DetailPage = () => {
       setShowStickyBuyBar(true);
     }
   }, [buyBoxIsOnScreen]);
+
+  // Initial page load instructions
+  useEffect(() => {
+    if (localStorage.getItem('themed') && localStorage.getItem('theme')) {
+      const localStorageTheme = localStorage.getItem('theme');
+      setSelectedTeam(localStorageTheme);
+      setSelectedEdition('nostalgie');
+      setBuyable(true);
+      document.body.className = `themed theme-${localStorageTheme} bg-accent text-white`;
+    }
+  });
 
   return (
     <div>
@@ -192,7 +206,7 @@ const DetailPage = () => {
           </div>
 
           {/* Only show the following sections when 'nostalgie' edition is selected */}
-          {selectedEdition === 'Nostalgie' && (
+          {selectedEdition === 'nostalgie' && (
             <section className="grid gap-4" ref={teamSection}>
               <div className="grid gap-4">
                 <div className="flex justify-between items-center">
@@ -206,7 +220,7 @@ const DetailPage = () => {
                         key={team.teamTitle}
                         teamTitle={team.teamTitle}
                         sound={team.sound}
-                        onClick={() => setTeam(team.teamTitle)}
+                        onClick={() => setTeam(team.teamTitle.toLowerCase())}
                         selectedTeam={selectedTeam}
                       />
                     );
@@ -216,7 +230,10 @@ const DetailPage = () => {
             </section>
           )}
 
-          <div className="grid gap-2 bg-gray-100 rounded-3xl p-8" ref={buyBox}>
+          <div
+            className="grid gap-2 bg-gray-100 rounded-3xl p-8 theme-mario:text-white theme-mario:bg-mario-dark theme-luigi:text-white theme-luigi:bg-luigi-dark"
+            ref={buyBox}
+          >
             {buyable && (
               <p>
                 Heute bestellen, Lieferung am
@@ -239,7 +256,7 @@ const DetailPage = () => {
         />
       </section>
 
-      <section class="grid gap-64">
+      <section className="grid gap-64">
         <section>
           <div className="max-w-7xl mx-auto">
             <h3 className="mx-auto px-4 my-8 text-6xl md:text-9xl md:leading-tight font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent">

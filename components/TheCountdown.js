@@ -36,7 +36,7 @@ export default function TheCountdown() {
   }, [days, hours, minutes, seconds]);
 
   return (
-    <span className="text-accent">
+    <span className="text-accent themed:text-white">
       Release in: {days < 10 ? '0' : ''}
       {days}:{hours < 10 ? '0' : ''}
       {hours}:{minutes < 10 ? '0' : ''}

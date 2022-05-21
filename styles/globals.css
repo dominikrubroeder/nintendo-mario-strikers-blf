@@ -5,7 +5,7 @@
 :root {
   --nintendo-color-accent: rgb(221, 32, 32);
   --nintendo-color-mario: rgb(221, 32, 32);
-  --nintendo-color-luigi: rgb(3, 155, 16);
+  --nintendo-color-luigi: #039b10;
 }
 
 /* Base theme: Nintendo */
@@ -21,12 +21,14 @@
   border-color: var(--nintendo-color-accent);
 }
 
-/* Theme: Mario */
+/* Theme: Mario
+ */
 .theme-mario .text-accent {
   color: var(--nintendo-color-mario);
 }
 
-.theme-mario .bg-accent {
+.theme-mario .bg-accent,
+.theme-mario.bg-accent {
   background-color: var(--nintendo-color-mario);
 }
 
@@ -34,12 +36,14 @@
   border-color: var(--nintendo-color-mario);
 }
 
-/* Theme: Luigi */
+/* Theme: Luigi
+*/
 .theme-luigi .text-accent {
   color: var(--nintendo-color-luigi);
 }
 
-.theme-luigi .bg-accent {
+.theme-luigi .bg-accent,
+.theme-luigi.bg-accent {
   background-color: var(--nintendo-color-luigi);
 }
 
