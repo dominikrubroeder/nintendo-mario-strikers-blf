@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useRouter } from 'next/router';
-import teams from '../../../data/teams';
-import TeamConfigOption from '../buy-configuration-options/TeamConfigOption';
+import teams from '../../../../data/teams';
+import TeamConfigOption from '../../buy-configuration/options/TeamConfigOption';
 
 const TeamSelection = (props) => {
   const router = useRouter();

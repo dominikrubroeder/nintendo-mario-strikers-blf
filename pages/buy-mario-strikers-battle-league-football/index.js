@@ -2,9 +2,9 @@ import Head from 'next/head';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import TheCountdown from '../../components/TheCountdown';
-import EditionSelection from '../../components/product-detail/edition/EditionSelection';
-import TeamSelection from '../../components/product-detail/team/TeamSelection';
-import BuyContainer from '../../components/product-detail/BuyContainer';
+import EditionSelection from '../../components/product-detail/buy-configuration/selections/EditionSelection';
+import TeamSelection from '../../components/product-detail/buy-configuration/selections/TeamSelection';
+import BuyContainer from '../../components/product-detail/buy-configuration/BuyContainer';
 import GameFeatures from '../../components/product-detail/product-details/GameFeatures';
 import TheStickyBuyBar from '../../components/TheStickyBuyBar';
 

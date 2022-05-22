@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import useIsOnScreen from '../../hooks/useIsOnScreen';
-import BaseButton from '../base/BaseButton';
+import useIsOnScreen from '../../../hooks/useIsOnScreen';
+import BaseButton from '../../base/BaseButton';
 
 const BuyContainer = (props) => {
   const buyBox = useRef();

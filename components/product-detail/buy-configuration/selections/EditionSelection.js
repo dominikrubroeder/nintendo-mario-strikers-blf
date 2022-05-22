@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
-import editions from '../../../data/editions';
-import EditionConfigOption from '../buy-configuration-options/EditionConfigOption';
+import editions from '../../../../data/editions';
+import EditionConfigOption from '../../buy-configuration/options/EditionConfigOption';
 
 const EditionSelection = (props) => {
   const router = useRouter();
