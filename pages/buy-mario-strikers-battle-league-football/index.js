@@ -2,17 +2,13 @@ import Head from 'next/head';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
-import useIsOnScreen from '../../hooks/useIsOnScreen';
-import editions from '../../data/editions';
 import teams from '../../data/teams';
-import BaseButton from '../../components/base/BaseButton';
-import FlippableCard from '../../components/FlippableCard';
-import EditionConfigOption from '../../components/product-detail/buy-configuration-options/EditionConfigOption';
 import TeamConfigOption from '../../components/product-detail/buy-configuration-options/TeamConfigOption';
 import TheCountdown from '../../components/TheCountdown';
 import TheStickyBuyBar from '../../components/TheStickyBuyBar';
 import GameFeatures from '../../components/product-detail/product-details/GameFeatures';
 import BuyContainer from '../../components/product-detail/BuyContainer';
+import EditionSelection from '../../components/product-detail/edition/EditionSelection';
 
 // https://mario.fandom.com/de/wiki/Mario_Smash_Football
 // https://mario.fandom.com/de/wiki/Mario_Strikers_Charged_Football
@@ -24,26 +20,6 @@ const DetailPage = () => {
   const [buyable, setBuyable] = useState(false);
   const teamSection = useRef();
   const [showStickyBuyBar, setShowStickyBuyBar] = useState(false);
-
-  const selectedEditionHandler = (edition) => {
-    if (edition === 'standard') {
-      document.body.className = '';
-      setSelectedTeam(null);
-      setBuyable(true);
-      localStorage.removeItem('themed');
-      localStorage.removeItem('theme');
-    }
-
-    if (edition === 'nostalgie') {
-      setBuyable(false);
-    }
-
-    setSelectedEdition(edition);
-
-    router.push(`${router.pathname}/?edition=${edition}`, undefined, {
-      shallow: true,
-    });
-  };
 
   // Set theme based on selected team (nintendo character)
   // Save selected theme to local storage
@@ -118,29 +94,13 @@ const DetailPage = () => {
             </h1>
           </div>
 
-          <div className="grid gap-4">
-            <h4>Wähle deine Edition:</h4>
-            <div className="grid gap-2">
-              {editions.map((edition) => {
-                return (
-                  <EditionConfigOption
-                    key={edition.edition}
-                    edition={edition.edition}
-                    team={selectedTeam}
-                    price={edition.price}
-                    onClick={() => selectedEditionHandler(edition.edition)}
-                    selectedEdition={selectedEdition}
-                  >
-                    <ul className="list-disc pl-4">
-                      {edition.details.map((detail) => (
-                        <li key={detail}>{detail}</li>
-                      ))}
-                    </ul>
-                  </EditionConfigOption>
-                );
-              })}
-            </div>
-          </div>
+          <EditionSelection
+            setSelectedEdition={setSelectedEdition}
+            setSelectedTeam={setSelectedTeam}
+            setBuyable={setBuyable}
+            edition={selectedEdition}
+            team={selectedTeam}
+          />
 
           {/* Only show the following sections when 'nostalgie' edition is selected */}
           {selectedEdition === 'nostalgie' && (

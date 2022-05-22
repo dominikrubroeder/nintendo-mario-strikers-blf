@@ -41,4 +41,4 @@ const BuyContainer = (props) => {
   );
 };
 
-export default React.forwardRef(BuyContainer);
+export default BuyContainer;
