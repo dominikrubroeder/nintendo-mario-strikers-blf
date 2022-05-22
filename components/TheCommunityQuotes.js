@@ -1,4 +1,4 @@
-import AppearWhenInView from './animation/AppearWhenInView';
+import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
 import PulsingDots from './PulsingDots';
 
 const communityQuotes = [
@@ -72,7 +72,7 @@ export default function TheCommunityQuotes() {
         {communityQuotes.map((communityQuote, index) => {
           if (!communityQuote.isHighlight) {
             return (
-              <AppearWhenInView key={communityQuote.quote}>
+              <SpringBounceWhenInView key={communityQuote.quote}>
                 <div
                   className={`grid gap-2 ${
                     index % 2 ? 'text-left' : 'text-right'
@@ -100,7 +100,7 @@ export default function TheCommunityQuotes() {
                     {communityQuote.platform} - {communityQuote.author}
                   </p>
                 </div>
-              </AppearWhenInView>
+              </SpringBounceWhenInView>
             );
           }
         })}

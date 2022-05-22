@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { useRouter } from 'next/router';
 import teams from '../../../../data/teams';
 import TeamConfigOption from '../../buy-configuration/options/TeamConfigOption';
+import SpringBounceWhenInView from '../../../animation/SpringBounceWhenInView';
 
 const TeamSelection = (props) => {
   const router = useRouter();
@@ -47,13 +48,14 @@ const TeamSelection = (props) => {
         <div className="grid grid-cols-2 gap-2">
           {teams.map((team) => {
             return (
-              <TeamConfigOption
-                key={team.name}
-                name={team.name}
-                sound={team.sound}
-                onClick={() => setTeam(team.name)}
-                selectedTeam={props.selectedTeam}
-              />
+              <SpringBounceWhenInView key={team.name}>
+                <TeamConfigOption
+                  name={team.name}
+                  sound={team.sound}
+                  onClick={() => setTeam(team.name)}
+                  selectedTeam={props.selectedTeam}
+                />
+              </SpringBounceWhenInView>
             );
           })}
         </div>

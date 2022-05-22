@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-export default function AppearWhenInView({ children }) {
+export default function SpringBounceWhenInView({ children }) {
   const audioRef = useRef();
 
   // useEffect(() => {
