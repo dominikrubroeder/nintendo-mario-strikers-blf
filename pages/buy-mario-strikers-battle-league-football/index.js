@@ -12,6 +12,7 @@ import TeamConfigOption from '../../components/product-detail/buy-configuration-
 import TheCountdown from '../../components/TheCountdown';
 import TheStickyBuyBar from '../../components/TheStickyBuyBar';
 import GameFeatures from '../../components/product-detail/product-details/GameFeatures';
+import BuyContainer from '../../components/product-detail/BuyContainer';
 
 // https://mario.fandom.com/de/wiki/Mario_Smash_Football
 // https://mario.fandom.com/de/wiki/Mario_Strikers_Charged_Football
@@ -22,9 +23,7 @@ const DetailPage = () => {
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [buyable, setBuyable] = useState(false);
   const teamSection = useRef();
-  const buyBox = useRef();
   const [showStickyBuyBar, setShowStickyBuyBar] = useState(false);
-  const buyBoxIsOnScreen = useIsOnScreen(buyBox);
 
   const selectedEditionHandler = (edition) => {
     if (edition === 'standard') {
@@ -73,15 +72,6 @@ const DetailPage = () => {
       }
     );
   };
-
-  // Buy box instructions on observer status changes
-  useEffect(() => {
-    if (buyBoxIsOnScreen) {
-      setShowStickyBuyBar(false);
-    } else {
-      setShowStickyBuyBar(true);
-    }
-  }, [buyBoxIsOnScreen]);
 
   // Initial page load instructions
   useEffect(() => {
@@ -179,28 +169,10 @@ const DetailPage = () => {
             </section>
           )}
 
-          <div
-            className="grid gap-2 bg-gray-100 bg-themed-dark rounded-3xl p-8"
-            ref={buyBox}
-          >
-            {buyable && (
-              <p>
-                Heute bestellen, Lieferung am
-                <br />
-                <b>Freitag, 10. Juni 2022</b>
-              </p>
-            )}
-            <BaseButton
-              variant="contained"
-              disabled={buyable ? false : true}
-              isLink
-              href="/checkout"
-              playSound
-              sound="coin"
-            >
-              Jetzt vorbestellen
-            </BaseButton>
-          </div>
+          <BuyContainer
+            buyable={buyable}
+            setShowStickyBuyBar={setShowStickyBuyBar}
+          />
         </div>
       </section>
 
