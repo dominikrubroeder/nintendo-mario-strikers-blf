@@ -1,53 +1,21 @@
 import Head from 'next/head';
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/router';
-import { useEffect, useRef, useState } from 'react';
-import teams from '../../data/teams';
-import TeamConfigOption from '../../components/product-detail/buy-configuration-options/TeamConfigOption';
+import { useEffect, useState } from 'react';
 import TheCountdown from '../../components/TheCountdown';
-import TheStickyBuyBar from '../../components/TheStickyBuyBar';
-import GameFeatures from '../../components/product-detail/product-details/GameFeatures';
-import BuyContainer from '../../components/product-detail/BuyContainer';
 import EditionSelection from '../../components/product-detail/edition/EditionSelection';
+import TeamSelection from '../../components/product-detail/team/TeamSelection';
+import BuyContainer from '../../components/product-detail/BuyContainer';
+import GameFeatures from '../../components/product-detail/product-details/GameFeatures';
+import TheStickyBuyBar from '../../components/TheStickyBuyBar';
 
 // https://mario.fandom.com/de/wiki/Mario_Smash_Football
 // https://mario.fandom.com/de/wiki/Mario_Strikers_Charged_Football
 
 const DetailPage = () => {
-  const router = useRouter();
   const [selectedEdition, setSelectedEdition] = useState(null);
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [buyable, setBuyable] = useState(false);
-  const teamSection = useRef();
   const [showStickyBuyBar, setShowStickyBuyBar] = useState(false);
-
-  // Set theme based on selected team (nintendo character)
-  // Save selected theme to local storage
-  const setTeam = (team) => {
-    document.body.className = `themed theme-${team} bg-themed text-white`;
-
-    localStorage.setItem('themed', true);
-    localStorage.setItem('theme', team);
-
-    // Play sound of character on click
-    // Show fullscreen animated wallpaper of character on click
-
-    setSelectedTeam(team);
-
-    teamSection.current.scrollIntoView({
-      behavior: 'smooth',
-    });
-
-    setBuyable(true);
-
-    router.push(
-      `${router.pathname}/?edition=${selectedEdition}?team=${team}`,
-      undefined,
-      {
-        shallow: true,
-      }
-    );
-  };
 
   // Initial page load instructions
   useEffect(() => {
@@ -102,31 +70,14 @@ const DetailPage = () => {
             team={selectedTeam}
           />
 
-          {/* Only show the following sections when 'nostalgie' edition is selected */}
           {selectedEdition === 'nostalgie' && (
-            <section className="grid gap-4" ref={teamSection}>
-              <div className="grid gap-4">
-                <div className="flex justify-between items-center">
-                  <h4>Wähle dein Team:</h4>
-                  <p className="text-accent themed:text-white text-sm cursor-pointer">
-                    Warum?
-                  </p>
-                </div>
-                <div className="grid grid-cols-2 gap-2">
-                  {teams.map((team) => {
-                    return (
-                      <TeamConfigOption
-                        key={team.name}
-                        name={team.name}
-                        sound={team.sound}
-                        onClick={() => setTeam(team.name)}
-                        selectedTeam={selectedTeam}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-            </section>
+            <TeamSelection
+              setSelectedEdition={setSelectedEdition}
+              setSelectedTeam={setSelectedTeam}
+              setBuyable={setBuyable}
+              selectedEdition={selectedEdition}
+              selectedTeam={selectedTeam}
+            />
           )}
 
           <BuyContainer
@@ -153,7 +104,7 @@ const DetailPage = () => {
         shouldBeVisible={showStickyBuyBar && buyable}
         edition={selectedEdition}
         team={selectedTeam}
-        price={selectedEdition === 'Standard' ? 59.99 : 89.99}
+        price={selectedEdition === 'standard' ? 59.99 : 89.99}
       />
     </div>
   );
