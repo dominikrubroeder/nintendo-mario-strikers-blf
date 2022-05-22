@@ -1,3 +1,4 @@
+import AppearWhenInView from '../../animation/AppearWhenInView';
 import FlippableCard from '../../FlippableCard';
 
 const GameFeatures = () => {
@@ -5,47 +6,60 @@ const GameFeatures = () => {
     <>
       <section>
         <div className="max-w-7xl mx-auto">
-          <h3 className="mx-auto px-4 my-8 text-6xl md:text-9xl md:leading-tight font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent">
-            Hier ist alles erlaubt!
-          </h3>
+          <AppearWhenInView>
+            <h3 className="mx-auto px-4 my-8 text-6xl md:text-9xl md:leading-tight font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent">
+              Hier ist alles erlaubt!
+            </h3>
+          </AppearWhenInView>
 
           <div className="grid gap-32">
-            <FlippableCard
-              title="Das neueste Spiel der Mario Strikers-Reihe erscheint für Nintendo
+            <AppearWhenInView>
+              <FlippableCard
+                title="Das neueste Spiel der Mario Strikers-Reihe erscheint für Nintendo
     Switch!"
-              titleSize="text-6xl"
-              flippable={false}
-              imgSrc="/images/characters/mario-sketch.png"
-              imgAlt="Mario"
-            ></FlippableCard>
+                titleSize="text-6xl"
+                flippable={false}
+                imgSrc="/images/characters/mario-sketch.png"
+                imgAlt="Mario"
+              ></FlippableCard>
+            </AppearWhenInView>
 
-            <FlippableCard title="5 gegen 5">
-              Mach dich bereit für das 5-gegen-5-Spiel Strike – Wie Fußball,
-              aber mit deutlich härterer Offensive! Schieß Tore, indem du
-              dribbelst und deinen Teamkameraden die Bälle zuspielst.
-            </FlippableCard>
+            <AppearWhenInView>
+              <FlippableCard title="5 gegen 5">
+                Mach dich bereit für das 5-gegen-5-Spiel Strike – Wie Fußball,
+                aber mit deutlich härterer Offensive! Schieß Tore, indem du
+                dribbelst und deinen Teamkameraden die Bälle zuspielst.
+              </FlippableCard>
+            </AppearWhenInView>
 
-            <FlippableCard title="Bis zu 8 Spieler">
-              Bis zu acht Spieler, vier in jedem Team, können auf einer Nintendo
-              Switch-Konsole* gegeneinander spielen. Zusätzlich zu den
-              Einzelspielen wird es einen Online-Club-Modus** geben – Jedem Club
-              können bis zu 20 Spieler beitreten. Versucht, zum besten Club der
-              Welt aufzusteigen!
-            </FlippableCard>
+            <AppearWhenInView>
+              <FlippableCard title="Bis zu 8 Spieler">
+                Bis zu acht Spieler, vier in jedem Team, können auf einer
+                Nintendo Switch-Konsole* gegeneinander spielen. Zusätzlich zu
+                den Einzelspielen wird es einen Online-Club-Modus** geben –
+                Jedem Club können bis zu 20 Spieler beitreten. Versucht, zum
+                besten Club der Welt aufzusteigen!
+              </FlippableCard>
+            </AppearWhenInView>
 
-            <FlippableCard title="Tacklings, Items und einzigartige Fähigkeiten">
-              Benutze Tacklings, Items und einzigartige Fähigkeiten zum Auslösen
-              von Spezialschüssen. Sammle eine der Hyperkugeln auf dem Spielfeld
-              ein und lade sie auf, während deine Gegner abgelenkt sind, um den
-              Hyperschuss zu aktivieren – einen Spezialschuss, mit dem dir statt
-              einem gleich zwei Tore angerechnet werden!
-            </FlippableCard>
+            <AppearWhenInView>
+              <FlippableCard title="Tacklings, Items und einzigartige Fähigkeiten">
+                Benutze Tacklings, Items und einzigartige Fähigkeiten zum
+                Auslösen von Spezialschüssen. Sammle eine der Hyperkugeln auf
+                dem Spielfeld ein und lade sie auf, während deine Gegner
+                abgelenkt sind, um den Hyperschuss zu aktivieren – einen
+                Spezialschuss, mit dem dir statt einem gleich zwei Tore
+                angerechnet werden!
+              </FlippableCard>
+            </AppearWhenInView>
 
-            <FlippableCard title="Individualisiere Dein Team!">
-              Gestalte die Ausrüstung deines Teams ganz nach deinem Geschmack.
-              Sie verändert nicht nur das Aussehen, sondern auch Werte wie
-              Tempo, Kraft und die Genauigkeit beim Passen.
-            </FlippableCard>
+            <AppearWhenInView>
+              <FlippableCard title="Individualisiere Dein Team!">
+                Gestalte die Ausrüstung deines Teams ganz nach deinem Geschmack.
+                Sie verändert nicht nur das Aussehen, sondern auch Werte wie
+                Tempo, Kraft und die Genauigkeit beim Passen.
+              </FlippableCard>
+            </AppearWhenInView>
           </div>
         </div>
       </section>
