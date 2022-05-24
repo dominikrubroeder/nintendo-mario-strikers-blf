@@ -1,12 +1,14 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import teams from '../../../../data/teams';
 import TeamConfigOption from '../../buy-configuration/options/TeamConfigOption';
 import SpringBounceWhenInView from '../../../animation/SpringBounceWhenInView';
+import TheCharacterOverlay from '../../../overlays/TheCharacterOverlay';
 
 const TeamSelection = (props) => {
   const router = useRouter();
   const teamSection = useRef();
+  const [showTheCharacterOverlay, setShowTheCharacterOverlay] = useState(false);
 
   // Set theme based on selected team (nintendo character)
   // Save selected theme to local storage
@@ -47,6 +49,14 @@ const TeamSelection = (props) => {
             Warum?
           </p>
         </div>
+
+        {showTheCharacterOverlay && (
+          <TheCharacterOverlay
+            character={props.selectedTeam}
+            onCloseOverlay={() => setShowTheCharacterOverlay(false)}
+          />
+        )}
+
         <div className="grid gap-2">
           {teams.map((team) => {
             return (
@@ -54,8 +64,10 @@ const TeamSelection = (props) => {
                 <TeamConfigOption
                   name={team.name}
                   sound={team.sound}
+                  image={team.image}
                   onClick={() => setTeam(team.name)}
                   selectedTeam={props.selectedTeam}
+                  setShowTheCharacterOverlay={setShowTheCharacterOverlay}
                 />
               </SpringBounceWhenInView>
             );
