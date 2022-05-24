@@ -4,20 +4,32 @@ export default [
     sound: '/audio/sound-mario-2.mp3',
   },
   {
+    name: 'peach',
+    sound: '/audio/sound-peach-2.mp3',
+  },
+  {
     name: 'luigi',
     sound: '/audio/sound-luigi-2.mp3',
+  },
+  {
+    name: 'toad',
+    sound: '/audio/sound-yoshi-2.mp3',
+  },
+  {
+    name: 'bowser',
+    sound: '/audio/sound-koopa-2.mp3',
+  },
+  {
+    name: 'rosalina',
+    sound: '/audio/sound-koopa-2.mp3',
   },
   {
     name: 'yoshi',
     sound: '/audio/sound-yoshi-2.mp3',
   },
   {
-    name: 'peach',
-    sound: '/audio/sound-peach-2.mp3',
-  },
-  {
-    name: 'daisy',
-    sound: '/audio/sound-daisy-2.mp3',
+    name: 'donkey-kong',
+    sound: '/audio/sound-donkey-kong-2.mp3',
   },
   {
     name: 'wario',
@@ -28,11 +40,7 @@ export default [
     sound: '/audio/sound-waluigi-2.mp3',
   },
   {
-    name: 'donkey-kong',
+    name: 'bumm-bumm',
     sound: '/audio/sound-donkey-kong-2.mp3',
-  },
-  {
-    name: 'bowser',
-    sound: '/audio/sound-koopa-2.mp3',
   },
 ];

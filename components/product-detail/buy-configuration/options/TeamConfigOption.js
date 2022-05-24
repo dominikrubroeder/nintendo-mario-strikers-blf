@@ -14,7 +14,7 @@ export default function TeamConfigOption(props) {
 
   return (
     <div
-      className={`flex items-center justify-center h-56 rounded-3xl cursor-pointer hover:border-gray-300 hover:bg-themed-dark hover:border-themed-dark transition-all ${
+      className={`relative flex items-center justify-center h-96 rounded-3xl cursor-pointer hover:border-gray-300 hover:bg-themed-dark hover:border-themed-dark transition-all ${
         props.selectedTeam === props.name ? 'bg-themed-dark' : ''
       }`}
       onClick={onClickHandler}
@@ -22,11 +22,13 @@ export default function TeamConfigOption(props) {
       <div className="grid gap-2 text-center">
         <audio src={props.sound} ref={audioRef}></audio>
         <img
-          src={`/images/characters/${props.name}-sketch.png`}
+          src={`/images/characters/NSwitch-character-sketch-${props.name}.png`}
           alt={props.name}
-          className="h-40"
+          className="h-64 z-10"
         />
-        <p>{computedTitle}</p>
+        <h3 className="absolute w-full left-1/2 bottom-12 -translate-x-1/2 text-6xl tracking-normal uppercase font-bold">
+          {computedTitle}
+        </h3>
       </div>
     </div>
   );

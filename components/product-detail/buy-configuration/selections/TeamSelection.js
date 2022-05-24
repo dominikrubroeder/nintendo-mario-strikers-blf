@@ -21,9 +21,11 @@ const TeamSelection = (props) => {
 
     props.setSelectedTeam(team);
 
-    teamSection.current.scrollIntoView({
-      behavior: 'smooth',
-    });
+    // teamSection.current.scrollIntoView({
+    //   behavior: 'smooth',
+    //   block: 'center',
+    //   inline: 'center',
+    // });
 
     props.setBuyable(true);
 
@@ -45,7 +47,7 @@ const TeamSelection = (props) => {
             Warum?
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid gap-2">
           {teams.map((team) => {
             return (
               <SpringBounceWhenInView key={team.name}>

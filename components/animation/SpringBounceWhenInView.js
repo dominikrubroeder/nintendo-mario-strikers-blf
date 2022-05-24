@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-export default function SpringBounceWhenInView({ children }) {
+export default function SpringBounceWhenInView({ children, playSound }) {
   const audioRef = useRef();
 
   // useEffect(() => {
@@ -24,7 +24,12 @@ export default function SpringBounceWhenInView({ children }) {
         hidden: { opacity: 0, scale: 0.8 },
       }}
     >
-      <audio src="/audio/nintendo-super-mario-coin.wav" ref={audioRef}></audio>
+      {playSound && (
+        <audio
+          src="/audio/nintendo-super-mario-coin.wav"
+          ref={audioRef}
+        ></audio>
+      )}
       {children}
     </motion.div>
   );

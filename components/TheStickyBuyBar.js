@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import BaseButton from './base/BaseButton';
 import TheCountdown from './TheCountdown';
@@ -21,7 +20,7 @@ export default function TheStickyBuyBar(props) {
       <div className="flex items-center gap-2">
         {props.team && (
           <img
-            src={`/images/characters/${props.team}-sketch.png`}
+            src={`/images/characters/NSwitch-character-sketch-${props.team}.png`}
             className="h-12"
           />
         )}
