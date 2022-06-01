@@ -1,11 +1,13 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
+import ThemeContext from '../../store/theme-context';
 import teams from '../../../../data/teams';
 import TeamConfigOption from '../../buy-configuration/options/TeamConfigOption';
 import SpringBounceWhenInView from '../../../animation/SpringBounceWhenInView';
 import TheCharacterOverlay from '../../../overlays/TheCharacterOverlay';
 
 const TeamSelection = (props) => {
+  const themeCtx = useContext(ThemeContext);
   const router = useRouter();
   const teamSection = useRef();
   const [showTheCharacterOverlay, setShowTheCharacterOverlay] = useState(false);
