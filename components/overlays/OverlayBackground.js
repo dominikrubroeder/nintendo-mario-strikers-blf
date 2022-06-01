@@ -14,7 +14,7 @@ const OverlayBackground = (props) => {
 
   return (
     <div
-      className="fixed inset-0 bg-black/70 flex items-center justify-center z-40"
+      className={`fixed inset-0 bg-black/70 flex z-40 ${props.className}`}
       onClick={closeOverlay}
     >
       <motion.div
