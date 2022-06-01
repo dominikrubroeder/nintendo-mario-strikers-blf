@@ -17,7 +17,7 @@ const BaseToggle = (props) => {
 
   return (
     <div
-      className={`flex items-center gap-1 text-xs w-40 ${
+      className={`flex items-center gap-1 text-xs ${
         enabled ? 'text-accent' : 'text-gray-400'
       }`}
     >
