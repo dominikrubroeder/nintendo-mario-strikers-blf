@@ -1,6 +1,8 @@
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
+import AppContext from '../../../../store/app-context';
 
 export default function EditionConfigOption(props) {
+  const appCtx = useContext(AppContext);
   const audioRef = useRef();
 
   const onClickHandler = () => {
@@ -11,7 +13,7 @@ export default function EditionConfigOption(props) {
   return (
     <div
       className={`w-full border hover:border-gray-300 rounded-3xl p-8 cursor-pointer ${
-        props.selectedEdition === props.edition
+        appCtx.edition === props.edition
           ? 'border-accent hover:border-accent bg-themed-dark hover:border-themed'
           : 'border-gray-200 border-themed-dark'
       }`}
@@ -26,10 +28,14 @@ export default function EditionConfigOption(props) {
         <header className="grid gap-2 md:flex md:justify-between md:align-top">
           <h3 className="text-xl font-bold leading-5">
             Mario Strikers: Battle League Football
-            <small className="text-accent font-normal block">
-              {props.edition} Edition
-              {props.edition === 'Nostalgie' && props.team
-                ? ` – ${props.team.toUpperCase()}`
+            <small className="text-accent themed:text-white font-normal block">
+              <span>
+                {`${
+                  props.edition.charAt(0).toUpperCase() + props.edition.slice(1)
+                } Edition`}
+              </span>
+              {props.edition === 'nostalgie' && appCtx.theme
+                ? ` – ${appCtx.theme.toUpperCase()}`
                 : ''}
             </small>
           </h3>
@@ -40,16 +46,16 @@ export default function EditionConfigOption(props) {
           </div>
         </header>
         <div>
-          {props.edition === 'Nostalgie' && props.team && (
+          {props.edition === 'nostalgie' && appCtx.theme && (
             <img
-              src={`/images/characters/${props.team
+              src={`/images/characters/NSwitch-character-sketch-${appCtx.theme
                 .replace(' ', '')
-                .toLowerCase()}-sketch.jpg`}
-              alt={props.team}
+                .toLowerCase()}.png`}
+              alt={appCtx.theme}
               className="h-20"
             />
           )}
-          {props.selectedEdition === props.edition && props.children}
+          {appCtx.edition === props.edition && props.children}
         </div>
       </div>
     </div>

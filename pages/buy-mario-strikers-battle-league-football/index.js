@@ -1,5 +1,6 @@
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import AppContext from '../../store/app-context';
 import BuyConfiguration from '../../components/product-detail/buy-configuration/BuyConfiguration';
 import GameFeatures from '../../components/product-detail/product-details/GameFeatures';
 import TheStickyBuyBar from '../../components/TheStickyBuyBar';
@@ -8,20 +9,12 @@ import TheStickyBuyBar from '../../components/TheStickyBuyBar';
 // https://mario.fandom.com/de/wiki/Mario_Strikers_Charged_Football
 
 const DetailPage = () => {
-  const [selectedEdition, setSelectedEdition] = useState(null);
-  const [selectedTeam, setSelectedTeam] = useState(null);
-  const [buyable, setBuyable] = useState(false);
+  const appCtx = useContext(AppContext);
   const [showStickyBuyBar, setShowStickyBuyBar] = useState(false);
 
   // Initial page load instructions
   useEffect(() => {
-    if (localStorage.getItem('themed') && localStorage.getItem('theme')) {
-      const localStorageTheme = localStorage.getItem('theme');
-      setSelectedTeam(localStorageTheme);
-      setSelectedEdition('nostalgie');
-      setBuyable(true);
-      document.body.className = `themed theme-${localStorageTheme} bg-accent text-white`;
-    }
+    appCtx.init();
   });
 
   return (
@@ -35,15 +28,7 @@ const DetailPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <BuyConfiguration
-        selectedEdition={selectedEdition}
-        selectedTeam={selectedTeam}
-        buyable={buyable}
-        setSelectedEdition={setSelectedEdition}
-        setSelectedTeam={setSelectedTeam}
-        setBuyable={setBuyable}
-        setShowStickyBuyBar={setShowStickyBuyBar}
-      />
+      <BuyConfiguration setShowStickyBuyBar={setShowStickyBuyBar} />
 
       <section className="mt-20">
         <img
@@ -59,10 +44,8 @@ const DetailPage = () => {
 
       <TheStickyBuyBar
         href="/checkout"
-        shouldBeVisible={showStickyBuyBar && buyable}
-        edition={selectedEdition}
-        team={selectedTeam}
-        price={selectedEdition === 'standard' ? 59.99 : 89.99}
+        shouldBeVisible={showStickyBuyBar && appCtx.buyable}
+        price={appCtx.edition === 'standard' ? 59.99 : 89.99}
       />
     </div>
   );

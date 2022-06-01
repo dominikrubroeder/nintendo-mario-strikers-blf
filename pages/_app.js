@@ -1,14 +1,14 @@
 import '../styles/globals.css';
 import TheLayout from '../components/layout/TheLayout';
-import { ThemeContextProvider } from '../store/theme-context';
+import { AppContextProvider } from '../store/app-context';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ThemeContextProvider>
+    <AppContextProvider>
       <TheLayout>
         <Component {...pageProps} />
       </TheLayout>
-    </ThemeContextProvider>
+    </AppContextProvider>
   );
 }
 

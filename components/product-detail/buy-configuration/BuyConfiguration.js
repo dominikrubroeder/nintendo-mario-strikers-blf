@@ -1,10 +1,14 @@
+import { useContext } from 'react';
 import { motion } from 'framer-motion';
+import AppContext from '../../../store/app-context';
 import TheCountdown from '../../TheCountdown';
 import EditionSelection from './selections/EditionSelection';
 import TeamSelection from './selections/TeamSelection';
 import BuyContainer from './BuyContainer';
 
 const BuyConfiguration = (props) => {
+  const appCtx = useContext(AppContext);
+
   return (
     <section className="grid gap-4 md:grid-cols-2 max-w-7xl mx-auto mt-20 px-8">
       <motion.img
@@ -29,28 +33,11 @@ const BuyConfiguration = (props) => {
           </h1>
         </div>
 
-        <EditionSelection
-          setSelectedEdition={props.setSelectedEdition}
-          setSelectedTeam={props.setSelectedTeam}
-          setBuyable={props.setBuyable}
-          edition={props.selectedEdition}
-          team={props.selectedTeam}
-        />
+        <EditionSelection />
 
-        {props.selectedEdition === 'nostalgie' && (
-          <TeamSelection
-            setSelectedEdition={props.setSelectedEdition}
-            setSelectedTeam={props.setSelectedTeam}
-            setBuyable={props.setBuyable}
-            selectedEdition={props.selectedEdition}
-            selectedTeam={props.selectedTeam}
-          />
-        )}
+        {appCtx.edition === 'nostalgie' && <TeamSelection />}
 
-        <BuyContainer
-          buyable={props.buyable}
-          setShowStickyBuyBar={props.setShowStickyBuyBar}
-        />
+        <BuyContainer setShowStickyBuyBar={props.setShowStickyBuyBar} />
       </div>
     </section>
   );

@@ -3,7 +3,7 @@ import BaseToggle from '../base/BaseToggle';
 
 export default function TheHeader() {
   return (
-    <header className="fixed top-0 flex items-center justify-between p-4 border-b border-b-white w-full z-40 themed:border-b-transparent">
+    <header className="fixed top-0 flex items-center justify-between p-4 w-full z-40 themed:border-b-transparent">
       <div className="w-40"></div>
       <div className="flex items-center justify-center relative bg-white/50 backdrop-blur p-2 rounded-full">
         <Link href="/">

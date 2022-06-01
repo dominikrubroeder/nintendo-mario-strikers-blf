@@ -1,12 +1,15 @@
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
+import AppContext from '../../../../store/app-context';
 
 export default function TeamConfigOption(props) {
+  const appCtx = useContext(AppContext);
+
   const computedTitle = (
     props.name.charAt(0).toUpperCase() + props.name.slice(1)
   ).replace('-', ' ');
   const audioRef = useRef();
 
-  const setTheme = () => {
+  const onClickHandler = () => {
     if (localStorage.getItem('interactiveAudio') == 'true')
       audioRef.current.play();
     props.onClick();
@@ -15,9 +18,9 @@ export default function TeamConfigOption(props) {
   return (
     <div
       className={`group relative flex items-center justify-center h-96 rounded-3xl cursor-pointer hover:border-gray-300 hover:bg-themed-dark hover:border-themed-dark transition-all ${
-        props.selectedTeam === props.name ? 'bg-themed-dark' : ''
+        appCtx.theme === props.name ? 'bg-themed-dark' : ''
       }`}
-      onClick={setTheme}
+      onClick={onClickHandler}
     >
       <div className="grid gap-2 text-center">
         <audio src={props.sound} ref={audioRef}></audio>

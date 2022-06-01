@@ -1,9 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
+import AppContext from '../../../store/app-context';
 import useIsOnScreen from '../../../hooks/useIsOnScreen';
 import SpringBounceWhenInView from '../../animation/SpringBounceWhenInView';
 import BaseButton from '../../base/BaseButton';
 
 const BuyContainer = (props) => {
+  const appCtx = useContext(AppContext);
   const buyBox = useRef();
   const buyBoxIsOnScreen = useIsOnScreen(buyBox);
 
@@ -22,7 +24,7 @@ const BuyContainer = (props) => {
         className="grid gap-2 bg-gray-100 bg-themed-dark rounded-3xl p-8"
         ref={buyBox}
       >
-        {props.buyable && (
+        {appCtx.buyable && (
           <p>
             Heute bestellen, Lieferung am
             <br />
@@ -31,7 +33,7 @@ const BuyContainer = (props) => {
         )}
         <BaseButton
           variant="contained"
-          disabled={props.buyable ? false : true}
+          disabled={appCtx.buyable ? false : true}
           isLink
           href="/checkout"
           playSound

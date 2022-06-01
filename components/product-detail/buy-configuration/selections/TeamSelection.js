@@ -1,13 +1,13 @@
 import { useRef, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
-import ThemeContext from '../../store/theme-context';
+import AppContext from '../../../../store/app-context';
 import teams from '../../../../data/teams';
 import TeamConfigOption from '../../buy-configuration/options/TeamConfigOption';
 import SpringBounceWhenInView from '../../../animation/SpringBounceWhenInView';
 import TheCharacterOverlay from '../../../overlays/TheCharacterOverlay';
 
-const TeamSelection = (props) => {
-  const themeCtx = useContext(ThemeContext);
+const TeamSelection = () => {
+  const appCtx = useContext(AppContext);
   const router = useRouter();
   const teamSection = useRef();
   const [showTheCharacterOverlay, setShowTheCharacterOverlay] = useState(false);
@@ -15,26 +15,10 @@ const TeamSelection = (props) => {
   // Set theme based on selected team (nintendo character)
   // Save selected theme to local storage
   const setTeam = (team) => {
-    document.body.className = `themed theme-${team} bg-themed text-white`;
-
-    localStorage.setItem('themed', true);
-    localStorage.setItem('theme', team);
-
-    // Play sound of character on click
-    // Show fullscreen animated wallpaper of character on click
-
-    props.setSelectedTeam(team);
-
-    // teamSection.current.scrollIntoView({
-    //   behavior: 'smooth',
-    //   block: 'center',
-    //   inline: 'center',
-    // });
-
-    props.setBuyable(true);
+    appCtx.setTheme(team);
 
     router.push(
-      `${router.pathname}/?edition=${props.selectedEdition}?team=${team}`,
+      `${router.pathname}/?edition=${appCtx.edition}?team=${team}`,
       undefined,
       {
         shallow: true,
@@ -52,12 +36,7 @@ const TeamSelection = (props) => {
           </p>
         </div>
 
-        {showTheCharacterOverlay && (
-          <TheCharacterOverlay
-            character={props.selectedTeam}
-            onCloseOverlay={() => setShowTheCharacterOverlay(false)}
-          />
-        )}
+        {showTheCharacterOverlay && <TheCharacterOverlay />}
 
         <div className="grid gap-2">
           {teams.map((team) => {
@@ -68,7 +47,6 @@ const TeamSelection = (props) => {
                   sound={team.sound}
                   image={team.image}
                   onClick={() => setTeam(team.name)}
-                  selectedTeam={props.selectedTeam}
                   setShowTheCharacterOverlay={setShowTheCharacterOverlay}
                 />
               </SpringBounceWhenInView>

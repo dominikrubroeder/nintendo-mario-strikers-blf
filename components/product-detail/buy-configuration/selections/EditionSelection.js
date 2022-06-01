@@ -1,25 +1,16 @@
+import { useContext } from 'react';
 import { useRouter } from 'next/router';
+import AppContext from '../../../../store/app-context';
 import editions from '../../../../data/editions';
 import SpringBounceWhenInView from '../../../animation/SpringBounceWhenInView';
 import EditionConfigOption from '../../buy-configuration/options/EditionConfigOption';
 
 const EditionSelection = (props) => {
+  const appCtx = useContext(AppContext);
   const router = useRouter();
 
   const selectedEditionHandler = (edition) => {
-    if (edition === 'standard') {
-      document.body.className = '';
-      props.setSelectedTeam(null);
-      props.setBuyable(true);
-      localStorage.removeItem('themed');
-      localStorage.removeItem('theme');
-    }
-
-    if (edition === 'nostalgie') {
-      props.setBuyable(false);
-    }
-
-    props.setSelectedEdition(edition);
+    appCtx.validateEdition(edition);
 
     router.push(`${router.pathname}/?edition=${edition}`, undefined, {
       shallow: true,
@@ -36,10 +27,8 @@ const EditionSelection = (props) => {
             <SpringBounceWhenInView key={edition.edition}>
               <EditionConfigOption
                 edition={edition.edition}
-                team={props.selectedTeam}
                 price={edition.price}
                 onClick={() => selectedEditionHandler(edition.edition)}
-                selectedEdition={props.edition}
               >
                 <ul className="list-disc pl-4">
                   {edition.details.map((detail) => (
