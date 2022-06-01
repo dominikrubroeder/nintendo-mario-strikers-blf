@@ -28,8 +28,8 @@ module.exports = {
         'waluigi-dark': '#51287B',
         peach: '#F096BE',
         'peach-dark': '#ED7EAF',
-        daisy: '#EE830A',
-        'daisy-dark': '#D77709',
+        toad: '#17419A',
+        'toad-dark': '#143885',
       },
     },
   },
@@ -44,7 +44,7 @@ module.exports = {
       addVariant('theme-wario', '.theme-wario &');
       addVariant('theme-waluigi', '.theme-waluigi &');
       addVariant('theme-peach', '.theme-peach &');
-      addVariant('theme-daisy', '.theme-daisy &');
+      addVariant('theme-toad', '.theme-toad &');
     }),
     plugin(function ({ addUtilities }) {
       addUtilities({

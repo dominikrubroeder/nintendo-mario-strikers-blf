@@ -4,19 +4,19 @@
 
 @layer components {
   .text-themed {
-    @apply theme-mario:text-mario theme-luigi:text-luigi theme-peach:text-peach theme-yoshi:text-yoshi theme-daisy:text-daisy theme-bowser:text-bowser theme-wario:text-wario theme-waluigi:text-waluigi theme-donkey-kong:text-donkey-kong;
+    @apply theme-mario:text-mario theme-luigi:text-luigi theme-peach:text-peach theme-yoshi:text-yoshi theme-bowser:text-bowser theme-wario:text-wario theme-waluigi:text-waluigi theme-donkey-kong:text-donkey-kong theme-toad:text-toad;
   }
 
   .text-themed-dark {
-    @apply theme-mario:text-mario-dark theme-luigi:text-luigi-dark theme-peach:text-peach-dark theme-yoshi:text-yoshi-dark theme-daisy:text-daisy-dark theme-bowser:text-bowser-dark theme-wario:text-wario-dark theme-waluigi:text-waluigi-dark theme-donkey-kong:text-donkey-kong-dark;
+    @apply theme-mario:text-mario-dark theme-luigi:text-luigi-dark theme-peach:text-peach-dark theme-yoshi:text-yoshi-dark theme-bowser:text-bowser-dark theme-wario:text-wario-dark theme-waluigi:text-waluigi-dark theme-donkey-kong:text-donkey-kong-dark theme-toad:text-toad-dark;
   }
 
   .border-themed {
-    @apply theme-mario:border-mario theme-luigi:border-luigi theme-peach:border-peach theme-yoshi:border-yoshi theme-daisy:border-daisy theme-bowser:border-bowser theme-wario:border-wario theme-waluigi:border-waluigi theme-donkey-kong:border-donkey-kong;
+    @apply theme-mario:border-mario theme-luigi:border-luigi theme-peach:border-peach theme-yoshi:border-yoshi theme-bowser:border-bowser theme-wario:border-wario theme-waluigi:border-waluigi theme-donkey-kong:border-donkey-kong theme-toad:border-toad;
   }
 
   .border-themed-dark {
-    @apply theme-mario:border-mario-dark theme-luigi:border-luigi-dark theme-peach:border-peach-dark theme-yoshi:border-yoshi-dark theme-daisy:border-daisy-dark theme-bowser:border-bowser-dark theme-wario:border-wario-dark theme-waluigi:border-waluigi-dark theme-donkey-kong:border-donkey-kong-dark;
+    @apply theme-mario:border-mario-dark theme-luigi:border-luigi-dark theme-peach:border-peach-dark theme-yoshi:border-yoshi-dark theme-bowser:border-bowser-dark theme-wario:border-wario-dark theme-waluigi:border-waluigi-dark theme-donkey-kong:border-donkey-kong-dark theme-toad:border-toad-dark;
   }
 
   .hover\:border-themed-dark {
@@ -24,11 +24,11 @@
   }
 
   .bg-themed {
-    @apply theme-mario:bg-mario theme-luigi:bg-luigi theme-peach:bg-peach theme-yoshi:bg-yoshi theme-daisy:bg-daisy theme-bowser:bg-bowser theme-wario:bg-wario theme-waluigi:bg-waluigi theme-donkey-kong:bg-donkey-kong;
+    @apply theme-mario:bg-mario theme-luigi:bg-luigi theme-peach:bg-peach theme-yoshi:bg-yoshi theme-bowser:bg-bowser theme-wario:bg-wario theme-waluigi:bg-waluigi theme-donkey-kong:bg-donkey-kong theme-toad:bg-toad;
   }
 
   .bg-themed-dark {
-    @apply theme-mario:bg-mario-dark theme-luigi:bg-luigi-dark theme-peach:bg-peach-dark theme-yoshi:bg-yoshi-dark theme-daisy:bg-daisy-dark theme-bowser:bg-bowser-dark theme-wario:bg-wario-dark theme-waluigi:bg-waluigi-dark theme-donkey-kong:bg-donkey-kong-dark;
+    @apply theme-mario:bg-mario-dark theme-luigi:bg-luigi-dark theme-peach:bg-peach-dark theme-yoshi:bg-yoshi-dark theme-bowser:bg-bowser-dark theme-wario:bg-wario-dark theme-waluigi:bg-waluigi-dark theme-donkey-kong:bg-donkey-kong-dark theme-toad:bg-toad-dark;
   }
 
   .hover\:bg-themed-dark {
@@ -56,6 +56,8 @@
   --theme-waluigi-dark: hsl(269, 51%, 32%);
   --theme-donkey-kong: hsl(18, 92%, 31%);
   --theme-donkey-kong-dark: hsl(18, 92%, 26%);
+  --theme-toad: hsl(221, 74%, 35%);
+  --theme-toad-dark: hsl(221, 74%, 30%);
 }
 
 /* Base theme: Nintendo */
@@ -231,4 +233,22 @@
 
 .theme-donkey-kong .border-accent {
   border-color: var(--theme-donkey-kong);
+}
+
+/*
+----------
+---------------------------------------- Theme: Toad
+----------
+*/
+.theme-toad .text-accent {
+  color: var(--theme-toad);
+}
+
+.theme-toad .bg-accent,
+.theme-toad.bg-accent {
+  background-color: var(--theme-toad);
+}
+
+.theme-toad .border-accent {
+  border-color: var(--theme-toad);
 }

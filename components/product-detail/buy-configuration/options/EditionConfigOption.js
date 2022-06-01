@@ -52,7 +52,7 @@ export default function EditionConfigOption(props) {
                 .replace(' ', '')
                 .toLowerCase()}.png`}
               alt={appCtx.theme}
-              className="h-20"
+              className="h-20 mb-4"
             />
           )}
           {appCtx.edition === props.edition && props.children}
