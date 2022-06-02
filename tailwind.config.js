@@ -30,6 +30,8 @@ module.exports = {
         'peach-dark': '#ED7EAF',
         toad: '#17419A',
         'toad-dark': '#143885',
+        rosalina: '#1DD4B7',
+        'rosalina-dark': '#1ABCA3',
       },
     },
   },
@@ -45,6 +47,7 @@ module.exports = {
       addVariant('theme-waluigi', '.theme-waluigi &');
       addVariant('theme-peach', '.theme-peach &');
       addVariant('theme-toad', '.theme-toad &');
+      addVariant('theme-rosalina', '.theme-rosalina &');
     }),
     plugin(function ({ addUtilities }) {
       addUtilities({

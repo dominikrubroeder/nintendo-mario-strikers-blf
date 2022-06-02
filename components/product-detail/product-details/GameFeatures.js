@@ -19,7 +19,7 @@ const GameFeatures = () => {
     Switch!"
                 titleSize="text-6xl"
                 flippable={false}
-                imgSrc="/images/characters/mario-sketch.png"
+                imgSrc="/images/characters/NSwitch-character-sketch-mario.png"
                 imgAlt="Mario"
               ></FlippableCard>
             </SpringBounceWhenInView>
