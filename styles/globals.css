@@ -46,8 +46,6 @@
   --theme-peach-dark: hsl(333, 75%, 71%);
   --theme-yoshi: hsl(89, 70%, 43%);
   --theme-yoshi-dark: hsl(89, 70%, 38%);
-  --theme-daisy: hsl(32, 92%, 49%);
-  --theme-daisy-dark: hsl(32, 92%, 44%);
   --theme-bowser: hsl(45, 94%, 52%);
   --theme-bowser-dark: hsl(45, 94%, 47%);
   --theme-wario: hsl(53, 92%, 51%);
@@ -145,24 +143,6 @@
 
 .theme-yoshi .border-accent {
   border-color: var(--theme-yoshi);
-}
-
-/*
-----------
----------------------------------------- Theme: Daisy
-----------
-*/
-.theme-daisy .text-accent {
-  color: var(--theme-daisy);
-}
-
-.theme-daisy .bg-accent,
-.theme-daisy.bg-accent {
-  background-color: var(--theme-daisy);
-}
-
-.theme-daisy .border-accent {
-  border-color: var(--theme-daisy);
 }
 
 /*

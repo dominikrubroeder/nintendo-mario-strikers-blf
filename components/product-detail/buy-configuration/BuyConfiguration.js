@@ -21,7 +21,7 @@ const BuyConfiguration = (props) => {
       />
       <div className="grid gap-12 mx-auto px-4 w-full">
         <div className="grid gap-1">
-          <h2 className="flex items-center gap-2 flex-wrap text-accent">
+          <h2 className="flex items-center gap-2 flex-wrap text-accent themed:text-white">
             Nintendo Switch | 10. Juni 2022
             <span className="hidden md:inline-block"> | </span>
             <span>

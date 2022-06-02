@@ -36,7 +36,11 @@ const TeamSelection = () => {
           </p>
         </div>
 
-        {showTheCharacterOverlay && <TheCharacterOverlay />}
+        {showTheCharacterOverlay && (
+          <TheCharacterOverlay
+            onCloseOverlay={() => setShowTheCharacterOverlay(false)}
+          />
+        )}
 
         <div className="grid gap-2">
           {teams.map((team) => {

@@ -1,8 +1,11 @@
+import { useContext } from 'react';
+import AppContext from '../../store/app-context';
 import OverlayBackground from './OverlayBackground';
 import teams from '../../data/teams';
 
 const TheCharacterOverlay = (props) => {
-  const team = teams.find((team) => team.name === props.character);
+  const appCtx = useContext(AppContext);
+  const team = teams.find((team) => team.name === appCtx.theme);
 
   return (
     <OverlayBackground
