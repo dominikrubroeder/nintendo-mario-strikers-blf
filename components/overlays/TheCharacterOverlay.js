@@ -3,6 +3,7 @@ import AppContext from '../../store/app-context';
 import OverlayBackground from './OverlayBackground';
 import teams from '../../data/teams';
 import BaseButton from '../base/BaseButton';
+import BaseDropdownItem from '../base/dropdown/BaseDropdownItem';
 
 const TheCharacterOverlay = (props) => {
   const appCtx = useContext(AppContext);
@@ -39,27 +40,31 @@ const TheCharacterOverlay = (props) => {
 
             <div className="grid gap-2">
               <h3 className="uppercase font-bold">Das bekommst du</h3>
-              <div>
-                Mario Strikers: Battle League Football | Nintendo Switch
-                <p>
-                  Nostalgie Edition{' '}
-                  <span className="uppercase"> {team.name}</span>
-                </p>
-              </div>
-              <p>
-                <span className="uppercase">
-                  {team.name} merchandise Artikel
-                </span>
-              </p>
-              <div className="grid gap-4 grid-cols-2">
-                {team.imageGallery.map((image, index) => (
+
+              <div className="grid gap">
+                <BaseDropdownItem
+                  headline={`Mario Strikers: Battle League Football | Nintendo Switch | Nostalgie Edition ${team.name.toUpperCase()}`}
+                >
                   <img
-                    src={image}
-                    className="cursor-pointer"
-                    alt={`${team.name} ${index}`}
-                    title={`Detailansicht öffnen`}
+                    src="/images/gallery/2x1_NSwitch_MarioStrikersBattleLeagueFootball_image1600w.jpeg"
+                    alt="Mario Strikers Battle League Football"
                   />
-                ))}
+                </BaseDropdownItem>
+
+                <BaseDropdownItem
+                  headline={`Merchandise Artikel – ${team.name}`}
+                >
+                  <div className="grid gap-4 grid-cols-2">
+                    {team.imageGallery.map((image, index) => (
+                      <img
+                        src={image}
+                        className="cursor-pointer"
+                        alt={`${team.name} ${index}`}
+                        title={`Detailansicht öffnen`}
+                      />
+                    ))}
+                  </div>
+                </BaseDropdownItem>
               </div>
             </div>
 

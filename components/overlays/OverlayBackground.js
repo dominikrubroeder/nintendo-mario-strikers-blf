@@ -25,7 +25,6 @@ const OverlayBackground = (props) => {
           stiffness: 300,
           damping: 15,
         }}
-        className=""
       >
         {props.children}
       </motion.div>
