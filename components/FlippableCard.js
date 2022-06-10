@@ -6,7 +6,9 @@ const FlippableCard = (props) => {
 
   return (
     <div
-      className={`grid gap-4 relative max-w-md min-h-[35vh] rounded-xl mx-auto bg-gradient-to-r from-red-500 to-orange-500 text-white p-8 transition-all duration-400 ${props.className}`}
+      className={`flex flex-col justify-end gap-4 relative max-w-md min-h-[35vh] rounded-xl mx-auto bg-gradient-to-r from-red-500 to-orange-500 text-white p-8 transition-all duration-400 ${
+        props.className ? props.className : ''
+      }`}
       onClick={() => setShowFront((previousState) => !previousState)}
       ref={cardFrontRef}
     >
@@ -22,7 +24,7 @@ const FlippableCard = (props) => {
       {!props.flippable && (
         <h4
           className={`transition-all font-bold ${
-            showFront ? 'text-3xl leading-relaxed' : 'text-xl'
+            showFront ? 'text-xl leading-relaxed' : ''
           }`}
         >
           {props.title}
@@ -38,8 +40,8 @@ const FlippableCard = (props) => {
       <p
         className={`transition-all ${
           showFront
-            ? 'opacity-0 translate-y-1/4'
-            : 'opacity-100 translate-y-0 delay-400'
+            ? 'opacity-0 translate-y-1/4 invisible h-0'
+            : 'opacity-100 translate-y-0 delay-400 visible h-auto'
         }`}
       >
         {props.children}

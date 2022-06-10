@@ -12,7 +12,7 @@ const GameFeatures = () => {
             </h3>
           </SpringBounceWhenInView>
 
-          <div className="grid gap-32">
+          <div className="grid gap-64">
             <SpringBounceWhenInView>
               <FlippableCard
                 title="Das neueste Spiel der Mario Strikers-Reihe erscheint für Nintendo
@@ -21,6 +21,7 @@ const GameFeatures = () => {
                 flippable={false}
                 imgSrc="/images/characters/NSwitch-character-sketch-mario.png"
                 imgAlt="Mario"
+                delay={0.6}
               ></FlippableCard>
             </SpringBounceWhenInView>
 
