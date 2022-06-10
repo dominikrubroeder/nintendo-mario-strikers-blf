@@ -51,7 +51,7 @@ export default function BaseButton({
           : ''
       } ${
         variant === 'outlined'
-          ? `text-accent themed:text-signal px-4 py-2 rounded-full bg-white border border-red-600 hover:bg-accent hover:text-white ${className}`
+          ? `text-accent themed:text-signal px-4 py-2 rounded-full border border-red-600 hover:bg-accent hover:text-white ${className}`
           : ''
       } ${
         variant === 'text'

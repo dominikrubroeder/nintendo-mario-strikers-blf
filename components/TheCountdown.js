@@ -8,7 +8,7 @@ export default function TheCountdown() {
 
   useEffect(() => {
     // Set the date we're counting down to
-    const countDownDate = new Date('Jun 10, 2022 00:00:00').getTime();
+    const countDownDate = new Date('Jun 10, 2023 00:00:00').getTime();
 
     // Update the count down every 1 second
     const releaseCountdown = setInterval(function () {
