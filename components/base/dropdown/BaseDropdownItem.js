@@ -13,7 +13,13 @@ const BaseDropdownItem = (props) => {
       >
         <ArrowRight className="shrink-0" /> {props.headline}
       </h3>
-      <div className={isOpen ? 'opacity-100 h-full' : 'opacity-0 h-0'}>
+      <div
+        className={
+          isOpen
+            ? 'mt-2 opacity-100 h-full visible'
+            : 'mt-0 opacity-0 h-0 invisible'
+        }
+      >
         {props.children}
       </div>
     </div>

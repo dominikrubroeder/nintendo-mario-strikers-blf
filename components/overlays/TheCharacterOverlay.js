@@ -9,12 +9,20 @@ const TheCharacterOverlay = (props) => {
   const appCtx = useContext(AppContext);
   const team = teams.find((team) => team.name === appCtx.theme);
 
+  const handleChildElementClick = (e) => {
+    e.stopPropagation();
+    // Do other stuff here
+  };
+
   return (
     <OverlayBackground
       className="items-start justify-start md:justify-center md:items-center"
       onCloseOverlay={props.onCloseOverlay}
     >
-      <div className="relative max-w-5xl h-[75vh] rounded-3xl bg-themed grid gap-4 p-6 m-4 z-50 overflow-hidden md:p-8 md:grid-cols-2">
+      <div
+        className="relative max-w-5xl h-[75vh] rounded-3xl bg-themed grid gap-4 p-6 m-4 z-50 overflow-y-scroll md:overflow-hidden md:p-8 md:grid-cols-2"
+        onClick={(e) => handleChildElementClick(e)}
+      >
         <div
           className="w-8 h-8 flex items-center justify-center absolute top-6 right-6 rounded-full cursor-pointer bg-themed-dark"
           onClick={() => props.onCloseOverlay}
@@ -28,7 +36,7 @@ const TheCharacterOverlay = (props) => {
             className="max-h-[35vh] md:max-h-[none]"
           />
         </div>
-        <div className="overflow-y-scroll md:p-8">
+        <div className="md:overflow-y-scroll md:p-8">
           <h2 className="text-6xl uppercase font-bold w-full text-center mb-8">
             {team.name}
           </h2>
@@ -41,9 +49,9 @@ const TheCharacterOverlay = (props) => {
             <div className="grid gap-2">
               <h3 className="uppercase font-bold">Das bekommst du</h3>
 
-              <div className="grid gap">
+              <div className="grid gap-1">
                 <BaseDropdownItem
-                  headline={`Mario Strikers: Battle League Football | Nintendo Switch | Nostalgie Edition ${team.name.toUpperCase()}`}
+                  headline={`Mario Strikers: Battle League Football | Nintendo Switch | Nostalgie Edition – ${team.name.toUpperCase()}`}
                 >
                   <img
                     src="/images/gallery/2x1_NSwitch_MarioStrikersBattleLeagueFootball_image1600w.jpeg"
@@ -52,11 +60,12 @@ const TheCharacterOverlay = (props) => {
                 </BaseDropdownItem>
 
                 <BaseDropdownItem
-                  headline={`Merchandise Artikel – ${team.name}`}
+                  headline={`Merchandise – ${team.name.toUpperCase()}`}
                 >
                   <div className="grid gap-4 grid-cols-2">
                     {team.imageGallery.map((image, index) => (
                       <img
+                        key={index}
                         src={image}
                         className="cursor-pointer"
                         alt={`${team.name} ${index}`}
@@ -74,9 +83,9 @@ const TheCharacterOverlay = (props) => {
                 className="w-full"
                 src={team.specialAbilityVideoURL}
                 title="YouTube video player"
-                frameborder="0"
+                frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
+                allowFullScreen
               ></iframe>
             </div>
 

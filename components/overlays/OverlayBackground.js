@@ -14,7 +14,7 @@ const OverlayBackground = (props) => {
 
   return (
     <div
-      className={`fixed inset-0 bg-black/70 flex z-40 ${props.className}`}
+      className={`fixed inset-0 bg-black/70 flex z-40 cursor-pointer ${props.className}`}
       onClick={closeOverlay}
     >
       <motion.div
@@ -25,6 +25,7 @@ const OverlayBackground = (props) => {
           stiffness: 300,
           damping: 15,
         }}
+        className="cursor-default"
       >
         {props.children}
       </motion.div>
