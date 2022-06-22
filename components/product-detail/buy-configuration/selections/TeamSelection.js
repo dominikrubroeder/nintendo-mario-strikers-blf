@@ -12,6 +12,7 @@ const TeamSelection = () => {
   const router = useRouter();
   const teamSection = useRef();
   const [showTheCharacterOverlay, setShowTheCharacterOverlay] = useState(false);
+  const currentTheme = appCtx.theme ? appCtx.theme.toUpperCase() : undefined;
 
   // Set theme based on selected team (nintendo character)
   // Save selected theme to local storage
@@ -33,7 +34,17 @@ const TeamSelection = () => {
         <div className="flex justify-between items-center">
           <h4>Wähle dein Team:</h4>
           <div className="text-accent themed:text-white text-sm cursor-pointer">
-            <Tooltip title="Warum?">Tooltip text</Tooltip>
+            <Tooltip title="Warum?">
+              Erhalte <b>zusätzlichen Spiel-Content</b> wie erweitere Arenen,
+              das Geheimteam und <b>inviduelle Merch-Artrikel</b> basierend auf
+              deiner Team-Wahl! <br /> <br />
+              Wähle also beispielsweise {currentTheme}, um einen Hoodie im{' '}
+              {currentTheme} Design zu erhalten oder deinen Schreibtisch mit der{' '}
+              {currentTheme}
+              Tischfigar in der Sieger-Pose zu schmücken.
+              <br /> <br />
+              Klicke auf einen Charakter, um weitere Informationen zu erhalten.
+            </Tooltip>
           </div>
         </div>
 

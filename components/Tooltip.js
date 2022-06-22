@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronUpIcon } from '@heroicons/react/solid';
+import { ChevronUpIcon, CheckCircleIcon } from '@heroicons/react/solid';
 import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
 
 const Tooltip = (props) => {
@@ -22,9 +22,16 @@ const Tooltip = (props) => {
       {expanded && (
         <SpringBounceWhenInView
           delay={0}
-          className="text-themed absolute right-0 top-8 w-max p-4 rounded-xl z-50 before:w-8 before:h-8 themed:bg-white"
+          className="text-themed absolute right-0 top-8 w-max max-w-xs p-6 rounded-xl z-50 bg-slate-100 themed:bg-white"
         >
           {props.children}
+          <p
+            className="flex items-center justify-end gap-1 font-bold mt-4"
+            onClick={() => setExpanded(false)}
+          >
+            <CheckCircleIcon className="w-4 h-4"></CheckCircleIcon>
+            Verstanden
+          </p>
         </SpringBounceWhenInView>
       )}
     </div>

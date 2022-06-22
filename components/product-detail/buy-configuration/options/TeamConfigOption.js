@@ -30,8 +30,12 @@ export default function TeamConfigOption(props) {
         >
           i
         </div>
-        <img src={props.image} alt={props.name} className="h-64 z-10" />
-        <h3 className="absolute w-full left-1/2 bottom-12 -translate-x-1/2 text-6xl tracking-normal uppercase font-bold">
+        <img
+          src={props.image}
+          alt={props.name}
+          className="h-64 z-10 transition-all group-hover:scale-125"
+        />
+        <h3 className="absolute w-full left-1/2 bottom-12 -translate-x-1/2 text-6xl tracking-normal uppercase font-bold transition-all group-hover:scale-125">
           {computedTitle}
         </h3>
       </div>
