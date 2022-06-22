@@ -1,7 +1,12 @@
 import { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-export default function SpringBounceWhenInView({ children, playSound, delay }) {
+export default function SpringBounceWhenInView({
+  children,
+  playSound,
+  delay,
+  className,
+}) {
   const audioRef = useRef();
 
   // useEffect(() => {
@@ -23,6 +28,7 @@ export default function SpringBounceWhenInView({ children, playSound, delay }) {
         visible: { opacity: 1, scale: 1 },
         hidden: { opacity: 0, scale: 0.8 },
       }}
+      className={className ? className : ''}
     >
       {playSound && (
         <audio

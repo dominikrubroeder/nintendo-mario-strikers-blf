@@ -5,6 +5,7 @@ import teams from '../../../../data/teams';
 import TeamConfigOption from '../../buy-configuration/options/TeamConfigOption';
 import SpringBounceWhenInView from '../../../animation/SpringBounceWhenInView';
 import TheCharacterOverlay from '../../../overlays/TheCharacterOverlay';
+import Tooltip from '../../../Tooltip';
 
 const TeamSelection = () => {
   const appCtx = useContext(AppContext);
@@ -31,9 +32,9 @@ const TeamSelection = () => {
       <div className="grid gap-4">
         <div className="flex justify-between items-center">
           <h4>Wähle dein Team:</h4>
-          <p className="text-accent themed:text-white text-sm cursor-pointer">
-            Warum?
-          </p>
+          <div className="text-accent themed:text-white text-sm cursor-pointer">
+            <Tooltip title="Warum?">Tooltip text</Tooltip>
+          </div>
         </div>
 
         {showTheCharacterOverlay && (
