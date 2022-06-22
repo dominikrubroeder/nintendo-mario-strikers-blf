@@ -1,8 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import Image from 'next/image';
 import BaseButton from './base/BaseButton';
 import TheCountdown from './TheCountdown';
+import AppContext from '../store/app-context';
+import { ArrowSmUpIcon } from '@heroicons/react/outline';
 
 export default function TheStickyBuyBar(props) {
+  const appCtx = useContext(AppContext);
   const [isVisible, setIsVisible] = useState(null);
 
   const { shouldBeVisible } = props;
@@ -18,23 +22,30 @@ export default function TheStickyBuyBar(props) {
       }`}
     >
       <div className="flex items-center gap-2">
-        {props.team && (
-          <img
-            src={`/images/characters/NSwitch-character-sketch-${props.team}.png`}
-            className="h-12"
+        {appCtx.theme && (
+          <Image
+            src={`/images/characters/NSwitch-character-sketch-${appCtx.theme}.png`}
+            width={48}
+            height={48}
+            alt={`${appCtx.theme} sketch`}
           />
         )}
         <div className="grid">
           <h3 className="block font-bold themed:text-white">
             Mario Strikers: Battle League Football | Nintendo Switch
           </h3>
-          {(props.edition || props.team) && (
-            <div className="flex items-center">
+          {appCtx.edition && (
+            <div className="flex items-center gap-1">
               <span className="text-accent themed:text-white">
-                {props.edition && props.edition} Edition
-                {props.team && ` – ${props.team.toUpperCase()}`}
-                {props.price && ` – ${props.price}€`}
+                {appCtx.edition.charAt(0).toUpperCase()}
+                {`${appCtx.edition.slice(1)} Edition – `}
+                {appCtx.theme ? appCtx.theme.toUpperCase() + ' – ' : ''}
+                {props.price && `${props.price}€`}
               </span>
+              <ArrowSmUpIcon
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="w-4 h-4 cursor-pointer text-accent themed:text-white"
+              ></ArrowSmUpIcon>
             </div>
           )}
         </div>

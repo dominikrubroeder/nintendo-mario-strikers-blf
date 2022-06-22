@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import AppContext from '../../store/app-context';
 import BuyConfiguration from '../../components/product-detail/buy-configuration/BuyConfiguration';
 import GameFeatures from '../../components/product-detail/product-details/GameFeatures';
