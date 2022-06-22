@@ -1,20 +1,14 @@
-import { useState, useEffect } from 'react';
-import { VolumeUpIcon, VolumeOffIcon } from '@heroicons/react/solid';
+import { useState } from 'react';
 
 const BaseToggle = (props) => {
   const [enabled, setEnabled] = useState(props.enabled || true);
 
   const toggle = () => {
     setEnabled((previousState) => !previousState);
-  };
 
-  useEffect(() => {
-    if (enabled) {
-      localStorage.setItem('interactiveAudio', true);
-    } else {
-      localStorage.setItem('interactiveAudio', false);
-    }
-  }, [enabled]);
+    // If there are actions onClick controlled by the outter component
+    if (props.onClick) props.onClick();
+  };
 
   return (
     <div
@@ -34,11 +28,7 @@ const BaseToggle = (props) => {
             enabled ? 'bg-white translate-x-full' : 'bg-gray-300'
           }`}
         >
-          {enabled ? (
-            <VolumeUpIcon className="w-3 h-3"></VolumeUpIcon>
-          ) : (
-            <VolumeOffIcon className="w-3 h-3"></VolumeOffIcon>
-          )}
+          {enabled ? props.enabledIcon : props.disabledIcon}
         </span>
       </div>
     </div>

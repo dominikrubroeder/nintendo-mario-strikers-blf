@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import useIsOnScreen from '../hooks/useIsOnScreen';
 import BaseButton from './base/BaseButton';
@@ -27,14 +28,16 @@ export default function TheHero(props) {
       )}
 
       <div className="text-center grid gap-4 md:gap-8">
-        <motion.img
-          animate={{ opacity: [0, 1], y: [-10, 0] }}
-          exit={{ opacity: [1, 0] }}
-          transition={{ delay: 1.5 }}
-          className="m-auto max-h-[65vh] pt-12 md:pt-0"
-          src="/images/product/mario-strikers-battle-league-football-cover.jpg"
-          alt="Nintendo Switch"
-        />
+        <Link href="/buy-mario-strikers-battle-league-football">
+          <motion.img
+            animate={{ opacity: [0, 1], y: [-10, 0] }}
+            exit={{ opacity: [1, 0] }}
+            transition={{ delay: 1.5 }}
+            className="m-auto max-h-[65vh] pt-12 md:pt-0 cursor-pointer"
+            src="/images/product/mario-strikers-battle-league-football-cover.jpg"
+            alt="Nintendo Switch"
+          />
+        </Link>
         <div className="grid gap-2 sticky top-0">
           <TheCountdown />
           <h1>Mario Strikers: Battle League Football | Nintendo Switch</h1>
