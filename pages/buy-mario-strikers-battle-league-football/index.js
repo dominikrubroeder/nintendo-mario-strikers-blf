@@ -12,11 +12,6 @@ const DetailPage = () => {
   const appCtx = useContext(AppContext);
   const [showStickyBuyBar, setShowStickyBuyBar] = useState(false);
 
-  // Initial page load instructions
-  useEffect(() => {
-    appCtx.init();
-  });
-
   return (
     <div>
       <Head>

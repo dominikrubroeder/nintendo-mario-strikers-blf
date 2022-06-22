@@ -1,7 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 
 const AppContext = createContext({
-  init: function () {},
   hasInteractiveAudio: true,
   toggleInteractiveAudio: function () {},
   theme: null,
@@ -20,14 +19,6 @@ export function AppContextProvider(props) {
   const [buyable, setBuyable] = useState(false);
   const [showStickyBuyBar, setShowStickyBuyBar] = useState();
   const [showOverlay, setShowOverlay] = useState();
-
-  useEffect(() => {
-    if (hasInteractiveAudio) {
-      localStorage.setItem('interactiveAudio', true);
-    } else {
-      localStorage.setItem('interactiveAudio', false);
-    }
-  }, [hasInteractiveAudio]);
 
   function initThemeHandler() {
     if (localStorage.getItem('themed') && localStorage.getItem('theme')) {
@@ -88,14 +79,22 @@ export function AppContextProvider(props) {
     }
   }
 
-  function initHandler() {
+  // Initial page load instructions
+  useEffect(() => {
     initEditionHandler();
     initThemeHandler();
     initBuyableHandler();
-  }
+  });
+
+  useEffect(() => {
+    if (hasInteractiveAudio) {
+      localStorage.setItem('interactiveAudio', true);
+    } else {
+      localStorage.setItem('interactiveAudio', false);
+    }
+  }, [hasInteractiveAudio]);
 
   const context = {
-    init: initHandler,
     hasInteractiveAudio,
     toggleInteractiveAudio: toggleInteractiveAudioHandler,
     theme: activeTheme,

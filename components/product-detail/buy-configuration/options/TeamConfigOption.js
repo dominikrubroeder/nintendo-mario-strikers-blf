@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useContext, useRef } from 'react';
 import AppContext from '../../../../store/app-context';
 
@@ -30,10 +31,12 @@ export default function TeamConfigOption(props) {
         >
           i
         </div>
-        <img
+        <Image
           src={props.image}
           alt={props.name}
-          className="h-64 z-10 transition-all group-hover:scale-125"
+          className="z-10 transition-all group-hover:scale-125"
+          width={256}
+          height={256}
         />
         <h3 className="absolute w-full left-1/2 bottom-12 -translate-x-1/2 text-6xl tracking-normal uppercase font-bold transition-all group-hover:scale-125">
           {computedTitle}
