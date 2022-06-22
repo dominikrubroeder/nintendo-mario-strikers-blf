@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ChevronUpIcon } from '@heroicons/react/solid';
 import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
 
 const Tooltip = (props) => {
@@ -6,8 +7,16 @@ const Tooltip = (props) => {
 
   return (
     <div className="relative">
-      <div onClick={() => setExpanded((previousState) => !previousState)}>
+      <div
+        className="flex items-center"
+        onClick={() => setExpanded((previousState) => !previousState)}
+      >
         {props.title}
+        <ChevronUpIcon
+          className={`h-5 w-5 transition-all ${
+            expanded ? 'rotate-180' : 'rotate-0'
+          }`}
+        ></ChevronUpIcon>
       </div>
 
       {expanded && (
