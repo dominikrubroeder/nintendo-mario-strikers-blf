@@ -20,7 +20,7 @@ const TheCharacterOverlay = (props) => {
       onCloseOverlay={props.onCloseOverlay}
     >
       <div
-        className="relative max-w-5xl h-[75vh] rounded-3xl bg-themed grid gap-4 p-6 m-4 z-50 overflow-y-scroll md:overflow-hidden md:p-8 md:grid-cols-2"
+        className="relative max-w-5xl h-[75vh] rounded-3xl bg-themed grid gap-4 p-6 m-4 z-50 overflow-y-scroll md:overflow-hidden md:p-8 md:pb-0 md:grid-cols-2"
         onClick={(e) => handleChildElementClick(e)}
       >
         <div
@@ -51,7 +51,7 @@ const TheCharacterOverlay = (props) => {
 
               <div className="grid gap-1">
                 <BaseDropdownItem
-                  headline={`Mario Strikers: Battle League Football | Nintendo Switch | Nostalgie Edition – ${team.name.toUpperCase()}`}
+                  headline={`${team.name.toUpperCase()} – Mario Strikers: Battle League Football | Nintendo Switch`}
                 >
                   <img
                     src="/images/gallery/2x1_NSwitch_MarioStrikersBattleLeagueFootball_image1600w.jpeg"
@@ -60,19 +60,28 @@ const TheCharacterOverlay = (props) => {
                 </BaseDropdownItem>
 
                 <BaseDropdownItem
-                  headline={`Merchandise – ${team.name.toUpperCase()}`}
+                  headline={`${team.name.toUpperCase()} – Merchandise`}
                 >
                   <div className="grid gap-4 grid-cols-2">
                     {team.imageGallery.map((image, index) => (
-                      <img
+                      <div
                         key={index}
-                        src={image}
-                        className="cursor-pointer"
-                        alt={`${team.name} ${index}`}
-                        title={`Detailansicht öffnen`}
-                      />
+                        className="h-64 rounded-3xl cursor-pointer bg-themed-dark transition-all hover:scale-105"
+                      ></div>
                     ))}
                   </div>
+                </BaseDropdownItem>
+
+                <BaseDropdownItem headline="Zusätzlicher Spiel-Content">
+                  <ul className="list-disc pl-8">
+                    <li>
+                      Mehr Content: Schalte die legacy Arenen aus Mario
+                      Strikers: Charged Football (Wii) und Mario Smash Football
+                      (GameCube) frei
+                    </li>
+                    <li>Mehr Content: Schalte das Geheimteam frei</li>
+                    <li>...</li>
+                  </ul>
                 </BaseDropdownItem>
               </div>
             </div>

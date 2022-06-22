@@ -1,17 +1,22 @@
 import { useState } from 'react';
-import ArrowRight from '../../icons/ArrowRight';
+import { ChevronRightIcon } from '@heroicons/react/outline';
 
 const BaseDropdownItem = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
       <h3
-        className="flex gap-1 cursor-pointer"
+        className="flex items-top gap-1 cursor-pointer"
         onClick={() => {
           setIsOpen((previousState) => !previousState);
         }}
       >
-        <ArrowRight className="shrink-0" /> {props.headline}
+        <ChevronRightIcon
+          className={`w-4 h-4 shrink-0 mt-1 transition-all ${
+            isOpen ? 'rotate-90' : 'rotate-0'
+          }`}
+        ></ChevronRightIcon>{' '}
+        {props.headline}
       </h3>
       <div
         className={

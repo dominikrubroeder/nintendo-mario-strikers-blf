@@ -7,6 +7,7 @@ const BaseDropdown = (props) => {
     <div>
       {data.map((element) => (
         <BaseDropdownItem
+          key={element.headline}
           headline={element.headline}
           content={element.content}
         />
