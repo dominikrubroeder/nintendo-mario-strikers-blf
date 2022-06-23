@@ -50,7 +50,7 @@ export default function TheCommunityQuotes() {
         <PulsingDots size={8} />
       </div>
 
-      <div className="flex flex-col items-center justify-center text-sm italic text-gray-600 mt-8">
+      <div className="flex flex-col items-center justify-center text-sm italic text-gray-600 mt-8 themed:text-white">
         Die Community schreibt...
       </div>
 
@@ -60,7 +60,7 @@ export default function TheCommunityQuotes() {
             return (
               <div key={communityQuote.quote}>
                 <div className="mx-auto px-4 my-8 text-6xl md:text-8xl md:leading-tight text-center break-all font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent">
-                  "{communityQuote.quote}"
+                  &ldquo;{communityQuote.quote}&rdquo;
                 </div>
               </div>
             );
@@ -92,7 +92,7 @@ export default function TheCommunityQuotes() {
                       }`}
                     >
                       <span className="px-8 py-4 md:px-6 mx-auto">
-                        "{communityQuote.quote}"
+                        &ldquo;{communityQuote.quote}&rdquo;
                       </span>
                     </div>
                   </div>

@@ -4,8 +4,10 @@ import BaseButton from './base/BaseButton';
 import TheCountdown from './TheCountdown';
 import AppContext from '../store/app-context';
 import { ArrowSmUpIcon } from '@heroicons/react/outline';
+import { useRouter } from 'next/router';
 
 export default function TheStickyBuyBar(props) {
+  const router = useRouter();
   const appCtx = useContext(AppContext);
   const [isVisible, setIsVisible] = useState(null);
 
@@ -36,16 +38,22 @@ export default function TheStickyBuyBar(props) {
           </h3>
           {appCtx.edition && (
             <div className="flex items-center gap-1">
-              <span className="text-accent themed:text-white">
-                {appCtx.edition.charAt(0).toUpperCase()}
-                {`${appCtx.edition.slice(1)} Edition – `}
-                {appCtx.theme ? appCtx.theme.toUpperCase() + ' – ' : ''}
-                {props.price && `${props.price}€`}
-              </span>
-              <ArrowSmUpIcon
+              <span
+                className="text-accent cursor-pointer themed:text-white"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="w-4 h-4 cursor-pointer text-accent themed:text-white"
-              ></ArrowSmUpIcon>
+              >
+                {appCtx.edition
+                  ? `${appCtx.edition
+                      .charAt(0)
+                      .toUpperCase()}${appCtx.edition.slice(1)} Edition`
+                  : ''}
+                {appCtx.theme ? ` – ${appCtx.theme.toUpperCase()}` : ''}
+                {props.price ? ` – ${props.price}€` : ''}
+              </span>
+              {router.pathname ===
+                '/buy-mario-strikers-battle-league-football' && (
+                <ArrowSmUpIcon className="w-4 h-4 cursor-pointer text-accent themed:text-white"></ArrowSmUpIcon>
+              )}
             </div>
           )}
         </div>
