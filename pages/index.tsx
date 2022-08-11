@@ -1,9 +1,10 @@
+import { NextPage } from 'next';
 import Head from 'next/head';
-import TheHero from '../components/TheHero';
 import { useEffect, useState } from 'react';
+import TheHero from '../components/TheHero';
 import TheLaunchScreen from '../components/TheLaunchScreen';
 
-export default function Home() {
+const Home: NextPage = () => {
   const [showStickyBuyBar, setShowStickyBuyBar] = useState(false);
   const [showLaunchScreen, setShowLaunchScreen] = useState(true);
 
@@ -32,4 +33,6 @@ export default function Home() {
       <TheHero setShowStickyBuyBar={setShowStickyBuyBar} />
     </div>
   );
-}
+};
+
+export default Home;

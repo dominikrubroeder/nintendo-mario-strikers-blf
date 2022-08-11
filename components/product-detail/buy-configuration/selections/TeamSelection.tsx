@@ -2,7 +2,7 @@ import { useRef, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 import AppContext from '../../../../store/app-context';
 import teams from '../../../../data/teams';
-import TeamConfigOption from '../../buy-configuration/options/TeamConfigOption';
+import TeamConfigOption from '../options/TeamConfigOption';
 import SpringBounceWhenInView from '../../../animation/SpringBounceWhenInView';
 import TheCharacterOverlay from '../../../overlays/TheCharacterOverlay';
 import Tooltip from '../../../Tooltip';

@@ -1,7 +1,8 @@
+import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import PulsingDots from '../../components/PulsingDots';
 
-export default function checkout() {
+const Checkout: NextPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [showLoadingVideo, setShowLoadingVideo] = useState(true);
 
@@ -41,4 +42,6 @@ export default function checkout() {
       )}
     </section>
   );
-}
+};
+
+export default Checkout;
