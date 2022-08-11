@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useContext, useState } from 'react';
 import AppContext from '../../store/app-context';
 import BuyConfiguration from '../../components/product-detail/buy-configuration/BuyConfiguration';
-import GameFeatures from '../../components/product-detail/product-details/GameFeatures';
+import GameFeatures from '../../components/GameFeatures';
 import TheStickyBuyBar from '../../components/TheStickyBuyBar';
 
 // https://mario.fandom.com/de/wiki/Mario_Smash_Football

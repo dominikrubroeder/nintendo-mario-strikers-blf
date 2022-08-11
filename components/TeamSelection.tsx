@@ -1,22 +1,26 @@
-import { useRef, useState, useContext } from 'react';
+import React, { useRef, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
-import AppContext from '../../../../store/app-context';
-import teams from '../../../../data/teams';
-import TeamConfigOption from '../options/TeamConfigOption';
-import SpringBounceWhenInView from '../../../animation/SpringBounceWhenInView';
-import TheCharacterOverlay from '../../../overlays/TheCharacterOverlay';
-import Tooltip from '../../../Tooltip';
+import AppContext from '../store/app-context';
+import teams from '../data/teams';
+import TeamConfigOption from './product-detail/buy-configuration/options/TeamConfigOption';
+import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
+import TheCharacterOverlay from './overlays/TheCharacterOverlay';
+import Tooltip from './Tooltip';
 
-const TeamSelection = () => {
+interface TeamSelectionProps {
+  className?: string;
+}
+
+const TeamSelection: React.FC<TeamSelectionProps> = ({ className }) => {
   const appCtx = useContext(AppContext);
   const router = useRouter();
-  const teamSection = useRef();
+  const teamSection = useRef<null | HTMLDivElement>(null);
   const [showTheCharacterOverlay, setShowTheCharacterOverlay] = useState(false);
   const currentTheme = appCtx.theme ? appCtx.theme.toUpperCase() : undefined;
 
   // Set theme based on selected team (nintendo character)
   // Save selected theme to local storage
-  const setTeam = (team) => {
+  const setTeam = (team: string) => {
     appCtx.setTheme(team);
 
     router.push(
@@ -54,7 +58,7 @@ const TeamSelection = () => {
           />
         )}
 
-        <div className="grid gap-2">
+        <div className={`grid gap-2 ${className ? className : ''}`}>
           {teams.map((team) => {
             return (
               <SpringBounceWhenInView key={team.name}>

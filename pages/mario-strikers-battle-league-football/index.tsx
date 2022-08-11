@@ -1,13 +1,13 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
-import React, { useState } from 'react';
+import React from 'react';
+import GameFeatures from '../../components/GameFeatures';
+import TeamSelection from '../../components/TeamSelection';
 import TheCommunityQuotes from '../../components/TheCommunityQuotes';
 import TheGallery from '../../components/TheGallery';
 import TheStickyBuyBar from '../../components/TheStickyBuyBar';
 
 const InfoPage: NextPage = () => {
-  const [showStickyBuyBar, setShowStickyBuyBar] = useState(false);
-
   return (
     <div>
       <Head>
@@ -20,9 +20,20 @@ const InfoPage: NextPage = () => {
         />
       </Head>
 
-      <TheCommunityQuotes />
+      <div className="grid gap-32">
+        <TheCommunityQuotes />
 
-      <TheGallery />
+        <section className="max-w-screen-xl m-auto w-full">
+          <h2 className="mx-auto px-4 text-6xl md:text-8xl md:leading-tight text-center break-all font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent">
+            Wähle dein Team
+          </h2>
+          <TeamSelection className="grid-cols-3" />
+        </section>
+
+        <TheGallery />
+
+        <GameFeatures />
+      </div>
 
       <TheStickyBuyBar shouldBeVisible={true} />
     </div>

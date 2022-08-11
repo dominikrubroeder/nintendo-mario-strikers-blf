@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import AppContext from '../../../store/app-context';
 import TheCountdown from '../../TheCountdown';
 import EditionSelection from './selections/EditionSelection';
-import TeamSelection from './selections/TeamSelection';
+import TeamSelection from '../../TeamSelection';
 import BuyContainer from './BuyContainer';
 
 const BuyConfiguration = (props) => {

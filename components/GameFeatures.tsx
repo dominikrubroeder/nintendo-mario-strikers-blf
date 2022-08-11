@@ -1,9 +1,9 @@
-import { useContext } from 'react';
-import SpringBounceWhenInView from '../../animation/SpringBounceWhenInView';
-import FlippableCard from '../../FlippableCard';
-import AppContext from '../../../store/app-context';
+import React, { useContext } from 'react';
+import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
+import AppContext from '../store/app-context';
+import Image from 'next/image';
 
-const GameFeatures = () => {
+const GameFeatures: React.FC = () => {
   const appCtx = useContext(AppContext);
 
   return (
@@ -18,64 +18,91 @@ const GameFeatures = () => {
 
           <div className="grid gap-64">
             <SpringBounceWhenInView>
-              <FlippableCard
-                title="Das neueste Spiel der Mario Strikers-Reihe erscheint für Nintendo
-    Switch!"
-                titleSize="text-6xl"
-                flippable={false}
-                imgSrc={`/images/characters/NSwitch-character-sketch-${
-                  appCtx.theme ? appCtx.theme : 'mario'
-                }.png`}
-                imgAlt="Mario"
-                delay={0.6}
-              ></FlippableCard>
-            </SpringBounceWhenInView>
+              <div className="grid">
+                <div className="w-96">
+                  <Image
+                    width={720}
+                    height={690}
+                    layout="responsive"
+                    src={`/images/characters/NSwitch-character-sketch-${
+                      appCtx.theme ? appCtx.theme : 'mario'
+                    }.png`}
+                    alt={`${appCtx.theme ? appCtx.theme : 'mario'}`}
+                  />
+                </div>
 
-            <FlippableCard title="5 gegen 5">
-              Mach dich bereit für das 5-gegen-5-Spiel Strike – Wie Fußball,
-              aber mit deutlich härterer Offensive! Schieß Tore, indem du
-              dribbelst und deinen Teamkameraden die Bälle zuspielst.
-            </FlippableCard>
-
-            <SpringBounceWhenInView>
-              <FlippableCard title="Bis zu 8 Spieler">
-                Bis zu acht Spieler, vier in jedem Team, können auf einer
-                Nintendo Switch-Konsole* gegeneinander spielen. Zusätzlich zu
-                den Einzelspielen wird es einen Online-Club-Modus** geben –
-                Jedem Club können bis zu 20 Spieler beitreten. Versucht, zum
-                besten Club der Welt aufzusteigen!
-              </FlippableCard>
+                <h2>
+                  Das neueste Spiel der Mario Strikers-Reihe erscheint für
+                  Nintendo Switch!
+                </h2>
+              </div>
             </SpringBounceWhenInView>
 
             <SpringBounceWhenInView>
-              <FlippableCard title="Tacklings, Items und einzigartige Fähigkeiten">
-                Benutze Tacklings, Items und einzigartige Fähigkeiten zum
-                Auslösen von Spezialschüssen. Sammle eine der Hyperkugeln auf
-                dem Spielfeld ein und lade sie auf, während deine Gegner
-                abgelenkt sind, um den Hyperschuss zu aktivieren – einen
-                Spezialschuss, mit dem dir statt einem gleich zwei Tore
-                angerechnet werden!
-              </FlippableCard>
+              <div className="grid">
+                <h2>5 gegen 5</h2>
+
+                <p>
+                  Mach dich bereit für das 5-gegen-5-Spiel Strike – Wie Fußball,
+                  aber mit deutlich härterer Offensive! Schieß Tore, indem du
+                  dribbelst und deinen Teamkameraden die Bälle zuspielst.
+                </p>
+              </div>
             </SpringBounceWhenInView>
 
             <SpringBounceWhenInView>
-              <FlippableCard title="Individualisiere Dein Team!">
-                Gestalte die Ausrüstung deines Teams ganz nach deinem Geschmack.
-                Sie verändert nicht nur das Aussehen, sondern auch Werte wie
-                Tempo, Kraft und die Genauigkeit beim Passen.
-              </FlippableCard>
+              <div className="grid">
+                <h2>Bis zu 8 Spieler</h2>
+
+                <p>
+                  Bis zu acht Spieler, vier in jedem Team, können auf einer
+                  Nintendo Switch-Konsole* gegeneinander spielen. Zusätzlich zu
+                  den Einzelspielen wird es einen Online-Club-Modus** geben –
+                  Jedem Club können bis zu 20 Spieler beitreten. Versucht, zum
+                  besten Club der Welt aufzusteigen!
+                </p>
+              </div>
+            </SpringBounceWhenInView>
+
+            <SpringBounceWhenInView>
+              <div className="grid">
+                <h2>Tacklings, Items und einzigartige Fähigkeiten</h2>
+
+                <p>
+                  Benutze Tacklings, Items und einzigartige Fähigkeiten zum
+                  Auslösen von Spezialschüssen. Sammle eine der Hyperkugeln auf
+                  dem Spielfeld ein und lade sie auf, während deine Gegner
+                  abgelenkt sind, um den Hyperschuss zu aktivieren – einen
+                  Spezialschuss, mit dem dir statt einem gleich zwei Tore
+                  angerechnet werden!
+                </p>
+
+                <p className="mt-8">ITEMS MIT BILDER HIER AUFLISTEN</p>
+              </div>
+            </SpringBounceWhenInView>
+
+            <SpringBounceWhenInView>
+              <div className="grid">
+                <h2>Individualisiere Dein Team!</h2>
+
+                <p>
+                  Gestalte die Ausrüstung deines Teams ganz nach deinem
+                  Geschmack. Sie verändert nicht nur das Aussehen, sondern auch
+                  Werte wie Tempo, Kraft und die Genauigkeit beim Passen.
+                </p>
+              </div>
             </SpringBounceWhenInView>
           </div>
         </div>
       </section>
 
-      <section className="flex flex-col items-center justify-center">
-        <p className="max-w-md">
+      <section className="flex flex-col items-center justify-center p-8">
+        <p>
           *Für den Mehrspieler-Modus wird pro Spieler ein kompatibler Controller
           benötigt. Zusätzliche Controller (separat erhältlich) können
           erforderlich sein.
         </p>
-        <p className="max-w-md">
+        <p>
           **Während des Online-Spiels wird eine Internetverbindung benötigt. Um
           Online-Services nutzen zu können, musst du einen Nintendo-Account
           erstellen und den Vertrag zum Nintendo-Account akzeptieren. Die
@@ -86,7 +113,7 @@ const GameFeatures = () => {
           Mitgliedschaft.
         </p>
 
-        <div className="max-w-md">
+        <div>
           <div>Was du wissen musst</div>
           <p>Dieser Inhalt wird von der Nintendo of Europe GmbH verkauft.</p>
           <p>
@@ -167,7 +194,6 @@ const GameFeatures = () => {
           </p>
         </div>
       </section>
-      <section className="h-screen flex items-center justify-center">4</section>
     </>
   );
 };
