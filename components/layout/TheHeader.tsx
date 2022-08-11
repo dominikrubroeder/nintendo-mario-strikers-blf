@@ -1,10 +1,11 @@
 import Link from 'next/link';
-import { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import BaseToggle from '../base/BaseToggle';
 import AppContext from '../../store/app-context';
 import { VolumeUpIcon, VolumeOffIcon } from '@heroicons/react/solid';
+import Logo from '../svg/Logo';
 
-export default function TheHeader() {
+const TheHeader: React.FC = () => {
   const appCtx = useContext(AppContext);
 
   return (
@@ -12,11 +13,9 @@ export default function TheHeader() {
       <div className="w-40"></div>
       <div className="flex items-center justify-center relative bg-white/50 backdrop-blur p-2 rounded-full">
         <Link href="/">
-          <img
-            src="/images/logos/nintendo-logo-red.svg"
-            className="h-6 hover:cursor-pointer"
-            alt="Nintendo logo"
-          />
+          <a>
+            <Logo />
+          </a>
         </Link>
       </div>
       <div className="flex items-center justify-center relative bg-white/50 backdrop-blur p-2 rounded-full">
@@ -29,4 +28,6 @@ export default function TheHeader() {
       </div>
     </header>
   );
-}
+};
+
+export default TheHeader;

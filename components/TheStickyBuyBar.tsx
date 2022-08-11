@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import Image from 'next/image';
-import BaseButton from './base/BaseButton';
+import Button from './base/Button';
 import TheCountdown from './TheCountdown';
 import AppContext from '../store/app-context';
 import { ArrowSmUpIcon } from '@heroicons/react/outline';
@@ -61,21 +61,21 @@ export default function TheStickyBuyBar(props) {
       <div className="flex flex-col gap-1 md:flex-row md:items-center md:justify-end md:gap-4">
         <TheCountdown />
         <div className="flex gap-1">
-          <BaseButton
+          <Button
             variant="contained"
             isLink
             href={props.href || '/buy-mario-strikers-battle-league-football'}
             playSound
           >
             Jetzt vorbestellen
-          </BaseButton>
-          <BaseButton
+          </Button>
+          <Button
             variant="text"
             className="text-xs"
             onClick={() => setIsVisible(false)}
           >
             Hide
-          </BaseButton>
+          </Button>
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import AppContext from '../../store/app-context';
 import OverlayBackground from './OverlayBackground';
 import teams from '../../data/teams';
-import BaseButton from '../base/BaseButton';
+import Button from '../base/Button';
 import BaseDropdownItem from '../base/dropdown/BaseDropdownItem';
 
 const TheCharacterOverlay = (props) => {
@@ -104,7 +104,7 @@ const TheCharacterOverlay = (props) => {
             </div>
 
             <div>
-              <BaseButton variant="outlined">Schließen</BaseButton>
+              <Button variant="outlined">Schließen</Button>
             </div>
           </div>
         </div>

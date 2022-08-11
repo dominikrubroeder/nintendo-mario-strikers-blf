@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef } from 'react';
 import AppContext from '../../../store/app-context';
 import useIsOnScreen from '../../../hooks/useIsOnScreen';
 import SpringBounceWhenInView from '../../animation/SpringBounceWhenInView';
-import BaseButton from '../../base/BaseButton';
+import Button from '../../base/Button';
 
 const BuyContainer = (props) => {
   const appCtx = useContext(AppContext);
@@ -31,7 +31,7 @@ const BuyContainer = (props) => {
             <b>Freitag, 10. Juni 2022</b>
           </p>
         )}
-        <BaseButton
+        <Button
           variant="contained"
           disabled={appCtx.buyable ? false : true}
           isLink
@@ -40,7 +40,7 @@ const BuyContainer = (props) => {
           sound="coin"
         >
           Jetzt vorbestellen
-        </BaseButton>
+        </Button>
       </div>
     </SpringBounceWhenInView>
   );

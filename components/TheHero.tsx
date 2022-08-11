@@ -1,13 +1,13 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import BaseButton from './base/BaseButton';
+import Button from './base/Button';
 import TheCountdown from './TheCountdown';
 import TheGameTrailerOverlay from './TheGameTrailerOverlay';
 import gameCover from '../public/images/product/mario-strikers-battle-league-football-cover.jpg';
 
-export default function TheHero(props) {
+const TheHero: React.FC = () => {
   const [showYouTubeGameTrailer, setShowYoutubeGameTrailer] = useState(false);
 
   return (
@@ -42,39 +42,36 @@ export default function TheHero(props) {
           <h1>Mario Strikers: Battle League Football | Nintendo Switch</h1>
 
           <div className="flex items-center justify-center gap-2">
-            <BaseButton
+            <Button
               variant="contained"
-              isLink
               href="/buy-mario-strikers-battle-league-football"
-              playSound
               sound="coin"
             >
               Jetzt vorbestellen
-            </BaseButton>
+            </Button>
 
-            <BaseButton
+            <Button
               variant="text"
-              isLink
               href="/mario-strikers-battle-league-football"
-              playSound
               sound="nintendo-woho"
             >
               Mehr infos
-            </BaseButton>
+            </Button>
 
-            <BaseButton
+            <Button
               variant="text"
               onClick={() => setShowYoutubeGameTrailer(true)}
-              playSound
               sound="nintendo-woho"
             >
               <div className="flex items-center gap-1">
                 <span>Trailer ansehen</span>
               </div>
-            </BaseButton>
+            </Button>
           </div>
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default TheHero;
