@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 
-export default function BaseButton({
+const BaseButton = ({
   children,
   isLink,
   href,
@@ -11,7 +11,7 @@ export default function BaseButton({
   playSound,
   sound,
   onClick,
-}) {
+}) => {
   const router = useRouter();
   const audioRef = useRef();
   const [soundFile, setSoundFile] = useState('');
@@ -41,7 +41,7 @@ export default function BaseButton({
           '';
       }
     }
-  });
+  }, [playSound, sound]);
 
   return (
     <button
@@ -66,4 +66,6 @@ export default function BaseButton({
       {children}
     </button>
   );
-}
+};
+
+export default BaseButton;

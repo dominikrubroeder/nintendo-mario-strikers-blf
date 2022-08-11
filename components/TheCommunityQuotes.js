@@ -45,27 +45,30 @@ const communityQuotes = [
 
 export default function TheCommunityQuotes() {
   return (
-    <section>
-      <div className="my-16">
-        <PulsingDots size={8} />
-      </div>
+    <section className="mt-[10vh]">
+      <header>
+        <div className="flex flex-col items-center justify-center text-sm italic text-gray-600 themed:text-white">
+          Die Community schreibt...
+        </div>
 
-      <div className="flex flex-col items-center justify-center text-sm italic text-gray-600 mt-8 themed:text-white">
-        Die Community schreibt...
-      </div>
-
-      <div>
-        {communityQuotes.map((communityQuote) => {
-          if (communityQuote.isHighlight) {
-            return (
-              <div key={communityQuote.quote}>
-                <div className="mx-auto px-4 my-8 text-6xl md:text-8xl md:leading-tight text-center break-all font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent">
-                  &ldquo;{communityQuote.quote}&rdquo;
+        <div>
+          {communityQuotes.map((communityQuote) => {
+            if (communityQuote.isHighlight) {
+              return (
+                <div key={communityQuote.quote}>
+                  <div className="mx-auto px-4 text-6xl md:text-8xl md:leading-tight text-center break-all font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent">
+                    &ldquo;{communityQuote.quote}&rdquo;
+                  </div>
                 </div>
-              </div>
-            );
-          }
-        })}
+              );
+            }
+          })}
+        </div>
+      </header>
+
+      <div className="text-center my-16">
+        <PulsingDots size={8} />
+        <button>Load more...</button>
       </div>
 
       <div className="max-w-3xl w-full grid gap-8 px-4 m-auto">

@@ -19,13 +19,11 @@ const InfoPage = () => {
         />
       </Head>
 
-      <h1>Info page (storytelling)</h1>
+      <TheCommunityQuotes />
 
       <TheGallery />
 
-      <TheCommunityQuotes />
-
-      <TheStickyBuyBar shouldBeVisible={showStickyBuyBar} />
+      <TheStickyBuyBar shouldBeVisible={true} />
     </div>
   );
 };
