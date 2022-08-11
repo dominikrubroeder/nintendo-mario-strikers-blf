@@ -1,9 +1,6 @@
 import Head from 'next/head';
-import TheStickyBuyBar from '../components/TheStickyBuyBar';
 import TheHero from '../components/TheHero';
 import { useEffect, useState } from 'react';
-import TheGallery from '../components/TheGallery';
-import TheCommunityQuotes from '../components/TheCommunityQuotes';
 import TheLaunchScreen from '../components/TheLaunchScreen';
 
 export default function Home() {
@@ -33,12 +30,6 @@ export default function Home() {
       {showLaunchScreen && <TheLaunchScreen />}
 
       <TheHero setShowStickyBuyBar={setShowStickyBuyBar} />
-
-      <TheStickyBuyBar shouldBeVisible={showStickyBuyBar} />
-
-      <TheGallery />
-
-      <TheCommunityQuotes />
     </div>
   );
 }

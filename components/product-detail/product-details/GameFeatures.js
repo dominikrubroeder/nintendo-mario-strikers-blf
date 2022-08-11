@@ -1,13 +1,17 @@
+import { useContext } from 'react';
 import SpringBounceWhenInView from '../../animation/SpringBounceWhenInView';
 import FlippableCard from '../../FlippableCard';
+import AppContext from '../../../store/app-context';
 
 const GameFeatures = () => {
+  const appCtx = useContext(AppContext);
+
   return (
     <>
       <section>
         <div className="max-w-7xl mx-auto">
           <SpringBounceWhenInView>
-            <h3 className="mx-auto px-4 my-8 text-6xl md:text-9xl md:leading-tight font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent">
+            <h3 className="mx-auto px-4 my-8 text-6xl md:text-9xl md:leading-tight font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent bg-gradient-themed">
               Hier ist alles erlaubt!
             </h3>
           </SpringBounceWhenInView>
@@ -19,19 +23,19 @@ const GameFeatures = () => {
     Switch!"
                 titleSize="text-6xl"
                 flippable={false}
-                imgSrc="/images/characters/NSwitch-character-sketch-mario.png"
+                imgSrc={`/images/characters/NSwitch-character-sketch-${
+                  appCtx.theme ? appCtx.theme : 'mario'
+                }.png`}
                 imgAlt="Mario"
                 delay={0.6}
               ></FlippableCard>
             </SpringBounceWhenInView>
 
-            <SpringBounceWhenInView>
-              <FlippableCard title="5 gegen 5">
-                Mach dich bereit für das 5-gegen-5-Spiel Strike – Wie Fußball,
-                aber mit deutlich härterer Offensive! Schieß Tore, indem du
-                dribbelst und deinen Teamkameraden die Bälle zuspielst.
-              </FlippableCard>
-            </SpringBounceWhenInView>
+            <FlippableCard title="5 gegen 5">
+              Mach dich bereit für das 5-gegen-5-Spiel Strike – Wie Fußball,
+              aber mit deutlich härterer Offensive! Schieß Tore, indem du
+              dribbelst und deinen Teamkameraden die Bälle zuspielst.
+            </FlippableCard>
 
             <SpringBounceWhenInView>
               <FlippableCard title="Bis zu 8 Spieler">

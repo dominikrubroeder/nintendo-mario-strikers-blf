@@ -1,16 +1,26 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import useIsOnScreen from '../hooks/useIsOnScreen';
 
 const FlippableCard = (props) => {
   const [showFront, setShowFront] = useState(true);
-  const cardFrontRef = useRef();
+  const overserableObject = useRef();
+  const overserableObjectIsOnScreen = useIsOnScreen(overserableObject);
+
+  useEffect(() => {
+    if (overserableObjectIsOnScreen) {
+      setShowFront(false);
+    } else {
+      setShowFront(true);
+    }
+  }, [overserableObjectIsOnScreen]);
 
   return (
     <div
-      className={`flex flex-col justify-end gap-4 relative max-w-md min-h-[35vh] rounded-xl mx-auto bg-gradient-to-r from-red-500 to-orange-500 text-white p-8 transition-all duration-400 ${
+      className={`flex flex-col justify-end gap-4 relative max-w-md min-h-[35vh] rounded-xl mx-auto text-white p-8 transition-all duration-400 ${
         props.className ? props.className : ''
       }`}
       onClick={() => setShowFront((previousState) => !previousState)}
-      ref={cardFrontRef}
+      ref={overserableObject}
     >
       {props.flippable && (
         <h4

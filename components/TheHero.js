@@ -1,27 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import useIsOnScreen from '../hooks/useIsOnScreen';
 import BaseButton from './base/BaseButton';
 import TheCountdown from './TheCountdown';
 import TheGameTrailerOverlay from './TheGameTrailerOverlay';
 import gameCover from '../public/images/product/mario-strikers-battle-league-football-cover.jpg';
 
 export default function TheHero(props) {
-  const overserableObject = useRef();
-  const overserableObjectIsOnScreen = useIsOnScreen(overserableObject);
   const [showYouTubeGameTrailer, setShowYoutubeGameTrailer] = useState(false);
-
-  const { setShowStickyBuyBar } = props;
-
-  useEffect(() => {
-    if (overserableObjectIsOnScreen) {
-      setShowStickyBuyBar(false);
-    } else {
-      setShowStickyBuyBar(true);
-    }
-  }, [overserableObjectIsOnScreen, setShowStickyBuyBar]);
 
   return (
     <section className="grid items-center justify-center h-[95vh] p-4 overflow-hidden">
@@ -53,10 +40,8 @@ export default function TheHero(props) {
         <div className="grid gap-2 sticky top-0">
           <TheCountdown />
           <h1>Mario Strikers: Battle League Football | Nintendo Switch</h1>
-          <div
-            className="flex items-center justify-center gap-2"
-            ref={overserableObject}
-          >
+
+          <div className="flex items-center justify-center gap-2">
             <BaseButton
               variant="contained"
               isLink
@@ -65,6 +50,16 @@ export default function TheHero(props) {
               sound="coin"
             >
               Jetzt vorbestellen
+            </BaseButton>
+
+            <BaseButton
+              variant="text"
+              isLink
+              href="/mario-strikers-battle-league-football"
+              playSound
+              sound="nintendo-woho"
+            >
+              Mehr infos
             </BaseButton>
 
             <BaseButton

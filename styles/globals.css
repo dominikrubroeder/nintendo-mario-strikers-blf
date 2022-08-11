@@ -34,6 +34,10 @@
   .hover\:bg-themed-dark {
     @apply bg-themed-dark;
   }
+
+  .bg-gradient-themed {
+    @apply theme-mario:bg-mario-dark theme-luigi:bg-luigi-dark theme-peach:from-[#610C63] theme-peach:to-[#810955] theme-yoshi:bg-yoshi-dark theme-bowser:bg-bowser-dark theme-wario:bg-wario-dark theme-waluigi:bg-waluigi-dark theme-donkey-kong:bg-donkey-kong-dark theme-toad:bg-toad-dark theme-rosalina:bg-rosalina-dark;
+  }
 }
 
 :root {
@@ -78,6 +82,7 @@
 ---------------------------------------- Theme: Mario
 ----------
 */
+
 .theme-mario .text-accent {
   color: var(--theme-mario);
 }
