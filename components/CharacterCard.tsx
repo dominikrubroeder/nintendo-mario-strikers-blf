@@ -1,18 +1,18 @@
 import Image from 'next/image';
 import { useContext, useRef } from 'react';
-import AppContext from '../../../../store/app-context';
+import AppContext from '../store/app-context';
 
-export default function TeamConfigOption(props) {
+export default function CharacterCard(props) {
   const appCtx = useContext(AppContext);
 
   const computedTitle = (
     props.name.charAt(0).toUpperCase() + props.name.slice(1)
   ).replace('-', ' ');
-  const audioRef = useRef();
+  const audioRef = useRef<null | HTMLAudioElement>(null);
 
   const onClickHandler = () => {
     if (localStorage.getItem('interactiveAudio') == 'true')
-      audioRef.current.play();
+      audioRef.current?.play();
     props.onClick();
   };
 
@@ -27,7 +27,7 @@ export default function TeamConfigOption(props) {
         <audio src={props.sound} ref={audioRef}></audio>
         <div
           className="w-8 h-8 flex items-center justify-center absolute top-6 right-6 rounded-full opacity-0 bg-gray-100 bg-themed group-hover:opacity-100"
-          onClick={() => props.setShowTheCharacterOverlay(props.name)}
+          onClick={() => props.setShowCharacterOverlay(props.name)}
         >
           i
         </div>

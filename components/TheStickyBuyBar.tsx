@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Button from './base/Button';
-import TheCountdown from './TheCountdown';
+import ReleaseCountdown from './ReleaseCountdown';
 import AppContext from '../store/app-context';
 import { ArrowSmUpIcon } from '@heroicons/react/outline';
 import { useRouter } from 'next/router';
@@ -61,7 +61,7 @@ export default function TheStickyBuyBar(props) {
         </div>
       </div>
       <div className="flex flex-col gap-1 md:flex-row md:items-center md:justify-end md:gap-4">
-        <TheCountdown />
+        <ReleaseCountdown />
         <div className="flex gap-1">
           <Button
             variant="contained"

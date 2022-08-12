@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import Head from 'next/head';
 import React from 'react';
 import GameFeatures from '../../components/GameFeatures';
-import TeamSelection from '../../components/TeamSelection';
+import CharacterSelection from '../../components/CharacterSelection';
 import TheCommunityQuotes from '../../components/TheCommunityQuotes';
 import TheGallery from '../../components/TheGallery';
 import TheStickyBuyBar from '../../components/TheStickyBuyBar';
@@ -29,7 +29,7 @@ const InfoPage: NextPage = () => {
             Wähle dein Team
           </Heading>
 
-          <TeamSelection className="grid-cols-3" />
+          <CharacterSelection className="grid-cols-3" />
         </section>
 
         <TheGallery />

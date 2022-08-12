@@ -2,20 +2,22 @@ import React, { useRef, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 import AppContext from '../store/app-context';
 import teams from '../data/characters';
-import TeamConfigOption from './product-detail/buy-configuration/options/TeamConfigOption';
+import CharacterCard from './CharacterCard';
 import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
-import TheCharacterOverlay from './overlays/TheCharacterOverlay';
+import CharacterOverlay from './CharacterOverlay';
 import Tooltip from './Tooltip';
 
-interface TeamSelectionProps {
+interface CharacterSelectionProps {
   className?: string;
 }
 
-const TeamSelection: React.FC<TeamSelectionProps> = ({ className }) => {
+const CharacterSelection: React.FC<CharacterSelectionProps> = ({
+  className,
+}) => {
   const appCtx = useContext(AppContext);
   const router = useRouter();
   const teamSection = useRef<null | HTMLDivElement>(null);
-  const [showTheCharacterOverlay, setShowTheCharacterOverlay] = useState(false);
+  const [showCharacterOverlay, setShowCharacterOverlay] = useState(false);
   const currentTheme = appCtx.theme ? appCtx.theme.toUpperCase() : undefined;
 
   // Set theme based on selected team (nintendo character)
@@ -35,7 +37,7 @@ const TeamSelection: React.FC<TeamSelectionProps> = ({ className }) => {
   const onCloseHandler = () => {
     document.body.style.height = 'auto';
     document.body.style.overflow = 'visible';
-    setShowTheCharacterOverlay(false);
+    setShowCharacterOverlay(false);
   };
 
   return (
@@ -58,20 +60,20 @@ const TeamSelection: React.FC<TeamSelectionProps> = ({ className }) => {
           </div>
         </div>
 
-        {showTheCharacterOverlay && (
-          <TheCharacterOverlay onCloseOverlay={onCloseHandler} />
+        {showCharacterOverlay && (
+          <CharacterOverlay onCloseOverlay={onCloseHandler} />
         )}
 
         <div className={`grid gap-2 ${className ? className : ''}`}>
           {teams.map((team) => {
             return (
               <SpringBounceWhenInView key={team.name}>
-                <TeamConfigOption
+                <CharacterCard
                   name={team.name}
                   sound={team.sound}
                   image={team.image}
                   onClick={() => setTeam(team.name)}
-                  setShowTheCharacterOverlay={setShowTheCharacterOverlay}
+                  setShowCharacterOverlay={setShowCharacterOverlay}
                 />
               </SpringBounceWhenInView>
             );
@@ -82,4 +84,4 @@ const TeamSelection: React.FC<TeamSelectionProps> = ({ className }) => {
   );
 };
 
-export default TeamSelection;
+export default CharacterSelection;

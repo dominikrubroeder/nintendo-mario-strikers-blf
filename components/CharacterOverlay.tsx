@@ -1,17 +1,17 @@
 import React, { useContext } from 'react';
-import AppContext from '../../store/app-context';
-import OverlayBackground from './OverlayBackground';
-import characters from '../../data/characters';
-import Button from '../base/Button';
-import Heading from '../typography/Heading';
+import AppContext from '../store/app-context';
+import OverlayBackground from './overlays/OverlayBackground';
+import characters from '../data/characters';
+import Button from './base/Button';
+import Heading from './typography/Heading';
 import Image from 'next/image';
-import Accordion from '../Accordion';
+import Accordion from './Accordion';
 
-interface TheCharacterOverlayProps {
+interface CharacterOverlayProps {
   onCloseOverlay: () => void;
 }
 
-const TheCharacterOverlay: React.FC<TheCharacterOverlayProps> = ({
+const CharacterOverlay: React.FC<CharacterOverlayProps> = ({
   onCloseOverlay,
 }) => {
   const appCtx = useContext(AppContext);
@@ -150,4 +150,4 @@ const TheCharacterOverlay: React.FC<TheCharacterOverlayProps> = ({
   );
 };
 
-export default TheCharacterOverlay;
+export default CharacterOverlay;

@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-export default function TheCountdown() {
-  const [days, setDays] = useState(null);
-  const [hours, setHours] = useState(null);
-  const [minutes, setMinutes] = useState(null);
-  const [seconds, setSeconds] = useState(null);
+const ReleaseCountdown: React.FC = () => {
+  const [days, setDays] = useState<null | number>(null);
+  const [hours, setHours] = useState<null | number>(null);
+  const [minutes, setMinutes] = useState<null | number>(null);
+  const [seconds, setSeconds] = useState<null | number>(null);
 
   useEffect(() => {
     // Set the date we're counting down to
@@ -37,11 +37,13 @@ export default function TheCountdown() {
 
   return (
     <span className="text-accent themed:text-white">
-      Release in: {days < 10 ? '0' : ''}
-      {days}:{hours < 10 ? '0' : ''}
-      {hours}:{minutes < 10 ? '0' : ''}
-      {minutes}:{seconds < 10 ? '0' : ''}
+      Release in: {days && days < 10 ? '0' : ''}
+      {days}:{hours && hours < 10 ? '0' : ''}
+      {hours}:{minutes && minutes < 10 ? '0' : ''}
+      {minutes}:{seconds && seconds < 10 ? '0' : ''}
       {seconds}
     </span>
   );
-}
+};
+
+export default ReleaseCountdown;

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Button from './base/Button';
-import TheCountdown from './TheCountdown';
+import ReleaseCountdown from './ReleaseCountdown';
 import TheGameTrailerOverlay from './TheGameTrailerOverlay';
 import gameCover from '../public/images/product/mario-strikers-battle-league-football-cover.jpg';
 import Heading from './typography/Heading';
@@ -39,7 +39,7 @@ const TheHero: React.FC = () => {
         </motion.div>
 
         <div className="grid gap-2 sticky top-0">
-          <TheCountdown />
+          <ReleaseCountdown />
           <Heading as="h1">
             Mario Strikers: Battle League Football | Nintendo Switch
           </Heading>

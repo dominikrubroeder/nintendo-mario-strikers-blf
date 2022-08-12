@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { motion } from 'framer-motion';
 import AppContext from '../../../store/app-context';
-import TheCountdown from '../../TheCountdown';
+import ReleaseCountdown from '../../ReleaseCountdown';
 import EditionSelection from './EditionSelection';
-import TeamSelection from '../../TeamSelection';
+import CharacterSelection from '../../CharacterSelection';
 import BuyContainer from './BuyContainer';
 import Heading from '../../typography/Heading';
 
@@ -29,7 +29,7 @@ const BuyConfiguration = (props) => {
             Nintendo Switch | 10. Juni 2022
             <span className="hidden md:inline-block"> | </span>
             <span>
-              <TheCountdown />
+              <ReleaseCountdown />
             </span>
           </Heading>
           <Heading as="h1">
@@ -39,7 +39,7 @@ const BuyConfiguration = (props) => {
 
         <EditionSelection />
 
-        {appCtx.edition === 'nostalgie' && <TeamSelection />}
+        {appCtx.edition === 'nostalgie' && <CharacterSelection />}
 
         <BuyContainer setShowStickyBuyBar={props.setShowStickyBuyBar} />
       </div>
