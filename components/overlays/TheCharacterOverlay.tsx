@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import AppContext from '../../store/app-context';
 import OverlayBackground from './OverlayBackground';
-import teams from '../../data/teams';
+import characters from '../../data/characters';
 import Button from '../base/Button';
-import BaseDropdownItem from '../base/dropdown/BaseDropdownItem';
 import Heading from '../typography/Heading';
 import Image from 'next/image';
+import Accordion from '../Accordion';
 
 interface TheCharacterOverlayProps {
   onCloseOverlay: () => void;
@@ -15,9 +15,11 @@ const TheCharacterOverlay: React.FC<TheCharacterOverlayProps> = ({
   onCloseOverlay,
 }) => {
   const appCtx = useContext(AppContext);
-  const team = teams.find((team) => team.name === appCtx.theme);
+  const character = characters.find(
+    (character) => character.name === appCtx.theme
+  );
 
-  const handleChildElementClick = (e) => {
+  const handleChildElementClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     // Do other stuff here
   };
@@ -43,8 +45,11 @@ const TheCharacterOverlay: React.FC<TheCharacterOverlayProps> = ({
               width={512}
               height={512}
               layout="responsive"
-              src={team.image}
-              alt={team.name}
+              src={
+                character?.image ??
+                '/images/characters/NSwitch-character-sketch-mario.png'
+              }
+              alt={character?.name}
             />
           </div>
         </div>
@@ -53,79 +58,90 @@ const TheCharacterOverlay: React.FC<TheCharacterOverlayProps> = ({
             as="h2"
             className="text-6xl uppercase font-bold w-full text-center mb-8"
           >
-            {team.name}
+            {character?.name}
           </Heading>
 
           <div className="grid gap-16">
             <div>
-              <p className="text-xl">"{team.teamText}"</p>
+              <p className="text-xl">&ldquo;{character?.teamText}&rdquo;</p>
             </div>
 
-            <div className="grid gap-2">
-              <Heading className="uppercase font-bold">Das bekommst du</Heading>
+            <div>
+              <Heading className="uppercase font-bold mb-4">
+                Das bekommst du
+              </Heading>
 
-              <div className="grid gap-1">
-                <BaseDropdownItem
-                  headline={`${team.name.toUpperCase()} – Mario Strikers: Battle League Football | Nintendo Switch`}
+              <div className="grid gap-2">
+                <Accordion
+                  title={`${character?.name.toUpperCase()} – Mario Strikers: Battle League Football | Nintendo Switch`}
                 >
-                  <img
+                  <Image
+                    width={367}
+                    height={183.5}
                     src="/images/gallery/2x1_NSwitch_MarioStrikersBattleLeagueFootball_image1600w.jpeg"
                     alt="Mario Strikers Battle League Football"
+                    priority
                   />
-                </BaseDropdownItem>
+                </Accordion>
 
-                <BaseDropdownItem
-                  headline={`${team.name.toUpperCase()} – Merchandise`}
+                <Accordion
+                  title={`${character?.name.toUpperCase()} – Merchandise`}
                 >
                   <div className="grid gap-4 grid-cols-2">
-                    {team.imageGallery.map((image, index) => (
+                    {character?.imageGallery.map((image, index) => (
                       <div
                         key={index}
                         className="h-64 rounded-3xl cursor-pointer bg-themed-dark transition-all hover:scale-105"
                       ></div>
                     ))}
                   </div>
-                </BaseDropdownItem>
+                </Accordion>
 
-                <BaseDropdownItem headline="Zusätzlicher Spiel-Content">
+                <Accordion title="Zusätzlicher Spiel-Content">
                   <ul className="list-disc pl-8">
                     <li>
                       Mehr Content: Schalte die legacy Arenen aus Mario
                       Strikers: Charged Football (Wii) und Mario Smash Football
                       (GameCube) frei
                     </li>
-                    <li>Mehr Content: Schalte das Geheimteam frei</li>
+                    <li>Mehr Content: Schalte das Geheimcharacter frei</li>
                     <li>...</li>
                   </ul>
-                </BaseDropdownItem>
+                </Accordion>
               </div>
             </div>
 
-            <div className="grid gap-2">
-              <Heading as="h3" className="uppercase font-bold">
-                {team.name}'s Hyperstrike
+            <div>
+              <Heading as="h3" className="uppercase font-bold mb-4">
+                {character?.name}&apos;s Hyperstrike
               </Heading>
 
-              <iframe
-                className="w-full"
-                src={team.specialAbilityVideoURL}
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+              <div className="bg-themed-dark p-8 rounded-xl">
+                <iframe
+                  className="w-full"
+                  src={character?.specialAbilityVideoURL}
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
             </div>
 
             <div>
-              <Heading as="h3" className="uppercase font-bold">
-                Wer ist {team.name}
+              <Heading as="h3" className="uppercase font-bold mb-4">
+                Wer ist {character?.name}
               </Heading>
 
-              <p>{team.baseText}</p>
+              <div className="bg-themed-dark p-8 rounded-xl">
+                <p>{character?.baseText}</p>
+              </div>
             </div>
 
             <div>
-              <Button variant="outlined">Schließen</Button>
+              <Button variant="outlined" onClick={onCloseOverlay}>
+                Schließen
+              </Button>
             </div>
           </div>
         </div>

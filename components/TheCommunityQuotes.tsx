@@ -1,4 +1,6 @@
+import { useEffect, useRef, useState } from 'react';
 import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
+import Button from './base/Button';
 import BouncingItems from './BouncingItems';
 
 const communityQuotes = [
@@ -44,10 +46,22 @@ const communityQuotes = [
 ];
 
 export default function TheCommunityQuotes() {
+  const [showQuotes, setShowQuotes] = useState(false);
+  const quotesRef = useRef<null | HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (showQuotes) {
+      quotesRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
+    }
+  }, [showQuotes]);
+
   return (
     <section className="mt-[10vh]">
       <header>
-        <div className="flex flex-col items-center justify-center text-sm italic text-gray-600 themed:text-white">
+        <div className="flex flex-col items-center justify-center text-sm italic text-gray-600 themed:text-white/50">
           Die Community schreibt...
         </div>
 
@@ -68,46 +82,56 @@ export default function TheCommunityQuotes() {
 
       <div className="text-center my-16">
         <BouncingItems size={32} />
-        <button>Load more...</button>
+        <Button
+          variant="text"
+          onClick={() => setShowQuotes((previousState) => !previousState)}
+        >
+          Zeig mir {showQuotes ? 'weniger' : 'mehr'}
+        </Button>
       </div>
 
-      <div className="max-w-3xl w-full grid gap-8 px-4 m-auto">
-        {communityQuotes.map((communityQuote, index) => {
-          if (!communityQuote.isHighlight) {
-            return (
-              <SpringBounceWhenInView key={communityQuote.quote}>
-                <div
-                  className={`grid gap-2 ${
-                    index % 2 ? 'text-left' : 'text-right'
-                  }`}
-                >
-                  <div className="flex items-center gap-2">
-                    <div
-                      className={`w-8 h-8 flex-none rounded-full testing bg-gray-100 bg-themed-dark ${
-                        index % 2 ? 'order-1' : 'order-2'
-                      }`}
-                    ></div>
-                    <div
-                      className={`flex items-center justify-center testing bg-gray-100 bg-themed-dark rounded-3xl md:rounded-full ${
-                        index % 2
-                          ? 'text-left order-2'
-                          : 'text-right ml-auto order-1'
-                      }`}
-                    >
-                      <span className="px-8 py-4 md:px-6 mx-auto">
-                        &ldquo;{communityQuote.quote}&rdquo;
-                      </span>
+      {showQuotes && (
+        <div
+          className="max-w-3xl w-full grid gap-8 px-4 m-auto"
+          ref={quotesRef}
+        >
+          {communityQuotes.map((communityQuote, index) => {
+            if (!communityQuote.isHighlight) {
+              return (
+                <SpringBounceWhenInView key={communityQuote.quote}>
+                  <div
+                    className={`grid gap-2 ${
+                      index % 2 ? 'text-left' : 'text-right'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2">
+                      <div
+                        className={`w-8 h-8 flex-none rounded-full testing bg-gray-100 bg-themed-dark ${
+                          index % 2 ? 'order-1' : 'order-2'
+                        }`}
+                      ></div>
+                      <div
+                        className={`flex items-center justify-center testing bg-gray-100 bg-themed-dark rounded-3xl md:rounded-full ${
+                          index % 2
+                            ? 'text-left order-2'
+                            : 'text-right ml-auto order-1'
+                        }`}
+                      >
+                        <span className="px-8 py-4 md:px-6 mx-auto">
+                          &ldquo;{communityQuote.quote}&rdquo;
+                        </span>
+                      </div>
                     </div>
+                    <p className="text-sm">
+                      {communityQuote.platform} - {communityQuote.author}
+                    </p>
                   </div>
-                  <p className="text-sm">
-                    {communityQuote.platform} - {communityQuote.author}
-                  </p>
-                </div>
-              </SpringBounceWhenInView>
-            );
-          }
-        })}
-      </div>
+                </SpringBounceWhenInView>
+              );
+            }
+          })}
+        </div>
+      )}
     </section>
   );
 }

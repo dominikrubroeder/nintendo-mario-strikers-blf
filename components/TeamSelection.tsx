@@ -1,7 +1,7 @@
 import React, { useRef, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 import AppContext from '../store/app-context';
-import teams from '../data/teams';
+import teams from '../data/characters';
 import TeamConfigOption from './product-detail/buy-configuration/options/TeamConfigOption';
 import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
 import TheCharacterOverlay from './overlays/TheCharacterOverlay';

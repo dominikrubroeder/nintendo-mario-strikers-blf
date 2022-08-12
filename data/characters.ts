@@ -1,4 +1,15 @@
-export default [
+export type Character = {
+  name: string;
+  sound: string;
+  image: string;
+  imageGallery: [string, string, string, string, string];
+  baseText: string;
+  teamText: string;
+  specialAbility: string;
+  specialAbilityVideoURL: string;
+};
+
+const characters: Character[] = [
   {
     name: 'mario',
     sound: '/audio/sound-mario-2.mp3',
@@ -208,3 +219,5 @@ export default [
       'https://www.youtube-nocookie.com/embed/fmvzfwj85Vo',
   },
 ];
+
+export default characters;

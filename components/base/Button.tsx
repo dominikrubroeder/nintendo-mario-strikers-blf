@@ -61,7 +61,7 @@ const Button: React.FC<ButtonProps> = ({
           : ''
       } ${
         variant === 'outlined'
-          ? `text-accent themed:text-signal px-4 py-2 rounded-full border border-red-600 hover:bg-accent hover:text-white ${
+          ? `text-accent themed:text-signal px-4 py-2 rounded-full border border-signal hover:bg-themed-dark hover:text-white ${
               className ? className : ''
             }`
           : ''
