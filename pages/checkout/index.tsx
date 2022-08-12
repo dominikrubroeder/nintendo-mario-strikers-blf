@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import PulsingDots from '../../components/PulsingDots';
+import Heading from '../../components/typography/Heading';
 
 const Checkout: NextPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,7 +24,8 @@ const Checkout: NextPage = () => {
       {/* Load team cover full screen  ...*/}
       {isLoading && (
         <div className="grid gap-2 text-center">
-          <h1>Checkout</h1> <PulsingDots size={8} />
+          <Heading as="h1">Checkout</Heading>
+          <PulsingDots size={8} />
         </div>
       )}
 

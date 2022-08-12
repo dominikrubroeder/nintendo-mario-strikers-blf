@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { useRouter } from 'next/router';
-import AppContext from '../../../../store/app-context';
-import editions from '../../../../data/editions';
-import SpringBounceWhenInView from '../../../animation/SpringBounceWhenInView';
-import EditionConfigOption from '../options/EditionConfigOption';
+import AppContext from '../../../store/app-context';
+import editions from '../../../data/editions';
+import SpringBounceWhenInView from '../../animation/SpringBounceWhenInView';
+import EditionConfigOption from './options/EditionConfigOption';
 
 const EditionSelection = (props) => {
   const appCtx = useContext(AppContext);

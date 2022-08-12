@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
 import AppContext from '../store/app-context';
 import Image from 'next/image';
+import Heading from './typography/Heading';
 
 const GameFeatures: React.FC = () => {
   const appCtx = useContext(AppContext);
@@ -11,9 +12,9 @@ const GameFeatures: React.FC = () => {
       <section>
         <div className="max-w-7xl mx-auto">
           <SpringBounceWhenInView>
-            <h3 className="mx-auto px-4 my-8 text-6xl md:text-9xl md:leading-tight font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent bg-gradient-themed">
+            <Heading className="mx-auto px-4 my-8 text-6xl md:text-9xl md:leading-tight font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent bg-gradient-themed">
               Hier ist alles erlaubt!
-            </h3>
+            </Heading>
           </SpringBounceWhenInView>
 
           <div className="grid gap-64">
@@ -31,16 +32,16 @@ const GameFeatures: React.FC = () => {
                   />
                 </div>
 
-                <h2>
+                <Heading as="h2">
                   Das neueste Spiel der Mario Strikers-Reihe erscheint für
                   Nintendo Switch!
-                </h2>
+                </Heading>
               </div>
             </SpringBounceWhenInView>
 
             <SpringBounceWhenInView>
               <div className="grid">
-                <h2>5 gegen 5</h2>
+                <Heading as="h2">5 gegen 5</Heading>
 
                 <p>
                   Mach dich bereit für das 5-gegen-5-Spiel Strike – Wie Fußball,
@@ -52,7 +53,7 @@ const GameFeatures: React.FC = () => {
 
             <SpringBounceWhenInView>
               <div className="grid">
-                <h2>Bis zu 8 Spieler</h2>
+                <Heading as="h2">Bis zu 8 Spieler</Heading>
 
                 <p>
                   Bis zu acht Spieler, vier in jedem Team, können auf einer
@@ -66,7 +67,9 @@ const GameFeatures: React.FC = () => {
 
             <SpringBounceWhenInView>
               <div className="grid">
-                <h2>Tacklings, Items und einzigartige Fähigkeiten</h2>
+                <Heading as="h2">
+                  Tacklings, Items und einzigartige Fähigkeiten
+                </Heading>
 
                 <p>
                   Benutze Tacklings, Items und einzigartige Fähigkeiten zum
@@ -83,7 +86,7 @@ const GameFeatures: React.FC = () => {
 
             <SpringBounceWhenInView>
               <div className="grid">
-                <h2>Individualisiere Dein Team!</h2>
+                <Heading as="h2">Individualisiere Dein Team!</Heading>
 
                 <p>
                   Gestalte die Ausrüstung deines Teams ganz nach deinem

@@ -4,6 +4,7 @@ import OverlayBackground from './OverlayBackground';
 import teams from '../../data/teams';
 import Button from '../base/Button';
 import BaseDropdownItem from '../base/dropdown/BaseDropdownItem';
+import Heading from '../typography/Heading';
 
 const TheCharacterOverlay = (props) => {
   const appCtx = useContext(AppContext);
@@ -37,9 +38,12 @@ const TheCharacterOverlay = (props) => {
           />
         </div>
         <div className="md:overflow-y-scroll md:p-8">
-          <h2 className="text-6xl uppercase font-bold w-full text-center mb-8">
+          <Heading
+            as="h2"
+            className="text-6xl uppercase font-bold w-full text-center mb-8"
+          >
             {team.name}
-          </h2>
+          </Heading>
 
           <div className="grid gap-16">
             <div>
@@ -47,7 +51,7 @@ const TheCharacterOverlay = (props) => {
             </div>
 
             <div className="grid gap-2">
-              <h3 className="uppercase font-bold">Das bekommst du</h3>
+              <Heading className="uppercase font-bold">Das bekommst du</Heading>
 
               <div className="grid gap-1">
                 <BaseDropdownItem
@@ -87,7 +91,10 @@ const TheCharacterOverlay = (props) => {
             </div>
 
             <div className="grid gap-2">
-              <h3 className="uppercase font-bold">{team.name}'s Hyperstrike</h3>
+              <Heading as="h3" className="uppercase font-bold">
+                {team.name}'s Hyperstrike
+              </Heading>
+
               <iframe
                 className="w-full"
                 src={team.specialAbilityVideoURL}
@@ -99,7 +106,10 @@ const TheCharacterOverlay = (props) => {
             </div>
 
             <div>
-              <h3 className="uppercase font-bold">Wer ist {team.name}</h3>
+              <Heading as="h3" className="uppercase font-bold">
+                Wer ist {team.name}
+              </Heading>
+
               <p>{team.baseText}</p>
             </div>
 

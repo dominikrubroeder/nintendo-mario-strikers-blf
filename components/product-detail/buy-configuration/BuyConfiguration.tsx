@@ -2,9 +2,10 @@ import { useContext } from 'react';
 import { motion } from 'framer-motion';
 import AppContext from '../../../store/app-context';
 import TheCountdown from '../../TheCountdown';
-import EditionSelection from './selections/EditionSelection';
+import EditionSelection from './EditionSelection';
 import TeamSelection from '../../TeamSelection';
 import BuyContainer from './BuyContainer';
+import Heading from '../../typography/Heading';
 
 const BuyConfiguration = (props) => {
   const appCtx = useContext(AppContext);
@@ -21,16 +22,19 @@ const BuyConfiguration = (props) => {
       />
       <div className="grid gap-12 mx-auto px-4 w-full">
         <div className="grid gap-1">
-          <h2 className="flex items-center gap-2 flex-wrap text-accent themed:text-white">
+          <Heading
+            as="h2"
+            className="flex items-center gap-2 flex-wrap text-accent themed:text-white"
+          >
             Nintendo Switch | 10. Juni 2022
             <span className="hidden md:inline-block"> | </span>
             <span>
               <TheCountdown />
             </span>
-          </h2>
-          <h1 className="text-3xl">
+          </Heading>
+          <Heading as="h1">
             Mario Strikers: Battle League Football kaufen
-          </h1>
+          </Heading>
         </div>
 
         <EditionSelection />

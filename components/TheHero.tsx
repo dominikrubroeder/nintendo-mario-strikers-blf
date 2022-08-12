@@ -6,6 +6,7 @@ import Button from './base/Button';
 import TheCountdown from './TheCountdown';
 import TheGameTrailerOverlay from './TheGameTrailerOverlay';
 import gameCover from '../public/images/product/mario-strikers-battle-league-football-cover.jpg';
+import Heading from './typography/Heading';
 
 const TheHero: React.FC = () => {
   const [showYouTubeGameTrailer, setShowYoutubeGameTrailer] = useState(false);
@@ -39,7 +40,9 @@ const TheHero: React.FC = () => {
 
         <div className="grid gap-2 sticky top-0">
           <TheCountdown />
-          <h1>Mario Strikers: Battle League Football | Nintendo Switch</h1>
+          <Heading as="h1">
+            Mario Strikers: Battle League Football | Nintendo Switch
+          </Heading>
 
           <div className="flex items-center justify-center gap-2">
             <Button

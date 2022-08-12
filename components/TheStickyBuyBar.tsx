@@ -5,6 +5,7 @@ import TheCountdown from './TheCountdown';
 import AppContext from '../store/app-context';
 import { ArrowSmUpIcon } from '@heroicons/react/outline';
 import { useRouter } from 'next/router';
+import Heading from './typography/Heading';
 
 export default function TheStickyBuyBar(props) {
   const router = useRouter();
@@ -33,9 +34,10 @@ export default function TheStickyBuyBar(props) {
           />
         )}
         <div className="grid">
-          <h3 className="block font-bold themed:text-white">
+          <Heading as="h3" className="block font-bold themed:text-white">
             Mario Strikers: Battle League Football | Nintendo Switch
-          </h3>
+          </Heading>
+
           {appCtx.edition && (
             <div className="flex items-center gap-1">
               <span

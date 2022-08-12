@@ -55,7 +55,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       className={`transition-all disabled:opacity-10 disabled:cursor-not-allowed ${
         variant === 'contained'
-          ? `text-white px-4 py-2 rounded-full bg-accent hover:bg-red-700 themed:bg-signal themed:hover:bg-signal-dark ${
+          ? `text-white px-4 py-2 rounded-full bg-accent hover:bg-red-700 themed:bg-signal text-themed themed:hover:bg-signal-dark ${
               className ? className : ''
             }`
           : ''
