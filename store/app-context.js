@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
+import { Editions } from '../data/editions';
 
 const AppContext = createContext({
   hasInteractiveAudio: true,
@@ -55,7 +56,9 @@ export function AppContextProvider(props) {
   }
 
   function validateEditionHandler(edition) {
-    if (edition === 'standard') {
+    console.log(edition);
+
+    if (edition === Editions.standardId) {
       document.body.className = '';
       localStorage.removeItem('themed');
       localStorage.removeItem('theme');
@@ -63,7 +66,7 @@ export function AppContextProvider(props) {
       setBuyable(true);
     }
 
-    if (edition === 'nostalgie') {
+    if (edition === Editions.nostalgiaId) {
       setBuyable(false);
     }
 
@@ -72,11 +75,24 @@ export function AppContextProvider(props) {
   }
 
   function initBuyableHandler() {
-    if (localStorage.getItem('edition') || localStorage.getItem('themed')) {
-      setBuyable(true);
-    } else {
+    const storedEdition = localStorage.getItem('edition');
+    const isThemed = localStorage.getItem('themed');
+
+    if (
+      !storedEdition ||
+      (storedEdition === Editions.standardId &&
+        storedEdition === Editions.nostalgiaId)
+    ) {
       setBuyable(false);
+      return;
     }
+
+    if (storedEdition === Editions.nostalgiaId && !isThemed) {
+      setBuyable(false);
+      return;
+    }
+
+    setBuyable(true);
   }
 
   // Initial page load instructions

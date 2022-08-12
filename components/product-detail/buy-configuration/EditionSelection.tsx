@@ -3,13 +3,13 @@ import { useRouter } from 'next/router';
 import AppContext from '../../../store/app-context';
 import editions from '../../../data/editions';
 import SpringBounceWhenInView from '../../animation/SpringBounceWhenInView';
-import EditionConfigOption from './options/EditionConfigOption';
+import EditionConfigOption from './EditionConfigOption';
 
-const EditionSelection = (props) => {
+const EditionSelection: React.FC = () => {
   const appCtx = useContext(AppContext);
   const router = useRouter();
 
-  const selectedEditionHandler = (edition) => {
+  const selectedEditionHandler = (edition: string) => {
     appCtx.validateEdition(edition);
 
     router.push(`${router.pathname}/?edition=${edition}`, undefined, {
@@ -24,11 +24,11 @@ const EditionSelection = (props) => {
       <div className="grid gap-2">
         {editions.map((edition) => {
           return (
-            <SpringBounceWhenInView key={edition.edition}>
+            <SpringBounceWhenInView key={edition.title}>
               <EditionConfigOption
-                edition={edition.edition}
+                edition={edition}
                 price={edition.price}
-                onClick={() => selectedEditionHandler(edition.edition)}
+                onClick={() => selectedEditionHandler(edition.id)}
               >
                 <ul className="list-disc pl-4">
                   {edition.details.map((detail) => (
