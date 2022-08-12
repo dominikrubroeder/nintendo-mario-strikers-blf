@@ -1,6 +1,17 @@
 import { motion } from 'framer-motion';
+import React from 'react';
 
-const OverlayBackground = (props) => {
+interface OverlayBackgroundProps {
+  children: React.ReactNode;
+  className?: string;
+  onCloseOverlay?: () => void;
+}
+
+const OverlayBackground: React.FC<OverlayBackgroundProps> = ({
+  children,
+  className,
+  onCloseOverlay,
+}) => {
   document.body.style.height = '100vh';
   document.body.style.overflow = 'hidden';
 
@@ -9,12 +20,12 @@ const OverlayBackground = (props) => {
     document.body.style.overflow = 'visible';
 
     // Do something when overlay gets closed
-    if (props.onCloseOverlay) props.onCloseOverlay();
+    if (onCloseOverlay) onCloseOverlay();
   };
 
   return (
     <div
-      className={`fixed inset-0 bg-black/70 flex z-40 cursor-pointer ${props.className}`}
+      className={`fixed inset-0 bg-black/70 flex z-40 cursor-pointer ${className}`}
       onClick={closeOverlay}
     >
       <motion.div
@@ -27,7 +38,7 @@ const OverlayBackground = (props) => {
         }}
         className="cursor-default"
       >
-        {props.children}
+        {children}
       </motion.div>
     </div>
   );

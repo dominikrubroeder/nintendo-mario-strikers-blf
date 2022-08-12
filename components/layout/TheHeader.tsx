@@ -4,6 +4,7 @@ import BaseToggle from '../base/BaseToggle';
 import AppContext from '../../store/app-context';
 import { VolumeUpIcon, VolumeOffIcon } from '@heroicons/react/solid';
 import Logo from '../svg/Logo';
+import SelectASoundtrack from '../SelectASoundtrack';
 
 const TheHeader: React.FC = () => {
   const appCtx = useContext(AppContext);
@@ -18,6 +19,9 @@ const TheHeader: React.FC = () => {
           </a>
         </Link>
       </div>
+
+      <SelectASoundtrack />
+
       <div className="flex items-center justify-center relative bg-white/50 backdrop-blur p-2 rounded-full">
         <BaseToggle
           label="Interaktives Audio"

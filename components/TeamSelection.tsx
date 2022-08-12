@@ -32,6 +32,12 @@ const TeamSelection: React.FC<TeamSelectionProps> = ({ className }) => {
     );
   };
 
+  const onCloseHandler = () => {
+    document.body.style.height = 'auto';
+    document.body.style.overflow = 'visible';
+    setShowTheCharacterOverlay(false);
+  };
+
   return (
     <div className="grid gap-4" ref={teamSection}>
       <div className="grid gap-4">
@@ -53,9 +59,7 @@ const TeamSelection: React.FC<TeamSelectionProps> = ({ className }) => {
         </div>
 
         {showTheCharacterOverlay && (
-          <TheCharacterOverlay
-            onCloseOverlay={() => setShowTheCharacterOverlay(false)}
-          />
+          <TheCharacterOverlay onCloseOverlay={onCloseHandler} />
         )}
 
         <div className={`grid gap-2 ${className ? className : ''}`}>

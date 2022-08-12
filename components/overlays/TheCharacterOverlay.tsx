@@ -1,12 +1,19 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import AppContext from '../../store/app-context';
 import OverlayBackground from './OverlayBackground';
 import teams from '../../data/teams';
 import Button from '../base/Button';
 import BaseDropdownItem from '../base/dropdown/BaseDropdownItem';
 import Heading from '../typography/Heading';
+import Image from 'next/image';
 
-const TheCharacterOverlay = (props) => {
+interface TheCharacterOverlayProps {
+  onCloseOverlay: () => void;
+}
+
+const TheCharacterOverlay: React.FC<TheCharacterOverlayProps> = ({
+  onCloseOverlay,
+}) => {
   const appCtx = useContext(AppContext);
   const team = teams.find((team) => team.name === appCtx.theme);
 
@@ -18,7 +25,7 @@ const TheCharacterOverlay = (props) => {
   return (
     <OverlayBackground
       className="items-start justify-start md:justify-center md:items-center"
-      onCloseOverlay={props.onCloseOverlay}
+      onCloseOverlay={onCloseOverlay}
     >
       <div
         className="relative max-w-5xl h-[75vh] rounded-3xl bg-themed grid gap-4 p-6 m-4 z-50 overflow-y-scroll md:overflow-hidden md:p-8 md:pb-0 md:grid-cols-2"
@@ -26,16 +33,20 @@ const TheCharacterOverlay = (props) => {
       >
         <div
           className="w-8 h-8 flex items-center justify-center absolute top-6 right-6 rounded-full cursor-pointer bg-themed-dark"
-          onClick={() => props.onCloseOverlay}
+          onClick={onCloseOverlay}
         >
           x
         </div>
         <div className="flex items-center justify-center">
-          <img
-            src={team.image}
-            alt={team.name}
-            className="max-h-[35vh] md:max-h-[none]"
-          />
+          <div className="w-full max-h-[35vh] md:max-h-[none]">
+            <Image
+              width={512}
+              height={512}
+              layout="responsive"
+              src={team.image}
+              alt={team.name}
+            />
+          </div>
         </div>
         <div className="md:overflow-y-scroll md:p-8">
           <Heading
