@@ -1,15 +1,39 @@
-const PulsingDots = (props) => {
+import Image from 'next/image';
+import React from 'react';
+
+interface PulsingDotsProps {
+  size: number;
+}
+
+const PulsingDots: React.FC<PulsingDotsProps> = ({ size }) => {
   return (
     <div className="flex items-center justify-center gap-2 m-4">
-      <span
-        className={`w-${props.size} h-${props.size} rounded-full bg-gradient-to-r from-red-500 to-orange-500 animate-bounce`}
-      ></span>
-      <span
-        className={`w-${props.size} h-${props.size} rounded-full bg-gradient-to-r from-red-500 to-orange-500 animate-bounce animation-delay-100`}
-      ></span>
-      <span
-        className={`w-${props.size} h-${props.size} rounded-full bg-gradient-to-r from-red-500 to-orange-500 animate-bounce animation-delay-200`}
-      ></span>
+      <span className="animate-bounce">
+        <Image
+          src="/images/items/CI_NSwitch_MarioStrikersBLF_AW_Items_Mushroom.png"
+          width={size}
+          height={size}
+          alt="Nintendo mushroom item"
+        />
+      </span>
+
+      <span className="animate-bounce animation-delay-200">
+        <Image
+          src="/images/items/CI_NSwitch_MarioStrikersBLF_AW_Items_Mushroom.png"
+          width={size}
+          height={size}
+          alt="Nintendo mushroom item"
+        />
+      </span>
+
+      <span className="animate-bounce animation-delay-300">
+        <Image
+          src="/images/items/CI_NSwitch_MarioStrikersBLF_AW_Items_Mushroom.png"
+          width={size}
+          height={size}
+          alt="Nintendo mushroom item"
+        />
+      </span>
     </div>
   );
 };

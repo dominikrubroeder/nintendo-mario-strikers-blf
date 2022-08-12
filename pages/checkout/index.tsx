@@ -25,7 +25,7 @@ const Checkout: NextPage = () => {
       {isLoading && (
         <div className="grid gap-2 text-center">
           <Heading as="h1">Checkout</Heading>
-          <PulsingDots size={8} />
+          <PulsingDots size={32} />
         </div>
       )}
 

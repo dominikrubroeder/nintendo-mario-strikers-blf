@@ -67,7 +67,7 @@ export default function TheCommunityQuotes() {
       </header>
 
       <div className="text-center my-16">
-        <PulsingDots size={8} />
+        <PulsingDots size={32} />
         <button>Load more...</button>
       </div>
 
