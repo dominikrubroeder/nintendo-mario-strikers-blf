@@ -1,13 +1,27 @@
-export default [
+export enum Editions {
+  standardId = 'standard',
+  standard = 'Standard',
+  nostalgiaId = 'nostalgie',
+  nostalgia = 'Nostalgie',
+}
+
+export type Edition = {
+  id: string;
+  title: string;
+  price: number;
+  details: string[];
+};
+
+const editions: Edition[] = [
   {
-    title: 'Mario Strikers: Battle League Football',
-    edition: 'standard',
+    id: Editions.standardId,
+    title: Editions.standard,
     price: 59.99,
     details: ['Digitaler Download und Hardcover'],
   },
   {
-    title: 'Mario Strikers: Battle League Football',
-    edition: 'nostalgie',
+    id: Editions.nostalgiaId,
+    title: Editions.nostalgia,
     price: 89.99,
     details: [
       'Digitaler Download und Hardcover',
@@ -22,3 +36,5 @@ export default [
     ],
   },
 ];
+
+export default editions;

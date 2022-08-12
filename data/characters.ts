@@ -2,7 +2,7 @@ export type Character = {
   name: string;
   sound: string;
   image: string;
-  imageGallery: [string, string, string, string, string];
+  imageGallery: string[];
   baseText: string;
   teamText: string;
   specialAbility: string;
