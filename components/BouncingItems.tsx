@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import React from 'react';
 
-interface PulsingDotsProps {
+interface BouncingItemsProps {
   size: number;
 }
 
-const PulsingDots: React.FC<PulsingDotsProps> = ({ size }) => {
+const BouncingItems: React.FC<BouncingItemsProps> = ({ size }) => {
   return (
     <div className="flex items-center justify-center gap-2 m-4">
       <span className="animate-bounce">
@@ -38,4 +38,4 @@ const PulsingDots: React.FC<PulsingDotsProps> = ({ size }) => {
   );
 };
 
-export default PulsingDots;
+export default BouncingItems;

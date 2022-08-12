@@ -17,7 +17,8 @@ const BaseToggle = (props) => {
       }`}
       onClick={toggle}
     >
-      <span>{props.label}</span>
+      <span className="themed:text-white">{props.label}</span>
+
       <div
         className={`flex w-10 p-1 rounded-full bg-gray-100 transition-all ${
           enabled ? 'bg-accent' : ''

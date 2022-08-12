@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
-import PulsingDots from '../../components/PulsingDots';
+import BouncingItems from '../../components/BouncingItems';
 import Heading from '../../components/typography/Heading';
 
 const Checkout: NextPage = () => {
@@ -25,7 +25,7 @@ const Checkout: NextPage = () => {
       {isLoading && (
         <div className="grid gap-2 text-center">
           <Heading as="h1">Checkout</Heading>
-          <PulsingDots size={32} />
+          <BouncingItems size={32} />
         </div>
       )}
 

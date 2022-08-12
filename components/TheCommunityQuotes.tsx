@@ -1,5 +1,5 @@
 import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
-import PulsingDots from './PulsingDots';
+import BouncingItems from './BouncingItems';
 
 const communityQuotes = [
   {
@@ -67,7 +67,7 @@ export default function TheCommunityQuotes() {
       </header>
 
       <div className="text-center my-16">
-        <PulsingDots size={32} />
+        <BouncingItems size={32} />
         <button>Load more...</button>
       </div>
 
