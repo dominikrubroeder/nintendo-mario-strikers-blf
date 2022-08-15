@@ -3,7 +3,6 @@ import Head from 'next/head';
 import { useContext, useState } from 'react';
 import AppContext from '../../store/app-context';
 import BuyConfiguration from '../../components/product-detail/buy-configuration/BuyConfiguration';
-import GameFeatures from '../../components/GameFeatures';
 import TheStickyBuyBar from '../../components/TheStickyBuyBar';
 
 // https://mario.fandom.com/de/wiki/Mario_Smash_Football
@@ -32,10 +31,6 @@ const DetailPage: NextPage = () => {
           alt="Mario Strikers Battle League Football"
           className="rounded-3xl max-w-full w-full p-4"
         />
-      </section>
-
-      <section className="grid gap-64">
-        <GameFeatures />
       </section>
 
       <TheStickyBuyBar

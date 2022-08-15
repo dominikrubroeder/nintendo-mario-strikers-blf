@@ -20,7 +20,7 @@ const soundtracksData: Soundtrack[] = [
 ];
 
 const SelectASoundtrack: React.FC = () => {
-  const [currentTitle, setCurrentTitle] = useState('Wähle einen Soundtrack:');
+  const [currentTitle, setCurrentTitle] = useState('Wähle deinen Soundtrack:');
   const [showSoundtracks, setShowSoundtracks] = useState(false);
   const [currentSoundtrack, setCurrentSoundtrack] = useState<null | Soundtrack>(
     null
@@ -41,7 +41,7 @@ const SelectASoundtrack: React.FC = () => {
     }
 
     if (!currentSoundtrack) {
-      setCurrentTitle('Wähle einen Soundtrack:');
+      setCurrentTitle('Wähle deinen Soundtrack:');
     }
   }, [currentSoundtrack]);
 

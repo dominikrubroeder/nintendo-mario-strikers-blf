@@ -7,6 +7,7 @@ import ReleaseCountdown from './ReleaseCountdown';
 import TheGameTrailerOverlay from './TheGameTrailerOverlay';
 import gameCover from '../public/images/product/mario-strikers-battle-league-football-cover.jpg';
 import Heading from './typography/Heading';
+import { ArrowRightIcon, PlayIcon } from '@heroicons/react/solid';
 
 const TheHero: React.FC = () => {
   const [showYouTubeGameTrailer, setShowYoutubeGameTrailer] = useState(false);
@@ -50,7 +51,10 @@ const TheHero: React.FC = () => {
               href="/buy-mario-strikers-battle-league-football"
               sound="coin"
             >
-              Jetzt vorbestellen
+              <span className="flex items-center gap-1">
+                Jetzt vorbestellen
+                <ArrowRightIcon className="w-4 h-4 text-themed" />
+              </span>
             </Button>
 
             <Button
@@ -58,7 +62,9 @@ const TheHero: React.FC = () => {
               href="/mario-strikers-battle-league-football"
               sound="nintendo-woho"
             >
-              Mehr infos
+              <span className="flex items-center gap-1">
+                Mehr infos <ArrowRightIcon className="w-4 h-4 text-themed" />
+              </span>
             </Button>
 
             <Button
@@ -66,9 +72,9 @@ const TheHero: React.FC = () => {
               onClick={() => setShowYoutubeGameTrailer(true)}
               sound="nintendo-woho"
             >
-              <div className="flex items-center gap-1">
-                <span>Trailer ansehen</span>
-              </div>
+              <span className="flex items-center gap-1">
+                Trailer ansehen <PlayIcon className="w-4 h-4 text-themed" />
+              </span>
             </Button>
           </div>
         </div>

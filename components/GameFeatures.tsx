@@ -9,94 +9,145 @@ const GameFeatures: React.FC = () => {
 
   return (
     <>
-      <section>
-        <div className="max-w-7xl mx-auto">
-          <SpringBounceWhenInView>
-            <Heading className="mx-auto px-4 my-8 text-6xl md:text-9xl md:leading-tight font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent bg-gradient-themed">
-              Hier ist alles erlaubt!
+      <section className="m-auto text-center">
+        <SpringBounceWhenInView>
+          <Heading className="mx-auto px-4 my-8 text-6xl md:text-9xl md:leading-tight font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent bg-gradient-themed">
+            Hier ist alles erlaubt!
+          </Heading>
+        </SpringBounceWhenInView>
+
+        <SpringBounceWhenInView>
+          <div className="grid">
+            <div className="w-96 m-auto">
+              <Image
+                width={720}
+                height={690}
+                layout="responsive"
+                src={`/images/characters/NSwitch-character-sketch-${
+                  appCtx.theme ? appCtx.theme : 'mario'
+                }.png`}
+                alt={`${appCtx.theme ? appCtx.theme : 'mario'}`}
+              />
+            </div>
+
+            <Heading as="h2">
+              Das neueste Spiel der Mario Strikers-Reihe erscheint für Nintendo
+              Switch!
             </Heading>
+          </div>
+        </SpringBounceWhenInView>
+      </section>
+
+      <section className="grid gap-64">
+        <SpringBounceWhenInView>
+          <section className="relative min-h-[100vh] overflow-hidden flex items-center gap-64">
+            <div className="grid px-4 max-w-screen-lg w-full m-auto">
+              <Heading
+                as="h2"
+                className="my-8 text-6xl md:text-9xl md:leading-tight font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent bg-gradient-themed"
+              >
+                5 gegen 5
+              </Heading>
+
+              <p className="bg-themed max-w-md">
+                Mach dich bereit für das 5-gegen-5-Spiel Strike – Wie Fußball,
+                aber mit deutlich härterer Offensive! Schieß Tore, indem du
+                dribbelst und deinen Teamkameraden die Bälle zuspielst.
+              </p>
+            </div>
+
+            <div className="absolute -right-48 bottom-0 w-auto h-full">
+              <Image
+                src="/images/characters/NSwitch-character-sketch-mario-bowser.png"
+                width={772}
+                height={745}
+                alt="Mario Bowser duell in action"
+              />
+            </div>
+          </section>
+        </SpringBounceWhenInView>
+
+        <SpringBounceWhenInView>
+          <div className="grid">
+            <Heading as="h2">Bis zu 8 Spieler</Heading>
+
+            <p>
+              Bis zu acht Spieler, vier in jedem Team, können auf einer Nintendo
+              Switch-Konsole* gegeneinander spielen. Zusätzlich zu den
+              Einzelspielen wird es einen Online-Club-Modus** geben – Jedem Club
+              können bis zu 20 Spieler beitreten. Versucht, zum besten Club der
+              Welt aufzusteigen!
+            </p>
+          </div>
+        </SpringBounceWhenInView>
+
+        <section>
+          <SpringBounceWhenInView>
+            <Heading
+              as="h2"
+              className="my-8 text-6xl md:text-9xl md:leading-tight font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent bg-gradient-themed"
+            >
+              Tacklings, Items und einzigartige Fähigkeiten
+            </Heading>
+
+            <p className="max-w-md">
+              Benutze Tacklings, Items und einzigartige Fähigkeiten zum Auslösen
+              von Spezialschüssen. Sammle eine der Hyperkugeln auf dem Spielfeld
+              ein und lade sie auf, während deine Gegner abgelenkt sind, um den
+              Hyperschuss zu aktivieren – einen Spezialschuss, mit dem dir statt
+              einem gleich zwei Tore angerechnet werden!
+            </p>
           </SpringBounceWhenInView>
 
-          <div className="grid gap-64">
-            <SpringBounceWhenInView>
-              <div className="grid">
-                <div className="w-96">
-                  <Image
-                    width={720}
-                    height={690}
-                    layout="responsive"
-                    src={`/images/characters/NSwitch-character-sketch-${
-                      appCtx.theme ? appCtx.theme : 'mario'
-                    }.png`}
-                    alt={`${appCtx.theme ? appCtx.theme : 'mario'}`}
-                  />
-                </div>
+          <Image
+            width={700}
+            height={640}
+            src="/images/items/CI_NSwitch_MarioStrikersBLF_AW_Items_Banana.png"
+            alt="Banana item"
+          />
+          <Image
+            width={700}
+            height={640}
+            src="/images/items/CI_NSwitch_MarioStrikersBLF_AW_Items_BobOmb.png"
+            alt="Bob0mb item"
+          />
+          <Image
+            width={700}
+            height={640}
+            src="/images/items/CI_NSwitch_MarioStrikersBLF_AW_Items_GreenShell.png"
+            alt="Green shell item"
+          />
+          <Image
+            width={700}
+            height={640}
+            src="/images/items/CI_NSwitch_MarioStrikersBLF_AW_Items_Mushroom.png"
+            alt="Mushroom item"
+          />
+          <Image
+            width={700}
+            height={640}
+            src="/images/items/CI_NSwitch_MarioStrikersBLF_AW_Items_RedShell.png"
+            alt="Red shell item"
+          />
+          <Image
+            width={700}
+            height={640}
+            src="/images/items/CI_NSwitch_MarioStrikersBLF_AW_Items_Star.png"
+            alt="Star item"
+          />
+        </section>
 
-                <Heading as="h2">
-                  Das neueste Spiel der Mario Strikers-Reihe erscheint für
-                  Nintendo Switch!
-                </Heading>
-              </div>
-            </SpringBounceWhenInView>
+        <SpringBounceWhenInView>
+          <div className="grid">
+            <Heading as="h2">Individualisiere Dein Team!</Heading>
 
-            <SpringBounceWhenInView>
-              <div className="grid">
-                <Heading as="h2">5 gegen 5</Heading>
-
-                <p>
-                  Mach dich bereit für das 5-gegen-5-Spiel Strike – Wie Fußball,
-                  aber mit deutlich härterer Offensive! Schieß Tore, indem du
-                  dribbelst und deinen Teamkameraden die Bälle zuspielst.
-                </p>
-              </div>
-            </SpringBounceWhenInView>
-
-            <SpringBounceWhenInView>
-              <div className="grid">
-                <Heading as="h2">Bis zu 8 Spieler</Heading>
-
-                <p>
-                  Bis zu acht Spieler, vier in jedem Team, können auf einer
-                  Nintendo Switch-Konsole* gegeneinander spielen. Zusätzlich zu
-                  den Einzelspielen wird es einen Online-Club-Modus** geben –
-                  Jedem Club können bis zu 20 Spieler beitreten. Versucht, zum
-                  besten Club der Welt aufzusteigen!
-                </p>
-              </div>
-            </SpringBounceWhenInView>
-
-            <SpringBounceWhenInView>
-              <div className="grid">
-                <Heading as="h2">
-                  Tacklings, Items und einzigartige Fähigkeiten
-                </Heading>
-
-                <p>
-                  Benutze Tacklings, Items und einzigartige Fähigkeiten zum
-                  Auslösen von Spezialschüssen. Sammle eine der Hyperkugeln auf
-                  dem Spielfeld ein und lade sie auf, während deine Gegner
-                  abgelenkt sind, um den Hyperschuss zu aktivieren – einen
-                  Spezialschuss, mit dem dir statt einem gleich zwei Tore
-                  angerechnet werden!
-                </p>
-
-                <p className="mt-8">ITEMS MIT BILDER HIER AUFLISTEN</p>
-              </div>
-            </SpringBounceWhenInView>
-
-            <SpringBounceWhenInView>
-              <div className="grid">
-                <Heading as="h2">Individualisiere Dein Team!</Heading>
-
-                <p>
-                  Gestalte die Ausrüstung deines Teams ganz nach deinem
-                  Geschmack. Sie verändert nicht nur das Aussehen, sondern auch
-                  Werte wie Tempo, Kraft und die Genauigkeit beim Passen.
-                </p>
-              </div>
-            </SpringBounceWhenInView>
+            <p>
+              Gestalte die Ausrüstung deines Teams ganz nach deinem Geschmack.
+              Sie verändert nicht nur das Aussehen, sondern auch Werte wie
+              Tempo, Kraft und die Genauigkeit beim Passen.
+            </p>
           </div>
-        </div>
+        </SpringBounceWhenInView>
       </section>
 
       <section className="flex flex-col items-center justify-center p-8">
