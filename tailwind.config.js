@@ -33,6 +33,26 @@ module.exports = {
         rosalina: '#1DD4B7',
         'rosalina-dark': '#1ABCA3',
       },
+      keyframes: {
+        audioWave1: {
+          '0%, 100%': { 'box-shadow': '0 0 0 0.4em rgba(255, 255, 255, 0.4)' },
+          '25%': { 'box-shadow': '0 0 0 0.15em rgba(255, 255, 255, 0.15)' },
+          '50%': { 'box-shadow': '0 0 0 0.55em rgba(255, 255, 255, 0.55)' },
+          '75%': { 'box-shadow': '0 0 0 0.25em rgba(255, 255, 255, 0.25)' },
+        },
+        audioWave2: {
+          '0%, 100%': {
+            'box-shadow': '0 0 0 0.25em rgba(255, 255, 255, 0.15)',
+          },
+          '25%': { 'box-shadow': '0 0 0 0.4em rgba(255, 255, 255, 0.3)' },
+          '50%': { 'box-shadow': '0 0 0 0.15em rgba(255, 255, 255, 0.05)' },
+          '75%': { 'box-shadow': '0 0 0 0.55em rgba(255, 255, 255, 0.45)' },
+        },
+      },
+      animation: {
+        audioWave1: 'audioWave1 1.5s infinite ease-in-out',
+        audioWave2: 'audioWave2 2.2s infinite ease-in-out',
+      },
     },
   },
   plugins: [

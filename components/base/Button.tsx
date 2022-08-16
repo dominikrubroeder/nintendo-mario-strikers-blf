@@ -71,6 +71,10 @@ const Button: React.FC<ButtonProps> = ({
               className ? className : ''
             }`
           : ''
+      } ${
+        variant === 'icon'
+          ? `flex items-center justify-center ${className ? className : ''}`
+          : ''
       }`}
       disabled={disabled}
       onClick={onClickHandler}

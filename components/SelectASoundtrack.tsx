@@ -1,7 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { VolumeUpIcon, SelectorIcon } from '@heroicons/react/solid';
+import {
+  VolumeUpIcon,
+  SelectorIcon,
+  PlayIcon,
+  PauseIcon,
+} from '@heroicons/react/solid';
 import Heading from './typography/Heading';
+import Button from './base/Button';
 
 type Soundtrack = {
   title: string;
@@ -20,28 +26,52 @@ const soundtracksData: Soundtrack[] = [
 ];
 
 const SelectASoundtrack: React.FC = () => {
-  const [currentTitle, setCurrentTitle] = useState('Wähle deinen Soundtrack:');
+  const audioRef = useRef<null | HTMLAudioElement>(null);
+  const [currentTitle, setCurrentTitle] = useState(soundtracksData[0].title);
   const [showSoundtracks, setShowSoundtracks] = useState(false);
   const [currentSoundtrack, setCurrentSoundtrack] = useState<null | Soundtrack>(
     null
   );
-  const audioRef = useRef<null | HTMLAudioElement>(null);
+  const [playing, setPlaying] = useState(false);
 
-  const playSoundtrackHandler = (soundtrack: Soundtrack) => {
+  const playPauseSoundtrackHandler = (soundtrack: Soundtrack) => {
     if (soundtrack.title !== currentSoundtrack?.title)
       setCurrentSoundtrack(soundtrack);
     if (soundtrack.title === currentSoundtrack?.title)
       setCurrentSoundtrack(null);
   };
 
+  const playSoundtrackHandler = (e: React.MouseEvent<HTMLOrSVGElement>) => {
+    e.stopPropagation();
+
+    if (currentSoundtrack) {
+      audioRef.current?.play();
+      setPlaying(true);
+      return;
+    }
+
+    setCurrentSoundtrack(soundtracksData[0]);
+  };
+
+  const pauseSoundtrackHandler = (e: React.MouseEvent<HTMLOrSVGElement>) => {
+    e.stopPropagation();
+
+    if (currentSoundtrack) {
+      audioRef.current?.pause();
+      setPlaying(false);
+    }
+  };
+
   useEffect(() => {
     if (currentSoundtrack) {
       audioRef.current?.play();
+      setPlaying(true);
       setCurrentTitle(currentSoundtrack?.title);
     }
 
     if (!currentSoundtrack) {
-      setCurrentTitle('Wähle deinen Soundtrack:');
+      setCurrentTitle(soundtracksData[0].title);
+      setPlaying(false);
     }
   }, [currentSoundtrack]);
 
@@ -51,7 +81,27 @@ const SelectASoundtrack: React.FC = () => {
         className="flex items-center gap-1 justify-between text-xs cursor-pointer w-44"
         onClick={() => setShowSoundtracks((previousState) => !previousState)}
       >
-        {currentTitle} <SelectorIcon className="w-5 h-5" />
+        {currentSoundtrack && (
+          <audio src={currentSoundtrack.src} ref={audioRef}></audio>
+        )}
+
+        <span className="flex items-center gap-1">
+          <SelectorIcon className="w-5 h-5" /> {currentTitle}
+        </span>
+
+        <Button
+          variant="icon"
+          className={`relative h-4 w-4 before:content-[''] before:rounded-full before:block before:absolute before:inset-0 before:w-[1rem] before:z-0 before:h-[1rem] after:content-[''] after:rounded-full after:block after:absolute after:inset-0 after:w-[1rem] after:z-0 after:h-[1rem] ${
+            playing ? 'before:animate-audioWave1 after:animate-audioWave2' : ''
+          }`}
+        >
+          {!playing && (
+            <PlayIcon className="w-5 h-5" onClick={playSoundtrackHandler} />
+          )}
+          {playing && (
+            <PauseIcon className="w-5 h-5" onClick={pauseSoundtrackHandler} />
+          )}
+        </Button>
       </Heading>
 
       <AnimatePresence>
@@ -79,12 +129,8 @@ const SelectASoundtrack: React.FC = () => {
                   <li
                     key={soundtrack.title}
                     className="flex items-center gap-1 cursor-pointer opacity-70 hover:opacity-100 transition"
-                    onClick={() => playSoundtrackHandler(soundtrack)}
+                    onClick={() => playPauseSoundtrackHandler(soundtrack)}
                   >
-                    {soundtrack &&
-                      soundtrack.title === currentSoundtrack?.title && (
-                        <audio src={soundtrack!.src} ref={audioRef}></audio>
-                      )}
                     <VolumeUpIcon className="w-3 h-3 text-accent themed:text-white" />
                     {soundtrack.title}
                   </li>
