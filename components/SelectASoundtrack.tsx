@@ -34,16 +34,22 @@ const SelectASoundtrack: React.FC = () => {
   );
   const [playing, setPlaying] = useState(false);
 
-  const playPauseSoundtrackHandler = (soundtrack: Soundtrack) => {
-    if (soundtrack.title !== currentSoundtrack?.title)
-      setCurrentSoundtrack(soundtrack);
-    if (soundtrack.title === currentSoundtrack?.title)
-      setCurrentSoundtrack(null);
-  };
-
-  const playSoundtrackHandler = (e: React.MouseEvent<HTMLOrSVGElement>) => {
+  const playPauseSoundtrackHandler = (
+    e: React.MouseEvent,
+    soundtrack: Soundtrack
+  ) => {
     e.stopPropagation();
 
+    // if (soundtrack.title !== currentSoundtrack?.title)
+    //   setCurrentSoundtrack(soundtrack);
+    // if (soundtrack.title === currentSoundtrack?.title)
+    //   setCurrentSoundtrack(null);
+
+    setCurrentSoundtrack(soundtrack);
+    setShowSoundtracks(false);
+  };
+
+  const playSoundtrackHandler = () => {
     if (currentSoundtrack) {
       audioRef.current?.play();
       setPlaying(true);
@@ -53,9 +59,7 @@ const SelectASoundtrack: React.FC = () => {
     setCurrentSoundtrack(soundtracksData[0]);
   };
 
-  const pauseSoundtrackHandler = (e: React.MouseEvent<HTMLOrSVGElement>) => {
-    e.stopPropagation();
-
+  const pauseSoundtrackHandler = () => {
     if (currentSoundtrack) {
       audioRef.current?.pause();
       setPlaying(false);
@@ -75,33 +79,44 @@ const SelectASoundtrack: React.FC = () => {
     }
   }, [currentSoundtrack]);
 
+  const playPauseButtonClasses = `relative h-4 w-4 before:content-[''] before:rounded-full before:block before:absolute before:inset-0 before:w-[1rem] before:z-0 before:h-[1rem] after:content-[''] after:rounded-full after:block after:absolute after:inset-0 after:w-[1rem] after:z-0 after:h-[1rem] ${
+    playing ? 'before:animate-audioWave1 after:animate-audioWave2' : ''
+  }`;
+
   return (
-    <div className="bg-themed-dark px-4 py-3 rounded-xl transition">
-      <Heading
-        className="flex items-center gap-1 justify-between text-xs cursor-pointer w-44"
-        onClick={() => setShowSoundtracks((previousState) => !previousState)}
-      >
+    <div className="bg-themed-dark px-4 py-3 rounded-xl transition z-10">
+      <Heading className="flex items-center gap-1 justify-between text-xs cursor-pointer w-44">
         {currentSoundtrack && (
           <audio src={currentSoundtrack.src} ref={audioRef}></audio>
         )}
 
-        <span className="flex items-center gap-1">
-          <SelectorIcon className="w-5 h-5" /> {currentTitle}
-        </span>
-
         <Button
-          variant="icon"
-          className={`relative h-4 w-4 before:content-[''] before:rounded-full before:block before:absolute before:inset-0 before:w-[1rem] before:z-0 before:h-[1rem] after:content-[''] after:rounded-full after:block after:absolute after:inset-0 after:w-[1rem] after:z-0 after:h-[1rem] ${
-            playing ? 'before:animate-audioWave1 after:animate-audioWave2' : ''
-          }`}
+          variant="unstyled"
+          className="flex-1 flex items-center gap-1"
+          onClick={() => setShowSoundtracks((previousState) => !previousState)}
         >
-          {!playing && (
-            <PlayIcon className="w-5 h-5" onClick={playSoundtrackHandler} />
-          )}
-          {playing && (
-            <PauseIcon className="w-5 h-5" onClick={pauseSoundtrackHandler} />
-          )}
+          <SelectorIcon className="w-5 h-5" /> {currentTitle}
         </Button>
+
+        {!playing && (
+          <Button
+            variant="icon"
+            className={playPauseButtonClasses}
+            onClick={playSoundtrackHandler}
+          >
+            <PlayIcon className="w-5 h-5" />
+          </Button>
+        )}
+
+        {playing && (
+          <Button
+            variant="icon"
+            className={playPauseButtonClasses}
+            onClick={pauseSoundtrackHandler}
+          >
+            <PauseIcon className="w-5 h-5" />
+          </Button>
+        )}
       </Heading>
 
       <AnimatePresence>
@@ -129,7 +144,7 @@ const SelectASoundtrack: React.FC = () => {
                   <li
                     key={soundtrack.title}
                     className="flex items-center gap-1 cursor-pointer opacity-70 hover:opacity-100 transition"
-                    onClick={() => playPauseSoundtrackHandler(soundtrack)}
+                    onClick={(e) => playPauseSoundtrackHandler(e, soundtrack)}
                   >
                     <VolumeUpIcon className="w-3 h-3 text-accent themed:text-white" />
                     {soundtrack.title}

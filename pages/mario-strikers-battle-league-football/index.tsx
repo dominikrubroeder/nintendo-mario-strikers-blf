@@ -7,6 +7,9 @@ import TheCommunityQuotes from '../../components/TheCommunityQuotes';
 import TheGallery from '../../components/TheGallery';
 import TheStickyBuyBar from '../../components/TheStickyBuyBar';
 import Heading from '../../components/typography/Heading';
+import SelectASoundtrack from '../../components/SelectASoundtrack';
+import { PlayIcon } from '@heroicons/react/solid';
+import Button from '../../components/base/Button';
 
 const InfoPage: NextPage = () => {
   return (
@@ -22,6 +25,16 @@ const InfoPage: NextPage = () => {
       </Head>
 
       <div className="grid gap-32">
+        <section className="m-auto text-center">
+          <Heading className="mx-auto px-4 text-6xl md:text-8xl md:leading-tight text-center break-all font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent">
+            Zuallererst...
+          </Heading>
+          Play a song:
+          <Button variant="icon">
+            <PlayIcon className="w-8 h-8 bg-gradient-to-r from-red-500 to-orange-500 rounded-full" />
+          </Button>
+        </section>
+
         <TheCommunityQuotes />
 
         <section className="max-w-screen-xl m-auto w-full">

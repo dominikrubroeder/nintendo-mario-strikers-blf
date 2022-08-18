@@ -53,27 +53,33 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={`transition-all disabled:opacity-10 disabled:cursor-not-allowed ${
+      className={`transition-all disabled:opacity-10 disabled:cursor-not-allowed hover:scale-110 ${
         variant === 'contained'
-          ? `text-white px-4 py-2 rounded-full bg-accent hover:bg-red-700 themed:bg-signal text-themed themed:hover:bg-signal-dark ${
+          ? `text-white px-4 py-2 rounded-full bg-accent hover:bg-red-700 themed:bg-signal themed:text-white themed:hover:bg-signal-dark ${
               className ? className : ''
             }`
           : ''
       } ${
         variant === 'outlined'
-          ? `text-accent themed:text-signal px-4 py-2 rounded-full border border-signal hover:bg-themed-dark hover:text-white ${
+          ? `text-accent themed:text-signal px-4 py-2 rounded-full border border-signal hover:scale-110 hover:bg-themed-dark hover:text-white ${
               className ? className : ''
             }`
           : ''
       } ${
         variant === 'text'
-          ? `text-accent themed:text-signal px-4 py-2 rounded-full transition-all duration-300 hover:bg-accent/10 themed:hover:bg-signal-dark/40 ${
+          ? `text-accent themed:text-white px-4 py-2 rounded-full transition-all duration-300 hover:scale-110 hover:bg-accent/10 themed:hover:bg-signal-dark/40 ${
               className ? className : ''
             }`
           : ''
       } ${
         variant === 'icon'
-          ? `flex items-center justify-center ${className ? className : ''}`
+          ? `flex items-center justify-center hover:scale-110 ${
+              className ? className : ''
+            }`
+          : ''
+      } ${
+        variant === 'unstyled'
+          ? `hover:scale-110 ${className ? className : ''}`
           : ''
       }`}
       disabled={disabled}
