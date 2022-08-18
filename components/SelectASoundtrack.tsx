@@ -8,6 +8,7 @@ import {
 } from '@heroicons/react/solid';
 import Heading from './typography/Heading';
 import Button from './base/Button';
+import AnimatedSoundbarsIcon from './animation/svg/AnimatedSoundbarsIcon';
 
 type Soundtrack = {
   title: string;
@@ -143,11 +144,16 @@ const SelectASoundtrack: React.FC = () => {
                 {soundtracksData.map((soundtrack) => (
                   <li
                     key={soundtrack.title}
-                    className="flex items-center gap-1 cursor-pointer opacity-70 hover:opacity-100 transition"
+                    className="flex items-center justify-between gap-1 cursor-pointer"
                     onClick={(e) => playPauseSoundtrackHandler(e, soundtrack)}
                   >
-                    <VolumeUpIcon className="w-3 h-3 text-accent themed:text-white" />
-                    {soundtrack.title}
+                    <span className="flex items-center gap-1">
+                      <VolumeUpIcon className="w-3 h-3 text-accent themed:text-white" />
+                      {soundtrack.title}
+                    </span>
+
+                    {soundtrack.title === currentSoundtrack?.title &&
+                      playing && <AnimatedSoundbarsIcon />}
                   </li>
                 ))}
               </ul>

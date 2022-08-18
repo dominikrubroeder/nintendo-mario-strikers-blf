@@ -48,10 +48,19 @@ module.exports = {
           '50%': { 'box-shadow': '0 0 0 0.15em rgba(255, 255, 255, 0.05)' },
           '75%': { 'box-shadow': '0 0 0 0.55em rgba(255, 255, 255, 0.45)' },
         },
+        growthHeight: {
+          '0%, 100%': {
+            height: '100%',
+          },
+          '25%': { height: '20%' },
+          '50%': { height: '80%' },
+          '75%': { height: '40%' },
+        },
       },
       animation: {
         audioWave1: 'audioWave1 1.5s infinite ease-in-out',
         audioWave2: 'audioWave2 2.2s infinite ease-in-out',
+        growthHeight: 'growthHeight 1s infinite ease-in-out',
       },
     },
   },

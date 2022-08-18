@@ -10,6 +10,7 @@ import Heading from '../../components/typography/Heading';
 import SelectASoundtrack from '../../components/SelectASoundtrack';
 import { PlayIcon } from '@heroicons/react/solid';
 import Button from '../../components/base/Button';
+import AnimatedSoundbarsIcon from '../../components/animation/svg/AnimatedSoundbarsIcon';
 
 const InfoPage: NextPage = () => {
   return (
