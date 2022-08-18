@@ -1,7 +1,8 @@
 import Image from 'next/image';
-import { useContext, useRef } from 'react';
+import { useContext } from 'react';
 import { Edition, Editions } from '../../../data/editions';
 import AppContext from '../../../store/app-context';
+import SoundContext from '../../../store/soundContext';
 
 interface EditionConfigOptionProps {
   edition: Edition;
@@ -17,10 +18,10 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
   children,
 }) => {
   const appCtx = useContext(AppContext);
-  const audioRef = useRef<null | HTMLAudioElement>(null);
+  const soundCtx = useContext(SoundContext);
 
   const onClickHandler = () => {
-    audioRef.current!.play();
+    soundCtx?.setSound('/audio/nintendo-switch-click.mp3');
     onClick();
   };
 
@@ -34,8 +35,6 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
       onClick={onClickHandler}
     >
       <div className="grid gap-4">
-        <audio src="/audio/nintendo-switch-click.mp3" ref={audioRef}></audio>
-
         <header className="grid gap-2 md:flex md:justify-between md:align-top">
           <h3 className="text-xl font-bold leading-5">
             Mario Strikers: Battle League Football
@@ -52,6 +51,7 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
             <p className="text-sm">(inkl. MwSt.)</p>
           </div>
         </header>
+
         <div>
           {edition.id === Editions.nostalgiaId && appCtx.theme && (
             <Image

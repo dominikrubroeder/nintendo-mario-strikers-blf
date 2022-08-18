@@ -56,8 +56,6 @@ export function AppContextProvider(props) {
   }
 
   function validateEditionHandler(edition) {
-    console.log(edition);
-
     if (edition === Editions.standardId) {
       document.body.className = '';
       localStorage.removeItem('themed');

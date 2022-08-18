@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext } from 'react';
+import SoundContext from '../../store/soundContext';
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -21,35 +22,28 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
 }) => {
   const router = useRouter();
-  const audioRef = useRef<null | HTMLAudioElement>(null);
-  const [soundFile, setSoundFile] = useState<null | string>(null);
+  const soundCtx = useContext(SoundContext);
 
   const onClickHandler = () => {
-    if (sound) audioRef.current!.play();
+    switch (sound) {
+      case 'coin':
+        soundCtx?.setSound('/audio/nintendo-super-mario-coin.wav');
+        break;
+      case 'nintendo-woho':
+        soundCtx?.setSound('/audio/nintendo-woohoo.wav');
+        break;
+      case 'nintendo-switch-click':
+        soundCtx?.setSound('/audio/nintendo-switch-click.mp3');
+      default:
+        soundCtx?.setSound(null);
+    }
 
     if (href) {
-      setTimeout(() => {
-        router.push(href);
-      }, 650);
+      router.push(href);
     }
 
     if (onClick) onClick();
   };
-
-  useEffect(() => {
-    if (sound) {
-      switch (sound) {
-        case 'coin':
-          setSoundFile('/audio/nintendo-super-mario-coin.wav');
-          break;
-        case 'nintendo-woho':
-          setSoundFile('/audio/nintendo-woohoo.wav');
-          break;
-        default:
-          '';
-      }
-    }
-  }, [sound]);
 
   return (
     <button
@@ -77,16 +71,10 @@ const Button: React.FC<ButtonProps> = ({
               className ? className : ''
             }`
           : ''
-      } ${
-        variant === 'unstyled'
-          ? `hover:scale-110 ${className ? className : ''}`
-          : ''
-      }`}
+      } ${variant === 'unstyled' ? `${className ? className : ''}` : ''}`}
       disabled={disabled}
       onClick={onClickHandler}
     >
-      {/* Add playing sounds when button is clicked (based on currently selected theme? Mario -> It'see me, Mario, or Nintendo Switch click sound */}
-      {sound && <audio src={soundFile!} ref={audioRef}></audio>}
       {children}
     </button>
   );

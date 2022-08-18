@@ -28,7 +28,7 @@ const soundtracksData: Soundtrack[] = [
 
 const SelectASoundtrack: React.FC = () => {
   const audioRef = useRef<null | HTMLAudioElement>(null);
-  const [currentTitle, setCurrentTitle] = useState(soundtracksData[0].title);
+  const [currentTitle, setCurrentTitle] = useState('Spiele einen Soundtrack');
   const [showSoundtracks, setShowSoundtracks] = useState(false);
   const [currentSoundtrack, setCurrentSoundtrack] = useState<null | Soundtrack>(
     null
@@ -75,7 +75,7 @@ const SelectASoundtrack: React.FC = () => {
     }
 
     if (!currentSoundtrack) {
-      setCurrentTitle(soundtracksData[0].title);
+      setCurrentTitle('Spiele einen Soundtrack');
       setPlaying(false);
     }
   }, [currentSoundtrack]);
@@ -85,7 +85,7 @@ const SelectASoundtrack: React.FC = () => {
   }`;
 
   return (
-    <div className="bg-themed-dark px-4 py-3 rounded-xl transition z-10">
+    <div className="bg-themed-dark px-4 py-3 rounded-xl transition z-10 hover:scale-105">
       <Heading className="flex items-center gap-1 justify-between text-xs cursor-pointer w-44">
         {currentSoundtrack && (
           <audio src={currentSoundtrack.src} ref={audioRef}></audio>
@@ -93,10 +93,11 @@ const SelectASoundtrack: React.FC = () => {
 
         <Button
           variant="unstyled"
-          className="flex-1 flex items-center gap-1"
+          className="flex-1 flex items-center justify-start gap-1"
           onClick={() => setShowSoundtracks((previousState) => !previousState)}
         >
-          <SelectorIcon className="w-5 h-5" /> {currentTitle}
+          <SelectorIcon className="w-5 h-5" />
+          <span className="text-left">{currentTitle}</span>
         </Button>
 
         <div className="flex items-center gap-3">
@@ -148,7 +149,7 @@ const SelectASoundtrack: React.FC = () => {
                 {soundtracksData.map((soundtrack) => (
                   <li
                     key={soundtrack.title}
-                    className="flex items-center justify-between gap-1 cursor-pointer transition hover:scale-105"
+                    className="flex items-center justify-between gap-1 cursor-pointer"
                     onClick={(e) => playPauseSoundtrackHandler(e, soundtrack)}
                   >
                     <span className="flex items-center gap-1">

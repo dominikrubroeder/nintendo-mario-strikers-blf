@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
-import React from 'react';
+import React, { useContext } from 'react';
 import GameFeatures from '../../components/GameFeatures';
 import CharacterSelection from '../../components/CharacterSelection';
 import TheCommunityQuotes from '../../components/TheCommunityQuotes';
@@ -11,8 +11,11 @@ import SelectASoundtrack from '../../components/SelectASoundtrack';
 import { PlayIcon } from '@heroicons/react/solid';
 import Button from '../../components/base/Button';
 import AnimatedSoundbarsIcon from '../../components/animation/svg/AnimatedSoundbarsIcon';
+import SoundContext from '../../store/soundContext';
 
 const InfoPage: NextPage = () => {
+  const soundCtx = useContext(SoundContext);
+
   return (
     <div>
       <Head>
@@ -30,10 +33,18 @@ const InfoPage: NextPage = () => {
           <Heading className="mx-auto px-4 text-6xl md:text-8xl md:leading-tight text-center break-all font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent">
             Zuallererst...
           </Heading>
-          Play a song:
-          <Button variant="icon">
-            <PlayIcon className="w-8 h-8 bg-gradient-to-r from-red-500 to-orange-500 rounded-full" />
-          </Button>
+
+          <div className="flex flex-col gap-2">
+            Spiele einen Soundtrack:
+            <Button
+              variant="icon"
+              onClick={() =>
+                soundCtx?.setSound('/audio/soundtracks/main-menu.mp3')
+              }
+            >
+              <PlayIcon className="w-16 h-16 bg-gradient-to-r from-red-500 to-orange-500 rounded-full" />
+            </Button>
+          </div>
         </section>
 
         <TheCommunityQuotes />
