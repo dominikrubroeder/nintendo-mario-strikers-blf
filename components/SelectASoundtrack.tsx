@@ -99,25 +99,29 @@ const SelectASoundtrack: React.FC = () => {
           <SelectorIcon className="w-5 h-5" /> {currentTitle}
         </Button>
 
-        {!playing && (
-          <Button
-            variant="icon"
-            className={playPauseButtonClasses}
-            onClick={playSoundtrackHandler}
-          >
-            <PlayIcon className="w-5 h-5" />
-          </Button>
-        )}
+        <div className="flex items-center gap-3">
+          {playing && !showSoundtracks && <AnimatedSoundbarsIcon />}
 
-        {playing && (
-          <Button
-            variant="icon"
-            className={playPauseButtonClasses}
-            onClick={pauseSoundtrackHandler}
-          >
-            <PauseIcon className="w-5 h-5" />
-          </Button>
-        )}
+          {!playing && (
+            <Button
+              variant="icon"
+              className={playPauseButtonClasses}
+              onClick={playSoundtrackHandler}
+            >
+              <PlayIcon className="w-5 h-5" />
+            </Button>
+          )}
+
+          {playing && (
+            <Button
+              variant="icon"
+              className={playPauseButtonClasses}
+              onClick={pauseSoundtrackHandler}
+            >
+              <PauseIcon className="w-5 h-5" />
+            </Button>
+          )}
+        </div>
       </Heading>
 
       <AnimatePresence>
@@ -144,7 +148,7 @@ const SelectASoundtrack: React.FC = () => {
                 {soundtracksData.map((soundtrack) => (
                   <li
                     key={soundtrack.title}
-                    className="flex items-center justify-between gap-1 cursor-pointer"
+                    className="flex items-center justify-between gap-1 cursor-pointer transition hover:scale-105"
                     onClick={(e) => playPauseSoundtrackHandler(e, soundtrack)}
                   >
                     <span className="flex items-center gap-1">
