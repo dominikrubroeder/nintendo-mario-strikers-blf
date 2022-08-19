@@ -9,8 +9,6 @@ const AppContext = createContext({
   edition: null,
   validateEdition: function (edition) {},
   buyable: false,
-  showStickyBuyBar: false,
-  toggleOverlay: function () {},
 });
 
 export function AppContextProvider(props) {
@@ -18,8 +16,6 @@ export function AppContextProvider(props) {
   const [activeEdition, setActiveEdition] = useState();
   const [activeTheme, setActiveTheme] = useState();
   const [buyable, setBuyable] = useState(false);
-  const [showStickyBuyBar, setShowStickyBuyBar] = useState();
-  const [showOverlay, setShowOverlay] = useState();
 
   function initThemeHandler() {
     if (localStorage.getItem('themed') && localStorage.getItem('theme')) {
@@ -142,8 +138,6 @@ export function AppContextProvider(props) {
     edition: activeEdition,
     validateEdition: validateEditionHandler,
     buyable,
-    showStickyBuyBar,
-    toggleOverlay: toggleOverlayHandler,
   };
 
   return (

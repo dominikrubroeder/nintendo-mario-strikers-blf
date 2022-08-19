@@ -7,20 +7,19 @@ interface AccordionProps {
 }
 
 const Accordion: React.FC<AccordionProps> = ({ title, children }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [expanded, setExpaned] = useState(false);
 
   return (
-    <div className="bg-themed-dark p-4 rounded-xl">
-      <div
-        key="question"
-        className="cursor-pointer"
-        onClick={() => setIsOpen((previousState) => !previousState)}
+    <div className="grid gap-2 bg-themed-dark py-3 px-4 rounded-xl transition hover:scale-105">
+      <header
+        className="cursor-pointer min-w-[8.25rem]"
+        onClick={() => setExpaned((previousState) => !previousState)}
       >
-        <div>{title}</div>
-      </div>
+        {title}
+      </header>
 
       <AnimatePresence>
-        {isOpen && (
+        {expanded && (
           <motion.div
             key="content"
             initial={{ opacity: 0, height: 0 }}
