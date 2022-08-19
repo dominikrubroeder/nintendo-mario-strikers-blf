@@ -14,7 +14,7 @@ const AppContext = createContext({
 });
 
 export function AppContextProvider(props) {
-  const [hasInteractiveAudio, setHasInteractiveAudio] = useState(true);
+  const [hasInteractiveAudio, setHasInteractiveAudio] = useState(null);
   const [activeEdition, setActiveEdition] = useState();
   const [activeTheme, setActiveTheme] = useState();
   const [buyable, setBuyable] = useState(false);
@@ -45,6 +45,7 @@ export function AppContextProvider(props) {
   }
 
   function toggleInteractiveAudioHandler() {
+    console.log('toggle...');
     setHasInteractiveAudio((previousState) => !previousState);
   }
 
@@ -93,19 +94,33 @@ export function AppContextProvider(props) {
     setBuyable(true);
   }
 
+  const initInteractiveAudio = () => {
+    if (localStorage.getItem('interactiveAudio') === null) {
+      setHasInteractiveAudio(true);
+      return;
+    }
+
+    if (localStorage.getItem('interactiveAudio') === 'true') {
+      setHasInteractiveAudio(true);
+      return;
+    }
+
+    if (localStorage.getItem('interactiveAudio') === 'false') {
+      setHasInteractiveAudio(false);
+      return;
+    }
+  };
+
   // Initial page load instructions
   useEffect(() => {
     initEditionHandler();
     initThemeHandler();
     initBuyableHandler();
-  });
+    initInteractiveAudio();
+  }, []);
 
   useEffect(() => {
-    if (hasInteractiveAudio) {
-      localStorage.setItem('interactiveAudio', true);
-    } else {
-      localStorage.setItem('interactiveAudio', false);
-    }
+    localStorage.setItem('interactiveAudio', hasInteractiveAudio);
   }, [hasInteractiveAudio]);
 
   const context = {

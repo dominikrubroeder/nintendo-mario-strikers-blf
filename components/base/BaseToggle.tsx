@@ -1,23 +1,28 @@
-import { useState } from 'react';
+import React from 'react';
 
-const BaseToggle = (props) => {
-  const [enabled, setEnabled] = useState(props.enabled || true);
+interface BaseToggleProps {
+  label: string;
+  enabled: boolean;
+  onClick: () => void;
+  enabledIcon: any;
+  disabledIcon: any;
+}
 
-  const toggle = () => {
-    setEnabled((previousState) => !previousState);
-
-    // If there are actions onClick controlled by the outter component
-    if (props.onClick) props.onClick();
-  };
-
+const BaseToggle: React.FC<BaseToggleProps> = ({
+  label,
+  enabled = false,
+  onClick,
+  enabledIcon,
+  disabledIcon,
+}) => {
   return (
     <div
       className={`flex items-center gap-1 text-xs cursor-pointer ${
         enabled ? 'text-accent' : 'text-gray-400'
       }`}
-      onClick={toggle}
+      onClick={onClick}
     >
-      <span className="themed:text-white">{props.label}</span>
+      <span className="themed:text-white">{label}</span>
 
       <div
         className={`flex w-10 p-1 rounded-full bg-gray-100 transition-all ${
@@ -29,7 +34,7 @@ const BaseToggle = (props) => {
             enabled ? 'bg-white translate-x-full' : 'bg-gray-300'
           }`}
         >
-          {enabled ? props.enabledIcon : props.disabledIcon}
+          {enabled ? enabledIcon : disabledIcon}
         </span>
       </div>
     </div>
