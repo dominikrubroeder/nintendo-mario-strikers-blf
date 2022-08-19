@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import { useContext } from 'react';
 import { Edition, Editions } from '../../../data/editions';
@@ -52,19 +53,38 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
           </div>
         </header>
 
-        <div>
-          {edition.id === Editions.nostalgiaId && appCtx.theme && (
-            <Image
-              width={80}
-              height={80}
-              src={`/images/characters/NSwitch-character-sketch-${appCtx.theme
-                .replace(' ', '')
-                .toLowerCase()}.png`}
-              alt={appCtx.theme}
-            />
+        <AnimatePresence>
+          {appCtx.edition === edition.id && (
+            <motion.div
+              key="description"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{
+                opacity: 1,
+                height: 'auto',
+              }}
+              exit={{
+                opacity: 1,
+              }}
+              transition={{
+                type: 'spring',
+                stiffness: 400,
+              }}
+            >
+              {edition.id === Editions.nostalgiaId && appCtx.theme && (
+                <Image
+                  width={80}
+                  height={80}
+                  src={`/images/characters/NSwitch-character-sketch-${appCtx.theme
+                    .replace(' ', '')
+                    .toLowerCase()}.png`}
+                  alt={appCtx.theme}
+                />
+              )}
+
+              {children}
+            </motion.div>
           )}
-          {appCtx.edition === edition.id && children}
-        </div>
+        </AnimatePresence>
       </div>
     </div>
   );

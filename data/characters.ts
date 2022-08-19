@@ -145,7 +145,7 @@ const characters: Character[] = [
   },
   {
     name: 'donkey-kong',
-    sound: '/audio/sound-donkey-1.mp3',
+    sound: '/audio/sound-donkey-kong-1.mp3',
     image: '/images/characters/NSwitch-character-sketch-donkey-kong.png',
     imageGallery: [
       '/images/characters/NSwitch-character-sketch-mario.png',
@@ -202,7 +202,7 @@ const characters: Character[] = [
   },
   {
     name: 'bumm-bumm',
-    sound: '/audio/sound-donkey-kong-2.mp3',
+    sound: '/audio/sound-donkey-kong-1.mp3',
     image: '/images/characters/NSwitch-character-sketch-bumm-bumm.png',
     imageGallery: [
       '/images/characters/NSwitch-character-sketch-mario.png',
