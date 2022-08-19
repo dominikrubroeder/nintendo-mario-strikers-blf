@@ -80,7 +80,7 @@ const SelectASoundtrack: React.FC = () => {
     }
   }, [currentSoundtrack]);
 
-  const playPauseButtonClasses = `relative h-4 w-4 before:content-[''] before:rounded-full before:block before:absolute before:inset-0 before:w-[1rem] before:z-0 before:h-[1rem] after:content-[''] after:rounded-full after:block after:absolute after:inset-0 after:w-[1rem] after:z-0 after:h-[1rem] ${
+  const playPauseButtonClasses = `relative h-4 w-4 text-accent z-10 themed:text-white before:content-[''] before:w-4 before:h-4 before:bg-accent/20 before:themed:bg-white/20 before:rounded-full before:block before:absolute before:inset-0 before:w-[1rem] before:z-0 before:h-[1rem] after:content-[''] after:w-4 after:h-4 after:bg-accent/20 after:themed:bg-white/20 after:rounded-full after:block after:absolute after:inset-0 after:w-[1rem] after:z-0 after:h-[1rem] ${
     playing ? 'before:animate-audioWave1 after:animate-audioWave2' : ''
   }`;
 
@@ -97,7 +97,8 @@ const SelectASoundtrack: React.FC = () => {
           onClick={() => setShowSoundtracks((previousState) => !previousState)}
         >
           <SelectorIcon className="w-5 h-5" />
-          <span className="text-left">{currentTitle}</span>
+
+          <span className="text-left w-max">{currentTitle}</span>
         </Button>
 
         <div className="flex items-center gap-3">

@@ -35,18 +35,18 @@ module.exports = {
       },
       keyframes: {
         audioWave1: {
-          '0%, 100%': { 'box-shadow': '0 0 0 0.4em rgba(255, 255, 255, 0.4)' },
-          '25%': { 'box-shadow': '0 0 0 0.15em rgba(255, 255, 255, 0.15)' },
-          '50%': { 'box-shadow': '0 0 0 0.55em rgba(255, 255, 255, 0.55)' },
-          '75%': { 'box-shadow': '0 0 0 0.25em rgba(255, 255, 255, 0.25)' },
+          '0%, 100%': { transform: 'scale(1.0)' },
+          '25%': { transform: 'scale(1.6)' },
+          '50%': { transform: 'scale(1.05)' },
+          '75%': { transform: 'scale(1.4)' },
         },
         audioWave2: {
           '0%, 100%': {
-            'box-shadow': '0 0 0 0.25em rgba(255, 255, 255, 0.15)',
+            transform: 'scale(1.2)',
           },
-          '25%': { 'box-shadow': '0 0 0 0.4em rgba(255, 255, 255, 0.3)' },
-          '50%': { 'box-shadow': '0 0 0 0.15em rgba(255, 255, 255, 0.05)' },
-          '75%': { 'box-shadow': '0 0 0 0.55em rgba(255, 255, 255, 0.45)' },
+          '25%': { transform: 'scale(1.05)' },
+          '50%': { transform: 'scale(1.4)' },
+          '75%': { transform: 'scale(1.6)' },
         },
         growthHeight: {
           '0%, 100%': {

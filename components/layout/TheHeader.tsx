@@ -7,6 +7,7 @@ import Logo from '../svg/Logo';
 import SelectASoundtrack from '../SelectASoundtrack';
 import CurrentSound from '../audio/CurrentSound';
 import SpringBounceWhenInView from '../animation/SpringBounceWhenInView';
+import Tooltip from '../Tooltip';
 
 const TheHeader: React.FC = () => {
   const appCtx = useContext(AppContext);
@@ -36,13 +37,25 @@ const TheHeader: React.FC = () => {
           )}
 
           <div className="flex items-center justify-center relative bg-themed-dark themed:text-white p-2 rounded-full">
-            <BaseToggle
-              label="Interaktives Audio"
-              enabled={appCtx.hasInteractiveAudio}
-              enabledIcon={<VolumeUpIcon className="w-3 h-3"></VolumeUpIcon>}
-              disabledIcon={<VolumeOffIcon className="w-3 h-3"></VolumeOffIcon>}
-              onClick={appCtx.toggleInteractiveAudio}
-            />
+            <Tooltip
+              title={
+                <div className="flex items-center gap-1">
+                  <span className="w-max text-xs">Interaktives Audio</span>
+                  <BaseToggle
+                    enabled={appCtx.hasInteractiveAudio}
+                    enabledIcon={
+                      <VolumeUpIcon className="w-3 h-3"></VolumeUpIcon>
+                    }
+                    disabledIcon={
+                      <VolumeOffIcon className="w-3 h-3"></VolumeOffIcon>
+                    }
+                    onClick={appCtx.toggleInteractiveAudio}
+                  />
+                </div>
+              }
+            >
+              Mehr Infos zu interaktives Audio
+            </Tooltip>
           </div>
         </div>
       </header>

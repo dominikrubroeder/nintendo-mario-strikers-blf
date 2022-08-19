@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface BaseToggleProps {
-  label: string;
+  label?: string;
   enabled: boolean;
   onClick: () => void;
   enabledIcon: any;
@@ -22,7 +22,7 @@ const BaseToggle: React.FC<BaseToggleProps> = ({
       }`}
       onClick={onClick}
     >
-      <span className="themed:text-white">{label}</span>
+      {label && <span className="themed:text-white">{label}</span>}
 
       <div
         className={`flex w-10 p-1 rounded-full bg-gray-100 transition-all ${

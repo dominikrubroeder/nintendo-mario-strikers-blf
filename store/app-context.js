@@ -45,7 +45,6 @@ export function AppContextProvider(props) {
   }
 
   function toggleInteractiveAudioHandler() {
-    console.log('toggle...');
     setHasInteractiveAudio((previousState) => !previousState);
   }
 
@@ -122,6 +121,18 @@ export function AppContextProvider(props) {
   useEffect(() => {
     localStorage.setItem('interactiveAudio', hasInteractiveAudio);
   }, [hasInteractiveAudio]);
+
+  useEffect(() => {
+    initThemeHandler();
+  }, [activeTheme]);
+
+  useEffect(() => {
+    initBuyableHandler();
+  }, [buyable]);
+
+  useEffect(() => {
+    initEditionHandler();
+  }, [activeEdition]);
 
   const context = {
     hasInteractiveAudio,

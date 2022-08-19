@@ -8,10 +8,11 @@ const Tooltip = (props) => {
   return (
     <div className="relative">
       <div
-        className="flex items-center"
+        className="flex items-center cursor-pointer"
         onClick={() => setExpanded((previousState) => !previousState)}
       >
         {props.title}
+
         <ChevronUpIcon
           className={`h-5 w-5 transition-all ${
             expanded ? 'rotate-180' : 'rotate-0'
