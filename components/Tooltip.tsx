@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { ChevronUpIcon, CheckCircleIcon } from '@heroicons/react/solid';
+import { ChevronUpIcon } from '@heroicons/react/solid';
 import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
 import Button from './base/Button';
+import Image from 'next/image';
 
 interface TooltipProps {
   title: any;
@@ -38,7 +39,12 @@ const Tooltip: React.FC<TooltipProps> = ({ title, children }) => {
             className="flex items-center justify-end gap-0.5 font-bold mt-4 text-xs"
             onClick={() => setExpanded(false)}
           >
-            <CheckCircleIcon className="w-4 h-4"></CheckCircleIcon>
+            <Image
+              width={32}
+              height={32}
+              src="/images/items/CI_NSwitch_MarioStrikersBLF_AW_Items_Star.png"
+              alt="Nintendo star item"
+            />
             Verstanden
           </Button>
         </SpringBounceWhenInView>

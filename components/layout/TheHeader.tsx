@@ -17,7 +17,7 @@ const TheHeader: React.FC = () => {
     <React.Fragment>
       <CurrentSound />
 
-      <header className="flex items-start justify-between p-4 w-full z-40 h-20 themed:border-b-transparent">
+      <header className="relative flex items-start justify-between p-4 w-full h-20 z-40">
         <div className="flex-1"></div>
 
         <div className="flex-1 flex items-center justify-center">

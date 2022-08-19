@@ -6,7 +6,6 @@ import {
   PlayIcon,
   PauseIcon,
 } from '@heroicons/react/solid';
-import Heading from './typography/Heading';
 import Button from './base/Button';
 import AnimatedSoundbarsIcon from './animation/svg/AnimatedSoundbarsIcon';
 
@@ -85,8 +84,8 @@ const SelectASoundtrack: React.FC = () => {
   }`;
 
   return (
-    <div className="bg-themed-dark px-4 py-3 rounded-xl transition z-10 hover:scale-105">
-      <Heading className="flex items-center gap-1 justify-between text-xs cursor-pointer w-44">
+    <div className="bg-accent/10 bg-themed-dark px-4 py-3 rounded-xl transition z-10 min-w-[12rem] hover:scale-105">
+      <header className="flex items-center gap-2 justify-between text-xs cursor-pointer">
         {currentSoundtrack && (
           <audio src={currentSoundtrack.src} ref={audioRef}></audio>
         )}
@@ -123,7 +122,7 @@ const SelectASoundtrack: React.FC = () => {
             </Button>
           )}
         </div>
-      </Heading>
+      </header>
 
       <AnimatePresence>
         {showSoundtracks && (
