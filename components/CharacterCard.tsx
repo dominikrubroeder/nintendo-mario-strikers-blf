@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { useContext, useRef } from 'react';
 import { Constants } from '../data/constants';
-import AppContext from '../store/app-context';
+import AppContext from '../store/appContext';
 
 interface CharacterCardProps {
   id: string;

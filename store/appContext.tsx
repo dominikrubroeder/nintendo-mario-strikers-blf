@@ -1,18 +1,28 @@
-import { createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { Constants } from '../data/constants';
 import { Editions } from '../data/editions';
 
-const AppContext = createContext({
-  selectedCharacter: null,
-  setCharacter: function (character) {},
-  selectedEdition: null,
-  validateEdition: function (edition) {},
-  buyable: false,
-});
+type AppContextType = {
+  selectedCharacter: null | string;
+  setCharacter: (character: string | null) => void;
+  selectedEdition: null | string;
+  validateEdition: (edition: string | null) => void;
+  buyable: boolean;
+};
 
-export function AppContextProvider(props) {
-  const [selectedEdition, setSelectedEdition] = useState();
-  const [selectedCharacter, setSelectedCharacter] = useState();
+const AppContext = createContext<null | AppContextType>(null);
+
+interface AppContextProviderProps {
+  children: React.ReactNode;
+}
+
+export const AppContextProvider: React.FC<AppContextProviderProps> = ({
+  children,
+}) => {
+  const [selectedCharacter, setSelectedCharacter] = useState<null | string>(
+    null
+  );
+  const [selectedEdition, setSelectedEdition] = useState<null | string>(null);
   const [buyable, setBuyable] = useState(false);
 
   function initThemeHandler() {
@@ -26,12 +36,12 @@ export function AppContextProvider(props) {
     }
   }
 
-  function setThemeHandler(character) {
+  function setThemeHandler(character: string | null) {
     document.body.className = `themed theme-${character} bg-accent text-white`;
 
-    localStorage.setItem(Constants.Themed, true);
+    localStorage.setItem(Constants.Themed, String(true));
 
-    localStorage.setItem(Constants.Theme, character);
+    localStorage.setItem(Constants.Theme, character ?? '');
 
     setSelectedCharacter(character);
 
@@ -45,7 +55,7 @@ export function AppContextProvider(props) {
     }
   }
 
-  function validateEditionHandler(edition) {
+  function validateEditionHandler(edition: string | null) {
     if (edition === Editions.standardId) {
       document.body.className = '';
       localStorage.removeItem(Constants.Themed);
@@ -58,7 +68,8 @@ export function AppContextProvider(props) {
       setBuyable(false);
     }
 
-    localStorage.setItem(Constants.Edition, edition);
+    localStorage.setItem(Constants.Edition, edition ?? '');
+
     setSelectedEdition(edition);
   }
 
@@ -68,14 +79,8 @@ export function AppContextProvider(props) {
 
     if (
       !storedEdition ||
-      (storedEdition === Editions.standardId &&
-        storedEdition === Editions.nostalgiaId)
+      (storedEdition === Editions.nostalgiaId && !isThemed)
     ) {
-      setBuyable(false);
-      return;
-    }
-
-    if (storedEdition === Editions.nostalgiaId && !isThemed) {
       setBuyable(false);
       return;
     }
@@ -110,9 +115,7 @@ export function AppContextProvider(props) {
     buyable,
   };
 
-  return (
-    <AppContext.Provider value={context}>{props.children}</AppContext.Provider>
-  );
-}
+  return <AppContext.Provider value={context}>{children}</AppContext.Provider>;
+};
 
 export default AppContext;

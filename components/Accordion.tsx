@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Button from './base/Button';
 import Image from 'next/image';
 import AudioContext from '../store/audioContext';
-import AppContext from '../store/app-context';
+import AppContext from '../store/appContext';
 
 interface AccordionProps {
   title: any;

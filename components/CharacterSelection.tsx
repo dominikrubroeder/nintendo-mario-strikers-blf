@@ -1,6 +1,6 @@
 import React, { useRef, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
-import AppContext from '../store/app-context';
+import AppContext from '../store/appContext';
 import teams from '../data/characters';
 import CharacterCard from './CharacterCard';
 import SpringBounceWhenInView from './animation/SpringBounceWhenInView';

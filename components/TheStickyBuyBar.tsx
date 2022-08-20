@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Button from './base/Button';
 import ReleaseCountdown from './ReleaseCountdown';
-import AppContext from '../store/app-context';
+import AppContext from '../store/appContext';
 import { ArrowSmUpIcon } from '@heroicons/react/outline';
 import { useRouter } from 'next/router';
 import Heading from './typography/Heading';

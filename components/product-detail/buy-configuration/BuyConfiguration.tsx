@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { motion } from 'framer-motion';
-import AppContext from '../../../store/app-context';
+import AppContext from '../../../store/appContext';
 import ReleaseCountdown from '../../ReleaseCountdown';
 import EditionSelection from './EditionSelection';
 import CharacterSelection from '../../CharacterSelection';

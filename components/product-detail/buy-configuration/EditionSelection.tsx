@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { useRouter } from 'next/router';
-import AppContext from '../../../store/app-context';
+import AppContext from '../../../store/appContext';
 import editions from '../../../data/editions';
 import SpringBounceWhenInView from '../../animation/SpringBounceWhenInView';
 import EditionConfigOption from './EditionConfigOption';

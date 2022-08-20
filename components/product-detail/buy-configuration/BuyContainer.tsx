@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef } from 'react';
-import AppContext from '../../../store/app-context';
+import AppContext from '../../../store/appContext';
 import useIsOnScreen from '../../../hooks/useIsOnScreen';
 import SpringBounceWhenInView from '../../animation/SpringBounceWhenInView';
 import Button from '../../base/Button';
