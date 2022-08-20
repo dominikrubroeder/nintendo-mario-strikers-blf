@@ -21,7 +21,7 @@ const Accordion: React.FC<AccordionProps> = ({
   const [expanded, setExpanded] = useState(false);
 
   const onCloseHandler = () => {
-    soundCtx?.setSound(`/audio/sound-${appCtx.theme}-2.mp3`);
+    soundCtx?.setSound(`/audio/sound-${appCtx.selectedCharacter}-2.mp3`);
     setExpanded(false);
   };
 

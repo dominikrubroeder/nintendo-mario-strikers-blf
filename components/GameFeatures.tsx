@@ -10,7 +10,7 @@ import CharacterOverlay from './CharacterOverlay';
 const GameFeatures: React.FC = () => {
   const appCtx = useContext(AppContext);
   const character =
-    characters.find((character) => character.name === appCtx.theme) ??
+    characters.find((character) => character.id === appCtx.selectedCharacter) ??
     characters[0];
   const [showCharacterOverlay, setShowCharacterOverlay] = useState(false);
 
@@ -36,10 +36,11 @@ const GameFeatures: React.FC = () => {
           />
         )}
 
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-center gap-4">
           <SpringBounceWhenInView>
             <div className="max-w-sm">
               <CharacterCard
+                id={character.id}
                 name={character.name}
                 sound={character.sound}
                 image={character.image}
@@ -48,8 +49,15 @@ const GameFeatures: React.FC = () => {
             </div>
           </SpringBounceWhenInView>
 
-          <Heading as="h2" className="text-xl font-bold">
-            Dein aktuelles Team
+          <Heading
+            as="h2"
+            className="my-8 text-6xl md:text-9xl md:leading-tight font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent bg-gradient-themed"
+          >
+            Dein
+            <br />
+            aktuelles
+            <br />
+            Team
           </Heading>
         </div>
       </section>

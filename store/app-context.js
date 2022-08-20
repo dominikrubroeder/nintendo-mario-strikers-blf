@@ -4,8 +4,8 @@ import { Editions } from '../data/editions';
 const AppContext = createContext({
   hasInteractiveAudio: true,
   toggleInteractiveAudio: function () {},
-  theme: null,
-  setTheme: function (character) {},
+  selectedCharacter: null,
+  setCharacter: function (character) {},
   edition: null,
   validateEdition: function (edition) {},
   buyable: false,
@@ -14,13 +14,13 @@ const AppContext = createContext({
 export function AppContextProvider(props) {
   const [hasInteractiveAudio, setHasInteractiveAudio] = useState(null);
   const [activeEdition, setActiveEdition] = useState();
-  const [activeTheme, setActiveTheme] = useState();
+  const [selectedCharacter, setSelectedCharacter] = useState();
   const [buyable, setBuyable] = useState(false);
 
   function initThemeHandler() {
     if (localStorage.getItem('themed') && localStorage.getItem('theme')) {
       const localStorageTheme = localStorage.getItem('theme');
-      setActiveTheme(localStorageTheme);
+      setSelectedCharacter(localStorageTheme);
       document.body.className = `themed theme-${localStorageTheme} bg-accent text-white`;
     }
   }
@@ -32,7 +32,7 @@ export function AppContextProvider(props) {
 
     localStorage.setItem('theme', character);
 
-    setActiveTheme(character);
+    setSelectedCharacter(character);
 
     setBuyable(true);
   }
@@ -57,7 +57,7 @@ export function AppContextProvider(props) {
       document.body.className = '';
       localStorage.removeItem('themed');
       localStorage.removeItem('theme');
-      setActiveTheme(null);
+      setSelectedCharacter(null);
       setBuyable(true);
     }
 
@@ -121,7 +121,7 @@ export function AppContextProvider(props) {
 
   useEffect(() => {
     initThemeHandler();
-  }, [activeTheme]);
+  }, [selectedCharacter]);
 
   useEffect(() => {
     initBuyableHandler();
@@ -134,8 +134,8 @@ export function AppContextProvider(props) {
   const context = {
     hasInteractiveAudio,
     toggleInteractiveAudio: toggleInteractiveAudioHandler,
-    theme: activeTheme,
-    setTheme: setThemeHandler,
+    selectedCharacter: selectedCharacter,
+    setCharacter: setThemeHandler,
     edition: activeEdition,
     validateEdition: validateEditionHandler,
     buyable,

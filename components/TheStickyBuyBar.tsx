@@ -25,12 +25,12 @@ export default function TheStickyBuyBar(props) {
       }`}
     >
       <div className="flex items-center gap-2">
-        {appCtx.theme && (
+        {appCtx.selectedCharacter && (
           <Image
-            src={`/images/characters/NSwitch-character-sketch-${appCtx.theme}.png`}
+            src={`/images/characters/NSwitch-character-sketch-${appCtx.selectedCharacter}.png`}
             width={48}
             height={48}
-            alt={`${appCtx.theme} sketch`}
+            alt={`${appCtx.selectedCharacter} sketch`}
           />
         )}
         <div className="grid">
@@ -49,7 +49,9 @@ export default function TheStickyBuyBar(props) {
                       .charAt(0)
                       .toUpperCase()}${appCtx.edition.slice(1)} Edition`
                   : ''}
-                {appCtx.theme ? ` – ${appCtx.theme.toUpperCase()}` : ''}
+                {appCtx.selectedCharacter
+                  ? ` – ${appCtx.selectedCharacter.toUpperCase()}`
+                  : ''}
                 {props.price ? ` – ${props.price}€` : ''}
               </span>
               {router.pathname ===

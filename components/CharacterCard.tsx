@@ -32,7 +32,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
   return (
     <div
       className={`group relative flex items-center justify-center h-96 rounded-3xl cursor-pointer hover:border-gray-300 hover:bg-themed-dark hover:border-themed-dark transition-all ${
-        appCtx.theme === id ? 'bg-themed-dark' : ''
+        appCtx.selectedCharacter === id ? 'bg-themed-dark' : ''
       }`}
       onClick={onClickHandler}
     >
