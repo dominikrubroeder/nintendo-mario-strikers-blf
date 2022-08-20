@@ -40,7 +40,7 @@ const BuyConfiguration = (props) => {
 
         <EditionSelection />
 
-        {appCtx.selectedEdition === Editions.nostalgiaId && (
+        {appCtx?.selectedEdition === Editions.nostalgiaId && (
           <CharacterSelection />
         )}
 

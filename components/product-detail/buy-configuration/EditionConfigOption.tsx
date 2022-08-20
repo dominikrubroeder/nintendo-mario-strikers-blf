@@ -29,7 +29,7 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
   return (
     <div
       className={`w-full border hover:border-gray-300 rounded-3xl p-8 cursor-pointer ${
-        edition.id === appCtx.selectedEdition
+        edition.id === appCtx?.selectedEdition
           ? 'border-accent hover:border-accent bg-themed-dark hover:border-themed'
           : 'border-gray-200 border-themed-dark'
       }`}
@@ -41,8 +41,8 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
             Mario Strikers: Battle League Football
             <small className="text-accent themed:text-white font-normal block">
               <span>{`${edition.title} Edition`}</span>
-              {edition.id === Editions.nostalgiaId && appCtx.selectedCharacter
-                ? ` – ${appCtx.selectedCharacter.toUpperCase()}`
+              {edition.id === Editions.nostalgiaId && appCtx?.selectedCharacter
+                ? ` – ${appCtx?.selectedCharacter.toUpperCase()}`
                 : ''}
             </small>
           </h3>
@@ -54,7 +54,7 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
         </header>
 
         <AnimatePresence>
-          {appCtx.selectedEdition === edition.id && (
+          {appCtx?.selectedEdition === edition.id && (
             <motion.div
               key="description"
               initial={{ opacity: 0, height: 0 }}
@@ -71,14 +71,14 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
               }}
             >
               {edition.id === Editions.nostalgiaId &&
-                appCtx.selectedCharacter && (
+                appCtx?.selectedCharacter && (
                   <Image
                     width={80}
                     height={80}
-                    src={`/images/characters/NSwitch-character-sketch-${appCtx.selectedCharacter
+                    src={`/images/characters/NSwitch-character-sketch-${appCtx?.selectedCharacter
                       .replace(' ', '')
                       .toLowerCase()}.png`}
-                    alt={appCtx.selectedCharacter}
+                    alt={appCtx?.selectedCharacter}
                   />
                 )}
 

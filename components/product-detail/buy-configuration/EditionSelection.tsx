@@ -10,7 +10,7 @@ const EditionSelection: React.FC = () => {
   const router = useRouter();
 
   const selectedEditionHandler = (edition: string) => {
-    appCtx.validateEdition(edition);
+    appCtx?.validateEdition(edition);
 
     router.push(`${router.pathname}/?edition=${edition}`, undefined, {
       shallow: true,

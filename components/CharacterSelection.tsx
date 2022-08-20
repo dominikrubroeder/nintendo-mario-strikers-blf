@@ -18,17 +18,17 @@ const CharacterSelection: React.FC<CharacterSelectionProps> = ({
   const router = useRouter();
   const teamSection = useRef<null | HTMLDivElement>(null);
   const [showCharacterOverlay, setShowCharacterOverlay] = useState(false);
-  const currentTheme = appCtx.selectedCharacter
-    ? appCtx.selectedCharacter.toUpperCase()
+  const currentTheme = appCtx?.selectedCharacter
+    ? appCtx?.selectedCharacter.toUpperCase()
     : undefined;
 
   // Set theme based on selected team (nintendo character)
   // Save selected theme to local storage
   const setTeam = (team: string) => {
-    appCtx.setCharacter(team);
+    appCtx?.setCharacter(team);
 
     router.push(
-      `${router.pathname}/?edition=${appCtx.selectedEdition}?team=${team}`,
+      `${router.pathname}/?edition=${appCtx?.selectedEdition}?team=${team}`,
       undefined,
       {
         shallow: true,

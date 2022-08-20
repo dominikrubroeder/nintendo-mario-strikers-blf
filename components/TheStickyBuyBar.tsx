@@ -25,12 +25,12 @@ export default function TheStickyBuyBar(props) {
       }`}
     >
       <div className="flex items-center gap-2">
-        {appCtx.selectedCharacter && (
+        {appCtx?.selectedCharacter && (
           <Image
-            src={`/images/characters/NSwitch-character-sketch-${appCtx.selectedCharacter}.png`}
+            src={`/images/characters/NSwitch-character-sketch-${appCtx?.selectedCharacter}.png`}
             width={48}
             height={48}
-            alt={`${appCtx.selectedCharacter} sketch`}
+            alt={`${appCtx?.selectedCharacter} sketch`}
           />
         )}
         <div className="grid">
@@ -38,19 +38,21 @@ export default function TheStickyBuyBar(props) {
             Mario Strikers: Battle League Football | Nintendo Switch
           </Heading>
 
-          {appCtx.selectedEdition && (
+          {appCtx?.selectedEdition && (
             <div className="flex items-center gap-1">
               <span
                 className="text-accent cursor-pointer themed:text-white"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               >
-                {appCtx.selectedEdition
-                  ? `${appCtx.selectedEdition
+                {appCtx?.selectedEdition
+                  ? `${appCtx?.selectedEdition
                       .charAt(0)
-                      .toUpperCase()}${appCtx.selectedEdition.slice(1)} Edition`
+                      .toUpperCase()}${appCtx?.selectedEdition.slice(
+                      1
+                    )} Edition`
                   : ''}
-                {appCtx.selectedCharacter
-                  ? ` – ${appCtx.selectedCharacter.toUpperCase()}`
+                {appCtx?.selectedCharacter
+                  ? ` – ${appCtx?.selectedCharacter.toUpperCase()}`
                   : ''}
                 {props.price ? ` – ${props.price}€` : ''}
               </span>

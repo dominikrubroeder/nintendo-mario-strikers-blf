@@ -24,7 +24,7 @@ const BuyContainer = (props) => {
         className="grid gap-2 bg-gray-100 bg-themed-dark rounded-3xl p-8"
         ref={buyBox}
       >
-        {appCtx.buyable && (
+        {appCtx?.buyable && (
           <p>
             Heute bestellen, Lieferung am
             <br />
@@ -33,7 +33,7 @@ const BuyContainer = (props) => {
         )}
         <Button
           variant="contained"
-          disabled={appCtx.buyable ? false : true}
+          disabled={appCtx?.buyable ? false : true}
           isLink
           href="/checkout"
           playSound

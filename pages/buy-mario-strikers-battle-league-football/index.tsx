@@ -36,8 +36,8 @@ const DetailPage: NextPage = () => {
 
       <TheStickyBuyBar
         href="/checkout"
-        shouldBeVisible={showStickyBuyBar && appCtx.buyable}
-        price={appCtx.selectedEdition === Editions.standardId ? 59.99 : 89.99}
+        shouldBeVisible={showStickyBuyBar && appCtx?.buyable}
+        price={appCtx?.selectedEdition === Editions.standardId ? 59.99 : 89.99}
       />
     </div>
   );

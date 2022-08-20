@@ -10,8 +10,9 @@ import CharacterOverlay from './CharacterOverlay';
 const GameFeatures: React.FC = () => {
   const appCtx = useContext(AppContext);
   const character =
-    characters.find((character) => character.id === appCtx.selectedCharacter) ??
-    characters[0];
+    characters.find(
+      (character) => character.id === appCtx?.selectedCharacter
+    ) ?? characters[0];
   const [showCharacterOverlay, setShowCharacterOverlay] = useState(false);
 
   return (
