@@ -5,7 +5,7 @@ const AppContext = createContext({
   hasInteractiveAudio: true,
   toggleInteractiveAudio: function () {},
   theme: null,
-  setTheme: function (team) {},
+  setTheme: function (character) {},
   edition: null,
   validateEdition: function (edition) {},
   buyable: false,
@@ -25,13 +25,14 @@ export function AppContextProvider(props) {
     }
   }
 
-  function setThemeHandler(team) {
-    document.body.className = `themed theme-${team} bg-themed text-white`;
+  function setThemeHandler(character) {
+    document.body.className = `themed theme-${character} bg-accent text-white`;
 
     localStorage.setItem('themed', true);
-    localStorage.setItem('theme', team);
 
-    setActiveTheme(team);
+    localStorage.setItem('theme', character);
+
+    setActiveTheme(character);
 
     setBuyable(true);
   }

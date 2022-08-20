@@ -65,15 +65,16 @@ const CharacterSelection: React.FC<CharacterSelectionProps> = ({
         )}
 
         <div className={`grid gap-2 ${className ? className : ''}`}>
-          {teams.map((team) => {
+          {teams.map((character) => {
             return (
-              <SpringBounceWhenInView key={team.name}>
+              <SpringBounceWhenInView key={character.id}>
                 <CharacterCard
-                  name={team.name}
-                  sound={team.sound}
-                  image={team.image}
-                  onClick={() => setTeam(team.name)}
-                  setShowCharacterOverlay={setShowCharacterOverlay}
+                  id={character.id}
+                  name={character.name}
+                  sound={character.sound}
+                  image={character.image}
+                  onClick={() => setTeam(character.id)}
+                  setShowCharacterOverlay={() => setShowCharacterOverlay(true)}
                 />
               </SpringBounceWhenInView>
             );

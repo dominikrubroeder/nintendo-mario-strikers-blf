@@ -16,7 +16,7 @@ const CharacterOverlay: React.FC<CharacterOverlayProps> = ({
 }) => {
   const appCtx = useContext(AppContext);
   const character = characters.find(
-    (character) => character.name === appCtx.theme
+    (character) => character.id === appCtx.theme
   );
 
   const handleChildElementClick = (e: React.MouseEvent<HTMLDivElement>) => {

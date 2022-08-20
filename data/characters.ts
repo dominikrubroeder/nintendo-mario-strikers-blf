@@ -1,4 +1,5 @@
 export type Character = {
+  id: string;
   name: string;
   sound: string;
   image: string;
@@ -11,7 +12,8 @@ export type Character = {
 
 const characters: Character[] = [
   {
-    name: 'mario',
+    id: 'mario',
+    name: 'Mario',
     sound: '/audio/sound-mario-2.mp3',
     image: '/images/characters/NSwitch-character-sketch-mario.png',
     imageGallery: [
@@ -30,7 +32,8 @@ const characters: Character[] = [
       'https://www.youtube-nocookie.com/embed/fmvzfwj85Vo',
   },
   {
-    name: 'peach',
+    id: 'peach',
+    name: 'Peach',
     sound: '/audio/sound-peach-2.mp3',
     image: '/images/characters/NSwitch-character-sketch-peach.png',
     imageGallery: [
@@ -49,7 +52,8 @@ const characters: Character[] = [
       'https://www.youtube-nocookie.com/embed/fmvzfwj85Vo',
   },
   {
-    name: 'luigi',
+    id: 'luigi',
+    name: 'Luigi',
     sound: '/audio/sound-luigi-2.mp3',
     image: '/images/characters/NSwitch-character-sketch-luigi.png',
     imageGallery: [
@@ -68,7 +72,8 @@ const characters: Character[] = [
       'https://www.youtube-nocookie.com/embed/fmvzfwj85Vo',
   },
   {
-    name: 'toad',
+    id: 'toad',
+    name: 'Toad',
     sound: '/audio/sound-kinopio-1.mp3',
     image: '/images/characters/NSwitch-character-sketch-toad.png',
     imageGallery: [
@@ -87,7 +92,8 @@ const characters: Character[] = [
       'https://www.youtube-nocookie.com/embed/fmvzfwj85Vo',
   },
   {
-    name: 'bowser',
+    id: 'bowser',
+    name: 'Bowser',
     sound: '/audio/sound-koopa-2.mp3',
     image: '/images/characters/NSwitch-character-sketch-bowser.png',
     imageGallery: [
@@ -106,7 +112,8 @@ const characters: Character[] = [
       'https://www.youtube-nocookie.com/embed/fmvzfwj85Vo',
   },
   {
-    name: 'rosalina',
+    id: 'rosalina',
+    name: 'Rosalina',
     sound: '/audio/sound-rosetta-1.mp3',
     image: '/images/characters/NSwitch-character-sketch-rosalina.png',
     imageGallery: [
@@ -125,7 +132,8 @@ const characters: Character[] = [
       'https://www.youtube-nocookie.com/embed/fmvzfwj85Vo',
   },
   {
-    name: 'yoshi',
+    id: 'yoshi',
+    name: 'Yoshi',
     sound: '/audio/sound-yoshi-2.mp3',
     image: '/images/characters/NSwitch-character-sketch-yoshi.png',
     imageGallery: [
@@ -144,7 +152,8 @@ const characters: Character[] = [
       'https://www.youtube-nocookie.com/embed/fmvzfwj85Vo',
   },
   {
-    name: 'donkey-kong',
+    id: 'donkey-kong',
+    name: 'Donkey Kong',
     sound: '/audio/sound-donkey-kong-1.mp3',
     image: '/images/characters/NSwitch-character-sketch-donkey-kong.png',
     imageGallery: [
@@ -163,7 +172,8 @@ const characters: Character[] = [
       'https://www.youtube-nocookie.com/embed/fmvzfwj85Vo',
   },
   {
-    name: 'wario',
+    id: 'wario',
+    name: 'Wario',
     sound: '/audio/sound-wario-2.mp3',
     image: '/images/characters/NSwitch-character-sketch-wario.png',
     imageGallery: [
@@ -182,7 +192,8 @@ const characters: Character[] = [
       'https://www.youtube-nocookie.com/embed/fmvzfwj85Vo',
   },
   {
-    name: 'waluigi',
+    id: 'waluigi',
+    name: 'Waluigi',
     sound: '/audio/sound-waluigi-2.mp3',
     image: '/images/characters/NSwitch-character-sketch-waluigi.png',
     imageGallery: [
@@ -201,7 +212,8 @@ const characters: Character[] = [
       'https://www.youtube-nocookie.com/embed/fmvzfwj85Vo',
   },
   {
-    name: 'bumm-bumm',
+    id: 'bumm-bumm',
+    name: 'Bumm Bumm',
     sound: '/audio/sound-donkey-kong-1.mp3',
     image: '/images/characters/NSwitch-character-sketch-bumm-bumm.png',
     imageGallery: [
