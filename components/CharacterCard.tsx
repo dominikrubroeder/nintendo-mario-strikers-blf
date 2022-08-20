@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useContext, useRef } from 'react';
+import { Constants } from '../data/constants';
 import AppContext from '../store/app-context';
 
 interface CharacterCardProps {
@@ -24,7 +25,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
   const audioRef = useRef<null | HTMLAudioElement>(null);
 
   const onClickHandler = () => {
-    if (localStorage.getItem('interactiveAudio') == 'true')
+    if (localStorage.getItem(Constants.InteractiveAudio) == 'true')
       audioRef.current?.play();
     if (onClick) onClick();
   };

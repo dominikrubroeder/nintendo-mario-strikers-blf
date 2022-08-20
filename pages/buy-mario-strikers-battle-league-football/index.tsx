@@ -4,6 +4,7 @@ import { useContext, useState } from 'react';
 import AppContext from '../../store/app-context';
 import BuyConfiguration from '../../components/product-detail/buy-configuration/BuyConfiguration';
 import TheStickyBuyBar from '../../components/TheStickyBuyBar';
+import { Editions } from '../../data/editions';
 
 // https://mario.fandom.com/de/wiki/Mario_Smash_Football
 // https://mario.fandom.com/de/wiki/Mario_Strikers_Charged_Football
@@ -36,7 +37,7 @@ const DetailPage: NextPage = () => {
       <TheStickyBuyBar
         href="/checkout"
         shouldBeVisible={showStickyBuyBar && appCtx.buyable}
-        price={appCtx.edition === 'standard' ? 59.99 : 89.99}
+        price={appCtx.selectedEdition === Editions.standardId ? 59.99 : 89.99}
       />
     </div>
   );

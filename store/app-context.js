@@ -1,22 +1,26 @@
 import { createContext, useEffect, useState } from 'react';
+import { Constants } from '../data/constants';
 import { Editions } from '../data/editions';
 
 const AppContext = createContext({
   selectedCharacter: null,
   setCharacter: function (character) {},
-  edition: null,
+  selectedEdition: null,
   validateEdition: function (edition) {},
   buyable: false,
 });
 
 export function AppContextProvider(props) {
-  const [activeEdition, setActiveEdition] = useState();
+  const [selectedEdition, setSelectedEdition] = useState();
   const [selectedCharacter, setSelectedCharacter] = useState();
   const [buyable, setBuyable] = useState(false);
 
   function initThemeHandler() {
-    if (localStorage.getItem('themed') && localStorage.getItem('theme')) {
-      const localStorageTheme = localStorage.getItem('theme');
+    if (
+      localStorage.getItem(Constants.Themed) &&
+      localStorage.getItem(Constants.Theme)
+    ) {
+      const localStorageTheme = localStorage.getItem(Constants.Theme);
       setSelectedCharacter(localStorageTheme);
       document.body.className = `themed theme-${localStorageTheme} bg-accent text-white`;
     }
@@ -25,31 +29,27 @@ export function AppContextProvider(props) {
   function setThemeHandler(character) {
     document.body.className = `themed theme-${character} bg-accent text-white`;
 
-    localStorage.setItem('themed', true);
+    localStorage.setItem(Constants.Themed, true);
 
-    localStorage.setItem('theme', character);
+    localStorage.setItem(Constants.Theme, character);
 
     setSelectedCharacter(character);
 
     setBuyable(true);
   }
 
-  function toggleOverlayHandler() {
-    setShowOverlay((previousState) => !previousState);
-  }
-
   function initEditionHandler() {
-    if (localStorage.getItem('edition')) {
-      const localStorageEdition = localStorage.getItem('edition');
-      setActiveEdition(localStorageEdition);
+    if (localStorage.getItem(Constants.Edition)) {
+      const localStorageEdition = localStorage.getItem(Constants.Edition);
+      setSelectedEdition(localStorageEdition);
     }
   }
 
   function validateEditionHandler(edition) {
     if (edition === Editions.standardId) {
       document.body.className = '';
-      localStorage.removeItem('themed');
-      localStorage.removeItem('theme');
+      localStorage.removeItem(Constants.Themed);
+      localStorage.removeItem(Constants.Theme);
       setSelectedCharacter(null);
       setBuyable(true);
     }
@@ -58,13 +58,13 @@ export function AppContextProvider(props) {
       setBuyable(false);
     }
 
-    localStorage.setItem('edition', edition);
-    setActiveEdition(edition);
+    localStorage.setItem(Constants.Edition, edition);
+    setSelectedEdition(edition);
   }
 
   function initBuyableHandler() {
-    const storedEdition = localStorage.getItem('edition');
-    const isThemed = localStorage.getItem('themed');
+    const storedEdition = localStorage.getItem(Constants.Edition);
+    const isThemed = localStorage.getItem(Constants.Themed);
 
     if (
       !storedEdition ||
@@ -100,12 +100,12 @@ export function AppContextProvider(props) {
 
   useEffect(() => {
     initEditionHandler();
-  }, [activeEdition]);
+  }, [selectedEdition]);
 
   const context = {
     selectedCharacter: selectedCharacter,
     setCharacter: setThemeHandler,
-    edition: activeEdition,
+    selectedEdition,
     validateEdition: validateEditionHandler,
     buyable,
   };

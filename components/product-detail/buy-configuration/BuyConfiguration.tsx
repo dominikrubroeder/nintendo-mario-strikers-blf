@@ -6,6 +6,7 @@ import EditionSelection from './EditionSelection';
 import CharacterSelection from '../../CharacterSelection';
 import BuyContainer from './BuyContainer';
 import Heading from '../../typography/Heading';
+import { Editions } from '../../../data/editions';
 
 const BuyConfiguration = (props) => {
   const appCtx = useContext(AppContext);
@@ -39,7 +40,9 @@ const BuyConfiguration = (props) => {
 
         <EditionSelection />
 
-        {appCtx.edition === 'nostalgie' && <CharacterSelection />}
+        {appCtx.selectedEdition === Editions.nostalgiaId && (
+          <CharacterSelection />
+        )}
 
         <BuyContainer setShowStickyBuyBar={props.setShowStickyBuyBar} />
       </div>

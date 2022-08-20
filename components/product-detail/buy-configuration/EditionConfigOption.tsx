@@ -29,7 +29,7 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
   return (
     <div
       className={`w-full border hover:border-gray-300 rounded-3xl p-8 cursor-pointer ${
-        edition.id === appCtx.edition
+        edition.id === appCtx.selectedEdition
           ? 'border-accent hover:border-accent bg-themed-dark hover:border-themed'
           : 'border-gray-200 border-themed-dark'
       }`}
@@ -54,7 +54,7 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
         </header>
 
         <AnimatePresence>
-          {appCtx.edition === edition.id && (
+          {appCtx.selectedEdition === edition.id && (
             <motion.div
               key="description"
               initial={{ opacity: 0, height: 0 }}

@@ -38,16 +38,16 @@ export default function TheStickyBuyBar(props) {
             Mario Strikers: Battle League Football | Nintendo Switch
           </Heading>
 
-          {appCtx.edition && (
+          {appCtx.selectedEdition && (
             <div className="flex items-center gap-1">
               <span
                 className="text-accent cursor-pointer themed:text-white"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               >
-                {appCtx.edition
-                  ? `${appCtx.edition
+                {appCtx.selectedEdition
+                  ? `${appCtx.selectedEdition
                       .charAt(0)
-                      .toUpperCase()}${appCtx.edition.slice(1)} Edition`
+                      .toUpperCase()}${appCtx.selectedEdition.slice(1)} Edition`
                   : ''}
                 {appCtx.selectedCharacter
                   ? ` – ${appCtx.selectedCharacter.toUpperCase()}`

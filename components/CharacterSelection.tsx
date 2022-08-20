@@ -28,7 +28,7 @@ const CharacterSelection: React.FC<CharacterSelectionProps> = ({
     appCtx.setCharacter(team);
 
     router.push(
-      `${router.pathname}/?edition=${appCtx.edition}?team=${team}`,
+      `${router.pathname}/?edition=${appCtx.selectedEdition}?team=${team}`,
       undefined,
       {
         shallow: true,
