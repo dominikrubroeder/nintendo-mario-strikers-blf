@@ -1,13 +1,10 @@
 import Link from 'next/link';
 import React, { useContext } from 'react';
-import BaseToggle from '../base/BaseToggle';
 import AppContext from '../../store/app-context';
-import { VolumeUpIcon, VolumeOffIcon } from '@heroicons/react/solid';
 import Logo from '../svg/Logo';
 import SelectASoundtrack from '../SelectASoundtrack';
 import CurrentSound from '../audio/CurrentSound';
 import SpringBounceWhenInView from '../animation/SpringBounceWhenInView';
-import Tooltip from '../Tooltip';
 import InteractiveAudio from '../InteractiveAudio';
 
 const TheHeader: React.FC = () => {

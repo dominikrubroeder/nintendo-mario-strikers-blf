@@ -1,11 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
 import AppContext from '../store/app-context';
 import Image from 'next/image';
 import Heading from './typography/Heading';
+import CharacterCard from './CharacterCard';
+import characters from '../data/characters';
+import CharacterOverlay from './CharacterOverlay';
 
 const GameFeatures: React.FC = () => {
   const appCtx = useContext(AppContext);
+  const character =
+    characters.find((character) => character.name === appCtx.theme) ??
+    characters[0];
+  const [showCharacterOverlay, setShowCharacterOverlay] = useState(false);
 
   return (
     <>
@@ -16,26 +23,35 @@ const GameFeatures: React.FC = () => {
           </Heading>
         </SpringBounceWhenInView>
 
-        <SpringBounceWhenInView>
-          <div className="grid">
-            <div className="w-96 m-auto">
-              <Image
-                width={720}
-                height={690}
-                layout="responsive"
-                src={`/images/characters/NSwitch-character-sketch-${
-                  appCtx.theme ? appCtx.theme : 'mario'
-                }.png`}
-                alt={`${appCtx.theme ? appCtx.theme : 'mario'}`}
+        <Heading as="h2">
+          Das neueste Spiel der Mario Strikers-Reihe erscheint für Nintendo
+          Switch!
+        </Heading>
+      </section>
+
+      <section>
+        {showCharacterOverlay && (
+          <CharacterOverlay
+            onCloseOverlay={() => setShowCharacterOverlay(false)}
+          />
+        )}
+
+        <div className="flex items-center justify-between">
+          <SpringBounceWhenInView>
+            <div className="max-w-sm">
+              <CharacterCard
+                name={character.name}
+                sound={character.sound}
+                image={character.image}
+                onClick={() => setShowCharacterOverlay(true)}
               />
             </div>
+          </SpringBounceWhenInView>
 
-            <Heading as="h2">
-              Das neueste Spiel der Mario Strikers-Reihe erscheint für Nintendo
-              Switch!
-            </Heading>
-          </div>
-        </SpringBounceWhenInView>
+          <Heading as="h2" className="text-xl font-bold">
+            Dein aktuelles Team
+          </Heading>
+        </div>
       </section>
 
       <section className="grid gap-64">

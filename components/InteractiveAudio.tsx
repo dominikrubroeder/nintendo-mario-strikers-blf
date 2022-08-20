@@ -4,6 +4,7 @@ import BaseToggle from './base/BaseToggle';
 import AppContext from '../store/app-context';
 import Accordion from './Accordion';
 import SoundContext from '../store/soundContext';
+import Button from './base/Button';
 
 const InteractiveAudio: React.FC = () => {
   const appCtx = useContext(AppContext);
@@ -23,6 +24,7 @@ const InteractiveAudio: React.FC = () => {
           />
         </div>
       }
+      className="w-48"
     >
       <p className="text-xs">
         Aktivierst du <b>interaktives Audio</b> so erhälst du eine bessere User
@@ -30,22 +32,24 @@ const InteractiveAudio: React.FC = () => {
         <br />
         <br />
         Lasse beispielsweise einen&nbsp;
-        <span
-          className="text-accent"
+        <Button
+          variant="unstyled"
+          className="text-accent text-left"
           onClick={() => soundCtx?.setSound('/audio/soundtracks/main-menu.mp3')}
         >
           <PlayIcon className="w-4 h-4 inline-block mr-0.5" />
           Soundtrack im Hintergrund laufen
-        </span>
-        &nbsp; oder&nbsp;
-        <span
-          className=" text-accent"
+        </Button>
+        oder
+        <Button
+          variant="unstyled"
+          className=" text-accent text-left"
           onClick={() => soundCtx?.setSound('/audio/nintendo-woohoo.wav')}
         >
           <PlayIcon className="w-4 h-4 inline-block mr-0.5" />
           höre einen typischen Nintendo Sound
-        </span>
-        &nbsp; bei Button-Klicks und weiteren Aktionen.
+        </Button>
+        bei Button-Klicks und weiteren Aktionen.
       </p>
     </Accordion>
   );
