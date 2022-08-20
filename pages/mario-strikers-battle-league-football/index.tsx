@@ -9,10 +9,10 @@ import TheStickyBuyBar from '../../components/TheStickyBuyBar';
 import Heading from '../../components/typography/Heading';
 import { PlayIcon } from '@heroicons/react/solid';
 import Button from '../../components/base/Button';
-import SoundContext from '../../store/soundContext';
+import AudioContext from '../../store/audioContext';
 
 const InfoPage: NextPage = () => {
-  const soundCtx = useContext(SoundContext);
+  const audioCtx = useContext(AudioContext);
 
   return (
     <div>
@@ -37,7 +37,7 @@ const InfoPage: NextPage = () => {
             <Button
               variant="icon"
               onClick={() =>
-                soundCtx?.setSound('/audio/soundtracks/main-menu.mp3')
+                audioCtx?.setSound('/audio/soundtracks/main-menu.mp3')
               }
             >
               <PlayIcon className="w-16 h-16 bg-gradient-to-r from-red-500 to-orange-500 rounded-full" />

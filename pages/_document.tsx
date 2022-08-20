@@ -5,6 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head />
       <div id="sound"></div>
+      <div id="soundtrack"></div>
       <body>
         <Main />
         <NextScript />

@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import React, { useContext } from 'react';
-import SoundContext from '../../store/soundContext';
+import AudioContext from '../../store/audioContext';
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -22,20 +22,20 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
 }) => {
   const router = useRouter();
-  const soundCtx = useContext(SoundContext);
+  const audioCtx = useContext(AudioContext);
 
   const onClickHandler = () => {
     switch (sound) {
       case 'coin':
-        soundCtx?.setSound('/audio/nintendo-super-mario-coin.wav');
+        audioCtx?.setSound('/audio/nintendo-super-mario-coin.wav');
         break;
       case 'nintendo-woho':
-        soundCtx?.setSound('/audio/nintendo-woohoo.wav');
+        audioCtx?.setSound('/audio/nintendo-woohoo.wav');
         break;
       case 'nintendo-switch-click':
-        soundCtx?.setSound('/audio/nintendo-switch-click.mp3');
+        audioCtx?.setSound('/audio/nintendo-switch-click.mp3');
       default:
-        soundCtx?.setSound(null);
+        audioCtx?.setSound(null);
     }
 
     if (href) {

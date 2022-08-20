@@ -1,14 +1,12 @@
 import React, { useContext } from 'react';
 import { PlayIcon, VolumeOffIcon, VolumeUpIcon } from '@heroicons/react/solid';
 import BaseToggle from './base/BaseToggle';
-import AppContext from '../store/app-context';
 import Accordion from './Accordion';
-import SoundContext from '../store/soundContext';
+import AudioContext from '../store/audioContext';
 import Button from './base/Button';
 
 const InteractiveAudio: React.FC = () => {
-  const appCtx = useContext(AppContext);
-  const soundCtx = useContext(SoundContext);
+  const audioCtx = useContext(AudioContext);
 
   return (
     <Accordion
@@ -17,10 +15,10 @@ const InteractiveAudio: React.FC = () => {
           <span className="w-max text-xs">Interaktives Audio</span>
 
           <BaseToggle
-            enabled={appCtx.hasInteractiveAudio}
+            enabled={audioCtx?.hasInteractiveAudio ?? true}
             enabledIcon={<VolumeUpIcon className="w-3 h-3"></VolumeUpIcon>}
             disabledIcon={<VolumeOffIcon className="w-3 h-3"></VolumeOffIcon>}
-            onClick={appCtx.toggleInteractiveAudio}
+            onClick={audioCtx?.toggleInteractiveAudio}
           />
         </div>
       }
@@ -35,7 +33,7 @@ const InteractiveAudio: React.FC = () => {
         <Button
           variant="unstyled"
           className="text-accent text-left"
-          onClick={() => soundCtx?.setSound('/audio/soundtracks/main-menu.mp3')}
+          onClick={() => audioCtx?.setSound('/audio/soundtracks/main-menu.mp3')}
         >
           <PlayIcon className="w-4 h-4 inline-block mr-0.5" />
           Soundtrack im Hintergrund laufen
@@ -44,7 +42,7 @@ const InteractiveAudio: React.FC = () => {
         <Button
           variant="unstyled"
           className=" text-accent text-left"
-          onClick={() => soundCtx?.setSound('/audio/nintendo-woohoo.wav')}
+          onClick={() => audioCtx?.setSound('/audio/nintendo-woohoo.wav')}
         >
           <PlayIcon className="w-4 h-4 inline-block mr-0.5" />
           höre einen typischen Nintendo Sound

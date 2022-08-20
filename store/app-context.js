@@ -2,8 +2,6 @@ import { createContext, useEffect, useState } from 'react';
 import { Editions } from '../data/editions';
 
 const AppContext = createContext({
-  hasInteractiveAudio: true,
-  toggleInteractiveAudio: function () {},
   selectedCharacter: null,
   setCharacter: function (character) {},
   edition: null,
@@ -12,7 +10,6 @@ const AppContext = createContext({
 });
 
 export function AppContextProvider(props) {
-  const [hasInteractiveAudio, setHasInteractiveAudio] = useState(null);
   const [activeEdition, setActiveEdition] = useState();
   const [selectedCharacter, setSelectedCharacter] = useState();
   const [buyable, setBuyable] = useState(false);
@@ -39,10 +36,6 @@ export function AppContextProvider(props) {
 
   function toggleOverlayHandler() {
     setShowOverlay((previousState) => !previousState);
-  }
-
-  function toggleInteractiveAudioHandler() {
-    setHasInteractiveAudio((previousState) => !previousState);
   }
 
   function initEditionHandler() {
@@ -90,34 +83,12 @@ export function AppContextProvider(props) {
     setBuyable(true);
   }
 
-  const initInteractiveAudio = () => {
-    if (localStorage.getItem('interactiveAudio') === null) {
-      setHasInteractiveAudio(true);
-      return;
-    }
-
-    if (localStorage.getItem('interactiveAudio') === 'true') {
-      setHasInteractiveAudio(true);
-      return;
-    }
-
-    if (localStorage.getItem('interactiveAudio') === 'false') {
-      setHasInteractiveAudio(false);
-      return;
-    }
-  };
-
   // Initial page load instructions
   useEffect(() => {
     initEditionHandler();
     initThemeHandler();
     initBuyableHandler();
-    initInteractiveAudio();
   }, []);
-
-  useEffect(() => {
-    localStorage.setItem('interactiveAudio', hasInteractiveAudio);
-  }, [hasInteractiveAudio]);
 
   useEffect(() => {
     initThemeHandler();
@@ -132,8 +103,6 @@ export function AppContextProvider(props) {
   }, [activeEdition]);
 
   const context = {
-    hasInteractiveAudio,
-    toggleInteractiveAudio: toggleInteractiveAudioHandler,
     selectedCharacter: selectedCharacter,
     setCharacter: setThemeHandler,
     edition: activeEdition,

@@ -3,7 +3,7 @@ import React from 'react';
 interface BaseToggleProps {
   label?: string;
   enabled: boolean;
-  onClick: () => void;
+  onClick: (() => void) | undefined;
   enabledIcon: any;
   disabledIcon: any;
 }

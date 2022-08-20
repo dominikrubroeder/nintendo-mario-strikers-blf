@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useContext } from 'react';
 import { Edition, Editions } from '../../../data/editions';
 import AppContext from '../../../store/app-context';
-import SoundContext from '../../../store/soundContext';
+import AudioContext from '../../../store/audioContext';
 
 interface EditionConfigOptionProps {
   edition: Edition;
@@ -19,10 +19,10 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
   children,
 }) => {
   const appCtx = useContext(AppContext);
-  const soundCtx = useContext(SoundContext);
+  const audioCtx = useContext(AudioContext);
 
   const onClickHandler = () => {
-    soundCtx?.setSound('/audio/nintendo-switch-click.mp3');
+    audioCtx?.setSound('/audio/nintendo-switch-click.mp3');
     onClick();
   };
 

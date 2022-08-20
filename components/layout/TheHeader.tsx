@@ -1,14 +1,14 @@
 import Link from 'next/link';
 import React, { useContext } from 'react';
-import AppContext from '../../store/app-context';
 import Logo from '../svg/Logo';
 import SelectASoundtrack from '../SelectASoundtrack';
 import CurrentSound from '../audio/CurrentSound';
 import SpringBounceWhenInView from '../animation/SpringBounceWhenInView';
 import InteractiveAudio from '../InteractiveAudio';
+import AudioContext from '../../store/audioContext';
 
 const TheHeader: React.FC = () => {
-  const appCtx = useContext(AppContext);
+  const audioCtx = useContext(AudioContext);
 
   return (
     <React.Fragment>
@@ -28,7 +28,7 @@ const TheHeader: React.FC = () => {
         </div>
 
         <div className="flex-1 flex items-start justify-end gap-2">
-          {appCtx.hasInteractiveAudio && (
+          {audioCtx?.hasInteractiveAudio && (
             <SpringBounceWhenInView>
               <SelectASoundtrack />
             </SpringBounceWhenInView>

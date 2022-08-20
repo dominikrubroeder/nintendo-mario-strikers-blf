@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from './base/Button';
 import Image from 'next/image';
-import SoundContext from '../store/soundContext';
+import AudioContext from '../store/audioContext';
 import AppContext from '../store/app-context';
 
 interface AccordionProps {
@@ -17,11 +17,11 @@ const Accordion: React.FC<AccordionProps> = ({
   className,
 }) => {
   const appCtx = useContext(AppContext);
-  const soundCtx = useContext(SoundContext);
+  const audioCtx = useContext(AudioContext);
   const [expanded, setExpanded] = useState(false);
 
   const onCloseHandler = () => {
-    soundCtx?.setSound(`/audio/sound-${appCtx.selectedCharacter}-2.mp3`);
+    audioCtx?.setSound(`/audio/sound-${appCtx.selectedCharacter}-2.mp3`);
     setExpanded(false);
   };
 
