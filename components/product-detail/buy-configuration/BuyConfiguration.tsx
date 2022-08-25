@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import React, { Dispatch, SetStateAction, useContext } from 'react';
 import { motion } from 'framer-motion';
 import AppContext from '../../../store/appContext';
 import ReleaseCountdown from '../../ReleaseCountdown';
@@ -8,7 +8,13 @@ import BuyContainer from './BuyContainer';
 import Heading from '../../typography/Heading';
 import { Editions } from '../../../data/editions';
 
-const BuyConfiguration = (props) => {
+interface BuyConfigurationProps {
+  setShowStickyBuyBar: Dispatch<SetStateAction<boolean>>;
+}
+
+const BuyConfiguration: React.FC<BuyConfigurationProps> = ({
+  setShowStickyBuyBar,
+}) => {
   const appCtx = useContext(AppContext);
 
   return (
@@ -18,9 +24,10 @@ const BuyConfiguration = (props) => {
         exit={{ opacity: [1, 0] }}
         transition={{ ease: 'easeOut' }}
         className="mx-auto max-h-[65vh] md:sticky md:top-20 md:pt-0"
-        src="/images/product/mario-strikers-battle-league-football-cover.jpg"
+        src="/images/product/nintendo-switch-mario-strikers-battle-league-football-cover.png"
         alt="Nintendo Switch"
       />
+
       <div className="grid gap-12 mx-auto px-4 w-full">
         <div className="grid gap-1">
           <Heading
@@ -44,7 +51,7 @@ const BuyConfiguration = (props) => {
           <CharacterSelection />
         )}
 
-        <BuyContainer setShowStickyBuyBar={props.setShowStickyBuyBar} />
+        <BuyContainer setShowStickyBuyBar={setShowStickyBuyBar} />
       </div>
     </section>
   );

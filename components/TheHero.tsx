@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import Button from './base/Button';
 import ReleaseCountdown from './ReleaseCountdown';
 import TheGameTrailerOverlay from './TheGameTrailerOverlay';
-import gameCover from '../public/images/product/mario-strikers-battle-league-football-cover.jpg';
 import Heading from './typography/Heading';
 import { ArrowRightIcon, PlayIcon } from '@heroicons/react/solid';
 
@@ -29,7 +28,7 @@ const TheHero: React.FC = () => {
           <Link href="/buy-mario-strikers-battle-league-football">
             <a>
               <Image
-                src={gameCover}
+                src="/images/product/nintendo-switch-mario-strikers-battle-league-football-cover.png"
                 alt="Mario Strikers: Battle League Football | Nintendo Switch"
                 className="m-auto max-h-[65vh] pt-12 md:pt-0 cursor-pointer"
                 width={320}
@@ -41,6 +40,7 @@ const TheHero: React.FC = () => {
 
         <div className="grid gap-2 sticky top-0">
           <ReleaseCountdown />
+
           <Heading as="h1">
             Mario Strikers: Battle League Football | Nintendo Switch
           </Heading>

@@ -4,19 +4,29 @@ import useIsOnScreen from '../../../hooks/useIsOnScreen';
 import SpringBounceWhenInView from '../../animation/SpringBounceWhenInView';
 import Button from '../../base/Button';
 
-const BuyContainer = (props) => {
+interface BuyContainerProps {
+  setShowStickyBuyBar: (shouldBeVisible: boolean) => void;
+}
+
+const BuyContainer: React.FC<BuyContainerProps> = ({ setShowStickyBuyBar }) => {
   const appCtx = useContext(AppContext);
-  const buyBox = useRef();
+  const buyBox = useRef<null | HTMLDivElement>(null);
   const buyBoxIsOnScreen = useIsOnScreen(buyBox);
+
+  const today = new Date();
+  const year = today.getFullYear();
+  const date = today.getDate();
+  const month = today.getMonth();
+  const day = today.getDay();
 
   // Buy box instructions on observer status changes
   useEffect(() => {
     if (buyBoxIsOnScreen) {
-      props.setShowStickyBuyBar(false);
+      setShowStickyBuyBar(false);
     } else {
-      props.setShowStickyBuyBar(true);
+      setShowStickyBuyBar(true);
     }
-  }, [buyBoxIsOnScreen]);
+  }, [buyBoxIsOnScreen, setShowStickyBuyBar]);
 
   return (
     <SpringBounceWhenInView>
@@ -34,9 +44,7 @@ const BuyContainer = (props) => {
         <Button
           variant="contained"
           disabled={appCtx?.buyable ? false : true}
-          isLink
           href="/checkout"
-          playSound
           sound="coin"
         >
           Jetzt vorbestellen

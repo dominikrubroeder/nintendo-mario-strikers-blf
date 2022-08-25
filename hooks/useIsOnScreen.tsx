@@ -1,19 +1,11 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-export default function useIsOnScreen(ref, props) {
+const useIsOnScreen: React.ForwardedRef<HTMLElement> = (ref) => {
   const [isIntersecting, setIntersecting] = useState(false);
   const thresholdValue = 0;
 
-  let observer;
-
-  // useEffect(() => {
-  //   observer = new IntersectionObserver(([entry]) =>
-  //     setIntersecting(entry.isIntersecting)
-  //   );
-  // }, []);
-
   useEffect(() => {
-    observer = new IntersectionObserver(
+    const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           setIntersecting(entry.isIntersecting);
@@ -23,17 +15,18 @@ export default function useIsOnScreen(ref, props) {
         threshold: thresholdValue,
       }
     );
-  }, []);
 
-  useEffect(() => {
-    observer.observe(ref.current);
+    observer.observe(ref?.current);
+
     // Remove the observer as soon as the component is unmounted
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [ref]);
 
   return isIntersecting;
-}
+};
+
+export default useIsOnScreen;
 
 // https://www.youtube.com/watch?v=2IbRtjez6ag

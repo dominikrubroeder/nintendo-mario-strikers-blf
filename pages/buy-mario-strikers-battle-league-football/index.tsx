@@ -5,6 +5,7 @@ import AppContext from '../../store/appContext';
 import BuyConfiguration from '../../components/product-detail/buy-configuration/BuyConfiguration';
 import TheStickyBuyBar from '../../components/TheStickyBuyBar';
 import { Editions } from '../../data/editions';
+import Image from 'next/image';
 
 // https://mario.fandom.com/de/wiki/Mario_Smash_Football
 // https://mario.fandom.com/de/wiki/Mario_Strikers_Charged_Football
@@ -16,7 +17,7 @@ const DetailPage: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>Mario Strikers: Battle League Football kaufen | Nintendo</title>
+        <title>Buy Mario Strikers: Battle League Football | Nintendo</title>
         <meta
           name="description"
           content="Nintendo's Mario Strikers: Battle League Football jetzt kaufen"
@@ -27,11 +28,16 @@ const DetailPage: NextPage = () => {
       <BuyConfiguration setShowStickyBuyBar={setShowStickyBuyBar} />
 
       <section className="mt-20">
-        <img
-          src="/images/gallery/2x1_NSwitch_MarioStrikersBattleLeagueFootball_image1600w.jpeg"
-          alt="Mario Strikers Battle League Football"
-          className="rounded-3xl max-w-full w-full p-4"
-        />
+        <div className="p-4">
+          <Image
+            src="/images/gallery/2x1_NSwitch_MarioStrikersBattleLeagueFootball_image1600w.jpeg"
+            alt="Mario Strikers Battle League Football"
+            layout="responsive"
+            width={1600}
+            height={800}
+            className="rounded-3xl"
+          />
+        </div>
       </section>
 
       <TheStickyBuyBar

@@ -8,11 +8,6 @@ const Home: NextPage = () => {
     <div>
       <Head>
         <title>Mario Strikers: Battle League Football | Nintendo</title>
-        <meta
-          name="description"
-          content="Nintendo's Mario Strikers: Battle League Football jetzt kaufen"
-        />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <TheLaunchScreen />

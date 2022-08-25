@@ -5,10 +5,6 @@ const TheLaunchScreen: React.FC = () => {
   const audioRef = useRef<null | HTMLAudioElement>(null);
 
   useEffect(() => {
-    if (mounted && audioRef.current) audioRef.current.play();
-  }, [mounted]);
-
-  useEffect(() => {
     setMounted(true);
 
     setTimeout(() => {
@@ -17,6 +13,10 @@ const TheLaunchScreen: React.FC = () => {
 
     return () => setMounted(false);
   }, []);
+
+  useEffect(() => {
+    if (mounted && audioRef.current) audioRef.current.play();
+  }, [mounted]);
 
   return mounted ? (
     <div className="fixed top-0 left-0 bottom-0 right-0 flex justify-center items-center z-50 bg-accent">

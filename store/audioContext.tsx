@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { Constants } from '../data/constants';
 
 type AudioContextType = {
@@ -30,12 +30,10 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
   };
 
   const initInteractiveAudio = () => {
-    if (localStorage.getItem(Constants.InteractiveAudio) === null) {
-      setHasInteractiveAudio(true);
-      return;
-    }
-
-    if (localStorage.getItem(Constants.InteractiveAudio) === 'true') {
+    if (
+      localStorage.getItem(Constants.InteractiveAudio) === null ||
+      localStorage.getItem(Constants.InteractiveAudio) === 'true'
+    ) {
       setHasInteractiveAudio(true);
       return;
     }
