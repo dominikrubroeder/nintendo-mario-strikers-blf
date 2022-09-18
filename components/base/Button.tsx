@@ -72,7 +72,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={`transition-all disabled:opacity-10 disabled:cursor-not-allowed hover:scale-110 ${variantClassName} ${
+      className={`transition-all disabled:opacity-10 disabled:cursor-not-allowed hover:scale-110 active:scale-95 ${variantClassName} ${
         className ? className : ''
       }`}
       disabled={disabled}

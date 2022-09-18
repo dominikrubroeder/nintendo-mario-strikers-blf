@@ -17,8 +17,8 @@ const TheHeader: React.FC = () => {
       <header className="relative flex items-start justify-between p-4 w-full h-20 z-40">
         <div className="flex-1"></div>
 
-        <div className="flex-1 flex items-center justify-center">
-          <div className="flex items-center justify-center relative bg-themed-dark themed:text-white p-2 rounded-full">
+        <div className="flex items-center justify-center transition active:scale-95">
+          <div className="flex-1 flex items-center justify-center relative bg-themed-dark themed:text-white p-2 rounded-full">
             <Link href="/">
               <a>
                 <Logo />

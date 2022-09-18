@@ -84,7 +84,7 @@ const SelectASoundtrack: React.FC = () => {
   }`;
 
   return (
-    <div className="bg-accent/10 bg-themed-dark px-4 py-3 rounded-xl transition z-10 w-56">
+    <div className="bg-accent/10 bg-themed-dark px-4 py-3 rounded-xl transition z-10 w-56 active:scale-95">
       <header className="flex items-center gap-2 justify-between text-xs cursor-pointer">
         {currentSoundtrack && (
           <audio src={currentSoundtrack.src} ref={audioRef}></audio>

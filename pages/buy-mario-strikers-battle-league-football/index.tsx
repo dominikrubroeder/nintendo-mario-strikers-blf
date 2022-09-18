@@ -6,6 +6,8 @@ import BuyConfiguration from '../../components/product-detail/buy-configuration/
 import TheStickyBuyBar from '../../components/TheStickyBuyBar';
 import { Editions } from '../../data/editions';
 import Image from 'next/image';
+import Button from '../../components/base/Button';
+import GameFeatures from '../../components/GameFeatures';
 
 // https://mario.fandom.com/de/wiki/Mario_Smash_Football
 // https://mario.fandom.com/de/wiki/Mario_Strikers_Charged_Football
@@ -13,6 +15,7 @@ import Image from 'next/image';
 const DetailPage: NextPage = () => {
   const appCtx = useContext(AppContext);
   const [showStickyBuyBar, setShowStickyBuyBar] = useState(false);
+  const [showFeatures, setShowFeatures] = useState(false);
 
   return (
     <div>
@@ -38,6 +41,17 @@ const DetailPage: NextPage = () => {
             className="rounded-3xl"
           />
         </div>
+      </section>
+
+      <section className="mt-20 mb-40 text-center">
+        <Button
+          variant="contained"
+          onClick={() => setShowFeatures((previousState) => !previousState)}
+        >
+          Zeige mehr Features
+        </Button>
+
+        {showFeatures && <GameFeatures />}
       </section>
 
       <TheStickyBuyBar

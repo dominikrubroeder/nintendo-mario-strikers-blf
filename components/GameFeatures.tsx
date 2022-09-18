@@ -37,9 +37,9 @@ const GameFeatures: React.FC = () => {
           />
         )}
 
-        <div className="flex items-center justify-center gap-4">
+        <div className="text-center">
           <SpringBounceWhenInView>
-            <div className="max-w-sm">
+            <div className="max-w-xs m-auto">
               <CharacterCard
                 id={character.id}
                 name={character.name}
@@ -50,16 +50,18 @@ const GameFeatures: React.FC = () => {
             </div>
           </SpringBounceWhenInView>
 
-          <Heading
-            as="h2"
-            className="my-8 text-6xl md:text-9xl md:leading-tight font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent bg-gradient-themed"
-          >
-            Dein
-            <br />
-            aktuelles
-            <br />
-            Team
-          </Heading>
+          <SpringBounceWhenInView>
+            <Heading
+              as="h2"
+              className="my-8 text-6xl md:text-9xl md:leading-tight font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent bg-gradient-themed"
+            >
+              Dein
+              <br />
+              aktuelles
+              <br />
+              Team
+            </Heading>
+          </SpringBounceWhenInView>
         </div>
       </section>
 
