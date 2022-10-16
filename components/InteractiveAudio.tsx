@@ -1,5 +1,9 @@
 import React, { useContext } from 'react';
-import { PlayIcon, VolumeOffIcon, VolumeUpIcon } from '@heroicons/react/solid';
+import {
+  PlayIcon,
+  SpeakerXMarkIcon,
+  SpeakerWaveIcon,
+} from '@heroicons/react/24/solid';
 import BaseToggle from './base/BaseToggle';
 import Accordion from './Accordion';
 import AudioContext from '../store/audioContext';
@@ -16,8 +20,12 @@ const InteractiveAudio: React.FC = () => {
 
           <BaseToggle
             enabled={audioCtx?.hasInteractiveAudio ?? true}
-            enabledIcon={<VolumeUpIcon className="w-3 h-3"></VolumeUpIcon>}
-            disabledIcon={<VolumeOffIcon className="w-3 h-3"></VolumeOffIcon>}
+            enabledIcon={
+              <SpeakerWaveIcon className="w-3 h-3"></SpeakerWaveIcon>
+            }
+            disabledIcon={
+              <SpeakerXMarkIcon className="w-3 h-3"></SpeakerXMarkIcon>
+            }
             onClick={audioCtx?.toggleInteractiveAudio}
           />
         </div>

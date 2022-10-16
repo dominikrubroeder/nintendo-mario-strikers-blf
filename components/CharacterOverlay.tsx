@@ -34,7 +34,7 @@ const CharacterOverlay: React.FC<CharacterOverlayProps> = ({
         onClick={(e) => handleChildElementClick(e)}
       >
         <div
-          className="w-8 h-8 flex items-center justify-center absolute top-6 right-6 rounded-full cursor-pointer bg-themed-dark"
+          className="w-8 h-8 flex items-center justify-center absolute top-6 right-6 rounded-full cursor-pointer bg-themed-dark interactive"
           onClick={onCloseOverlay}
         >
           x

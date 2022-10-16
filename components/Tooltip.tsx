@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronUpIcon } from '@heroicons/react/solid';
+import { ChevronUpIcon } from '@heroicons/react/24/solid';
 import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
 import Button from './base/Button';
 import Image from 'next/image';

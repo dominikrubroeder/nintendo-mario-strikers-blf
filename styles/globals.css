@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 @layer components {
+  .interactive {
+    @apply transition-all disabled:cursor-not-allowed hover:scale-105 hover:active:scale-95;
+  }
+
+  .icon {
+    @apply w-4 h-4 interactive;
+  }
+
   .text-themed {
     @apply theme-mario:text-mario theme-luigi:text-luigi theme-peach:text-peach theme-yoshi:text-yoshi theme-bowser:text-bowser theme-wario:text-wario theme-waluigi:text-waluigi theme-donkey-kong:text-donkey-kong theme-toad:text-toad theme-rosalina:text-rosalina;
   }

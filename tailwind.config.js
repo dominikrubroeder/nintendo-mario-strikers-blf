@@ -34,6 +34,18 @@ module.exports = {
         'rosalina-dark': '#1ABCA3',
       },
       keyframes: {
+        fadeUp: {
+          '0%': {
+            transform: 'translateY(4%)',
+            opacity: '0',
+            visibility: 'hidden',
+          },
+          '100%': {
+            transform: 'translateY(0)',
+            opacity: '1',
+            visibility: 'visible',
+          },
+        },
         audioWave1: {
           '0%, 100%': { transform: 'scale(1.0)' },
           '25%': { transform: 'scale(1.6)' },
@@ -58,6 +70,7 @@ module.exports = {
         },
       },
       animation: {
+        fadeUp: 'fadeUp 1s ease-out forwards',
         audioWave1: 'audioWave1 1.5s infinite ease-in-out',
         audioWave2: 'audioWave2 2.2s infinite ease-in-out',
         growthHeight: 'growthHeight 1s infinite ease-in-out',

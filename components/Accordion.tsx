@@ -27,9 +27,9 @@ const Accordion: React.FC<AccordionProps> = ({
 
   return (
     <div
-      className={`grid gap-2 min-w-[12rem] bg-accent/10 bg-themed-dark py-3 px-4 rounded-xl transition active:scale-95 ${
-        className ? className : ''
-      }`}
+      className={`grid gap-2 min-w-[12rem] bg-accent/10 bg-themed-dark py-3 px-4 rounded-xl ${
+        expanded ? '' : 'interactive'
+      } ${className ? className : ''}`}
     >
       <header
         className="cursor-pointer"

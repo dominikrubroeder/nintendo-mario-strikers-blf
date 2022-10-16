@@ -6,7 +6,7 @@ import Button from './base/Button';
 import ReleaseCountdown from './ReleaseCountdown';
 import TheGameTrailerOverlay from './TheGameTrailerOverlay';
 import Heading from './typography/Heading';
-import { ArrowRightIcon, PlayIcon } from '@heroicons/react/solid';
+import { ArrowRightIcon, PlayIcon } from '@heroicons/react/24/solid';
 
 const TheHero: React.FC = () => {
   const [showYouTubeGameTrailer, setShowYoutubeGameTrailer] = useState(false);

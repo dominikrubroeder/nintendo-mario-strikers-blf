@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  VolumeUpIcon,
-  SelectorIcon,
+  SpeakerWaveIcon,
+  ChevronUpDownIcon,
   PlayIcon,
   PauseIcon,
-} from '@heroicons/react/solid';
+} from '@heroicons/react/24/solid';
 import Button from './base/Button';
 import AnimatedSoundbarsIcon from './animation/svg/AnimatedSoundbarsIcon';
 
@@ -84,7 +84,7 @@ const SelectASoundtrack: React.FC = () => {
   }`;
 
   return (
-    <div className="bg-accent/10 bg-themed-dark px-4 py-3 rounded-xl transition z-10 w-56 active:scale-95">
+    <div className="bg-accent/10 bg-themed-dark px-4 py-3 rounded-xl transition z-10 w-56 interactive">
       <header className="flex items-center gap-2 justify-between text-xs cursor-pointer">
         {currentSoundtrack && (
           <audio src={currentSoundtrack.src} ref={audioRef}></audio>
@@ -94,7 +94,7 @@ const SelectASoundtrack: React.FC = () => {
           className="flex-1 flex items-center justify-start gap-1"
           onClick={() => setShowSoundtracks((previousState) => !previousState)}
         >
-          <SelectorIcon className="w-5 h-5" />
+          <ChevronUpDownIcon className="w-5 h-5" />
 
           <span className="text-left w-max">{currentTitle}</span>
         </div>
@@ -152,7 +152,7 @@ const SelectASoundtrack: React.FC = () => {
                     onClick={(e) => playPauseSoundtrackHandler(e, soundtrack)}
                   >
                     <span className="flex items-center gap-1">
-                      <VolumeUpIcon className="w-3 h-3 text-accent themed:text-white" />
+                      <SpeakerWaveIcon className="w-3 h-3 text-accent themed:text-white" />
                       {soundtrack.title}
                     </span>
 
@@ -168,7 +168,7 @@ const SelectASoundtrack: React.FC = () => {
 
               <ul className="grid gap-2">
                 <li className="flex items-center gap-1 cursor-pointer">
-                  <VolumeUpIcon className="w-3 h-3 text-accent themed:text-white" />
+                  <SpeakerWaveIcon className="w-3 h-3 text-accent themed:text-white" />
                   Mario theme
                 </li>
               </ul>
