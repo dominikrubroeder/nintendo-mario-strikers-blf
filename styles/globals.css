@@ -4,7 +4,7 @@
 
 @layer components {
   .interactive {
-    @apply transition-all disabled:cursor-not-allowed hover:scale-105 hover:active:scale-95;
+    @apply transition-all cursor-pointer disabled:cursor-not-allowed hover:scale-105 hover:active:scale-95;
   }
 
   .icon {

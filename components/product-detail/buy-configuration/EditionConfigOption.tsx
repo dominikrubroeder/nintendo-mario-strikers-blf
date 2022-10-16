@@ -28,10 +28,10 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
 
   return (
     <div
-      className={`w-full border rounded-3xl p-8 cursor-pointer transition active:scale-95 hover:border-gray-300 ${
+      className={`w-full border rounded-3xl p-8 hover:border-gray-300 ${
         edition.id === appCtx?.selectedEdition
           ? 'border-accent hover:border-accent bg-themed-dark hover:border-themed'
-          : 'border-gray-200 border-themed-dark'
+          : 'border-gray-200 border-themed-dark interactive'
       }`}
       onClick={onClickHandler}
     >

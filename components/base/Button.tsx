@@ -50,21 +50,21 @@ const Button: React.FC<ButtonProps> = ({
   switch (variant) {
     case 'contained':
       variantClassName =
-        'text-white px-4 py-2 rounded-full bg-accent hover:bg-red-700 themed:bg-signal themed:text-white themed:hover:bg-signal-dark';
+        'flex items-center justify-between gap-2 rounded-full px-4 py-2 text-white bg-accent hover:bg-red-700 themed:bg-signal themed:text-white themed:hover:bg-signal-dark';
       break;
     case 'outlined':
       variantClassName =
-        'text-accent themed:text-signal px-4 py-2 rounded-full border border-signal hover:scale-110 hover:bg-themed-dark hover:text-white';
+        'flex items-center justify-between gap-2 rounded-full px-4 py-2 text-accent themed:text-signal border border-signal hover:bg-themed-dark hover:text-white';
       break;
     case 'text':
       variantClassName =
-        'text-accent themed:text-white px-4 py-2 rounded-full transition-all duration-300 hover:scale-110 hover:bg-accent/10 themed:hover:bg-signal-dark/40';
+        'flex items-center justify-between gap-2 rounded-full px-4 py-2 text-accent themed:text-white hover:bg-accent/10 themed:hover:bg-signal-dark/40';
       break;
     case 'icon':
       variantClassName = 'flex items-center justify-center';
       break;
     case 'unstyled':
-      variantClassName = '';
+      variantClassName = 'flex items-center justify-start';
     default:
       variantClassName = '';
       break;
@@ -72,7 +72,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={`disabled:opacity-10 interactive ${variantClassName} ${
+      className={`${variantClassName} interactive ${
         className ? className : ''
       }`}
       disabled={disabled}

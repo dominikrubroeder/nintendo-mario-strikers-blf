@@ -37,6 +37,7 @@ const galleryItems = [
   },
 ];
 
+// Check quote slider animation on change: https://de.kickbase.com/
 export default function TheGallery() {
   return (
     <section className="p-4 overflow-x-auto whitespace-nowrap">

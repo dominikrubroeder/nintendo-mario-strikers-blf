@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   SpeakerWaveIcon,
-  ChevronUpDownIcon,
   PlayIcon,
   PauseIcon,
+  ChevronDownIcon,
 } from '@heroicons/react/24/solid';
 import Button from './base/Button';
 import AnimatedSoundbarsIcon from './animation/svg/AnimatedSoundbarsIcon';
@@ -79,25 +79,30 @@ const SelectASoundtrack: React.FC = () => {
     }
   }, [currentSoundtrack]);
 
-  const playPauseButtonClasses = `relative h-4 w-4 text-accent themed:text-white before:content-[''] before:w-4 before:h-4 before:bg-accent/20 before:themed:bg-white/20 before:rounded-full before:block before:absolute before:inset-0 before:w-[1rem] before:z-0 before:h-[1rem] after:content-[''] after:w-4 after:h-4 after:bg-accent/20 after:themed:bg-white/20 after:rounded-full after:block after:absolute after:inset-0 after:w-[1rem] after:z-0 after:h-[1rem] ${
+  const playPauseButtonClasses = `relative text-white before:content-[''] before:w-5 before:h-5 before:bg-accent/20 before:themed:bg-white/20 before:rounded-full before:block before:absolute before:inset-0 before:w-[1rem] before:z-0 before:h-[1rem] after:content-[''] after:w-5 after:h-5 after:bg-accent/20 after:themed:bg-white/20 after:rounded-full after:block after:absolute after:inset-0 after:w-[1rem] after:z-0 after:h-[1rem] ${
     playing ? 'before:animate-audioWave1 after:animate-audioWave2' : ''
   }`;
 
   return (
-    <div className="bg-accent/10 bg-themed-dark px-4 py-3 rounded-xl transition z-10 w-56 interactive">
+    <div
+      className={`bg-accent/10 bg-themed-dark px-4 py-3 rounded-xl transition z-10 w-56 ${
+        showSoundtracks ? '' : 'interactive'
+      }`}
+    >
       <header className="flex items-center gap-2 justify-between text-xs cursor-pointer">
         {currentSoundtrack && (
           <audio src={currentSoundtrack.src} ref={audioRef}></audio>
         )}
 
-        <div
-          className="flex-1 flex items-center justify-start gap-1"
+        <Button
+          variant="icon"
           onClick={() => setShowSoundtracks((previousState) => !previousState)}
+          className="flex-1"
         >
-          <ChevronUpDownIcon className="w-5 h-5" />
+          <ChevronDownIcon className="icon" />
 
-          <span className="text-left w-max">{currentTitle}</span>
-        </div>
+          <span className="text-left w-max">{currentTitle}t</span>
+        </Button>
 
         <div className="flex items-center gap-3 h-6">
           {playing && !showSoundtracks && <AnimatedSoundbarsIcon />}
@@ -108,7 +113,7 @@ const SelectASoundtrack: React.FC = () => {
               className={playPauseButtonClasses}
               onClick={playSoundtrackHandler}
             >
-              <PlayIcon className="w-5 h-5" />
+              <PlayIcon className="icon" />
             </Button>
           )}
 
@@ -118,7 +123,7 @@ const SelectASoundtrack: React.FC = () => {
               className={playPauseButtonClasses}
               onClick={pauseSoundtrackHandler}
             >
-              <PauseIcon className="w-5 h-5" />
+              <PauseIcon className="icon" />
             </Button>
           )}
         </div>
