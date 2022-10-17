@@ -48,11 +48,13 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
         <Image
           src={image}
           alt={name}
-          className="z-10 transition-all group-hover:scale-125"
+          className={`z-10 transition-all group-hover:scale-125 ${
+            appCtx?.selectedCharacter === id ? 'scale-125' : 'scale-100'
+          }`}
           width={256}
           height={256}
         />
-        <h3 className="absolute w-full left-1/2 bottom-12 -translate-x-1/2 text-6xl tracking-normal uppercase font-bold transition-all group-hover:scale-125">
+        <h3 className="absolute left-1/2 bottom-12 -translate-x-1/2 text-5xl tracking-normal uppercase font-bold transition-all md:group-hover:scale-125 md:text-6xl">
           {name}
         </h3>
       </div>

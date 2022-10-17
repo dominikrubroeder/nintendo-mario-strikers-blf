@@ -63,12 +63,12 @@ const InfoPage: NextPage = () => {
 
         <TheCommunityQuotes />
 
-        <section className="max-w-screen-xl m-auto w-full">
+        <section className="px-4 max-w-screen-xl m-auto w-full">
           <Heading className="mx-auto px-4 text-6xl md:text-8xl md:leading-tight text-center break-all font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent">
             Wähle dein Team
           </Heading>
 
-          <CharacterSelection className="grid-cols-3" />
+          <CharacterSelection className="sm:grid-cols-2 md:grid-cols-3" />
         </section>
 
         <TheGallery />
