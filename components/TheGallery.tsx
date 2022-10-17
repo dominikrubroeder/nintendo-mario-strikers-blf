@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 
 const galleryData = [
@@ -47,8 +48,8 @@ export default function TheGallery() {
 
   const calcValue = useCallback(
     (index: number) => {
-      if (index > activeItem) return index * 100;
-      if (index < activeItem) return -(index * 100);
+      if (index > activeItem) return index * 100 + 2 * index;
+      if (index < activeItem) return -(index * 100 + 2 * index);
 
       return 0;
     },
@@ -56,8 +57,8 @@ export default function TheGallery() {
   );
 
   return (
-    <section className="p-4 overflow-x-auto whitespace-nowrap">
-      <div className="relative h-[75vh] md:h-[80vh]">
+    <section className="p-4 overflow-hidden">
+      <div className="relative h-[75vh] md:h-[85vh]">
         {galleryData.map((galleryItem, index) => {
           return (
             <div
@@ -66,8 +67,10 @@ export default function TheGallery() {
                 backgroundImage: `url(${galleryItem.src})`,
                 transform: `translateX(${calcValue(index)}%)`,
               }}
-              className={`absolute left-0 top-0 w-[85vw] h-full bg-cover bg-center rounded-3xl transition-all duration-1000 md:w-[95vw] md:h-[80vh] ${
-                index === activeItem ? 'scale-100' : 'scale-95'
+              className={`absolute left-0 top-0 w-full h-full bg-cover bg-center rounded-3xl transition-all duration-1000 ${
+                index === activeItem
+                  ? 'opacity-100 scale-100'
+                  : 'opacity-0 scale-50'
               }`}
             ></div>
           );
@@ -83,11 +86,20 @@ export default function TheGallery() {
                 setActiveItem(index);
               }}
             >
-              <span
+              {/* <span
                 className={`block w-4 h-4 rounded-full themed:bg-themed-dark cursor-pointer transition-all hover:scale-150 ${
                   index === activeItem ? 'bg-accent' : 'bg-accent/20'
                 }`}
-              ></span>
+              ></span> */}
+              <Image
+                width={32}
+                height={32}
+                src="/images/items/CI_NSwitch_MarioStrikersBLF_AW_Items_Mushroom.png"
+                alt="Icon"
+                className={`block rounded-full p-4 themed:bg-themed-dark interactive ${
+                  index === activeItem ? 'opacity-100 scale-110' : 'opacity-20'
+                }`}
+              />
             </li>
           ))}
         </ul>
