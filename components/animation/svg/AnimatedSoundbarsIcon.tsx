@@ -4,13 +4,13 @@ const AnimatedSoundbarsIcon: React.FC = () => {
   return (
     <div className="grid gap-0.5   grid-cols-3">
       <span className="relative w-1 h-4 bg-themed-dark rounded-t-full">
-        <span className="absolute bottom-0 left-0 right-0 rounded-t-full w-full bg-accent themed:bg-white animate-growthHeight"></span>
+        <span className="absolute bottom-0 left-0 right-0 rounded-t-full w-full bg-themed themed:bg-white animate-growthHeight"></span>
       </span>
       <span className="relative w-1 h-4 bg-themed-dark rounded-t-full">
-        <span className="absolute bottom-0 left-0 right-0 rounded-t-full w-full bg-accent themed:bg-white animate-growthHeight animation-delay-200"></span>
+        <span className="absolute bottom-0 left-0 right-0 rounded-t-full w-full bg-themed themed:bg-white animate-growthHeight animation-delay-200"></span>
       </span>
       <span className="relative w-1 h-4 bg-themed-dark rounded-t-full">
-        <span className="absolute bottom-0 left-0 right-0 rounded-t-full w-full bg-accent themed:bg-white animate-growthHeight animation-delay-300"></span>
+        <span className="absolute bottom-0 left-0 right-0 rounded-t-full w-full bg-themed themed:bg-white animate-growthHeight animation-delay-300"></span>
       </span>
     </div>
   );

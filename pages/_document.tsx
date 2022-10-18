@@ -2,7 +2,7 @@ import { Html, Head, Main, NextScript } from 'next/document';
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html lang="en" className="themed">
       <Head>
         <meta
           name="description"
@@ -16,7 +16,7 @@ export default function Document() {
       <div id="overlay"></div>
       <div id="modal"></div>
 
-      <body>
+      <body className="bg-themed text-themed border-themed">
         <Main />
         <NextScript />
       </body>

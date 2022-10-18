@@ -88,7 +88,7 @@ export default function TheGallery() {
             >
               {/* <span
                 className={`block w-4 h-4 rounded-full themed:bg-themed-dark cursor-pointer transition-all hover:scale-150 ${
-                  index === activeItem ? 'bg-accent' : 'bg-accent/20'
+                  index === activeItem ? 'bg-themed' : 'bg-themed/20'
                 }`}
               ></span> */}
               <Image

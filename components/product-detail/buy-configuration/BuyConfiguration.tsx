@@ -32,7 +32,7 @@ const BuyConfiguration: React.FC<BuyConfigurationProps> = ({
         <div className="grid gap-1">
           <Heading
             as="h2"
-            className="flex items-center gap-2 flex-wrap text-accent themed:text-white"
+            className="flex items-center gap-2 flex-wrap text-themed themed:text-white"
           >
             Nintendo Switch | 10. Juni 2022
             <span className="hidden md:inline-block"> | </span>

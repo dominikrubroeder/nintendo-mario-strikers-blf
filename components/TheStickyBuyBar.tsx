@@ -46,7 +46,7 @@ export default function TheStickyBuyBar(props) {
             {appCtx?.selectedEdition && (
               <div className="flex items-center gap-1">
                 <span
-                  className="text-accent cursor-pointer themed:text-white"
+                  className="text-themed cursor-pointer themed:text-white"
                   onClick={() =>
                     window.scrollTo({ top: 0, behavior: 'smooth' })
                   }
@@ -65,7 +65,7 @@ export default function TheStickyBuyBar(props) {
                 </span>
                 {router.pathname ===
                   '/buy-mario-strikers-battle-league-football' && (
-                  <ArrowUpIcon className="w-4 h-4 cursor-pointer text-accent themed:text-white"></ArrowUpIcon>
+                  <ArrowUpIcon className="w-4 h-4 cursor-pointer text-themed themed:text-white"></ArrowUpIcon>
                 )}
               </div>
             )}

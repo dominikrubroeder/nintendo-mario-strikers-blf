@@ -18,7 +18,7 @@ const BaseToggle: React.FC<BaseToggleProps> = ({
   return (
     <div
       className={`flex items-center gap-1 text-xs cursor-pointer ${
-        enabled ? 'text-accent' : 'text-gray-400'
+        enabled ? 'text-themed' : 'text-gray-400'
       }`}
       onClick={onClick}
     >
@@ -26,7 +26,7 @@ const BaseToggle: React.FC<BaseToggleProps> = ({
 
       <div
         className={`flex w-10 p-1 rounded-full bg-gray-100 transition-all ${
-          enabled ? 'bg-accent' : ''
+          enabled ? 'bg-themed' : ''
         }`}
       >
         <span

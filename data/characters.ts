@@ -230,6 +230,85 @@ const characters: Character[] = [
     specialAbilityVideoURL:
       'https://www.youtube-nocookie.com/embed/fmvzfwj85Vo',
   },
+  {
+    id: 'daisy',
+    name: 'Daisy',
+    sound: '/audio/sound-mario-2.mp3',
+    image: '/images/characters/NSwitch-character-sketch-daisy.png',
+    imageGallery: [
+      '/images/characters/NSwitch-character-sketch-daisy.png',
+      '/images/characters/NSwitch-character-sketch-daisy.png',
+      '/images/characters/NSwitch-character-sketch-daisy.png',
+      '/images/characters/NSwitch-character-sketch-daisy.png',
+      '/images/characters/NSwitch-character-sketch-daisy.png',
+    ],
+    baseText:
+      'Sie hat zwar ein Kleid und eine Krone, aber diese freundliche Prinzessin ist ganz bodenständig. Daisy ist immer bereit für eine Herausforderung, ob sie nun Tennisbälle zerschlägt oder über Hürden springt. Die Herrscherin von Sarasaland liebt auch den Nervenkitzel bei Verfolgungsjagden - vor allem, wenn sie auf einem Gokart durch die Gegend saust.',
+    teamText:
+      'Mit ihrer exzellenten Technik und einem Auge für präzise Pässe ist Daisy eine fantastische Spielmacherin.',
+    specialAbility: 'Blumenspirale',
+    specialAbilityVideoURL:
+      'https://www.youtube-nocookie.com/embed/fmvzfwj85Vo',
+  },
+  {
+    id: 'shy-guy',
+    name: 'Shy Guy',
+    sound: '/audio/sound-mario-2.mp3',
+    image: '/images/characters/NSwitch-character-sketch-shy-guy.png',
+    imageGallery: [
+      '/images/characters/NSwitch-character-sketch-shy-guy.png',
+      '/images/characters/NSwitch-character-sketch-shy-guy.png',
+      '/images/characters/NSwitch-character-sketch-shy-guy.png',
+      '/images/characters/NSwitch-character-sketch-shy-guy.png',
+      '/images/characters/NSwitch-character-sketch-shy-guy.png',
+    ],
+    baseText:
+      'Wer sind diese maskierten Schurken, die Yoshi und Mario so viel Ärger machen? Es scheint, als wären die Shy Guys immer in der Nähe, egal ob du Kart fährst, einen Tennisball schlägst, eine Party feierst oder ein Baby vor einem bebrillten Magikoopa rettest.',
+    teamText:
+      'Bei einem Allrounder wie Shy Guy bietet es sich an, diverse Ausrüstungskombinationen auszuprobieren.',
+    specialAbility: 'Propellerkopfball',
+    specialAbilityVideoURL:
+      'https://www.youtube-nocookie.com/embed/fmvzfwj85Vo',
+  },
+  {
+    id: 'pauline',
+    name: 'Pauline',
+    sound: '/audio/sound-mario-2.mp3',
+    image: '/images/characters/NSwitch-character-sketch-pauline.png',
+    imageGallery: [
+      '/images/characters/NSwitch-character-sketch-pauline.png',
+      '/images/characters/NSwitch-character-sketch-pauline.png',
+      '/images/characters/NSwitch-character-sketch-pauline.png',
+      '/images/characters/NSwitch-character-sketch-pauline.png',
+      '/images/characters/NSwitch-character-sketch-pauline.png',
+    ],
+    baseText: 'TBD',
+    teamText:
+      'Kraft und Tempo - damit ist Pauline perfekt geeignet, um den Ball in der Verteidigung zu gewinnen und dann blitzschnell zu kontern.',
+    specialAbility: 'Gassenhauer',
+    specialAbilityVideoURL:
+      'https://www.youtube-nocookie.com/embed/fmvzfwj85Vo',
+  },
+  {
+    id: 'diddy-kong',
+    name: 'Diddy Kong',
+    sound: '/audio/sound-mario-2.mp3',
+    image: '/images/characters/NSwitch-character-sketch-diddy-kong.png',
+    imageGallery: [
+      '/images/characters/NSwitch-character-sketch-diddy-kong.png',
+      '/images/characters/NSwitch-character-sketch-diddy-kong.png',
+      '/images/characters/NSwitch-character-sketch-diddy-kong.png',
+      '/images/characters/NSwitch-character-sketch-diddy-kong.png',
+      '/images/characters/NSwitch-character-sketch-diddy-kong.png',
+    ],
+    baseText:
+      'Für die Bösewichte des Dschungels sieht er vielleicht harmlos aus, aber dieser kleine Kong ist ein Erdnuss-Kraftpaket! Oft sitzt er auf dem Rücken von Donkey Kong, aber Diddy Kong ist keine Last - er kann seinen großen Kumpel mit seinem Rocket Barrel Boost in neue Höhen katapultieren! ',
+    teamText:
+      'Dank seiner flinken Beinen und seines guten Passspiels macht sich Diddy Kong sehr gut als Mittelfeldmotor.',
+    specialAbility: 'Gassenhauer',
+    specialAbilityVideoURL:
+      'https://www.youtube-nocookie.com/embed/fmvzfwj85Vo',
+  },
 ];
 
 export default characters;

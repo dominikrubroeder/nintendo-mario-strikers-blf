@@ -8,30 +8,34 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        accent: '#E60012',
-        'accent-dark': '#D10000',
-        signal: '#FFB800',
-        'signal-dark': '#F1980D',
-        mario: '#E0102F',
-        'mario-dark': '#C80E2A',
-        luigi: '#08A936',
-        'luigi-dark': '#07922F',
-        bowser: '#F8BE10',
-        'bowser-dark': '#E9B007',
-        yoshi: '#70B921',
-        'yoshi-dark': '#64A41D',
-        'donkey-kong': '#983106',
-        'donkey-kong-dark': '#802905',
-        wario: '#F5DA0F',
-        'wario-dark': '#E1C809',
-        waluigi: '#5D2E8E',
-        'waluigi-dark': '#51287B',
-        peach: '#F096BE',
-        'peach-dark': '#ED7EAF',
-        toad: '#17419A',
-        'toad-dark': '#143885',
-        rosalina: '#1DD4B7',
-        'rosalina-dark': '#1ABCA3',
+        accent: 'var(--theme-accent)',
+        'accent-dark': 'var(--theme-accent-dark)',
+        signal: 'var(--theme-signal)',
+        'signal-dark': 'var(--theme-signal-dark)',
+        mario: 'var(--theme-mario)',
+        'mario-dark': 'var(--theme-mario-dark)',
+        luigi: 'var(--theme-luigi)',
+        'luigi-dark': 'var(--theme-luigi-dark)',
+        bowser: 'var(--theme-bowser)',
+        'bowser-dark': 'var(--theme-bowser-dark)',
+        yoshi: 'var(--theme-yoshi)',
+        'yoshi-dark': 'var(--theme-yoshi-dark)',
+        'donkey-kong': 'var(--theme-donkey-kong)',
+        'donkey-kong-dark': 'var(--theme-donkey-kong-dark)',
+        wario: 'var(--theme-wario)',
+        'wario-dark': 'var(--theme-wario-dark)',
+        waluigi: 'var(--theme-waluigi)',
+        'waluigi-dark': 'var(--theme-waluigi-dark)',
+        peach: 'var(--theme-peach)',
+        'peach-dark': 'var(--theme-peach-dark)',
+        toad: 'var(--theme-toad)',
+        'toad-dark': 'var(--theme-toad-dark)',
+        rosalina: 'var(--theme-rosalina)',
+        'rosalina-dark': 'var(--theme-rosalina-dark)',
+        daisy: 'var(--theme-daisy)',
+        'daisy-dark': 'var(--theme-daisy-dark)',
+        'diddy-kong': 'var(--theme-donkey-kong)',
+        'diddy-kong-dark': 'var(--theme-donkey-kong-dark)',
       },
       keyframes: {
         fadeUp: {
@@ -90,6 +94,9 @@ module.exports = {
       addVariant('theme-peach', '.theme-peach &');
       addVariant('theme-toad', '.theme-toad &');
       addVariant('theme-rosalina', '.theme-rosalina &');
+      addVariant('theme-bumm-bumm', '.theme-bumm-bumm &');
+      addVariant('theme-daisy', '.theme-daisy &');
+      addVariant('theme-diddy-kong', '.theme-diddy-kong &');
     }),
     plugin(function ({ addUtilities }) {
       addUtilities({

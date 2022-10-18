@@ -12,19 +12,19 @@
   }
 
   .text-themed {
-    @apply theme-mario:text-mario theme-luigi:text-luigi theme-peach:text-peach theme-yoshi:text-yoshi theme-bowser:text-bowser theme-wario:text-wario theme-waluigi:text-waluigi theme-donkey-kong:text-donkey-kong theme-toad:text-toad theme-rosalina:text-rosalina;
+    @apply text-accent themed:text-white;
   }
 
   .text-themed-dark {
-    @apply theme-mario:text-mario-dark theme-luigi:text-luigi-dark theme-peach:text-peach-dark theme-yoshi:text-yoshi-dark theme-bowser:text-bowser-dark theme-wario:text-wario-dark theme-waluigi:text-waluigi-dark theme-donkey-kong:text-donkey-kong-dark theme-toad:text-toad-dark theme-rosalina:text-rosalina-dark;
+    @apply text-accent-dark themed:text-white/70;
   }
 
   .border-themed {
-    @apply theme-mario:border-mario theme-luigi:border-luigi theme-peach:border-peach theme-yoshi:border-yoshi theme-bowser:border-bowser theme-wario:border-wario theme-waluigi:border-waluigi theme-donkey-kong:border-donkey-kong theme-toad:border-toad theme-rosalina:border-rosalina;
+    @apply border-accent theme-mario:border-mario theme-luigi:border-luigi theme-peach:border-peach theme-yoshi:border-yoshi theme-bowser:border-bowser theme-wario:border-wario theme-waluigi:border-waluigi theme-donkey-kong:border-donkey-kong theme-toad:border-toad theme-rosalina:border-rosalina theme-diddy-kong:border-diddy-kong;
   }
 
   .border-themed-dark {
-    @apply theme-mario:border-mario-dark theme-luigi:border-luigi-dark theme-peach:border-peach-dark theme-yoshi:border-yoshi-dark theme-bowser:border-bowser-dark theme-wario:border-wario-dark theme-waluigi:border-waluigi-dark theme-donkey-kong:border-donkey-kong-dark theme-toad:border-toad-dark theme-rosalina:border-rosalina-dark;
+    @apply border-accent-dark theme-mario:border-mario-dark theme-luigi:border-luigi-dark theme-peach:border-peach-dark theme-yoshi:border-yoshi-dark theme-bowser:border-bowser-dark theme-wario:border-wario-dark theme-waluigi:border-waluigi-dark theme-donkey-kong:border-donkey-kong-dark theme-toad:border-toad-dark theme-rosalina:border-rosalina-dark theme-diddy-kong:border-diddy-kong-dark;
   }
 
   .hover\:border-themed-dark {
@@ -32,11 +32,11 @@
   }
 
   .bg-themed {
-    @apply theme-mario:bg-mario theme-luigi:bg-luigi theme-peach:bg-peach theme-yoshi:bg-yoshi theme-bowser:bg-bowser theme-wario:bg-wario theme-waluigi:bg-waluigi theme-donkey-kong:bg-donkey-kong theme-toad:bg-toad theme-rosalina:bg-rosalina;
+    @apply bg-accent theme-mario:bg-mario theme-luigi:bg-luigi theme-peach:bg-peach theme-yoshi:bg-yoshi theme-bowser:bg-bowser theme-wario:bg-wario theme-waluigi:bg-waluigi theme-donkey-kong:bg-donkey-kong theme-toad:bg-toad theme-rosalina:bg-rosalina theme-diddy-kong:bg-diddy-kong;
   }
 
   .bg-themed-dark {
-    @apply theme-mario:bg-mario-dark theme-luigi:bg-luigi-dark theme-peach:bg-peach-dark theme-yoshi:bg-yoshi-dark theme-bowser:bg-bowser-dark theme-wario:bg-wario-dark theme-waluigi:bg-waluigi-dark theme-donkey-kong:bg-donkey-kong-dark theme-toad:bg-toad-dark theme-rosalina:bg-rosalina-dark;
+    @apply bg-accent-dark theme-mario:bg-mario-dark theme-luigi:bg-luigi-dark theme-peach:bg-peach-dark theme-yoshi:bg-yoshi-dark theme-bowser:bg-bowser-dark theme-wario:bg-wario-dark theme-waluigi:bg-waluigi-dark theme-donkey-kong:bg-donkey-kong-dark theme-toad:bg-toad-dark theme-rosalina:bg-rosalina-dark theme-diddy-kong:bg-diddy-kong-dark;
   }
 
   .hover\:bg-themed-dark {
@@ -44,12 +44,15 @@
   }
 
   .bg-gradient-themed {
-    @apply theme-mario:bg-mario-dark theme-luigi:bg-luigi-dark theme-peach:from-[#610C63] theme-peach:to-[#810955] theme-yoshi:bg-yoshi-dark theme-bowser:bg-bowser-dark theme-wario:bg-wario-dark theme-waluigi:bg-waluigi-dark theme-donkey-kong:bg-donkey-kong-dark theme-toad:bg-toad-dark theme-rosalina:bg-rosalina-dark;
+    @apply bg-accent-dark theme-mario:bg-mario-dark theme-luigi:bg-luigi-dark theme-peach:from-[#610C63] theme-peach:to-[#810955] theme-yoshi:bg-yoshi-dark theme-bowser:bg-bowser-dark theme-wario:bg-wario-dark theme-waluigi:bg-waluigi-dark theme-donkey-kong:bg-donkey-kong-dark theme-toad:bg-toad-dark theme-rosalina:bg-rosalina-dark theme-diddy-kong:bg-diddy-kong-dark;
   }
 }
 
 :root {
   --theme-accent: hsl(0, 75%, 50%);
+  --theme-accent-dark: hsl(0, 75%, 45%);
+  --theme-signal: hsl(43, 100%, 50%);
+  --theme-signal-dark: hsl(43, 100%, 45%);
   --theme-mario: hsl(351, 87%, 47%);
   --theme-mario-dark: hsl(351, 87%, 42%);
   --theme-luigi: hsl(125, 96%, 31%);
@@ -64,206 +67,16 @@
   --theme-wario-dark: hsl(53, 92%, 46%);
   --theme-waluigi: hsl(269, 51%, 37%);
   --theme-waluigi-dark: hsl(269, 51%, 32%);
-  --theme-donkey-kong: hsl(18, 92%, 31%);
-  --theme-donkey-kong-dark: hsl(18, 92%, 26%);
+  --theme-donkey-kong: hsl(17, 89%, 24%);
+  --theme-donkey-kong-dark: hsl(17, 89%, 19%);
   --theme-toad: hsl(221, 74%, 35%);
   --theme-toad-dark: hsl(221, 74%, 30%);
   --theme-rosalina: hsl(170, 76%, 47%);
   --theme-rosalina-dark: hsl(170, 76%, 42%);
-}
-
-/* Base theme: Nintendo */
-.text-accent {
-  color: var(--theme-accent);
-}
-
-.bg-accent {
-  background-color: var(--theme-accent);
-}
-
-.border-accent {
-  border-color: var(--theme-accent);
-}
-
-/*
-----------
----------------------------------------- Theme: Mario
-----------
-*/
-
-.theme-mario .text-accent {
-  color: var(--theme-mario);
-}
-
-.theme-mario .bg-accent,
-.theme-mario.bg-accent {
-  background-color: var(--theme-mario);
-}
-
-.theme-mario .border-accent {
-  border-color: var(--theme-mario);
-}
-
-/*
-----------
----------------------------------------- Theme: Luigi
-----------
-*/
-.theme-luigi .text-accent {
-  color: var(--theme-luigi);
-}
-
-.theme-luigi .bg-accent,
-.theme-luigi.bg-accent {
-  background-color: var(--theme-luigi);
-}
-
-.theme-luigi .border-accent {
-  border-color: var(--theme-luigi);
-}
-
-/*
-----------
----------------------------------------- Theme: Peach
-----------
-*/
-.theme-peach .text-accent {
-  color: var(--theme-peach);
-}
-
-.theme-peach .bg-accent,
-.theme-peach.bg-accent {
-  background-color: var(--theme-peach);
-}
-
-.theme-peach .border-accent {
-  border-color: var(--theme-peach);
-}
-
-/*
-----------
----------------------------------------- Theme: Yoshi
-----------
-*/
-.theme-yoshi .text-accent {
-  color: var(--theme-yoshi);
-}
-
-.theme-yoshi .bg-accent,
-.theme-yoshi.bg-accent {
-  background-color: var(--theme-yoshi);
-}
-
-.theme-yoshi .border-accent {
-  border-color: var(--theme-yoshi);
-}
-
-/*
-----------
----------------------------------------- Theme: Bowser
-----------
-*/
-.theme-bowser .text-accent {
-  color: var(--theme-bowser);
-}
-
-.theme-bowser .bg-accent,
-.theme-bowser.bg-accent {
-  background-color: var(--theme-bowser);
-}
-
-.theme-bowser .border-accent {
-  border-color: var(--theme-bowser);
-}
-
-/*
-----------
----------------------------------------- Theme: Wario
-----------
-*/
-.theme-wario .text-accent {
-  color: var(--theme-wario);
-}
-
-.theme-wario .bg-accent,
-.theme-wario.bg-accent {
-  background-color: var(--theme-wario);
-}
-
-.theme-wario .border-accent {
-  border-color: var(--theme-wario);
-}
-
-/*
-----------
----------------------------------------- Theme: Waluigi
-----------
-*/
-.theme-waluigi .text-accent {
-  color: var(--theme-waluigi);
-}
-
-.theme-waluigi .bg-accent,
-.theme-waluigi.bg-accent {
-  background-color: var(--theme-waluigi);
-}
-
-.theme-waluigi .border-accent {
-  border-color: var(--theme-waluigi);
-}
-
-/*
-----------
----------------------------------------- Theme: Donkey Kong
-----------
-*/
-.theme-donkey-kong .text-accent {
-  color: var(--theme-donkey-kong);
-}
-
-.theme-donkey-kong .bg-accent,
-.theme-donkey-kong.bg-accent {
-  background-color: var(--theme-donkey-kong);
-}
-
-.theme-donkey-kong .border-accent {
-  border-color: var(--theme-donkey-kong);
-}
-
-/*
-----------
----------------------------------------- Theme: Toad
-----------
-*/
-.theme-toad .text-accent {
-  color: var(--theme-toad);
-}
-
-.theme-toad .bg-accent,
-.theme-toad.bg-accent {
-  background-color: var(--theme-toad);
-}
-
-.theme-toad .border-accent {
-  border-color: var(--theme-toad);
-}
-
-/*
-----------
----------------------------------------- Theme: Toad
-----------
-*/
-.theme-rosalina .text-accent {
-  color: var(--theme-rosalina);
-}
-
-.theme-rosalina .bg-accent,
-.theme-rosalina.bg-accent {
-  background-color: var(--theme-rosalina);
-}
-
-.theme-rosalina .border-accent {
-  border-color: var(--theme-rosalina);
+  --theme-daisy: hsl(32, 92%, 49%);
+  --theme-daisy-dark: hsl(32, 92%, 44%);
+  --theme-diddy-kong: hsl(18, 92%, 31%);
+  --theme-diddy-kong-dark: hsl(18, 92%, 26%);
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
