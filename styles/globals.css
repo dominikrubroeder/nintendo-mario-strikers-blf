@@ -20,11 +20,11 @@
   }
 
   .border-themed {
-    @apply border-accent theme-mario:border-mario theme-luigi:border-luigi theme-peach:border-peach theme-yoshi:border-yoshi theme-bowser:border-bowser theme-wario:border-wario theme-waluigi:border-waluigi theme-donkey-kong:border-donkey-kong theme-toad:border-toad theme-rosalina:border-rosalina theme-diddy-kong:border-diddy-kong;
+    @apply border-accent theme-mario:border-mario theme-luigi:border-luigi theme-peach:border-peach theme-yoshi:border-yoshi theme-bowser:border-bowser theme-wario:border-wario theme-waluigi:border-waluigi theme-donkey-kong:border-donkey-kong theme-toad:border-toad theme-rosalina:border-rosalina theme-bumm-bumm:border-bumm-bumm theme-daisy:border-daisy theme-shy-guy:border-shy-guy theme-pauline:border-pauline theme-diddy-kong:border-diddy-kong;
   }
 
   .border-themed-dark {
-    @apply border-accent-dark theme-mario:border-mario-dark theme-luigi:border-luigi-dark theme-peach:border-peach-dark theme-yoshi:border-yoshi-dark theme-bowser:border-bowser-dark theme-wario:border-wario-dark theme-waluigi:border-waluigi-dark theme-donkey-kong:border-donkey-kong-dark theme-toad:border-toad-dark theme-rosalina:border-rosalina-dark theme-diddy-kong:border-diddy-kong-dark;
+    @apply border-accent-dark theme-mario:border-mario-dark theme-luigi:border-luigi-dark theme-peach:border-peach-dark theme-yoshi:border-yoshi-dark theme-bowser:border-bowser-dark theme-wario:border-wario-dark theme-waluigi:border-waluigi-dark theme-donkey-kong:border-donkey-kong-dark theme-toad:border-toad-dark theme-rosalina:border-rosalina-dark theme-bumm-bumm:border-bumm-bumm-dark theme-daisy:border-daisy-dark theme-shy-guy:border-shy-guy-dark theme-pauline:border-pauline-dark theme-diddy-kong:border-diddy-kong-dark;
   }
 
   .hover\:border-themed-dark {
@@ -32,11 +32,11 @@
   }
 
   .bg-themed {
-    @apply bg-accent theme-mario:bg-mario theme-luigi:bg-luigi theme-peach:bg-peach theme-yoshi:bg-yoshi theme-bowser:bg-bowser theme-wario:bg-wario theme-waluigi:bg-waluigi theme-donkey-kong:bg-donkey-kong theme-toad:bg-toad theme-rosalina:bg-rosalina theme-diddy-kong:bg-diddy-kong;
+    @apply bg-accent theme-mario:bg-mario theme-luigi:bg-luigi theme-peach:bg-peach theme-yoshi:bg-yoshi theme-bowser:bg-bowser theme-wario:bg-wario theme-waluigi:bg-waluigi theme-donkey-kong:bg-donkey-kong theme-toad:bg-toad theme-rosalina:bg-rosalina theme-bumm-bumm:bg-bumm-bumm theme-daisy:bg-daisy theme-shy-guy:bg-shy-guy theme-pauline:bg-pauline theme-diddy-kong:bg-diddy-kong;
   }
 
   .bg-themed-dark {
-    @apply bg-accent-dark theme-mario:bg-mario-dark theme-luigi:bg-luigi-dark theme-peach:bg-peach-dark theme-yoshi:bg-yoshi-dark theme-bowser:bg-bowser-dark theme-wario:bg-wario-dark theme-waluigi:bg-waluigi-dark theme-donkey-kong:bg-donkey-kong-dark theme-toad:bg-toad-dark theme-rosalina:bg-rosalina-dark theme-diddy-kong:bg-diddy-kong-dark;
+    @apply bg-accent-dark theme-mario:bg-mario-dark theme-luigi:bg-luigi-dark theme-peach:bg-peach-dark theme-yoshi:bg-yoshi-dark theme-bowser:bg-bowser-dark theme-wario:bg-wario-dark theme-waluigi:bg-waluigi-dark theme-donkey-kong:bg-donkey-kong-dark theme-toad:bg-toad-dark theme-rosalina:bg-rosalina-dark theme-bumm-bumm:bg-bumm-bumm-dark theme-daisy:bg-daisy-dark theme-shy-guy:bg-shy-guy-dark theme-pauline:bg-pauline-dark theme-diddy-kong:bg-diddy-kong-dark;
   }
 
   .hover\:bg-themed-dark {
@@ -44,7 +44,7 @@
   }
 
   .bg-gradient-themed {
-    @apply bg-accent-dark theme-mario:bg-mario-dark theme-luigi:bg-luigi-dark theme-peach:from-[#610C63] theme-peach:to-[#810955] theme-yoshi:bg-yoshi-dark theme-bowser:bg-bowser-dark theme-wario:bg-wario-dark theme-waluigi:bg-waluigi-dark theme-donkey-kong:bg-donkey-kong-dark theme-toad:bg-toad-dark theme-rosalina:bg-rosalina-dark theme-diddy-kong:bg-diddy-kong-dark;
+    @apply bg-accent-dark theme-mario:bg-mario-dark theme-luigi:bg-luigi-dark theme-peach:from-[#610C63] theme-peach:to-[#810955] theme-yoshi:bg-yoshi-dark theme-bowser:bg-bowser-dark theme-wario:bg-wario-dark theme-waluigi:bg-waluigi-dark theme-donkey-kong:bg-donkey-kong-dark theme-toad:bg-toad-dark theme-rosalina:bg-rosalina-dark theme-bumm-bumm:bg-bumm-bumm-dark theme-daisy:bg-daisy-dark theme-shy-guy:bg-shy-guy-dark theme-pauline:bg-pauline-dark theme-diddy-kong:bg-diddy-kong-dark;
   }
 }
 
@@ -73,8 +73,14 @@
   --theme-toad-dark: hsl(221, 74%, 30%);
   --theme-rosalina: hsl(170, 76%, 47%);
   --theme-rosalina-dark: hsl(170, 76%, 42%);
+  --theme-bumm-bumm: hsl(41, 98%, 54%);
+  --theme-bumm-bumm-dark: hsl(41, 98%, 49%);
   --theme-daisy: hsl(32, 92%, 49%);
   --theme-daisy-dark: hsl(32, 92%, 44%);
+  --theme-shy-guy: hsl(220, 64%, 50%);
+  --theme-shy-guy-dark: hsl(220, 64%, 45%);
+  --theme-pauline: hsl(0, 80%, 50%);
+  --theme-pauline-dark: hsl(0, 80%, 45%);
   --theme-diddy-kong: hsl(18, 92%, 31%);
   --theme-diddy-kong-dark: hsl(18, 92%, 26%);
 }

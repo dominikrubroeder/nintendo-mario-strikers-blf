@@ -32,8 +32,14 @@ module.exports = {
         'toad-dark': 'var(--theme-toad-dark)',
         rosalina: 'var(--theme-rosalina)',
         'rosalina-dark': 'var(--theme-rosalina-dark)',
+        'bumm-bumm': 'var(--theme-bumm-bumm)',
+        'bumm-bumm-dark': 'var(--theme-bumm-bumm-dark)',
         daisy: 'var(--theme-daisy)',
         'daisy-dark': 'var(--theme-daisy-dark)',
+        'shy-guy': 'var(--theme-shy-guy)',
+        'shy-guy-dark': 'var(--theme-shy-guy-dark)',
+        pauline: 'var(--theme-pauline)',
+        'pauline-dark': 'var(--theme-pauline-dark)',
         'diddy-kong': 'var(--theme-donkey-kong)',
         'diddy-kong-dark': 'var(--theme-donkey-kong-dark)',
       },
@@ -96,6 +102,8 @@ module.exports = {
       addVariant('theme-rosalina', '.theme-rosalina &');
       addVariant('theme-bumm-bumm', '.theme-bumm-bumm &');
       addVariant('theme-daisy', '.theme-daisy &');
+      addVariant('theme-shy-guy', '.theme-shy-guy &');
+      addVariant('theme-pauline', '.theme-pauline &');
       addVariant('theme-diddy-kong', '.theme-diddy-kong &');
     }),
     plugin(function ({ addUtilities }) {
