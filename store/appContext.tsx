@@ -66,7 +66,7 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
       setBuyable(true);
     }
 
-    if (edition === Editions.nostalgiaId) {
+    if (edition === Editions.teamId) {
       setBuyable(false);
     }
 
@@ -79,10 +79,7 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
     const storedEdition = localStorage.getItem(Constants.Edition);
     const isThemed = localStorage.getItem(Constants.Themed);
 
-    if (
-      !storedEdition ||
-      (storedEdition === Editions.nostalgiaId && !isThemed)
-    ) {
+    if (!storedEdition || (storedEdition === Editions.teamId && !isThemed)) {
       setBuyable(false);
       return;
     }

@@ -41,7 +41,7 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
             Mario Strikers: Battle League Football
             <small className="text-accent themed:text-white font-normal block">
               <span>{`${edition.title} Edition`}</span>
-              {edition.id === Editions.nostalgiaId && appCtx?.selectedCharacter
+              {edition.id === Editions.teamId && appCtx?.selectedCharacter
                 ? ` – ${appCtx?.selectedCharacter.toUpperCase()}`
                 : ''}
             </small>
@@ -70,17 +70,16 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
                 stiffness: 400,
               }}
             >
-              {edition.id === Editions.nostalgiaId &&
-                appCtx?.selectedCharacter && (
-                  <Image
-                    width={80}
-                    height={80}
-                    src={`/images/characters/NSwitch-character-sketch-${appCtx?.selectedCharacter
-                      .replace(' ', '')
-                      .toLowerCase()}.png`}
-                    alt={appCtx?.selectedCharacter}
-                  />
-                )}
+              {edition.id === Editions.teamId && appCtx?.selectedCharacter && (
+                <Image
+                  width={80}
+                  height={80}
+                  src={`/images/characters/NSwitch-character-sketch-${appCtx?.selectedCharacter
+                    .replace(' ', '')
+                    .toLowerCase()}.png`}
+                  alt={appCtx?.selectedCharacter}
+                />
+              )}
 
               {children}
             </motion.div>

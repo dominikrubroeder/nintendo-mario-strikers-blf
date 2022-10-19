@@ -1,8 +1,8 @@
 export enum Editions {
   standardId = 'standard',
   standard = 'Standard',
-  nostalgiaId = 'nostalgie',
-  nostalgia = 'Nostalgie',
+  teamId = 'team',
+  team = 'Team',
 }
 
 export type Edition = {
@@ -20,8 +20,8 @@ const editions: Edition[] = [
     details: ['Digitaler Download und Hardcover'],
   },
   {
-    id: Editions.nostalgiaId,
-    title: Editions.nostalgia,
+    id: Editions.teamId,
+    title: Editions.team,
     price: 89.99,
     details: [
       'Digitaler Download und Hardcover',

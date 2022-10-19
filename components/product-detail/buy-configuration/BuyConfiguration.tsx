@@ -47,9 +47,7 @@ const BuyConfiguration: React.FC<BuyConfigurationProps> = ({
 
         <EditionSelection />
 
-        {appCtx?.selectedEdition === Editions.nostalgiaId && (
-          <CharacterSelection />
-        )}
+        {appCtx?.selectedEdition === Editions.teamId && <CharacterSelection />}
 
         <BuyContainer setShowStickyBuyBar={setShowStickyBuyBar} />
       </div>
