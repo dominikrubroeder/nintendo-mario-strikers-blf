@@ -47,7 +47,7 @@ const CharacterSelection: React.FC<CharacterSelectionProps> = ({
       <div className="grid gap-4">
         <div className="flex justify-between items-center">
           <h4>Wähle dein Team:</h4>
-          <div className="text-themed themed:text-white text-sm cursor-pointer">
+          <div className="text-accent text-themed themed:text-white text-sm cursor-pointer">
             <Tooltip title="Warum?">
               Erhalte <b>zusätzlichen Spiel-Content</b> wie erweitere Arenen,
               das Geheimteam und <b>inviduelle Merch-Artrikel</b> basierend auf

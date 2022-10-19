@@ -106,12 +106,12 @@ export default function TheCommunityQuotes() {
                   >
                     <div className="flex items-center gap-2">
                       <div
-                        className={`w-8 h-8 flex-none rounded-full testing bg-gray-100 bg-themed-dark ${
+                        className={`w-8 h-8 flex-none rounded-full testing bg-gray-100 bg-accent bg-themed-dark ${
                           index % 2 ? 'order-1' : 'order-2'
                         }`}
                       ></div>
                       <div
-                        className={`flex items-center justify-center testing bg-gray-100 bg-themed-dark rounded-3xl md:rounded-full ${
+                        className={`flex items-center justify-center testing bg-gray-100 bg-accent bg-themed-dark rounded-3xl md:rounded-full ${
                           index % 2
                             ? 'text-left order-2'
                             : 'text-right ml-auto order-1'

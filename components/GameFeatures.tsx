@@ -76,7 +76,7 @@ const GameFeatures: React.FC = () => {
                 5 gegen 5
               </Heading>
 
-              <p className="bg-themed max-w-md">
+              <p className="bg-accent bg-themed max-w-md">
                 Mach dich bereit für das 5-gegen-5-Spiel Strike – Wie Fußball,
                 aber mit deutlich härterer Offensive! Schieß Tore, indem du
                 dribbelst und deinen Teamkameraden die Bälle zuspielst.

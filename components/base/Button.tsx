@@ -50,15 +50,15 @@ const Button: React.FC<ButtonProps> = ({
   switch (variant) {
     case 'contained':
       variantClassName =
-        'flex items-center justify-between gap-2 rounded-full px-4 py-2 text-white bg-themed hover:bg-red-700 themed:bg-signal themed:text-white themed:hover:bg-signal-dark';
+        'flex items-center justify-between gap-2 rounded-full px-4 py-2 text-white bg-accent bg-themed hover:bg-red-700 themed:bg-signal themed:text-white themed:hover:bg-signal-dark';
       break;
     case 'outlined':
       variantClassName =
-        'flex items-center justify-between gap-2 rounded-full px-4 py-2 text-themed themed:text-signal border border-signal hover:bg-themed-dark hover:text-white';
+        'flex items-center justify-between gap-2 rounded-full px-4 py-2 text-accent text-themed themed:text-signal border border-signal hover:bg-accent bg-themed-dark hover:text-white';
       break;
     case 'text':
       variantClassName =
-        'flex items-center justify-between gap-2 rounded-full px-4 py-2 text-themed themed:text-white hover:bg-themed/10 themed:hover:bg-signal-dark/40';
+        'flex items-center justify-between gap-2 rounded-full px-4 py-2 text-accent text-themed themed:text-white hover:bg-accent/10 themed:hover:bg-signal';
       break;
     case 'icon':
       variantClassName = 'flex items-center justify-center';

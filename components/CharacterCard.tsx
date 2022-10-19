@@ -32,15 +32,15 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
 
   return (
     <div
-      className={`group relative flex items-center justify-center h-96 rounded-3xl cursor-pointer hover:border-gray-300 hover:bg-themed-dark hover:border-themed-dark transition-all ${
-        appCtx?.selectedCharacter === id ? 'bg-themed-dark' : ''
+      className={`group relative flex items-center justify-center h-96 rounded-3xl cursor-pointer hover:border-gray-300 hover:bg-accent hover:bg-themed-dark hover:border-themed-dark transition-all ${
+        appCtx?.selectedCharacter === id ? 'bg-accent-dark bg-themed-dark' : ''
       }`}
       onClick={onClickHandler}
     >
       <div className="grid gap-2 text-center">
         <audio src={sound} ref={audioRef}></audio>
         <div
-          className="w-8 h-8 flex items-center justify-center absolute top-6 right-6 rounded-full opacity-0 bg-gray-100 bg-themed group-hover:opacity-100 interactive"
+          className="w-8 h-8 flex items-center justify-center absolute top-6 right-6 rounded-full opacity-0 bg-gray-100 bg-accent bg-themed group-hover:opacity-100 interactive"
           onClick={() => setShowCharacterOverlay()}
         >
           i

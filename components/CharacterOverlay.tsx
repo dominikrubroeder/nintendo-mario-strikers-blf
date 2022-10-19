@@ -30,11 +30,11 @@ const CharacterOverlay: React.FC<CharacterOverlayProps> = ({
       onCloseOverlay={onCloseOverlay}
     >
       <div
-        className="relative max-w-5xl h-[75vh] rounded-3xl bg-themed grid gap-4 p-6 m-4 z-50 overflow-y-scroll md:overflow-hidden md:p-8 md:pb-0 md:grid-cols-2"
+        className="relative max-w-5xl h-[75vh] rounded-3xl bg-accent bg-themed grid gap-4 p-6 m-4 z-50 overflow-y-scroll md:overflow-hidden md:p-8 md:pb-0 md:grid-cols-2"
         onClick={(e) => handleChildElementClick(e)}
       >
         <div
-          className="w-8 h-8 flex items-center justify-center absolute top-6 right-6 rounded-full cursor-pointer bg-themed-dark interactive"
+          className="w-8 h-8 flex items-center justify-center absolute top-6 right-6 rounded-full cursor-pointer bg-accent bg-themed-dark interactive"
           onClick={onCloseOverlay}
         >
           x
@@ -91,7 +91,7 @@ const CharacterOverlay: React.FC<CharacterOverlayProps> = ({
                     {character?.imageGallery.map((image, index) => (
                       <div
                         key={index}
-                        className="h-64 rounded-3xl cursor-pointer bg-themed-dark transition-all hover:scale-105"
+                        className="h-64 rounded-3xl cursor-pointer bg-accent bg-themed-dark transition-all hover:scale-105"
                       ></div>
                     ))}
                   </div>
@@ -116,7 +116,7 @@ const CharacterOverlay: React.FC<CharacterOverlayProps> = ({
                 {character?.name}&apos;s Hyperstrike
               </Heading>
 
-              <div className="bg-themed-dark p-8 rounded-xl">
+              <div className="bg-accent bg-themed-dark p-8 rounded-xl">
                 <iframe
                   className="w-full"
                   src={character?.specialAbilityVideoURL}
@@ -133,7 +133,7 @@ const CharacterOverlay: React.FC<CharacterOverlayProps> = ({
                 Wer ist {character?.name}
               </Heading>
 
-              <div className="bg-themed-dark p-8 rounded-xl">
+              <div className="bg-accent bg-themed-dark p-8 rounded-xl">
                 <p>{character?.baseText}</p>
               </div>
             </div>

@@ -53,7 +53,7 @@ const TheHero: React.FC = () => {
             >
               <span className="flex items-center gap-1">
                 Jetzt vorbestellen
-                <ArrowRightIcon className="w-4 h-4 text-themed" />
+                <ArrowRightIcon className="w-4 h-4 text-accent text-themed" />
               </span>
             </Button>
 
@@ -63,7 +63,8 @@ const TheHero: React.FC = () => {
               sound="nintendo-woho"
             >
               <span className="flex items-center gap-1">
-                Mehr infos <ArrowRightIcon className="w-4 h-4 text-themed" />
+                Mehr infos{' '}
+                <ArrowRightIcon className="w-4 h-4 text-accent text-themed" />
               </span>
             </Button>
 
@@ -73,7 +74,8 @@ const TheHero: React.FC = () => {
               sound="nintendo-woho"
             >
               <span className="flex items-center gap-1">
-                Trailer ansehen <PlayIcon className="w-4 h-4 text-themed" />
+                Trailer ansehen{' '}
+                <PlayIcon className="w-4 h-4 text-accent text-themed" />
               </span>
             </Button>
           </div>

@@ -33,14 +33,15 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
       const localStorageTheme = localStorage.getItem(Constants.Theme);
       setSelectedCharacter(localStorageTheme);
       document.documentElement.className = `themed theme-${localStorageTheme}`;
+      document.documentElement.setAttribute('theme', String(localStorageTheme));
     }
   }
 
   function setThemeHandler(character: string | null) {
     document.documentElement.className = `themed theme-${character}`;
+    document.documentElement.setAttribute('theme', String(character));
 
     localStorage.setItem(Constants.Themed, String(true));
-
     localStorage.setItem(Constants.Theme, character ?? String(null));
 
     setSelectedCharacter(character);
@@ -57,7 +58,8 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
 
   function validateEditionHandler(edition: string | null) {
     if (edition === Editions.standardId) {
-      document.documentElement.className = 'themed theme-default';
+      document.documentElement.className = '';
+      document.documentElement.removeAttribute('theme');
       localStorage.removeItem(Constants.Themed);
       localStorage.removeItem(Constants.Theme);
       setSelectedCharacter(null);

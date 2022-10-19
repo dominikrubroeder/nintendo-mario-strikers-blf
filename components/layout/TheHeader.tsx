@@ -18,7 +18,7 @@ const TheHeader: React.FC = () => {
         <div className="flex-1"></div>
 
         <div className="flex items-center justify-center transition active:scale-95">
-          <div className="flex-1 flex items-center justify-center relative bg-themed-dark themed:text-white p-2 rounded-full">
+          <div className="flex-1 flex items-center justify-center relative bg-accent bg-themed-dark themed:text-white p-2 rounded-full">
             <Link href="/">
               <a>
                 <Logo />
