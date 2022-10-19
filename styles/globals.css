@@ -8,7 +8,7 @@
   }
 
   .icon {
-    @apply w-4 h-4 interactive;
+    @apply w-4 h-4 interactive z-10;
   }
 
   .headline--gradient {
@@ -19,7 +19,7 @@
 :root {
   --theme-accent: hsl(0, 75%, 50%);
   --theme-accent-dark: hsl(0, 75%, 45%);
-  --theme-accent-soft: hsl(355, 31%, 85%);
+  --theme-accent-soft: hsla(0, 75%, 50%, 0.1);
   --theme-signal: hsl(43, 100%, 50%);
   --theme-signal-dark: hsl(43, 100%, 45%);
   --theme-mario: hsl(351, 87%, 47%);

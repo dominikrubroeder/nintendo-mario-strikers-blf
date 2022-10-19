@@ -79,14 +79,16 @@ const SelectASoundtrack: React.FC = () => {
     }
   }, [currentSoundtrack]);
 
-  const playPauseButtonClasses = `relative text-white before:content-[''] before:w-5 before:h-5 before:bg-white/20 themed:bg-accent-dark themed:before:bg-white/20 before:rounded-full before:block before:absolute before:inset-0 before:w-[1rem] before:z-0 before:h-[1rem] after:content-[''] after:w-5 after:h-5 after:bg-white/20 themed:after:bg-white/20 after:rounded-full after:block after:absolute after:inset-0 after:w-[1rem] after:z-0 after:h-[1rem] ${
-    playing ? 'before:animate-audioWave1 after:animate-audioWave2' : ''
+  const playPauseButtonClasses = `relative before:content-[''] before:w-5 before:h-5 before:bg-accent themed:before:bg-white/20 themed:bg-accent-dark themed:before:bg-white/20 before:rounded-full before:block before:absolute before:inset-0 before:w-[1rem] before:z-0 before:h-[1rem] after:content-[''] after:w-5 after:h-5 after:bg-accent themed:after:bg-white/20 themed:after:bg-white/20 after:rounded-full after:block after:absolute after:inset-0 after:w-[1rem] after:z-0 after:h-[1rem] ${
+    playing
+      ? 'text-white before:animate-audioWave1 after:animate-audioWave2'
+      : 'text-accent after:content-none before:content-none'
   }`;
 
   return (
     <div
-      className={`bg-accent themed:bg-accent-dark px-4 py-3 rounded-xl transition z-10 w-56 ${
-        showSoundtracks ? '' : 'interactive'
+      className={`bg-accent-soft themed:bg-accent-dark px-4 py-3  transition z-10 w-56 ${
+        showSoundtracks ? 'rounded-xl' : 'rounded-full interactive'
       }`}
     >
       <header className="flex items-center gap-2 justify-between text-xs cursor-pointer">
@@ -94,15 +96,14 @@ const SelectASoundtrack: React.FC = () => {
           <audio src={currentSoundtrack.src} ref={audioRef}></audio>
         )}
 
-        <Button
-          variant="icon"
+        <div
           onClick={() => setShowSoundtracks((previousState) => !previousState)}
-          className="flex-1"
+          className="flex-1 flex gap-1 "
         >
           <ChevronDownIcon className="icon" />
 
-          <span className="text-left w-max">{currentTitle}t</span>
-        </Button>
+          <span className="text-left w-max">{currentTitle}</span>
+        </div>
 
         <div className="flex items-center gap-3 h-6">
           {playing && !showSoundtracks && <AnimatedSoundbarsIcon />}

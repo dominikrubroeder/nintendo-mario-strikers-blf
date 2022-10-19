@@ -72,17 +72,22 @@ const CharacterOverlay: React.FC<CharacterOverlayProps> = ({
               </Heading>
 
               <div className="grid gap-2">
-                <Accordion
-                  title={`${character?.name.toUpperCase()} – Mario Strikers: Battle League Football | Nintendo Switch`}
-                >
-                  <Image
-                    width={367}
-                    height={183.5}
-                    src="/images/gallery/2x1_NSwitch_MarioStrikersBattleLeagueFootball_image1600w.jpeg"
-                    alt="Mario Strikers Battle League Football"
-                    priority
-                  />
-                </Accordion>
+                <Image
+                  width={367}
+                  height={183.5}
+                  src="/images/gallery/2x1_NSwitch_MarioStrikersBattleLeagueFootball_image1600w.jpeg"
+                  alt="Mario Strikers Battle League Football"
+                  priority
+                  className="rounded-xl max-w-full"
+                />
+
+                <Image
+                  width={200}
+                  height={324}
+                  src="/images/product/nintendo-switch-mario-strikers-battle-league-football-cover.png"
+                  alt="Mario Strikers Battle League Football"
+                  priority
+                />
 
                 <Accordion
                   title={`${character?.name.toUpperCase()} – Merchandise`}

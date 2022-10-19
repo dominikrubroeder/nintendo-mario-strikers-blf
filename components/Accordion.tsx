@@ -27,8 +27,8 @@ const Accordion: React.FC<AccordionProps> = ({
 
   return (
     <div
-      className={`grid gap-2 min-w-[12rem] bg-accent themed:bg-accent-dark py-3 px-4 rounded-xl ${
-        expanded ? '' : 'interactive'
+      className={`grid gap-2 min-w-[12rem] bg-accent-soft themed:bg-accent-dark py-3 px-4 ${
+        expanded ? 'rounded-xl' : 'rounded-full interactive'
       } ${className ? className : ''}`}
     >
       <header

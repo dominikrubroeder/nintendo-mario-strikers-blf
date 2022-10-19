@@ -30,7 +30,7 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
     <div
       className={`w-full border rounded-3xl p-8 hover:border-gray-300 ${
         edition.id === appCtx?.selectedEdition
-          ? 'border-accent hover:border-accent bg-accent themed:bg-accent-dark'
+          ? 'border-accent hover:border-accent bg-accent-soft themed:bg-accent-dark'
           : 'border-gray-300 themed:border-accent-dark themed:hover:border-white interactive'
       }`}
       onClick={onClickHandler}
