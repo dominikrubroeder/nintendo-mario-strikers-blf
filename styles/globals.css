@@ -141,3 +141,7 @@
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+.min-h-screen-header {
+  min-height: calc(100vh - 10rem);
+}

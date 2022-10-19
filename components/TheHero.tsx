@@ -51,31 +51,25 @@ const TheHero: React.FC = () => {
               href="/buy-mario-strikers-battle-league-football"
               sound="coin"
             >
-              <span className="flex items-center gap-1">
-                Jetzt vorbestellen
-                <ArrowRightIcon className="w-4 h-4" />
-              </span>
+              Jetzt vorbestellen
+              <ArrowRightIcon className="icon" />
             </Button>
 
             <Button
-              variant="text"
+              variant="icon-text"
               href="/mario-strikers-battle-league-football"
               sound="nintendo-woho"
             >
-              <span className="flex items-center gap-1">
-                Mehr infos
-                <ArrowRightIcon className="w-4 h-4" />
-              </span>
+              Mehr infos
+              <ArrowRightIcon className="icon" />
             </Button>
 
             <Button
-              variant="text"
+              variant="icon-text"
               onClick={() => setShowYoutubeGameTrailer(true)}
               sound="nintendo-woho"
             >
-              <span className="flex items-center gap-1">
-                Trailer ansehen <PlayIcon className="w-4 h-4" />
-              </span>
+              Trailer ansehen <PlayIcon className="icon" />
             </Button>
           </div>
         </div>

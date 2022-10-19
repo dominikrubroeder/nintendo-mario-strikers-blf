@@ -80,13 +80,14 @@ export default function TheCommunityQuotes() {
         </div>
       </header>
 
-      <div className="text-center my-16">
+      <div className="grid justify-center my-16">
         <BouncingItems size={32} />
+
         <Button
           variant="text"
           onClick={() => setShowQuotes((previousState) => !previousState)}
         >
-          Zeig mir {showQuotes ? 'weniger' : 'mehr'}
+          Zeige {showQuotes ? 'weniger' : 'mehr'}
         </Button>
       </div>
 

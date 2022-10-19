@@ -39,7 +39,7 @@ const InfoPage: NextPage = () => {
       </Head>
 
       <div className="grid gap-32">
-        <section className="m-auto text-center min-h-screen flex items-center justify-center flex-col">
+        <section className="m-auto text-center min-h-screen-header flex items-center justify-center flex-col">
           <Heading className="headline--gradient">Zuallererst...</Heading>
 
           <div
@@ -47,15 +47,15 @@ const InfoPage: NextPage = () => {
             ref={playSoundButton}
           >
             <Button
-              variant="icon"
+              variant="icon-text"
               onClick={() => {
                 setShowStickyBuyBar(true);
                 audioCtx?.setSound('/audio/soundtracks/main-menu.mp3');
               }}
             >
-              <PlayIcon className="w-16 h-16 bg-gradient-to-r from-red-500 to-orange-500 rounded-full p-4" />
+              <PlayIcon className="w-16 h-16 bg-accent-gradient rounded-full p-4" />
+              Spiele einen Soundtrack
             </Button>
-            Spiele einen Soundtrack:
           </div>
         </section>
 

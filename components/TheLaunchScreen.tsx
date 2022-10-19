@@ -19,7 +19,7 @@ const TheLaunchScreen: React.FC = () => {
   }, [mounted]);
 
   return mounted ? (
-    <div className="fixed top-0 left-0 bottom-0 right-0 flex justify-center items-center z-50 bg-accent">
+    <div className="fixed top-0 left-0 bottom-0 right-0 flex justify-center items-center z-50 bg-[#E60012]">
       <audio src="/audio/nintendo-switch-click.mp3" ref={audioRef} />
       <video autoPlay muted className="animate-ping animation-delay-700">
         <source

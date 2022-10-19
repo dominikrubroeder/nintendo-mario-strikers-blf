@@ -58,11 +58,15 @@ const Button: React.FC<ButtonProps> = ({
       break;
     case 'text':
       variantClassName =
-        'flex items-center justify-between gap-2 rounded-full px-4 py-2 text-accent themed:text-white hover:bg-accent-soft themed:hover:bg-signal';
+        'rounded-full px-4 py-2 text-accent themed:text-white hover:bg-accent-soft themed:hover:bg-signal';
       break;
     case 'icon':
       variantClassName =
         'flex items-center justify-center text-accent fill-accent';
+      break;
+    case 'icon-text':
+      variantClassName =
+        'flex items-center justify-between gap-2 rounded-full px-4 py-2 text-accent themed:text-white hover:bg-accent-soft themed:hover:bg-signal';
       break;
     case 'unstyled':
       variantClassName = 'flex items-center justify-start';

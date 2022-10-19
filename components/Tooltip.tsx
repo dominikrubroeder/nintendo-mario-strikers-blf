@@ -15,7 +15,7 @@ const Tooltip: React.FC<TooltipProps> = ({ title, children }) => {
   return (
     <div className="relative">
       <Button
-        variant="text"
+        variant="icon-text"
         onClick={() => setExpanded((previousState) => !previousState)}
       >
         {title}
