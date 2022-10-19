@@ -10,6 +10,7 @@ module.exports = {
       colors: {
         accent: 'var(--theme-accent)',
         'accent-dark': 'var(--theme-accent-dark)',
+        'accent-soft': 'var(--theme-accent-soft)',
         signal: 'var(--theme-signal)',
         'signal-dark': 'var(--theme-signal-dark)',
         mario: 'var(--theme-mario)',

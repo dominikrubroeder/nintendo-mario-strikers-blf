@@ -79,13 +79,13 @@ const SelectASoundtrack: React.FC = () => {
     }
   }, [currentSoundtrack]);
 
-  const playPauseButtonClasses = `relative text-white before:content-[''] before:w-5 before:h-5 before:bg-accent/20 themed:bg-accent bg-themed before:themed:bg-white/20 before:rounded-full before:block before:absolute before:inset-0 before:w-[1rem] before:z-0 before:h-[1rem] after:content-[''] after:w-5 after:h-5 after:bg-accent/20 bg-themed after:themed:bg-white/20 after:rounded-full after:block after:absolute after:inset-0 after:w-[1rem] after:z-0 after:h-[1rem] ${
+  const playPauseButtonClasses = `relative text-white before:content-[''] before:w-5 before:h-5 before:bg-white/20 themed:bg-accent-dark themed:before:bg-white/20 before:rounded-full before:block before:absolute before:inset-0 before:w-[1rem] before:z-0 before:h-[1rem] after:content-[''] after:w-5 after:h-5 after:bg-white/20 themed:after:bg-white/20 after:rounded-full after:block after:absolute after:inset-0 after:w-[1rem] after:z-0 after:h-[1rem] ${
     playing ? 'before:animate-audioWave1 after:animate-audioWave2' : ''
   }`;
 
   return (
     <div
-      className={`bg-accent/10 bg-accent bg-themed-dark px-4 py-3 rounded-xl transition z-10 w-56 ${
+      className={`bg-accent themed:bg-accent-dark px-4 py-3 rounded-xl transition z-10 w-56 ${
         showSoundtracks ? '' : 'interactive'
       }`}
     >
@@ -157,7 +157,7 @@ const SelectASoundtrack: React.FC = () => {
                     onClick={(e) => playPauseSoundtrackHandler(e, soundtrack)}
                   >
                     <span className="flex items-center gap-1">
-                      <SpeakerWaveIcon className="w-3 h-3 text-accent text-themed themed:text-white" />
+                      <SpeakerWaveIcon className="w-3 h-3 text-accent themed:text-white" />
                       {soundtrack.title}
                     </span>
 
@@ -173,7 +173,7 @@ const SelectASoundtrack: React.FC = () => {
 
               <ul className="grid gap-2">
                 <li className="flex items-center gap-1 cursor-pointer">
-                  <SpeakerWaveIcon className="w-3 h-3 text-accent text-themed themed:text-white" />
+                  <SpeakerWaveIcon className="w-3 h-3 text-accent themed:text-white" />
                   Mario theme
                 </li>
               </ul>

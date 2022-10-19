@@ -32,8 +32,10 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
 
   return (
     <div
-      className={`group relative flex items-center justify-center h-96 rounded-3xl cursor-pointer hover:border-gray-300 hover:bg-accent hover:bg-themed-dark hover:border-themed-dark transition-all ${
-        appCtx?.selectedCharacter === id ? 'bg-accent-dark bg-themed-dark' : ''
+      className={`group relative flex items-center justify-center h-96 rounded-3xl cursor-pointer hover:border-gray-300 hover:bg-accent-dark hover:border-accent-dark transition-all ${
+        appCtx?.selectedCharacter === id
+          ? 'bg-accent themed:bg-accent-dark'
+          : ''
       }`}
       onClick={onClickHandler}
     >
@@ -41,7 +43,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
         <audio src={sound} ref={audioRef}></audio>
 
         <div
-          className="w-8 h-8 flex items-center justify-center absolute top-6 right-6 rounded-full opacity-0 bg-gray-100 bg-accent bg-themed group-hover:opacity-100 interactive"
+          className="w-8 h-8 flex items-center justify-center absolute top-6 right-6 rounded-full opacity-0 bg-gray-100 themed:bg-accent group-hover:opacity-100 interactive"
           onClick={() => setShowCharacterOverlay()}
         >
           i

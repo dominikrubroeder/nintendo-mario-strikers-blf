@@ -40,7 +40,7 @@ const InteractiveAudio: React.FC = () => {
         Lasse beispielsweise einen&nbsp;
         <Button
           variant="unstyled"
-          className="text-accent text-themed text-left"
+          className="text-accent themed:text-white text-left"
           onClick={() => audioCtx?.setSound('/audio/soundtracks/main-menu.mp3')}
         >
           <PlayIcon className="w-4 h-4 inline-block mr-0.5" />
@@ -49,7 +49,7 @@ const InteractiveAudio: React.FC = () => {
         oder
         <Button
           variant="unstyled"
-          className=" text-accent text-themed text-left"
+          className=" text-accent themed:text-white text-left"
           onClick={() => audioCtx?.setSound('/audio/nintendo-woohoo.wav')}
         >
           <PlayIcon className="w-4 h-4 inline-block mr-0.5" />

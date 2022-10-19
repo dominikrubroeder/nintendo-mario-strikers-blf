@@ -86,17 +86,12 @@ export default function TheGallery() {
                 setActiveItem(index);
               }}
             >
-              {/* <span
-                className={`block w-4 h-4 rounded-full themed:bg-accent bg-themed-dark cursor-pointer transition-all hover:scale-150 ${
-                  index === activeItem ? 'bg-accent bg-themed' : 'bg-accent/20 bg-themed'
-                }`}
-              ></span> */}
               <Image
                 width={32}
                 height={32}
                 src="/images/items/CI_NSwitch_MarioStrikersBLF_AW_Items_Mushroom.png"
                 alt="Icon"
-                className={`block rounded-full p-4 themed:bg-accent bg-themed-dark interactive ${
+                className={`block rounded-full p-4 bg-accent themed:bg-accent-dark interactive ${
                   index === activeItem ? 'opacity-100 scale-110' : 'opacity-20'
                 }`}
               />

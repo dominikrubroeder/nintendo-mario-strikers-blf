@@ -19,7 +19,7 @@ const GameFeatures: React.FC = () => {
     <>
       <section className="m-auto text-center">
         <SpringBounceWhenInView>
-          <Heading className="mx-auto px-4 my-8 text-6xl md:text-9xl md:leading-tight font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent bg-gradient-themed">
+          <Heading className="headline--gradient">
             Hier ist alles erlaubt!
           </Heading>
         </SpringBounceWhenInView>
@@ -51,10 +51,7 @@ const GameFeatures: React.FC = () => {
           </SpringBounceWhenInView>
 
           <SpringBounceWhenInView>
-            <Heading
-              as="h2"
-              className="my-8 text-6xl md:text-9xl md:leading-tight font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent bg-gradient-themed"
-            >
+            <Heading as="h2" className="headline--gradient">
               Dein
               <br />
               aktuelles
@@ -69,14 +66,11 @@ const GameFeatures: React.FC = () => {
         <SpringBounceWhenInView>
           <section className="relative min-h-[100vh] overflow-hidden flex items-center gap-64">
             <div className="grid px-4 max-w-screen-lg w-full m-auto">
-              <Heading
-                as="h2"
-                className="my-8 text-6xl md:text-9xl md:leading-tight font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent bg-gradient-themed"
-              >
+              <Heading as="h2" className="headline--gradient">
                 5 gegen 5
               </Heading>
 
-              <p className="bg-accent bg-themed max-w-md">
+              <p className="max-w-md">
                 Mach dich bereit für das 5-gegen-5-Spiel Strike – Wie Fußball,
                 aber mit deutlich härterer Offensive! Schieß Tore, indem du
                 dribbelst und deinen Teamkameraden die Bälle zuspielst.
@@ -110,10 +104,7 @@ const GameFeatures: React.FC = () => {
 
         <section>
           <SpringBounceWhenInView>
-            <Heading
-              as="h2"
-              className="my-8 text-6xl md:text-9xl md:leading-tight font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent bg-gradient-themed"
-            >
+            <Heading as="h2" className="headline--gradient">
               Tacklings, Items und einzigartige Fähigkeiten
             </Heading>
 

@@ -17,21 +17,19 @@ const BaseToggle: React.FC<BaseToggleProps> = ({
 }) => {
   return (
     <div
-      className={`flex items-center gap-1 text-xs cursor-pointer ${
-        enabled ? 'text-accent text-themed' : 'text-gray-400'
-      }`}
+      className="flex items-center gap-1 text-xs cursor-pointer text-accent"
       onClick={onClick}
     >
       {label && <span className="themed:text-white">{label}</span>}
 
       <div
-        className={`flex w-10 p-1 rounded-full bg-gray-100 transition-all ${
-          enabled ? 'bg-accent bg-themed' : ''
+        className={`flex w-10 p-1 rounded-full transition-all ${
+          enabled ? 'bg-accent' : 'bg-gray-100 themed:bg-accent'
         }`}
       >
         <span
           className={`h-4 w-4 rounded-full flex items-center justify-center transition-all ${
-            enabled ? 'bg-white translate-x-full' : 'bg-gray-300'
+            enabled ? 'bg-white translate-x-full' : 'bg-white'
           }`}
         >
           {enabled ? enabledIcon : disabledIcon}

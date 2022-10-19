@@ -25,7 +25,7 @@ export default function TheStickyBuyBar(props) {
   return (
     <>
       <div
-        className={`fixed bottom-0 w-full grid gap-2 md:grid-cols-2 text-sm p-4 bg-slate-100 bg-themed z-40 transition-all md:pr-20 ${
+        className={`fixed bottom-0 w-full grid gap-2 md:grid-cols-2 text-sm p-4 bg-slate-100 themed:bg-accent z-40 transition-all md:pr-20 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1/2'
         }`}
       >
@@ -46,7 +46,7 @@ export default function TheStickyBuyBar(props) {
             {appCtx?.selectedEdition && (
               <div className="flex items-center gap-1">
                 <span
-                  className="text-accent text-themed cursor-pointer themed:text-white"
+                  className="text-accent themed:text-white cursor-pointer"
                   onClick={() =>
                     window.scrollTo({ top: 0, behavior: 'smooth' })
                   }
@@ -65,7 +65,7 @@ export default function TheStickyBuyBar(props) {
                 </span>
                 {router.pathname ===
                   '/buy-mario-strikers-battle-league-football' && (
-                  <ArrowUpIcon className="w-4 h-4 cursor-pointer text-accent text-themed themed:text-white"></ArrowUpIcon>
+                  <ArrowUpIcon className="w-4 h-4 cursor-pointer text-accent themed:text-white"></ArrowUpIcon>
                 )}
               </div>
             )}
@@ -87,7 +87,7 @@ export default function TheStickyBuyBar(props) {
       <Button
         variant="text"
         className={`fixed bottom-6 right-4 interactive z-50 ${
-          isVisible ? 'bg-transparent' : 'bg-accent bg-themed-dark'
+          isVisible ? 'bg-transparent' : 'bg-accent themed:bg-signal'
         }`}
         onClick={() => setIsVisible((previousState) => !previousState)}
       >

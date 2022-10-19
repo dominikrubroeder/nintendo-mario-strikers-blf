@@ -27,7 +27,7 @@ const Tooltip: React.FC<TooltipProps> = ({ title, children }) => {
       {expanded && (
         <SpringBounceWhenInView
           delay={0}
-          className="text-accent text-themed absolute right-0 top-12 w-max max-w-xs p-6 rounded-xl z-50 bg-slate-100 themed:bg-white"
+          className="text-base themed:text-accent absolute right-0 top-12 w-max max-w-xs p-6 rounded-xl z-50 bg-gray-100 themed:bg-white"
         >
           {children}
 

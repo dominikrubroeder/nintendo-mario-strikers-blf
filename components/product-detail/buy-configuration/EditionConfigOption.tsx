@@ -30,8 +30,8 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
     <div
       className={`w-full border rounded-3xl p-8 hover:border-gray-300 ${
         edition.id === appCtx?.selectedEdition
-          ? 'border-accent border-themed hover:border-themed bg-accent bg-themed-dark hover:border-themed'
-          : 'border-gray-200 border-themed-dark interactive'
+          ? 'border-accent hover:border-accent bg-accent themed:bg-accent-dark'
+          : 'border-gray-300 themed:border-accent-dark themed:hover:border-white interactive'
       }`}
       onClick={onClickHandler}
     >
@@ -39,7 +39,7 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
         <header className="grid gap-2 md:flex md:justify-between md:align-top">
           <h3 className="text-xl font-bold leading-5">
             Mario Strikers: Battle League Football
-            <small className="text-accent text-themed themed:text-white font-normal block">
+            <small className="text-accent themed:text-white font-normal block">
               <span>{`${edition.title} Edition`}</span>
               {edition.id === Editions.nostalgiaId && appCtx?.selectedCharacter
                 ? ` – ${appCtx?.selectedCharacter.toUpperCase()}`
