@@ -1,7 +1,7 @@
 export type Character = {
   id: string;
   name: string;
-  sound: string;
+  sound: string[];
   image: string;
   imageGallery: string[];
   baseText: string;
@@ -14,7 +14,11 @@ const characters: Character[] = [
   {
     id: 'mario',
     name: 'Mario',
-    sound: '/audio/sound-mario-0.mp3',
+    sound: [
+      '/audio/sound-mario-0.mp3',
+      '/audio/sound-mario-1.mp3',
+      '/audio/sound-mario-2.mp3',
+    ],
     image: '/images/characters/NSwitch-character-sketch-mario.png',
     imageGallery: [
       '/images/characters/NSwitch-character-sketch-mario.png',
@@ -34,7 +38,11 @@ const characters: Character[] = [
   {
     id: 'peach',
     name: 'Peach',
-    sound: '/audio/sound-peach-0.mp3',
+    sound: [
+      '/audio/sound-peach-0.mp3',
+      '/audio/sound-peach-1.mp3',
+      '/audio/sound-peach-2.mp3',
+    ],
     image: '/images/characters/NSwitch-character-sketch-peach.png',
     imageGallery: [
       '/images/characters/NSwitch-character-sketch-mario.png',
@@ -54,7 +62,11 @@ const characters: Character[] = [
   {
     id: 'luigi',
     name: 'Luigi',
-    sound: '/audio/sound-luigi-0.mp3',
+    sound: [
+      '/audio/sound-luigi-0.mp3',
+      '/audio/sound-luigi-1.mp3',
+      '/audio/sound-luigi-2.mp3',
+    ],
     image: '/images/characters/NSwitch-character-sketch-luigi.png',
     imageGallery: [
       '/images/characters/NSwitch-character-sketch-mario.png',
@@ -74,7 +86,11 @@ const characters: Character[] = [
   {
     id: 'toad',
     name: 'Toad',
-    sound: '/audio/sound-kinopio-0.mp3',
+    sound: [
+      '/audio/sound-kinopio-0.mp3',
+      '/audio/sound-kinopio-1.mp3',
+      '/audio/sound-kinopio-2.mp3',
+    ],
     image: '/images/characters/NSwitch-character-sketch-toad.png',
     imageGallery: [
       '/images/characters/NSwitch-character-sketch-mario.png',
@@ -94,7 +110,11 @@ const characters: Character[] = [
   {
     id: 'bowser',
     name: 'Bowser',
-    sound: '/audio/sound-koopa-0.mp3',
+    sound: [
+      '/audio/sound-koopa-0.mp3',
+      '/audio/sound-koopa-1.mp3',
+      '/audio/sound-koopa-2.mp3',
+    ],
     image: '/images/characters/NSwitch-character-sketch-bowser.png',
     imageGallery: [
       '/images/characters/NSwitch-character-sketch-mario.png',
@@ -114,7 +134,11 @@ const characters: Character[] = [
   {
     id: 'rosalina',
     name: 'Rosalina',
-    sound: '/audio/sound-rosetta-0.mp3',
+    sound: [
+      '/audio/sound-rosetta-0.mp3',
+      '/audio/sound-rosetta-1.mp3',
+      '/audio/sound-rosetta-2.mp3',
+    ],
     image: '/images/characters/NSwitch-character-sketch-rosalina.png',
     imageGallery: [
       '/images/characters/NSwitch-character-sketch-mario.png',
@@ -134,7 +158,11 @@ const characters: Character[] = [
   {
     id: 'yoshi',
     name: 'Yoshi',
-    sound: '/audio/sound-yoshi-0.mp3',
+    sound: [
+      '/audio/sound-yoshi-0.mp3',
+      '/audio/sound-yoshi-1.mp3',
+      '/audio/sound-yoshi-2.mp3',
+    ],
     image: '/images/characters/NSwitch-character-sketch-yoshi.png',
     imageGallery: [
       '/images/characters/NSwitch-character-sketch-mario.png',
@@ -154,7 +182,11 @@ const characters: Character[] = [
   {
     id: 'donkey-kong',
     name: 'Donkey Kong',
-    sound: '/audio/sound-donkey-0.mp3',
+    sound: [
+      '/audio/sound-donkey-0.mp3',
+      '/audio/sound-donkey-1.mp3',
+      '/audio/sound-donkey-2.mp3',
+    ],
     image: '/images/characters/NSwitch-character-sketch-donkey-kong.png',
     imageGallery: [
       '/images/characters/NSwitch-character-sketch-mario.png',
@@ -174,7 +206,11 @@ const characters: Character[] = [
   {
     id: 'wario',
     name: 'Wario',
-    sound: '/audio/sound-wario-0.mp3',
+    sound: [
+      '/audio/sound-wario-0.mp3',
+      '/audio/sound-wario-1.mp3',
+      '/audio/sound-wario-2.mp3',
+    ],
     image: '/images/characters/NSwitch-character-sketch-wario.png',
     imageGallery: [
       '/images/characters/NSwitch-character-sketch-mario.png',
@@ -194,7 +230,11 @@ const characters: Character[] = [
   {
     id: 'waluigi',
     name: 'Waluigi',
-    sound: '/audio/sound-waluigi-0.mp3',
+    sound: [
+      '/audio/sound-waluigi-0.mp3',
+      '/audio/sound-waluigi-1.mp3',
+      '/audio/sound-waluigi-2.mp3',
+    ],
     image: '/images/characters/NSwitch-character-sketch-waluigi.png',
     imageGallery: [
       '/images/characters/NSwitch-character-sketch-mario.png',
@@ -214,7 +254,11 @@ const characters: Character[] = [
   {
     id: 'bumm-bumm',
     name: 'Bumm Bumm',
-    sound: '/audio/sound-donkey-0.mp3',
+    sound: [
+      '/audio/sound-mario-0.mp3',
+      '/audio/sound-mario-1.mp3',
+      '/audio/sound-mario-2.mp3',
+    ],
     image: '/images/characters/NSwitch-character-sketch-bumm-bumm.png',
     imageGallery: [
       '/images/characters/NSwitch-character-sketch-mario.png',
@@ -233,7 +277,11 @@ const characters: Character[] = [
   {
     id: 'daisy',
     name: 'Daisy',
-    sound: '/audio/sound-daisy-0.mp3',
+    sound: [
+      '/audio/sound-daisy-0.mp3',
+      '/audio/sound-daisy-1.mp3',
+      '/audio/sound-daisy-2.mp3',
+    ],
     image: '/images/characters/NSwitch-character-sketch-daisy.png',
     imageGallery: [
       '/images/characters/NSwitch-character-sketch-daisy.png',
@@ -253,7 +301,11 @@ const characters: Character[] = [
   {
     id: 'shy-guy',
     name: 'Shy Guy',
-    sound: '/audio/sound-mario-0.mp3',
+    sound: [
+      '/audio/sound-mario-0.mp3',
+      '/audio/sound-mario-1.mp3',
+      '/audio/sound-mario-2.mp3',
+    ],
     image: '/images/characters/NSwitch-character-sketch-shy-guy.png',
     imageGallery: [
       '/images/characters/NSwitch-character-sketch-shy-guy.png',
@@ -273,7 +325,11 @@ const characters: Character[] = [
   {
     id: 'pauline',
     name: 'Pauline',
-    sound: '/audio/sound-mario-2.mp3',
+    sound: [
+      '/audio/sound-mario-0.mp3',
+      '/audio/sound-mario-1.mp3',
+      '/audio/sound-mario-2.mp3',
+    ],
     image: '/images/characters/NSwitch-character-sketch-pauline.png',
     imageGallery: [
       '/images/characters/NSwitch-character-sketch-pauline.png',
@@ -292,7 +348,11 @@ const characters: Character[] = [
   {
     id: 'diddy-kong',
     name: 'Diddy Kong',
-    sound: '/audio/sound-diddy-0.mp3',
+    sound: [
+      '/audio/sound-diddy-0.mp3',
+      '/audio/sound-diddy-1.mp3',
+      '/audio/sound-diddy-2.mp3',
+    ],
     image: '/images/characters/NSwitch-character-sketch-diddy-kong.png',
     imageGallery: [
       '/images/characters/NSwitch-character-sketch-diddy-kong.png',

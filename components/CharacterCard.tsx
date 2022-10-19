@@ -39,6 +39,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
     >
       <div className="grid gap-2 text-center">
         <audio src={sound} ref={audioRef}></audio>
+
         <div
           className="w-8 h-8 flex items-center justify-center absolute top-6 right-6 rounded-full opacity-0 bg-gray-100 bg-accent bg-themed group-hover:opacity-100 interactive"
           onClick={() => setShowCharacterOverlay()}

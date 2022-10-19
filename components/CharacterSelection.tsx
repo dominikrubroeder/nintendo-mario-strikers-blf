@@ -73,7 +73,7 @@ const CharacterSelection: React.FC<CharacterSelectionProps> = ({
                 <CharacterCard
                   id={character.id}
                   name={character.name}
-                  sound={character.sound}
+                  sound={character.sound[0]}
                   image={character.image}
                   onClick={() => setTeam(character.id)}
                   setShowCharacterOverlay={() => setShowCharacterOverlay(true)}

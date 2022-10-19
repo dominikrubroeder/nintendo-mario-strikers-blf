@@ -43,7 +43,7 @@ const GameFeatures: React.FC = () => {
               <CharacterCard
                 id={character.id}
                 name={character.name}
-                sound={character.sound}
+                sound={character.sound[0]}
                 image={character.image}
                 onClick={() => setShowCharacterOverlay(true)}
               />
