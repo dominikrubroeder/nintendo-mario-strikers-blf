@@ -70,7 +70,7 @@ export default function TheCommunityQuotes() {
             if (communityQuote.isHighlight) {
               return (
                 <div key={communityQuote.quote}>
-                  <div className="mx-auto px-4 text-6xl md:text-8xl md:leading-tight text-center break-all font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent">
+                  <div className="headline--gradient">
                     &ldquo;{communityQuote.quote}&rdquo;
                   </div>
                 </div>

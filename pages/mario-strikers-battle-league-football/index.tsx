@@ -40,9 +40,7 @@ const InfoPage: NextPage = () => {
 
       <div className="grid gap-32">
         <section className="m-auto text-center min-h-screen flex items-center justify-center flex-col">
-          <Heading className="mx-auto px-4 text-6xl md:text-8xl md:leading-tight text-center break-all font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent">
-            Zuallererst...
-          </Heading>
+          <Heading className="headline--gradient">Zuallererst...</Heading>
 
           <div
             className="flex flex-col gap-2 opacity-0 invisible animate-fadeUp animation-delay-700"
@@ -64,9 +62,7 @@ const InfoPage: NextPage = () => {
         <TheCommunityQuotes />
 
         <section className="px-4 max-w-screen-xl m-auto w-full">
-          <Heading className="mx-auto px-4 text-6xl md:text-8xl md:leading-tight text-center break-all font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-fill-color-transparent">
-            Wähle dein Team
-          </Heading>
+          <Heading className="headline--gradient">Wähle dein Team</Heading>
 
           <CharacterSelection className="sm:grid-cols-2 md:grid-cols-3" />
         </section>

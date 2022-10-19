@@ -42,6 +42,10 @@
   .bg-gradient-themed {
     @apply themed:bg-accent-dark theme-mario:bg-mario-dark theme-luigi:bg-luigi-dark theme-peach:from-[#610C63] theme-peach:to-[#810955] theme-yoshi:bg-yoshi-dark theme-bowser:bg-bowser-dark theme-wario:bg-wario-dark theme-waluigi:bg-waluigi-dark theme-donkey-kong:bg-donkey-kong-dark theme-toad:bg-toad-dark theme-rosalina:bg-rosalina-dark theme-bumm-bumm:bg-bumm-bumm-dark theme-daisy:bg-daisy-dark theme-shy-guy:bg-shy-guy-dark theme-pauline:bg-pauline-dark theme-diddy-kong:bg-diddy-kong-dark;
   }
+
+  .headline--gradient {
+    @apply mx-auto px-4 text-6xl md:text-8xl md:leading-tight text-center break-all font-bold bg-accent-gradient theme-peach:bg-gradient-peach bg-clip-text text-fill-color-transparent;
+  }
 }
 
 :root {

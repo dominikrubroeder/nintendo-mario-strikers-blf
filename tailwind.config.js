@@ -43,6 +43,10 @@ module.exports = {
         'diddy-kong': 'var(--theme-donkey-kong)',
         'diddy-kong-dark': 'var(--theme-donkey-kong-dark)',
       },
+      backgroundImage: {
+        'accent-gradient': 'linear-gradient(45deg, #FF6E1A, #FFDC00)',
+        'gradient-peach': 'linear-gradient(45deg, red, blue)',
+      },
       keyframes: {
         fadeUp: {
           '0%': {
