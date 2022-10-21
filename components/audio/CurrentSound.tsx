@@ -7,9 +7,7 @@ const CurrentSound: React.FC = () => {
   const audioCtx = useContext(AudioContext);
   const [mounted, setMounted] = useState(false);
 
-  if (audioCtx?.sound && audioRef.current) {
-    audioRef.current.play();
-  }
+  // https://developer.chrome.com/blog/play-request-was-interrupted/
 
   useEffect(() => {
     setMounted(true);
@@ -23,7 +21,10 @@ const CurrentSound: React.FC = () => {
 
   return mounted
     ? createPortal(
-        <audio ref={audioRef} src={audioCtx?.sound ?? undefined}></audio>,
+        <audio
+          ref={audioRef}
+          src={audioCtx?.sound ?? '/audio/nintendo-switch-click.mp3'}
+        ></audio>,
         document.getElementById('sound')!
       )
     : null;

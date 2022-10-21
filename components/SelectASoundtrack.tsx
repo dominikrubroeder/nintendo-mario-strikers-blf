@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   SpeakerWaveIcon,
@@ -8,6 +8,7 @@ import {
 } from '@heroicons/react/24/solid';
 import Button from './Button';
 import AnimatedSoundbarsIcon from './animation/svg/AnimatedSoundbarsIcon';
+import AudioContext from '../store/audioContext';
 
 type Soundtrack = {
   title: string;
@@ -26,6 +27,7 @@ const soundtracksData: Soundtrack[] = [
 ];
 
 const SelectASoundtrack: React.FC = () => {
+  const audioCtx = useContext(AudioContext);
   const audioRef = useRef<null | HTMLAudioElement>(null);
   const [currentTitle, setCurrentTitle] = useState('Spiele einen Soundtrack');
   const [showSoundtracks, setShowSoundtracks] = useState(false);
@@ -40,11 +42,7 @@ const SelectASoundtrack: React.FC = () => {
   ) => {
     e.stopPropagation();
 
-    // if (soundtrack.title !== currentSoundtrack?.title)
-    //   setCurrentSoundtrack(soundtrack);
-    // if (soundtrack.title === currentSoundtrack?.title)
-    //   setCurrentSoundtrack(null);
-
+    audioCtx?.setSound('/audio/nintendo-switch-click.mp3');
     setCurrentSoundtrack(soundtrack);
     setShowSoundtracks(false);
   };

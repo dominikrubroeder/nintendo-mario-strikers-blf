@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
 import Button from './Button';
 import BouncingItems from './BouncingItems';
+import AudioContext from '../store/audioContext';
 
 const communityQuotes = [
   {
@@ -46,6 +47,7 @@ const communityQuotes = [
 ];
 
 export default function TheCommunityQuotes() {
+  const audioCtx = useContext(AudioContext);
   const [showQuotes, setShowQuotes] = useState(false);
   const quotesRef = useRef<null | HTMLDivElement>(null);
 
@@ -55,6 +57,8 @@ export default function TheCommunityQuotes() {
         behavior: 'smooth',
         block: 'center',
       });
+
+      audioCtx?.setSound('/audio/nintendo-switch-click.mp3');
     }
   }, [showQuotes]);
 
@@ -85,6 +89,7 @@ export default function TheCommunityQuotes() {
 
         <Button
           variant="text"
+          sound="coin"
           onClick={() => setShowQuotes((previousState) => !previousState)}
         >
           Zeige {showQuotes ? 'weniger' : 'mehr'}

@@ -21,7 +21,6 @@ const Accordion: React.FC<AccordionProps> = ({
   const [expanded, setExpanded] = useState(false);
 
   const onCloseHandler = () => {
-    audioCtx?.setSound(`/audio/sound-${appCtx?.selectedCharacter}-2.mp3`);
     setExpanded(false);
   };
 
@@ -61,6 +60,7 @@ const Accordion: React.FC<AccordionProps> = ({
               <Button
                 variant="unstyled"
                 className="flex items-center gap-0.5 font-bold text-xs"
+                sound="character"
                 onClick={onCloseHandler}
               >
                 <Image

@@ -122,6 +122,7 @@ const CharacterOverlay: React.FC<CharacterOverlayProps> = ({
               </Heading>
 
               <div className="bg-gray-100 themed:bg-accent-dark p-8 rounded-xl">
+                {/* All characters hyper strike https://www.youtube.com/watch?v=v2zQbRfwSVs */}
                 <iframe
                   className="w-full"
                   src={character?.specialAbilityVideoURL}
