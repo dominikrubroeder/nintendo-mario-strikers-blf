@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef } from 'react';
 import AppContext from '../../../store/appContext';
 import useIsOnScreen from '../../../hooks/useIsOnScreen';
 import SpringBounceWhenInView from '../../animation/SpringBounceWhenInView';
-import Button from '../../base/Button';
+import Button from '../../Button';
 
 interface BuyContainerProps {
   setShowStickyBuyBar: (shouldBeVisible: boolean) => void;

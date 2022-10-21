@@ -6,7 +6,7 @@ import BuyConfiguration from '../../components/product-detail/buy-configuration/
 import TheStickyBuyBar from '../../components/TheStickyBuyBar';
 import { Editions } from '../../data/editions';
 import Image from 'next/image';
-import Button from '../../components/base/Button';
+import Button from '../../components/Button';
 import GameFeatures from '../../components/GameFeatures';
 
 // https://mario.fandom.com/de/wiki/Mario_Smash_Football

@@ -8,7 +8,7 @@ import TheGallery from '../../components/TheGallery';
 import TheStickyBuyBar from '../../components/TheStickyBuyBar';
 import Heading from '../../components/typography/Heading';
 import { PlayIcon } from '@heroicons/react/24/solid';
-import Button from '../../components/base/Button';
+import Button from '../../components/Button';
 import AudioContext from '../../store/audioContext';
 import useIsOnScreen from '../../hooks/useIsOnScreen';
 

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import Image from 'next/image';
-import Button from './base/Button';
+import Button from './Button';
 import ReleaseCountdown from './ReleaseCountdown';
 import AppContext from '../store/appContext';
 import {

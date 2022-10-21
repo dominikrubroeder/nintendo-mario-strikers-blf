@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { useContext } from 'react';
-import AudioContext from '../../store/audioContext';
+import AppContext from '../store/appContext';
+import AudioContext from '../store/audioContext';
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -23,6 +24,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const router = useRouter();
   const audioCtx = useContext(AudioContext);
+  const appCtx = useContext(AppContext);
 
   const onClickHandler = () => {
     switch (sound) {
@@ -34,6 +36,12 @@ const Button: React.FC<ButtonProps> = ({
         break;
       case 'nintendo-switch-click':
         audioCtx?.setSound('/audio/nintendo-switch-click.mp3');
+      case 'character':
+        appCtx?.selectedCharacter
+          ? audioCtx?.setSound(
+              `/audio/sound-${appCtx?.selectedCharacter}-0.mp3`
+            )
+          : audioCtx?.setSound(`/audio/sound-mario-0.mp3`);
       default:
         audioCtx?.setSound(null);
     }

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Button from './base/Button';
+import Button from './Button';
 import Image from 'next/image';
 import AudioContext from '../store/audioContext';
 import AppContext from '../store/appContext';

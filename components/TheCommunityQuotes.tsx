@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
-import Button from './base/Button';
+import Button from './Button';
 import BouncingItems from './BouncingItems';
 
 const communityQuotes = [

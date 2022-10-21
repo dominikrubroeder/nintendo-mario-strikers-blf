@@ -6,7 +6,7 @@ import {
   PauseIcon,
   ChevronDownIcon,
 } from '@heroicons/react/24/solid';
-import Button from './base/Button';
+import Button from './Button';
 import AnimatedSoundbarsIcon from './animation/svg/AnimatedSoundbarsIcon';
 
 type Soundtrack = {

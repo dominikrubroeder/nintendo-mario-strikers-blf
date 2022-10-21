@@ -37,29 +37,31 @@ const GameFeatures: React.FC = () => {
           />
         )}
 
-        <div className="text-center">
-          <SpringBounceWhenInView>
-            <div className="max-w-xs m-auto">
-              <CharacterCard
-                id={character.id}
-                name={character.name}
-                sound={character.sound[0]}
-                image={character.image}
-                onClick={() => setShowCharacterOverlay(true)}
-              />
-            </div>
-          </SpringBounceWhenInView>
+        {appCtx?.selectedCharacter && (
+          <div className="text-center">
+            <SpringBounceWhenInView>
+              <div className="max-w-xs m-auto">
+                <CharacterCard
+                  id={character.id}
+                  name={character.name}
+                  sound={character.sound[0]}
+                  image={character.image}
+                  onClick={() => setShowCharacterOverlay(true)}
+                />
+              </div>
+            </SpringBounceWhenInView>
 
-          <SpringBounceWhenInView>
-            <Heading as="h2" className="headline--gradient">
-              Dein
-              <br />
-              aktuelles
-              <br />
-              Team
-            </Heading>
-          </SpringBounceWhenInView>
-        </div>
+            <SpringBounceWhenInView>
+              <Heading as="h2" className="headline--gradient">
+                Dein
+                <br />
+                aktuelles
+                <br />
+                Team
+              </Heading>
+            </SpringBounceWhenInView>
+          </div>
+        )}
       </section>
 
       <section className="grid gap-64">

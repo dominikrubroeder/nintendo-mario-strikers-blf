@@ -7,7 +7,7 @@ import {
 import BaseToggle from './base/BaseToggle';
 import Accordion from './Accordion';
 import AudioContext from '../store/audioContext';
-import Button from './base/Button';
+import Button from './Button';
 
 const InteractiveAudio: React.FC = () => {
   const audioCtx = useContext(AudioContext);

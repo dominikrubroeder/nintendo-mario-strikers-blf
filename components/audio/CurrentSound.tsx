@@ -7,6 +7,10 @@ const CurrentSound: React.FC = () => {
   const audioCtx = useContext(AudioContext);
   const [mounted, setMounted] = useState(false);
 
+  if (audioCtx?.sound && audioRef.current) {
+    audioRef.current.play();
+  }
+
   useEffect(() => {
     setMounted(true);
 

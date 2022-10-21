@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import Button from './base/Button';
+import Button from './Button';
 import ReleaseCountdown from './ReleaseCountdown';
 import TheGameTrailerOverlay from './TheGameTrailerOverlay';
 import Heading from './typography/Heading';

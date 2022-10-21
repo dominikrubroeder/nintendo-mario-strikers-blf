@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import AppContext from '../store/appContext';
 import OverlayBackground from './overlays/OverlayBackground';
 import characters from '../data/characters';
-import Button from './base/Button';
+import Button from './Button';
 import Heading from './typography/Heading';
 import Image from 'next/image';
 import Accordion from './Accordion';

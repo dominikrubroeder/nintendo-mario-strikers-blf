@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { useContext, useRef } from 'react';
 import { Constants } from '../data/constants';
 import AppContext from '../store/appContext';
+import AudioContext from '../store/audioContext';
 
 interface CharacterCardProps {
   id: string;
@@ -21,12 +22,12 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
   setShowCharacterOverlay,
 }) => {
   const appCtx = useContext(AppContext);
+  const audioCtx = useContext(AudioContext);
 
   const audioRef = useRef<null | HTMLAudioElement>(null);
 
   const onClickHandler = () => {
-    if (localStorage.getItem(Constants.InteractiveAudio) == 'true')
-      audioRef.current?.play();
+    if (audioCtx?.hasInteractiveAudio) audioRef.current?.play();
     if (onClick) onClick();
   };
 
