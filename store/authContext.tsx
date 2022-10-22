@@ -1,9 +1,11 @@
 import { useRouter } from 'next/router';
 import React, { createContext, useEffect, useState } from 'react';
+import BouncingItems from '../components/BouncingItems';
+import { Constants } from '../data/constants';
 
 type AuthContextType = {
-  isAuthenticated: null | boolean;
-  setIsAuthenticated: (shouldBeAuthorizedToPass: boolean) => void;
+  isAuthorized: boolean;
+  setIsAuthorized: (shouldBeAuthorizedToPass: boolean) => void;
 };
 
 const AuthContext = createContext<null | AuthContextType>(null);
@@ -16,30 +18,33 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
   children,
 }) => {
   const router = useRouter();
-  const [isAuthenticated, setIsAuthenticated] = useState<null | boolean>(null);
-
-  const checkAuthorization = () => {
-    const isAuthenticatedLS = localStorage.getItem('isAuthenticated');
-
-    if (isAuthenticatedLS === 'true') setIsAuthenticated(true);
-    if (isAuthenticatedLS === 'false') setIsAuthenticated(false);
-  };
+  const [isAuthorized, setIsAuthorized] = useState(false);
 
   useEffect(() => {
-    console.log('Check authorization...');
-    checkAuthorization();
-  }, []);
+    if (
+      isAuthorized ||
+      localStorage.getItem(Constants.isAuthorized) === 'true'
+    ) {
+      localStorage.setItem(Constants.isAuthorized, 'true');
+      router.replace('/');
+      return;
+    }
 
-  useEffect(() => {
-    if (isAuthenticated === null) return;
+    if (
+      localStorage.getItem(Constants.isAuthorized) === null ||
+      localStorage.getItem(Constants.isAuthorized) === 'false'
+    ) {
+      localStorage.setItem(Constants.isAuthorized, 'false');
+      router.replace('/auth');
+      return;
+    }
 
-    localStorage.setItem('isAuthenticated', isAuthenticated ? 'true' : 'false');
-    isAuthenticated ? router.replace('/') : router.replace('/auth');
-  }, [isAuthenticated]);
+    router.replace('/auth');
+  }, [isAuthorized]);
 
   const context = {
-    isAuthenticated,
-    setIsAuthenticated,
+    isAuthorized,
+    setIsAuthorized,
   };
 
   return (
