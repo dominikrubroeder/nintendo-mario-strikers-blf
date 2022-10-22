@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import AppContext from '../store/appContext';
 import teams from '../data/characters';
 import CharacterCard from './CharacterCard';
-import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
+import SpringBounceWhenInView from './SpringBounceWhenInView';
 import CharacterOverlay from './CharacterOverlay';
 import Tooltip from './Tooltip';
 

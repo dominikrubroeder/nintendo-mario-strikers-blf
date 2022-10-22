@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import BouncingItems from '../../components/BouncingItems';
-import Heading from '../../components/typography/Heading';
+import Heading from '../../components/Heading';
 
 const Checkout: NextPage = () => {
   const [isLoading, setIsLoading] = useState(true);

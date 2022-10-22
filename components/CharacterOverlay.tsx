@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import AppContext from '../store/appContext';
-import OverlayBackground from './overlays/OverlayBackground';
+import OverlayBackground from './OverlayBackground';
 import characters from '../data/characters';
 import Button from './Button';
-import Heading from './typography/Heading';
+import Heading from './Heading';
 import Image from 'next/image';
 import Accordion from './Accordion';
 

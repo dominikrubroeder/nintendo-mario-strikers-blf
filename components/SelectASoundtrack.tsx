@@ -7,7 +7,7 @@ import {
   ChevronDownIcon,
 } from '@heroicons/react/24/solid';
 import Button from './Button';
-import AnimatedSoundbarsIcon from './animation/svg/AnimatedSoundbarsIcon';
+import AnimatedSoundbarsIcon from './AnimatedSoundbarsIcon';
 import AudioContext from '../store/audioContext';
 
 type Soundtrack = {

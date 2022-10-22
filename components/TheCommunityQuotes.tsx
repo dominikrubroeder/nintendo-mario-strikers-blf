@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
+import SpringBounceWhenInView from './SpringBounceWhenInView';
 import Button from './Button';
 import BouncingItems from './BouncingItems';
 import AudioContext from '../store/audioContext';

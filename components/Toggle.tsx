@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface BaseToggleProps {
+interface ToggleProps {
   label?: string;
   enabled: boolean;
   onClick: (() => void) | undefined;
@@ -8,7 +8,7 @@ interface BaseToggleProps {
   disabledIcon: any;
 }
 
-const BaseToggle: React.FC<BaseToggleProps> = ({
+const Toggle: React.FC<ToggleProps> = ({
   label,
   enabled = false,
   onClick,
@@ -39,4 +39,4 @@ const BaseToggle: React.FC<BaseToggleProps> = ({
   );
 };
 
-export default BaseToggle;
+export default Toggle;

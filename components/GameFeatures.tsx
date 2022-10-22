@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
-import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
+import SpringBounceWhenInView from './SpringBounceWhenInView';
 import AppContext from '../store/appContext';
 import Image from 'next/image';
-import Heading from './typography/Heading';
+import Heading from './Heading';
 import CharacterCard from './CharacterCard';
 import characters from '../data/characters';
 import CharacterOverlay from './CharacterOverlay';

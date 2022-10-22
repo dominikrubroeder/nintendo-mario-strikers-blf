@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import React, { useContext } from 'react';
-import Logo from '../svg/Logo';
+import Logo from '../Logo';
 import SelectASoundtrack from '../SelectASoundtrack';
-import CurrentSound from '../audio/CurrentSound';
-import SpringBounceWhenInView from '../animation/SpringBounceWhenInView';
+import CurrentSound from '../CurrentSound';
+import SpringBounceWhenInView from '../SpringBounceWhenInView';
 import InteractiveAudio from '../InteractiveAudio';
 import AudioContext from '../../store/audioContext';
 

@@ -6,7 +6,7 @@ import CharacterSelection from '../../components/CharacterSelection';
 import TheCommunityQuotes from '../../components/TheCommunityQuotes';
 import TheGallery from '../../components/TheGallery';
 import TheStickyBuyBar from '../../components/TheStickyBuyBar';
-import Heading from '../../components/typography/Heading';
+import Heading from '../../components/Heading';
 import { PlayIcon } from '@heroicons/react/24/solid';
 import Button from '../../components/Button';
 import AudioContext from '../../store/audioContext';
@@ -16,6 +16,7 @@ const InfoPage: NextPage = () => {
   const audioCtx = useContext(AudioContext);
   const [showStickyBuyBar, setShowStickyBuyBar] = useState(false);
   const playSoundButton = useRef<null | HTMLDivElement>(null);
+  // @ts-ignore: Unreachable code error
   const playSoundButtonIsOnScreen = useIsOnScreen(playSoundButton);
 
   useEffect(() => {

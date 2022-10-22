@@ -4,7 +4,7 @@ import {
   SpeakerXMarkIcon,
   SpeakerWaveIcon,
 } from '@heroicons/react/24/solid';
-import BaseToggle from './base/BaseToggle';
+import Toggle from './Toggle';
 import Accordion from './Accordion';
 import AudioContext from '../store/audioContext';
 import Button from './Button';
@@ -18,7 +18,7 @@ const InteractiveAudio: React.FC = () => {
         <div className="flex items-center gap-2 justify-between text-xs cursor-pointer">
           <span className="w-max text-xs">Interaktives Audio</span>
 
-          <BaseToggle
+          <Toggle
             enabled={audioCtx?.hasInteractiveAudio ?? true}
             enabledIcon={
               <SpeakerWaveIcon className="w-3 h-3"></SpeakerWaveIcon>

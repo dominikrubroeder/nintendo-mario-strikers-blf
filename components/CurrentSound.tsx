@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import AudioContext from '../../store/audioContext';
+import AudioContext from '../store/audioContext';
 import { createPortal } from 'react-dom';
 
 const CurrentSound: React.FC = () => {
