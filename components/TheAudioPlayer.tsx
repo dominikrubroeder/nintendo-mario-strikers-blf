@@ -26,7 +26,7 @@ const soundtracksData: Soundtrack[] = [
   },
 ];
 
-const SelectASoundtrack: React.FC = () => {
+const TheAudioPlayer: React.FC = () => {
   const audioCtx = useContext(AudioContext);
   const audioRef = useRef<null | HTMLAudioElement>(null);
   const [currentTitle, setCurrentTitle] = useState('Spiele einen Soundtrack');
@@ -184,4 +184,4 @@ const SelectASoundtrack: React.FC = () => {
   );
 };
 
-export default SelectASoundtrack;
+export default TheAudioPlayer;

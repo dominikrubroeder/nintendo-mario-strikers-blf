@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React, { useContext } from 'react';
 import Logo from '../Logo';
-import SelectASoundtrack from '../SelectASoundtrack';
+import TheAudioPlayer from '../TheAudioPlayer';
 import CurrentSound from '../CurrentSound';
 import SpringBounceWhenInView from '../SpringBounceWhenInView';
 import InteractiveAudio from '../InteractiveAudio';
@@ -30,7 +30,7 @@ const TheHeader: React.FC = () => {
         <div className="flex-1 flex items-start justify-end gap-2">
           {audioCtx?.hasInteractiveAudio && (
             <SpringBounceWhenInView>
-              <SelectASoundtrack />
+              <TheAudioPlayer />
             </SpringBounceWhenInView>
           )}
 
