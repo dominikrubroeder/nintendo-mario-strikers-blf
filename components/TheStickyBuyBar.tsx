@@ -13,7 +13,7 @@ import Heading from './Heading';
 interface TheStickyBuyBarProps {
   price?: number;
   href?: string;
-  shouldBeVisible: boolean;
+  shouldBeVisible: boolean | undefined;
 }
 
 const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
@@ -26,7 +26,7 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    setIsVisible(shouldBeVisible);
+    setIsVisible(!!shouldBeVisible);
   }, [shouldBeVisible]);
 
   return (
