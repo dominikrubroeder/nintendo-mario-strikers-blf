@@ -6,8 +6,10 @@ import CurrentSound from '../CurrentSound';
 import SpringBounceWhenInView from '../SpringBounceWhenInView';
 import TheInteractiveAudioSetting from '../TheInteractiveAudioSetting';
 import AudioContext from '../../store/audioContext';
+import { useRouter } from 'next/router';
 
 const TheHeader: React.FC = () => {
+  const router = useRouter();
   const audioCtx = useContext(AudioContext);
 
   return (
@@ -19,11 +21,15 @@ const TheHeader: React.FC = () => {
 
         <div className="flex items-center justify-center transition active:scale-95">
           <div className="flex-1 flex items-center justify-center relative themed:bg-accent-dark themed:text-white p-2 rounded-full">
-            <Link href="/">
-              <a>
-                <TheLogo />
-              </a>
-            </Link>
+            {router.pathname === '/auth' ? (
+              <TheLogo />
+            ) : (
+              <Link href="/">
+                <a>
+                  <TheLogo />
+                </a>
+              </Link>
+            )}
           </div>
         </div>
 
