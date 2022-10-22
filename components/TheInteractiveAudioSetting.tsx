@@ -9,7 +9,7 @@ import Accordion from './Accordion';
 import AudioContext from '../store/audioContext';
 import Button from './Button';
 
-const InteractiveAudio: React.FC = () => {
+const TheInteractiveAudioSetting: React.FC = () => {
   const audioCtx = useContext(AudioContext);
 
   return (
@@ -61,4 +61,4 @@ const InteractiveAudio: React.FC = () => {
   );
 };
 
-export default InteractiveAudio;
+export default TheInteractiveAudioSetting;

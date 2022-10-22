@@ -4,7 +4,7 @@ import TheLogo from '../TheLogo';
 import TheAudioPlayer from '../TheAudioPlayer';
 import CurrentSound from '../CurrentSound';
 import SpringBounceWhenInView from '../SpringBounceWhenInView';
-import InteractiveAudio from '../InteractiveAudio';
+import TheInteractiveAudioSetting from '../TheInteractiveAudioSetting';
 import AudioContext from '../../store/audioContext';
 
 const TheHeader: React.FC = () => {
@@ -34,7 +34,7 @@ const TheHeader: React.FC = () => {
             </SpringBounceWhenInView>
           )}
 
-          <InteractiveAudio />
+          <TheInteractiveAudioSetting />
         </div>
       </header>
     </React.Fragment>
