@@ -46,7 +46,7 @@ const GameFeatures: React.FC = () => {
                   name={character.name}
                   sound={character.sound[0]}
                   image={character.image}
-                  onClick={() => setShowCharacterOverlay(true)}
+                  setShowCharacterOverlay={setShowCharacterOverlay}
                 />
               </div>
             </SpringBounceWhenInView>
@@ -119,6 +119,7 @@ const GameFeatures: React.FC = () => {
             </p>
           </SpringBounceWhenInView>
 
+          {/* Check for items audio sounds */}
           <Image
             width={700}
             height={640}

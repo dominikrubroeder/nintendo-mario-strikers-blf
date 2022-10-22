@@ -13,12 +13,6 @@ const BuyContainer: React.FC<BuyContainerProps> = ({ setShowStickyBuyBar }) => {
   const buyBox = useRef<null | HTMLDivElement>(null);
   const buyBoxIsOnScreen = useIsOnScreen(buyBox);
 
-  const today = new Date();
-  const year = today.getFullYear();
-  const date = today.getDate();
-  const month = today.getMonth();
-  const day = today.getDay();
-
   // Buy box instructions on observer status changes
   useEffect(() => {
     if (buyBoxIsOnScreen) {
@@ -38,7 +32,7 @@ const BuyContainer: React.FC<BuyContainerProps> = ({ setShowStickyBuyBar }) => {
           <p>
             Heute bestellen, Lieferung am
             <br />
-            <b>Freitag, 10. Juni 2022</b>
+            <b>Freitag, 10. Juni 2023</b>
           </p>
         )}
         <Button

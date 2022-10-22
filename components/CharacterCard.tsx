@@ -1,6 +1,5 @@
 import Image from 'next/image';
-import { useContext, useRef } from 'react';
-import { Constants } from '../data/constants';
+import { Dispatch, SetStateAction, useContext, useRef } from 'react';
 import AppContext from '../store/appContext';
 import AudioContext from '../store/audioContext';
 
@@ -10,7 +9,7 @@ interface CharacterCardProps {
   sound: string;
   image: string;
   onClick?: () => void;
-  setShowCharacterOverlay: () => void;
+  setShowCharacterOverlay: Dispatch<SetStateAction<boolean>>;
 }
 
 const CharacterCard: React.FC<CharacterCardProps> = ({
@@ -45,7 +44,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
 
         <div
           className="w-8 h-8 flex items-center justify-center absolute top-6 right-6 rounded-full opacity-0 bg-gray-100 themed:bg-accent group-hover:opacity-100 interactive"
-          onClick={() => setShowCharacterOverlay()}
+          onClick={() => setShowCharacterOverlay(true)}
         >
           i
         </div>

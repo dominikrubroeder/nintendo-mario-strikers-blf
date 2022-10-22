@@ -60,7 +60,7 @@ export default function TheCommunityQuotes() {
 
       audioCtx?.setSound('/audio/nintendo-switch-click.mp3');
     }
-  }, [showQuotes]);
+  }, [showQuotes, audioCtx]);
 
   return (
     <section className="mt-[10vh]">

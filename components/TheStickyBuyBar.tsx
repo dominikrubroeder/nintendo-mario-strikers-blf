@@ -1,22 +1,29 @@
-import { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Button from './Button';
 import ReleaseCountdown from './ReleaseCountdown';
 import AppContext from '../store/appContext';
 import {
   ArrowUpIcon,
-  ChevronDoubleUpIcon,
   ChevronDoubleDownIcon,
 } from '@heroicons/react/24/outline';
 import { useRouter } from 'next/router';
 import Heading from './typography/Heading';
 
-export default function TheStickyBuyBar(props) {
+interface TheStickyBuyBarProps {
+  price?: number;
+  href?: string;
+  shouldBeVisible: boolean;
+}
+
+const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
+  price,
+  href,
+  shouldBeVisible,
+}) => {
   const router = useRouter();
   const appCtx = useContext(AppContext);
   const [isVisible, setIsVisible] = useState(false);
-
-  const { shouldBeVisible } = props;
 
   useEffect(() => {
     setIsVisible(shouldBeVisible);
@@ -61,7 +68,7 @@ export default function TheStickyBuyBar(props) {
                   {appCtx?.selectedCharacter
                     ? ` – ${appCtx?.selectedCharacter.toUpperCase()}`
                     : ''}
-                  {props.price ? ` – ${props.price}€` : ''}
+                  {price ? ` – ${price}€` : ''}
                 </span>
                 {router.pathname ===
                   '/buy-mario-strikers-battle-league-football' && (
@@ -76,7 +83,8 @@ export default function TheStickyBuyBar(props) {
           <div className="flex gap-1">
             <Button
               variant="contained"
-              href={props.href || '/buy-mario-strikers-battle-league-football'}
+              href={href || '/buy-mario-strikers-battle-league-football'}
+              sound={href ? 'nintendo-switch-click' : 'coin'}
             >
               Jetzt vorbestellen
             </Button>
@@ -97,4 +105,6 @@ export default function TheStickyBuyBar(props) {
       </Button>
     </>
   );
-}
+};
+
+export default TheStickyBuyBar;

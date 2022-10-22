@@ -1,19 +1,26 @@
 import { motion } from 'framer-motion';
+import React from 'react';
 
-const TheGameTrailerOverlay = (props) => {
+interface TheGameTrailerOverlayProps {
+  closeOverlay: () => void;
+}
+
+const TheGameTrailerOverlay: React.FC<TheGameTrailerOverlayProps> = ({
+  closeOverlay,
+}) => {
   document.body.style.height = '100vh';
   document.body.style.overflow = 'hidden';
 
-  const closeOverlay = () => {
+  const closeOverlayHandler = () => {
     document.body.style.height = 'auto';
     document.body.style.overflow = 'visible';
-    props.closeOverlay();
+    closeOverlay();
   };
 
   return (
     <div
       className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
-      onClick={closeOverlay}
+      onClick={closeOverlayHandler}
     >
       <motion.iframe
         animate={{ scale: [0.4, 1.3, 1], opacity: [0, 1] }}

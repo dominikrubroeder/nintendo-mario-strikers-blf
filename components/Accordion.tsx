@@ -1,9 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from './Button';
 import Image from 'next/image';
-import AudioContext from '../store/audioContext';
-import AppContext from '../store/appContext';
 
 interface AccordionProps {
   title: any;
@@ -16,8 +14,6 @@ const Accordion: React.FC<AccordionProps> = ({
   children,
   className,
 }) => {
-  const appCtx = useContext(AppContext);
-  const audioCtx = useContext(AudioContext);
   const [expanded, setExpanded] = useState(false);
 
   const onCloseHandler = () => {
