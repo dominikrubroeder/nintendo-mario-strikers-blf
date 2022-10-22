@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React, { useContext } from 'react';
-import Logo from '../Logo';
+import TheLogo from '../TheLogo';
 import TheAudioPlayer from '../TheAudioPlayer';
 import CurrentSound from '../CurrentSound';
 import SpringBounceWhenInView from '../SpringBounceWhenInView';
@@ -21,7 +21,7 @@ const TheHeader: React.FC = () => {
           <div className="flex-1 flex items-center justify-center relative themed:bg-accent-dark themed:text-white p-2 rounded-full">
             <Link href="/">
               <a>
-                <Logo />
+                <TheLogo />
               </a>
             </Link>
           </div>
