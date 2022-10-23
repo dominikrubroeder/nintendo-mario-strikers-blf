@@ -12,7 +12,7 @@ const TheHero: React.FC = () => {
   const [showYouTubeGameTrailer, setShowYoutubeGameTrailer] = useState(false);
 
   return (
-    <section className="grid items-center justify-center h-[95vh] p-4 overflow-hidden">
+    <section className="grid items-center justify-center p-4 md:h-[95vh] md:overflow-hidden">
       {showYouTubeGameTrailer && (
         <TheGameTrailerOverlay
           closeOverlay={() => setShowYoutubeGameTrailer(false)}
