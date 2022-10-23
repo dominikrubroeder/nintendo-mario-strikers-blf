@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
 import React, { createContext, useEffect, useState } from 'react';
-import BouncingItems from '../components/BouncingItems';
 import { Constants } from '../data/constants';
 
 type AuthContextType = {
