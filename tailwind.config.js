@@ -11,6 +11,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // accent: 'rgb(var(--theme-accent) / <alpha-value>)',
         accent: 'var(--theme-accent)',
         'accent-dark': 'var(--theme-accent-dark)',
         'accent-soft': 'var(--theme-accent-soft)',

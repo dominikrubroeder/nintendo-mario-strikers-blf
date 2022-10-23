@@ -32,7 +32,7 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
   return (
     <>
       <div
-        className={`fixed bottom-0 w-full grid gap-2 md:grid-cols-2 text-sm p-4 bg-slate-100 themed:bg-accent z-40 transition-all md:pr-20 ${
+        className={`fixed bottom-0 w-full grid gap-1 md:gap-2 md:grid-cols-2 text-sm p-4 bg-slate-100 themed:bg-accent z-40 transition-all md:pr-20 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1/2'
         }`}
       >
@@ -78,8 +78,9 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
             )}
           </div>
         </div>
-        <div className="flex flex-col gap-1 md:flex-row md:items-center md:justify-end md:gap-4">
+        <div className="flex gap-1 flex-row items-center justify-between pl-14 md:pl-0 md:justify-end md:gap-4">
           <ReleaseCountdown />
+
           <div className="flex gap-1">
             <Button
               variant="contained"
@@ -94,7 +95,7 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
 
       <Button
         variant="text"
-        className={`fixed bottom-6 right-4 interactive z-50 ${
+        className={`fixed left-4 bottom-4 interactive z-50 md:bottom-6 md:left-auto md:right-4 ${
           isVisible ? 'bg-transparent' : 'bg-accent themed:bg-signal'
         }`}
         onClick={() => setIsVisible((previousState) => !previousState)}
