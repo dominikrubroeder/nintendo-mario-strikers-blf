@@ -43,7 +43,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
         <audio src={sound} ref={audioRef}></audio>
 
         <div
-          className="w-8 h-8 flex items-center justify-center absolute top-6 right-6 rounded-full opacity-0 bg-gray-100 themed:bg-accent group-hover:opacity-100 interactive"
+          className="w-8 h-8 flex items-center justify-center absolute top-6 right-6 rounded-full opacity-100 bg-gray-100 themed:bg-accent-dark lg:opacity-0 lg:group-hover:opacity-100 interactive"
           onClick={() => setShowCharacterOverlay(true)}
         >
           i
@@ -56,6 +56,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
           }`}
           width={256}
           height={256}
+          priority
         />
         <h3 className="absolute left-1/2 bottom-12 -translate-x-1/2 text-5xl tracking-normal uppercase font-bold transition-all md:group-hover:scale-125 md:text-6xl">
           {name}

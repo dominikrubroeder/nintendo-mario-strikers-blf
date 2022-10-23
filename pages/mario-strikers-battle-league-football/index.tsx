@@ -65,7 +65,7 @@ const InfoPage: NextPage = () => {
         <section className="px-4 max-w-screen-xl m-auto w-full">
           <Heading className="headline--gradient">Wähle dein Team</Heading>
 
-          <CharacterSelection className="sm:grid-cols-2 md:grid-cols-3" />
+          <CharacterSelection className="sm:grid-cols-2 lg:grid-cols-3" />
         </section>
 
         <TheGallery />

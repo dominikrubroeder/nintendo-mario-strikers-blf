@@ -33,6 +33,7 @@ const TheHero: React.FC = () => {
                 className="m-auto max-h-[65vh] pt-12 md:pt-0 cursor-pointer"
                 width={320}
                 height={518}
+                priority
               />
             </a>
           </Link>

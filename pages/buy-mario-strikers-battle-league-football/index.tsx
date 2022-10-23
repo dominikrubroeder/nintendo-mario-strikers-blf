@@ -36,9 +36,10 @@ const DetailPage: NextPage = () => {
             src="/images/gallery/2x1_NSwitch_MarioStrikersBattleLeagueFootball_image1600w.jpeg"
             alt="Mario Strikers Battle League Football"
             layout="responsive"
-            width={1600}
-            height={800}
+            width={1000}
+            height={500}
             className="rounded-3xl"
+            priority
           />
         </div>
       </section>
