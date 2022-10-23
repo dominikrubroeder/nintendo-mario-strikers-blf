@@ -11,6 +11,7 @@ interface CharacterOverlayProps {
   onCloseOverlay: () => void;
 }
 
+// Consider using https://headlessui.com/react/dialog
 const CharacterOverlay: React.FC<CharacterOverlayProps> = ({
   onCloseOverlay,
 }) => {

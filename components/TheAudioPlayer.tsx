@@ -85,7 +85,7 @@ const TheAudioPlayer: React.FC = () => {
 
   return (
     <div
-      className={`bg-accent-soft themed:bg-accent-dark px-4 py-3  transition z-10 w-56 ${
+      className={`bg-accent-soft themed:bg-accent-dark px-4 py-3 transition z-40 w-56 ${
         showSoundtracks ? 'rounded-xl' : 'rounded-full interactive'
       }`}
     >

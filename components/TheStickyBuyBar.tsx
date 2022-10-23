@@ -32,8 +32,10 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
   return (
     <>
       <div
-        className={`fixed bottom-0 w-full grid gap-1 md:gap-2 md:grid-cols-2 text-sm p-4 bg-slate-100 themed:bg-accent z-40 transition-all md:pr-20 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1/2'
+        className={`fixed bottom-0 w-full grid gap-1 md:gap-2 md:grid-cols-2 text-sm p-4 bg-slate-100 themed:bg-accent z-50 transition-all md:pr-20 ${
+          isVisible
+            ? 'opacity-100 visible translate-y-0'
+            : 'opacity-0 invisible translate-y-1/2'
         }`}
       >
         <div className="flex items-center gap-2">
