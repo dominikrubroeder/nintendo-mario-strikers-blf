@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
-import Image from 'next/image';
-import Button from './Button';
-import ReleaseCountdown from './ReleaseCountdown';
-import AppContext from '../store/appContext';
+import React, { useContext, useEffect, useState } from "react";
+import Image from "next/image";
+import Button from "./Button";
+import ReleaseCountdown from "./ReleaseCountdown";
+import AppContext from "../store/appContext";
 import {
   ArrowUpIcon,
   ChevronDoubleDownIcon,
-} from '@heroicons/react/24/outline';
-import { useRouter } from 'next/router';
-import Heading from './Heading';
+} from "@heroicons/react/24/outline";
+import { useRouter } from "next/router";
+import Heading from "./Heading";
 
 interface TheStickyBuyBarProps {
   price?: number;
@@ -32,10 +32,10 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
   return (
     <>
       <div
-        className={`fixed bottom-0 w-full grid gap-1 md:gap-2 md:grid-cols-2 text-sm p-4 bg-slate-100 themed:bg-accent z-50 transition-all md:pr-20 ${
+        className={`fixed bottom-0 z-50 grid w-full gap-1 bg-slate-100 p-4 text-sm transition-all themed:bg-accent md:grid-cols-2 md:gap-2 md:pr-20 ${
           isVisible
-            ? 'opacity-100 visible translate-y-0'
-            : 'opacity-0 invisible translate-y-1/2'
+            ? "visible translate-y-0 opacity-100"
+            : "invisible translate-y-1/2 opacity-0"
         }`}
       >
         <div className="flex items-center gap-2">
@@ -55,9 +55,9 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
             {appCtx?.selectedEdition && (
               <div className="flex items-center gap-1">
                 <span
-                  className="text-accent themed:text-white cursor-pointer"
+                  className="cursor-pointer text-accent themed:text-white"
                   onClick={() =>
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                    window.scrollTo({ top: 0, behavior: "smooth" })
                   }
                 >
                   {appCtx?.selectedEdition
@@ -66,28 +66,28 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
                         .toUpperCase()}${appCtx?.selectedEdition.slice(
                         1
                       )} Edition`
-                    : ''}
+                    : ""}
                   {appCtx?.selectedCharacter
                     ? ` – ${appCtx?.selectedCharacter.toUpperCase()}`
-                    : ''}
-                  {price ? ` – ${price}€` : ''}
+                    : ""}
+                  {price ? ` – ${price}€` : ""}
                 </span>
                 {router.pathname ===
-                  '/buy-mario-strikers-battle-league-football' && (
-                  <ArrowUpIcon className="w-4 h-4 cursor-pointer text-accent themed:text-white"></ArrowUpIcon>
+                  "/buy-mario-strikers-battle-league-football" && (
+                  <ArrowUpIcon className="h-4 w-4 cursor-pointer text-accent themed:text-white"></ArrowUpIcon>
                 )}
               </div>
             )}
           </div>
         </div>
-        <div className="flex gap-1 flex-row items-center justify-between pl-14 md:pl-0 md:justify-end md:gap-4">
+        <div className="flex flex-row items-center justify-between gap-1 pl-14 md:justify-end md:gap-4 md:pl-0">
           <ReleaseCountdown />
 
           <div className="flex gap-1">
             <Button
               variant="contained"
-              href={href || '/buy-mario-strikers-battle-league-football'}
-              sound={href ? 'nintendo-switch-click' : 'coin'}
+              href={href || "/buy-mario-strikers-battle-league-football"}
+              sound={href ? "nintendo-switch-click" : "coin"}
             >
               Jetzt vorbestellen
             </Button>
@@ -97,13 +97,13 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
 
       <Button
         variant="text"
-        className={`fixed left-4 bottom-4 interactive z-50 md:bottom-6 md:left-auto md:right-4 ${
-          isVisible ? 'bg-transparent' : 'bg-accent themed:bg-signal'
+        className={`interactive fixed left-4 bottom-4 z-50 md:bottom-6 md:left-auto md:right-4 ${
+          isVisible ? "bg-transparent" : "bg-accent themed:bg-signal"
         }`}
         onClick={() => setIsVisible((previousState) => !previousState)}
       >
         <ChevronDoubleDownIcon
-          className={`icon ${isVisible ? 'rotate-0' : 'rotate-180'}`}
+          className={`icon ${isVisible ? "rotate-0" : "rotate-180"}`}
         />
       </Button>
     </>

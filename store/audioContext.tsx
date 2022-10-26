@@ -1,5 +1,5 @@
-import React, { createContext, useEffect, useState } from 'react';
-import { Constants } from '../data/constants';
+import React, { createContext, useEffect, useState } from "react";
+import { Constants } from "../data/constants";
 
 type AudioContextType = {
   hasInteractiveAudio: boolean | null;
@@ -32,13 +32,13 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
   const initInteractiveAudio = () => {
     if (
       localStorage.getItem(Constants.InteractiveAudio) === null ||
-      localStorage.getItem(Constants.InteractiveAudio) === 'true'
+      localStorage.getItem(Constants.InteractiveAudio) === "true"
     ) {
       setHasInteractiveAudio(true);
       return;
     }
 
-    if (localStorage.getItem(Constants.InteractiveAudio) === 'false') {
+    if (localStorage.getItem(Constants.InteractiveAudio) === "false") {
       setHasInteractiveAudio(false);
       return;
     }
@@ -56,7 +56,7 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
   useEffect(() => {
     localStorage.setItem(
       Constants.InteractiveAudio,
-      String(hasInteractiveAudio) ?? 'true'
+      String(hasInteractiveAudio) ?? "true"
     );
   }, [hasInteractiveAudio]);
 

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import Button from './Button';
-import ReleaseCountdown from './ReleaseCountdown';
-import TheGameTrailerOverlay from './TheGameTrailerOverlay';
-import Heading from './Heading';
-import { ArrowRightIcon, PlayIcon } from '@heroicons/react/24/solid';
+import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import Button from "./Button";
+import ReleaseCountdown from "./ReleaseCountdown";
+import TheGameTrailerOverlay from "./TheGameTrailerOverlay";
+import Heading from "./Heading";
+import { ArrowRightIcon, PlayIcon } from "@heroicons/react/24/solid";
 
 const TheHero: React.FC = () => {
   const [showYouTubeGameTrailer, setShowYoutubeGameTrailer] = useState(false);
@@ -19,7 +19,7 @@ const TheHero: React.FC = () => {
         />
       )}
 
-      <div className="text-center grid gap-4 md:gap-8">
+      <div className="grid gap-4 text-center md:gap-8">
         <motion.div
           animate={{ opacity: [0, 1], y: [-10, 0] }}
           exit={{ opacity: [1, 0] }}
@@ -30,7 +30,7 @@ const TheHero: React.FC = () => {
               <Image
                 src="/images/product/nintendo-switch-mario-strikers-battle-league-football-cover.png"
                 alt="Mario Strikers: Battle League Football | Nintendo Switch"
-                className="m-auto max-h-[65vh] pt-12 md:pt-0 cursor-pointer"
+                className="interactive m-auto max-h-[45vh] pt-12 md:max-h-[65vh] md:pt-0"
                 width={320}
                 height={518}
                 priority
@@ -39,31 +39,33 @@ const TheHero: React.FC = () => {
           </Link>
         </motion.div>
 
-        <div className="grid gap-2 sticky top-0">
+        <div className="sticky top-0 grid gap-2">
           <ReleaseCountdown />
 
           <Heading as="h1">
             Mario Strikers: Battle League Football | Nintendo Switch
           </Heading>
 
-          <div className="flex items-center justify-center gap-2">
-            <Button
-              variant="contained"
-              href="/buy-mario-strikers-battle-league-football"
-              sound="coin"
-            >
-              Jetzt vorbestellen
-              <ArrowRightIcon className="icon" />
-            </Button>
+          <div className="grid items-center justify-center gap-2 md:flex">
+            <div className="flex items-center gap-2">
+              <Button
+                variant="contained"
+                href="/buy-mario-strikers-battle-league-football"
+                sound="coin"
+              >
+                Jetzt vorbestellen
+                <ArrowRightIcon className="icon" />
+              </Button>
 
-            <Button
-              variant="icon-text"
-              href="/mario-strikers-battle-league-football"
-              sound="nintendo-woho"
-            >
-              Mehr infos
-              <ArrowRightIcon className="icon" />
-            </Button>
+              <Button
+                variant="icon-text"
+                href="/mario-strikers-battle-league-football"
+                sound="nintendo-woho"
+              >
+                Mehr infos
+                <ArrowRightIcon className="icon" />
+              </Button>
+            </div>
 
             <Button
               variant="icon-text"

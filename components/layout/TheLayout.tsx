@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
-import AudioContext from '../../store/audioContext';
-import SpringBounceWhenInView from '../SpringBounceWhenInView';
-import TheAudioPlayer from '../TheAudioPlayer';
-import TheHeader from './TheHeader';
+import React, { useContext } from "react";
+import AudioContext from "../../store/audioContext";
+import SpringBounceWhenInView from "../SpringBounceWhenInView";
+import TheAudioPlayer from "../TheAudioPlayer";
+import TheHeader from "./TheHeader";
 
 interface LayoutProps {
   children: React.ReactNode;

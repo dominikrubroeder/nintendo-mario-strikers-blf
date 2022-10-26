@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const useIsOnScreen: React.ForwardedRef<any> = (ref) => {
   const [isIntersecting, setIntersecting] = useState(false);

@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 import {
   PlayIcon,
   SpeakerXMarkIcon,
   SpeakerWaveIcon,
-} from '@heroicons/react/24/solid';
-import Toggle from './Toggle';
-import Accordion from './Accordion';
-import AudioContext from '../store/audioContext';
-import Button from './Button';
+} from "@heroicons/react/24/solid";
+import Toggle from "./Toggle";
+import Accordion from "./Accordion";
+import AudioContext from "../store/audioContext";
+import Button from "./Button";
 
 const TheInteractiveAudioSetting: React.FC = () => {
   const audioCtx = useContext(AudioContext);
@@ -15,16 +15,16 @@ const TheInteractiveAudioSetting: React.FC = () => {
   return (
     <Accordion
       title={
-        <div className="flex items-center gap-2 justify-between text-xs cursor-pointer">
+        <div className="flex cursor-pointer items-center justify-between gap-2 text-xs">
           <span className="w-max text-xs">Interaktives Audio</span>
 
           <Toggle
             enabled={audioCtx?.hasInteractiveAudio ?? true}
             enabledIcon={
-              <SpeakerWaveIcon className="w-3 h-3"></SpeakerWaveIcon>
+              <SpeakerWaveIcon className="h-3 w-3"></SpeakerWaveIcon>
             }
             disabledIcon={
-              <SpeakerXMarkIcon className="w-3 h-3"></SpeakerXMarkIcon>
+              <SpeakerXMarkIcon className="h-3 w-3"></SpeakerXMarkIcon>
             }
             onClick={audioCtx?.toggleInteractiveAudio}
           />
@@ -40,19 +40,19 @@ const TheInteractiveAudioSetting: React.FC = () => {
         Lasse beispielsweise einen&nbsp;
         <Button
           variant="unstyled"
-          className="text-accent themed:text-white text-left"
-          onClick={() => audioCtx?.setSound('/audio/soundtracks/main-menu.mp3')}
+          className="text-left text-accent themed:text-white"
+          onClick={() => audioCtx?.setSound("/audio/soundtracks/main-menu.mp3")}
         >
-          <PlayIcon className="w-4 h-4 inline-block mr-0.5" />
+          <PlayIcon className="mr-0.5 inline-block h-4 w-4" />
           Soundtrack im Hintergrund laufen
         </Button>
         oder
         <Button
           variant="unstyled"
-          className=" text-accent themed:text-white text-left"
-          onClick={() => audioCtx?.setSound('/audio/nintendo-woohoo.wav')}
+          className=" text-left text-accent themed:text-white"
+          onClick={() => audioCtx?.setSound("/audio/nintendo-woohoo.wav")}
         >
-          <PlayIcon className="w-4 h-4 inline-block mr-0.5" />
+          <PlayIcon className="mr-0.5 inline-block h-4 w-4" />
           höre einen typischen Nintendo Sound
         </Button>
         bei Button-Klicks und weiteren Aktionen.

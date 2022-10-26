@@ -1,4 +1,4 @@
-import { Html, Head, Main, NextScript } from 'next/document';
+import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
@@ -16,7 +16,7 @@ export default function Document() {
       <div id="overlay"></div>
       <div id="modal"></div>
 
-      <body className="text-base themed:text-white themed:bg-accent">
+      <body className="text-base themed:bg-accent themed:text-white">
         <Main />
         <NextScript />
       </body>

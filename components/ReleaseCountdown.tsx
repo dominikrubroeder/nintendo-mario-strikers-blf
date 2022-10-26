@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const ReleaseCountdown: React.FC = () => {
   const [days, setDays] = useState<null | number>(null);
@@ -8,7 +8,7 @@ const ReleaseCountdown: React.FC = () => {
 
   useEffect(() => {
     // Set the date we're counting down to
-    const countDownDate = new Date('Jun 10, 2023 00:00:00').getTime();
+    const countDownDate = new Date("Jun 10, 2023 00:00:00").getTime();
 
     // Update the count down every 1 second
     const releaseCountdown = setInterval(function () {
@@ -37,10 +37,10 @@ const ReleaseCountdown: React.FC = () => {
 
   return (
     <span className="text-accent themed:text-white">
-      Release in: {days && days < 10 ? '0' : ''}
-      {days}:{hours && hours < 10 ? '0' : ''}
-      {hours}:{minutes && minutes < 10 ? '0' : ''}
-      {minutes}:{seconds && seconds < 10 ? '0' : ''}
+      Release in: {days && days < 10 ? "0" : ""}
+      {days}:{hours && hours < 10 ? "0" : ""}
+      {hours}:{minutes && minutes < 10 ? "0" : ""}
+      {minutes}:{seconds && seconds < 10 ? "0" : ""}
       {seconds}
     </span>
   );

@@ -1,6 +1,6 @@
-import { useRouter } from 'next/router';
-import React, { createContext, useEffect, useState } from 'react';
-import { Constants } from '../data/constants';
+import { useRouter } from "next/router";
+import React, { createContext, useEffect, useState } from "react";
+import { Constants } from "../data/constants";
 
 type AuthContextType = {
   isAuthorized: boolean;
@@ -22,23 +22,23 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
   useEffect(() => {
     if (
       isAuthorized ||
-      localStorage.getItem(Constants.isAuthorized) === 'true'
+      localStorage.getItem(Constants.isAuthorized) === "true"
     ) {
-      localStorage.setItem(Constants.isAuthorized, 'true');
-      router.replace('/');
+      localStorage.setItem(Constants.isAuthorized, "true");
+      router.replace("/");
       return;
     }
 
     if (
       localStorage.getItem(Constants.isAuthorized) === null ||
-      localStorage.getItem(Constants.isAuthorized) === 'false'
+      localStorage.getItem(Constants.isAuthorized) === "false"
     ) {
-      localStorage.setItem(Constants.isAuthorized, 'false');
-      router.replace('/auth');
+      localStorage.setItem(Constants.isAuthorized, "false");
+      router.replace("/auth");
       return;
     }
 
-    router.replace('/auth');
+    router.replace("/auth");
   }, [isAuthorized]);
 
   const context = {

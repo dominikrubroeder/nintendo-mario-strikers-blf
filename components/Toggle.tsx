@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface ToggleProps {
   label?: string;
@@ -17,19 +17,19 @@ const Toggle: React.FC<ToggleProps> = ({
 }) => {
   return (
     <div
-      className="flex items-center gap-1 text-xs cursor-pointer text-accent"
+      className="flex cursor-pointer items-center gap-1 text-xs text-accent"
       onClick={onClick}
     >
       {label && <span className="themed:text-white">{label}</span>}
 
       <div
-        className={`flex w-10 p-1 rounded-full transition-all ${
-          enabled ? 'bg-accent' : 'bg-gray-100 themed:bg-accent'
+        className={`flex w-10 rounded-full p-1 transition-all ${
+          enabled ? "bg-accent" : "bg-gray-100 themed:bg-accent"
         }`}
       >
         <span
-          className={`h-4 w-4 rounded-full flex items-center justify-center transition-all ${
-            enabled ? 'bg-white translate-x-full' : 'bg-white'
+          className={`flex h-4 w-4 items-center justify-center rounded-full transition-all ${
+            enabled ? "translate-x-full bg-white" : "bg-white"
           }`}
         >
           {enabled ? enabledIcon : disabledIcon}

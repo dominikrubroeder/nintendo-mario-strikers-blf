@@ -1,8 +1,8 @@
-import { NextPage } from 'next';
-import Head from 'next/head';
-import React, { useEffect, useState } from 'react';
-import BouncingItems from '../../components/BouncingItems';
-import Heading from '../../components/Heading';
+import { NextPage } from "next";
+import Head from "next/head";
+import React, { useEffect, useState } from "react";
+import BouncingItems from "../../components/BouncingItems";
+import Heading from "../../components/Heading";
 
 const Checkout: NextPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -26,7 +26,7 @@ const Checkout: NextPage = () => {
         </title>
       </Head>
 
-      <section className="flex justify-center items-center min-h-screen">
+      <section className="flex min-h-screen items-center justify-center">
         {!isLoading && <div>Show Checkout Screen</div>}
 
         {/* Load team cover full screen  ...*/}
@@ -41,7 +41,7 @@ const Checkout: NextPage = () => {
           <video
             autoPlay
             muted
-            className="fixed right-0 bottom-0 min-h-screen min-w-screen z-50"
+            className="min-w-screen fixed right-0 bottom-0 z-50 min-h-screen"
           >
             <source
               src="/videos/nintendo-switch-mario-strikers-blf-mario-smash.mp4"

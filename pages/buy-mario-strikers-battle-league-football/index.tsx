@@ -1,13 +1,13 @@
-import { NextPage } from 'next';
-import Head from 'next/head';
-import { useContext, useState } from 'react';
-import AppContext from '../../store/appContext';
-import BuyConfiguration from '../../components/product-detail/BuyConfiguration';
-import TheStickyBuyBar from '../../components/TheStickyBuyBar';
-import { Editions } from '../../data/editions';
-import Image from 'next/image';
-import Button from '../../components/Button';
-import GameFeatures from '../../components/GameFeatures';
+import { NextPage } from "next";
+import Head from "next/head";
+import { useContext, useState } from "react";
+import AppContext from "../../store/appContext";
+import BuyConfiguration from "../../components/product-detail/BuyConfiguration";
+import TheStickyBuyBar from "../../components/TheStickyBuyBar";
+import { Editions } from "../../data/editions";
+import Image from "next/image";
+import Button from "../../components/Button";
+import GameFeatures from "../../components/GameFeatures";
 
 // https://mario.fandom.com/de/wiki/Mario_Smash_Football
 // https://mario.fandom.com/de/wiki/Mario_Strikers_Charged_Football

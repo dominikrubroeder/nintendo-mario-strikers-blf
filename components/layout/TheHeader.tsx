@@ -1,12 +1,12 @@
-import Link from 'next/link';
-import React, { useContext } from 'react';
-import TheLogo from '../TheLogo';
-import TheAudioPlayer from '../TheAudioPlayer';
-import CurrentSound from '../CurrentSound';
-import SpringBounceWhenInView from '../SpringBounceWhenInView';
-import TheInteractiveAudioSetting from '../TheInteractiveAudioSetting';
-import AudioContext from '../../store/audioContext';
-import { useRouter } from 'next/router';
+import Link from "next/link";
+import React, { useContext } from "react";
+import TheLogo from "../TheLogo";
+import TheAudioPlayer from "../TheAudioPlayer";
+import CurrentSound from "../CurrentSound";
+import SpringBounceWhenInView from "../SpringBounceWhenInView";
+import TheInteractiveAudioSetting from "../TheInteractiveAudioSetting";
+import AudioContext from "../../store/audioContext";
+import { useRouter } from "next/router";
 
 const TheHeader: React.FC = () => {
   const router = useRouter();
@@ -16,12 +16,12 @@ const TheHeader: React.FC = () => {
     <React.Fragment>
       <CurrentSound />
 
-      <header className="relative flex items-start justify-between p-4 flex-wrap w-full h-20 z-40">
-        <div className="hidden lg:flex flex-1"></div>
+      <header className="relative z-40 flex h-20 w-full flex-wrap items-start justify-between p-4">
+        <div className="hidden flex-1 lg:flex"></div>
 
         <div className="flex items-center justify-center transition active:scale-95">
-          <div className="flex-1 flex items-center self-center justify-center relative themed:bg-accent-dark themed:text-white p-2 rounded-full">
-            {router.pathname === '/auth' ? (
+          <div className="relative flex flex-1 items-center justify-center self-center rounded-full p-2 themed:bg-accent-dark themed:text-white">
+            {router.pathname === "/auth" ? (
               <TheLogo />
             ) : (
               <Link href="/">
@@ -33,7 +33,7 @@ const TheHeader: React.FC = () => {
           </div>
         </div>
 
-        <div className="flex-1 flex items-start justify-end gap-2">
+        <div className="flex flex-1 items-start justify-end gap-2">
           <div className="hidden md:inline-block">
             {audioCtx?.hasInteractiveAudio && (
               <SpringBounceWhenInView>

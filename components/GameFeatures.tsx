@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react';
-import SpringBounceWhenInView from './SpringBounceWhenInView';
-import AppContext from '../store/appContext';
-import Image from 'next/image';
-import Heading from './Heading';
-import CharacterCard from './CharacterCard';
-import characters from '../data/characters';
-import CharacterOverlay from './CharacterOverlay';
+import React, { useContext, useState } from "react";
+import SpringBounceWhenInView from "./SpringBounceWhenInView";
+import AppContext from "../store/appContext";
+import Image from "next/image";
+import Heading from "./Heading";
+import CharacterCard from "./CharacterCard";
+import characters from "../data/characters";
+import CharacterOverlay from "./CharacterOverlay";
 
 const GameFeatures: React.FC = () => {
   const appCtx = useContext(AppContext);
@@ -40,7 +40,7 @@ const GameFeatures: React.FC = () => {
         {appCtx?.selectedCharacter && (
           <div className="text-center">
             <SpringBounceWhenInView>
-              <div className="max-w-xs m-auto">
+              <div className="m-auto max-w-xs">
                 <CharacterCard
                   id={character.id}
                   name={character.name}
@@ -66,8 +66,8 @@ const GameFeatures: React.FC = () => {
 
       <section className="grid gap-64">
         <SpringBounceWhenInView>
-          <section className="relative min-h-[100vh] overflow-hidden flex items-center gap-64">
-            <div className="grid px-4 max-w-screen-lg w-full m-auto">
+          <section className="relative flex min-h-[100vh] items-center gap-64 overflow-hidden">
+            <div className="m-auto grid w-full max-w-screen-lg px-4">
               <Heading as="h2" className="headline--gradient">
                 5 gegen 5
               </Heading>
@@ -79,7 +79,7 @@ const GameFeatures: React.FC = () => {
               </p>
             </div>
 
-            <div className="absolute -right-48 bottom-0 w-auto h-full">
+            <div className="absolute -right-48 bottom-0 h-full w-auto">
               <Image
                 src="/images/characters/NSwitch-character-sketch-mario-bowser.png"
                 width={772}

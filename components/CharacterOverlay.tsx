@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
-import AppContext from '../store/appContext';
-import OverlayBackground from './OverlayBackground';
-import characters from '../data/characters';
-import Button from './Button';
-import Heading from './Heading';
-import Image from 'next/image';
-import Accordion from './Accordion';
+import React, { useContext } from "react";
+import AppContext from "../store/appContext";
+import OverlayBackground from "./OverlayBackground";
+import characters from "../data/characters";
+import Button from "./Button";
+import Heading from "./Heading";
+import Image from "next/image";
+import Accordion from "./Accordion";
 
 interface CharacterOverlayProps {
   onCloseOverlay: () => void;
@@ -27,28 +27,28 @@ const CharacterOverlay: React.FC<CharacterOverlayProps> = ({
 
   return (
     <OverlayBackground
-      className="items-start justify-start md:justify-center md:items-center"
+      className="items-start justify-start md:items-center md:justify-center"
       onCloseOverlay={onCloseOverlay}
     >
       <div
-        className="relative max-w-5xl h-[75vh] rounded-3xl bg-accent grid gap-4 p-6 m-4 z-50 overflow-y-scroll md:overflow-hidden md:p-8 md:pb-0 md:grid-cols-2"
+        className="relative z-50 m-4 grid h-[75vh] max-w-5xl gap-4 overflow-y-scroll rounded-3xl bg-accent p-6 md:grid-cols-2 md:overflow-hidden md:p-8 md:pb-0"
         onClick={(e) => handleChildElementClick(e)}
       >
         <div
-          className="w-8 h-8 flex items-center justify-center absolute top-6 right-6 rounded-full cursor-pointer bg-gray-100 themed:bg-accent-dark interactive"
+          className="interactive absolute top-6 right-6 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-gray-100 themed:bg-accent-dark"
           onClick={onCloseOverlay}
         >
           x
         </div>
         <div className="flex items-center justify-center">
-          <div className="w-full max-h-[35vh] md:max-h-[none]">
+          <div className="max-h-[35vh] w-full md:max-h-[none]">
             <Image
               width={512}
               height={512}
               layout="responsive"
               src={
                 character?.image ??
-                '/images/characters/NSwitch-character-sketch-mario.png'
+                "/images/characters/NSwitch-character-sketch-mario.png"
               }
               alt={character?.name}
             />
@@ -57,7 +57,7 @@ const CharacterOverlay: React.FC<CharacterOverlayProps> = ({
         <div className="md:overflow-y-scroll md:p-8">
           <Heading
             as="h2"
-            className="text-6xl uppercase font-bold w-full text-center mb-8"
+            className="mb-8 w-full text-center text-6xl font-bold uppercase"
           >
             {character?.name}
           </Heading>
@@ -68,7 +68,7 @@ const CharacterOverlay: React.FC<CharacterOverlayProps> = ({
             </div>
 
             <div>
-              <Heading className="uppercase font-bold mb-4">
+              <Heading className="mb-4 font-bold uppercase">
                 Das bekommst du
               </Heading>
 
@@ -79,7 +79,7 @@ const CharacterOverlay: React.FC<CharacterOverlayProps> = ({
                   src="/images/gallery/2x1_NSwitch_MarioStrikersBattleLeagueFootball_image1600w.jpeg"
                   alt="Mario Strikers Battle League Football"
                   priority
-                  className="rounded-xl max-w-full"
+                  className="max-w-full rounded-xl"
                 />
 
                 <Image
@@ -93,11 +93,11 @@ const CharacterOverlay: React.FC<CharacterOverlayProps> = ({
                 <Accordion
                   title={`${character?.name.toUpperCase()} – Merchandise`}
                 >
-                  <div className="grid gap-4 grid-cols-2">
+                  <div className="grid grid-cols-2 gap-4">
                     {character?.imageGallery.map((image, index) => (
                       <div
                         key={index}
-                        className="h-64 rounded-3xl cursor-pointer bg-gray-100 themed:bg-accent interactive"
+                        className="interactive h-64 cursor-pointer rounded-3xl bg-gray-100 themed:bg-accent"
                       ></div>
                     ))}
                   </div>
@@ -118,11 +118,11 @@ const CharacterOverlay: React.FC<CharacterOverlayProps> = ({
             </div>
 
             <div>
-              <Heading as="h3" className="uppercase font-bold mb-4">
+              <Heading as="h3" className="mb-4 font-bold uppercase">
                 {character?.name}&apos;s Hyperstrike
               </Heading>
 
-              <div className="bg-gray-100 themed:bg-accent-dark p-8 rounded-xl">
+              <div className="rounded-xl bg-gray-100 p-8 themed:bg-accent-dark">
                 {/* All characters hyper strike https://www.youtube.com/watch?v=v2zQbRfwSVs */}
                 <iframe
                   className="w-full"
@@ -135,11 +135,11 @@ const CharacterOverlay: React.FC<CharacterOverlayProps> = ({
             </div>
 
             <div>
-              <Heading as="h3" className="uppercase font-bold mb-4">
+              <Heading as="h3" className="mb-4 font-bold uppercase">
                 Wer ist {character?.name}
               </Heading>
 
-              <div className="bg-gray-100 themed:bg-accent-dark p-8 rounded-xl">
+              <div className="rounded-xl bg-gray-100 p-8 themed:bg-accent-dark">
                 <p>{character?.baseText}</p>
               </div>
             </div>

@@ -1,7 +1,7 @@
-import { NextPage } from 'next';
-import Head from 'next/head';
-import TheHero from '../components/TheHero';
-import TheLaunchScreen from '../components/TheLaunchScreen';
+import { NextPage } from "next";
+import Head from "next/head";
+import TheHero from "../components/TheHero";
+import TheLaunchScreen from "../components/TheLaunchScreen";
 
 const Home: NextPage = () => {
   return (

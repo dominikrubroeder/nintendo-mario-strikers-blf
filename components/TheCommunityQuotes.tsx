@@ -1,47 +1,47 @@
-import { useContext, useEffect, useRef, useState } from 'react';
-import SpringBounceWhenInView from './SpringBounceWhenInView';
-import Button from './Button';
-import BouncingItems from './BouncingItems';
-import AudioContext from '../store/audioContext';
+import { useContext, useEffect, useRef, useState } from "react";
+import SpringBounceWhenInView from "./SpringBounceWhenInView";
+import Button from "./Button";
+import BouncingItems from "./BouncingItems";
+import AudioContext from "../store/audioContext";
 
 const communityQuotes = [
   {
-    quote: 'NOSTALGIE PUR.',
-    author: 'Dominik Rubröder',
-    platform: 'YouTube',
+    quote: "NOSTALGIE PUR.",
+    author: "Dominik Rubröder",
+    platform: "YouTube",
     isHighlight: true,
   },
   {
-    quote: '10/10 Hyped!',
-    author: 'One Piece Theoretiker',
-    platform: 'YouTube',
+    quote: "10/10 Hyped!",
+    author: "One Piece Theoretiker",
+    platform: "YouTube",
     isHighlight: true,
   },
   {
     quote:
-      '15 Jahre auf diesen Tag gewartet und jetzt ist es endlich so weit 🔥',
-    author: 'Shy Crack',
-    platform: 'YouTube',
+      "15 Jahre auf diesen Tag gewartet und jetzt ist es endlich so weit 🔥",
+    author: "Shy Crack",
+    platform: "YouTube",
     isHighlight: false,
   },
   {
     quote:
-      'Ich liebe Nintendo für diesen Move. Ich werde jeden Tag nach dem Training in dieses Spiel versinken 😂💯',
-    author: 'GoalKEEPERz',
-    platform: 'YouTube',
+      "Ich liebe Nintendo für diesen Move. Ich werde jeden Tag nach dem Training in dieses Spiel versinken 😂💯",
+    author: "GoalKEEPERz",
+    platform: "YouTube",
     isHighlight: false,
   },
   {
-    quote: 'Hat nur 15 Jahre gedauert, hätte ich nie mit gerechnet <3',
-    author: 'Shawn Gesell Gaming',
-    platform: 'YouTube',
+    quote: "Hat nur 15 Jahre gedauert, hätte ich nie mit gerechnet <3",
+    author: "Shawn Gesell Gaming",
+    platform: "YouTube",
     isHighlight: false,
   },
   {
     quote:
-      'Nach Jahren tretet ein göttliches Spiel wieder aus den Schatten heraus :)',
-    author: 'Fvbiii',
-    platform: 'YouTube',
+      "Nach Jahren tretet ein göttliches Spiel wieder aus den Schatten heraus :)",
+    author: "Fvbiii",
+    platform: "YouTube",
     isHighlight: false,
   },
 ];
@@ -54,11 +54,11 @@ export default function TheCommunityQuotes() {
   useEffect(() => {
     if (showQuotes) {
       quotesRef.current?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
+        behavior: "smooth",
+        block: "center",
       });
 
-      audioCtx?.setSound('/audio/nintendo-switch-click.mp3');
+      audioCtx?.setSound("/audio/nintendo-switch-click.mp3");
     }
   }, [showQuotes, audioCtx]);
 
@@ -84,7 +84,7 @@ export default function TheCommunityQuotes() {
         </div>
       </header>
 
-      <div className="grid justify-center my-16">
+      <div className="my-16 grid justify-center">
         <BouncingItems size={32} />
 
         <Button
@@ -92,13 +92,13 @@ export default function TheCommunityQuotes() {
           sound="coin"
           onClick={() => setShowQuotes((previousState) => !previousState)}
         >
-          Zeige {showQuotes ? 'weniger' : 'mehr'}
+          Zeige {showQuotes ? "weniger" : "mehr"}
         </Button>
       </div>
 
       {showQuotes && (
         <div
-          className="max-w-3xl w-full grid gap-8 px-4 m-auto"
+          className="m-auto grid w-full max-w-3xl gap-8 px-4"
           ref={quotesRef}
         >
           {communityQuotes.map((communityQuote, index) => {
@@ -107,23 +107,23 @@ export default function TheCommunityQuotes() {
                 <SpringBounceWhenInView key={communityQuote.quote}>
                   <div
                     className={`grid gap-2 ${
-                      index % 2 ? 'text-left' : 'text-right'
+                      index % 2 ? "text-left" : "text-right"
                     }`}
                   >
                     <div className="flex items-center gap-2">
                       <div
-                        className={`w-8 h-8 flex-none rounded-full bg-gray-100 themed:bg-accent-dark ${
-                          index % 2 ? 'order-1' : 'order-2'
+                        className={`h-8 w-8 flex-none rounded-full bg-gray-100 themed:bg-accent-dark ${
+                          index % 2 ? "order-1" : "order-2"
                         }`}
                       ></div>
                       <div
-                        className={`flex items-center justify-center bg-gray-100 themed:bg-accent-dark rounded-3xl md:rounded-full ${
+                        className={`flex items-center justify-center rounded-3xl bg-gray-100 themed:bg-accent-dark md:rounded-full ${
                           index % 2
-                            ? 'text-left order-2'
-                            : 'text-right ml-auto order-1'
+                            ? "order-2 text-left"
+                            : "order-1 ml-auto text-right"
                         }`}
                       >
-                        <span className="px-8 py-4 md:px-6 mx-auto">
+                        <span className="mx-auto px-8 py-4 md:px-6">
                           &ldquo;{communityQuote.quote}&rdquo;
                         </span>
                       </div>

@@ -1,42 +1,42 @@
-import Image from 'next/image';
-import { useCallback, useState } from 'react';
+import Image from "next/image";
+import { useCallback, useState } from "react";
 
 const galleryData = [
   {
-    src: '/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_01.jpg',
+    src: "/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_01.jpg",
   },
   {
-    src: '/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_02.jpg',
+    src: "/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_02.jpg",
   },
   {
-    src: '/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_03.jpg',
+    src: "/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_03.jpg",
   },
   {
-    src: '/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_04.jpg',
+    src: "/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_04.jpg",
   },
   {
-    src: '/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_05.jpg',
+    src: "/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_05.jpg",
   },
   {
-    src: '/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_06.jpg',
+    src: "/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_06.jpg",
   },
   {
-    src: '/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_07.jpg',
+    src: "/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_07.jpg",
   },
   {
-    src: '/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_08.jpg',
+    src: "/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_08.jpg",
   },
   {
-    src: '/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_09.jpg',
+    src: "/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_09.jpg",
   },
   {
-    src: '/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_10.jpg',
+    src: "/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_10.jpg",
   },
   {
-    src: '/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_11.jpg',
+    src: "/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_11.jpg",
   },
   {
-    src: '/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_12.jpg',
+    src: "/images/gallery/NSwitch_MarioStrikersBattleLeagueFootball_12.jpg",
   },
 ];
 
@@ -57,7 +57,7 @@ export default function TheGallery() {
   );
 
   return (
-    <section className="p-4 overflow-hidden">
+    <section className="overflow-hidden p-4">
       <div className="relative h-[75vh] md:h-[85vh]">
         {galleryData.map((galleryItem, index) => {
           return (
@@ -67,10 +67,10 @@ export default function TheGallery() {
                 backgroundImage: `url(${galleryItem.src})`,
                 transform: `translateX(${calcValue(index)}%)`,
               }}
-              className={`absolute left-0 top-0 w-full h-full bg-cover bg-center rounded-3xl transition-all duration-1000 ${
+              className={`absolute left-0 top-0 h-full w-full rounded-3xl bg-cover bg-center transition-all duration-1000 ${
                 index === activeItem
-                  ? 'opacity-100 scale-100'
-                  : 'opacity-0 scale-50'
+                  ? "scale-100 opacity-100"
+                  : "scale-50 opacity-0"
               }`}
             ></div>
           );
@@ -78,7 +78,7 @@ export default function TheGallery() {
       </div>
 
       <div className="flex items-center p-8">
-        <ul className="flex items-center gap-4 mx-auto">
+        <ul className="mx-auto flex items-center gap-4">
           {galleryData.map((_, index) => (
             <li
               key={index}
@@ -91,8 +91,8 @@ export default function TheGallery() {
                 height={32}
                 src="/images/items/CI_NSwitch_MarioStrikersBLF_AW_Items_Mushroom.png"
                 alt="Icon"
-                className={`block rounded-full p-4 bg-accent themed:bg-accent-dark interactive ${
-                  index === activeItem ? 'opacity-100 scale-110' : 'opacity-20'
+                className={`interactive block rounded-full bg-accent p-4 themed:bg-accent-dark ${
+                  index === activeItem ? "scale-110 opacity-100" : "opacity-20"
                 }`}
               />
             </li>

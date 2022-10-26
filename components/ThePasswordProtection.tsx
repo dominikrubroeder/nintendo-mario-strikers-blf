@@ -1,6 +1,6 @@
-import { LockClosedIcon } from '@heroicons/react/20/solid';
-import { useContext, useRef } from 'react';
-import AuthContext from '../store/authContext';
+import { LockClosedIcon } from "@heroicons/react/20/solid";
+import { useContext, useRef } from "react";
+import AuthContext from "../store/authContext";
 
 export default function ThePasswordProtection() {
   const authCtx = useContext(AuthContext);
@@ -10,7 +10,7 @@ export default function ThePasswordProtection() {
     event.preventDefault();
     const enteredPassword = passwordRef.current?.value;
 
-    enteredPassword === 'testing'
+    enteredPassword === "testing"
       ? authCtx?.setIsAuthorized(true)
       : authCtx?.setIsAuthorized(false);
   };

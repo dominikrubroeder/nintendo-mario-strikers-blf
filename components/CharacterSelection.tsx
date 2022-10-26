@@ -1,11 +1,11 @@
-import React, { useRef, useState, useContext } from 'react';
-import { useRouter } from 'next/router';
-import AppContext from '../store/appContext';
-import teams from '../data/characters';
-import CharacterCard from './CharacterCard';
-import SpringBounceWhenInView from './SpringBounceWhenInView';
-import CharacterOverlay from './CharacterOverlay';
-import Tooltip from './Tooltip';
+import React, { useRef, useState, useContext } from "react";
+import { useRouter } from "next/router";
+import AppContext from "../store/appContext";
+import teams from "../data/characters";
+import CharacterCard from "./CharacterCard";
+import SpringBounceWhenInView from "./SpringBounceWhenInView";
+import CharacterOverlay from "./CharacterOverlay";
+import Tooltip from "./Tooltip";
 
 interface CharacterSelectionProps {
   className?: string;
@@ -37,23 +37,23 @@ const CharacterSelection: React.FC<CharacterSelectionProps> = ({
   };
 
   const onCloseHandler = () => {
-    document.body.style.height = 'auto';
-    document.body.style.overflow = 'visible';
+    document.body.style.height = "auto";
+    document.body.style.overflow = "visible";
     setShowCharacterOverlay(false);
   };
 
   return (
     <div className="grid gap-4" ref={teamSection}>
       <div className="grid gap-4">
-        <div className="flex justify-between items-center">
+        <div className="flex items-center justify-between">
           <h4>Wähle dein Team:</h4>
-          <div className="text-accent themed:text-white text-sm cursor-pointer">
+          <div className="cursor-pointer text-sm text-accent themed:text-white">
             <Tooltip title="Warum?">
               Erhalte <b>zusätzlichen Spiel-Content</b> wie erweitere Arenen,
               das Geheimteam und <b>inviduelle Merch-Artrikel</b> basierend auf
               deiner Team-Wahl! <br /> <br />
-              Wähle also beispielsweise {currentTheme}, um einen Hoodie im{' '}
-              {currentTheme} Design zu erhalten oder deinen Schreibtisch mit der{' '}
+              Wähle also beispielsweise {currentTheme}, um einen Hoodie im{" "}
+              {currentTheme} Design zu erhalten oder deinen Schreibtisch mit der{" "}
               {currentTheme}
               Tischfigar in der Sieger-Pose zu schmücken.
               <br /> <br />
@@ -66,7 +66,7 @@ const CharacterSelection: React.FC<CharacterSelectionProps> = ({
           <CharacterOverlay onCloseOverlay={onCloseHandler} />
         )}
 
-        <div className={`grid ${className ? className : ''}`}>
+        <div className={`grid ${className ? className : ""}`}>
           {teams.map((character) => {
             return (
               <SpringBounceWhenInView key={character.id}>

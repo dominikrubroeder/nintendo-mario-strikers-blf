@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Button from './Button';
-import Image from 'next/image';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Button from "./Button";
+import Image from "next/image";
 
 interface AccordionProps {
   title: any;
@@ -22,9 +22,9 @@ const Accordion: React.FC<AccordionProps> = ({
 
   return (
     <div
-      className={`grid gap-2 min-w-[12rem] bg-accent-soft themed:bg-accent-dark py-3 px-4 ${
-        expanded ? 'rounded-xl' : 'rounded-full interactive'
-      } ${className ? className : ''}`}
+      className={`grid min-w-[12rem] gap-2 bg-accent-soft py-3 px-4 themed:bg-accent-dark ${
+        expanded ? "rounded-xl" : "interactive rounded-full"
+      } ${className ? className : ""}`}
     >
       <header
         className="cursor-pointer"
@@ -40,22 +40,22 @@ const Accordion: React.FC<AccordionProps> = ({
             initial={{ opacity: 0, height: 0 }}
             animate={{
               opacity: 1,
-              height: 'auto',
+              height: "auto",
             }}
             exit={{
               opacity: 1,
             }}
             transition={{
-              type: 'spring',
+              type: "spring",
               stiffness: 400,
             }}
           >
             <div>{children}</div>
 
-            <footer className="flex items-end justify-end h-10">
+            <footer className="flex h-10 items-end justify-end">
               <Button
                 variant="unstyled"
-                className="flex items-center gap-0.5 font-bold text-xs"
+                className="flex items-center gap-0.5 text-xs font-bold"
                 sound="character"
                 onClick={onCloseHandler}
               >

@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 
 interface SpringBounceWhenInViewProps {
   children: React.ReactNode;
@@ -27,7 +27,7 @@ const SpringBounceWhenInView: React.FC<SpringBounceWhenInViewProps> = ({
       transition={{
         delay: delay,
         duration: 0.6,
-        type: 'spring',
+        type: "spring",
         stiffness: 300,
         damping: 15,
       }}
@@ -35,7 +35,7 @@ const SpringBounceWhenInView: React.FC<SpringBounceWhenInViewProps> = ({
         visible: { opacity: 1, scale: 1 },
         hidden: { opacity: 0, scale: 0.8 },
       }}
-      className={className ? className : ''}
+      className={className ? className : ""}
     >
       {playSound && (
         <audio

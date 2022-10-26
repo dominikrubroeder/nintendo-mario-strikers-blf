@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const TheLogo: React.FC = () => {
   return (
@@ -6,7 +6,7 @@ const TheLogo: React.FC = () => {
       viewBox="0 0 406 101"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="w-auto h-6"
+      className="h-6 w-auto"
     >
       <g clipPath="url(#clip0_112_102)">
         <path

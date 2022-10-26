@@ -1,6 +1,6 @@
-import { NextPage } from 'next';
-import Head from 'next/head';
-import ThePasswordProtection from '../../components/ThePasswordProtection';
+import { NextPage } from "next";
+import Head from "next/head";
+import ThePasswordProtection from "../../components/ThePasswordProtection";
 
 const Auth: NextPage = () => {
   return (
