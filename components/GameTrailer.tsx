@@ -1,19 +1,17 @@
-import { motion } from "framer-motion";
-import React from "react";
+import { motion } from 'framer-motion';
+import React from 'react';
 
-interface TheGameTrailerOverlayProps {
+interface GameTrailerProps {
   closeOverlay: () => void;
 }
 
-const TheGameTrailerOverlay: React.FC<TheGameTrailerOverlayProps> = ({
-  closeOverlay,
-}) => {
-  document.body.style.height = "100vh";
-  document.body.style.overflow = "hidden";
+const GameTrailer: React.FC<GameTrailerProps> = ({ closeOverlay }) => {
+  document.body.style.height = '100vh';
+  document.body.style.overflow = 'hidden';
 
   const closeOverlayHandler = () => {
-    document.body.style.height = "auto";
-    document.body.style.overflow = "visible";
+    document.body.style.height = 'auto';
+    document.body.style.overflow = 'visible';
     closeOverlay();
   };
 
@@ -26,7 +24,7 @@ const TheGameTrailerOverlay: React.FC<TheGameTrailerOverlayProps> = ({
         animate={{ scale: [0.4, 1.3, 1], opacity: [0, 1] }}
         transition={{
           duration: 0.5,
-          type: "spring",
+          type: 'spring',
           stiffness: 300,
           damping: 15,
           delay: 2.5,
@@ -42,4 +40,4 @@ const TheGameTrailerOverlay: React.FC<TheGameTrailerOverlayProps> = ({
   );
 };
 
-export default TheGameTrailerOverlay;
+export default GameTrailer;

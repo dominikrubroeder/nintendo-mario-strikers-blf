@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Button from '../../ui/Button';
 import ReleaseCountdown from '../../ReleaseCountdown';
-import TheGameTrailerOverlay from '../../TheGameTrailerOverlay';
+import GameTrailer from '../../GameTrailer';
 import Heading from '../../typography/Heading';
 import { ArrowRightIcon, PlayIcon } from '@heroicons/react/24/solid';
 
@@ -14,9 +14,7 @@ const Hero: React.FC = () => {
   return (
     <section className="grid items-center justify-center p-4 md:h-[95vh] md:overflow-hidden">
       {showYouTubeGameTrailer && (
-        <TheGameTrailerOverlay
-          closeOverlay={() => setShowYoutubeGameTrailer(false)}
-        />
+        <GameTrailer closeOverlay={() => setShowYoutubeGameTrailer(false)} />
       )}
 
       <div className="grid gap-4 text-center md:gap-8">
@@ -30,7 +28,7 @@ const Hero: React.FC = () => {
               <Image
                 src="/images/product/nintendo-switch-mario-strikers-battle-league-football-cover.png"
                 alt="Mario Strikers: Battle League Football | Nintendo Switch"
-                className="interactive m-auto max-h-[45vh] pt-12 md:max-h-[65vh] md:pt-0"
+                className="m-auto max-h-[45vh] pt-12 md:max-h-[65vh] md:pt-0"
                 width={320}
                 height={518}
                 priority
