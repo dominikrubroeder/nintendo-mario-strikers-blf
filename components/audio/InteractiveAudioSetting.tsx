@@ -1,15 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react';
 import {
   PlayIcon,
   SpeakerXMarkIcon,
   SpeakerWaveIcon,
-} from "@heroicons/react/24/solid";
-import Toggle from "./Toggle";
-import Accordion from "./Accordion";
-import AudioContext from "../store/audioContext";
-import Button from "./Button";
+} from '@heroicons/react/24/solid';
+import Toggle from '../ui/Toggle';
+import Accordion from '../ui/Accordion';
+import AudioContext from '../../store/audioContext';
+import Button from '../ui/Button';
 
-const TheInteractiveAudioSetting: React.FC = () => {
+const InteractiveAudioSetting: React.FC = () => {
   const audioCtx = useContext(AudioContext);
 
   return (
@@ -41,7 +41,7 @@ const TheInteractiveAudioSetting: React.FC = () => {
         <Button
           variant="unstyled"
           className="text-left text-accent themed:text-white"
-          onClick={() => audioCtx?.setSound("/audio/soundtracks/main-menu.mp3")}
+          onClick={() => audioCtx?.setSound('/audio/soundtracks/main-menu.mp3')}
         >
           <PlayIcon className="mr-0.5 inline-block h-4 w-4" />
           Soundtrack im Hintergrund laufen
@@ -50,7 +50,7 @@ const TheInteractiveAudioSetting: React.FC = () => {
         <Button
           variant="unstyled"
           className=" text-left text-accent themed:text-white"
-          onClick={() => audioCtx?.setSound("/audio/nintendo-woohoo.wav")}
+          onClick={() => audioCtx?.setSound('/audio/nintendo-woohoo.wav')}
         >
           <PlayIcon className="mr-0.5 inline-block h-4 w-4" />
           höre einen typischen Nintendo Sound
@@ -61,4 +61,4 @@ const TheInteractiveAudioSetting: React.FC = () => {
   );
 };
 
-export default TheInteractiveAudioSetting;
+export default InteractiveAudioSetting;

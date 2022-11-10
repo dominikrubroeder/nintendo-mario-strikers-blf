@@ -1,8 +1,8 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import SpringBounceWhenInView from './SpringBounceWhenInView';
-import Button from './Button';
-import BouncingItems from './BouncingItems';
-import AudioContext from '../store/audioContext';
+import SpringBounceWhenInView from '../animation/SpringBounceWhenInView';
+import Button from '../ui/Button';
+import BouncingItems from '../BouncingItems';
+import AudioContext from '../../store/audioContext';
 import Image from 'next/image';
 
 const communityQuotes = [
@@ -47,7 +47,7 @@ const communityQuotes = [
   },
 ];
 
-export default function TheCommunityQuotes() {
+export default function CommunityQuotes() {
   const audioCtx = useContext(AudioContext);
   const [showQuotes, setShowQuotes] = useState(false);
   const quotesRef = useRef<null | HTMLDivElement>(null);

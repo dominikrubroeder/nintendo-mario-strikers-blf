@@ -1,12 +1,12 @@
-import Link from "next/link";
-import React, { useContext } from "react";
-import TheLogo from "../TheLogo";
-import TheAudioPlayer from "../TheAudioPlayer";
-import CurrentSound from "../CurrentSound";
-import SpringBounceWhenInView from "../SpringBounceWhenInView";
-import TheInteractiveAudioSetting from "../TheInteractiveAudioSetting";
-import AudioContext from "../../store/audioContext";
-import { useRouter } from "next/router";
+import Link from 'next/link';
+import React, { useContext } from 'react';
+import Logo from '../svg/Logo';
+import MiniAudioPlayer from '../audio/MiniAudioPlayer';
+import CurrentSound from '../audio/CurrentSound';
+import SpringBounceWhenInView from '../animation/SpringBounceWhenInView';
+import InteractiveAudioSetting from '../audio/InteractiveAudioSetting';
+import AudioContext from '../../store/audioContext';
+import { useRouter } from 'next/router';
 
 const TheHeader: React.FC = () => {
   const router = useRouter();
@@ -21,12 +21,12 @@ const TheHeader: React.FC = () => {
 
         <div className="flex items-center justify-center transition active:scale-95">
           <div className="relative flex flex-1 items-center justify-center self-center rounded-full p-2 themed:bg-accent-dark themed:text-white">
-            {router.pathname === "/auth" ? (
-              <TheLogo />
+            {router.pathname === '/auth' ? (
+              <Logo />
             ) : (
               <Link href="/">
                 <a>
-                  <TheLogo />
+                  <Logo />
                 </a>
               </Link>
             )}
@@ -37,12 +37,12 @@ const TheHeader: React.FC = () => {
           <div className="hidden md:inline-block">
             {audioCtx?.hasInteractiveAudio && (
               <SpringBounceWhenInView>
-                <TheAudioPlayer />
+                <MiniAudioPlayer />
               </SpringBounceWhenInView>
             )}
           </div>
 
-          <TheInteractiveAudioSetting />
+          <InteractiveAudioSetting />
         </div>
       </header>
     </React.Fragment>

@@ -1,7 +1,7 @@
-import Image from "next/image";
-import { Dispatch, SetStateAction, useContext, useRef } from "react";
-import AppContext from "../store/appContext";
-import AudioContext from "../store/audioContext";
+import Image from 'next/image';
+import { Dispatch, SetStateAction, useContext, useRef } from 'react';
+import AppContext from '../../store/appContext';
+import AudioContext from '../../store/audioContext';
 
 interface CharacterCardProps {
   id: string;
@@ -34,8 +34,8 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
     <div
       className={`group relative flex h-96 cursor-pointer items-center justify-center rounded-3xl transition-all hover:border-gray-300 hover:border-accent-dark hover:bg-accent-soft themed:hover:bg-accent-dark ${
         appCtx?.selectedCharacter === id
-          ? "bg-accent themed:bg-accent-dark"
-          : ""
+          ? 'bg-accent themed:bg-accent-dark'
+          : ''
       }`}
       onClick={onClickHandler}
     >
@@ -52,7 +52,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
           src={image}
           alt={name}
           className={`z-10 transition-all group-hover:scale-125 ${
-            appCtx?.selectedCharacter === id ? "scale-125" : "scale-100"
+            appCtx?.selectedCharacter === id ? 'scale-125' : 'scale-100'
           }`}
           width={256}
           height={256}

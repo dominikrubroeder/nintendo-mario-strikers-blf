@@ -1,17 +1,17 @@
-import { NextPage } from "next";
-import Head from "next/head";
-import React, { useContext, useEffect, useRef, useState } from "react";
-import GameFeatures from "../../components/GameFeatures";
-import CharacterSelection from "../../components/CharacterSelection";
-import TheCommunityQuotes from "../../components/TheCommunityQuotes";
-import TheGallery from "../../components/TheGallery";
-import TheStickyBuyBar from "../../components/TheStickyBuyBar";
-import Heading from "../../components/Heading";
-import { PlayIcon } from "@heroicons/react/24/solid";
-import Button from "../../components/Button";
-import AudioContext from "../../store/audioContext";
-import useIsOnScreen from "../../hooks/useIsOnScreen";
-import TheGameTrailerOverlay from "../../components/TheGameTrailerOverlay";
+import { NextPage } from 'next';
+import Head from 'next/head';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import GameFeatures from '../../components/sections/GameFeatures';
+import CharacterSelection from '../../components/character/CharacterSelection';
+import CommunityQuotes from '../../components/sections/CommunityQuotes';
+import TheGallery from '../../components/TheGallery';
+import TheStickyBuyBar from '../../components/TheStickyBuyBar';
+import Heading from '../../components/typography/Heading';
+import { PlayIcon } from '@heroicons/react/24/solid';
+import Button from '../../components/ui/Button';
+import AudioContext from '../../store/audioContext';
+import useIsOnScreen from '../../hooks/useIsOnScreen';
+import TheGameTrailerOverlay from '../../components/TheGameTrailerOverlay';
 
 const InfoPage: NextPage = () => {
   const audioCtx = useContext(AudioContext);
@@ -52,7 +52,7 @@ const InfoPage: NextPage = () => {
               variant="icon-text"
               onClick={() => {
                 setShowStickyBuyBar(true);
-                audioCtx?.setSound("/audio/soundtracks/main-menu.mp3");
+                audioCtx?.setSound('/audio/soundtracks/main-menu.mp3');
               }}
             >
               <PlayIcon className="h-16 w-16 rounded-full bg-accent-gradient p-4" />
@@ -61,7 +61,7 @@ const InfoPage: NextPage = () => {
           </div>
         </section>
 
-        <TheCommunityQuotes />
+        <CommunityQuotes />
 
         <section className="m-auto w-full max-w-screen-xl px-4">
           <Heading className="headline--gradient">Wähle dein Team</Heading>

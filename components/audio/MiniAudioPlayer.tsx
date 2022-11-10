@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   SpeakerWaveIcon,
   PlayIcon,
   PauseIcon,
   ChevronDownIcon,
-} from "@heroicons/react/24/solid";
-import Button from "./Button";
-import AnimatedSoundbarsIcon from "./AnimatedSoundbarsIcon";
-import AudioContext from "../store/audioContext";
+} from '@heroicons/react/24/solid';
+import Button from '../ui/Button';
+import AnimatedSoundbarsIcon from '../AnimatedSoundbarsIcon';
+import AudioContext from '../../store/audioContext';
 
 type Soundtrack = {
   title: string;
@@ -17,19 +17,19 @@ type Soundtrack = {
 
 const soundtracksData: Soundtrack[] = [
   {
-    title: "Title screen",
-    src: "/audio/soundtracks/title-screen.mp3",
+    title: 'Title screen',
+    src: '/audio/soundtracks/title-screen.mp3',
   },
   {
-    title: "Main menu",
-    src: "/audio/soundtracks/main-menu.mp3",
+    title: 'Main menu',
+    src: '/audio/soundtracks/main-menu.mp3',
   },
 ];
 
-const TheAudioPlayer: React.FC = () => {
+const MiniAudioPlayer: React.FC = () => {
   const audioCtx = useContext(AudioContext);
   const audioRef = useRef<null | HTMLAudioElement>(null);
-  const [currentTitle, setCurrentTitle] = useState("Spiele einen Soundtrack");
+  const [currentTitle, setCurrentTitle] = useState('Spiele einen Soundtrack');
   const [showSoundtracks, setShowSoundtracks] = useState(false);
   const [currentSoundtrack, setCurrentSoundtrack] = useState<null | Soundtrack>(
     null
@@ -42,7 +42,7 @@ const TheAudioPlayer: React.FC = () => {
   ) => {
     e.stopPropagation();
 
-    audioCtx?.setSound("/audio/nintendo-switch-click.mp3");
+    audioCtx?.setSound('/audio/nintendo-switch-click.mp3');
     setCurrentSoundtrack(soundtrack);
     setShowSoundtracks(false);
   };
@@ -72,21 +72,21 @@ const TheAudioPlayer: React.FC = () => {
     }
 
     if (!currentSoundtrack) {
-      setCurrentTitle("Spiele einen Soundtrack");
+      setCurrentTitle('Spiele einen Soundtrack');
       setPlaying(false);
     }
   }, [currentSoundtrack]);
 
   const playPauseButtonClasses = `relative before:content-[''] before:w-5 before:h-5 before:bg-accent themed:before:bg-white/20 themed:bg-accent-dark themed:before:bg-white/20 before:rounded-full before:block before:absolute before:inset-0 before:w-[1rem] before:z-0 before:h-[1rem] after:content-[''] after:w-5 after:h-5 after:bg-accent themed:after:bg-white/20 themed:after:bg-white/20 after:rounded-full after:block after:absolute after:inset-0 after:w-[1rem] after:z-0 after:h-[1rem] ${
     playing
-      ? "text-white before:animate-audioWave1 after:animate-audioWave2"
-      : "text-accent themed:text-white after:content-none before:content-none"
+      ? 'text-white before:animate-audioWave1 after:animate-audioWave2'
+      : 'text-accent themed:text-white after:content-none before:content-none'
   }`;
 
   return (
     <div
       className={`z-40 w-56 bg-accent-soft px-4 py-3 transition themed:bg-accent-dark ${
-        showSoundtracks ? "rounded-xl" : "interactive rounded-full"
+        showSoundtracks ? 'rounded-xl' : 'interactive rounded-full'
       }`}
     >
       <header className="flex cursor-pointer items-center justify-between gap-2 text-xs">
@@ -135,13 +135,13 @@ const TheAudioPlayer: React.FC = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{
               opacity: 1,
-              height: "auto",
+              height: 'auto',
             }}
             exit={{
               opacity: 1,
             }}
             transition={{
-              type: "spring",
+              type: 'spring',
               stiffness: 400,
             }}
           >
@@ -184,4 +184,4 @@ const TheAudioPlayer: React.FC = () => {
   );
 };
 
-export default TheAudioPlayer;
+export default MiniAudioPlayer;
