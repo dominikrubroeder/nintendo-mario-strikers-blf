@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
-import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import BouncingItems from '../../components/BouncingItems';
+import Layout from '../../components/layout';
 import Heading from '../../components/typography/Heading';
 
 const Checkout: NextPage = () => {
@@ -19,13 +19,7 @@ const Checkout: NextPage = () => {
   });
 
   return (
-    <React.Fragment>
-      <Head>
-        <title>
-          Checkout Mario Strikers: Battle League Football | Nintendo
-        </title>
-      </Head>
-
+    <Layout pageTitle="Checkout">
       <section className="flex min-h-screen items-center justify-center">
         {!isLoading && <div>Show Checkout Screen</div>}
 
@@ -51,7 +45,7 @@ const Checkout: NextPage = () => {
           </video>
         )}
       </section>
-    </React.Fragment>
+    </Layout>
   );
 };
 

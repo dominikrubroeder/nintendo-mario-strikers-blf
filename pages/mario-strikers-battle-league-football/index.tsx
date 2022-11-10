@@ -1,5 +1,4 @@
 import { NextPage } from 'next';
-import Head from 'next/head';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import GameFeatures from '../../components/sections/GameFeatures';
 import CharacterSelection from '../../components/character/CharacterSelection';
@@ -11,7 +10,7 @@ import { PlayIcon } from '@heroicons/react/24/solid';
 import Button from '../../components/ui/Button';
 import AudioContext from '../../store/audioContext';
 import useIsOnScreen from '../../hooks/useIsOnScreen';
-import TheGameTrailerOverlay from '../../components/TheGameTrailerOverlay';
+import Layout from '../../components/layout';
 
 const InfoPage: NextPage = () => {
   const audioCtx = useContext(AudioContext);
@@ -29,17 +28,7 @@ const InfoPage: NextPage = () => {
   }, [playSoundButtonIsOnScreen]);
 
   return (
-    <div>
-      <Head>
-        <title>
-          Discover Mario Strikers: Battle League Football | Nintendo
-        </title>
-        <meta
-          name="description"
-          content="Discover Nintendo's Mario Strikers: Battle League Football"
-        />
-      </Head>
-
+    <Layout pageTitle="Discover">
       <div className="grid gap-32">
         <section className="min-h-screen-header m-auto flex flex-col items-center justify-center text-center">
           <Heading className="headline--gradient">Zuallererst...</Heading>
@@ -83,7 +72,7 @@ const InfoPage: NextPage = () => {
       </div>
 
       <TheStickyBuyBar shouldBeVisible={showStickyBuyBar} />
-    </div>
+    </Layout>
   );
 };
 

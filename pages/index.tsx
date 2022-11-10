@@ -1,18 +1,14 @@
 import { NextPage } from 'next';
-import Head from 'next/head';
+import Layout from '../components/layout';
 import Hero from '../components/sections/home/Hero';
 import TheLaunchScreen from '../components/TheLaunchScreen';
 
 const Home: NextPage = () => {
   return (
-    <div>
-      <Head>
-        <title>Mario Strikers: Battle League Football | Nintendo</title>
-      </Head>
-
+    <Layout>
       <TheLaunchScreen />
       <Hero />
-    </div>
+    </Layout>
   );
 };
 

@@ -1,16 +1,20 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import TheLayout from '../components/layout/TheLayout';
 import { AppContextProvider } from '../store/appContext';
 import { AudioContextProvider } from '../store/audioContext';
+import { AnimatePresence } from 'framer-motion';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AppContextProvider>
       <AudioContextProvider>
-        <TheLayout>
+        <AnimatePresence
+          mode="wait"
+          initial={false}
+          onExitComplete={() => window.scrollTo(0, 0)}
+        >
           <Component {...pageProps} />
-        </TheLayout>
+        </AnimatePresence>
       </AudioContextProvider>
     </AppContextProvider>
   );

@@ -8,7 +8,7 @@ import InteractiveAudioSetting from '../audio/InteractiveAudioSetting';
 import AudioContext from '../../store/audioContext';
 import { useRouter } from 'next/router';
 
-const TheHeader: React.FC = () => {
+const Header: React.FC = () => {
   const router = useRouter();
   const audioCtx = useContext(AudioContext);
 
@@ -49,4 +49,4 @@ const TheHeader: React.FC = () => {
   );
 };
 
-export default TheHeader;
+export default Header;
