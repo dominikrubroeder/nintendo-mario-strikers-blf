@@ -94,7 +94,7 @@ const CharacterOverlay: React.FC<CharacterOverlayProps> = ({
                   title={`${character?.name.toUpperCase()} – Merchandise`}
                 >
                   <div className="grid grid-cols-2 gap-4">
-                    {character?.imageGallery.map((image, index) => (
+                    {character?.images.map((image, index) => (
                       <div
                         key={index}
                         className="interactive h-64 cursor-pointer rounded-3xl bg-gray-100 themed:bg-accent"
