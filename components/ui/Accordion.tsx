@@ -4,7 +4,7 @@ import Button from './Button';
 import Image from 'next/image';
 
 interface AccordionProps {
-  title: any;
+  title: string | JSX.Element;
   children: React.ReactNode;
   className?: string;
 }
