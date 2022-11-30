@@ -10,7 +10,7 @@ export type Character = {
   specialAbilityVideoURL: string;
 };
 
-const characters: Character[] = [
+export const characters: Character[] = [
   {
     id: 'mario',
     name: 'Mario',

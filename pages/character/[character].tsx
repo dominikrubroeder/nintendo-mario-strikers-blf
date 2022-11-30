@@ -3,6 +3,7 @@ import { NextPage } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React from 'react';
+import { SwipeCarousel } from '../../components/carousel/SwipeCarousel/SwipeCarousel';
 import CharacterGallery from '../../components/character/CharacterGallery';
 import Layout from '../../components/layout';
 import Heading from '../../components/typography/Heading';
@@ -41,28 +42,23 @@ const CharacterPage: NextPage = () => {
               {character}
             </h1>
 
-            <div className="mx-auto grid max-w-md gap-16">
-              <div>
-                <p className="text-center text-xl">
-                  &ldquo;{characterData.teamText}&rdquo;
-                </p>
-              </div>
+            <div className="mx-auto grid max-w-lg gap-16">
+              <p className="text-center text-xl">
+                &ldquo;{characterData.teamText}&rdquo;
+              </p>
+            </div>
 
+            <section className="relative my-16 h-[32rem] w-full">
+              <SwipeCarousel />
+            </section>
+
+            <div className="mx-auto grid max-w-lg gap-16">
               <div>
                 <Heading className="mb-4 font-bold uppercase">
                   Wähle {characterData.name} und du bekommst:
                 </Heading>
 
                 <div className="grid gap-2">
-                  <div className="relative h-40 max-w-sm">
-                    <Image
-                      src="/images/product/nintendo-switch-mario-strikers-battle-league-football-cover.png"
-                      alt="Mario Strikers Battle League Football"
-                      layout="responsive"
-                      priority
-                    />
-                  </div>
-
                   <Accordion
                     title={`${characterData.name.toUpperCase()} – Merchandise`}
                   >

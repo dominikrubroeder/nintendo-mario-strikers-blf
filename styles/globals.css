@@ -54,79 +54,79 @@
   --theme-diddy-kong-dark: hsl(18, 92%, 26%);
 }
 
-[theme="mario"] {
+[theme='mario'] {
   --theme-accent: var(--theme-mario);
   --theme-accent-dark: var(--theme-mario-dark);
 }
 
-[theme="peach"] {
+[theme='peach'] {
   --theme-accent: var(--theme-peach);
   --theme-accent-dark: var(--theme-peach-dark);
   --theme-signal: hsl(43, 100%, 50%);
   --theme-signal-dark: hsl(43, 100%, 45%);
 }
 
-[theme="luigi"] {
+[theme='luigi'] {
   --theme-accent: var(--theme-luigi);
   --theme-accent-dark: var(--theme-luigi-dark);
 }
 
-[theme="toad"] {
+[theme='toad'] {
   --theme-accent: var(--theme-toad);
   --theme-accent-dark: var(--theme-toad-dark);
 }
 
-[theme="bowser"] {
+[theme='bowser'] {
   --theme-accent: var(--theme-bowser);
   --theme-accent-dark: var(--theme-bowser-dark);
 }
 
-[theme="rosalina"] {
+[theme='rosalina'] {
   --theme-accent: var(--theme-rosalina);
   --theme-accent-dark: var(--theme-rosalina-dark);
 }
 
-[theme="yoshi"] {
+[theme='yoshi'] {
   --theme-accent: var(--theme-yoshi);
   --theme-accent-dark: var(--theme-yoshi-dark);
 }
 
-[theme="donkey-kong"] {
+[theme='donkey-kong'] {
   --theme-accent: var(--theme-donkey-kong);
   --theme-accent-dark: var(--theme-donkey-kong-dark);
 }
 
-[theme="wario"] {
+[theme='wario'] {
   --theme-accent: var(--theme-wario);
   --theme-accent-dark: var(--theme-wario-dark);
 }
 
-[theme="waluigi"] {
+[theme='waluigi'] {
   --theme-accent: var(--theme-waluigi);
   --theme-accent-dark: var(--theme-waluigi-dark);
 }
 
-[theme="bumm-bumm"] {
+[theme='bumm-bumm'] {
   --theme-accent: var(--theme-bumm-bumm);
   --theme-accent-dark: var(--theme-bumm-bumm-dark);
 }
 
-[theme="daisy"] {
+[theme='daisy'] {
   --theme-accent: var(--theme-daisy);
   --theme-accent-dark: var(--theme-daisy-dark);
 }
 
-[theme="shy-guy"] {
+[theme='shy-guy'] {
   --theme-accent: var(--theme-shy-guy);
   --theme-accent-dark: var(--theme-shy-guy-dark);
 }
 
-[theme="pauline"] {
+[theme='pauline'] {
   --theme-accent: var(--theme-pauline);
   --theme-accent-dark: var(--theme-pauline-dark);
 }
 
-[theme="diddy-kong"] {
+[theme='diddy-kong'] {
   --theme-accent: var(--theme-diddy-kong);
   --theme-accent-dark: var(--theme-diddy-kong-dark);
 }
