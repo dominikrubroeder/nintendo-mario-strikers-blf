@@ -112,7 +112,7 @@ const MiniAudioPlayer: React.FC = () => {
               className={playPauseButtonClasses}
               onClick={playSoundtrackHandler}
             >
-              <PlayIcon className="icon" />
+              <PlayIcon className="icon themed:text-white" />
             </Button>
           )}
 
