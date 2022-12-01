@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import AppContext from '../../store/appContext';
-import useIsOnScreen from '../../hooks/useIsOnScreen';
+import useIsInView from '../../hooks/useIsInView';
 import SpringBounceWhenInView from '../animation/SpringBounceWhenInView';
 import Button from '../ui/Button';
 
@@ -12,7 +12,7 @@ const BuyContainer: React.FC<BuyContainerProps> = ({ setShowStickyBuyBar }) => {
   const appCtx = useContext(AppContext);
   const buyBox = useRef<null | HTMLDivElement>(null);
   // @ts-ignore: Unreachable code error
-  const buyBoxIsOnScreen = useIsOnScreen(buyBox);
+  const buyBoxIsOnScreen = useIsInView(buyBox);
 
   // Buy box instructions on observer status changes
   useEffect(() => {

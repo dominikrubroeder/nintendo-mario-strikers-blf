@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-const useIsOnScreen: React.ForwardedRef<any> = (ref) => {
+const useIsInView: React.ForwardedRef<any> = (ref) => {
   const [isIntersecting, setIntersecting] = useState(false);
   const thresholdValue = 0;
 
@@ -27,6 +27,6 @@ const useIsOnScreen: React.ForwardedRef<any> = (ref) => {
   return isIntersecting;
 };
 
-export default useIsOnScreen;
+export default useIsInView;
 
 // https://www.youtube.com/watch?v=2IbRtjez6ag

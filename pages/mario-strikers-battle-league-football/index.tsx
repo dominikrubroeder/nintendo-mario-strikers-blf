@@ -9,7 +9,7 @@ import Heading from '../../components/typography/Heading';
 import { PlayIcon } from '@heroicons/react/24/solid';
 import Button from '../../components/ui/Button';
 import AudioContext from '../../store/audioContext';
-import useIsOnScreen from '../../hooks/useIsOnScreen';
+import useIsInView from '../../hooks/useIsInView';
 import Layout from '../../components/layout';
 
 const InfoPage: NextPage = () => {
@@ -17,7 +17,7 @@ const InfoPage: NextPage = () => {
   const [showStickyBuyBar, setShowStickyBuyBar] = useState(false);
   const playSoundButton = useRef<null | HTMLDivElement>(null);
   // @ts-ignore: Unreachable code error
-  const playSoundButtonIsOnScreen = useIsOnScreen(playSoundButton);
+  const playSoundButtonIsOnScreen = useIsInView(playSoundButton);
 
   useEffect(() => {
     if (playSoundButtonIsOnScreen) {
