@@ -26,7 +26,7 @@ const BuyContainer: React.FC<BuyContainerProps> = ({ setShowStickyBuyBar }) => {
   return (
     <SpringBounceWhenInView>
       <div
-        className="grid gap-2 rounded-3xl bg-gray-100 bg-accent p-8 themed:bg-accent-dark"
+        className="grid gap-2 rounded-3xl bg-slate-100 p-8 themed:bg-accent-dark"
         ref={buyBox}
       >
         {appCtx?.buyable && (
