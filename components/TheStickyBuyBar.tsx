@@ -97,13 +97,19 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
 
       <Button
         variant="text"
-        className={`interactive fixed left-4 bottom-4 z-50 md:bottom-6 md:left-auto md:right-4 ${
-          isVisible ? 'bg-transparent' : 'bg-accent themed:bg-signal'
+        className={`interactive group fixed left-4 bottom-4 z-50 md:bottom-5 md:left-auto md:right-4 ${
+          isVisible
+            ? 'bg-transparent hover:text-accent'
+            : 'bg-accent hover:bg-accent-dark themed:bg-signal themed:hover:bg-signal-dark'
         }`}
         onClick={() => setIsVisible((previousState) => !previousState)}
       >
         <ChevronDoubleDownIcon
-          className={`icon ${isVisible ? 'rotate-0' : 'rotate-180'}`}
+          className={`icon text-white ${
+            isVisible
+              ? 'rotate-0 text-accent group-hover:text-accent themed:text-white themed:group-hover:text-white'
+              : 'rotate-180'
+          }`}
         />
       </Button>
     </>
