@@ -5,8 +5,14 @@ import AudioContext from '../../store/audioContext';
 
 interface ButtonProps {
   children: React.ReactNode;
+  variant:
+    | 'contained'
+    | 'outlined'
+    | 'text'
+    | 'icon-text'
+    | 'icon'
+    | 'unstyled';
   href?: string;
-  variant: string;
   className?: string;
   disabled?: boolean;
   sound?: string;

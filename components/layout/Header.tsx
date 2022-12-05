@@ -6,11 +6,8 @@ import CurrentSound from '../audio/CurrentSound';
 import SpringBounceWhenInView from '../animation/SpringBounceWhenInView';
 import InteractiveAudioSetting from '../audio/InteractiveAudioSetting';
 import AudioContext from '../../store/audioContext';
-import { useRouter } from 'next/router';
-import Select from '../ui/Select';
 
 const Header: FC = () => {
-  const router = useRouter();
   const audioCtx = useContext(AudioContext);
 
   return (
@@ -34,25 +31,12 @@ const Header: FC = () => {
 
         <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center transition active:scale-95">
           <div className="relative flex flex-1 items-center justify-center self-center rounded-full p-2 themed:bg-accent-dark themed:text-white">
-            {router.pathname === '/auth' ? (
-              <Logo />
-            ) : (
-              <Link href="/">
-                <a>
-                  <Logo />
-                </a>
-              </Link>
-            )}
+            <Link href="/">
+              <a>
+                <Logo />
+              </a>
+            </Link>
           </div>
-        </div>
-
-        <div className="flex flex-1 items-center justify-end">
-          <Select
-            options={[
-              { option: 'Mario', value: 'mario' },
-              { option: 'Luigi', value: 'luigi' },
-            ]}
-          />
         </div>
       </header>
     </>

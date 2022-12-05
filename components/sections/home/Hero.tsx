@@ -55,12 +55,8 @@ const Hero: React.FC = () => {
                 <ArrowRightIcon className="icon" />
               </Button>
 
-              <Button
-                variant="icon-text"
-                href="/mario-strikers-battle-league-football"
-                sound="nintendo-woho"
-              >
-                Mehr infos
+              <Button variant="icon-text" href="/guided" sound="nintendo-woho">
+                Mehr Infos
                 <ArrowRightIcon className="icon" />
               </Button>
             </div>

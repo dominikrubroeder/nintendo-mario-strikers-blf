@@ -27,13 +27,15 @@ const CharacterSelection: React.FC<CharacterSelectionProps> = ({
   const setTeam = (team: string) => {
     appCtx?.setCharacter(team);
 
-    router.push(
-      `${router.pathname}/?edition=${appCtx?.selectedEdition}?team=${team}`,
-      undefined,
-      {
-        shallow: true,
-      }
-    );
+    router.pathname !== '/guided/select-your-team'
+      ? router.push(
+          `${router.pathname}/?edition=${appCtx?.selectedEdition}?team=${team}`,
+          undefined,
+          {
+            shallow: true,
+          }
+        )
+      : null;
   };
 
   const onCloseHandler = () => {
@@ -45,22 +47,26 @@ const CharacterSelection: React.FC<CharacterSelectionProps> = ({
   return (
     <div className="grid gap-4" ref={teamSection}>
       <div className="grid gap-4">
-        <div className="flex items-center justify-between">
-          <h4>Wähle dein Team:</h4>
-          <div className="cursor-pointer text-sm text-accent themed:text-white">
-            <Tooltip title="Warum?">
-              Erhalte <b>zusätzlichen Spiel-Content</b> wie erweitere Arenen,
-              das Geheimteam und <b>inviduelle Merch-Artrikel</b> basierend auf
-              deiner Team-Wahl! <br /> <br />
-              Wähle also beispielsweise {currentTheme}, um einen Hoodie im{' '}
-              {currentTheme} Design zu erhalten oder deinen Schreibtisch mit der{' '}
-              {currentTheme}
-              Tischfigar in der Sieger-Pose zu schmücken.
-              <br /> <br />
-              Klicke auf einen Charakter, um weitere Informationen zu erhalten.
-            </Tooltip>
+        {router.pathname !== '/guided/select-your-team' && (
+          <div className="flex items-center justify-between">
+            <h4>Wähle dein Team:</h4>
+
+            <div className="cursor-pointer text-sm text-accent themed:text-white">
+              <Tooltip title="Warum?">
+                Wähle ein Team und erhalte <b>zusätzlichen Spiel-Content</b> wie
+                neue Arenen, das Geheimteam und <b>inviduelle Merch-Artrikel</b>{' '}
+                basierend auf deiner Team-Wahl! <br /> <br />
+                Wähle also beispielsweise {currentTheme}, um einen Hoodie im{' '}
+                {currentTheme} Design zu erhalten oder deinen Schreibtisch mit
+                der {currentTheme}
+                Tischfigar in der Sieger-Pose zu schmücken.
+                <br /> <br />
+                Klicke auf einen Charakter, um weitere Informationen zu
+                erhalten.
+              </Tooltip>
+            </div>
           </div>
-        </div>
+        )}
 
         {showCharacterOverlay && (
           <CharacterOverlay onCloseOverlay={onCloseHandler} />
