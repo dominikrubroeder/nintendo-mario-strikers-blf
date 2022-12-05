@@ -11,6 +11,14 @@
     @apply interactive z-10 h-4 w-4;
   }
 
+  .button--contained {
+    @apply interactive flex items-center justify-between gap-2 rounded-full bg-accent px-4 py-2 text-white hover:bg-accent-dark themed:bg-signal themed:text-white themed:hover:bg-signal-dark;
+  }
+
+  .button--text {
+    @apply interactive rounded-full px-4 py-2 text-accent hover:bg-accent-soft themed:text-white themed:hover:bg-signal;
+  }
+
   .animate--fadeUp {
     @apply invisible animate-fadeUp opacity-0;
   }

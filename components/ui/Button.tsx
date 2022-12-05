@@ -4,25 +4,27 @@ import AppContext from '../../store/appContext';
 import AudioContext from '../../store/audioContext';
 
 interface ButtonProps {
-  children: React.ReactNode;
-  variant:
-    | 'contained'
-    | 'outlined'
-    | 'text'
-    | 'icon-text'
-    | 'icon'
-    | 'unstyled';
+  variant: 'contained' | 'text';
+  text?: string;
+  children?: React.ReactNode | string;
+  icon?: JSX.Element;
+  hasIconLeft?: boolean;
+  hasIconRight?: boolean;
   href?: string;
   className?: string;
   disabled?: boolean;
-  sound?: string;
+  sound?: 'coin' | 'nintendo-woho' | 'nintendo-switch-click' | 'character';
   onClick?: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
+  variant = 'contained',
+  text,
   children,
+  icon,
+  hasIconLeft,
+  hasIconRight,
   href,
-  variant,
   className,
   disabled = false,
   sound,
@@ -43,10 +45,6 @@ const Button: React.FC<ButtonProps> = ({
       case 'nintendo-switch-click':
         audioCtx?.setSound('/audio/nintendo-switch-click.mp3');
       case 'character':
-        console.log(
-          `Set character sound... /audio/sound-${appCtx?.selectedCharacter}-0.mp3`
-        );
-
         appCtx?.selectedCharacter
           ? audioCtx?.setSound(
               `/audio/sound-${appCtx?.selectedCharacter}-0.mp3`
@@ -56,52 +54,28 @@ const Button: React.FC<ButtonProps> = ({
         audioCtx?.setSound(null);
     }
 
-    if (href) {
-      router.push(href);
-    }
-
     if (onClick) onClick();
+
+    if (href) router.push(href);
   };
 
-  let variantClassName;
-
-  switch (variant) {
-    case 'contained':
-      variantClassName =
-        'flex items-center justify-between gap-2 rounded-full px-4 py-2 text-white bg-accent hover:bg-accent-dark themed:bg-signal themed:text-white themed:hover:bg-signal-dark';
-      break;
-    case 'outlined':
-      variantClassName =
-        'flex items-center justify-between gap-2 rounded-full px-4 py-2 text-accent themed:text-signal border border-accent themed:border-signal hover:bg-accent themed:hover:bg-signal hover:text-white';
-      break;
-    case 'text':
-      variantClassName =
-        'rounded-full px-4 py-2 text-accent themed:text-white hover:bg-accent-soft themed:hover:bg-signal';
-      break;
-    case 'icon':
-      variantClassName =
-        'flex items-center justify-center text-accent fill-accent';
-      break;
-    case 'icon-text':
-      variantClassName =
-        'flex items-center justify-between gap-2 rounded-full px-4 py-2 text-accent themed:text-white hover:bg-accent-soft themed:hover:bg-signal';
-      break;
-    case 'unstyled':
-      variantClassName = 'flex items-center justify-start';
-    default:
-      variantClassName = '';
-      break;
-  }
+  let variantClassName =
+    variant === 'contained'
+      ? 'button--contained'
+      : variant === 'text'
+      ? 'button--text'
+      : 'button--contained';
 
   return (
     <button
-      className={`${variantClassName} interactive ${
-        className ? className : ''
-      }`}
+      className={`${variantClassName} ${className ? className : null}`}
       disabled={disabled}
       onClick={onClickHandler}
     >
-      {children}
+      {hasIconLeft && icon ? icon : null}
+      {text ? text : null}
+      {children ? children : null}
+      {hasIconRight && icon ? icon : null}
     </button>
   );
 };
