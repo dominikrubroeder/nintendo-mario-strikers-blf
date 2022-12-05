@@ -1,17 +1,17 @@
-import React, { useRef, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from 'react';
+import { motion } from 'framer-motion';
 
 interface SpringBounceWhenInViewProps {
   children: React.ReactNode;
   playSound?: boolean;
-  delay?: number;
+  delay?: number | undefined;
   className?: string;
 }
 
 const SpringBounceWhenInView: React.FC<SpringBounceWhenInViewProps> = ({
   children,
   playSound = false,
-  delay = 0.3,
+  delay = undefined,
   className,
 }) => {
   const audioRef = useRef<null | HTMLAudioElement>(null);
@@ -25,17 +25,17 @@ const SpringBounceWhenInView: React.FC<SpringBounceWhenInViewProps> = ({
       initial="hidden"
       whileInView="visible"
       transition={{
-        delay: delay,
         duration: 0.6,
-        type: "spring",
+        type: 'spring',
         stiffness: 300,
+        delay: delay === undefined ? 0 : delay,
         damping: 15,
       }}
       variants={{
         visible: { opacity: 1, scale: 1 },
         hidden: { opacity: 0, scale: 0.8 },
       }}
-      className={className ? className : ""}
+      className={className && className}
     >
       {playSound && (
         <audio
