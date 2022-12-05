@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const useIsInView: React.ForwardedRef<any> = (ref) => {
+const useIsInView = (ref: React.MutableRefObject<HTMLElement | null>) => {
   const [isIntersecting, setIntersecting] = useState(false);
   const thresholdValue = 0;
 
@@ -16,7 +16,7 @@ const useIsInView: React.ForwardedRef<any> = (ref) => {
       }
     );
 
-    observer.observe(ref?.current);
+    if (ref.current) observer.observe(ref.current);
 
     // Remove the observer as soon as the component is unmounted
     return () => {

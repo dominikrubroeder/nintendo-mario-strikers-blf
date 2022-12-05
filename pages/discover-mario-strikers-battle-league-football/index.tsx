@@ -16,7 +16,6 @@ const InfoPage: NextPage = () => {
   const audioCtx = useContext(AudioContext);
   const [showStickyBuyBar, setShowStickyBuyBar] = useState(false);
   const playSoundButton = useRef<null | HTMLDivElement>(null);
-  // @ts-ignore: Unreachable code error
   const playSoundButtonIsOnScreen = useIsInView(playSoundButton);
 
   useEffect(() => {

@@ -11,7 +11,6 @@ interface BuyContainerProps {
 const BuyContainer: React.FC<BuyContainerProps> = ({ setShowStickyBuyBar }) => {
   const appCtx = useContext(AppContext);
   const buyBox = useRef<null | HTMLDivElement>(null);
-  // @ts-ignore: Unreachable code error
   const buyBoxIsOnScreen = useIsInView(buyBox);
 
   // Buy box instructions on observer status changes
