@@ -42,7 +42,6 @@ const MiniAudioPlayer: React.FC = () => {
   ) => {
     e.stopPropagation();
 
-    audioCtx?.setSound('/audio/nintendo-switch-click.mp3');
     setCurrentSoundtrack(soundtrack);
     setShowSoundtracks(false);
   };

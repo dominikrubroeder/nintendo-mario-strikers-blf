@@ -20,18 +20,16 @@ const InfoPage: NextPage = () => {
   const playSoundButtonIsOnScreen = useIsInView(playSoundButton);
 
   useEffect(() => {
-    if (playSoundButtonIsOnScreen) {
-      setShowStickyBuyBar(false);
-    } else {
-      setShowStickyBuyBar(true);
-    }
+    playSoundButtonIsOnScreen
+      ? setShowStickyBuyBar(false)
+      : setShowStickyBuyBar(true);
   }, [playSoundButtonIsOnScreen]);
 
   return (
     <Layout pageTitle="Discover">
       <div className="grid gap-32">
         <section className="min-h-screen-header m-auto flex flex-col items-center justify-center text-center">
-          <Heading className="headline--gradient">Zuallererst...</Heading>
+          <Heading className="headline--gradient">Es ist Anpfiff!</Heading>
 
           <div
             className="invisible flex animate-fadeUp flex-col gap-2 opacity-0 animation-delay-700"
@@ -41,7 +39,7 @@ const InfoPage: NextPage = () => {
               variant="icon-text"
               onClick={() => {
                 setShowStickyBuyBar(true);
-                audioCtx?.setSound('/audio/soundtracks/main-menu.mp3');
+                audioCtx?.setSoundtrack('/audio/soundtracks/main-menu.mp3');
               }}
             >
               <PlayIcon className="h-16 w-16 rounded-full bg-accent-gradient p-4" />
