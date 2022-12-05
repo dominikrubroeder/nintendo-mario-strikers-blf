@@ -54,7 +54,7 @@ const Accordion: React.FC<AccordionProps> = ({
 
             <footer className="flex h-10 items-end justify-end">
               <Button
-                variant="unstyled"
+                variant="text"
                 className="flex items-center gap-0.5 text-xs font-bold"
                 sound="character"
                 onClick={onCloseHandler}

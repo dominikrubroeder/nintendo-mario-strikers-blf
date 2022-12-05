@@ -68,12 +68,12 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={`${variantClassName} ${className ? className : null}`}
+      className={`${variantClassName} ${className ? className : ''}`}
       disabled={disabled}
       onClick={onClickHandler}
     >
-      {hasIconLeft && icon ? icon : null}
-      {text ? text : null}
+      {hasIconLeft && icon && icon}
+      {text && text}
       {children ? children : null}
       {hasIconRight && icon ? icon : null}
     </button>

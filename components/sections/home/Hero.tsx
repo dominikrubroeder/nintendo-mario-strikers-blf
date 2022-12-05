@@ -50,24 +50,29 @@ const Hero: React.FC = () => {
                 variant="contained"
                 href="/buy-mario-strikers-battle-league-football"
                 sound="coin"
-              >
-                Jetzt vorbestellen
-                <ArrowRightIcon className="icon" />
-              </Button>
+                icon={<ArrowRightIcon className="icon" />}
+                hasIconRight={true}
+                text="Jetzt vorbestellen"
+              />
 
-              <Button variant="icon-text" href="/guided" sound="nintendo-woho">
-                Mehr Infos
-                <ArrowRightIcon className="icon" />
-              </Button>
+              <Button
+                variant="text"
+                href="/guided"
+                sound="nintendo-woho"
+                icon={<ArrowRightIcon className="icon" />}
+                hasIconRight={true}
+                text="Mehr Infos"
+              />
             </div>
 
             <Button
-              variant="icon-text"
+              variant="text"
               onClick={() => setShowYoutubeGameTrailer(true)}
               sound="nintendo-woho"
-            >
-              Trailer ansehen <PlayIcon className="icon" />
-            </Button>
+              text="Trailer ansehen"
+              icon={<PlayIcon className="icon" />}
+              hasIconRight={true}
+            />
           </div>
         </div>
       </div>
