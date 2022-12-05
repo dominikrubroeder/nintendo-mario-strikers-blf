@@ -5,11 +5,15 @@ import CharacterSelection from '../../../components/character/CharacterSelection
 import Layout from '../../../components/layout';
 import Heading from '../../../components/typography/Heading';
 import Button from '../../../components/ui/Button';
+import characters from '../../../data/characters';
 import AppContext from '../../../store/appContext';
 
 const SelectYourTeamPage: React.FC = () => {
   const appCtx = useContext(AppContext);
   const router = useRouter();
+  const character = characters.find(
+    (character) => character.id === appCtx?.selectedCharacter
+  );
 
   const initRedirect = () => {
     setTimeout(() => {
@@ -22,9 +26,9 @@ const SelectYourTeamPage: React.FC = () => {
       <section className="m-auto w-full max-w-screen-xl px-4">
         <Heading className="headline--gradient">Wähle dein Team</Heading>
 
-        <div className="mb-16 grid grid-cols-2">
+        <div className="animate--fadeUp mb-16 grid grid-cols-2 animation-delay-700">
           <Button variant="contained" onClick={initRedirect}>
-            Weiter mit {appCtx?.selectedCharacter}
+            Weiter mit {character?.name}
           </Button>
 
           <Button variant="text" onClick={initRedirect}>

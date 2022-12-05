@@ -23,7 +23,7 @@ const GuidedKickoffPage: React.FC = () => {
       <section className="min-h-screen-header m-auto flex flex-col items-center justify-center text-center">
         <Heading className="headline--gradient">Es ist Anpfiff!</Heading>
 
-        <div className="invisible grid animate-fadeUp grid-cols-2 flex-col gap-2 opacity-0 animation-delay-700">
+        <div className="animate--fadeUp grid grid-cols-2 flex-col gap-2 animation-delay-700">
           {/**
            * Aktivierst du diese Option, kannst du für die optimale Experience während des browsens Original Mario Soundtracks im Hintergrund abspielen lassen!
            */}

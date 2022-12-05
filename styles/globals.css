@@ -11,6 +11,10 @@
     @apply interactive z-10 h-4 w-4;
   }
 
+  .animate--fadeUp {
+    @apply invisible animate-fadeUp opacity-0;
+  }
+
   .headline--gradient {
     @apply mx-auto break-all bg-accent-gradient bg-clip-text px-4 text-center text-6xl font-bold text-fill-color-transparent theme-peach:bg-gradient-peach md:text-8xl md:leading-tight;
   }

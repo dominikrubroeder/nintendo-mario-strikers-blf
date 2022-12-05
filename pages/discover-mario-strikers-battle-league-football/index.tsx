@@ -31,7 +31,7 @@ const InfoPage: NextPage = () => {
           <Heading className="headline--gradient">Es ist Anpfiff!</Heading>
 
           <div
-            className="invisible flex animate-fadeUp flex-col gap-2 opacity-0 animation-delay-700"
+            className="animate--fadeUp flex flex-col gap-2 animation-delay-700"
             ref={playSoundButton}
           >
             <Button
