@@ -9,12 +9,14 @@ const GuidedPage: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       router.replace('/guided/kickoff');
-    }, 2400);
+    }, 1600);
   });
 
   return (
     <Layout>
-      <BouncingItems size={24} />
+      <section className="flex items-center justify-center min-h-screen-header">
+          <BouncingItems size={24} />
+      </section>
     </Layout>
   );
 };

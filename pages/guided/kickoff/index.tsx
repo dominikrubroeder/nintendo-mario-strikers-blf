@@ -15,7 +15,7 @@ const GuidedKickoffPage: React.FC = () => {
 
     setTimeout(() => {
       router.push('/guided/select-your-team');
-    }, 1000);
+    }, 400);
   };
 
   return (
