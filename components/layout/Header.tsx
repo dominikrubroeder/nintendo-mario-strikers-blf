@@ -1,9 +1,7 @@
 import Link from 'next/link';
 import { FC, useContext } from 'react';
 import Logo from '../svg/Logo';
-import MiniAudioPlayer from '../audio/MiniAudioPlayer';
 import CurrentSound from '../audio/CurrentSound';
-import SpringBounceWhenInView from '../animation/SpringBounceWhenInView';
 import InteractiveAudioSetting from '../audio/InteractiveAudioSetting';
 import AudioContext from '../../store/audioContext';
 
@@ -15,17 +13,9 @@ const Header: FC = () => {
       <CurrentSound />
 
       <header className="relative z-40 flex h-20 w-full flex-wrap items-center justify-between p-4">
-        {audioCtx?.soundtrack !== null && (
+        {!!audioCtx?.hasInteractiveAudio && (
           <div className="flex flex-1 items-start justify-start gap-2">
             <InteractiveAudioSetting />
-
-            <div className="hidden md:inline-block">
-              {audioCtx?.hasInteractiveAudio && (
-                <SpringBounceWhenInView>
-                  <MiniAudioPlayer />
-                </SpringBounceWhenInView>
-              )}
-            </div>
           </div>
         )}
 

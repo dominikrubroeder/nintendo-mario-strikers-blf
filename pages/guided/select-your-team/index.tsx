@@ -37,23 +37,25 @@ const SelectYourTeamPage: React.FC = () => {
 
       {character && (
         <AnimatePresence>
-            <motion.div className="fixed bottom-4 z-50 flex w-full items-center gap-4 justify-center transition">
+            <div className="fixed bottom-4 z-50 flex w-full items-center gap-4 justify-center transition">
                 <motion.div className="flex w-max items-center justify-center gap-2 rounded-full bg-accent-dark p-4"
                     initial={{ opacity: 0, width: '0' }}
                     animate={{ opacity: 1, width: 'auto' }}
-                    exit={{ opacity: 0, width: '0' }}>
+                    exit={{ opacity: 0, width: '0' }}
+                    transition={{ delay: 0.6 }}
+                    >
                     <Button variant="contained" onClick={initRedirect}>
                         <div className="rounded-full flex items-center justify-center bg-accent w-12 h-12">
                             <Image src={character.image} width={24} height={24} alt={character.name} />
                         </div>
-                        Weiter mit {character?.name}
+                        <span>Weiter mit {character?.name}</span>
                     </Button>
 
                     <Button variant="text" onClick={initRedirect}>
                         Weiter ohne Team
                     </Button>
                 </motion.div>
-            </motion.div>
+            </div>
         </AnimatePresence>
       )}
     </>
