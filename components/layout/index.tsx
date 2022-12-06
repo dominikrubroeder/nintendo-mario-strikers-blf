@@ -1,8 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import AudioContext from '../../store/audioContext';
-import SpringBounceWhenInView from '../animation/SpringBounceWhenInView';
-import MiniAudioPlayer from '../audio/MiniAudioPlayer';
 import Header from './Header';
 import Head from 'next/head';
 
@@ -23,8 +20,6 @@ const Layout: React.FC<LayoutProps> = ({
   pageTitle,
   withHeader = true,
 }) => {
-  const audioCtx = useContext(AudioContext);
-
   return (
     <>
       <Head>
@@ -52,14 +47,6 @@ const Layout: React.FC<LayoutProps> = ({
       >
         {children}
       </motion.main>
-
-      <div className="fixed bottom-4 right-4 z-40 md:hidden">
-        {audioCtx?.hasInteractiveAudio && (
-          <SpringBounceWhenInView>
-            <MiniAudioPlayer />
-          </SpringBounceWhenInView>
-        )}
-      </div>
     </>
   );
 };
