@@ -83,7 +83,7 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
         <div className="flex flex-row items-center justify-between gap-1 pl-14 md:justify-end md:gap-4 md:pl-0">
           <ReleaseCountdown />
 
-          <div className="flex gap-1">
+          <div className="mr-16 flex gap-1">
             <Button
               variant="contained"
               href={href || '/buy-mario-strikers-battle-league-football'}
@@ -97,7 +97,7 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
 
       <Button
         variant="text"
-        className={`interactive group fixed left-4 bottom-4 z-50 md:bottom-5 md:left-auto md:right-4 ${
+        className={`interactive group fixed right-4 bottom-4 z-50 md:bottom-5 md:left-auto md:right-4 ${
           isVisible
             ? 'bg-transparent hover:text-accent'
             : 'bg-accent hover:bg-accent-dark themed:bg-signal themed:hover:bg-signal-dark'

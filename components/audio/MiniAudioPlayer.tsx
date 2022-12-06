@@ -85,7 +85,7 @@ const MiniAudioPlayer: React.FC = () => {
   return (
     <div
       className={`z-40 w-56 bg-accent-soft px-4 py-3 transition themed:bg-accent-dark ${
-        showSoundtracks ? 'rounded-xl' : 'interactive rounded-full'
+        showSoundtracks ? 'rounded-xl' : 'interactive rounded-3xl'
       }`}
     >
       <header className="flex cursor-pointer items-center justify-between gap-2 text-xs">

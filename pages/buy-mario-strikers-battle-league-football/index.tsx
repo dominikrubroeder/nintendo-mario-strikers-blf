@@ -35,13 +35,15 @@ const DetailPage: NextPage = () => {
         </div>
       </section>
 
-      <section className="mt-20 mb-40 text-center">
-        <Button
-          variant="contained"
-          onClick={() => setShowFeatures((previousState) => !previousState)}
-        >
-          Zeige mehr Features
-        </Button>
+      <section>
+        <div className="my-20 flex justify-center">
+          <Button
+            variant="contained"
+            onClick={() => setShowFeatures((previousState) => !previousState)}
+          >
+            Zeige mehr Features
+          </Button>
+        </div>
 
         {showFeatures && <GameFeatures />}
       </section>

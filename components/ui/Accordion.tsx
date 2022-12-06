@@ -23,7 +23,7 @@ const Accordion: React.FC<AccordionProps> = ({
   return (
     <div
       className={`grid min-w-[12rem] gap-2 bg-accent-soft py-3 px-4 themed:bg-accent-dark ${
-        expanded ? 'rounded-xl' : 'interactive rounded-full'
+        expanded ? 'rounded-xl' : 'interactive rounded-3xl'
       } ${className ? className : ''}`}
     >
       <header
@@ -50,24 +50,26 @@ const Accordion: React.FC<AccordionProps> = ({
               stiffness: 400,
             }}
           >
-            <div>{children}</div>
+            <div className="grid gap-4">
+              <div>{children}</div>
 
-            <footer className="flex h-10 items-end justify-end">
-              <Button
-                variant="text"
-                className="flex items-center gap-0.5 text-xs font-bold"
-                sound="character"
-                onClick={onCloseHandler}
-              >
-                <Image
-                  width={32}
-                  height={32}
-                  src="/images/items/CI_NSwitch_MarioStrikersBLF_AW_Items_Star.png"
-                  alt="Nintendo star item"
-                />
-                Verstanden
-              </Button>
-            </footer>
+              <footer className="flex h-10 items-end justify-end">
+                <Button
+                  variant="text"
+                  className="flex items-center gap-0.5 text-xs font-bold"
+                  sound="character"
+                  onClick={onCloseHandler}
+                >
+                  <Image
+                    width={32}
+                    height={32}
+                    src="/images/items/CI_NSwitch_MarioStrikersBLF_AW_Items_Star.png"
+                    alt="Nintendo star item"
+                  />
+                  Verstanden
+                </Button>
+              </footer>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

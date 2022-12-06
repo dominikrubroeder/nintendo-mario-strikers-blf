@@ -6,6 +6,8 @@ import AudioContext from '../../store/audioContext';
 interface ButtonProps {
   variant: 'contained' | 'text';
   text?: string;
+  /** This property will tell the Button component to apply special classes to use a button within a text block. */
+  isInline?: boolean;
   children?: React.ReactNode | string;
   icon?: JSX.Element;
   hasIconLeft?: boolean;
@@ -20,6 +22,7 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({
   variant = 'contained',
   text,
+  isInline = false,
   children,
   icon,
   hasIconLeft,
@@ -68,7 +71,11 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={`${variantClassName} ${className ? className : ''}`}
+      className={`${variantClassName} ${
+        isInline
+          ? 'inline-block p-0 text-left hover:bg-none hover:text-accent themed:hover:bg-transparent themed:hover:text-white'
+          : ''
+      } ${className ? className : ''}`}
       disabled={disabled}
       onClick={onClickHandler}
     >

@@ -19,11 +19,12 @@ const BuyConfiguration: React.FC<BuyConfigurationProps> = ({
   const appCtx = useContext(AppContext);
 
   return (
-    <section className="mx-auto mt-20 grid max-w-7xl gap-4 px-4 md:px-8 lg:grid-cols-2">
+    <section className="mx-auto mt-4 grid max-w-7xl gap-4 px-4 md:mt-20 md:px-8 lg:grid-cols-2">
       <motion.div
         animate={{ opacity: [0, 1], y: [10, 0] }}
         exit={{ opacity: [1, 0] }}
         transition={{ ease: 'easeOut' }}
+        className="mx-auto"
       >
         <Image
           src="/images/product/nintendo-switch-mario-strikers-battle-league-football-cover.png"
@@ -36,7 +37,7 @@ const BuyConfiguration: React.FC<BuyConfigurationProps> = ({
       </motion.div>
 
       <div className="mx-auto grid w-full gap-12">
-        <div className="grid gap-1">
+        <div className="hidden md:grid md:gap-1">
           <Heading
             as="h2"
             className="flex flex-wrap items-center gap-2 text-accent themed:text-white"
@@ -47,6 +48,7 @@ const BuyConfiguration: React.FC<BuyConfigurationProps> = ({
               <ReleaseCountdown />
             </span>
           </Heading>
+
           <Heading as="h1">
             Mario Strikers: Battle League Football kaufen
           </Heading>

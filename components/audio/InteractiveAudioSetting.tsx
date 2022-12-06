@@ -41,6 +41,8 @@ const InteractiveAudioSetting: React.FC = () => {
         <Button
           variant="text"
           onClick={() => audioCtx?.setSound('/audio/soundtracks/main-menu.mp3')}
+          isInline
+          className="my-2"
         >
           <PlayIcon className="mr-0.5 inline-block h-4 w-4" />
           Soundtrack im Hintergrund laufen
@@ -49,6 +51,8 @@ const InteractiveAudioSetting: React.FC = () => {
         <Button
           variant="text"
           onClick={() => audioCtx?.setSound('/audio/nintendo-woohoo.wav')}
+          isInline
+          className="my-2"
         >
           <PlayIcon className="mr-0.5 inline-block h-4 w-4" />
           höre einen typischen Nintendo Sound

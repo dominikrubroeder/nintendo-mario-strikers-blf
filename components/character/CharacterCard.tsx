@@ -22,7 +22,6 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
 }) => {
   const appCtx = useContext(AppContext);
   const audioCtx = useContext(AudioContext);
-
   const audioRef = useRef<null | HTMLAudioElement>(null);
 
   const onClickHandler = () => {
@@ -48,6 +47,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
         >
           i
         </div>
+
         <Image
           src={image}
           alt={name}
@@ -58,7 +58,8 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
           height={256}
           priority
         />
-        <h3 className="absolute left-1/2 bottom-12 -translate-x-1/2 text-5xl font-bold uppercase tracking-normal transition-all md:text-6xl md:group-hover:scale-125">
+
+        <h3 className="absolute left-1/2 bottom-12 -translate-x-1/2 text-5xl font-bold uppercase tracking-normal text-orange-400 transition-all themed:text-white md:text-6xl md:group-hover:scale-125">
           {name}
         </h3>
       </div>
