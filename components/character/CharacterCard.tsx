@@ -51,9 +51,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
         <Image
           src={image}
           alt={name}
-          className={`z-10 transition-all group-hover:scale-125 ${
-            appCtx?.selectedCharacter === id ? 'scale-125' : 'scale-100'
-          }`}
+          className="z-10 transition-all group-hover:scale-125"
           width={256}
           height={256}
           priority

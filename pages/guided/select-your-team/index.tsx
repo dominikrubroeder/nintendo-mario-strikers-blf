@@ -7,6 +7,8 @@ import Heading from '../../../components/typography/Heading';
 import Button from '../../../components/ui/Button';
 import characters from '../../../data/characters';
 import AppContext from '../../../store/appContext';
+import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
 
 const SelectYourTeamPage: React.FC = () => {
   const appCtx = useContext(AppContext);
@@ -24,7 +26,7 @@ const SelectYourTeamPage: React.FC = () => {
   return (
     <>
       <Layout>
-        <section className="m-auto w-full max-w-screen-xl px-4">
+        <section className="m-auto w-full max-w-screen-xl px-4 mb-28">
           <Heading className="headline--gradient">Wähle dein Team</Heading>
 
           <div className="animate--fadeUp mb-16 grid grid-cols-2 animation-delay-700"></div>
@@ -34,17 +36,25 @@ const SelectYourTeamPage: React.FC = () => {
       </Layout>
 
       {character && (
-        <div className="animate--fadeUp fixed bottom-4 z-50 flex w-full items-center justify-center">
-          <div className="flex w-max items-center justify-center gap-2 rounded-full bg-accent-dark p-4">
-            <Button variant="contained" onClick={initRedirect}>
-              Weiter mit {character?.name}
-            </Button>
+        <AnimatePresence>
+            <motion.div className="fixed bottom-4 z-50 flex w-full items-center gap-4 justify-center transition">
+                <motion.div className="flex w-max items-center justify-center gap-2 rounded-full bg-accent-dark p-4"
+                    initial={{ opacity: 0, width: '0' }}
+                    animate={{ opacity: 1, width: 'auto' }}
+                    exit={{ opacity: 0, width: '0' }}>
+                    <Button variant="contained" onClick={initRedirect}>
+                        <div className="rounded-full flex items-center justify-center bg-accent w-12 h-12">
+                            <Image src={character.image} width={24} height={24} alt={character.name} />
+                        </div>
+                        Weiter mit {character?.name}
+                    </Button>
 
-            <Button variant="text" onClick={initRedirect}>
-              Weiter ohne Team
-            </Button>
-          </div>
-        </div>
+                    <Button variant="text" onClick={initRedirect}>
+                        Weiter ohne Team
+                    </Button>
+                </motion.div>
+            </motion.div>
+        </AnimatePresence>
       )}
     </>
   );

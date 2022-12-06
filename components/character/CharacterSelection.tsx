@@ -72,7 +72,7 @@ const CharacterSelection: React.FC<CharacterSelectionProps> = ({
           <CharacterOverlay onCloseOverlay={onCloseHandler} />
         )}
 
-        <div className={`grid ${className ? className : ''}`}>
+        <div className={`grid gap-4 ${className ? className : ''}`}>
           {teams.map((character) => {
             return (
               <SpringBounceWhenInView key={character.id}>
