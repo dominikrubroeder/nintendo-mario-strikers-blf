@@ -1,14 +1,14 @@
-import { PlayIcon } from "@heroicons/react/24/solid";
-import { useRouter } from "next/router";
-import React, { useContext, useState } from "react";
-import CharacterSelection from "../../../components/character/CharacterSelection";
-import Layout from "../../../components/layout";
-import Heading from "../../../components/typography/Heading";
-import Button from "../../../components/ui/Button";
-import characters from "../../../data/characters";
-import AppContext from "../../../store/appContext";
-import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
+import { PlayIcon } from '@heroicons/react/24/solid';
+import { useRouter } from 'next/router';
+import React, { useContext, useState } from 'react';
+import CharacterSelection from '../../../components/character/CharacterSelection';
+import Layout from '../../../components/layout';
+import Heading from '../../../components/typography/Heading';
+import Button from '../../../components/ui/Button';
+import characters from '../../../data/characters';
+import AppContext from '../../../store/appContext';
+import Image from 'next/image';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const SelectYourTeamPage: React.FC = () => {
   const appCtx = useContext(AppContext);
@@ -19,7 +19,7 @@ const SelectYourTeamPage: React.FC = () => {
 
   const initRedirect = () => {
     setTimeout(() => {
-      router.push("/guided/discover-mario-strikers-battle-league-football");
+      router.push('/guided/discover-mario-strikers-battle-league-football');
     }, 1000);
   };
 
@@ -27,7 +27,9 @@ const SelectYourTeamPage: React.FC = () => {
     <>
       <Layout>
         <section className="m-auto mb-28 w-full max-w-screen-xl px-4">
-          <Heading className="headline--gradient">Wähle dein Team</Heading>
+          <Heading as="h1" className="headline--gradient">
+            Wähle dein Team
+          </Heading>
 
           <div className="animate--fadeUp mb-16 grid grid-cols-2 animation-delay-700"></div>
 
@@ -40,9 +42,9 @@ const SelectYourTeamPage: React.FC = () => {
           <div className="fixed bottom-4 z-50 flex w-full items-center justify-center gap-4 transition">
             <motion.div
               className="flex w-max items-center justify-center gap-2 rounded-full bg-accent-dark p-4"
-              initial={{ opacity: 0, width: "0" }}
-              animate={{ opacity: 1, width: "auto" }}
-              exit={{ opacity: 0, width: "0" }}
+              initial={{ opacity: 0, width: '0' }}
+              animate={{ opacity: 1, width: 'auto' }}
+              exit={{ opacity: 0, width: '0' }}
               transition={{ delay: 0.6 }}
             >
               <Button variant="contained" onClick={initRedirect}>

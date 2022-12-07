@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
-import SpringBounceWhenInView from "../animation/SpringBounceWhenInView";
-import AppContext from "../../store/appContext";
-import Image from "next/image";
-import Heading from "../typography/Heading";
-import CharacterCard from "../character/CharacterCard";
-import characters from "../../data/characters";
-import CharacterOverlay from "../character/CharacterOverlay";
+import React, { useContext, useState } from 'react';
+import SpringBounceWhenInView from '../animation/SpringBounceWhenInView';
+import AppContext from '../../store/appContext';
+import Image from 'next/image';
+import Heading from '../typography/Heading';
+import CharacterCard from '../character/CharacterCard';
+import characters from '../../data/characters';
+import CharacterOverlay from '../character/CharacterOverlay';
 
 const GameFeatures: React.FC = () => {
   const appCtx = useContext(AppContext);
@@ -19,7 +19,7 @@ const GameFeatures: React.FC = () => {
     <>
       <section className="m-auto text-center">
         <SpringBounceWhenInView>
-          <Heading className="headline--gradient">
+          <Heading as="h2" className="headline--gradient">
             Hier ist alles erlaubt!
           </Heading>
         </SpringBounceWhenInView>

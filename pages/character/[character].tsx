@@ -1,15 +1,16 @@
-import { ArrowLongLeftIcon } from "@heroicons/react/24/solid";
-import { NextPage } from "next";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import React from "react";
-import { SwipeCarousel } from "../../components/carousel/SwipeCarousel/SwipeCarousel";
-import CharacterGallery from "../../components/character/CharacterGallery";
-import Layout from "../../components/layout";
-import Heading from "../../components/typography/Heading";
-import Accordion from "../../components/ui/Accordion";
-import Button from "../../components/ui/Button";
-import characters from "../../data/characters";
+import { ArrowLongLeftIcon } from '@heroicons/react/24/solid';
+import { NextPage } from 'next';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import React from 'react';
+import { SwipeCarousel } from '../../components/carousel/SwipeCarousel/SwipeCarousel';
+import CharacterGallery from '../../components/character/CharacterGallery';
+import Layout from '../../components/layout';
+import Heading from '../../components/typography/Heading';
+import Accordion from '../../components/ui/Accordion';
+import Button from '../../components/ui/Button';
+import characters from '../../data/characters';
+import { defaultSwipeCarouselImageData } from '../../components/carousel/image-data';
 
 const CharacterPage: NextPage = () => {
   const router = useRouter();
@@ -49,12 +50,12 @@ const CharacterPage: NextPage = () => {
             </div>
 
             <section className="relative my-16 h-[32rem] w-full">
-              <SwipeCarousel />
+              <SwipeCarousel images={defaultSwipeCarouselImageData} />
             </section>
 
             <div className="mx-auto grid max-w-lg gap-16">
               <div>
-                <Heading className="mb-4 font-bold uppercase">
+                <Heading as="h2" className="mb-4 font-bold uppercase">
                   Wähle {characterData.name} und du bekommst:
                 </Heading>
 

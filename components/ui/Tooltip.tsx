@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { ChevronUpIcon } from "@heroicons/react/24/solid";
-import SpringBounceWhenInView from "../animation/SpringBounceWhenInView";
-import Button from "./Button";
-import Image from "next/image";
+import { useState } from 'react';
+import { ChevronUpIcon } from '@heroicons/react/24/solid';
+import SpringBounceWhenInView from '../animation/SpringBounceWhenInView';
+import Button from './Button';
+import Image from 'next/image';
 
 interface TooltipProps {
   title: any;
@@ -15,12 +15,12 @@ const Tooltip: React.FC<TooltipProps> = ({ title, children }) => {
   return (
     <div className="relative">
       <Button
-        variant="icon-text"
+        variant="contained"
         onClick={() => setExpanded((previousState) => !previousState)}
       >
         {title}
         <ChevronUpIcon
-          className={`icon ${expanded ? "-rotate-180" : "rotate-0"}`}
+          className={`icon ${expanded ? '-rotate-180' : 'rotate-0'}`}
         ></ChevronUpIcon>
       </Button>
 
@@ -32,7 +32,7 @@ const Tooltip: React.FC<TooltipProps> = ({ title, children }) => {
           {children}
 
           <Button
-            variant="unstyled"
+            variant="contained"
             className="mt-4 flex items-center justify-end gap-0.5 text-xs font-bold"
             onClick={() => setExpanded(false)}
           >
