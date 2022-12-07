@@ -1,8 +1,8 @@
-import '../styles/globals.css';
-import type { AppProps } from 'next/app';
-import { AppContextProvider } from '../store/appContext';
-import { AudioContextProvider } from '../store/audioContext';
-import { AnimatePresence } from 'framer-motion';
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+import { AppContextProvider } from "../store/appContext";
+import { AudioContextProvider } from "../store/audioContext";
+import { AnimatePresence } from "framer-motion";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

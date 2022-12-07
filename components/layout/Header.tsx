@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import { FC, useContext } from 'react';
-import Logo from '../svg/Logo';
-import CurrentSound from '../audio/CurrentSound';
-import InteractiveAudioSetting from '../audio/InteractiveAudioSetting';
-import AudioContext from '../../store/audioContext';
+import Link from "next/link";
+import { FC, useContext } from "react";
+import Logo from "../svg/Logo";
+import CurrentSound from "../audio/CurrentSound";
+import InteractiveAudioSetting from "../audio/InteractiveAudioSetting";
+import AudioContext from "../../store/audioContext";
 
 const Header: FC = () => {
   const audioCtx = useContext(AudioContext);

@@ -1,16 +1,16 @@
-import { NextPage } from 'next';
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import GameFeatures from '../../components/sections/GameFeatures';
-import CharacterSelection from '../../components/character/CharacterSelection';
-import CommunityQuotes from '../../components/sections/CommunityQuotes';
-import TheGallery from '../../components/TheGallery';
-import TheStickyBuyBar from '../../components/TheStickyBuyBar';
-import Heading from '../../components/typography/Heading';
-import { PlayIcon } from '@heroicons/react/24/solid';
-import Button from '../../components/ui/Button';
-import AudioContext from '../../store/audioContext';
-import useIsInView from '../../hooks/useIsInView';
-import Layout from '../../components/layout';
+import { NextPage } from "next";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import GameFeatures from "../../components/sections/GameFeatures";
+import CharacterSelection from "../../components/character/CharacterSelection";
+import CommunityQuotes from "../../components/sections/CommunityQuotes";
+import TheGallery from "../../components/TheGallery";
+import TheStickyBuyBar from "../../components/TheStickyBuyBar";
+import Heading from "../../components/typography/Heading";
+import { PlayIcon } from "@heroicons/react/24/solid";
+import Button from "../../components/ui/Button";
+import AudioContext from "../../store/audioContext";
+import useIsInView from "../../hooks/useIsInView";
+import Layout from "../../components/layout";
 
 const InfoPage: NextPage = () => {
   const audioCtx = useContext(AudioContext);
@@ -38,7 +38,7 @@ const InfoPage: NextPage = () => {
               variant="icon-text"
               onClick={() => {
                 setShowStickyBuyBar(true);
-                audioCtx?.setSoundtrack('/audio/soundtracks/main-menu.mp3');
+                audioCtx?.setSoundtrack("/audio/soundtracks/main-menu.mp3");
               }}
             >
               <PlayIcon className="h-16 w-16 rounded-full bg-accent-gradient p-4" />

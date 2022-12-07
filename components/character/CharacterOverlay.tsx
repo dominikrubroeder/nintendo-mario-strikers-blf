@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
-import AppContext from '../../store/appContext';
-import OverlayBackground from '../OverlayBackground';
-import characters from '../../data/characters';
-import Button from '../ui/Button';
-import Heading from '../typography/Heading';
-import Image from 'next/image';
-import Accordion from '../ui/Accordion';
+import React, { useContext } from "react";
+import AppContext from "../../store/appContext";
+import OverlayBackground from "../OverlayBackground";
+import characters from "../../data/characters";
+import Button from "../ui/Button";
+import Heading from "../typography/Heading";
+import Image from "next/image";
+import Accordion from "../ui/Accordion";
 
 interface CharacterOverlayProps {
   onCloseOverlay: () => void;
@@ -48,7 +48,7 @@ const CharacterOverlay: React.FC<CharacterOverlayProps> = ({
               layout="responsive"
               src={
                 character?.image ??
-                '/images/characters/NSwitch-character-sketch-mario.png'
+                "/images/characters/NSwitch-character-sketch-mario.png"
               }
               alt={character?.name}
             />

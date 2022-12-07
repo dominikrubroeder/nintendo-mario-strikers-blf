@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import Button from '../../ui/Button';
-import ReleaseCountdown from '../../ReleaseCountdown';
-import GameTrailer from '../../GameTrailer';
-import Heading from '../../typography/Heading';
-import { ArrowRightIcon, PlayIcon } from '@heroicons/react/24/solid';
+import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import Button from "../../ui/Button";
+import ReleaseCountdown from "../../ReleaseCountdown";
+import GameTrailer from "../../GameTrailer";
+import Heading from "../../typography/Heading";
+import { ArrowRightIcon, PlayIcon } from "@heroicons/react/24/solid";
 
 const Hero: React.FC = () => {
   const [showYouTubeGameTrailer, setShowYoutubeGameTrailer] = useState(false);

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const useIsInView = (ref: React.MutableRefObject<HTMLElement | null>) => {
   const [isIntersecting, setIntersecting] = useState(false);

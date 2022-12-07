@@ -1,17 +1,17 @@
-import { motion } from 'framer-motion';
-import React from 'react';
+import { motion } from "framer-motion";
+import React from "react";
 
 interface GameTrailerProps {
   closeOverlay: () => void;
 }
 
 const GameTrailer: React.FC<GameTrailerProps> = ({ closeOverlay }) => {
-  document.body.style.height = '100vh';
-  document.body.style.overflow = 'hidden';
+  document.body.style.height = "100vh";
+  document.body.style.overflow = "hidden";
 
   const closeOverlayHandler = () => {
-    document.body.style.height = 'auto';
-    document.body.style.overflow = 'visible';
+    document.body.style.height = "auto";
+    document.body.style.overflow = "visible";
     closeOverlay();
   };
 
@@ -24,7 +24,7 @@ const GameTrailer: React.FC<GameTrailerProps> = ({ closeOverlay }) => {
         animate={{ scale: [0.4, 1.3, 1], opacity: [0, 1] }}
         transition={{
           duration: 0.5,
-          type: 'spring',
+          type: "spring",
           stiffness: 300,
           damping: 15,
           delay: 2.5,

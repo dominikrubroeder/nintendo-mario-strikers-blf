@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import React, { useContext, useState } from 'react';
-import AppContext from '../../store/appContext';
+import Image from "next/image";
+import React, { useContext, useState } from "react";
+import AppContext from "../../store/appContext";
 
 interface CharacterGalleryProps {
   images: string[];
@@ -25,7 +25,7 @@ const CharacterGallery: React.FC<CharacterGalleryProps> = ({ images }) => {
             setActiveImage(
               activeImage - 1 < 0 ? images.length - 1 : activeImage - 1
             );
-            appCtx?.setCharacter('mario');
+            appCtx?.setCharacter("mario");
           }}
         />
 
@@ -55,7 +55,7 @@ const CharacterGallery: React.FC<CharacterGalleryProps> = ({ images }) => {
                 ? images.length - 1
                 : activeImage + 1
             );
-            appCtx?.setCharacter('peach');
+            appCtx?.setCharacter("peach");
           }}
         />
       </div>
@@ -69,7 +69,7 @@ const CharacterGallery: React.FC<CharacterGalleryProps> = ({ images }) => {
                 setActiveImage(index);
               }}
               className={`interactive block rounded-xl bg-accent px-4 themed:bg-accent-dark ${
-                index === activeImage ? 'scale-110 opacity-100' : 'opacity-20'
+                index === activeImage ? "scale-110 opacity-100" : "opacity-20"
               }`}
             >
               <Image

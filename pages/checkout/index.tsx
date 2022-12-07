@@ -1,8 +1,8 @@
-import { NextPage } from 'next';
-import React, { useEffect, useState } from 'react';
-import BouncingItems from '../../components/BouncingItems';
-import Layout from '../../components/layout';
-import Heading from '../../components/typography/Heading';
+import { NextPage } from "next";
+import React, { useEffect, useState } from "react";
+import BouncingItems from "../../components/BouncingItems";
+import Layout from "../../components/layout";
+import Heading from "../../components/typography/Heading";
 
 const Checkout: NextPage = () => {
   const [isLoading, setIsLoading] = useState(true);

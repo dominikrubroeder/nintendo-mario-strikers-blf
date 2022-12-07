@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import AudioContext from '../../store/audioContext';
-import { createPortal } from 'react-dom';
+import React, { useContext, useEffect, useRef, useState } from "react";
+import AudioContext from "../../store/audioContext";
+import { createPortal } from "react-dom";
 
 const CurrentSound: React.FC = () => {
   const audioRef = useRef<null | HTMLAudioElement>(null);
@@ -23,9 +23,9 @@ const CurrentSound: React.FC = () => {
     ? createPortal(
         <audio
           ref={audioRef}
-          src={audioCtx?.sound ?? '/audio/nintendo-switch-click.mp3'}
+          src={audioCtx?.sound ?? "/audio/nintendo-switch-click.mp3"}
         ></audio>,
-        document.getElementById('sound')!
+        document.getElementById("sound")!
       )
     : null;
 };

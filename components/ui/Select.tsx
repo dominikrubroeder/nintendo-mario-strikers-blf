@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
-import { ChevronRightIcon } from '@heroicons/react/24/solid';
-import { useRouter } from 'next/router';
+import React, { useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import { ChevronRightIcon } from "@heroicons/react/24/solid";
+import { useRouter } from "next/router";
 
 interface SelectProps {
   options: {
@@ -20,7 +20,7 @@ const Select: React.FC<SelectProps> = ({ options }) => {
   const onClickHandler = (index: number) => {
     setSelected(options[index]);
 
-    if (options[index].href) router.push(options[index].href ?? '/');
+    if (options[index].href) router.push(options[index].href ?? "/");
 
     setIsExpanded(false);
   };
@@ -37,7 +37,7 @@ const Select: React.FC<SelectProps> = ({ options }) => {
 
         <ChevronRightIcon
           className={`h-5 w-5 text-accent transition ${
-            isExpanded ? 'rotate-90' : 'rotate-0'
+            isExpanded ? "rotate-90" : "rotate-0"
           }`}
         />
       </header>
@@ -50,12 +50,12 @@ const Select: React.FC<SelectProps> = ({ options }) => {
                 key={option.value}
                 onClick={() => setSelected(option)}
                 className={`max-w hover:text-theme-contrary cursor-pointer text-xs transition ${
-                  option.value === selected.value ? 'text-theme-contrary' : ''
+                  option.value === selected.value ? "text-theme-contrary" : ""
                 }`}
               >
                 <div
                   className={`${
-                    option.disabled ? 'opacity-25' : 'opacity-100'
+                    option.disabled ? "opacity-25" : "opacity-100"
                   }`}
                   onClick={() => onClickHandler(index)}
                 >

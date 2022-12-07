@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from "react";
+import { motion } from "framer-motion";
 
 interface SpringBounceWhenInViewProps {
   children: React.ReactNode;
@@ -26,7 +26,7 @@ const SpringBounceWhenInView: React.FC<SpringBounceWhenInViewProps> = ({
       whileInView="visible"
       transition={{
         duration: 0.6,
-        type: 'spring',
+        type: "spring",
         stiffness: 300,
         delay: delay === undefined ? 0 : delay,
         damping: 15,

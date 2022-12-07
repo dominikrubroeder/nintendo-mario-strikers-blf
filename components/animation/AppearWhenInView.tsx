@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
 interface AppearWhenInViewProps {
   children: React.ReactNode;
@@ -18,7 +18,7 @@ const AppearWhenInView: React.FC<AppearWhenInViewProps> = ({
       whileInView="visible"
       transition={{
         duration: 0.6,
-        type: 'spring',
+        type: "spring",
         stiffness: 300,
         delay: delay === undefined ? 0 : delay,
         damping: 15,
