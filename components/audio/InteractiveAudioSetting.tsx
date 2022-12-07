@@ -1,9 +1,5 @@
 import React, { useContext } from 'react';
-import {
-  PlayIcon,
-  SpeakerXMarkIcon,
-  SpeakerWaveIcon,
-} from '@heroicons/react/24/solid';
+import { SpeakerXMarkIcon, SpeakerWaveIcon } from '@heroicons/react/24/solid';
 import Toggle from '../ui/Toggle';
 import Accordion from '../ui/Accordion';
 import AudioContext from '../../store/audioContext';
@@ -44,7 +40,7 @@ const InteractiveAudioSetting: React.FC = () => {
           isInline
           className="my-2"
         >
-          <PlayIcon className="mr-0.5 inline-block h-4 w-4" />
+          <SpeakerWaveIcon className="mr-0.5 inline-block h-4 w-4" />
           Soundtrack im Hintergrund laufen
         </Button>
         oder
@@ -54,7 +50,7 @@ const InteractiveAudioSetting: React.FC = () => {
           isInline
           className="my-2"
         >
-          <PlayIcon className="mr-0.5 inline-block h-4 w-4" />
+          <SpeakerWaveIcon className="mr-0.5 inline-block h-4 w-4" />
           höre einen typischen Nintendo Sound
         </Button>
         bei Button-Klicks und weiteren Aktionen.

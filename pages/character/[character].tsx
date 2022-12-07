@@ -1,10 +1,8 @@
 import { ArrowLongLeftIcon } from '@heroicons/react/24/solid';
 import { NextPage } from 'next';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React from 'react';
 import { SwipeCarousel } from '../../components/carousel/SwipeCarousel/SwipeCarousel';
-import CharacterGallery from '../../components/character/CharacterGallery';
 import Layout from '../../components/layout';
 import Heading from '../../components/typography/Heading';
 import Accordion from '../../components/ui/Accordion';
@@ -31,7 +29,7 @@ const CharacterPage: NextPage = () => {
         </header>
 
         <section className="gap gap-4">
-          <CharacterGallery images={characterData.images} />
+          <SwipeCarousel images={defaultSwipeCarouselImageData} />
 
           <div className="grid gap-2">
             <div className="text-center">
@@ -48,10 +46,6 @@ const CharacterPage: NextPage = () => {
                 &ldquo;{characterData.teamText}&rdquo;
               </p>
             </div>
-
-            <section className="relative my-16 h-[32rem] w-full">
-              <SwipeCarousel images={defaultSwipeCarouselImageData} />
-            </section>
 
             <div className="mx-auto grid max-w-lg gap-16">
               <div>

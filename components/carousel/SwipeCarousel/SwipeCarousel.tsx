@@ -1,10 +1,10 @@
-import * as React from "react";
-import { useState, FC } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { wrap } from "popmotion";
-import { defaultSwipeCarouselImageData } from "../image-data";
-import Image from "next/image";
-import CarouselArrow from "../CarouselArrow";
+import * as React from 'react';
+import { useState, FC } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { wrap } from 'popmotion';
+import { defaultSwipeCarouselImageData } from '../image-data';
+import Image from 'next/image';
+import CarouselArrow from '../CarouselArrow';
 
 /** https://codesandbox.io/s/framer-motion-image-gallery-pqvx3?file=/src/index.tsx:106-128 */
 
@@ -36,6 +36,7 @@ const variants = {
  * just distance thresholds and velocity > 0.
  */
 const swipeConfidenceThreshold = 10000;
+
 const swipePower = (offset: number, velocity: number) => {
   return Math.abs(offset) * velocity;
 };
@@ -62,7 +63,7 @@ export const SwipeCarousel: FC<SwipeCarousel> = ({
   };
 
   return (
-    <>
+    <div className="relative h-[50vh]">
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={page}
@@ -72,7 +73,7 @@ export const SwipeCarousel: FC<SwipeCarousel> = ({
           animate="center"
           exit="exit"
           transition={{
-            x: { type: "spring", stiffness: 300, damping: 30 },
+            x: { type: 'spring', stiffness: 300, damping: 30 },
             opacity: { duration: 0.2 },
           }}
           drag="x"
@@ -87,30 +88,31 @@ export const SwipeCarousel: FC<SwipeCarousel> = ({
               paginate(-1);
             }
           }}
-          className="flex h-[32rem] items-center justify-center"
+          className="absolute h-[50vh] w-full"
         >
-          <Image
+          <motion.img
             src={images[imageIndex]}
-            width={500}
-            height={500}
+            width={750}
+            height={750}
             alt="Character carousel test"
-            priority
-            className="absolute max-w-[100vw]"
+            className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
           />
         </motion.div>
       </AnimatePresence>
+
       <div
-        className="absolute right-4 top-1/2 cursor-pointer"
+        className="absolute right-4 top-1/2 z-50 cursor-pointer"
         onClick={() => paginate(1)}
       >
         <CarouselArrow />
       </div>
+
       <div
-        className="absolute left-4 top-1/2 -scale-x-100 cursor-pointer"
+        className="absolute left-4 top-1/2 z-50 -scale-x-100 cursor-pointer"
         onClick={() => paginate(-1)}
       >
         <CarouselArrow />
       </div>
-    </>
+    </div>
   );
 };
