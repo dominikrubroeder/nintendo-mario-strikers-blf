@@ -1,11 +1,12 @@
 import React from 'react';
 
 interface ToggleProps {
+  enabled?: boolean;
   label?: string;
-  enabled: boolean;
-  onClick: (() => void) | undefined;
-  enabledIcon: any;
-  disabledIcon: any;
+  onClick?: () => void;
+  enabledIcon?: JSX.Element;
+  disabledIcon?: JSX.Element;
+  className?: string;
 }
 
 const Toggle: React.FC<ToggleProps> = ({
@@ -14,10 +15,13 @@ const Toggle: React.FC<ToggleProps> = ({
   onClick,
   enabledIcon,
   disabledIcon,
+  className,
 }) => {
   return (
     <div
-      className="flex cursor-pointer items-center gap-1 text-xs text-accent"
+      className={`flex cursor-pointer items-center gap-1 text-xs text-accent ${
+        className ? className : ''
+      }`}
       onClick={onClick}
     >
       {label && <span className="themed:text-white">{label}</span>}
@@ -32,9 +36,11 @@ const Toggle: React.FC<ToggleProps> = ({
             enabled ? 'translate-x-full' : ''
           }`}
         >
-          <span className="text-accent">
-            {enabled ? enabledIcon : disabledIcon}
-          </span>
+          {enabledIcon && disabledIcon && (
+            <span className="text-accent">
+              {enabled ? enabledIcon : disabledIcon}
+            </span>
+          )}
         </span>
       </div>
     </div>

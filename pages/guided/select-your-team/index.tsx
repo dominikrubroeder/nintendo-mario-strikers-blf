@@ -41,27 +41,47 @@ const SelectYourTeamPage: React.FC = () => {
         <AnimatePresence>
           <div className="fixed bottom-4 z-50 flex w-full items-center justify-center gap-4 transition">
             <motion.div
-              className="flex w-max items-center justify-center gap-2 rounded-full bg-accent-dark p-4"
-              initial={{ opacity: 0, width: '0' }}
-              animate={{ opacity: 1, width: 'auto' }}
-              exit={{ opacity: 0, width: '0' }}
-              transition={{ delay: 0.6 }}
+              className="rounded-full bg-accent-dark p-4"
+              initial={{ y: 100 }}
+              animate={{ y: 0 }}
+              exit={{ y: -100 }}
+              transition={{
+                ease: 'easeOut',
+                delay: 0.2,
+              }}
             >
-              <Button variant="contained" onClick={initRedirect}>
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent">
-                  <Image
-                    src={character.image}
-                    width={24}
-                    height={24}
-                    alt={character.name}
-                  />
-                </div>
-                <span>Weiter mit {character?.name}</span>
-              </Button>
+              <motion.div
+                className="flex items-center justify-center gap-4"
+                initial={{ opacity: 0, width: '0' }}
+                animate={{ opacity: 1, width: 'auto' }}
+                exit={{ opacity: 0, width: '0' }}
+                transition={{
+                  type: 'spring',
+                  damping: 20,
+                  stiffness: 400,
+                  delay: 0.6,
+                }}
+              >
+                <div
+                  className="flex items-center gap-2 whitespace-nowrap"
+                  onClick={initRedirect}
+                >
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent">
+                    <Image
+                      src={character.image}
+                      width={24}
+                      height={24}
+                      alt={character.name}
+                    />
+                  </div>
 
-              <Button variant="text" onClick={initRedirect}>
-                Weiter ohne Team
-              </Button>
+                  <span>Weiter mit {character?.name}</span>
+                </div>
+
+                <div className="whitespace-nowrap" onClick={initRedirect}>
+                  Weiter ohne Team
+                </div>
+              </motion.div>
             </motion.div>
           </div>
         </AnimatePresence>

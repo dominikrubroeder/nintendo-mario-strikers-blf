@@ -1,10 +1,10 @@
-import { useRouter } from "next/router";
-import React, { useContext } from "react";
-import AppContext from "../../store/appContext";
-import AudioContext from "../../store/audioContext";
+import { useRouter } from 'next/router';
+import React, { useContext } from 'react';
+import AppContext from '../../store/appContext';
+import AudioContext from '../../store/audioContext';
 
 interface ButtonProps {
-  variant: "contained" | "text";
+  variant: 'contained' | 'text';
   text?: string;
   /** This property will tell the Button component to apply special classes to use a button within a text block. */
   isInline?: boolean;
@@ -15,12 +15,12 @@ interface ButtonProps {
   href?: string;
   className?: string;
   disabled?: boolean;
-  sound?: "coin" | "nintendo-woho" | "nintendo-switch-click" | "character";
+  sound?: 'coin' | 'nintendo-woho' | 'nintendo-switch-click' | 'character';
   onClick?: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
-  variant = "contained",
+  variant = 'contained',
   text,
   isInline = false,
   children,
@@ -36,18 +36,21 @@ const Button: React.FC<ButtonProps> = ({
   const router = useRouter();
   const audioCtx = useContext(AudioContext);
   const appCtx = useContext(AppContext);
+  const inlineClasses = isInline
+    ? 'inline-block p-0 text-left hover:bg-none hover:text-accent themed:bg-transparent themed:hover:bg-signal themed:hover:text-white'
+    : '';
 
   const onClickHandler = () => {
     switch (sound) {
-      case "coin":
-        audioCtx?.setSound("/audio/nintendo-super-mario-coin.wav");
+      case 'coin':
+        audioCtx?.setSound('/audio/nintendo-super-mario-coin.wav');
         break;
-      case "nintendo-woho":
-        audioCtx?.setSound("/audio/nintendo-woohoo.wav");
+      case 'nintendo-woho':
+        audioCtx?.setSound('/audio/nintendo-woohoo.wav');
         break;
-      case "nintendo-switch-click":
-        audioCtx?.setSound("/audio/nintendo-switch-click.mp3");
-      case "character":
+      case 'nintendo-switch-click':
+        audioCtx?.setSound('/audio/nintendo-switch-click.mp3');
+      case 'character':
         appCtx?.selectedCharacter
           ? audioCtx?.setSound(
               `/audio/sound-${appCtx?.selectedCharacter}-0.mp3`
@@ -63,19 +66,17 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   let variantClassName =
-    variant === "contained"
-      ? "button--contained"
-      : variant === "text"
-      ? "button--text"
-      : "button--contained";
+    variant === 'contained'
+      ? 'button--contained'
+      : variant === 'text'
+      ? 'button--text'
+      : 'button--contained';
 
   return (
     <button
-      className={`${variantClassName} ${
-        isInline
-          ? "inline-block p-0 text-left hover:bg-none hover:text-accent themed:hover:bg-transparent themed:hover:text-white"
-          : ""
-      } ${className ? className : ""}`}
+      className={`${variantClassName} ${inlineClasses} ${
+        className ? className : ''
+      }`}
       disabled={disabled}
       onClick={onClickHandler}
     >
