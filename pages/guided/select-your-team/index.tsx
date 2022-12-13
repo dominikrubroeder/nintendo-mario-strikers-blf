@@ -1,6 +1,5 @@
-import { PlayIcon } from '@heroicons/react/24/solid';
 import { useRouter } from 'next/router';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import CharacterSelection from '../../../components/character/CharacterSelection';
 import Layout from '../../../components/layout';
 import Heading from '../../../components/typography/Heading';
@@ -9,6 +8,7 @@ import characters from '../../../data/characters';
 import AppContext from '../../../store/appContext';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
+import FloatingActionBar from '../../../components/animation/FloatingActionBar';
 
 const SelectYourTeamPage: React.FC = () => {
   const appCtx = useContext(AppContext);
@@ -38,53 +38,52 @@ const SelectYourTeamPage: React.FC = () => {
       </Layout>
 
       {character && (
-        <AnimatePresence>
-          <div className="fixed bottom-4 z-50 flex w-full items-center justify-center gap-4 transition">
-            <motion.div
-              className="rounded-full bg-accent-dark p-4"
-              initial={{ y: 100 }}
-              animate={{ y: 0 }}
-              exit={{ y: -100 }}
-              transition={{
-                ease: 'easeOut',
-                delay: 0.2,
-              }}
+        <FloatingActionBar>
+          <div className="flex items-center justify-center gap-4">
+            <div
+              className="flex items-center gap-2 whitespace-nowrap"
+              onClick={initRedirect}
             >
-              <motion.div
-                className="flex items-center justify-center gap-4"
-                initial={{ opacity: 0, width: '0' }}
-                animate={{ opacity: 1, width: 'auto' }}
-                exit={{ opacity: 0, width: '0' }}
-                transition={{
-                  type: 'spring',
-                  damping: 20,
-                  stiffness: 400,
-                  delay: 0.6,
-                }}
-              >
-                <div
-                  className="flex items-center gap-2 whitespace-nowrap"
-                  onClick={initRedirect}
+              <AnimatePresence>
+                <motion.div
+                  className="absolute -z-10 flex h-12 w-12 items-center justify-center rounded-full bg-accent-dark"
+                  initial={{ x: 0 }}
+                  animate={{ x: -72 }}
+                  exit={{ x: 0 }}
+                  transition={{
+                    type: 'spring',
+                    damping: 20,
+                    stiffness: 400,
+                    delay: 0.6,
+                  }}
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent">
-                    <Image
-                      src={character.image}
-                      width={24}
-                      height={24}
-                      alt={character.name}
-                    />
-                  </div>
+                  <Image
+                    src={character.image}
+                    width={24}
+                    height={24}
+                    alt={character.name}
+                  />
+                </motion.div>
+              </AnimatePresence>
 
-                  <span>Weiter mit {character?.name}</span>
+              <div className="relative pl-[3.5rem]">
+                <div className="absolute top-0 left-0 flex h-12 w-12 items-center justify-center rounded-full bg-signal">
+                  <Image
+                    src={character.image}
+                    width={32}
+                    height={32}
+                    alt={character.name}
+                  />
                 </div>
+                Weiter mit {character?.name}
+              </div>
+            </div>
 
-                <div className="whitespace-nowrap" onClick={initRedirect}>
-                  Weiter ohne Team
-                </div>
-              </motion.div>
-            </motion.div>
+            <div className="whitespace-nowrap" onClick={initRedirect}>
+              Weiter ohne Team
+            </div>
           </div>
-        </AnimatePresence>
+        </FloatingActionBar>
       )}
     </>
   );

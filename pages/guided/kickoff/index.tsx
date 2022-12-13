@@ -4,10 +4,15 @@ import Layout from '../../../components/layout';
 import Heading from '../../../components/typography/Heading';
 import AudioContext from '../../../store/audioContext';
 import Toggle from '../../../components/ui/Toggle';
-import { SpeakerWaveIcon, SpeakerXMarkIcon } from '@heroicons/react/24/solid';
+import {
+  ArrowRightCircleIcon,
+  SpeakerWaveIcon,
+  SpeakerXMarkIcon,
+} from '@heroicons/react/24/solid';
 import Card from '../../../components/ui/Card';
 import Button from '../../../components/ui/Button';
 import AnimateAppearance from '../../../components/animation/AnimateAppearance';
+import FloatingActionBar from '../../../components/animation/FloatingActionBar';
 
 const GuidedKickoffPage: React.FC = () => {
   const audioCtx = useContext(AudioContext);
@@ -105,6 +110,15 @@ const GuidedKickoffPage: React.FC = () => {
                 &nbsp;bei Button-Klicks und weiteren Aktionen.
               </p>
             </AnimateAppearance>
+          )}
+
+          {showMore && (
+            <FloatingActionBar>
+              <ArrowRightCircleIcon
+                className="interactive h-8 w-8 fill-signal"
+                onClick={initRedirect}
+              />
+            </FloatingActionBar>
           )}
         </div>
       </section>
