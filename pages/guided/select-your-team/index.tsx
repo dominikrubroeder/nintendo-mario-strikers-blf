@@ -46,37 +46,27 @@ const SelectYourTeamPage: React.FC = () => {
             >
               <AnimatePresence>
                 <motion.div
-                  className="absolute -z-10 flex h-12 w-12 items-center justify-center rounded-full bg-accent-dark"
-                  initial={{ x: 0 }}
-                  animate={{ x: -72 }}
-                  exit={{ x: 0 }}
+                  className="absolute -z-10 flex h-12 w-12 items-center justify-center rounded-full bg-signal"
+                  initial={{ x: 0, scale: 0.3 }}
+                  animate={{ x: -72, scale: 1 }}
+                  exit={{ x: 0, scale: 0.3 }}
                   transition={{
                     type: 'spring',
                     damping: 20,
                     stiffness: 400,
-                    delay: 0.6,
+                    delay: 1,
                   }}
                 >
                   <Image
                     src={character.image}
-                    width={24}
-                    height={24}
+                    width={56}
+                    height={56}
                     alt={character.name}
                   />
                 </motion.div>
               </AnimatePresence>
 
-              <div className="relative pl-[3.5rem]">
-                <div className="absolute top-0 left-0 flex h-12 w-12 items-center justify-center rounded-full bg-signal">
-                  <Image
-                    src={character.image}
-                    width={32}
-                    height={32}
-                    alt={character.name}
-                  />
-                </div>
-                Weiter mit {character?.name}
-              </div>
+              <div>Weiter mit {character?.name}</div>
             </div>
 
             <div className="whitespace-nowrap" onClick={initRedirect}>
