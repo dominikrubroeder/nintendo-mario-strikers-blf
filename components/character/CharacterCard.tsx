@@ -37,7 +37,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
           ? 'bg-accent themed:bg-accent-dark'
           : ''
       }`}
-      onClick={onClickHandler}
+      onMouseUp={onClickHandler}
     >
       <div className="grid gap-2 text-center">
         <audio src={sound} ref={audioRef}></audio>
