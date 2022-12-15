@@ -1,11 +1,12 @@
-import React, { useRef, useState, useContext } from "react";
-import { useRouter } from "next/router";
-import AppContext from "../../store/appContext";
-import teams from "../../data/characters";
-import CharacterCard from "./CharacterCard";
-import SpringBounceWhenInView from "../animation/SpringBounceWhenInView";
-import CharacterOverlay from "./CharacterOverlay";
-import Tooltip from "../ui/Tooltip";
+import React, { useRef, useState, useContext } from 'react';
+import { useRouter } from 'next/router';
+import AppContext from '../../store/appContext';
+import teams from '../../data/characters';
+import CharacterCard from './CharacterCard';
+import SpringBounceWhenInView from '../animation/SpringBounceWhenInView';
+import CharacterOverlay from './CharacterOverlay';
+import Tooltip from '../ui/Tooltip';
+import Card from '../ui/Card';
 
 interface CharacterSelectionProps {
   className?: string;
@@ -27,7 +28,7 @@ const CharacterSelection: React.FC<CharacterSelectionProps> = ({
   const setTeam = (team: string) => {
     appCtx?.setCharacter(team);
 
-    router.pathname !== "/guided/select-your-team"
+    router.pathname !== '/guided/select-your-team'
       ? router.push(
           `${router.pathname}/?edition=${appCtx?.selectedEdition}?team=${team}`,
           undefined,
@@ -39,24 +40,24 @@ const CharacterSelection: React.FC<CharacterSelectionProps> = ({
   };
 
   const onCloseHandler = () => {
-    document.body.style.height = "auto";
-    document.body.style.overflow = "visible";
+    document.body.style.height = 'auto';
+    document.body.style.overflow = 'visible';
     setShowCharacterOverlay(false);
   };
 
   return (
     <div className="grid gap-4" ref={teamSection}>
       <div className="grid gap-4">
-        {router.pathname !== "/guided/select-your-team" && (
+        {router.pathname !== '/guided/select-your-team' && (
           <div className="flex items-center justify-between">
             <h4>Wähle dein Team:</h4>
 
             <div className="cursor-pointer text-sm text-accent themed:text-white">
               <Tooltip title="Warum?">
                 Wähle ein Team und erhalte <b>zusätzlichen Spiel-Content</b> wie
-                neue Arenen, das Geheimteam und <b>inviduelle Merch-Artrikel</b>{" "}
+                neue Arenen, das Geheimteam und <b>inviduelle Merch-Artrikel</b>{' '}
                 basierend auf deiner Team-Wahl! <br /> <br />
-                Wähle also beispielsweise {currentTheme}, um einen Hoodie im{" "}
+                Wähle also beispielsweise {currentTheme}, um einen Hoodie im{' '}
                 {currentTheme} Design zu erhalten oder deinen Schreibtisch mit
                 der {currentTheme}
                 Tischfigar in der Sieger-Pose zu schmücken.
@@ -72,7 +73,18 @@ const CharacterSelection: React.FC<CharacterSelectionProps> = ({
           <CharacterOverlay onCloseOverlay={onCloseHandler} />
         )}
 
-        <div className={`grid gap-4 ${className ? className : ""}`}>
+        <div className={`grid gap-4 ${className ? className : ''}`}>
+          <SpringBounceWhenInView>
+            <Card className="interactive relative flex h-full w-full items-center justify-center transition themed:bg-transparent themed:hover:bg-accent-dark">
+              <div
+                onClick={() => setTeam('none')}
+                className="absolute left-1/2 bottom-12 -translate-x-1/2 text-5xl font-bold uppercase tracking-normal text-orange-400 transition-all themed:text-white md:text-6xl md:group-hover:scale-125"
+              >
+                Ohne Team
+              </div>
+            </Card>
+          </SpringBounceWhenInView>
+
           {teams.map((character) => {
             return (
               <SpringBounceWhenInView key={character.id}>

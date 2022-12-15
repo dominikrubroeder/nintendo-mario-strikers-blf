@@ -1,13 +1,12 @@
 import { useRouter } from 'next/router';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import CharacterSelection from '../../../components/character/CharacterSelection';
 import Layout from '../../../components/layout';
 import Heading from '../../../components/typography/Heading';
-import Button from '../../../components/ui/Button';
 import characters from '../../../data/characters';
 import AppContext from '../../../store/appContext';
 import Image from 'next/image';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 import FloatingActionBar from '../../../components/animation/FloatingActionBar';
 
 const SelectYourTeamPage: React.FC = () => {
@@ -16,12 +15,17 @@ const SelectYourTeamPage: React.FC = () => {
   const character = characters.find(
     (character) => character.id === appCtx?.selectedCharacter
   );
+  const controls = useAnimation();
 
   const initRedirect = () => {
     setTimeout(() => {
       router.push('/guided/discover-mario-strikers-battle-league-football');
     }, 1000);
   };
+
+  useEffect(() => {
+    if (character) controls.start({ x: -72, scale: 1 });
+  }, [character, controls]);
 
   return (
     <>
@@ -48,7 +52,7 @@ const SelectYourTeamPage: React.FC = () => {
                 <motion.div
                   className="absolute -z-10 flex h-12 w-12 items-center justify-center rounded-full bg-signal"
                   initial={{ x: 0, scale: 0.3 }}
-                  animate={{ x: -72, scale: 1 }}
+                  animate={controls}
                   exit={{ x: 0, scale: 0.3 }}
                   transition={{
                     type: 'spring',
