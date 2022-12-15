@@ -6,14 +6,10 @@ import CommunityQuotes from '../../components/sections/CommunityQuotes';
 import TheGallery from '../../components/TheGallery';
 import TheStickyBuyBar from '../../components/TheStickyBuyBar';
 import Heading from '../../components/typography/Heading';
-import { PlayIcon } from '@heroicons/react/24/solid';
-import Button from '../../components/ui/Button';
-import AudioContext from '../../store/audioContext';
 import useIsInView from '../../hooks/useIsInView';
 import Layout from '../../components/layout';
 
 const InfoPage: NextPage = () => {
-  const audioCtx = useContext(AudioContext);
   const [showStickyBuyBar, setShowStickyBuyBar] = useState(false);
   const playSoundButton = useRef<null | HTMLDivElement>(null);
   const playSoundButtonIsOnScreen = useIsInView(playSoundButton);
@@ -31,22 +27,6 @@ const InfoPage: NextPage = () => {
           <Heading as="h2" className="headline--gradient">
             Es ist Anpfiff!
           </Heading>
-
-          <div
-            className="animate--fadeUp flex flex-col gap-2 animation-delay-700"
-            ref={playSoundButton}
-          >
-            <Button
-              variant="contained"
-              onClick={() => {
-                setShowStickyBuyBar(true);
-                audioCtx?.setSoundtrack('/audio/soundtracks/main-menu.mp3');
-              }}
-            >
-              <PlayIcon className="h-16 w-16 rounded-full bg-accent-gradient p-4" />
-              Spiele einen Soundtrack
-            </Button>
-          </div>
         </section>
 
         <CommunityQuotes />
