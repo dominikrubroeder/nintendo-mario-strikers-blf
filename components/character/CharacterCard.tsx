@@ -1,7 +1,7 @@
-import Image from "next/image";
-import { Dispatch, SetStateAction, useContext, useRef } from "react";
-import AppContext from "../../store/appContext";
-import AudioContext from "../../store/audioContext";
+import Image from 'next/image';
+import { Dispatch, SetStateAction, useContext, useRef } from 'react';
+import AppContext from '../../store/appContext';
+import AudioContext from '../../store/audioContext';
 
 interface CharacterCardProps {
   id: string;
@@ -23,6 +23,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
   const appCtx = useContext(AppContext);
   const audioCtx = useContext(AudioContext);
   const audioRef = useRef<null | HTMLAudioElement>(null);
+  const imageRef = useRef<null | HTMLImageElement>(null);
 
   const onClickHandler = () => {
     if (audioCtx?.hasInteractiveAudio) audioRef.current?.play();
@@ -31,10 +32,10 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
 
   return (
     <div
-      className={`group relative flex h-96 cursor-pointer items-center justify-center rounded-3xl transition-all hover:border-gray-300 hover:border-accent-dark hover:bg-accent-soft themed:hover:bg-accent-dark ${
+      className={`interactive group relative flex h-96 cursor-pointer items-center justify-center rounded-3xl transition-all hover:border-gray-300 hover:border-accent-dark hover:bg-accent-soft themed:hover:bg-accent-dark ${
         appCtx?.selectedCharacter === id
-          ? "bg-accent themed:bg-accent-dark"
-          : ""
+          ? 'bg-accent themed:bg-accent-dark'
+          : ''
       }`}
       onClick={onClickHandler}
     >
@@ -42,22 +43,17 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
         <audio src={sound} ref={audioRef}></audio>
 
         <div
-          className="interactive absolute top-6 right-6 flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 opacity-100 themed:bg-accent-dark lg:opacity-0 lg:group-hover:opacity-100"
+          className="absolute top-6 right-6 flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 opacity-100 themed:bg-accent-dark lg:opacity-0 lg:group-hover:opacity-100"
           onClick={() => setShowCharacterOverlay(true)}
         >
           i
         </div>
 
-        <Image
-          src={image}
-          alt={name}
-          className="z-10 transition-all group-hover:scale-125"
-          width={256}
-          height={256}
-          priority
-        />
+        <div className="z-10 transition-all group-hover:scale-125">
+          <Image src={image} alt={name} width={256} height={256} priority />
+        </div>
 
-        <h3 className="absolute left-1/2 bottom-12 -translate-x-1/2 text-5xl font-bold uppercase tracking-normal text-orange-400 transition-all themed:text-white md:text-6xl md:group-hover:scale-125">
+        <h3 className="absolute left-1/2 bottom-12 z-0 -translate-x-1/2 text-5xl font-bold uppercase tracking-normal text-orange-400 transition-all themed:text-white md:text-6xl md:group-hover:scale-125">
           {name}
         </h3>
       </div>
