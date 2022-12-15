@@ -1,8 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+import NintendoSwitchClick from './animation/NintendoSwitchClick';
 
 const TheLaunchScreen: React.FC = () => {
   const [mounted, setMounted] = useState(false);
-  const audioRef = useRef<null | HTMLAudioElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -14,20 +14,9 @@ const TheLaunchScreen: React.FC = () => {
     return () => setMounted(false);
   }, []);
 
-  useEffect(() => {
-    if (mounted && audioRef.current) audioRef.current.play();
-  }, [mounted]);
-
   return mounted ? (
-    <div className="fixed top-0 left-0 bottom-0 right-0 z-50 flex items-center justify-center bg-[#E60012]">
-      <audio src="/audio/nintendo-switch-click.mp3" ref={audioRef} />
-      <video autoPlay muted className="animate-ping animation-delay-700">
-        <source
-          src="/videos/nintendo-switch-logo-animation-intro.mp4"
-          type="video/mp4"
-        />
-        Your browser does not support the video tag.
-      </video>
+    <div className="fixed top-0 left-0 bottom-0 right-0 z-50 flex items-center justify-center bg-accent">
+      <NintendoSwitchClick />
     </div>
   ) : null;
 };
