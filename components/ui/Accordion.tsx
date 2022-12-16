@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Button from "./Button";
-import Image from "next/image";
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Button from './Button';
+import Image from 'next/image';
 
 interface AccordionProps {
   title: string | JSX.Element;
@@ -23,8 +23,8 @@ const Accordion: React.FC<AccordionProps> = ({
   return (
     <div
       className={`grid min-w-[12rem] gap-2 bg-accent-soft py-3 px-4 themed:bg-accent-dark ${
-        expanded ? "rounded-xl" : "interactive rounded-3xl"
-      } ${className ? className : ""}`}
+        expanded ? 'rounded-xl' : 'interactive rounded-3xl'
+      } ${className ? className : ''}`}
     >
       <header
         className="cursor-pointer"
@@ -40,13 +40,13 @@ const Accordion: React.FC<AccordionProps> = ({
             initial={{ opacity: 0, height: 0 }}
             animate={{
               opacity: 1,
-              height: "auto",
+              height: 'auto',
             }}
             exit={{
               opacity: 1,
             }}
             transition={{
-              type: "spring",
+              type: 'spring',
               stiffness: 400,
             }}
           >
