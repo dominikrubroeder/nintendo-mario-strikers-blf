@@ -13,7 +13,7 @@ const Tag: React.FC<TagProps> = ({ label, variant }) => {
 
   return (
     <button
-      className={`rounded-full px-4 py-2 transition duration-300 hover:bg-accent-dark active:scale-95 ${variantClassNames}`}
+      className={`interactive rounded-full px-4 py-2 hover:bg-accent-dark themed:bg-accent-dark ${variantClassNames}`}
     >
       {label}
     </button>

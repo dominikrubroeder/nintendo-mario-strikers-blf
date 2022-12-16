@@ -5,7 +5,7 @@ import React from 'react';
 import { SwipeCarousel } from '../../components/carousel/SwipeCarousel/SwipeCarousel';
 import Layout from '../../components/layout';
 import Heading from '../../components/typography/Heading';
-import Accordion from '../../components/ui/Accordion';
+import Accordion from '../../components/ui/Accordion/Accordion';
 import Button from '../../components/ui/Button';
 import characters from '../../data/characters';
 import { defaultSwipeCarouselImageData } from '../../components/carousel/image-data';

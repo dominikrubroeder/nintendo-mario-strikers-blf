@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Button from './Button';
+import Button from '../Button';
 import Image from 'next/image';
 
 interface AccordionProps {
@@ -23,11 +23,11 @@ const Accordion: React.FC<AccordionProps> = ({
   return (
     <div
       className={`grid min-w-[12rem] gap-2 bg-accent-soft py-3 px-4 themed:bg-accent-dark ${
-        expanded ? 'rounded-xl' : 'interactive rounded-3xl'
+        expanded ? 'rounded-xl' : 'interactive--suttle rounded-3xl'
       } ${className ? className : ''}`}
     >
       <header
-        className="cursor-pointer"
+        className="cursor-pointer themed:text-white"
         onClick={() => setExpanded((previousState) => !previousState)}
       >
         {title}

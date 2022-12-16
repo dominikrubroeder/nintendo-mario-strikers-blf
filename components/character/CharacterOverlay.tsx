@@ -5,7 +5,7 @@ import characters from '../../data/characters';
 import Button from '../ui/Button';
 import Heading from '../typography/Heading';
 import Image from 'next/image';
-import Accordion from '../ui/Accordion';
+import Accordion from '../ui/Accordion/Accordion';
 
 interface CharacterOverlayProps {
   onCloseOverlay: () => void;

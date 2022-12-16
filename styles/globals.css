@@ -7,6 +7,10 @@
     @apply cursor-pointer transition-all hover:scale-105 hover:active:scale-95 disabled:cursor-not-allowed;
   }
 
+  .interactive--suttle {
+    @apply interactive hover:scale-[1.025] hover:active:scale-[0.98];
+  }
+
   .icon {
     @apply interactive z-10 h-4 w-4;
   }

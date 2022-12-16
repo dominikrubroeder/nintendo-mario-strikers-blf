@@ -1,6 +1,6 @@
-import React from "react";
-import Layout from "../../../components/layout";
-import Accordion from "../../../components/ui/Accordion";
+import React from 'react';
+import Layout from '../../../components/layout';
+import Accordion from '../../../components/ui/Accordion/Accordion';
 
 const DiscoverMarioStrikersBattleLeagueFootballPage: React.FC = () => {
   return (
