@@ -6,7 +6,7 @@ import CharacterCard from './CharacterCard';
 import SpringBounceWhenInView from '../animation/SpringBounceWhenInView';
 import CharacterOverlay from './CharacterOverlay';
 import Tooltip from '../ui/Tooltip';
-import Card from '../ui/Card';
+import Card from '../ui/Card/Card';
 
 interface CharacterSelectionProps {
   className?: string;

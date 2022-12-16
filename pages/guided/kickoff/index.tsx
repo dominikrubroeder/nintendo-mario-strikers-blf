@@ -9,7 +9,7 @@ import {
   SpeakerWaveIcon,
   SpeakerXMarkIcon,
 } from '@heroicons/react/24/solid';
-import Card from '../../../components/ui/Card';
+import Card from '../../../components/ui/Card/Card';
 import Button from '../../../components/ui/Button';
 import AnimateAppearance from '../../../components/animation/AnimateAppearance';
 import FloatingActionBar from '../../../components/animation/FloatingActionBar';

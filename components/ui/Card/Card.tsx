@@ -10,7 +10,7 @@ const Card: React.FC<CardProps> = ({ children, className }) => {
 
   return (
     <div
-      className={`rounded-3xl bg-accent-soft p-4 themed:bg-accent-dark ${externalClassName}`}
+      className={`rounded-3xl bg-accent-soft p-4 themed:bg-accent-dark themed:text-white ${externalClassName}`}
     >
       {children}
     </div>
