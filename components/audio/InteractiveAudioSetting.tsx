@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { SpeakerXMarkIcon, SpeakerWaveIcon } from '@heroicons/react/24/solid';
-import Toggle from '../ui/Toggle';
+import Toggle from '../ui/Toggle/Toggle';
 import Accordion from '../ui/Accordion/Accordion';
 import AudioContext from '../../store/audioContext';
 import Button from '../ui/Button';

@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import Layout from '../../../components/layout';
 import Heading from '../../../components/typography/Heading';
 import AudioContext from '../../../store/audioContext';
-import Toggle from '../../../components/ui/Toggle';
+import Toggle from '../../../components/ui/Toggle/Toggle';
 import {
   ArrowRightCircleIcon,
   SpeakerWaveIcon,
