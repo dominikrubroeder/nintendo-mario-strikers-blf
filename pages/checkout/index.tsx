@@ -1,48 +1,39 @@
-import { NextPage } from "next";
-import React, { useEffect, useState } from "react";
-import BouncingItems from "../../components/BouncingItems";
-import Layout from "../../components/layout";
-import Heading from "../../components/typography/Heading";
+import { NextPage } from 'next';
+import React, { useEffect, useState } from 'react';
+import Layout from '../../components/layout';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const Checkout: NextPage = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [showLoadingVideo, setShowLoadingVideo] = useState(true);
 
   useEffect(() => {
-    const checkoutScreenTimeout = setTimeout(hideLaunchScreen, 8000);
-
-    function hideLaunchScreen() {
-      setShowLoadingVideo(false);
+    setTimeout(() => {
       setIsLoading(false);
-      clearTimeout(checkoutScreenTimeout);
-    }
-  });
+    }, 6600);
+  }, []);
 
   return (
     <Layout pageTitle="Checkout">
-      <section className="flex min-h-screen items-center justify-center">
+      <section className="fixed inset-0 flex min-h-screen items-center justify-center">
         {!isLoading && <div>Show Checkout Screen</div>}
 
-        {/* Load team cover full screen  ...*/}
         {isLoading && (
-          <div className="grid gap-2 text-center">
-            <Heading as="h1">Checkout</Heading>
-            <BouncingItems size={32} />
-          </div>
-        )}
-
-        {showLoadingVideo && (
-          <video
-            autoPlay
-            muted
-            className="min-w-screen fixed right-0 bottom-0 z-50 min-h-screen"
-          >
-            <source
-              src="/videos/nintendo-switch-mario-strikers-blf-mario-smash.mp4"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
+          <AnimatePresence>
+            <motion.video
+              autoPlay
+              muted
+              className="rounded-xl border-4 border-black"
+              initial={{ y: 100, width: 480, opacity: 0 }}
+              animate={{ y: 0, width: 768, opacity: 1 }}
+              exit={{ y: 1000, width: 320, opacity: 0 }}
+              transition={{ delay: 0.6 }}
+            >
+              <source
+                src="/videos/nintendo-mario-strikers-blf-mario-superstrike.webm"
+                type="video/webm"
+              />
+            </motion.video>
+          </AnimatePresence>
         )}
       </section>
     </Layout>

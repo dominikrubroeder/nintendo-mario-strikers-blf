@@ -4,6 +4,8 @@ export type Character = {
   sound: string[];
   image: string;
   images: string[];
+  videos: string[];
+  gifs: string[];
   baseText: string;
   teamText: string;
   specialAbility: string;
@@ -27,6 +29,13 @@ export const characters: Character[] = [
       '/images/characters/NSwitch-character-sketch-mario.png',
       '/images/characters/NSwitch-character-sketch-mario.png',
     ],
+    videos: [
+      '/videos/nintendo-mario-strikers-blf-mario-superstrike-light-up-eyes-score.mp4',
+      '/videos/nintendo-mario-strikers-blf-mario-superstrike-light-up-eyes-score.webm',
+      '/videos/nintendo-mario-strikers-blf-mario-superstrike-light-up-eyes-loop.mp4',
+      '/videos/nintendo-mario-strikers-blf-mario-superstrike-light-up-eyes-loop.webm',
+    ],
+    gifs: [],
     baseText:
       'Roter Hut, blaue Latzhose und der für ihn typische Schnurrbart. Mario ist immer fröhlich und gut gelaunt. Er liebt Prinzessin Peach und bildet mit seinem Zwillingsbruder Luigi ein tolles Team. Er ist ein guter Sportler und kann alles, von Tennis, Baseball und Fußball bis hin zu Kartrennen. Er ist von Beruf Klempner. Aber das ist nicht alles, was er tut. Sie nutzen ihre speziellen Sprünge und verschiedene Power-Ups, um ihren Erzfeind Bowser zu bekämpfen.',
     teamText:
@@ -51,6 +60,8 @@ export const characters: Character[] = [
       '/images/characters/NSwitch-character-sketch-peach.png',
       '/images/characters/NSwitch-character-sketch-peach.png',
     ],
+    videos: [],
+    gifs: [],
     baseText:
       'Prinzessin des Pilzkönigreichs. Sie ist sehr freundlich und will immer, dass alle glücklich sind. Sie backt gerne Kuchen, kocht gerne und treibt alle möglichen Sportarten. Sie und Mario stehen sich sehr nahe und verlassen sich aufeinander. Sie sieht sehr hübsch aus in ihrem rosa Kleid.',
     teamText:
@@ -75,6 +86,8 @@ export const characters: Character[] = [
       '/images/characters/NSwitch-character-sketch-waluigi.png',
       '/images/characters/NSwitch-character-sketch-yoshi.png',
     ],
+    videos: [],
+    gifs: [],
     baseText:
       'Der Zwillingsbruder von Mario. Er ist etwas schüchtern, hat aber ein freundliches Wesen. Seine größte Schwäche sind Geister. Eigentlich kann er alles genauso gut wie Mario. Außerdem sind Mario und Luigi eine Macht, mit der man rechnen muss, wenn sie zusammen sind. Sein Markenzeichen sind der grüne Hut und das grüne Hemd. Im Vergleich zu Mario ist Luigi etwas größer, und wenn du genau hinsiehst, kannst du sehen, dass auch sein Bart etwas anders aussieht.',
     teamText:
@@ -99,6 +112,8 @@ export const characters: Character[] = [
       '/images/characters/NSwitch-character-sketch-toad.png',
       '/images/characters/NSwitch-character-sketch-toad.png',
     ],
+    videos: [],
+    gifs: [],
     baseText:
       'Bewohner des Pilzkönigreichs, die für Prinzessin Peach arbeiten. Es gibt auch blaue, grüne und andere andersfarbige Freunde, die alle sehr fröhlich und fleißig sind. Sie versuchen ihr Bestes, um das Pilzkönigreich vor Bowser zu schützen, aber sie scheitern immer wieder... Manchmal helfen sie Mario und manchmal erleben sie gemeinsam Abenteuer.',
     teamText:
@@ -123,6 +138,8 @@ export const characters: Character[] = [
       '/images/characters/NSwitch-character-sketch-bowser.png',
       '/images/characters/NSwitch-character-sketch-bowser.png',
     ],
+    videos: [],
+    gifs: [],
     baseText:
       'Der große Dämonenkönig des Schildkröten-Clans, der den Weltfrieden stört und die ewige Nemesis von Mario und seinen Freunden ist. Er hat viele Untergebene, wie den Sägezahn, Kribo, Killer und Hey-Ho. Er greift das Pilzkönigreich mit seinen zahlreichen Schergen an. Mario und seine Freunde haben es immer versäumt, sie aufzuhalten... Er ist ein mächtiger Mann, und die Flammen, die er aus seinem Mund spuckt, sind mächtig.',
     teamText:
@@ -147,6 +164,8 @@ export const characters: Character[] = [
       '/images/characters/NSwitch-character-sketch-rosalina.png',
       '/images/characters/NSwitch-character-sketch-rosalina.png',
     ],
+    videos: [],
+    gifs: [],
     baseText:
       'Eine geheimnisvolle Frau, die mit dem Sternenkind Chico durch den Weltraum reist. Sie sieht zwar cool aus, hat aber eine freundliche Persönlichkeit und ist die Mutterfigur für Chico und seine Freunde, die keine Eltern haben. Manchmal geht sie mit Mario und seinen Freunden auf Abenteuer.',
     teamText:
@@ -171,6 +190,8 @@ export const characters: Character[] = [
       '/images/characters/NSwitch-character-sketch-yoshi.png',
       '/images/characters/NSwitch-character-sketch-yoshi.png',
     ],
+    videos: [],
+    gifs: [],
     baseText:
       'Marios treuer Begleiter von der Yoshi-Insel. Er hat ein sanftes, entspanntes Wesen. Mit seiner langen Zunge verschluckt er Früchte und feindliche Personen ganz und verwandelt sie in Eier. Neben dem grünen Yoshi gibt es auch rote, hellblaue, pinke und andere verschiedenfarbige Yoshi.',
     teamText:
@@ -195,6 +216,8 @@ export const characters: Character[] = [
       '/images/characters/NSwitch-character-sketch-donkey-kong.png',
       '/images/characters/NSwitch-character-sketch-donkey-kong.png',
     ],
+    videos: [],
+    gifs: [],
     baseText:
       'Der König des Dschungels, dessen Markenzeichen eine rote Krawatte mit dem DK-Symbol ist. Er hat eine so ungeheure Kraft, dass er mit Leichtigkeit einen riesigen Teer vom Boden werfen und ein gewaltiges Beben verursachen kann, wenn er auf den Boden trifft. Er liebt Bananen und hat immer reichlich davon zu Hause.',
     teamText:
@@ -219,6 +242,8 @@ export const characters: Character[] = [
       '/images/characters/NSwitch-character-sketch-wario.png',
       '/images/characters/NSwitch-character-sketch-wario.png',
     ],
+    videos: [],
+    gifs: [],
     baseText:
       'Selbsternannter Jugendfreund und größter Rivale von Mario. Er trägt einen gelben Hut, eine lila Latzhose und seinen typischen gezackten Schnurrbart. Er ist dynamisch und kümmert sich nicht um Details. Mag Knoblauch. Er verdient gerne Geld.',
     teamText:
@@ -243,6 +268,8 @@ export const characters: Character[] = [
       '/images/characters/NSwitch-character-sketch-waluigi.png',
       '/images/characters/NSwitch-character-sketch-waluigi.png',
     ],
+    videos: [],
+    gifs: [],
     baseText:
       'Warios Handlanger. Er glaubt, dass Luigi sein Rivale ist. Um die Kraft für den Kampf gegen Mario und Luigi zu sammeln. Er hat eine fleißige Seite, die an versteckten Orten hart arbeitet, um die Kraft für den Kampf gegen Mario und Luigi zu sammeln. Manchmal benutzt er seine langen Arme und Beine, um Sport zu treiben.',
     teamText:
@@ -259,6 +286,8 @@ export const characters: Character[] = [
       '/audio/sound-mario-1.mp3',
       '/audio/sound-mario-2.mp3',
     ],
+    videos: [],
+    gifs: [],
     image: '/images/characters/NSwitch-character-sketch-bumm-bumm.png',
     images: [
       '/images/characters/NSwitch-character-sketch-bumm-bumm.png',
@@ -290,6 +319,8 @@ export const characters: Character[] = [
       '/images/characters/NSwitch-character-sketch-daisy.png',
       '/images/characters/NSwitch-character-sketch-daisy.png',
     ],
+    videos: [],
+    gifs: [],
     baseText:
       'Sie hat zwar ein Kleid und eine Krone, aber diese freundliche Prinzessin ist ganz bodenständig. Daisy ist immer bereit für eine Herausforderung, ob sie nun Tennisbälle zerschlägt oder über Hürden springt. Die Herrscherin von Sarasaland liebt auch den Nervenkitzel bei Verfolgungsjagden - vor allem, wenn sie auf einem Gokart durch die Gegend saust.',
     teamText:
@@ -306,6 +337,8 @@ export const characters: Character[] = [
       '/audio/sound-mario-1.mp3',
       '/audio/sound-mario-2.mp3',
     ],
+    videos: [],
+    gifs: [],
     image: '/images/characters/NSwitch-character-sketch-shy-guy.png',
     images: [
       '/images/characters/NSwitch-character-sketch-shy-guy.png',
@@ -338,6 +371,8 @@ export const characters: Character[] = [
       '/images/characters/NSwitch-character-sketch-pauline.png',
       '/images/characters/NSwitch-character-sketch-pauline.png',
     ],
+    videos: [],
+    gifs: [],
     baseText: 'TBD',
     teamText:
       'Kraft und Tempo - damit ist Pauline perfekt geeignet, um den Ball in der Verteidigung zu gewinnen und dann blitzschnell zu kontern.',
@@ -361,6 +396,8 @@ export const characters: Character[] = [
       '/images/characters/NSwitch-character-sketch-diddy-kong.png',
       '/images/characters/NSwitch-character-sketch-diddy-kong.png',
     ],
+    videos: [],
+    gifs: [],
     baseText:
       'Für die Bösewichte des Dschungels sieht er vielleicht harmlos aus, aber dieser kleine Kong ist ein Erdnuss-Kraftpaket! Oft sitzt er auf dem Rücken von Donkey Kong, aber Diddy Kong ist keine Last - er kann seinen großen Kumpel mit seinem Rocket Barrel Boost in neue Höhen katapultieren! ',
     teamText:

@@ -11,7 +11,7 @@ const NintendoSwitchClick: React.FC = () => {
   }, [audioRef]);
 
   return (
-    <div className="inline-flex gap-[.25rem]">
+    <div className="inline-flex gap-[.375rem]">
       <audio src="/audio/nintendo-switch-click.mp3" ref={audioRef} />
 
       <AnimatePresence>
