@@ -10,7 +10,7 @@ const FloatingActionBar: React.FC<FloatingActionBarProps> = ({ children }) => {
     <AnimatePresence>
       <div className="fixed left-0 bottom-4 z-50 flex w-full items-center justify-center gap-4 transition">
         <motion.div
-          className="rounded-full bg-accent-dark p-4"
+          className="cursor-pointer rounded-full bg-accent-dark p-4 themed:bg-signal"
           initial={{ y: 100 }}
           animate={{ y: 0 }}
           exit={{ y: -100 }}

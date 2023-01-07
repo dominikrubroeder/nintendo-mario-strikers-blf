@@ -10,7 +10,7 @@ const Checkout: NextPage = () => {
     <Layout pageTitle="Checkout">
       <TheLaunchScreen />
 
-      <section className="px-4">
+      <section className="mx-auto max-w-screen-xl px-4">
         <form className="grid gap-4 md:grid-cols-2">
           <div className="grid gap-24">
             <fieldset>
@@ -48,7 +48,7 @@ const Checkout: NextPage = () => {
                 <div className="grid gap-4 md:grid-cols-2">
                   <Card>
                     <div>
-                      <div>
+                      <div className="flex justify-between gap-2">
                         <label htmlFor="dstandard">Standard</label>
                         <input
                           type="checkbox"
@@ -66,7 +66,7 @@ const Checkout: NextPage = () => {
 
                   <Card>
                     <div>
-                      <div>
+                      <div className="flex justify-between gap-2">
                         <label htmlFor="dexpress">Express</label>
                         <input
                           type="checkbox"

@@ -58,7 +58,7 @@ const Hero: React.FC = () => {
 
               <Button
                 variant="text"
-                href="/guided"
+                href="/discover-mario-strikers-battle-league-football"
                 sound="nintendo-woho"
                 icon={<ArrowRightIcon className="icon" />}
                 hasIconRight={true}

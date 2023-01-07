@@ -81,8 +81,6 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
           </div>
         </div>
         <div className="flex flex-row items-center justify-between gap-1 pl-14 md:justify-end md:gap-4 md:pl-0">
-          <ReleaseCountdown />
-
           <div className="mr-16 flex gap-1">
             <Button
               variant="contained"

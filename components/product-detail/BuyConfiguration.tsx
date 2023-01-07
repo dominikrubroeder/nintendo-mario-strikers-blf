@@ -1,13 +1,14 @@
-import React, { Dispatch, SetStateAction, useContext } from "react";
-import { motion } from "framer-motion";
-import AppContext from "../../store/appContext";
-import ReleaseCountdown from "../ReleaseCountdown";
-import EditionSelection from "./EditionSelection";
-import CharacterSelection from "../character/CharacterSelection";
-import BuyContainer from "./BuyContainer";
-import Heading from "../typography/Heading";
-import { Editions } from "../../data/editions";
-import Image from "next/image";
+import React, { Dispatch, SetStateAction, useContext } from 'react';
+import { motion } from 'framer-motion';
+import AppContext from '../../store/appContext';
+import ReleaseCountdown from '../ReleaseCountdown';
+import EditionSelection from './EditionSelection';
+import CharacterSelection from '../character/CharacterSelection';
+import BuyContainer from './BuyContainer';
+import Heading from '../typography/Heading';
+import { Editions } from '../../data/editions';
+import Image from 'next/image';
+import SelectYourTeamInfoBar from '../SelectYourTeamInfoBar';
 
 interface BuyConfigurationProps {
   setShowStickyBuyBar: Dispatch<SetStateAction<boolean>>;
@@ -23,7 +24,7 @@ const BuyConfiguration: React.FC<BuyConfigurationProps> = ({
       <motion.div
         animate={{ opacity: [0, 1], y: [10, 0] }}
         exit={{ opacity: [1, 0] }}
-        transition={{ ease: "easeOut" }}
+        transition={{ ease: 'easeOut' }}
         className="mx-auto"
       >
         <Image
@@ -56,7 +57,12 @@ const BuyConfiguration: React.FC<BuyConfigurationProps> = ({
 
         <EditionSelection />
 
-        {appCtx?.selectedEdition === Editions.teamId && <CharacterSelection />}
+        {appCtx?.selectedEdition === Editions.teamId && (
+          <>
+            <SelectYourTeamInfoBar />
+            <CharacterSelection />
+          </>
+        )}
 
         <BuyContainer setShowStickyBuyBar={setShowStickyBuyBar} />
       </div>

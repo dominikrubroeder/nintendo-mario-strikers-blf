@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Dispatch, SetStateAction, useContext, useRef } from 'react';
+import { useContext, useRef } from 'react';
 import AppContext from '../../store/appContext';
 import AudioContext from '../../store/audioContext';
 
@@ -9,7 +9,6 @@ interface CharacterCardProps {
   sound: string;
   image: string;
   onClick?: () => void;
-  setShowCharacterOverlay: Dispatch<SetStateAction<boolean>>;
 }
 
 const CharacterCard: React.FC<CharacterCardProps> = ({
@@ -18,12 +17,10 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
   sound,
   image,
   onClick,
-  setShowCharacterOverlay,
 }) => {
   const appCtx = useContext(AppContext);
   const audioCtx = useContext(AudioContext);
   const audioRef = useRef<null | HTMLAudioElement>(null);
-  const imageRef = useRef<null | HTMLImageElement>(null);
 
   const onClickHandler = () => {
     if (audioCtx?.hasInteractiveAudio) audioRef.current?.play();
@@ -41,13 +38,6 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
     >
       <div className="grid gap-2 text-center">
         <audio src={sound} ref={audioRef}></audio>
-
-        <div
-          className="absolute top-6 right-6 flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 opacity-100 themed:bg-accent-dark lg:opacity-0 lg:group-hover:opacity-100"
-          onClick={() => setShowCharacterOverlay(true)}
-        >
-          i
-        </div>
 
         <div className="z-10 transition-all group-hover:scale-125">
           <Image src={image} alt={name} width={256} height={256} priority />
