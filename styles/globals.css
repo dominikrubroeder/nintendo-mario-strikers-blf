@@ -35,10 +35,6 @@
     @apply mx-auto break-all bg-accent-gradient bg-clip-text px-4 text-center text-6xl font-bold text-fill-color-transparent theme-peach:bg-gradient-peach md:text-8xl md:leading-tight;
   }
 
-  hr {
-    @apply themed:border-accent-dark;
-  }
-
   input {
     @apply rounded-full bg-accent-soft px-3 py-2 focus:outline-none themed:bg-accent-dark;
   }

@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import GameFeatures from '../../components/sections/GameFeatures';
 import CharacterSelection from '../../components/character/CharacterSelection';
 import CommunityQuotes from '../../components/sections/CommunityQuotes';
@@ -8,14 +8,15 @@ import Heading from '../../components/typography/Heading';
 import useIsInView from '../../hooks/useIsInView';
 import Layout from '../../components/layout';
 import MiniAudioPlayer from '../../components/audio/MiniAudioPlayer';
-import FloatingActionBar from '../../components/animation/FloatingActionBar';
+import FloatingActionBar from '../../components/floating-action-bar';
 import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 import AppContext from '../../store/appContext';
 import { useRouter } from 'next/router';
 import characters from '../../data/characters';
 import AnimatedSoundbarsIcon from '../../components/AnimatedSoundbarsIcon';
-import { PlayIcon } from '@heroicons/react/24/solid';
+import { PlayIcon, SpeakerWaveIcon } from '@heroicons/react/24/solid';
 import AudioContext from '../../store/audioContext';
+import Image from 'next/image';
 
 const InfoPage: NextPage = () => {
   const appCtx = useContext(AppContext);
@@ -24,18 +25,9 @@ const InfoPage: NextPage = () => {
   const character = characters.find(
     (character) => character.id === appCtx?.selectedCharacter
   );
-  const controlsPrevious = useAnimation();
-  const controlsNext = useAnimation();
   const miniAudioPlayerRef = useRef<null | HTMLDivElement>(null);
   const miniAudioPlayerIsOnScreen = useIsInView(miniAudioPlayerRef);
-
-  useEffect(() => {
-    if (character) controlsNext.start({ x: 96, scale: 1 });
-  }, [character, controlsNext]);
-
-  useEffect(() => {
-    if (character) controlsPrevious.start({ x: -96, scale: 1 });
-  }, [character, controlsPrevious]);
+  const [showCharacterMenu, setShowCharacterMenu] = useState(false);
 
   return (
     <Layout pageTitle="Discover">
@@ -179,9 +171,94 @@ const InfoPage: NextPage = () => {
           <div className="flex items-center justify-center gap-4">
             <AnimatePresence>
               <motion.div
+                className="leading-1 absolute -z-10 flex h-12 w-12 items-center justify-center rounded-full bg-accent-dark"
+                initial={{ x: 0, scale: 0.3 }}
+                animate={{ x: -156, scale: 1 }}
+                exit={{ x: 0, scale: 0.3 }}
+                transition={{
+                  type: 'spring',
+                  damping: 20,
+                  stiffness: 400,
+                  delay: 1,
+                }}
+                onClick={() =>
+                  setShowCharacterMenu((previousState) => !previousState)
+                }
+              >
+                <Image
+                  src={`/images/characters/NSwitch-character-sketch-${character?.id}.png`}
+                  alt={`${character?.name} team thumbnail`}
+                  width="32"
+                  height="32"
+                />
+
+                <AnimatePresence>
+                  {showCharacterMenu && !miniAudioPlayerIsOnScreen && (
+                    <motion.div
+                      initial={{
+                        borderRadius: '50%',
+                        opacity: 0,
+                        visibility: 'hidden',
+                        y: 0,
+                      }}
+                      animate={{
+                        borderRadius: '1rem',
+                        opacity: 1,
+                        visibility: 'visible',
+                        y: -64,
+                      }}
+                      exit={{
+                        borderRadius: '50%',
+                        opacity: 0,
+                        visibility: 'hidden',
+                        y: 0,
+                      }}
+                      className="absolute bottom-0 bg-accent-dark p-4"
+                    >
+                      <ul className="grid h-64 gap-4 overflow-hidden overflow-y-auto">
+                        <li className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full bg-accent p-2 font-bold uppercase transition">
+                          <Image
+                            src={`/images/characters/NSwitch-character-sketch-${character?.id}.png`}
+                            width="24"
+                            height="24"
+                            alt={`${character?.name} thumbnail`}
+                          />
+
+                          <span>{character?.name}</span>
+                        </li>
+
+                        <li>
+                          <hr className="border-accent px-4" />
+                        </li>
+
+                        {characters.map((character) => (
+                          <li
+                            key={character.id}
+                            className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full p-2 font-bold uppercase transition hover:bg-accent"
+                            onClick={() => appCtx?.setCharacter(character.id)}
+                          >
+                            <Image
+                              src={`/images/characters/NSwitch-character-sketch-${character?.id}.png`}
+                              width="24"
+                              height="24"
+                              alt={`${character.name} thumbnail`}
+                            />
+
+                            <span>{character.name}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            </AnimatePresence>
+
+            <AnimatePresence>
+              <motion.div
                 className="absolute -z-10 flex h-12 w-12 items-center justify-center rounded-full bg-accent-dark"
                 initial={{ x: 0, scale: 0.3 }}
-                animate={controlsPrevious}
+                animate={{ x: -96, scale: 1 }}
                 exit={{ x: 0, scale: 0.3 }}
                 transition={{
                   type: 'spring',
@@ -207,7 +284,7 @@ const InfoPage: NextPage = () => {
               <motion.div
                 className="absolute -z-10 flex h-12 w-12 items-center justify-center rounded-full bg-accent-dark"
                 initial={{ x: 0, scale: 0.3 }}
-                animate={controlsNext}
+                animate={{ x: 96, scale: 1 }}
                 exit={{ x: 0, scale: 0.3 }}
                 transition={{
                   type: 'spring',
@@ -217,6 +294,23 @@ const InfoPage: NextPage = () => {
                 }}
               >
                 <PlayIcon className="h-4 w-4 text-white" />
+              </motion.div>
+            </AnimatePresence>
+
+            <AnimatePresence>
+              <motion.div
+                className="absolute -z-10 flex h-12 w-12 items-center justify-center rounded-full bg-accent-dark"
+                initial={{ x: 0, scale: 0.3 }}
+                animate={{ x: 156, scale: 1 }}
+                exit={{ x: 0, scale: 0.3 }}
+                transition={{
+                  type: 'spring',
+                  damping: 20,
+                  stiffness: 400,
+                  delay: 1,
+                }}
+              >
+                <SpeakerWaveIcon className="h-4 w-4 text-white" />
               </motion.div>
             </AnimatePresence>
           </div>

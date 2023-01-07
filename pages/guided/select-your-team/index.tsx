@@ -7,7 +7,7 @@ import characters from '../../../data/characters';
 import AppContext from '../../../store/appContext';
 import Image from 'next/image';
 import { AnimatePresence, motion, useAnimation } from 'framer-motion';
-import FloatingActionBar from '../../../components/animation/FloatingActionBar';
+import FloatingActionBar from '../../../components/floating-action-bar';
 
 const SelectYourTeamPage: React.FC = () => {
   const appCtx = useContext(AppContext);

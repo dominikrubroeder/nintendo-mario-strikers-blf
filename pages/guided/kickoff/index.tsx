@@ -12,7 +12,7 @@ import {
 import Card from '../../../components/ui/Card/Card';
 import Button from '../../../components/ui/Button';
 import AnimateAppearance from '../../../components/animation/AnimateAppearance';
-import FloatingActionBar from '../../../components/animation/FloatingActionBar';
+import FloatingActionBar from '../../../components/floating-action-bar';
 
 const GuidedKickoffPage: React.FC = () => {
   const audioCtx = useContext(AudioContext);
