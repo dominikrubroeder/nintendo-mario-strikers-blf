@@ -14,9 +14,14 @@ import AppContext from '../../store/appContext';
 import { useRouter } from 'next/router';
 import characters from '../../data/characters';
 import AnimatedSoundbarsIcon from '../../components/AnimatedSoundbarsIcon';
-import { PlayIcon, SpeakerWaveIcon } from '@heroicons/react/24/solid';
+import {
+  PauseIcon,
+  PlayIcon,
+  SpeakerWaveIcon,
+} from '@heroicons/react/24/solid';
 import AudioContext from '../../store/audioContext';
 import Image from 'next/image';
+import { soundtracks } from '../../data/audio';
 
 const InfoPage: NextPage = () => {
   const appCtx = useContext(AppContext);
@@ -28,6 +33,33 @@ const InfoPage: NextPage = () => {
   const miniAudioPlayerRef = useRef<null | HTMLDivElement>(null);
   const miniAudioPlayerIsOnScreen = useIsInView(miniAudioPlayerRef);
   const [showCharacterMenu, setShowCharacterMenu] = useState(false);
+  const [showSoundtracksMenu, setShowSoundtracksMenu] = useState(false);
+  const [playing, setPlaying] = useState(true);
+
+  {
+    /* const playSoundtrackHandler = () => {
+    if (currentSoundtrack) {
+      audioRef.current?.play();
+      setPlaying(true);
+      return;
+    }
+
+    setCurrentSoundtrack(soundtracks[0]);
+  };
+
+  const pauseSoundtrackHandler = () => {
+    if (currentSoundtrack) {
+      audioRef.current?.pause();
+      setPlaying(false);
+    }
+  }; */
+  }
+
+  const playPauseButtonClasses = `relative before:content-[''] before:w-5 before:h-5 before:bg-accent themed:before:bg-white/20 themed:bg-accent-dark themed:before:bg-white/20 before:rounded-full before:block before:absolute before:inset-0 before:w-[1rem] before:z-0 before:h-[1rem] after:content-[''] after:w-5 after:h-5 after:bg-accent themed:after:bg-white/20 themed:after:bg-white/20 after:rounded-full after:block after:absolute after:inset-0 after:w-[1rem] after:z-0 after:h-[1rem] ${
+    playing
+      ? 'before:animate-audioWave1 after:animate-audioWave2'
+      : 'after:content-none before:content-none'
+  }`;
 
   return (
     <Layout pageTitle="Discover">
@@ -266,8 +298,58 @@ const InfoPage: NextPage = () => {
                   stiffness: 400,
                   delay: 1,
                 }}
+                onClick={() =>
+                  setShowSoundtracksMenu((previousState) => !previousState)
+                }
               >
                 <AnimatedSoundbarsIcon />
+
+                <AnimatePresence>
+                  {showSoundtracksMenu && !miniAudioPlayerIsOnScreen && (
+                    <motion.div
+                      initial={{
+                        borderRadius: '50%',
+                        opacity: 0,
+                        visibility: 'hidden',
+                        y: 0,
+                      }}
+                      animate={{
+                        borderRadius: '1rem',
+                        opacity: 1,
+                        visibility: 'visible',
+                        y: -64,
+                      }}
+                      exit={{
+                        borderRadius: '50%',
+                        opacity: 0,
+                        visibility: 'hidden',
+                        y: 0,
+                      }}
+                      className="absolute bottom-0 bg-accent-dark p-4"
+                    >
+                      <ul className="grid h-64 gap-4 overflow-hidden overflow-y-auto">
+                        <li className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full bg-accent p-2 font-bold uppercase transition">
+                          <SpeakerWaveIcon className="h-4 w-4 text-white" />
+                          <span>{audioCtx?.soundtrack}</span>
+                        </li>
+
+                        <li>
+                          <hr className="border-accent px-4" />
+                        </li>
+
+                        {soundtracks.map(({ title, src }) => (
+                          <li
+                            key={title}
+                            className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full p-2 font-bold uppercase transition hover:bg-accent"
+                            onClick={() => audioCtx?.setSoundtrack(src)}
+                          >
+                            <span>{title}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
             </AnimatePresence>
 
@@ -293,7 +375,17 @@ const InfoPage: NextPage = () => {
                   delay: 1,
                 }}
               >
-                <PlayIcon className="h-4 w-4 text-white" />
+                {!playing && (
+                  <div className={playPauseButtonClasses}>
+                    <PlayIcon className="h-4 w-4 text-accent themed:text-white" />
+                  </div>
+                )}
+
+                {playing && (
+                  <div className={playPauseButtonClasses}>
+                    <PauseIcon className="relative h-4 w-4 text-white" />
+                  </div>
+                )}
               </motion.div>
             </AnimatePresence>
 

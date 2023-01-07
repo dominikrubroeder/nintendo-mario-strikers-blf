@@ -8,22 +8,7 @@ import {
 } from '@heroicons/react/24/solid';
 import AnimatedSoundbarsIcon from '../AnimatedSoundbarsIcon';
 import AudioContext from '../../store/audioContext';
-
-type Soundtrack = {
-  title: string;
-  src: string;
-};
-
-const soundtracksData: Soundtrack[] = [
-  {
-    title: 'Title screen',
-    src: '/audio/soundtracks/title-screen.mp3',
-  },
-  {
-    title: 'Main menu',
-    src: '/audio/soundtracks/main-menu.mp3',
-  },
-];
+import { Soundtrack, soundtracks } from '../../data/audio';
 
 const MiniAudioPlayer: React.FC = () => {
   const audioCtx = useContext(AudioContext);
@@ -52,7 +37,7 @@ const MiniAudioPlayer: React.FC = () => {
       return;
     }
 
-    setCurrentSoundtrack(soundtracksData[0]);
+    setCurrentSoundtrack(soundtracks[0]);
   };
 
   const pauseSoundtrackHandler = () => {
@@ -145,7 +130,7 @@ const MiniAudioPlayer: React.FC = () => {
               <header className="mb-2">Mario Strikers: BLF</header>
 
               <ul className="grid gap-2">
-                {soundtracksData.map((soundtrack) => (
+                {soundtracks.map((soundtrack) => (
                   <li
                     key={soundtrack.title}
                     className="flex cursor-pointer items-center justify-between gap-1"
