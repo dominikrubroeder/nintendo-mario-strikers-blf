@@ -74,17 +74,6 @@ const CharacterSelection: React.FC<CharacterSelectionProps> = ({
         )}
 
         <div className={`grid gap-4 ${className ? className : ''}`}>
-          <SpringBounceWhenInView>
-            <Card className="interactive relative flex h-full w-full items-center justify-center transition themed:bg-transparent themed:hover:bg-accent-dark">
-              <div
-                onClick={() => setTeam('none')}
-                className="absolute left-1/2 bottom-12 -translate-x-1/2 text-5xl font-bold uppercase tracking-normal text-orange-400 transition-all themed:text-white md:text-6xl md:group-hover:scale-125"
-              >
-                Ohne Team
-              </div>
-            </Card>
-          </SpringBounceWhenInView>
-
           {teams.map((character) => {
             return (
               <SpringBounceWhenInView key={character.id}>

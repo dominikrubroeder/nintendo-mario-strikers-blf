@@ -5,8 +5,6 @@ import BuyConfiguration from '../../components/product-detail/BuyConfiguration';
 import TheStickyBuyBar from '../../components/TheStickyBuyBar';
 import { Editions } from '../../data/editions';
 import Image from 'next/image';
-import Button from '../../components/ui/Button';
-import GameFeatures from '../../components/sections/GameFeatures';
 import Layout from '../../components/layout';
 
 // https://mario.fandom.com/de/wiki/Mario_Smash_Football
@@ -33,19 +31,6 @@ const DetailPage: NextPage = () => {
             priority
           />
         </div>
-      </section>
-
-      <section>
-        <div className="my-20 flex justify-center">
-          <Button
-            variant="contained"
-            onClick={() => setShowFeatures((previousState) => !previousState)}
-          >
-            Zeige mehr Features
-          </Button>
-        </div>
-
-        {showFeatures && <GameFeatures />}
       </section>
 
       <TheStickyBuyBar
