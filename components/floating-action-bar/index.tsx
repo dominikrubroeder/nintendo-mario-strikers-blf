@@ -10,6 +10,7 @@ const FloatingActionBar: React.FC<FloatingActionBarProps> = ({ children }) => {
     <AnimatePresence>
       <div className="fixed left-0 bottom-4 z-50 flex w-full items-center justify-center gap-4 transition">
         <motion.div
+          key="actionBar"
           className="cursor-pointer rounded-full bg-accent-dark p-4 themed:bg-signal"
           initial={{ y: 100 }}
           animate={{ y: 0 }}
@@ -20,6 +21,7 @@ const FloatingActionBar: React.FC<FloatingActionBarProps> = ({ children }) => {
           }}
         >
           <motion.div
+            key="actionBarW"
             className="flex items-center justify-center"
             initial={{ opacity: 0, width: '0' }}
             animate={{ opacity: 1, width: 'auto' }}

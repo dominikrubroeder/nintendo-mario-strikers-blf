@@ -113,17 +113,14 @@ const MiniAudioPlayer: React.FC = () => {
         {showSoundtracks && (
           <motion.div
             key="soundtrack"
-            initial={{ opacity: 0, height: 0 }}
+            initial={{ opacity: 0, height: '0' }}
             animate={{
               opacity: 1,
               height: 'auto',
             }}
             exit={{
               opacity: 1,
-            }}
-            transition={{
-              type: 'spring',
-              stiffness: 400,
+              height: '0',
             }}
           >
             <div className="mt-4 mb-4 text-xs">

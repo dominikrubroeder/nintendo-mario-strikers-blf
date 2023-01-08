@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 const Footer: React.FC = () => {
-  return <footer className="p-4 pb-24 text-center">Footer</footer>;
+  return <footer className="px-4 py-32 text-center"></footer>;
 };
 
 export default Footer;
