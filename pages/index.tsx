@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import Layout from '../components/layout';
-import Hero from '../components/sections/home/Hero';
+import Hero from '../components/Hero';
 import TheLaunchScreen from '../components/TheLaunchScreen';
 
 const Home: NextPage = () => {

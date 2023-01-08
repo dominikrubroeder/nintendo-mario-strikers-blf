@@ -1,14 +1,14 @@
 import React, { useContext, useState } from 'react';
-import SpringBounceWhenInView from '../animation/SpringBounceWhenInView';
-import AppContext from '../../store/appContext';
+import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
+import AppContext from '../store/appContext';
 import Image from 'next/image';
-import Heading from '../typography/Heading';
-import CharacterCard from '../character/CharacterCard';
-import characters from '../../data/characters';
-import CharacterOverlay from '../character/CharacterOverlay';
-import { items } from '../../data/items';
+import Heading from './typography/Heading';
+import CharacterCard from './character/CharacterCard';
+import characters from '../data/characters';
+import CharacterOverlay from './character/CharacterOverlay';
+import { items } from '../data/items';
 
-const GameFeatures: React.FC = () => {
+const Features: React.FC = () => {
   const appCtx = useContext(AppContext);
   const character =
     characters.find(
@@ -46,13 +46,31 @@ const GameFeatures: React.FC = () => {
               </Heading>
             </SpringBounceWhenInView>
 
-            <div className="m-auto max-w-md">
+            <div className="m-auto flex max-w-xl items-center justify-center gap-12">
+              <div className="relative h-24 w-24">
+                <Image
+                  src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Left.png"
+                  alt="Button left"
+                  className="interactive object-contain"
+                  layout="fill"
+                />
+              </div>
+
               <CharacterCard
                 id={character.id}
                 name={character.name}
                 sound={character.sound[0]}
                 image={character.image}
               />
+
+              <div className="relative h-24 w-24">
+                <Image
+                  src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Right.png"
+                  alt="Button right"
+                  className="interactive object-contain"
+                  layout="fill"
+                />
+              </div>
             </div>
           </section>
         </>
@@ -143,4 +161,4 @@ const GameFeatures: React.FC = () => {
   );
 };
 
-export default GameFeatures;
+export default Features;

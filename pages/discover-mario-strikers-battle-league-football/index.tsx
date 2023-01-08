@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import GameFeatures from '../../components/sections/GameFeatures';
+import React, { useContext, useRef, useState } from 'react';
+import Features from '../../components/Features';
 import CharacterSelection from '../../components/character/CharacterSelection';
 import CommunityQuotes from '../../components/CommunityQuotes';
 import TheGallery from '../../components/TheGallery';
@@ -9,7 +9,7 @@ import useIsInView from '../../hooks/useIsInView';
 import Layout from '../../components/layout';
 import MiniAudioPlayer from '../../components/audio/MiniAudioPlayer';
 import FloatingActionBar from '../../components/floating-action-bar';
-import { AnimatePresence, motion, useAnimation } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import AppContext from '../../store/appContext';
 import { useRouter } from 'next/router';
 import characters from '../../data/characters';
@@ -88,7 +88,7 @@ const InfoPage: NextPage = () => {
 
         <TheGallery />
 
-        <GameFeatures />
+        <Features />
 
         <CommunityQuotes />
 
