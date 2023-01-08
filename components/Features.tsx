@@ -46,7 +46,7 @@ const Features: React.FC = () => {
               </Heading>
             </SpringBounceWhenInView>
 
-            <div className="m-auto flex max-w-xl items-center justify-center gap-12">
+            <div className="m-auto flex max-w-xl items-center justify-center gap-4 md:gap-12">
               <div className="relative h-24 w-24">
                 <Image
                   src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Left.png"

@@ -39,7 +39,7 @@ export default function CommunityQuotes() {
                       className={`flex items-center justify-center rounded-3xl bg-gray-100 themed:bg-accent-dark md:rounded-full ${
                         index % 2
                           ? 'order-2 text-left'
-                          : 'order-1 ml-auto text-right'
+                          : 'order-1 ml-auto text-left md:text-right'
                       }`}
                     >
                       <span className="mx-auto px-8 py-4 md:px-6">

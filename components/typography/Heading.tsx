@@ -14,7 +14,7 @@ const Heading: React.FC<HeadingProps> = ({
   className,
   onClick,
 }) => {
-  const classNames = `leading-1 break-normal ${className ? className : ''}`;
+  const classNames = `break-normal ${className ? className : ''}`;
 
   if (as === 'h1')
     return (
