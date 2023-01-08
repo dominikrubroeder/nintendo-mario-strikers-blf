@@ -121,7 +121,7 @@ const Features: React.FC = () => {
           </Heading>
         </SpringBounceWhenInView>
 
-        <div className="mx-auto flex justify-center gap-4">
+        <div className="mx-auto flex flex-wrap justify-center gap-4">
           {/* Check for items audio sounds */}
           {items.map(({ title, src }) => (
             <div key={title} className="relative h-32 w-32">

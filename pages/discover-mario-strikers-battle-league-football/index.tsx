@@ -11,7 +11,6 @@ import MiniAudioPlayer from '../../components/audio/MiniAudioPlayer';
 import FloatingActionBar from '../../components/floating-action-bar';
 import { AnimatePresence, motion } from 'framer-motion';
 import AppContext from '../../store/appContext';
-import { useRouter } from 'next/router';
 import characters from '../../data/characters';
 import AnimatedSoundbarsIcon from '../../components/AnimatedSoundbarsIcon';
 import {
@@ -24,11 +23,11 @@ import Image from 'next/image';
 import { soundtracks } from '../../data/audio';
 import SpringBounceWhenInView from '../../components/animation/SpringBounceWhenInView';
 import Accordion from '../../components/ui/Accordion/Accordion';
+import Button from '../../components/ui/Button';
 
 const InfoPage: NextPage = () => {
   const appCtx = useContext(AppContext);
   const audioCtx = useContext(AudioContext);
-  const router = useRouter();
   const character = characters.find(
     (character) => character.id === appCtx?.selectedCharacter
   );
@@ -374,14 +373,13 @@ const InfoPage: NextPage = () => {
               </motion.div>
             </AnimatePresence>
 
-            <div
-              className="whitespace-nowrap"
-              onClick={() =>
-                router.push('/buy-mario-strikers-battle-league-football')
-              }
+            <Button
+              variant="text"
+              href="/buy-mario-strikers-battle-league-football"
+              className="whitespace-nowrap p-0"
             >
               Vorbestellen
-            </div>
+            </Button>
 
             <AnimatePresence>
               <motion.div
