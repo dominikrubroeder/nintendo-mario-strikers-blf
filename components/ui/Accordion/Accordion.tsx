@@ -37,17 +37,15 @@ const Accordion: React.FC<AccordionProps> = ({
         {expanded && (
           <motion.div
             key="content"
-            initial={{ opacity: 0, height: 0 }}
+            initial={{ opacity: 0, height: '0' }}
             animate={{
               opacity: 1,
               height: 'auto',
             }}
             exit={{
               opacity: 1,
-            }}
-            transition={{
-              type: 'spring',
-              stiffness: 400,
+              height: '0',
+              overflow: 'hidden',
             }}
           >
             <div className="grid gap-4">

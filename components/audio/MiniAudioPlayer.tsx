@@ -121,6 +121,7 @@ const MiniAudioPlayer: React.FC = () => {
             exit={{
               opacity: 1,
               height: '0',
+              overflow: 'hidden',
             }}
           >
             <div className="mt-4 mb-4 text-xs">
