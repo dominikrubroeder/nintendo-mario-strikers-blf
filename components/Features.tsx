@@ -7,6 +7,7 @@ import CharacterCard from './character/CharacterCard';
 import characters from '../data/characters';
 import CharacterOverlay from './character/CharacterOverlay';
 import { items } from '../data/items';
+import Button from './ui/Button';
 
 const Features: React.FC = () => {
   const appCtx = useContext(AppContext);
@@ -49,6 +50,7 @@ const Features: React.FC = () => {
             {/**
              * List all characters as selectable teams
              * Link to character detail page
+             * When in view do/show "hover" interaction, scale up image
              */}
 
             <div className="m-auto max-w-xl gap-4 text-center md:flex md:items-center md:justify-center md:gap-12">
@@ -162,6 +164,9 @@ const Features: React.FC = () => {
           Gestalte die Ausrüstung deines Teams ganz nach deinem Geschmack. Sie
           verändert nicht nur das Aussehen, sondern auch Werte wie Tempo, Kraft
           und die Genauigkeit beim Passen.
+          <Button variant="contained" href="/characters/#gear/">
+            Erhalte Vorschau zur Ausrüstung
+          </Button>
         </p>
       </section>
     </>

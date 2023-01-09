@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { SwipeCarousel } from '../../components/SwipeCarousel/SwipeCarousel';
 import Layout from '../../components/layout';
 import Heading from '../../components/typography/Heading';
@@ -7,6 +7,8 @@ import Accordion from '../../components/ui/Accordion/Accordion';
 import characters from '../../data/characters';
 import { defaultSwipeCarouselImageData } from '../../data/image-data';
 import AppContext from '../../store/appContext';
+import Image from 'next/image';
+import Card from '../../components/ui/Card/Card';
 
 const CharacterPage: NextPage = () => {
   const appCtx = useContext(AppContext);
@@ -14,12 +16,17 @@ const CharacterPage: NextPage = () => {
   const characterData =
     characters.find((curCharacter) => curCharacter.id === character) ??
     characters[0];
+  const [zoomedIn, setZoomedIn] = useState(false);
 
   return (
-    <Layout pageTitle="Character" withBackButton>
+    <Layout pageTitle="Character">
       {/**
        * Push, "lift" the state up of current character to url to make it sharable
        * Include character statistic, game insights
+       *
+       * When switching theme / character through carousel, play character Sound
+       *
+       * Move playing character sound to shared context when character / theme changed / is changing?
        */}
 
       <div className="min-h-screen">
@@ -47,12 +54,37 @@ const CharacterPage: NextPage = () => {
               </div>
             </header>
 
-            <div className="mx-auto grid max-w-lg gap-16">
-              <div className="rounded-xl bg-gray-100 p-8 themed:bg-accent-dark">
+            <div className="grid gap-16">
+              <Card className="mx-auto w-full max-w-lg p-8">
                 <p>{characterData.baseText}</p>
-              </div>
+              </Card>
 
               <div>
+                <Heading
+                  as="h2"
+                  className="mx-auto mb-4 w-full max-w-lg font-bold uppercase"
+                >
+                  {characterData.name}&apos;s Ausrüstung und Statistik
+                </Heading>
+
+                <section
+                  className={`interactive ${zoomedIn ? 'px-64' : 'px-12'}`}
+                  onMouseUp={() =>
+                    setZoomedIn((previousState) => !previousState)
+                  }
+                >
+                  <Image
+                    src="/images/in-game/CI_NSwitch_MarioStrikersBLF_Screen_GearSettings_deDE.png"
+                    alt="NSwitch Mario Strikers Battle League Football gear setting preview"
+                    className="max-w-full rounded-3xl transition-all duration-300 hover:cursor-pointer"
+                    width="1920"
+                    height="1080"
+                    draggable={false}
+                  />
+                </section>
+              </div>
+
+              <div className="mx-auto w-full max-w-lg">
                 <Heading as="h2" className="mb-4 font-bold uppercase">
                   Wähle {characterData.name} und du bekommst:
                 </Heading>
@@ -85,7 +117,7 @@ const CharacterPage: NextPage = () => {
                 </div>
               </div>
 
-              <div>
+              <div className="mx-auto w-full max-w-lg">
                 <Heading as="h3" className="mb-4 font-bold uppercase">
                   {characterData.name}&apos;s Hyperstrike
                 </Heading>
@@ -93,7 +125,7 @@ const CharacterPage: NextPage = () => {
                 <div className="rounded-xl bg-gray-100 p-8 themed:bg-accent-dark">
                   {/* All characters hyper strike https://www.youtube.com/watch?v=v2zQbRfwSVs */}
                   <iframe
-                    className="w-full"
+                    className="w-full rounded-xl"
                     src={characterData.specialAbilityVideoURL}
                     title="YouTube video player"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
