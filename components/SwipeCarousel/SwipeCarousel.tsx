@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useState, FC } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { wrap } from 'popmotion';
-import { defaultSwipeCarouselImageData } from '../image-data';
-import CarouselArrow from '../CarouselArrow';
+import { defaultSwipeCarouselImageData } from '../../data/image-data';
+import Image from 'next/image';
 
 /** https://codesandbox.io/s/framer-motion-image-gallery-pqvx3?file=/src/index.tsx:106-128 */
 
@@ -91,8 +91,8 @@ export const SwipeCarousel: FC<SwipeCarousel> = ({
         >
           <motion.img
             src={images[imageIndex]}
-            width={750}
-            height={750}
+            width={480}
+            height={480}
             alt="Character carousel test"
             className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
           />
@@ -100,17 +100,27 @@ export const SwipeCarousel: FC<SwipeCarousel> = ({
       </AnimatePresence>
 
       <div
-        className="absolute right-4 top-1/2 z-50 cursor-pointer"
+        className="interactive absolute right-4 top-1/2 z-50 cursor-pointer"
         onClick={() => paginate(1)}
       >
-        <CarouselArrow />
+        <Image
+          src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Right.png"
+          width={90}
+          height={60}
+          alt="Carousel arrow right"
+        />
       </div>
 
       <div
-        className="absolute left-4 top-1/2 z-50 -scale-x-100 cursor-pointer"
+        className="interactive absolute left-4 top-1/2 z-50 cursor-pointer"
         onClick={() => paginate(-1)}
       >
-        <CarouselArrow />
+        <Image
+          src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Left.png"
+          width={90}
+          height={60}
+          alt="Carousel arrow right"
+        />
       </div>
     </div>
   );

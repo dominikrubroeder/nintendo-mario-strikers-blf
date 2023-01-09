@@ -1,14 +1,12 @@
-import { ArrowLongLeftIcon } from '@heroicons/react/24/solid';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import React from 'react';
-import { SwipeCarousel } from '../../components/carousel/SwipeCarousel/SwipeCarousel';
+import { SwipeCarousel } from '../../components/SwipeCarousel/SwipeCarousel';
 import Layout from '../../components/layout';
 import Heading from '../../components/typography/Heading';
 import Accordion from '../../components/ui/Accordion/Accordion';
-import Button from '../../components/ui/Button';
 import characters from '../../data/characters';
-import { defaultSwipeCarouselImageData } from '../../components/carousel/image-data';
+import { defaultSwipeCarouselImageData } from '../../data/image-data';
 
 const CharacterPage: NextPage = () => {
   const router = useRouter();
@@ -20,34 +18,37 @@ const CharacterPage: NextPage = () => {
   console.log(characterData);
 
   return (
-    <Layout pageTitle="Character" withHeader={false}>
+    <Layout pageTitle="Character">
       <div className="min-h-screen">
-        <header className="sticky top-0 w-full p-4">
-          <Button variant="text" onClick={() => router.back()}>
-            <ArrowLongLeftIcon className="h-5 text-white" />
-          </Button>
-        </header>
-
         <section className="gap gap-4">
-          <SwipeCarousel images={defaultSwipeCarouselImageData} />
+          <div className="py-12">
+            <SwipeCarousel images={defaultSwipeCarouselImageData} />
+          </div>
 
-          <div className="grid gap-2">
-            <div className="text-center">
-              <span className="rounded-xl bg-accent-dark py-2 px-3 text-center text-xs">
-                Team
-              </span>
-            </div>
-            <h1 className="text-center text-9xl font-bold uppercase">
-              {character}
-            </h1>
+          <div className="grid gap-16">
+            <header>
+              <div className="text-center">
+                <span className="rounded-xl bg-accent-dark py-2 px-3 text-center text-xs">
+                  Team
+                </span>
+              </div>
+
+              <h1 className="text-center text-9xl font-bold uppercase">
+                {character}
+              </h1>
+
+              <div className="mx-auto grid max-w-lg gap-16">
+                <p className="text-center text-xl">
+                  &ldquo;{characterData.teamText}&rdquo;
+                </p>
+              </div>
+            </header>
 
             <div className="mx-auto grid max-w-lg gap-16">
-              <p className="text-center text-xl">
-                &ldquo;{characterData.teamText}&rdquo;
-              </p>
-            </div>
+              <div className="rounded-xl bg-gray-100 p-8 themed:bg-accent-dark">
+                <p>{characterData.baseText}</p>
+              </div>
 
-            <div className="mx-auto grid max-w-lg gap-16">
               <div>
                 <Heading as="h2" className="mb-4 font-bold uppercase">
                   Wähle {characterData.name} und du bekommst:
@@ -95,16 +96,6 @@ const CharacterPage: NextPage = () => {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   ></iframe>
-                </div>
-              </div>
-
-              <div>
-                <Heading as="h3" className="mb-4 font-bold uppercase">
-                  Wer ist {characterData.name}
-                </Heading>
-
-                <div className="rounded-xl bg-gray-100 p-8 themed:bg-accent-dark">
-                  <p>{characterData.baseText}</p>
                 </div>
               </div>
             </div>
