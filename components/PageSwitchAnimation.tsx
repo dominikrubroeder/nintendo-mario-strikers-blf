@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NintendoSwitchClick from './animation/NintendoSwitchClick/NintendoSwitchClick';
 
-const TheLaunchScreen: React.FC = () => {
+const PageSwitchAnimation: React.FC = () => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -21,4 +21,4 @@ const TheLaunchScreen: React.FC = () => {
   ) : null;
 };
 
-export default TheLaunchScreen;
+export default PageSwitchAnimation;

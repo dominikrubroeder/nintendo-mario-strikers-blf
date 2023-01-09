@@ -1,12 +1,12 @@
 import { NextPage } from 'next';
 import Layout from '../components/layout';
 import Hero from '../components/Hero';
-import TheLaunchScreen from '../components/TheLaunchScreen';
+import PageSwitchAnimation from '../components/PageSwitchAnimation';
 
 const Home: NextPage = () => {
   return (
-    <Layout>
-      <TheLaunchScreen />
+    <Layout withFooter={false}>
+      <PageSwitchAnimation />
       <Hero />
     </Layout>
   );

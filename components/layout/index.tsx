@@ -14,12 +14,14 @@ interface LayoutProps {
   children: React.ReactNode;
   pageTitle?: string;
   withHeader?: boolean;
+  withFooter?: boolean;
 }
 
 const Layout: React.FC<LayoutProps> = ({
   children,
   pageTitle,
   withHeader = true,
+  withFooter = true,
 }) => {
   return (
     <>
@@ -49,7 +51,7 @@ const Layout: React.FC<LayoutProps> = ({
         {children}
       </motion.main>
 
-      <Footer />
+      {withFooter && <Footer />}
     </>
   );
 };

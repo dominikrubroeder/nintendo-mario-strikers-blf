@@ -1,14 +1,14 @@
 import { NextPage } from 'next';
 import React from 'react';
 import Layout from '../../components/layout';
-import TheLaunchScreen from '../../components/TheLaunchScreen';
+import PageSwitchAnimation from '../../components/PageSwitchAnimation';
 import Card from '../../components/ui/Card/Card';
 import Image from 'next/image';
 
 const Checkout: NextPage = () => {
   return (
     <Layout pageTitle="Checkout">
-      <TheLaunchScreen />
+      <PageSwitchAnimation />
 
       <section className="mx-auto max-w-screen-xl px-4">
         <form className="grid gap-4 md:grid-cols-2">

@@ -7,13 +7,12 @@ import ReleaseCountdown from './ReleaseCountdown';
 import GameTrailer from './GameTrailer';
 import Heading from './typography/Heading';
 import { ArrowRightIcon, PlayIcon } from '@heroicons/react/24/solid';
-import BallLightTop from './svg/BallLightTop';
 
 const Hero: React.FC = () => {
   const [showYouTubeGameTrailer, setShowYoutubeGameTrailer] = useState(false);
 
   return (
-    <section className="grid items-center justify-center p-4 md:h-[95vh] md:overflow-hidden">
+    <section className="min-h-screen-header grid items-center justify-center p-4">
       {showYouTubeGameTrailer && (
         <GameTrailer closeOverlay={() => setShowYoutubeGameTrailer(false)} />
       )}
