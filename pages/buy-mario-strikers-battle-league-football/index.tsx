@@ -13,10 +13,9 @@ import Layout from '../../components/layout';
 const DetailPage: NextPage = () => {
   const appCtx = useContext(AppContext);
   const [showStickyBuyBar, setShowStickyBuyBar] = useState(false);
-  const [showFeatures, setShowFeatures] = useState(false);
 
   return (
-    <Layout pageTitle="Buy" withBackButton>
+    <Layout pageTitle="Buy">
       <BuyConfiguration setShowStickyBuyBar={setShowStickyBuyBar} />
 
       <section className="mt-20">

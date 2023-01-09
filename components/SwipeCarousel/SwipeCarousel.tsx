@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { useState, FC } from 'react';
+import { useState, FC, useEffect, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { wrap } from 'popmotion';
 import { defaultSwipeCarouselImageData } from '../../data/image-data';
 import Image from 'next/image';
+import AppContext from '../../store/appContext';
+import characters from '../../data/characters';
 
 /** https://codesandbox.io/s/framer-motion-image-gallery-pqvx3?file=/src/index.tsx:106-128 */
 
@@ -40,16 +42,19 @@ const swipePower = (offset: number, velocity: number) => {
   return Math.abs(offset) * velocity;
 };
 
-interface SwipeCarousel {
+interface SwipeCarouselProps {
   images: string[];
 }
 
-export const SwipeCarousel: FC<SwipeCarousel> = ({
+export const SwipeCarousel: FC<SwipeCarouselProps> = ({
   images = defaultSwipeCarouselImageData,
 }) => {
+  const appCtx = useContext(AppContext);
   const [[page, direction], setPage] = useState([0, 0]);
 
-  console.log(images);
+  useEffect(() => {
+    appCtx?.setCharacter(characters[page].id);
+  }, [page, appCtx]);
 
   // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
   // then wrap that within 0-2 to find our image ID in the array below. By passing an

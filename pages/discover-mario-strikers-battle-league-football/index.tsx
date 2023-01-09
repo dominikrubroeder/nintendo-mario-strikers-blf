@@ -221,8 +221,15 @@ const InfoPage: NextPage = () => {
       </section>
 
       {/**
+       * Hide on scroll down?
        * How to trigger animations when scroll direction changes
        * https://www.youtube.com/watch?v=SLOBjhSJCi0
+       *
+       * Audio needs to be shared app globally to function page wide when switching pages
+       *
+       * Move this component to shared layout?
+       *
+       * Integrate back button into action bar?
        */}
 
       {!miniAudioPlayerIsOnScreen && (

@@ -1,24 +1,27 @@
 import { NextPage } from 'next';
-import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useContext } from 'react';
 import { SwipeCarousel } from '../../components/SwipeCarousel/SwipeCarousel';
 import Layout from '../../components/layout';
 import Heading from '../../components/typography/Heading';
 import Accordion from '../../components/ui/Accordion/Accordion';
 import characters from '../../data/characters';
 import { defaultSwipeCarouselImageData } from '../../data/image-data';
+import AppContext from '../../store/appContext';
 
 const CharacterPage: NextPage = () => {
-  const router = useRouter();
-  const { character } = router.query;
+  const appCtx = useContext(AppContext);
+  const character = appCtx?.selectedCharacter;
   const characterData =
     characters.find((curCharacter) => curCharacter.id === character) ??
     characters[0];
 
-  console.log(characterData);
-
   return (
-    <Layout pageTitle="Character">
+    <Layout pageTitle="Character" withBackButton>
+      {/**
+       * Push, "lift" the state up of current character to url to make it sharable
+       * Include character statistic, game insights
+       */}
+
       <div className="min-h-screen">
         <section className="gap gap-4">
           <div className="py-12">
