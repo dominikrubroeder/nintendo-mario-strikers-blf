@@ -37,6 +37,10 @@ const InfoPage: NextPage = () => {
   const [showSoundtracksMenu, setShowSoundtracksMenu] = useState(false);
   const [playing, setPlaying] = useState(true);
 
+  const currentSoundtrack = soundtracks.find(
+    (soundtrack) => soundtrack.src === audioCtx?.soundtrack
+  );
+
   {
     /* const playSoundtrackHandler = () => {
     if (currentSoundtrack) {
@@ -249,23 +253,24 @@ const InfoPage: NextPage = () => {
                       <motion.div
                         key="characterMenu"
                         initial={{
-                          borderRadius: '50%',
                           opacity: 0,
                           visibility: 'hidden',
                           y: 0,
                         }}
                         animate={{
-                          borderRadius: '1rem',
                           opacity: 1,
                           visibility: 'visible',
                           y: -64,
                         }}
                         exit={{
-                          borderRadius: '50%',
                           opacity: 0,
+                          height: 0,
+                          overflow: 'hidden',
+                          scale: 0,
                           y: 0,
+                          zIndex: -1,
                         }}
-                        className="absolute bottom-0 bg-accent-dark p-4"
+                        className="absolute bottom-0 rounded-2xl bg-accent-dark p-4"
                       >
                         <ul className="grid h-64 gap-4 overflow-hidden overflow-y-auto">
                           <li className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full bg-accent p-2 font-bold uppercase transition">
@@ -310,7 +315,7 @@ const InfoPage: NextPage = () => {
             <AnimatePresence>
               <motion.div
                 key="soundtracksControl"
-                className="absolute -z-10 flex h-12 w-12 items-center justify-center rounded-full bg-accent-dark"
+                className="absolute -z-10 flex h-12 w-12 items-center justify-center rounded-full bg-accent themed:bg-accent-dark"
                 initial={{ x: 0, scale: 0.3 }}
                 animate={{ x: -96, scale: 1 }}
                 exit={{ x: 0, scale: 0.3 }}
@@ -324,35 +329,38 @@ const InfoPage: NextPage = () => {
                   setShowSoundtracksMenu((previousState) => !previousState)
                 }
               >
-                <AnimatedSoundbarsIcon />
+                <AnimatedSoundbarsIcon className="bg-white" />
 
                 <AnimatePresence>
                   {showSoundtracksMenu && !miniAudioPlayerIsOnScreen && (
                     <motion.div
                       key="soundtracksMenu"
                       initial={{
-                        borderRadius: '50%',
                         opacity: 0,
                         visibility: 'hidden',
                         y: 0,
                       }}
                       animate={{
-                        borderRadius: '1rem',
                         opacity: 1,
                         visibility: 'visible',
                         y: -64,
                       }}
                       exit={{
-                        borderRadius: '50%',
                         opacity: 0,
+                        height: 0,
+                        overflow: 'hidden',
+                        scale: 0,
                         y: 0,
+                        zIndex: -1,
                       }}
-                      className="absolute bottom-0 bg-accent-dark p-4"
+                      className="absolute bottom-0 rounded-3xl bg-accent-dark p-4"
                     >
-                      <ul className="grid h-64 gap-4 overflow-hidden overflow-y-auto">
+                      <ul className="min-h-64 grid gap-2 overflow-hidden overflow-y-auto text-white">
                         <li className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full bg-accent p-2 font-bold uppercase transition">
                           <SpeakerWaveIcon className="h-4 w-4 text-white" />
-                          <span>{audioCtx?.soundtrack}</span>
+                          <span>
+                            {currentSoundtrack?.title ?? 'Current soundtrack'}
+                          </span>
                         </li>
 
                         <li>
@@ -378,7 +386,7 @@ const InfoPage: NextPage = () => {
             <Button
               variant="text"
               href="/buy-mario-strikers-battle-league-football"
-              className="whitespace-nowrap p-0"
+              className="whitespace-nowrap p-0 text-white"
             >
               Vorbestellen
             </Button>

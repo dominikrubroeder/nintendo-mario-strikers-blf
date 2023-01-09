@@ -11,7 +11,7 @@ const FloatingActionBar: React.FC<FloatingActionBarProps> = ({ children }) => {
       <div className="fixed left-0 bottom-4 z-50 flex w-full items-center justify-center gap-4 transition">
         <motion.div
           key="actionBar"
-          className="cursor-pointer rounded-full bg-accent-dark p-4 themed:bg-signal"
+          className="cursor-pointer rounded-full bg-accent p-4 themed:bg-signal"
           initial={{ y: 100 }}
           animate={{ y: 0 }}
           exit={{ y: -100 }}
