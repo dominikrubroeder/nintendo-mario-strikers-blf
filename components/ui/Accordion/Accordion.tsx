@@ -22,7 +22,7 @@ const Accordion: React.FC<AccordionProps> = ({
 
   return (
     <div
-      className={`grid min-w-[12rem] gap-2 bg-accent-soft py-3 px-4 themed:bg-accent-dark ${
+      className={`grid min-w-[12rem] gap-2 bg-gray-100 py-3 px-4 themed:bg-accent-dark ${
         expanded ? 'rounded-xl' : 'interactive--suttle rounded-3xl'
       } ${className ? className : ''}`}
     >

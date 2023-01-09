@@ -68,7 +68,7 @@ const MiniAudioPlayer: React.FC = () => {
 
   return (
     <div
-      className={`z-40 w-56 bg-accent-soft px-4 py-3 transition themed:bg-accent-dark ${
+      className={`z-40 w-56 bg-gray-100 px-4 py-3 transition themed:bg-accent-dark ${
         showSoundtracks ? 'rounded-xl' : 'interactive rounded-3xl'
       }`}
     >

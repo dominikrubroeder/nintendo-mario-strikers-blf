@@ -25,7 +25,7 @@ const BuyContainer: React.FC<BuyContainerProps> = ({ setShowStickyBuyBar }) => {
   return (
     <SpringBounceWhenInView>
       <div
-        className="grid gap-2 rounded-3xl bg-slate-100 p-8 themed:bg-accent-dark"
+        className="flex justify-between gap-2 rounded-3xl bg-gray-100 p-8 themed:bg-accent-dark"
         ref={buyBox}
       >
         {appCtx?.buyable && (
@@ -40,6 +40,7 @@ const BuyContainer: React.FC<BuyContainerProps> = ({ setShowStickyBuyBar }) => {
           disabled={appCtx?.buyable ? false : true}
           href="/checkout"
           sound="coin"
+          className="justify-center"
         >
           Jetzt vorbestellen
         </Button>

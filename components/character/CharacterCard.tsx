@@ -29,7 +29,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
 
   return (
     <div
-      className={`interactive group relative flex h-96 cursor-pointer items-center justify-center rounded-3xl transition-all hover:border-gray-300 hover:border-accent-dark hover:bg-accent-soft themed:hover:bg-accent-dark ${
+      className={`interactive group relative flex h-96 cursor-pointer items-center justify-center rounded-3xl transition-all hover:border-gray-300 hover:border-accent-dark hover:bg-gray-100 themed:hover:bg-accent-dark ${
         appCtx?.selectedCharacter === id
           ? 'bg-accent themed:bg-accent-dark'
           : ''
