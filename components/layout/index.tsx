@@ -15,6 +15,7 @@ interface LayoutProps {
   pageTitle?: string;
   withHeader?: boolean;
   withFooter?: boolean;
+  withBackButton?: boolean;
 }
 
 const Layout: React.FC<LayoutProps> = ({
@@ -22,6 +23,7 @@ const Layout: React.FC<LayoutProps> = ({
   pageTitle,
   withHeader = true,
   withFooter = true,
+  withBackButton = false,
 }) => {
   return (
     <>
@@ -38,7 +40,7 @@ const Layout: React.FC<LayoutProps> = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {withHeader && <Header />}
+      {withHeader && <Header withBackButton={withBackButton} />}
 
       <motion.main
         variants={variants} // Pass the variant object into Framer Motion

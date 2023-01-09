@@ -46,6 +46,11 @@ const Features: React.FC = () => {
               </Heading>
             </SpringBounceWhenInView>
 
+            {/**
+             * List all characters as selectable teams
+             * Link to character detail page
+             */}
+
             <div className="m-auto max-w-xl gap-4 text-center md:flex md:items-center md:justify-center md:gap-12">
               <div className="mb-4 block md:order-2 md:mb-0 md:flex">
                 <CharacterCard

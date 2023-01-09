@@ -16,7 +16,7 @@ const DetailPage: NextPage = () => {
   const [showFeatures, setShowFeatures] = useState(false);
 
   return (
-    <Layout pageTitle="Buy">
+    <Layout pageTitle="Buy" withBackButton>
       <BuyConfiguration setShowStickyBuyBar={setShowStickyBuyBar} />
 
       <section className="mt-20">

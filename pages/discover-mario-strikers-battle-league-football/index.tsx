@@ -220,6 +220,11 @@ const InfoPage: NextPage = () => {
         </section>
       </section>
 
+      {/**
+       * How to trigger animations when scroll direction changes
+       * https://www.youtube.com/watch?v=SLOBjhSJCi0
+       */}
+
       {!miniAudioPlayerIsOnScreen && (
         <FloatingActionBar>
           <div className="flex items-center justify-center gap-4">

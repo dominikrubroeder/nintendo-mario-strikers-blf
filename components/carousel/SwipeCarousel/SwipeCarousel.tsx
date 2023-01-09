@@ -3,7 +3,6 @@ import { useState, FC } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { wrap } from 'popmotion';
 import { defaultSwipeCarouselImageData } from '../image-data';
-import Image from 'next/image';
 import CarouselArrow from '../CarouselArrow';
 
 /** https://codesandbox.io/s/framer-motion-image-gallery-pqvx3?file=/src/index.tsx:106-128 */
