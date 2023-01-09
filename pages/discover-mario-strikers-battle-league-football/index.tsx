@@ -1,14 +1,14 @@
 import { NextPage } from 'next';
 import React, { useContext, useRef, useState } from 'react';
 import Features from '../../components/Features';
-import CharacterSelection from '../../components/character/CharacterSelection';
+import CharacterSelection from '../../components/CharacterSelection';
 import CommunityQuotes from '../../components/CommunityQuotes';
 import TheGallery from '../../components/TheGallery';
-import Heading from '../../components/typography/Heading';
+import Heading from '../../components/Heading';
 import useIsInView from '../../hooks/useIsInView';
 import Layout from '../../components/layout';
-import MiniAudioPlayer from '../../components/audio/MiniAudioPlayer';
-import FloatingActionBar from '../../components/floating-action-bar';
+import MiniAudioPlayer from '../../components/MiniAudioPlayer';
+import FloatingActionBar from '../../components/FloatingActionBar';
 import { AnimatePresence, motion } from 'framer-motion';
 import AppContext from '../../store/appContext';
 import characters from '../../data/characters';
@@ -22,7 +22,7 @@ import AudioContext from '../../store/audioContext';
 import Image from 'next/image';
 import { soundtracks } from '../../data/audio';
 import SpringBounceWhenInView from '../../components/animation/SpringBounceWhenInView';
-import Accordion from '../../components/ui/Accordion/Accordion';
+import Accordion from '../../components/ui/Accordion';
 import Button from '../../components/ui/Button';
 
 const InfoPage: NextPage = () => {

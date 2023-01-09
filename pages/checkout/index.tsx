@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import React from 'react';
 import Layout from '../../components/layout';
 import PageSwitchAnimation from '../../components/PageSwitchAnimation';
-import Card from '../../components/ui/Card/Card';
+import Card from '../../components/ui/Card';
 import Image from 'next/image';
 
 const Checkout: NextPage = () => {

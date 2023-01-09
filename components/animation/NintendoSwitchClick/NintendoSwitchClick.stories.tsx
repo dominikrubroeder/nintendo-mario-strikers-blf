@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import NintendoSwitchClick from './NintendoSwitchClick';
+import NintendoSwitchClick from '.';
 import { defaultThemeOption, themeOptions } from '../../../data/storybook';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export

@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import AppContext from '../../store/appContext';
-import OverlayBackground from '../OverlayBackground';
-import characters from '../../data/characters';
-import Button from '../ui/Button';
-import Heading from '../typography/Heading';
+import AppContext from '../store/appContext';
+import OverlayBackground from './OverlayBackground';
+import characters from '../data/characters';
+import Button from './ui/Button';
+import Heading from './Heading';
 import Image from 'next/image';
-import Accordion from '../ui/Accordion/Accordion';
+import Accordion from './ui/Accordion';
 
 interface CharacterOverlayProps {
   onCloseOverlay: () => void;

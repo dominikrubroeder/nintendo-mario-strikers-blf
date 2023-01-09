@@ -6,9 +6,9 @@ import {
   PauseIcon,
   ChevronDownIcon,
 } from '@heroicons/react/24/solid';
-import AnimatedSoundbarsIcon from '../AnimatedSoundbarsIcon';
-import AudioContext from '../../store/audioContext';
-import { Soundtrack, soundtracks } from '../../data/audio';
+import AnimatedSoundbarsIcon from './AnimatedSoundbarsIcon';
+import AudioContext from '../store/audioContext';
+import { Soundtrack, soundtracks } from '../data/audio';
 
 const MiniAudioPlayer: React.FC = () => {
   const audioCtx = useContext(AudioContext);

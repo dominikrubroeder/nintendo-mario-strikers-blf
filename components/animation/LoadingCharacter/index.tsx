@@ -1,4 +1,5 @@
 import { AnimatePresence, motion, useAnimation } from 'framer-motion';
+import Image from 'next/image';
 import React from 'react';
 
 const LoadingCharacter: React.FC = () => {
@@ -39,10 +40,11 @@ const LoadingCharacter: React.FC = () => {
           animate={controls1}
         ></motion.div>
 
-        <img
+        <Image
           src="/images/characters/NSwitch-character-sketch-mario.png"
           alt="Character image animation"
-          className="h-64"
+          width="256"
+          height="256"
         />
       </motion.div>
     </AnimatePresence>

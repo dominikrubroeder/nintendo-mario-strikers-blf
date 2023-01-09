@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { ChevronRightIcon } from '@heroicons/react/24/solid';
 import { useRouter } from 'next/router';
-import Card from '../Card/Card';
+import Card from '../Card';
 
 interface SelectProps {
   options: {

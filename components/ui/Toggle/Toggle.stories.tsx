@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Toggle from './Toggle';
+import Toggle from '.';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export

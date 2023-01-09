@@ -1,14 +1,14 @@
 import { NextPage } from 'next';
 import React, { useContext, useState } from 'react';
-import { SwipeCarousel } from '../../components/SwipeCarousel/SwipeCarousel';
+import { SwipeCarousel } from '../../components/SwipeCarousel';
 import Layout from '../../components/layout';
-import Heading from '../../components/typography/Heading';
-import Accordion from '../../components/ui/Accordion/Accordion';
+import Heading from '../../components/Heading';
+import Accordion from '../../components/ui/Accordion';
 import characters from '../../data/characters';
 import { defaultSwipeCarouselImageData } from '../../data/image-data';
 import AppContext from '../../store/appContext';
 import Image from 'next/image';
-import Card from '../../components/ui/Card/Card';
+import Card from '../../components/ui/Card';
 
 const CharacterPage: NextPage = () => {
   const appCtx = useContext(AppContext);

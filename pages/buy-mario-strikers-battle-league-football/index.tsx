@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import { useContext, useState } from 'react';
 import AppContext from '../../store/appContext';
-import BuyConfiguration from '../../components/product-detail/BuyConfiguration';
+import BuyConfiguration from '../../components/BuyConfiguration';
 import TheStickyBuyBar from '../../components/TheStickyBuyBar';
 import { Editions } from '../../data/editions';
 import Image from 'next/image';

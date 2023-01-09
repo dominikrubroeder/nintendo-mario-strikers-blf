@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import NintendoSwitchClick from './animation/NintendoSwitchClick/NintendoSwitchClick';
+import NintendoSwitchClick from './animation/NintendoSwitchClick';
 
 const PageSwitchAnimation: React.FC = () => {
   const [mounted, setMounted] = useState(false);

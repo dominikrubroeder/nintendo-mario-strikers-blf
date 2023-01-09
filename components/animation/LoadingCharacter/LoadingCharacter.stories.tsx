@@ -1,8 +1,8 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import LoadingCharacter from './LoadingCharacter';
-import Card from '../../ui/Card/Card';
+import LoadingCharacter from '.';
+import Card from '../../ui/Card';
 import { defaultThemeOption, themeOptions } from '../../../data/storybook';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export

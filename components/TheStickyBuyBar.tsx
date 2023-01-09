@@ -8,7 +8,7 @@ import {
   ChevronDoubleDownIcon,
 } from '@heroicons/react/24/outline';
 import { useRouter } from 'next/router';
-import Heading from './typography/Heading';
+import Heading from './Heading';
 
 interface TheStickyBuyBarProps {
   price?: number;
