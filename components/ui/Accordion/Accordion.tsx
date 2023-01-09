@@ -22,12 +22,12 @@ const Accordion: React.FC<AccordionProps> = ({
 
   return (
     <div
-      className={`grid min-w-[12rem] gap-2 bg-gray-100 py-3 px-4 themed:bg-accent-dark ${
+      className={`min-w-[12rem] bg-gray-100 themed:bg-accent-dark ${
         expanded ? 'rounded-xl' : 'interactive--suttle rounded-3xl'
       } ${className ? className : ''}`}
     >
       <header
-        className="cursor-pointer themed:text-white"
+        className="cursor-pointer py-3 px-4 themed:text-white"
         onClick={() => setExpanded((previousState) => !previousState)}
       >
         {title}
@@ -48,7 +48,7 @@ const Accordion: React.FC<AccordionProps> = ({
               overflow: 'hidden',
             }}
           >
-            <div className="grid gap-4">
+            <div className="grid gap-4 py-3 px-4">
               <div>{children}</div>
 
               <footer className="flex h-10 items-end justify-end">

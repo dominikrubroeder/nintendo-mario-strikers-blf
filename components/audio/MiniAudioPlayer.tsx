@@ -68,11 +68,11 @@ const MiniAudioPlayer: React.FC = () => {
 
   return (
     <div
-      className={`z-40 w-56 bg-gray-100 px-4 py-3 transition themed:bg-accent-dark ${
+      className={`z-40 w-56 bg-gray-100 themed:bg-accent-dark ${
         showSoundtracks ? 'rounded-xl' : 'interactive rounded-3xl'
       }`}
     >
-      <header className="flex cursor-pointer items-center justify-between gap-2 text-xs">
+      <header className="flex cursor-pointer items-center justify-between gap-2 px-4 py-3 text-xs">
         {currentSoundtrack && (
           <audio src={currentSoundtrack.src} ref={audioRef}></audio>
         )}
@@ -90,10 +90,7 @@ const MiniAudioPlayer: React.FC = () => {
           {playing && !showSoundtracks && <AnimatedSoundbarsIcon />}
 
           {!playing && (
-            <div
-              className={playPauseButtonClasses}
-              onClick={playSoundtrackHandler}
-            >
+            <div onClick={playSoundtrackHandler}>
               <PlayIcon className="icon text-accent themed:text-white" />
             </div>
           )}
@@ -124,37 +121,39 @@ const MiniAudioPlayer: React.FC = () => {
               overflow: 'hidden',
             }}
           >
-            <div className="mt-4 mb-4 text-xs">
-              <header className="mb-2">Mario Strikers: BLF</header>
+            <div className="grid gap-4">
+              <div className="px-4 text-xs">
+                <header className="mb-2">Mario Strikers: BLF</header>
 
-              <ul className="grid gap-2">
-                {soundtracks.map((soundtrack) => (
-                  <li
-                    key={soundtrack.title}
-                    className="flex cursor-pointer items-center justify-between gap-1"
-                    onClick={(e) => playPauseSoundtrackHandler(e, soundtrack)}
-                  >
-                    <span className="flex items-center gap-1">
-                      <SpeakerWaveIcon className="h-3 w-3 text-accent themed:text-white" />
-                      {soundtrack.title}
-                    </span>
+                <ul className="grid gap-2">
+                  {soundtracks.map((soundtrack) => (
+                    <li
+                      key={soundtrack.title}
+                      className="flex cursor-pointer items-center justify-between gap-1"
+                      onClick={(e) => playPauseSoundtrackHandler(e, soundtrack)}
+                    >
+                      <span className="flex items-center gap-1">
+                        <SpeakerWaveIcon className="h-3 w-3 text-accent themed:text-white" />
+                        {soundtrack.title}
+                      </span>
 
-                    {soundtrack.title === currentSoundtrack?.title &&
-                      playing && <AnimatedSoundbarsIcon />}
+                      {soundtrack.title === currentSoundtrack?.title &&
+                        playing && <AnimatedSoundbarsIcon />}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="mb-4 px-4 text-xs">
+                <header className="mb-2">Nintendo classic</header>
+
+                <ul className="grid gap-2">
+                  <li className="flex cursor-pointer items-center gap-1">
+                    <SpeakerWaveIcon className="h-3 w-3 text-accent themed:text-white" />
+                    Mario theme
                   </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="text-xs">
-              <header className="mb-2">Nintendo classic</header>
-
-              <ul className="grid gap-2">
-                <li className="flex cursor-pointer items-center gap-1">
-                  <SpeakerWaveIcon className="h-3 w-3 text-accent themed:text-white" />
-                  Mario theme
-                </li>
-              </ul>
+                </ul>
+              </div>
             </div>
           </motion.div>
         )}
