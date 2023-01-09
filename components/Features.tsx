@@ -25,7 +25,7 @@ const Features: React.FC = () => {
           </Heading>
         </SpringBounceWhenInView>
 
-        <p className="mx-auto max-w-md">
+        <p className="mx-auto max-w-md px-4 md:px-0">
           Das neueste Spiel der Mario Strikers-Reihe erscheint für Nintendo
           Switch!
         </p>
@@ -46,8 +46,17 @@ const Features: React.FC = () => {
               </Heading>
             </SpringBounceWhenInView>
 
-            <div className="m-auto flex max-w-xl items-center justify-center gap-4 md:gap-12">
-              <div className="relative h-24 w-24">
+            <div className="m-auto max-w-xl gap-4 text-center md:flex md:items-center md:justify-center md:gap-12">
+              <div className="mb-4 block md:order-2 md:mb-0 md:flex">
+                <CharacterCard
+                  id={character.id}
+                  name={character.name}
+                  sound={character.sound[0]}
+                  image={character.image}
+                />
+              </div>
+
+              <div className="relative mr-4 inline-block h-16 w-16 md:order-1 md:mr-0 md:h-24 md:w-24">
                 <Image
                   src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Left.png"
                   alt="Button left"
@@ -56,14 +65,7 @@ const Features: React.FC = () => {
                 />
               </div>
 
-              <CharacterCard
-                id={character.id}
-                name={character.name}
-                sound={character.sound[0]}
-                image={character.image}
-              />
-
-              <div className="relative h-24 w-24">
+              <div className="relative inline-block h-16 w-16 md:order-3 md:h-24 md:w-24">
                 <Image
                   src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Right.png"
                   alt="Button right"
@@ -83,7 +85,7 @@ const Features: React.FC = () => {
           </Heading>
         </SpringBounceWhenInView>
 
-        <p className="mx-auto max-w-md">
+        <p className="mx-auto max-w-md px-4 md:px-0">
           Mach dich bereit für das 5-gegen-5-Spiel Strike – Wie Fußball, aber
           mit deutlich härterer Offensive! Schieß Tore, indem du dribbelst und
           deinen Teamkameraden die Bälle zuspielst.
@@ -106,7 +108,7 @@ const Features: React.FC = () => {
           </Heading>
         </SpringBounceWhenInView>
 
-        <p className="mx-auto max-w-md">
+        <p className="mx-auto max-w-md px-4 md:px-0">
           Bis zu acht Spieler, vier in jedem Team, können auf einer Nintendo
           Switch-Konsole* gegeneinander spielen. Zusätzlich zu den Einzelspielen
           wird es einen Online-Club-Modus** geben – Jedem Club können bis zu 20
@@ -135,7 +137,7 @@ const Features: React.FC = () => {
           ))}
         </div>
 
-        <p className="mx-auto max-w-md">
+        <p className="mx-auto max-w-md px-4 md:px-0">
           Benutze Tacklings, Items und einzigartige Fähigkeiten zum Auslösen von
           Spezialschüssen. Sammle eine der Hyperkugeln auf dem Spielfeld ein und
           lade sie auf, während deine Gegner abgelenkt sind, um den Hyperschuss
@@ -151,7 +153,7 @@ const Features: React.FC = () => {
           </Heading>
         </SpringBounceWhenInView>
 
-        <p className="mx-auto max-w-md">
+        <p className="mx-auto max-w-md px-4 md:px-0">
           Gestalte die Ausrüstung deines Teams ganz nach deinem Geschmack. Sie
           verändert nicht nur das Aussehen, sondern auch Werte wie Tempo, Kraft
           und die Genauigkeit beim Passen.

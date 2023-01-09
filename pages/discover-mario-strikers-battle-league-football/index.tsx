@@ -56,7 +56,7 @@ const InfoPage: NextPage = () => {
   }; */
   }
 
-  const playPauseButtonClasses = `relative before:content-[''] before:w-5 before:h-5 before:bg-accent themed:before:bg-white/20 themed:bg-accent-dark themed:before:bg-white/20 before:rounded-full before:block before:absolute before:inset-0 before:w-[1rem] before:z-0 before:h-[1rem] after:content-[''] after:w-5 after:h-5 after:bg-accent themed:after:bg-white/20 themed:after:bg-white/20 after:rounded-full after:block after:absolute after:inset-0 after:w-[1rem] after:z-0 after:h-[1rem] ${
+  const playPauseButtonClasses = `relative before:content-[''] before:w-5 before:h-5 before:bg-white/20 before:rounded-full before:block before:absolute before:inset-0 before:w-[1rem] before:z-0 before:h-[1rem] after:content-[''] after:w-5 after:h-5 after:bg-white/20 after:rounded-full after:block after:absolute after:inset-0 after:w-[1rem] after:z-0 after:h-[1rem] ${
     playing
       ? 'before:animate-audioWave1 after:animate-audioWave2'
       : 'after:content-none before:content-none'
@@ -64,8 +64,8 @@ const InfoPage: NextPage = () => {
 
   return (
     <Layout pageTitle="Discover">
-      <section className="grid gap-32">
-        <section className="m-auto w-full max-w-screen-xl px-4">
+      <section className="mt-8 grid gap-32">
+        <section className="m-auto grid w-full max-w-screen-xl gap-12 px-4">
           <Heading as="h2" className="headline--gradient">
             Wähle dein Team
           </Heading>
@@ -219,91 +219,93 @@ const InfoPage: NextPage = () => {
       {!miniAudioPlayerIsOnScreen && (
         <FloatingActionBar>
           <div className="flex items-center justify-center gap-4">
-            <AnimatePresence>
-              <motion.div
-                key="characterControl"
-                className="leading-1 absolute -z-10 flex h-12 w-12 items-center justify-center rounded-full bg-accent-dark"
-                initial={{ x: 0, scale: 0.3 }}
-                animate={{ x: -156, scale: 1 }}
-                exit={{ x: 0, scale: 0.3 }}
-                transition={{
-                  type: 'spring',
-                  damping: 20,
-                  stiffness: 400,
-                  delay: 1,
-                }}
-                onClick={() =>
-                  setShowCharacterMenu((previousState) => !previousState)
-                }
-              >
-                <Image
-                  src={`/images/characters/NSwitch-character-sketch-${character?.id}.png`}
-                  alt={`${character?.name} team thumbnail`}
-                  width="32"
-                  height="32"
-                />
+            {character && (
+              <AnimatePresence>
+                <motion.div
+                  key="characterControl"
+                  className="leading-1 absolute -z-10 flex h-12 w-12 items-center justify-center rounded-full bg-accent-dark"
+                  initial={{ x: 0, scale: 0.3 }}
+                  animate={{ x: -156, scale: 1 }}
+                  exit={{ x: 0, scale: 0.3 }}
+                  transition={{
+                    type: 'spring',
+                    damping: 20,
+                    stiffness: 400,
+                    delay: 1,
+                  }}
+                  onClick={() =>
+                    setShowCharacterMenu((previousState) => !previousState)
+                  }
+                >
+                  <Image
+                    src={`/images/characters/NSwitch-character-sketch-${character?.id}.png`}
+                    alt={`${character?.name} team thumbnail`}
+                    width="32"
+                    height="32"
+                  />
 
-                <AnimatePresence>
-                  {showCharacterMenu && !miniAudioPlayerIsOnScreen && (
-                    <motion.div
-                      key="characterMenu"
-                      initial={{
-                        borderRadius: '50%',
-                        opacity: 0,
-                        visibility: 'hidden',
-                        y: 0,
-                      }}
-                      animate={{
-                        borderRadius: '1rem',
-                        opacity: 1,
-                        visibility: 'visible',
-                        y: -64,
-                      }}
-                      exit={{
-                        borderRadius: '50%',
-                        opacity: 0,
-                        y: 0,
-                      }}
-                      className="absolute bottom-0 bg-accent-dark p-4"
-                    >
-                      <ul className="grid h-64 gap-4 overflow-hidden overflow-y-auto">
-                        <li className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full bg-accent p-2 font-bold uppercase transition">
-                          <Image
-                            src={`/images/characters/NSwitch-character-sketch-${character?.id}.png`}
-                            width="24"
-                            height="24"
-                            alt={`${character?.name} thumbnail`}
-                          />
-
-                          <span>{character?.name}</span>
-                        </li>
-
-                        <li>
-                          <hr className="border-accent px-4" />
-                        </li>
-
-                        {characters.map((character) => (
-                          <li
-                            key={character.id}
-                            className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full p-2 font-bold uppercase transition hover:bg-accent"
-                            onClick={() => appCtx?.setCharacter(character.id)}
-                          >
+                  <AnimatePresence>
+                    {showCharacterMenu && !miniAudioPlayerIsOnScreen && (
+                      <motion.div
+                        key="characterMenu"
+                        initial={{
+                          borderRadius: '50%',
+                          opacity: 0,
+                          visibility: 'hidden',
+                          y: 0,
+                        }}
+                        animate={{
+                          borderRadius: '1rem',
+                          opacity: 1,
+                          visibility: 'visible',
+                          y: -64,
+                        }}
+                        exit={{
+                          borderRadius: '50%',
+                          opacity: 0,
+                          y: 0,
+                        }}
+                        className="absolute bottom-0 bg-accent-dark p-4"
+                      >
+                        <ul className="grid h-64 gap-4 overflow-hidden overflow-y-auto">
+                          <li className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full bg-accent p-2 font-bold uppercase transition">
                             <Image
                               src={`/images/characters/NSwitch-character-sketch-${character?.id}.png`}
                               width="24"
                               height="24"
-                              alt={`${character.name} thumbnail`}
+                              alt={`${character?.name} thumbnail`}
                             />
 
-                            <span>{character.name}</span>
+                            <span>{character?.name}</span>
                           </li>
-                        ))}
-                      </ul>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            </AnimatePresence>
+
+                          <li>
+                            <hr className="border-accent px-4" />
+                          </li>
+
+                          {characters.map((character) => (
+                            <li
+                              key={character.id}
+                              className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full p-2 font-bold uppercase transition hover:bg-accent"
+                              onClick={() => appCtx?.setCharacter(character.id)}
+                            >
+                              <Image
+                                src={`/images/characters/NSwitch-character-sketch-${character?.id}.png`}
+                                width="24"
+                                height="24"
+                                alt={`${character.name} thumbnail`}
+                              />
+
+                              <span>{character.name}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              </AnimatePresence>
+            )}
 
             <AnimatePresence>
               <motion.div
@@ -384,7 +386,7 @@ const InfoPage: NextPage = () => {
             <AnimatePresence>
               <motion.div
                 key="audioControls"
-                className="absolute -z-10 flex h-12 w-12 items-center justify-center rounded-full bg-accent-dark"
+                className="absolute -z-10 flex h-12 w-12 items-center justify-center rounded-full bg-accent text-white themed:bg-accent-dark"
                 initial={{ x: 0, scale: 0.3 }}
                 animate={{ x: 96, scale: 1 }}
                 exit={{ x: 0, scale: 0.3 }}
@@ -397,7 +399,7 @@ const InfoPage: NextPage = () => {
               >
                 {!playing && (
                   <div className={playPauseButtonClasses}>
-                    <PlayIcon className="h-4 w-4 text-accent themed:text-white" />
+                    <PlayIcon className="h-4 w-4 text-white" />
                   </div>
                 )}
 
@@ -412,7 +414,7 @@ const InfoPage: NextPage = () => {
             <AnimatePresence>
               <motion.div
                 key="interactiveAudioControl"
-                className="absolute -z-10 flex h-12 w-12 items-center justify-center rounded-full bg-accent-dark"
+                className="absolute -z-10 flex h-12 w-12 items-center justify-center rounded-full bg-accent text-white themed:bg-accent-dark"
                 initial={{ x: 0, scale: 0.3 }}
                 animate={{ x: 156, scale: 1 }}
                 exit={{ x: 0, scale: 0.3 }}
