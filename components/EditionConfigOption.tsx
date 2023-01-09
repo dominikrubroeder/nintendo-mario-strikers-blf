@@ -1,9 +1,9 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import { useContext } from 'react';
-import { Edition, Editions } from '../../data/editions';
-import AppContext from '../../store/appContext';
-import AudioContext from '../../store/audioContext';
+import { Edition, Editions } from '../data/editions';
+import AppContext from '../store/appContext';
+import AudioContext from '../store/audioContext';
 
 interface EditionConfigOptionProps {
   edition: Edition;

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Heading from './Heading';
 import CharacterCard from './CharacterCard';
 import characters from '../data/characters';
-import CharacterOverlay from './character/CharacterOverlay';
+import CharacterOverlay from './CharacterOverlay';
 import { items } from '../data/items';
 import Button from './ui/Button';
 

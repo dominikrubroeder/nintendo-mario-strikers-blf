@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { useRouter } from 'next/router';
-import AppContext from '../../store/appContext';
-import teams from '../../data/characters';
+import AppContext from '../store/appContext';
+import teams from '../data/characters';
 import CharacterCard from './CharacterCard';
-import SpringBounceWhenInView from '../animation/SpringBounceWhenInView';
+import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
 
 interface CharacterSelectionProps {
   className?: string;
