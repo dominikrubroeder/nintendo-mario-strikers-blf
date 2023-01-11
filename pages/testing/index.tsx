@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../../components/layout';
-import MiniAudioPlayer from '../../components/MiniAudioPlayer';
+import MiniAudioPlayer from '../../components/mini-audio-player';
 
 const TestingPage: React.FC = () => {
   return (

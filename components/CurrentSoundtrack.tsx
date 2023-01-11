@@ -19,16 +19,13 @@ const CurrentSoundtrack: React.FC = () => {
     return () => setMounted(false);
   }, [audioCtx?.soundtrack]);
 
-  return mounted
-    ? createPortal(
-        <audio
-          id="currentSoundtrack"
-          ref={audioRef}
-          src={audioCtx?.soundtrack ?? '/audio/soundtracks/title-screen.mp3'}
-        ></audio>,
-        document.getElementById('soundtrack')!
-      )
-    : null;
+  return mounted ? (
+    <audio
+      id="currentSoundtrack"
+      ref={audioRef}
+      src={audioCtx?.soundtrack}
+    ></audio>
+  ) : null;
 };
 
 export default CurrentSoundtrack;

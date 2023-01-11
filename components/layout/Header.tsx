@@ -1,10 +1,8 @@
 import Link from 'next/link';
 import { FC } from 'react';
 import Logo from '../svg/Logo';
-import CurrentSound from '../CurrentSound';
 import { useRouter } from 'next/router';
 import { ArrowLongLeftIcon } from '@heroicons/react/24/solid';
-import CurrentSoundtrack from '../CurrentSoundtrack';
 
 interface HeaderProps {
   withBackButton?: boolean;

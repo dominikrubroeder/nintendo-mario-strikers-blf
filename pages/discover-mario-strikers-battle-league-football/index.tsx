@@ -7,9 +7,9 @@ import TheGallery from '../../components/TheGallery';
 import Heading from '../../components/Heading';
 import useIsInView from '../../hooks/useIsInView';
 import Layout from '../../components/layout';
-import MiniAudioPlayer from '../../components/MiniAudioPlayer';
+import MiniAudioPlayer from '../../components/mini-audio-player';
 import FloatingActionBar from '../../components/FloatingActionBar';
-import { AnimatePresence, motion, useAnimation } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import AppContext from '../../store/appContext';
 import characters from '../../data/characters';
 import AnimatedSoundbarsIcon from '../../components/AnimatedSoundbarsIcon';
@@ -23,8 +23,9 @@ import Image from 'next/image';
 import { soundtracks } from '../../data/audio';
 import SpringBounceWhenInView from '../../components/animation/SpringBounceWhenInView';
 import Accordion from '../../components/ui/Accordion';
-import Button from '../../components/ui/Button';
 import Link from 'next/link';
+import PauseAudioButton from '../../components/mini-audio-player/controls/PauseAudioButton';
+import PlayAudioButton from '../../components/mini-audio-player/controls/PlayAudioButton';
 
 const InfoPage: NextPage = () => {
   const appCtx = useContext(AppContext);
@@ -36,21 +37,10 @@ const InfoPage: NextPage = () => {
   const miniAudioPlayerIsOnScreen = useIsInView(miniAudioPlayerRef);
   const [showCharacterMenu, setShowCharacterMenu] = useState(false);
   const [showSoundtracksMenu, setShowSoundtracksMenu] = useState(false);
-  const [playing, setPlaying] = useState(true);
-  const soundtracksMenuButtonAnimation = useAnimation();
 
   const currentSoundtrack = soundtracks.find(
     (soundtrack) => soundtrack.src === audioCtx?.soundtrack
   );
-
-  useEffect(() => {
-    soundtracksMenuButtonAnimation.start({
-      opacity: 1,
-      visibility: 'visible',
-      y: -64,
-      scale: [1.1, 1],
-    });
-  }, [soundtracksMenuButtonAnimation, showSoundtracksMenu]);
 
   {
     /* const playSoundtrackHandler = () => {
@@ -70,12 +60,6 @@ const InfoPage: NextPage = () => {
     }
   }; */
   }
-
-  const playPauseButtonClasses = `relative before:content-[''] before:w-5 before:h-5 before:bg-white/20 before:rounded-full before:block before:absolute before:inset-0 before:w-[1rem] before:z-0 before:h-[1rem] after:content-[''] after:w-5 after:h-5 after:bg-white/20 after:rounded-full after:block after:absolute after:inset-0 after:w-[1rem] after:z-0 after:h-[1rem] ${
-    playing
-      ? 'before:animate-audioWave1 after:animate-audioWave2'
-      : 'after:content-none before:content-none'
-  }`;
 
   return (
     <Layout pageTitle="Discover">
@@ -250,7 +234,7 @@ const InfoPage: NextPage = () => {
               <AnimatePresence>
                 <motion.div
                   key="characterControl"
-                  className="leading-1 absolute -z-10 flex h-12 w-12 items-center justify-center rounded-full bg-accent-dark"
+                  className="leading-1 absolute z-10 flex h-12 w-12 items-center justify-center rounded-full bg-accent-dark"
                   initial={{ x: 0, scale: 0.3 }}
                   animate={{ x: -156, scale: 1 }}
                   exit={{ x: 0, scale: 0.3 }}
@@ -270,6 +254,7 @@ const InfoPage: NextPage = () => {
                     width="32"
                     height="32"
                     draggable={false}
+                    className="relative z-10"
                   />
 
                   <AnimatePresence>
@@ -292,9 +277,8 @@ const InfoPage: NextPage = () => {
                           overflow: 'hidden',
                           scale: 0,
                           y: 0,
-                          zIndex: -1,
                         }}
-                        className="absolute bottom-0 rounded-2xl bg-accent-dark p-4"
+                        className="absolute bottom-0 z-0 rounded-2xl bg-accent-dark p-4"
                       >
                         <ul className="grid h-64 gap-4 overflow-hidden overflow-y-auto">
                           <li className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full bg-accent p-2 font-bold uppercase transition">
@@ -404,18 +388,11 @@ const InfoPage: NextPage = () => {
                             onClick={() => audioCtx?.setSoundtrack(src)}
                           >
                             <span className="z-10">{title}</span>
-                            <span className="z-10">
+                            <span className="relative z-20">
                               {currentSoundtrack?.title === title ? (
-                                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-accent">
-                                  <PauseIcon
-                                    className="h-4 w-4 text-white"
-                                    onMouseUp={() => audioCtx?.pauseAudio()}
-                                  />
-                                </div>
+                                <PauseAudioButton />
                               ) : (
-                                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-accent">
-                                  <PlayIcon className="h-4 w-4 text-white" />
-                                </div>
+                                <PlayAudioButton />
                               )}
                             </span>
                             <span className="absolute left-0 bottom-0 z-0 h-full w-0 bg-accent transition-all duration-300 group-hover:w-full"></span>
@@ -428,11 +405,10 @@ const InfoPage: NextPage = () => {
               </motion.div>
             </AnimatePresence>
 
-            <Link
-              href="/buy-mario-strikers-battle-league-football"
-              className="whitespace-nowrap p-0 text-white"
-            >
-              Vorbestellen
+            <Link href="/buy-mario-strikers-battle-league-football">
+              <span className="whitespace-nowrap p-0 text-white">
+                Vorbestellen
+              </span>
             </Link>
 
             <AnimatePresence>
@@ -449,23 +425,9 @@ const InfoPage: NextPage = () => {
                   delay: 1,
                 }}
               >
-                {!playing && (
-                  <div
-                    className={playPauseButtonClasses}
-                    onMouseUp={() => audioCtx?.playAudio()}
-                  >
-                    <PlayIcon className="h-4 w-4 text-white" />
-                  </div>
-                )}
+                {!audioCtx?.isPlaying && <PlayAudioButton />}
 
-                {playing && (
-                  <div
-                    className={playPauseButtonClasses}
-                    onMouseUp={() => audioCtx?.pauseAudio()}
-                  >
-                    <PauseIcon className="relative h-4 w-4 text-white" />
-                  </div>
-                )}
+                {audioCtx?.isPlaying && <PauseAudioButton />}
               </motion.div>
             </AnimatePresence>
 

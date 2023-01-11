@@ -24,7 +24,7 @@
   }
 
   .button--text {
-    @apply button bg-accent-dark text-accent hover:bg-accent-soft themed:text-white themed:hover:bg-signal;
+    @apply button bg-accent-soft text-accent hover:bg-accent-soft themed:bg-accent-dark themed:text-white themed:hover:bg-signal;
   }
 
   .animate--fadeUp {

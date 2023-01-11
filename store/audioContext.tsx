@@ -1,13 +1,14 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { Constants } from '../data/constants';
+import { soundtracks } from '../data/audio';
 
 type AudioContextType = {
   hasInteractiveAudio: boolean | null;
   toggleInteractiveAudio: () => void;
   sound: string | null;
   setSound: (soundURL: string | null) => void;
-  soundtrack: string | null;
-  setSoundtrack: (soundtrackURL: string | null) => void;
+  soundtrack: string;
+  setSoundtrack: (soundtrackURL: string) => void;
   playAudio: () => void;
   pauseAudio: () => void;
   isPlaying: boolean;
@@ -26,7 +27,7 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
     boolean | null
   >(null);
   const [sound, setSound] = useState<null | string>(null);
-  const [soundtrack, setSoundtrack] = useState<null | string>(null);
+  const [soundtrack, setSoundtrack] = useState<string>(soundtracks[0].src);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const setSoundHandler = (soundURL: string | null) => {
