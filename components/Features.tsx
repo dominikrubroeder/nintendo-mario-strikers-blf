@@ -159,7 +159,7 @@ const Features: React.FC = () => {
           und die Genauigkeit beim Passen.
           <Button
             variant="text"
-            href="/characters/#gear/"
+            href="/characters"
             className="justify-self-start"
           >
             Erhalte Vorschau zur Ausrüstung

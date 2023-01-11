@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import Features from '../../components/Features';
 import CharacterSelection from '../../components/CharacterSelection';
 import CommunityQuotes from '../../components/CommunityQuotes';
@@ -13,17 +13,12 @@ import { AnimatePresence, motion } from 'framer-motion';
 import AppContext from '../../store/appContext';
 import characters from '../../data/characters';
 import AnimatedSoundbarsIcon from '../../components/AnimatedSoundbarsIcon';
-import {
-  PauseIcon,
-  PlayIcon,
-  SpeakerWaveIcon,
-} from '@heroicons/react/24/solid';
+import { SpeakerWaveIcon } from '@heroicons/react/24/solid';
 import AudioContext from '../../store/audioContext';
 import Image from 'next/image';
 import { soundtracks } from '../../data/audio';
 import SpringBounceWhenInView from '../../components/animation/SpringBounceWhenInView';
 import Accordion from '../../components/ui/Accordion';
-import Link from 'next/link';
 import PauseAudioButton from '../../components/mini-audio-player/controls/PauseAudioButton';
 import PlayAudioButton from '../../components/mini-audio-player/controls/PlayAudioButton';
 import Button from '../../components/ui/Button';

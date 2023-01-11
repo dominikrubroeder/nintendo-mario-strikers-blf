@@ -4,7 +4,7 @@ import { SwipeCarousel } from '../../components/SwipeCarousel';
 import Layout from '../../components/layout';
 import Heading from '../../components/Heading';
 import Accordion from '../../components/ui/Accordion';
-import characters from '../../data/characters';
+import characters, { characterImages } from '../../data/characters';
 import { defaultSwipeCarouselImageData } from '../../data/image-data';
 import AppContext from '../../store/appContext';
 import Image from 'next/image';
@@ -32,7 +32,7 @@ const CharacterPage: NextPage = () => {
       <div className="min-h-screen">
         <section className="gap gap-4">
           <div className="py-12">
-            <SwipeCarousel images={defaultSwipeCarouselImageData} />
+            <SwipeCarousel images={characterImages} />
           </div>
 
           <div className="grid gap-16">
@@ -122,8 +122,8 @@ const CharacterPage: NextPage = () => {
                   {characterData.name}&apos;s Hyperstrike
                 </Heading>
 
-                <div className="rounded-xl bg-gray-100 p-8 themed:bg-accent-dark">
-                  {/* All characters hyper strike https://www.youtube.com/watch?v=v2zQbRfwSVs */}
+                {/* <div className="rounded-xl bg-gray-100 p-8 themed:bg-accent-dark">
+                  All characters hyper strike https://www.youtube.com/watch?v=v2zQbRfwSVs
                   <iframe
                     className="w-full rounded-xl"
                     src={characterData.specialAbilityVideoURL}
@@ -132,6 +132,7 @@ const CharacterPage: NextPage = () => {
                     allowFullScreen
                   ></iframe>
                 </div>
+                 */}
               </div>
             </div>
           </div>

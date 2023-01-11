@@ -1,4 +1,4 @@
-import { allCharacterNames } from './characters';
+import { characterNames } from './characters';
 
-export const themeOptions = ['Unset', ...allCharacterNames];
+export const themeOptions = ['Unset', ...characterNames];
 export const defaultThemeOption = 'Unset';

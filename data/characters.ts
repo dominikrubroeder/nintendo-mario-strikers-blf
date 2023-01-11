@@ -410,4 +410,6 @@ export const characters: Character[] = [
 
 export default characters;
 
-export const allCharacterNames = characters.map((character) => character.name);
+export const characterNames = characters.map((character) => character.name);
+
+export const characterImages = characters.map((chararcter) => chararcter.image);

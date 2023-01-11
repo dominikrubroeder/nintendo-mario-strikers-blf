@@ -2,10 +2,9 @@ import * as React from 'react';
 import { useState, FC, useEffect, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { wrap } from 'popmotion';
-import { defaultSwipeCarouselImageData } from '../data/image-data';
 import Image from 'next/image';
 import AppContext from '../store/appContext';
-import characters from '../data/characters';
+import characters, { characterImages } from '../data/characters';
 
 /** https://codesandbox.io/s/framer-motion-image-gallery-pqvx3?file=/src/index.tsx:106-128 */
 
@@ -47,7 +46,7 @@ interface SwipeCarouselProps {
 }
 
 export const SwipeCarousel: FC<SwipeCarouselProps> = ({
-  images = defaultSwipeCarouselImageData,
+  images = characterImages,
 }) => {
   const appCtx = useContext(AppContext);
   const [[page, direction], setPage] = useState([0, 0]);
