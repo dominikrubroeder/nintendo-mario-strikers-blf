@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Heading from './Heading';
 import CharacterCard from './CharacterCard';
 import characters from '../data/characters';
-import CharacterOverlay from './CharacterOverlay';
 import { items } from '../data/items';
 import Button from './ui/Button';
 import { ArrowLongRightIcon } from '@heroicons/react/24/solid';
@@ -16,7 +15,6 @@ const Features: React.FC = () => {
     characters.find(
       (character) => character.id === appCtx?.selectedCharacter
     ) ?? characters[0];
-  const [showCharacterOverlay, setShowCharacterOverlay] = useState(false);
 
   return (
     <>
@@ -34,58 +32,50 @@ const Features: React.FC = () => {
       </section>
 
       {appCtx?.selectedCharacter && (
-        <>
-          {showCharacterOverlay && (
-            <CharacterOverlay
-              onCloseOverlay={() => setShowCharacterOverlay(false)}
-            />
-          )}
+        <section className="grid gap-12">
+          <SpringBounceWhenInView>
+            <Heading as="h2" className="headline--gradient">
+              Dein aktuelles Team
+            </Heading>
+          </SpringBounceWhenInView>
 
-          <section className="grid gap-12">
-            <SpringBounceWhenInView>
-              <Heading as="h2" className="headline--gradient">
-                Dein aktuelles Team
-              </Heading>
-            </SpringBounceWhenInView>
+          {/**
+           * List all characters as selectable teams
+           * Link to character detail page
+           * When in view do/show "hover" interaction, scale up image
+           */}
 
-            {/**
-             * List all characters as selectable teams
-             * Link to character detail page
-             * When in view do/show "hover" interaction, scale up image
-             */}
-
-            <div className="m-auto max-w-xl gap-4 text-center md:flex md:items-center md:justify-center md:gap-12">
-              <div className="mb-4 block md:order-2 md:mb-0 md:flex">
-                <CharacterCard
-                  id={character.id}
-                  name={character.name}
-                  sound={character.sound[0]}
-                  image={character.image}
-                />
-              </div>
-
-              <div className="relative mr-4 inline-block h-16 w-16 md:order-1 md:mr-0 md:h-24 md:w-24">
-                <Image
-                  src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Left.png"
-                  alt="Button left"
-                  className="interactive object-contain"
-                  layout="fill"
-                  draggable={false}
-                />
-              </div>
-
-              <div className="relative inline-block h-16 w-16 md:order-3 md:h-24 md:w-24">
-                <Image
-                  src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Right.png"
-                  alt="Button right"
-                  className="interactive object-contain"
-                  layout="fill"
-                  draggable={false}
-                />
-              </div>
+          <div className="m-auto max-w-xl gap-4 text-center md:flex md:items-center md:justify-center md:gap-12">
+            <div className="mb-4 block md:order-2 md:mb-0 md:flex">
+              <CharacterCard
+                id={character.id}
+                name={character.name}
+                sound={character.sound[0]}
+                image={character.image}
+              />
             </div>
-          </section>
-        </>
+
+            <div className="relative mr-4 inline-block h-16 w-16 md:order-1 md:mr-0 md:h-24 md:w-24">
+              <Image
+                src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Left.png"
+                alt="Button left"
+                className="interactive object-contain"
+                layout="fill"
+                draggable={false}
+              />
+            </div>
+
+            <div className="relative inline-block h-16 w-16 md:order-3 md:h-24 md:w-24">
+              <Image
+                src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Right.png"
+                alt="Button right"
+                className="interactive object-contain"
+                layout="fill"
+                draggable={false}
+              />
+            </div>
+          </div>
+        </section>
       )}
 
       <section className="grid gap-12">

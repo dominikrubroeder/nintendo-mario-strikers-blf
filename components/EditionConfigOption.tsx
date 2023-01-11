@@ -23,7 +23,7 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
 
   const onClickHandler = () => {
     audioCtx?.setSound('/audio/nintendo-switch-click.mp3');
-    onClick();
+    if (onClick) onClick();
   };
 
   return (

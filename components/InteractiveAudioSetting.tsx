@@ -15,7 +15,7 @@ const InteractiveAudioSetting: React.FC = () => {
           <span className="w-max text-xs">Interaktives Audio</span>
 
           <Toggle
-            enabled={audioCtx?.hasInteractiveAudio ?? true}
+            enabled={audioCtx?.interactiveAudioisEnabled ?? true}
             enabledIcon={
               <SpeakerWaveIcon className="h-3 w-3 fill-current"></SpeakerWaveIcon>
             }

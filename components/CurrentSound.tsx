@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import AudioContext from '../store/audioContext';
-import { createPortal } from 'react-dom';
 
 const CurrentSound: React.FC = () => {
   const audioRef = useRef<null | HTMLAudioElement>(null);
@@ -19,15 +18,12 @@ const CurrentSound: React.FC = () => {
     return () => setMounted(false);
   }, [audioCtx?.sound]);
 
-  return mounted
-    ? createPortal(
-        <audio
-          ref={audioRef}
-          src={audioCtx?.sound ?? '/audio/nintendo-switch-click.mp3'}
-        ></audio>,
-        document.getElementById('sound')!
-      )
-    : null;
+  return mounted ? (
+    <audio
+      ref={audioRef}
+      src={audioCtx?.sound ?? '/audio/nintendo-switch-click.mp3'}
+    ></audio>
+  ) : null;
 };
 
 export default CurrentSound;

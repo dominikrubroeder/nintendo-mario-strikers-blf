@@ -3,7 +3,7 @@ import { Constants } from '../data/constants';
 import { soundtracks } from '../data/audio';
 
 type AudioContextType = {
-  hasInteractiveAudio: boolean | null;
+  interactiveAudioisEnabled: boolean | null;
   toggleInteractiveAudio: () => void;
   sound: string | null;
   setSound: (soundURL: string | null) => void;
@@ -23,7 +23,7 @@ interface AudioContextProviderProps {
 export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
   children,
 }) => {
-  const [hasInteractiveAudio, setHasInteractiveAudio] = useState<
+  const [interactiveAudioisEnabled, setinteractiveAudioisEnabled] = useState<
     boolean | null
   >(null);
   const [sound, setSound] = useState<null | string>(null);
@@ -39,12 +39,12 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
       localStorage.getItem(Constants.InteractiveAudio) === null ||
       localStorage.getItem(Constants.InteractiveAudio) === 'true'
     ) {
-      setHasInteractiveAudio(true);
+      setinteractiveAudioisEnabled(true);
       return;
     }
 
     if (localStorage.getItem(Constants.InteractiveAudio) === 'false') {
-      setHasInteractiveAudio(false);
+      setinteractiveAudioisEnabled(false);
       return;
     }
   };
@@ -66,7 +66,7 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
   }
 
   function toggleInteractiveAudio() {
-    setHasInteractiveAudio((previousState) => !previousState);
+    setinteractiveAudioisEnabled((previousState) => !previousState);
   }
 
   // Initial page load instructions
@@ -77,12 +77,12 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
   useEffect(() => {
     localStorage.setItem(
       Constants.InteractiveAudio,
-      String(hasInteractiveAudio) ?? 'true'
+      String(interactiveAudioisEnabled) ?? 'true'
     );
-  }, [hasInteractiveAudio]);
+  }, [interactiveAudioisEnabled]);
 
   const context = {
-    hasInteractiveAudio,
+    interactiveAudioisEnabled,
     toggleInteractiveAudio,
     sound,
     setSound: setSoundHandler,

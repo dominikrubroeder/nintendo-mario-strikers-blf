@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useContext, useRef } from 'react';
+import { useContext } from 'react';
 import AppContext from '../store/appContext';
 import AudioContext from '../store/audioContext';
 
@@ -20,10 +20,9 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
 }) => {
   const appCtx = useContext(AppContext);
   const audioCtx = useContext(AudioContext);
-  const audioRef = useRef<null | HTMLAudioElement>(null);
 
   const onClickHandler = () => {
-    if (audioCtx?.hasInteractiveAudio) audioRef.current?.play();
+    audioCtx?.setSound(sound);
     if (onClick) onClick();
   };
 
@@ -37,8 +36,6 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
       onMouseUp={onClickHandler}
     >
       <div className="grid gap-2 text-center">
-        <audio src={sound} ref={audioRef}></audio>
-
         <div className="z-10 transition-all group-hover:scale-125">
           <Image src={image} alt={name} width={256} height={256} priority />
         </div>
