@@ -55,7 +55,7 @@ const Button: React.FC<ButtonProps> = ({
           ? audioCtx?.setSound(
               `/audio/sound-${appCtx?.selectedCharacter}-0.mp3`
             )
-          : audioCtx?.setSound(`/audio/sound-mario-0.mp3`);
+          : null;
       default:
         audioCtx?.setSound('/audio/nintendo-switch-click.mp3');
     }

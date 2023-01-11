@@ -63,11 +63,11 @@ const MiniAudioPlayer: React.FC = () => {
                 <header className="mb-2">Mario Strikers: BLF</header>
 
                 <ul className="grid gap-2">
-                  {soundtracks.map(({ title }) => (
+                  {soundtracks.map(({ title, src }) => (
                     <li
                       key={title}
                       className="flex cursor-pointer items-center justify-between gap-1"
-                      onClick={() => audioCtx?.setSoundtrack(title)}
+                      onClick={() => audioCtx?.setSoundtrack(src)}
                     >
                       <span className="flex items-center gap-1">
                         <SpeakerWaveIcon className="h-3 w-3 text-accent themed:text-white" />

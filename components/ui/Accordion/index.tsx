@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../Button';
 import Image from 'next/image';
@@ -7,14 +7,17 @@ interface AccordionProps {
   title: string | JSX.Element;
   children: React.ReactNode;
   className?: string;
+  initalState?: 'opened' | 'closed';
 }
 
 const Accordion: React.FC<AccordionProps> = ({
   title,
   children,
   className,
+  initalState = 'closed',
 }) => {
-  const [expanded, setExpanded] = useState(false);
+  const isExpanded = initalState === 'closed' ? false : true;
+  const [expanded, setExpanded] = useState(isExpanded);
 
   const onCloseHandler = () => {
     setExpanded(false);

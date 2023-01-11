@@ -281,7 +281,7 @@ const InfoPage: NextPage = () => {
                         }}
                         className="absolute bottom-0 z-0 rounded-2xl bg-accent-dark p-4"
                       >
-                        <ul className="grid h-64 gap-4 overflow-hidden overflow-y-auto">
+                        <ul className="grid h-64 gap-2 overflow-hidden overflow-y-auto">
                           <li className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full bg-accent p-2 font-bold uppercase transition">
                             <Image
                               src={`/images/characters/NSwitch-character-sketch-${character?.id}.png`}

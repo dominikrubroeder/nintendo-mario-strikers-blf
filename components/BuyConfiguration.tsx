@@ -9,6 +9,7 @@ import Heading from './Heading';
 import { Editions } from '../data/editions';
 import Image from 'next/image';
 import SelectYourTeamInfoBar from './SelectYourTeamInfoBar';
+import Accordion from './ui/Accordion';
 
 interface BuyConfigurationProps {
   setShowStickyBuyBar: Dispatch<SetStateAction<boolean>>;
@@ -58,10 +59,9 @@ const BuyConfiguration: React.FC<BuyConfigurationProps> = ({
         <EditionSelection />
 
         {appCtx?.selectedEdition === Editions.teamId && (
-          <>
-            <SelectYourTeamInfoBar />
+          <Accordion title={<SelectYourTeamInfoBar />} initalState="opened">
             <CharacterSelection />
-          </>
+          </Accordion>
         )}
 
         <BuyContainer setShowStickyBuyBar={setShowStickyBuyBar} />

@@ -33,8 +33,6 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const appCtx = useContext(AppContext);
 
-  useEffect(() => console.log(isPlaying), [isPlaying]);
-
   useEffect(() => {
     const selectedCharacterData = characters.find(
       (character) => character.id === appCtx?.selectedCharacter
