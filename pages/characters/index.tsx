@@ -19,7 +19,7 @@ const CharacterPage: NextPage = () => {
   const [zoomedIn, setZoomedIn] = useState(false);
 
   return (
-    <Layout pageTitle="Character">
+    <Layout pageTitle="Characters">
       {/**
        * Push, "lift" the state up of current character to url to make it sharable
        * Include character statistic, game insights

@@ -100,6 +100,7 @@ export const SwipeCarousel: FC<SwipeCarouselProps> = ({
             height={480}
             alt="Character carousel test"
             className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
+            draggable={false}
           />
         </motion.div>
       </AnimatePresence>
@@ -113,6 +114,7 @@ export const SwipeCarousel: FC<SwipeCarouselProps> = ({
           width={90}
           height={60}
           alt="Carousel arrow right"
+          draggable={false}
         />
       </div>
 
@@ -125,6 +127,7 @@ export const SwipeCarousel: FC<SwipeCarouselProps> = ({
           width={90}
           height={60}
           alt="Carousel arrow right"
+          draggable={false}
         />
       </div>
     </div>
