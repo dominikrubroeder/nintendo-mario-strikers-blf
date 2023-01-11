@@ -1,12 +1,14 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Constants } from '../data/constants';
 import { soundtracks } from '../data/audio';
+import AppContext from './appContext';
+import characters from '../data/characters';
 
 type AudioContextType = {
   interactiveAudioisEnabled: boolean | null;
   toggleInteractiveAudio: () => void;
   sound: string | null;
-  setSound: (soundURL: string | null) => void;
+  setSound: (soundURL: string) => void;
   soundtrack: string;
   setSoundtrack: (soundtrackURL: string) => void;
   playAudio: () => void;
@@ -26,13 +28,19 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
   const [interactiveAudioisEnabled, setinteractiveAudioisEnabled] = useState<
     boolean | null
   >(null);
-  const [sound, setSound] = useState<null | string>(null);
-  const [soundtrack, setSoundtrack] = useState<string>(soundtracks[0].src);
+  const [sound, setSound] = useState('/audio/nintendo-switch-click.mp3');
+  const [soundtrack, setSoundtrack] = useState(soundtracks[0].src);
   const [isPlaying, setIsPlaying] = useState(false);
+  const appCtx = useContext(AppContext);
 
-  const setSoundHandler = (soundURL: string | null) => {
-    setSound(soundURL);
-  };
+  useEffect(() => console.log(isPlaying), [isPlaying]);
+
+  useEffect(() => {
+    const selectedCharacterData = characters.find(
+      (character) => character.id === appCtx?.selectedCharacter
+    );
+    setSound(selectedCharacterData?.sound[0] ?? '/audio/sound-mario-0.mp3');
+  }, [appCtx?.selectedCharacter]);
 
   const initInteractiveAudio = () => {
     if (
@@ -85,7 +93,7 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
     interactiveAudioisEnabled,
     toggleInteractiveAudio,
     sound,
-    setSound: setSoundHandler,
+    setSound,
     soundtrack,
     setSoundtrack,
     playAudio,

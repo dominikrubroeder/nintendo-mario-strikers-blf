@@ -4,7 +4,7 @@ import AppContext from '../../store/appContext';
 import AudioContext from '../../store/audioContext';
 
 interface ButtonProps {
-  variant: 'contained' | 'text';
+  variant: 'contained' | 'text' | 'plain';
   text?: string;
   /** This property will tell the Button component to apply special classes to use a button within a text block. */
   isInline?: boolean;
@@ -57,7 +57,7 @@ const Button: React.FC<ButtonProps> = ({
             )
           : audioCtx?.setSound(`/audio/sound-mario-0.mp3`);
       default:
-        audioCtx?.setSound(null);
+        audioCtx?.setSound('/audio/nintendo-switch-click.mp3');
     }
 
     if (onClick) onClick();
@@ -70,7 +70,7 @@ const Button: React.FC<ButtonProps> = ({
       ? 'button--contained'
       : variant === 'text'
       ? 'button--text'
-      : 'button--contained';
+      : 'button--plain';
 
   return (
     <button

@@ -26,6 +26,7 @@ import Accordion from '../../components/ui/Accordion';
 import Link from 'next/link';
 import PauseAudioButton from '../../components/mini-audio-player/controls/PauseAudioButton';
 import PlayAudioButton from '../../components/mini-audio-player/controls/PlayAudioButton';
+import Button from '../../components/ui/Button';
 
 const InfoPage: NextPage = () => {
   const appCtx = useContext(AppContext);
@@ -364,10 +365,7 @@ const InfoPage: NextPage = () => {
                       className="absolute bottom-0 rounded-3xl bg-accent-dark p-4"
                     >
                       <ul className="min-h-64 grid gap-2 overflow-hidden overflow-y-auto text-white">
-                        <li
-                          className="flex w-full min-w-max cursor-pointer items-center gap-4 rounded-full bg-accent p-2 font-bold uppercase transition"
-                          onMouseUp={() => audioCtx?.playAudio()}
-                        >
+                        <li className="flex w-full min-w-max cursor-pointer items-center gap-4 rounded-full bg-accent p-2 font-bold uppercase transition">
                           <span className="group flex items-center gap-2">
                             <SpeakerWaveIcon className="h-4 w-4 text-white" />
                             <span>
@@ -405,11 +403,14 @@ const InfoPage: NextPage = () => {
               </motion.div>
             </AnimatePresence>
 
-            <Link href="/buy-mario-strikers-battle-league-football">
-              <span className="whitespace-nowrap p-0 text-white">
-                Vorbestellen
-              </span>
-            </Link>
+            <Button
+              variant="plain"
+              href="/buy-mario-strikers-battle-league-football"
+              className="whitespace-nowrap p-0"
+              sound="coin"
+            >
+              Vorbestellen
+            </Button>
 
             <AnimatePresence>
               <motion.div

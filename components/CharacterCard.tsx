@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { useContext } from 'react';
 import AppContext from '../store/appContext';
-import AudioContext from '../store/audioContext';
 
 interface CharacterCardProps {
   id: string;
@@ -14,17 +13,10 @@ interface CharacterCardProps {
 const CharacterCard: React.FC<CharacterCardProps> = ({
   id,
   name,
-  sound,
   image,
   onClick,
 }) => {
   const appCtx = useContext(AppContext);
-  const audioCtx = useContext(AudioContext);
-
-  const onClickHandler = () => {
-    audioCtx?.setSound(sound);
-    if (onClick) onClick();
-  };
 
   return (
     <div
@@ -33,7 +25,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
           ? 'bg-accent themed:bg-accent-dark'
           : ''
       }`}
-      onMouseUp={onClickHandler}
+      onMouseUp={onClick}
     >
       <div className="grid gap-2 text-center">
         <div className="z-10 transition-all group-hover:scale-125">
