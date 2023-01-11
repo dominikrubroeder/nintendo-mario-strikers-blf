@@ -1,5 +1,5 @@
-import React, { createContext, useEffect, useState } from "react";
-import { Constants } from "../data/constants";
+import React, { createContext, useEffect, useState } from 'react';
+import { Constants } from '../data/constants';
 
 type AudioContextType = {
   hasInteractiveAudio: boolean | null;
@@ -8,6 +8,9 @@ type AudioContextType = {
   setSound: (soundURL: string | null) => void;
   soundtrack: string | null;
   setSoundtrack: (soundtrackURL: string | null) => void;
+  playAudio: () => void;
+  pauseAudio: () => void;
+  isPlaying: boolean;
 };
 
 const AudioContext = createContext<null | AudioContextType>(null);
@@ -24,6 +27,7 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
   >(null);
   const [sound, setSound] = useState<null | string>(null);
   const [soundtrack, setSoundtrack] = useState<null | string>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const setSoundHandler = (soundURL: string | null) => {
     setSound(soundURL);
@@ -32,17 +36,33 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
   const initInteractiveAudio = () => {
     if (
       localStorage.getItem(Constants.InteractiveAudio) === null ||
-      localStorage.getItem(Constants.InteractiveAudio) === "true"
+      localStorage.getItem(Constants.InteractiveAudio) === 'true'
     ) {
       setHasInteractiveAudio(true);
       return;
     }
 
-    if (localStorage.getItem(Constants.InteractiveAudio) === "false") {
+    if (localStorage.getItem(Constants.InteractiveAudio) === 'false') {
       setHasInteractiveAudio(false);
       return;
     }
   };
+
+  function playAudio() {
+    const currentSoundtrack = document.getElementById(
+      'currentSoundtrack'
+    ) as HTMLAudioElement;
+    currentSoundtrack?.play();
+    setIsPlaying(true);
+  }
+
+  function pauseAudio() {
+    const currentSoundtrack = document.getElementById(
+      'currentSoundtrack'
+    ) as HTMLAudioElement;
+    currentSoundtrack?.pause();
+    setIsPlaying(false);
+  }
 
   function toggleInteractiveAudio() {
     setHasInteractiveAudio((previousState) => !previousState);
@@ -56,7 +76,7 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
   useEffect(() => {
     localStorage.setItem(
       Constants.InteractiveAudio,
-      String(hasInteractiveAudio) ?? "true"
+      String(hasInteractiveAudio) ?? 'true'
     );
   }, [hasInteractiveAudio]);
 
@@ -67,6 +87,9 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
     setSound: setSoundHandler,
     soundtrack,
     setSoundtrack,
+    playAudio,
+    pauseAudio,
+    isPlaying,
   };
 
   return (

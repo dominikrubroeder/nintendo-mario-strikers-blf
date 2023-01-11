@@ -8,6 +8,7 @@ import characters from '../data/characters';
 import CharacterOverlay from './CharacterOverlay';
 import { items } from '../data/items';
 import Button from './ui/Button';
+import { ArrowLongRightIcon } from '@heroicons/react/24/solid';
 
 const Features: React.FC = () => {
   const appCtx = useContext(AppContext);
@@ -69,6 +70,7 @@ const Features: React.FC = () => {
                   alt="Button left"
                   className="interactive object-contain"
                   layout="fill"
+                  draggable={false}
                 />
               </div>
 
@@ -78,6 +80,7 @@ const Features: React.FC = () => {
                   alt="Button right"
                   className="interactive object-contain"
                   layout="fill"
+                  draggable={false}
                 />
               </div>
             </div>
@@ -160,12 +163,17 @@ const Features: React.FC = () => {
           </Heading>
         </SpringBounceWhenInView>
 
-        <p className="mx-auto max-w-md px-4 md:px-0">
+        <p className="mx-auto grid max-w-md gap-8 px-4 md:px-0">
           Gestalte die Ausrüstung deines Teams ganz nach deinem Geschmack. Sie
           verändert nicht nur das Aussehen, sondern auch Werte wie Tempo, Kraft
           und die Genauigkeit beim Passen.
-          <Button variant="contained" href="/characters/#gear/">
+          <Button
+            variant="text"
+            href="/characters/#gear/"
+            className="justify-self-start"
+          >
             Erhalte Vorschau zur Ausrüstung
+            <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent themed:text-signal" />
           </Button>
         </p>
       </section>
