@@ -32,7 +32,7 @@
   }
 
   .headline--gradient {
-    @apply text-center text-xl;
+    @apply mx-auto bg-accent-gradient bg-clip-text px-4 text-center text-6xl font-bold leading-[1.125] text-fill-color-transparent theme-peach:bg-gradient-peach md:text-8xl md:leading-[1.125];
   }
 
   input {
