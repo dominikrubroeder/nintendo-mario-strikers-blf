@@ -20,7 +20,32 @@ const SpringBounceWhenInView: React.FC<SpringBounceWhenInViewProps> = ({
   //   audioRef.current.play();
   // });
 
-  return <motion.div>{children}</motion.div>;
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      transition={{
+        duration: 0.6,
+        type: 'spring',
+        stiffness: 400,
+        delay: delay === undefined ? 0 : delay,
+        damping: 15,
+      }}
+      variants={{
+        visible: { opacity: 1, scale: 1 },
+        hidden: { opacity: 0, scale: 0.8 },
+      }}
+      className={className && className}
+    >
+      {playSound && (
+        <audio
+          src="/audio/nintendo-super-mario-coin.wav"
+          ref={audioRef}
+        ></audio>
+      )}
+      {children}
+    </motion.div>
+  );
 };
 
 export default SpringBounceWhenInView;
