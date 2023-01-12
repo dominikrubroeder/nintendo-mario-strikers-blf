@@ -5,7 +5,6 @@ import Layout from '../../components/layout';
 import Heading from '../../components/Heading';
 import Accordion from '../../components/ui/Accordion';
 import characters, { characterImages } from '../../data/characters';
-import { defaultSwipeCarouselImageData } from '../../data/image-data';
 import AppContext from '../../store/appContext';
 import Image from 'next/image';
 import Card from '../../components/ui/Card';
