@@ -8,6 +8,8 @@ interface AccordionProps {
   children: React.ReactNode;
   className?: string;
   initalState?: 'opened' | 'closed';
+  showFooter?: boolean;
+  onClick?: () => void;
 }
 
 const Accordion: React.FC<AccordionProps> = ({
@@ -15,12 +17,15 @@ const Accordion: React.FC<AccordionProps> = ({
   children,
   className,
   initalState = 'closed',
+  showFooter = true,
+  onClick,
 }) => {
   const isExpanded = initalState === 'closed' ? false : true;
   const [expanded, setExpanded] = useState(isExpanded);
 
   const onCloseHandler = () => {
     setExpanded(false);
+    if (onClick) onClick();
   };
 
   return (
@@ -54,22 +59,24 @@ const Accordion: React.FC<AccordionProps> = ({
             <div className="grid gap-4 py-3 px-4">
               <div>{children}</div>
 
-              <footer className="flex h-10 items-end justify-end">
-                <Button
-                  variant="text"
-                  className="flex items-center gap-0.5 text-xs font-bold"
-                  sound="character"
-                  onClick={onCloseHandler}
-                >
-                  <Image
-                    width={32}
-                    height={32}
-                    src="/images/items/CI_NSwitch_MarioStrikersBLF_AW_Items_Star.png"
-                    alt="Nintendo star item"
-                  />
-                  Verstanden
-                </Button>
-              </footer>
+              {showFooter && (
+                <footer className="flex h-10 items-end justify-end">
+                  <Button
+                    variant="text"
+                    className="flex items-center gap-0.5 text-xs font-bold"
+                    sound="character"
+                    onClick={onCloseHandler}
+                  >
+                    <Image
+                      width={32}
+                      height={32}
+                      src="/images/items/CI_NSwitch_MarioStrikersBLF_AW_Items_Star.png"
+                      alt="Nintendo star item"
+                    />
+                    Verstanden
+                  </Button>
+                </footer>
+              )}
             </div>
           </motion.div>
         )}

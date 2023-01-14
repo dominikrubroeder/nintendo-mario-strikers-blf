@@ -233,7 +233,7 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({ shouldBeVisible }) => {
               <Button
                 variant="plain"
                 href="/buy-mario-strikers-battle-league-football"
-                className="whitespace-nowrap p-0"
+                className="z-50 whitespace-nowrap bg-accent p-0 text-white themed:bg-signal"
                 sound="coin"
               >
                 Vorbestellen

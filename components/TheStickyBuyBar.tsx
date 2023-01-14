@@ -1,13 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Button from './ui/Button';
-import ReleaseCountdown from './ReleaseCountdown';
 import AppContext from '../store/appContext';
-import {
-  ArrowUpIcon,
-  ChevronDoubleDownIcon,
-} from '@heroicons/react/24/outline';
-import { useRouter } from 'next/router';
+import { ChevronDoubleDownIcon } from '@heroicons/react/24/outline';
 import Heading from './Heading';
 
 interface TheStickyBuyBarProps {
@@ -21,7 +16,6 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
   href,
   shouldBeVisible,
 }) => {
-  const router = useRouter();
   const appCtx = useContext(AppContext);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -32,7 +26,7 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
   return (
     <>
       <div
-        className={`fixed bottom-0 z-50 grid w-full gap-1 bg-gray-100 p-4 text-sm transition-all themed:bg-accent md:grid-cols-2 md:gap-2 md:pr-20 ${
+        className={`fixed bottom-0 z-50 grid w-full gap-1 bg-gray-100 p-4 text-sm transition-all themed:bg-accent md:grid-cols-2 md:gap-2 ${
           isVisible
             ? 'visible translate-y-0 opacity-100'
             : 'invisible translate-y-1/2 opacity-0'
@@ -72,10 +66,6 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
                     : ''}
                   {price ? ` – ${price}€` : ''}
                 </span>
-                {router.pathname ===
-                  '/buy-mario-strikers-battle-league-football' && (
-                  <ArrowUpIcon className="h-4 w-4 cursor-pointer text-accent themed:text-white"></ArrowUpIcon>
-                )}
               </div>
             )}
           </div>

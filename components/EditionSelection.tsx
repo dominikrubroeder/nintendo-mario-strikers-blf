@@ -4,6 +4,7 @@ import AppContext from '../store/appContext';
 import editions from '../data/editions';
 import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
 import EditionConfigOption from './EditionConfigOption';
+import Accordion from './ui/Accordion';
 
 const EditionSelection: React.FC = () => {
   const appCtx = useContext(AppContext);
@@ -30,11 +31,34 @@ const EditionSelection: React.FC = () => {
                 price={edition.price}
                 onClick={() => selectedEditionHandler(edition.id)}
               >
-                <ul className="list-disc pl-4">
+                <ul>
                   {edition.details.map((detail) => (
-                    <li key={detail}>{detail}</li>
+                    <li
+                      key={detail}
+                      className={`star ${
+                        detail === '' ? 'text-accent' : 'text-white'
+                      }`}
+                    >
+                      {detail}
+                    </li>
                   ))}
                 </ul>
+
+                {edition.moreDetails && (
+                  <Accordion
+                    title="Mehr..."
+                    className="mt-4 bg-transparent"
+                    showFooter={false}
+                  >
+                    <ul>
+                      {edition.moreDetails.map((detail) => (
+                        <li className="star" key={detail}>
+                          {detail}
+                        </li>
+                      ))}
+                    </ul>
+                  </Accordion>
+                )}
               </EditionConfigOption>
             </SpringBounceWhenInView>
           );

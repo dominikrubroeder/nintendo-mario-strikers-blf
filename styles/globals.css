@@ -42,6 +42,10 @@
   input[type='checkbox'] {
     @apply rounded-full themed:bg-accent-dark;
   }
+
+  li.star {
+    @apply flex list-none flex-nowrap gap-1 before:mt-[3px] before:inline-block before:h-4 before:w-4 before:min-w-[1rem] before:bg-contain before:bg-center before:bg-no-repeat before:content-[''];
+  }
 }
 
 :root {
@@ -172,4 +176,8 @@
 
 .min-h-screen-header {
   min-height: calc(100vh - 10rem);
+}
+
+li::before {
+  background-image: url('/images/items/item-star.png');
 }

@@ -70,6 +70,7 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
               }}
               exit={{
                 opacity: 1,
+                overflow: 'hidden',
               }}
               transition={{
                 type: 'spring',

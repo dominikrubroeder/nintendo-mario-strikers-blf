@@ -59,7 +59,12 @@ const BuyConfiguration: React.FC<BuyConfigurationProps> = ({
         <EditionSelection />
 
         {appCtx?.selectedEdition === Editions.teamId && (
-          <Accordion title={<SelectYourTeamInfoBar />} initalState="opened">
+          <Accordion
+            title={<SelectYourTeamInfoBar />}
+            initalState="opened"
+            showFooter={false}
+            className="bg-transparent themed:bg-transparent"
+          >
             <CharacterSelection />
           </Accordion>
         )}
