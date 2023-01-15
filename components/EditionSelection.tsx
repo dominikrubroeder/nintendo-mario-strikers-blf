@@ -5,6 +5,7 @@ import editions from '../data/editions';
 import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
 import EditionConfigOption from './EditionConfigOption';
 import Accordion from './ui/Accordion';
+import QuestionBlock from './img/QuestionBlock';
 
 const EditionSelection: React.FC = () => {
   const appCtx = useContext(AppContext);
@@ -33,12 +34,7 @@ const EditionSelection: React.FC = () => {
               >
                 <ul>
                   {edition.details.map((detail) => (
-                    <li
-                      key={detail}
-                      className={`star ${
-                        detail === '' ? 'text-accent' : 'text-white'
-                      }`}
-                    >
+                    <li key={detail} className="star">
                       {detail}
                     </li>
                   ))}
@@ -46,7 +42,12 @@ const EditionSelection: React.FC = () => {
 
                 {edition.moreDetails && (
                   <Accordion
-                    title="Mehr..."
+                    title={
+                      <div className="flex items-center justify-between gap-2">
+                        Zeige mehr Infos
+                        <QuestionBlock size={24} />
+                      </div>
+                    }
                     className="mt-4 bg-transparent"
                     showFooter={false}
                   >

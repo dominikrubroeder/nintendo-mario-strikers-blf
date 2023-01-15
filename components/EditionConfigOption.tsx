@@ -78,14 +78,24 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
               }}
             >
               {edition.id === Editions.teamId && appCtx?.selectedCharacter && (
-                <Image
-                  width={80}
-                  height={80}
-                  src={`/images/characters/NSwitch-character-sketch-${appCtx?.selectedCharacter
-                    .replace(' ', '')
-                    .toLowerCase()}.png`}
-                  alt={appCtx?.selectedCharacter}
-                />
+                <div className="flex flex-wrap items-center gap-2">
+                  <Image
+                    width={80}
+                    height={80}
+                    src={`/images/characters/NSwitch-character-sketch-${appCtx.selectedCharacter}.png`}
+                    alt={appCtx.selectedCharacter}
+                  />
+
+                  <span>+</span>
+
+                  <Image
+                    width={120}
+                    height={80}
+                    src="/images/logos/CI_NSwicth_Online_Logo.png"
+                    alt="Nintendo Switch Online Logo – 3 months"
+                    className="object-contain"
+                  />
+                </div>
               )}
 
               {children}
