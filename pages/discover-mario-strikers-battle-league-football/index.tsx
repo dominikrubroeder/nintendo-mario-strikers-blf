@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Features from '../../components/Features';
 import CharacterSelection from '../../components/CharacterSelection';
 import CommunityQuotes from '../../components/CommunityQuotes';
@@ -11,29 +11,28 @@ import MiniAudioPlayer from '../../components/mini-audio-player';
 import FloatingActionBar from '../../components/FloatingActionBar';
 import SpringBounceWhenInView from '../../components/animation/SpringBounceWhenInView';
 import Accordion from '../../components/ui/Accordion';
+import { useScroll } from 'framer-motion';
 
 const InfoPage: NextPage = () => {
+  let { scrollY } = useScroll();
+  const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');
   const miniAudioPlayerRef = useRef<null | HTMLDivElement>(null);
   const miniAudioPlayerIsOnScreen = useIsInView(miniAudioPlayerRef);
 
-  {
-    /* const playSoundtrackHandler = () => {
-    if (currentSoundtrack) {
-      audioRef.current?.play();
-      setPlaying(true);
-      return;
-    }
+  useEffect(() => {
+    return scrollY.onChange((latest) => {
+      if (latest < 0) return;
 
-    setCurrentSoundtrack(soundtracks[0]);
-  };
+      let isScrollingDown = scrollY.getPrevious() - latest < 0;
+      let currentScrollDirection: 'down' | 'up' = isScrollingDown
+        ? 'down'
+        : 'up';
 
-  const pauseSoundtrackHandler = () => {
-    if (currentSoundtrack) {
-      audioRef.current?.pause();
-      setPlaying(false);
-    }
-  }; */
-  }
+      if (scrollDirection !== currentScrollDirection) {
+        setScrollDirection(currentScrollDirection);
+      }
+    });
+  }, [scrollY, scrollDirection]);
 
   return (
     <Layout pageTitle="Discover">
@@ -200,10 +199,9 @@ const InfoPage: NextPage = () => {
        *
        * Integrate back button into action bar?
        */}
-
-      {!miniAudioPlayerIsOnScreen && (
-        <FloatingActionBar shouldBeVisible={miniAudioPlayerIsOnScreen} />
-      )}
+      <FloatingActionBar
+        shouldBeVisible={!miniAudioPlayerIsOnScreen && scrollDirection === 'up'}
+      />
     </Layout>
   );
 };
