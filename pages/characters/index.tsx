@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef } from 'react';
 import { SwipeCarousel } from '../../components/SwipeCarousel';
 import Layout from '../../components/layout';
 import Heading from '../../components/Heading';
@@ -8,14 +8,15 @@ import characters, { characterImages } from '../../data/characters';
 import AppContext from '../../store/appContext';
 import Image from 'next/image';
 import Card from '../../components/ui/Card';
+import { motion } from 'framer-motion';
 
 const CharacterPage: NextPage = () => {
   const appCtx = useContext(AppContext);
+  const gearRef = useRef<HTMLElement | null>(null);
   const character = appCtx?.selectedCharacter;
   const characterData =
     characters.find((curCharacter) => curCharacter.id === character) ??
     characters[0];
-  const [zoomedIn, setZoomedIn] = useState(false);
 
   return (
     <Layout pageTitle="Characters">
@@ -66,21 +67,21 @@ const CharacterPage: NextPage = () => {
                   {characterData.name}&apos;s Ausrüstung und Statistik
                 </Heading>
 
-                <section
-                  className={`interactive ${zoomedIn ? 'px-64' : 'px-12'}`}
-                  onMouseUp={() =>
-                    setZoomedIn((previousState) => !previousState)
-                  }
+                <motion.section
+                  initial={{ paddingLeft: '16rem', paddingRight: '16rem' }}
+                  whileInView={{ paddingLeft: '3rem', paddingRight: '3rem' }}
+                  viewport={{ amount: 0.3 }}
+                  transition={{ ease: 'easeOut', delay: 0.2 }}
                 >
                   <Image
                     src="/images/in-game/CI_NSwitch_MarioStrikersBLF_Screen_GearSettings_deDE.png"
                     alt="NSwitch Mario Strikers Battle League Football gear setting preview"
-                    className="max-w-full rounded-3xl transition-all duration-300 hover:cursor-pointer"
+                    className="max-w-full rounded-3xl transition-all duration-300"
                     width="1920"
                     height="1080"
                     draggable={false}
                   />
-                </section>
+                </motion.section>
               </div>
 
               <div className="mx-auto w-full max-w-lg">

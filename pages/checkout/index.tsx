@@ -4,6 +4,7 @@ import Layout from '../../components/layout';
 import PageSwitchAnimation from '../../components/PageSwitchAnimation';
 import Card from '../../components/ui/Card';
 import Image from 'next/image';
+import Button from '../../components/ui/Button';
 
 const Checkout: NextPage = () => {
   return (
@@ -154,23 +155,21 @@ const Checkout: NextPage = () => {
             </fieldset>
           </div>
 
-          <div>
-            <fieldset>
-              <legend>Order summary</legend>
+          <div className="grid items-start justify-start gap-4 self-start">
+            <h1>Order summary</h1>
 
-              <div className="relative h-96 w-96">
-                <Image
-                  src="/images/product/nintendo-switch-mario-strikers-battle-league-football-cover.png"
-                  alt="Mario Strikers: Battle League Football Cover"
-                  className="object-contain"
-                  layout="fill"
-                />
-              </div>
+            <div className="relative h-96 w-96">
+              <Image
+                src="/images/product/nintendo-switch-mario-strikers-battle-league-football-cover.png"
+                alt="Mario Strikers: Battle League Football Cover"
+                className="object-contain"
+                layout="fill"
+              />
+            </div>
 
-              <button type="submit" className="button button-contained">
-                Confirm order
-              </button>
-            </fieldset>
+            <Button variant="contained" className="text-center">
+              Confirm order
+            </Button>
           </div>
         </form>
       </section>

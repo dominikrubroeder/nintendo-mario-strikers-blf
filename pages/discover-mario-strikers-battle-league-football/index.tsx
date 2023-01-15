@@ -84,7 +84,7 @@ const InfoPage: NextPage = () => {
           <p className="mx-auto max-w-md text-center">...</p>
         </section>
 
-        <section className="mx-auto grid w-full max-w-md gap-4">
+        <section className="mx-auto grid w-full max-w-md gap-4 px-4 md:px-0">
           <Accordion title="A">
             <p>
               *Für den Mehrspieler-Modus wird pro Spieler ein kompatibler

@@ -35,6 +35,7 @@ const SpringBounceWhenInView: React.FC<SpringBounceWhenInViewProps> = ({
         visible: { opacity: 1, scale: 1 },
         hidden: { opacity: 0, scale: 0.8 },
       }}
+      viewport={{ amount: 0.4 }}
       className={className && className}
     >
       {playSound && (
