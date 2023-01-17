@@ -33,10 +33,10 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({ shouldBeVisible }) => {
       {shouldBeVisible && (
         <motion.div
           key="actionBarWrapper"
-          className="fixed left-0 right-0 bottom-4 z-50 flex w-full items-center justify-center gap-4 transition"
-          initial={{ y: 100 }}
+          className="fixed left-0 right-0 top-4 z-50 flex w-full items-center justify-center gap-4 transition"
+          initial={{ y: -100 }}
           animate={{ y: 0 }}
-          exit={{ y: [-10, 100] }}
+          exit={{ y: [10, -100] }}
           transition={{
             ease: 'easeInOut',
           }}
@@ -98,7 +98,7 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({ shouldBeVisible }) => {
                             animate={{
                               opacity: 1,
                               visibility: 'visible',
-                              y: -64,
+                              y: 64,
                             }}
                             exit={{
                               opacity: 0,
@@ -107,7 +107,7 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({ shouldBeVisible }) => {
                               scale: 0,
                               y: 0,
                             }}
-                            className="absolute bottom-0 z-0 rounded-2xl bg-accent-dark p-4"
+                            className="absolute top-0 z-0 rounded-2xl bg-accent-dark p-4"
                           >
                             <ul className="grid h-64 gap-2 overflow-hidden overflow-y-auto">
                               <li className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full bg-accent p-2 font-bold uppercase transition">
@@ -182,7 +182,7 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({ shouldBeVisible }) => {
                           animate={{
                             opacity: 1,
                             visibility: 'visible',
-                            y: -64,
+                            y: 64,
                           }}
                           exit={{
                             opacity: 0,
@@ -192,7 +192,7 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({ shouldBeVisible }) => {
                             y: 0,
                             zIndex: -1,
                           }}
-                          className="absolute bottom-0 rounded-3xl bg-accent-dark p-4"
+                          className="absolute top-0 rounded-3xl bg-accent-dark p-4"
                         >
                           <ul className="min-h-64 grid gap-2 overflow-hidden overflow-y-auto text-white">
                             <li className="flex w-full min-w-max cursor-pointer items-center gap-4 rounded-full bg-accent p-2 font-bold uppercase transition">

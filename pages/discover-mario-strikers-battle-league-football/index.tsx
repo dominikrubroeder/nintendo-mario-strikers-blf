@@ -200,7 +200,7 @@ const InfoPage: NextPage = () => {
        * Integrate back button into action bar?
        */}
       <FloatingActionBar
-        shouldBeVisible={!miniAudioPlayerIsOnScreen && scrollDirection === 'up'}
+        shouldBeVisible={scrollDirection === 'up'}
       />
     </Layout>
   );
