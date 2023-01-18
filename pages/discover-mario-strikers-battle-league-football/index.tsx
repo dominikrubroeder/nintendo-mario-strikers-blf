@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import Features from '../../components/Features';
 import CharacterSelection from '../../components/CharacterSelection';
 import CommunityQuotes from '../../components/CommunityQuotes';
@@ -12,8 +12,15 @@ import FloatingActionBar from '../../components/FloatingActionBar';
 import SpringBounceWhenInView from '../../components/animation/SpringBounceWhenInView';
 import Accordion from '../../components/ui/Accordion';
 import { useScroll } from 'framer-motion';
+import { ChevronDownIcon } from '@heroicons/react/24/solid';
+import AppContext from '../../store/appContext';
+import characters from '../../data/characters';
 
 const InfoPage: NextPage = () => {
+  const appCtx = useContext(AppContext);
+  const character = characters.find(
+    (character) => character.id === appCtx?.selectedCharacter
+  );
   let { scrollY } = useScroll();
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');
   const miniAudioPlayerRef = useRef<null | HTMLDivElement>(null);
@@ -37,10 +44,23 @@ const InfoPage: NextPage = () => {
   return (
     <Layout pageTitle="Discover">
       <section className="mt-8 grid gap-32">
-        <section className="m-auto grid w-full max-w-screen-xl gap-12 px-4">
-          <Heading as="h2" className="headline--gradient">
-            Wähle dein Team
-          </Heading>
+        <section className="m-auto grid w-full max-w-screen-xl gap-12 px-4 text-center">
+          <header className="grid gap-2">
+            <Heading as="h2" className="headline--gradient">
+              Wähle dein Team
+            </Heading>
+
+            <p>
+              Und erhalte Vorbesteller-Boni beim Kauf der Striker&apos;s
+              <span className="mx-2 rounded-xl bg-accent-soft p-2 italic text-accent themed:bg-accent-dark themed:text-white">
+                Team-Edition
+              </span>
+              {/** Make button interaction bouncy, springy on hover */}
+              <div className="interactive group mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-transparent hover:bg-accent-dark">
+                <ChevronDownIcon className="h-4 w-4 text-accent group-hover:text-white themed:text-signal" />
+              </div>
+            </p>
+          </header>
 
           <CharacterSelection className="sm:grid-cols-2 lg:grid-cols-3" />
         </section>
@@ -199,9 +219,7 @@ const InfoPage: NextPage = () => {
        *
        * Integrate back button into action bar?
        */}
-      <FloatingActionBar
-        shouldBeVisible={scrollDirection === 'up'}
-      />
+      <FloatingActionBar shouldBeVisible={true} />
     </Layout>
   );
 };

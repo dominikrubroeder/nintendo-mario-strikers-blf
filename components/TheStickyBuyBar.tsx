@@ -75,7 +75,7 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
             <Button
               variant="contained"
               href={href || '/buy-mario-strikers-battle-league-football'}
-              sound={href ? 'nintendo-switch-click' : 'coin'}
+              sound="coin"
             >
               Jetzt vorbestellen
             </Button>

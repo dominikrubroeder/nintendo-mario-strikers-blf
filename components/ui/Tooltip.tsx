@@ -7,13 +7,14 @@ import Image from 'next/image';
 interface TooltipProps {
   title: any;
   children: React.ReactNode;
+  className?: string;
 }
 
-const Tooltip: React.FC<TooltipProps> = ({ title, children }) => {
+const Tooltip: React.FC<TooltipProps> = ({ title, children, className }) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="relative">
+    <div className={`relative inline-block ${className ? className : ''}`}>
       <Button
         variant="contained"
         onClick={() => setExpanded((previousState) => !previousState)}
@@ -25,10 +26,7 @@ const Tooltip: React.FC<TooltipProps> = ({ title, children }) => {
       </Button>
 
       {expanded && (
-        <SpringBounceWhenInView
-          delay={0}
-          className="absolute right-0 top-12 z-50 w-max max-w-xs rounded-xl bg-gray-100 p-6 text-base themed:bg-white themed:text-accent"
-        >
+        <SpringBounceWhenInView className="absolute right-0 top-12 z-50 w-max max-w-xs rounded-xl bg-gray-100 p-6 text-base themed:bg-white themed:text-accent">
           {children}
 
           <Button
