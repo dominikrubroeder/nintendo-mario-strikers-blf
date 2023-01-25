@@ -12,7 +12,7 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
   const router = useRouter();
 
   return (
-    <header className="relative flex h-20 w-full flex-wrap items-center justify-between p-4">
+    <header className="relative flex h-20 w-full flex-wrap items-center justify-between p-4 z-[100]">
       {withBackButton && (
         <button onClick={() => router.back()}>
           <ArrowLongLeftIcon className="h-4 w-4 text-accent themed:text-white" />
