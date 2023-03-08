@@ -55,10 +55,6 @@ const InfoPage: NextPage = () => {
               <span className="mx-2 rounded-xl bg-accent-soft p-2 italic text-accent themed:bg-accent-dark themed:text-white">
                 Team-Edition
               </span>
-              {/** Make button interaction bouncy, springy on hover */}
-              <div className="interactive group mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-transparent hover:bg-accent-dark">
-                <ChevronDownIcon className="h-4 w-4 text-accent group-hover:text-white themed:text-signal" />
-              </div>
             </p>
           </header>
 
