@@ -1,20 +1,20 @@
-import { NextPage } from 'next';
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import Features from '../../components/Features';
-import CharacterSelection from '../../components/CharacterSelection';
-import CommunityQuotes from '../../components/CommunityQuotes';
-import TheGallery from '../../components/TheGallery';
-import Heading from '../../components/Heading';
-import useIsInView from '../../hooks/useIsInView';
-import Layout from '../../components/layout';
-import MiniAudioPlayer from '../../components/mini-audio-player';
-import FloatingActionBar from '../../components/FloatingActionBar';
-import SpringBounceWhenInView from '../../components/animation/SpringBounceWhenInView';
-import Accordion from '../../components/ui/Accordion';
-import { useScroll } from 'framer-motion';
-import { ChevronDownIcon } from '@heroicons/react/24/solid';
-import AppContext from '../../store/appContext';
-import characters from '../../data/characters';
+import { NextPage } from "next";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import Features from "../../components/Features";
+import CharacterSelection from "../../components/CharacterSelection";
+import CommunityQuotes from "../../components/CommunityQuotes";
+import TheGallery from "../../components/TheGallery";
+import Heading from "../../components/Heading";
+import useIsInView from "../../hooks/useIsInView";
+import Layout from "../../components/layout";
+import MiniAudioPlayer from "../../components/mini-audio-player";
+import FloatingActionBar from "../../components/FloatingActionBar";
+import SpringBounceWhenInView from "../../components/animation/SpringBounceWhenInView";
+import Accordion from "../../components/ui/Accordion";
+import { useScroll } from "framer-motion";
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import AppContext from "../../store/appContext";
+import characters from "../../data/characters";
 
 const InfoPage: NextPage = () => {
   const appCtx = useContext(AppContext);
@@ -22,7 +22,7 @@ const InfoPage: NextPage = () => {
     (character) => character.id === appCtx?.selectedCharacter
   );
   let { scrollY } = useScroll();
-  const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');
+  const [scrollDirection, setScrollDirection] = useState<"up" | "down">("up");
   const miniAudioPlayerRef = useRef<null | HTMLDivElement>(null);
   const miniAudioPlayerIsOnScreen = useIsInView(miniAudioPlayerRef);
 
@@ -31,9 +31,9 @@ const InfoPage: NextPage = () => {
       if (latest < 0) return;
 
       let isScrollingDown = scrollY.getPrevious() - latest < 0;
-      let currentScrollDirection: 'down' | 'up' = isScrollingDown
-        ? 'down'
-        : 'up';
+      let currentScrollDirection: "down" | "up" = isScrollingDown
+        ? "down"
+        : "up";
 
       if (scrollDirection !== currentScrollDirection) {
         setScrollDirection(currentScrollDirection);
@@ -65,18 +65,6 @@ const InfoPage: NextPage = () => {
           <CharacterSelection className="sm:grid-cols-2 lg:grid-cols-3" />
         </section>
 
-        <section className="flex min-h-screen items-center justify-center">
-          <div className="grid items-center justify-center gap-2">
-            <Heading as="h2" className="headline--gradient">
-              Mach dich bereit
-            </Heading>
-
-            <div className="mx-auto" ref={miniAudioPlayerRef}>
-              <MiniAudioPlayer />
-            </div>
-          </div>
-        </section>
-
         <TheGallery />
 
         <Features />
@@ -86,7 +74,7 @@ const InfoPage: NextPage = () => {
         <section>
           <SpringBounceWhenInView>
             <Heading as="h2" className="headline--gradient">
-              Game trailer
+              Merch
             </Heading>
           </SpringBounceWhenInView>
 
@@ -96,7 +84,7 @@ const InfoPage: NextPage = () => {
         <section>
           <SpringBounceWhenInView>
             <Heading as="h2" className="headline--gradient">
-              Merch
+              Game trailer
             </Heading>
           </SpringBounceWhenInView>
 

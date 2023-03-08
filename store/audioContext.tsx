@@ -1,15 +1,15 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { Constants } from '../data/constants';
-import { soundtracks } from '../data/audio';
-import AppContext from './appContext';
-import characters from '../data/characters';
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { Constants } from "../data/constants";
+import { soundtracks } from "../data/audio";
+import AppContext from "./appContext";
+import characters from "../data/characters";
 
 type AudioContextType = {
   interactiveAudioisEnabled: boolean | null;
   toggleInteractiveAudio: () => void;
-  sound: string | null;
+  sound: null | string;
   setSound: (soundURL: string) => void;
-  soundtrack: string;
+  soundtrack: null | string;
   setSoundtrack: (soundtrackURL: string) => void;
   playAudio: () => void;
   pauseAudio: () => void;
@@ -28,8 +28,8 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
   const [interactiveAudioisEnabled, setinteractiveAudioisEnabled] = useState<
     boolean | null
   >(null);
-  const [sound, setSound] = useState('/audio/nintendo-switch-click.mp3');
-  const [soundtrack, setSoundtrack] = useState(soundtracks[0].src);
+  const [sound, setSound] = useState<null | string>(null);
+  const [soundtrack, setSoundtrack] = useState<null | string>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const appCtx = useContext(AppContext);
 
@@ -37,19 +37,20 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
     const selectedCharacterData = characters.find(
       (character) => character.id === appCtx?.selectedCharacter
     );
-    setSound(selectedCharacterData?.sound[0] ?? '/audio/sound-mario-0.mp3');
+    if (appCtx?.selectedCharacter)
+      setSound(selectedCharacterData?.sound[0] ?? "/audio/sound-mario-0.mp3");
   }, [appCtx?.selectedCharacter]);
 
   const initInteractiveAudio = () => {
     if (
       localStorage.getItem(Constants.InteractiveAudio) === null ||
-      localStorage.getItem(Constants.InteractiveAudio) === 'true'
+      localStorage.getItem(Constants.InteractiveAudio) === "true"
     ) {
       setinteractiveAudioisEnabled(true);
       return;
     }
 
-    if (localStorage.getItem(Constants.InteractiveAudio) === 'false') {
+    if (localStorage.getItem(Constants.InteractiveAudio) === "false") {
       setinteractiveAudioisEnabled(false);
       return;
     }
@@ -57,7 +58,7 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
 
   function playAudio() {
     const currentSoundtrack = document.getElementById(
-      'currentSoundtrack'
+      "currentSoundtrack"
     ) as HTMLAudioElement;
     currentSoundtrack?.play();
     setIsPlaying(true);
@@ -65,7 +66,7 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
 
   function pauseAudio() {
     const currentSoundtrack = document.getElementById(
-      'currentSoundtrack'
+      "currentSoundtrack"
     ) as HTMLAudioElement;
     currentSoundtrack?.pause();
     setIsPlaying(false);
@@ -83,7 +84,7 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
   useEffect(() => {
     localStorage.setItem(
       Constants.InteractiveAudio,
-      String(interactiveAudioisEnabled) ?? 'true'
+      String(interactiveAudioisEnabled) ?? "true"
     );
   }, [interactiveAudioisEnabled]);
 
