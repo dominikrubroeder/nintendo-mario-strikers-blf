@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
-import { SpeakerXMarkIcon, SpeakerWaveIcon } from '@heroicons/react/24/solid';
-import Toggle from './ui/Toggle';
-import Accordion from './ui/Accordion';
-import AudioContext from '../store/audioContext';
-import Button from './ui/Button';
+import React, { useContext } from "react";
+import { SpeakerXMarkIcon, SpeakerWaveIcon } from "@heroicons/react/24/solid";
+import Toggle from "./ui/Toggle";
+import Accordion from "./ui/Accordion";
+import AudioContext from "../store/audioContext";
+import Button from "./ui/Button";
 
 const InteractiveAudioSetting: React.FC = () => {
   const audioCtx = useContext(AudioContext);
@@ -36,7 +36,7 @@ const InteractiveAudioSetting: React.FC = () => {
         Lasse beispielsweise einen&nbsp;
         <Button
           variant="text"
-          onClick={() => audioCtx?.setSound('/audio/soundtracks/main-menu.mp3')}
+          onClick={() => audioCtx?.setSound("/audio/soundtracks/main-menu.mp3")}
           isInline
           className="my-2"
         >
@@ -46,7 +46,7 @@ const InteractiveAudioSetting: React.FC = () => {
         oder
         <Button
           variant="text"
-          onClick={() => audioCtx?.setSound('/audio/nintendo-woohoo.wav')}
+          onClick={() => audioCtx?.setSound("/audio/nintendo-woohoo.wav")}
           isInline
           className="my-2"
         >

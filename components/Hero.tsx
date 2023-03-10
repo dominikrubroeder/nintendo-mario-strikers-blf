@@ -49,7 +49,7 @@ const Hero: React.FC = () => {
       <motion.div
         animate={{ x: ["100%", "8%"] }}
         transition={{ ease: "easeOut", delay: 2 }}
-        className="absolute bottom-32 -right-12 z-50 h-[56rem] w-[56rem]"
+        className="absolute bottom-32 right-2 z-50 h-[44rem] w-[44rem]"
       >
         <Image
           src="/images/logos/mario-strikers-blf-logo.png"

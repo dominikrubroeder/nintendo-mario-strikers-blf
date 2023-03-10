@@ -1,14 +1,5 @@
-import { FC, useContext, useState } from "react";
+import { FC } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { soundtracks } from "../data/audio";
-import AudioContext from "../store/audioContext";
-import characters from "../data/characters";
-import AppContext from "../store/appContext";
-import Image from "next/image";
-import AnimatedSoundbarsIcon from "./AnimatedSoundbarsIcon";
-import { SpeakerWaveIcon } from "@heroicons/react/24/solid";
-import PauseAudioButton from "./mini-audio-player/controls/PauseAudioButton";
-import PlayAudioButton from "./mini-audio-player/controls/PlayAudioButton";
 import Button from "./ui/Button";
 
 interface FloatingActionBarProps {
@@ -16,18 +7,6 @@ interface FloatingActionBarProps {
 }
 
 const FloatingActionBar: FC<FloatingActionBarProps> = ({ shouldBeVisible }) => {
-  const audioCtx = useContext(AudioContext);
-  const appCtx = useContext(AppContext);
-  const [showCharacterMenu, setShowCharacterMenu] = useState(false);
-  const [showSoundtracksMenu, setShowSoundtracksMenu] = useState(false);
-  const character = characters.find(
-    (character) => character.id === appCtx?.selectedCharacter
-  );
-
-  const currentSoundtrack = soundtracks.find(
-    (soundtrack) => soundtrack.src === audioCtx?.soundtrack
-  );
-
   return (
     <AnimatePresence>
       {shouldBeVisible && (

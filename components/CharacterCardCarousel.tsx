@@ -102,10 +102,10 @@ export const CharacterCardCarousel: FC = () => {
             draggable={false}
           >
             <CharacterCard
-              id={character.id}
-              name={character.name}
-              sound={character.sound[0]}
-              image={character.image}
+              id={characters[0].id}
+              name={characters[0].name}
+              sound={characters[0].sound[0]}
+              image={characters[0].image}
             />
           </div>
         </motion.div>
