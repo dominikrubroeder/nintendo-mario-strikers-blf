@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import AudioContext from '../store/audioContext';
-import { createPortal } from 'react-dom';
+import React, { useContext, useEffect, useRef, useState } from "react";
+import AudioContext from "../store/audioContext";
+import { soundtracks } from "../data/audio";
 
 const CurrentSoundtrack: React.FC = () => {
   const audioRef = useRef<null | HTMLAudioElement>(null);
@@ -23,7 +23,7 @@ const CurrentSoundtrack: React.FC = () => {
     <audio
       id="currentSoundtrack"
       ref={audioRef}
-      src={audioCtx?.soundtrack}
+      src={audioCtx?.soundtrack ?? soundtracks[0].src}
     ></audio>
   ) : null;
 };

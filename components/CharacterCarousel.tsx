@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { useState, FC, useEffect, useContext } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { wrap } from 'popmotion';
-import Image from 'next/image';
-import AppContext from '../store/appContext';
-import characters, { characterImages } from '../data/characters';
+import * as React from "react";
+import { useState, FC, useEffect, useContext } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { wrap } from "popmotion";
+import Image from "next/image";
+import AppContext from "../store/appContext";
+import characters, { characterImages } from "../data/characters";
 
 /** https://codesandbox.io/s/framer-motion-image-gallery-pqvx3?file=/src/index.tsx:106-128 */
 
@@ -41,11 +41,11 @@ const swipePower = (offset: number, velocity: number) => {
   return Math.abs(offset) * velocity;
 };
 
-interface SwipeCarouselProps {
+interface CharacterCarouselProps {
   images: string[];
 }
 
-export const SwipeCarousel: FC<SwipeCarouselProps> = ({
+export const CharacterCarousel: FC<CharacterCarouselProps> = ({
   images = characterImages,
 }) => {
   const appCtx = useContext(AppContext);
@@ -76,7 +76,7 @@ export const SwipeCarousel: FC<SwipeCarouselProps> = ({
           animate="center"
           exit="exit"
           transition={{
-            x: { type: 'spring', stiffness: 300, damping: 30 },
+            x: { type: "spring", stiffness: 300, damping: 30 },
             opacity: { duration: 0.2 },
           }}
           drag="x"
