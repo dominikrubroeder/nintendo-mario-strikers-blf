@@ -1,19 +1,20 @@
-import { NextPage } from 'next';
-import React, { useContext, useRef } from 'react';
-import { SwipeCarousel } from '../../components/SwipeCarousel';
-import Layout from '../../components/layout';
-import Heading from '../../components/Heading';
-import Accordion from '../../components/ui/Accordion';
-import characters, { characterImages } from '../../data/characters';
-import AppContext from '../../store/appContext';
-import Image from 'next/image';
-import Card from '../../components/ui/Card';
-import { motion } from 'framer-motion';
+import { NextPage } from "next";
+import React, { useContext, useEffect } from "react";
+import { CharacterCarousel } from "../../components/CharacterCarousel";
+import Layout from "../../components/layout";
+import Heading from "../../components/Heading";
+import Accordion from "../../components/ui/Accordion";
+import characters, { characterImages } from "../../data/characters";
+import AppContext from "../../store/appContext";
+import Image from "next/image";
+import Card from "../../components/ui/Card";
+import { motion } from "framer-motion";
+import SpringBounceWhenInView from "../../components/animation/SpringBounceWhenInView";
+import { useRouter } from "next/router";
 
 const CharacterPage: NextPage = () => {
-  const appCtx = useContext(AppContext);
-  const gearRef = useRef<HTMLElement | null>(null);
-  const character = appCtx?.selectedCharacter;
+  const router = useRouter();
+  const character = router.query.character;
   const characterData =
     characters.find((curCharacter) => curCharacter.id === character) ??
     characters[0];
@@ -32,7 +33,7 @@ const CharacterPage: NextPage = () => {
       <div className="min-h-screen">
         <section className="gap gap-4">
           <div className="py-12">
-            <SwipeCarousel images={characterImages} />
+            <CharacterCarousel images={characterImages} />
           </div>
 
           <div className="grid gap-16">
@@ -44,7 +45,7 @@ const CharacterPage: NextPage = () => {
               </div>
 
               <h1 className="text-center text-9xl font-bold uppercase">
-                {character}
+                {characterData.name}
               </h1>
 
               <div className="mx-auto grid max-w-lg gap-16">
@@ -59,19 +60,29 @@ const CharacterPage: NextPage = () => {
                 <p>{characterData.baseText}</p>
               </Card>
 
-              <div>
-                <Heading
-                  as="h2"
-                  className="mx-auto mb-4 w-full max-w-lg font-bold uppercase"
-                >
-                  {characterData.name}&apos;s Ausrüstung und Statistik
-                </Heading>
+              <section className="grid gap-12">
+                <SpringBounceWhenInView>
+                  <Heading as="h2" className="headline--gradient">
+                    Individualisiere Dein Team
+                  </Heading>
+                </SpringBounceWhenInView>
 
+                <p className="mx-auto grid max-w-md gap-2 px-4 md:px-0">
+                  <Heading as="h2" className="font-bold uppercase">
+                    {characterData.name}&apos;s Ausrüstung und Statistik
+                  </Heading>
+                  Gestalte die Ausrüstung deines Teams ganz nach deinem
+                  Geschmack. Sie verändert nicht nur das Aussehen, sondern auch
+                  Werte wie Tempo, Kraft und die Genauigkeit beim Passen.
+                </p>
+              </section>
+
+              <div>
                 <motion.section
-                  initial={{ paddingLeft: '16rem', paddingRight: '16rem' }}
-                  whileInView={{ paddingLeft: '3rem', paddingRight: '3rem' }}
+                  initial={{ paddingLeft: "16rem", paddingRight: "16rem" }}
+                  whileInView={{ paddingLeft: "3rem", paddingRight: "3rem" }}
                   viewport={{ amount: 0.3 }}
-                  transition={{ ease: 'easeOut', delay: 0.2 }}
+                  transition={{ ease: "easeOut", delay: 0.2 }}
                 >
                   <Image
                     src="/images/in-game/CI_NSwitch_MarioStrikersBLF_Screen_GearSettings_deDE.png"
