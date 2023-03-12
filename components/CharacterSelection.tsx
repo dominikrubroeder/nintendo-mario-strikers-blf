@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import AppContext from "../store/appContext";
+import React from "react";
 import teams from "../data/characters";
 import CharacterCard from "./CharacterCard";
 import SpringBounceWhenInView from "./animation/SpringBounceWhenInView";
@@ -11,8 +10,6 @@ interface CharacterSelectionProps {
 const CharacterSelection: React.FC<CharacterSelectionProps> = ({
   className,
 }) => {
-  const appCtx = useContext(AppContext);
-
   return (
     <div className={`grid gap-4 ${className ? className : ""}`}>
       {teams.map((character) => {
@@ -23,7 +20,6 @@ const CharacterSelection: React.FC<CharacterSelectionProps> = ({
               name={character.name}
               sound={character.sound[0]}
               image={character.image}
-              onClick={() => appCtx?.setCharacter(character.id)}
             />
           </SpringBounceWhenInView>
         );

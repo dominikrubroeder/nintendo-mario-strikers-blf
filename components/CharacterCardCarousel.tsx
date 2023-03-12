@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, FC, useEffect, useContext } from "react";
+import { useState, FC, useContext, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
 import Image from "next/image";
@@ -43,11 +43,10 @@ const swipePower = (offset: number, velocity: number) => {
 
 export const CharacterCardCarousel: FC = () => {
   const appCtx = useContext(AppContext);
-  const [[page, direction], setPage] = useState([0, 0]);
-
-  useEffect(() => {
-    appCtx?.setCharacter(characters[page].id);
-  }, [page, appCtx]);
+  const selectedCharacterIndex = characters.findIndex(
+    (character) => character.id === appCtx?.selectedCharacter
+  );
+  const [[page, direction], setPage] = useState([selectedCharacterIndex, 0]);
 
   // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
   // then wrap that within 0-2 to find our image ID in the array below. By passing an
@@ -55,8 +54,24 @@ export const CharacterCardCarousel: FC = () => {
   // detect it as an entirely new image. So you can infinitely paginate as few as 1 images.
   const imageIndex = wrap(0, characterImages.length, page);
 
+  useEffect(() => console.log(imageIndex), [imageIndex]);
+
   const paginate = (newDirection: number) => {
     setPage([page + newDirection, newDirection]);
+
+    if (newDirection === 1)
+      appCtx?.setCharacter(
+        characters[
+          imageIndex + 1 > characterImages.length - 1 ? 0 : imageIndex + 1
+        ].id
+      );
+
+    if (newDirection === -1)
+      appCtx?.setCharacter(
+        characters[
+          imageIndex - 1 < 0 ? characterImages.length - 1 : imageIndex - 1
+        ].id
+      );
   };
 
   return (

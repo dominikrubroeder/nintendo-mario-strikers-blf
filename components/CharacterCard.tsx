@@ -8,22 +8,26 @@ interface CharacterCardProps {
   name: string;
   sound: string;
   image: string;
-  onClick?: () => void;
+  selectable?: boolean;
 }
 
 const CharacterCard: React.FC<CharacterCardProps> = ({
   id,
   name,
   image,
-  onClick,
+  selectable = true,
 }) => {
   const appCtx = useContext(AppContext);
   const isSelectedCharacter = appCtx?.selectedCharacter === id;
 
+  const onMouseUpHandler = () => {
+    if (selectable) appCtx?.setCharacter(id);
+  };
+
   return (
     <div
       className="interactive group relative flex h-96 cursor-pointer items-center justify-center rounded-3xl transition-all"
-      onMouseUp={onClick}
+      onMouseUp={onMouseUpHandler}
     >
       {isSelectedCharacter && (
         <>

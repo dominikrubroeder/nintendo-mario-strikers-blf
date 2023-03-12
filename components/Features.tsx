@@ -1,10 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import SpringBounceWhenInView from "./animation/SpringBounceWhenInView";
 import AppContext from "../store/appContext";
 import Image from "next/image";
 import Heading from "./Heading";
-import CharacterCard from "./CharacterCard";
-import characters from "../data/characters";
 import { items } from "../data/items";
 import Button from "./ui/Button";
 import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
@@ -12,10 +10,6 @@ import { CharacterCardCarousel } from "./CharacterCardCarousel";
 
 const Features: React.FC = () => {
   const appCtx = useContext(AppContext);
-  const character =
-    characters.find(
-      (character) => character.id === appCtx?.selectedCharacter
-    ) ?? characters[0];
 
   return (
     <>
