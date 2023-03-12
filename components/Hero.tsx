@@ -55,7 +55,7 @@ const Hero: React.FC = () => {
           src="/images/logos/mario-strikers-blf-logo.png"
           alt="Mario Strikers: Battle League Football Background"
           layout="fill"
-          className="object-fit"
+          className="object-contain"
           draggable={false}
         />
       </motion.div>

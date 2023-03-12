@@ -31,10 +31,6 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
     >
       {isSelectedCharacter && (
         <>
-          <div className="absolute bottom-4 z-10 rounded-xl p-2 text-5xl font-bold uppercase italic text-signal">
-            Team-Edition
-          </div>
-
           <div className="absolute -right-4 bottom-1/4 z-10 rotate-[61deg] rounded-xl p-2 text-xl font-bold uppercase italic text-signal">
             Team Edition
           </div>

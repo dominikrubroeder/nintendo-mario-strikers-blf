@@ -1,6 +1,6 @@
-import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
-import BouncingItems from './BouncingItems';
-import { communityQuotes } from '../data/communityquotes';
+import SpringBounceWhenInView from "./animation/SpringBounceWhenInView";
+import BouncingItems from "./BouncingItems";
+import { communityQuotes } from "../data/communityquotes";
 
 export default function CommunityQuotes() {
   return (
@@ -26,20 +26,20 @@ export default function CommunityQuotes() {
               <SpringBounceWhenInView key={communityQuote.quote}>
                 <div
                   className={`grid gap-2 ${
-                    index % 2 ? 'text-left' : 'text-right'
+                    index % 2 ? "text-left" : "text-right"
                   }`}
                 >
                   <div className="flex items-center gap-2">
                     <div
                       className={`h-8 w-8 flex-none rounded-full bg-gray-100 themed:bg-accent-dark ${
-                        index % 2 ? 'order-1' : 'order-2'
+                        index % 2 ? "order-1" : "order-2"
                       }`}
                     ></div>
                     <div
                       className={`flex items-center justify-center rounded-3xl bg-gray-100 themed:bg-accent-dark md:rounded-full ${
                         index % 2
-                          ? 'order-2 text-left'
-                          : 'order-1 ml-auto text-left md:text-right'
+                          ? "order-2 text-left"
+                          : "order-1 ml-auto text-left md:text-right"
                       }`}
                     >
                       <span className="mx-auto px-8 py-4 md:px-6">
@@ -55,10 +55,6 @@ export default function CommunityQuotes() {
             );
           }
         })}
-      </div>
-
-      <div className="mx-auto">
-        <BouncingItems size={24} />
       </div>
     </section>
   );

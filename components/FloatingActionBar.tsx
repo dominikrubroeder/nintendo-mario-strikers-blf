@@ -23,7 +23,7 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({ shouldBeVisible }) => {
         >
           <motion.div
             key="actionBar"
-            className="z-10 -rotate-[6deg] cursor-pointer rounded-full bg-accent p-4 transition-all active:scale-95 themed:bg-signal"
+            className="z-10 cursor-pointer rounded-full bg-accent p-4 drop-shadow-lg transition-all active:scale-95 themed:bg-signal"
           >
             <motion.div
               key="actionBarContent"
@@ -50,8 +50,6 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({ shouldBeVisible }) => {
               </div>
             </motion.div>
           </motion.div>
-
-          <RectangleShape className="absolute bottom-0 left-1/2 z-0 -translate-x-1/2 opacity-90" />
         </motion.div>
       )}
     </AnimatePresence>
