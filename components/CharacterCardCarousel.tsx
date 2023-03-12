@@ -5,7 +5,6 @@ import { wrap } from "popmotion";
 import Image from "next/image";
 import AppContext from "../store/appContext";
 import characters, { characterImages } from "../data/characters";
-import CharacterCard from "./CharacterCard";
 
 /** https://codesandbox.io/s/framer-motion-image-gallery-pqvx3?file=/src/index.tsx:106-128 */
 
@@ -96,18 +95,6 @@ export const CharacterCardCarousel: FC = () => {
             className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
             draggable={false}
           />
-
-          <div
-            className="mb-4 block md:order-2 md:mb-0 md:flex"
-            draggable={false}
-          >
-            <CharacterCard
-              id={characters[0].id}
-              name={characters[0].name}
-              sound={characters[0].sound[0]}
-              image={characters[0].image}
-            />
-          </div>
         </motion.div>
       </AnimatePresence>
 

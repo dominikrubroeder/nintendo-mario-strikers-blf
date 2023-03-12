@@ -26,21 +26,19 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
       onMouseUp={onClick}
     >
       {isSelectedCharacter && (
-        <div className="absolute bottom-4 z-10 rounded-xl p-2 text-5xl font-bold uppercase italic text-signal">
-          Team-Edition
-        </div>
-      )}
+        <>
+          <div className="absolute bottom-4 z-10 rounded-xl p-2 text-5xl font-bold uppercase italic text-signal">
+            Team-Edition
+          </div>
 
-      {isSelectedCharacter && (
-        <div className="absolute -left-8 top-1/4 z-10 -rotate-[64deg] rounded-xl p-2 text-xl font-bold uppercase italic text-signal">
-          Team Edition
-        </div>
-      )}
+          <div className="absolute -right-4 bottom-1/4 z-10 rotate-[61deg] rounded-xl p-2 text-xl font-bold uppercase italic text-signal">
+            Team Edition
+          </div>
 
-      {isSelectedCharacter && (
-        <div className="absolute -right-4 bottom-1/4 z-10 rotate-[61deg] rounded-xl p-2 text-xl font-bold uppercase italic text-signal">
-          Team Edition
-        </div>
+          <div className="absolute -left-8 top-1/4 z-10 -rotate-[64deg] rounded-xl p-2 text-xl font-bold uppercase italic text-signal">
+            Team Edition
+          </div>
+        </>
       )}
 
       <div className="z-10 grid gap-2 text-center">

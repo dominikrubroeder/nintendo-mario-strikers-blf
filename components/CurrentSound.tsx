@@ -12,7 +12,6 @@ const CurrentSound: React.FC = () => {
     setMounted(true);
 
     if (audioCtx?.sound && audioRef.current) {
-      console.log("Playing?");
       audioRef.current.play();
     }
 

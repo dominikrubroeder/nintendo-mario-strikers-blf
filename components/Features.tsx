@@ -46,9 +46,7 @@ const Features: React.FC = () => {
            * When in view do/show "hover" interaction, scale up image
            */}
 
-          <div className="m-auto max-w-xl gap-4 text-center md:flex md:items-center md:justify-center md:gap-12">
-            <CharacterCardCarousel />
-          </div>
+          <CharacterCardCarousel />
 
           <Button
             variant="text"

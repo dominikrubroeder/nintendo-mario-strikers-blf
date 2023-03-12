@@ -34,11 +34,12 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
   const appCtx = useContext(AppContext);
 
   useEffect(() => {
-    const selectedCharacterData = characters.find(
-      (character) => character.id === appCtx?.selectedCharacter
-    );
-    if (appCtx?.selectedCharacter)
+    if (appCtx?.selectedCharacter) {
+      const selectedCharacterData = characters.find(
+        (character) => character.id === appCtx?.selectedCharacter
+      );
       setSound(selectedCharacterData?.sound[0] ?? "/audio/sound-mario-0.mp3");
+    }
   }, [appCtx?.selectedCharacter]);
 
   const initInteractiveAudio = () => {

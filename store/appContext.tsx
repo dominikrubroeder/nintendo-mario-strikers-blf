@@ -1,6 +1,6 @@
-import React, { createContext, useEffect, useState } from 'react';
-import { Constants } from '../data/constants';
-import { Editions } from '../data/editions';
+import React, { createContext, useEffect, useState } from "react";
+import { Constants } from "../data/constants";
+import { Editions } from "../data/editions";
 
 type AppContextType = {
   selectedCharacter: null | string;
@@ -30,13 +30,13 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
       const localStorageTheme = localStorage.getItem(Constants.Theme);
       setSelectedCharacter(localStorageTheme);
       document.documentElement.className = `themed theme-${localStorageTheme}`;
-      document.documentElement.setAttribute('theme', String(localStorageTheme));
+      document.documentElement.setAttribute("theme", String(localStorageTheme));
     }
   }
 
   function setThemeHandler(character: string | null) {
     document.documentElement.className = `themed theme-${character}`;
-    document.documentElement.setAttribute('theme', String(character));
+    document.documentElement.setAttribute("theme", String(character));
 
     localStorage.setItem(Constants.Theme, character ?? String(null));
 
@@ -54,8 +54,8 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
 
   function validateEditionHandler(edition: string | null) {
     if (edition === Editions.standardId) {
-      document.documentElement.className = '';
-      document.documentElement.removeAttribute('theme');
+      document.documentElement.className = "";
+      document.documentElement.removeAttribute("theme");
       localStorage.removeItem(Constants.Themed);
       localStorage.removeItem(Constants.Theme);
       setSelectedCharacter(null);
@@ -66,7 +66,7 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
       setBuyable(false);
     }
 
-    localStorage.setItem(Constants.Edition, edition ?? '');
+    localStorage.setItem(Constants.Edition, edition ?? "");
 
     setSelectedEdition(edition);
   }
