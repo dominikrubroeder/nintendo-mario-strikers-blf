@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import Features from "../../components/Features";
 import CharacterSelection from "../../components/CharacterSelection";
 import CommunityQuotes from "../../components/CommunityQuotes";
-import TheGallery from "../../components/TheGallery";
+import GameGallery from "../../components/GameGallery";
 import Heading from "../../components/Heading";
 import useIsInView from "../../hooks/useIsInView";
 import Layout from "../../components/layout";
@@ -61,7 +61,7 @@ const InfoPage: NextPage = () => {
           <CharacterSelection className="sm:grid-cols-2 lg:grid-cols-3" />
         </section>
 
-        <TheGallery />
+        <GameGallery />
 
         <Features />
 
