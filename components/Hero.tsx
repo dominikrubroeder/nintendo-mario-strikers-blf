@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
               alt="Mario Strikers: Battle League Football Wallpaper"
               layout="fill"
               priority
-              className="object-fit cursor-pointer"
+              className="cursor-pointer object-cover"
             />
           </a>
         </Link>
