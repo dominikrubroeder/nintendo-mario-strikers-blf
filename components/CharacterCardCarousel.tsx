@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, FC, useContext, useEffect } from "react";
+import { useState, FC, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
 import Image from "next/image";
@@ -54,8 +54,6 @@ export const CharacterCardCarousel: FC = () => {
   // detect it as an entirely new image. So you can infinitely paginate as few as 1 images.
   const imageIndex = wrap(0, characterImages.length, page);
 
-  useEffect(() => console.log(imageIndex), [imageIndex]);
-
   const paginate = (newDirection: number) => {
     setPage([page + newDirection, newDirection]);
 
@@ -103,7 +101,7 @@ export const CharacterCardCarousel: FC = () => {
           className="absolute h-[50vh] w-full"
         >
           <motion.img
-            src={characterImages[imageIndex]}
+            src={characterImages[selectedCharacterIndex]}
             width={480}
             height={480}
             alt="Character carousel test"

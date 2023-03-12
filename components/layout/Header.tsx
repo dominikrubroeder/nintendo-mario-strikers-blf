@@ -4,7 +4,7 @@ import Logo from "../svg/Logo";
 import { useRouter } from "next/router";
 import { ArrowLongLeftIcon } from "@heroicons/react/24/solid";
 import AudioContext from "../../store/audioContext";
-import MiniAudioPlayer from "../mini-audio-player";
+import Item from "../img/Item";
 
 interface HeaderProps {
   withBackButton?: boolean;
@@ -31,14 +31,17 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
       </div>
 
       <div
-        className="interactive absolute right-4 flex cursor-pointer items-center gap-2 rounded-xl bg-accent-dark px-3 py-2 text-sm"
+        className="interactive absolute right-4 flex cursor-pointer items-center gap-1 rounded-xl bg-accent-dark px-3 py-2 text-sm"
         onClick={() => audioCtx?.toggleInteractiveAudio()}
       >
-        <input
-          type="checkbox"
-          id="interactiveAudio"
-          name="interactiveAudio"
-          checked={audioCtx?.interactiveAudioisEnabled ?? false}
+        <Item
+          item="Star"
+          size={24}
+          className={`transition ${
+            audioCtx?.interactiveAudioisEnabled
+              ? "scale-100 opacity-100"
+              : "scale-90 opacity-20"
+          }`}
         />
         Interaktives Audio
       </div>
