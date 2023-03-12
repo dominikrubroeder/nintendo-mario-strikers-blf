@@ -12,12 +12,16 @@ const CurrentSoundtrack: React.FC = () => {
   useEffect(() => {
     setMounted(true);
 
-    if (audioCtx?.soundtrack && audioRef.current) {
+    if (
+      audioCtx?.soundtrack &&
+      audioRef.current &&
+      audioCtx.interactiveAudioisEnabled
+    ) {
       audioRef.current.play();
     }
 
     return () => setMounted(false);
-  }, [audioCtx?.soundtrack]);
+  }, [audioCtx?.soundtrack, audioCtx?.interactiveAudioisEnabled]);
 
   return mounted ? (
     <audio

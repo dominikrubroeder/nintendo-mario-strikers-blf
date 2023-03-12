@@ -1,23 +1,24 @@
 import { NextPage } from "next";
-import React, { useContext, useEffect } from "react";
-import { CharacterCarousel } from "../../components/CharacterCarousel";
+import React, { useContext } from "react";
 import Layout from "../../components/layout";
 import Heading from "../../components/Heading";
 import Accordion from "../../components/ui/Accordion";
-import characters, { characterImages } from "../../data/characters";
+import characters from "../../data/characters";
 import AppContext from "../../store/appContext";
 import Image from "next/image";
 import Card from "../../components/ui/Card";
 import { motion } from "framer-motion";
 import SpringBounceWhenInView from "../../components/animation/SpringBounceWhenInView";
 import { useRouter } from "next/router";
+import { CharacterCardCarousel } from "../../components/CharacterCardCarousel";
 
 const CharacterPage: NextPage = () => {
   const router = useRouter();
-  const character = router.query.character;
+  const appCtx = useContext(AppContext);
   const characterData =
-    characters.find((curCharacter) => curCharacter.id === character) ??
-    characters[0];
+    characters.find(
+      (character) => character.id === appCtx?.selectedCharacter
+    ) ?? characters[0];
 
   return (
     <Layout pageTitle="Characters">
@@ -33,7 +34,7 @@ const CharacterPage: NextPage = () => {
       <div className="min-h-screen">
         <section className="gap gap-4">
           <div className="py-12">
-            <CharacterCarousel images={characterImages} />
+            <CharacterCardCarousel />
           </div>
 
           <div className="grid gap-16">
