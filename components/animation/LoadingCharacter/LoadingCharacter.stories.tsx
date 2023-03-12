@@ -1,34 +1,34 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import React from "react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import LoadingCharacter from '.';
-import Card from '../../ui/Card';
-import { defaultThemeOption, themeOptions } from '../../../data/storybook';
+import LoadingTeam from ".";
+import Card from "../../ui/Card";
+import { defaultThemeOption, themeOptions } from "../../../data/storybook";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Animation/LoadingCharacter',
-  component: LoadingCharacter,
+  title: "Animation/LoadingTeam",
+  component: LoadingTeam,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     Theme: {
-      control: 'select',
+      control: "select",
       options: themeOptions,
       defaultValue: defaultThemeOption,
     },
   },
-} as ComponentMeta<typeof LoadingCharacter>;
+} as ComponentMeta<typeof LoadingTeam>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof LoadingCharacter> = (args) => (
+const Template: ComponentStory<typeof LoadingTeam> = (args) => (
   <Card className="flex h-screen w-screen items-center justify-center bg-accent p-32">
-    <LoadingCharacter {...args} />
+    <LoadingTeam {...args} />
   </Card>
 );
 
-const TemplateThemed: ComponentStory<typeof LoadingCharacter> = (args) => (
+const TemplateThemed: ComponentStory<typeof LoadingTeam> = (args) => (
   <Card className="themed flex h-screen w-screen items-center justify-center bg-mario p-32">
-    <LoadingCharacter {...args} />
+    <LoadingTeam {...args} />
   </Card>
 );
 

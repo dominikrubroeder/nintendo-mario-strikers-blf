@@ -1,27 +1,25 @@
-import React, { useContext } from 'react';
-import Tooltip from './ui/Tooltip';
-import AppContext from '../store/appContext';
-import characters from '../data/characters';
+import React, { useContext } from "react";
+import Tooltip from "./ui/Tooltip";
+import AppContext from "../store/appContext";
+import teams from "../data/teams";
 
 const SelectYourTeamInfoBar: React.FC = () => {
   const appCtx = useContext(AppContext);
-  const currentTheme = appCtx?.selectedCharacter
-    ? appCtx?.selectedCharacter.toUpperCase()
+  const currentTheme = appCtx?.selectedTeam
+    ? appCtx?.selectedTeam.toUpperCase()
     : undefined;
-  const character = characters.find(
-    (character) => character.id === appCtx?.selectedCharacter
-  );
+  const team = teams.find((team) => team.id === appCtx?.selectedTeam);
 
   return (
     <div className="flex items-center justify-between">
       <h4>Wähle dein Team:</h4>
 
       <div className="flex items-center gap-4">
-        <div className="font-bold">{character?.name.toUpperCase()}</div>
+        <div className="font-bold">{team?.name.toUpperCase()}</div>
         <div className="cursor-pointer text-sm text-accent themed:text-white">
           <Tooltip title="Warum?">
             Wähle ein Team und erhalte <b>zusätzlichen Spiel-Content</b> wie
-            neue Arenen, das Geheimteam und <b>inviduelle Merch-Artrikel</b>{' '}
+            neue Arenen, das Geheimteam und <b>inviduelle Merch-Artrikel</b>{" "}
             basierend auf deiner Team-Wahl! <br /> <br />
             Wähle also beispielsweise {currentTheme}, um einen Hoodie im
             {currentTheme} Design zu erhalten oder deinen Schreibtisch mit der

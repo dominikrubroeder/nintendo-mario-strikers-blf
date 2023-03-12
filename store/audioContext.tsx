@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { Constants } from "../data/constants";
 import { soundtracks } from "../data/audio";
 import AppContext from "./appContext";
-import characters from "../data/characters";
+import teams from "../data/teams";
 
 type AudioContextType = {
   interactiveAudioisEnabled: boolean | null;
@@ -34,13 +34,13 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
   const appCtx = useContext(AppContext);
 
   useEffect(() => {
-    if (appCtx?.selectedCharacter) {
-      const selectedCharacterData = characters.find(
-        (character) => character.id === appCtx?.selectedCharacter
+    if (appCtx?.selectedTeam) {
+      const selectedTeamData = teams.find(
+        (team) => team.id === appCtx?.selectedTeam
       );
-      setSound(selectedCharacterData?.sound[0] ?? "/audio/sound-mario-0.mp3");
+      setSound(selectedTeamData?.sound[0] ?? "/audio/sound-mario-0.mp3");
     }
-  }, [appCtx?.selectedCharacter]);
+  }, [appCtx?.selectedTeam]);
 
   const initInteractiveAudio = () => {
     if (

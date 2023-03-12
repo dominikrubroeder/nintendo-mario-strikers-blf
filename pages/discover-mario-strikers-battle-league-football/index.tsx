@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import React from "react";
 import Features from "../../components/Features";
-import CharacterSelection from "../../components/CharacterSelection";
+import TeamSelection from "../../components/TeamSelection";
 import CommunityQuotes from "../../components/CommunityQuotes";
 import GameGallery from "../../components/GameGallery";
 import Heading from "../../components/Heading";
@@ -27,7 +27,7 @@ const InfoPage: NextPage = () => {
             </p>
           </header>
 
-          <CharacterSelection className="sm:grid-cols-2 lg:grid-cols-3" />
+          <TeamSelection className="sm:grid-cols-2 lg:grid-cols-3" />
         </section>
 
         <GameGallery />

@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
 import Image from "next/image";
 import AppContext from "../store/appContext";
-import characters, { characterImages } from "../data/characters";
+import teams, { teamImages } from "../data/teams";
 
 /** https://codesandbox.io/s/framer-motion-image-gallery-pqvx3?file=/src/index.tsx:106-128 */
 
@@ -41,18 +41,18 @@ const swipePower = (offset: number, velocity: number) => {
   return Math.abs(offset) * velocity;
 };
 
-interface CharacterCarouselProps {
+interface TeamCarouselProps {
   images: string[];
 }
 
-export const CharacterCarousel: FC<CharacterCarouselProps> = ({
-  images = characterImages,
+export const TeamCarousel: FC<TeamCarouselProps> = ({
+  images = teamImages,
 }) => {
   const appCtx = useContext(AppContext);
   const [[page, direction], setPage] = useState([0, 0]);
 
   useEffect(() => {
-    appCtx?.setCharacter(characters[page].id);
+    appCtx?.setTeam(teams[page].id);
   }, [page, appCtx]);
 
   // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
@@ -97,7 +97,7 @@ export const CharacterCarousel: FC<CharacterCarouselProps> = ({
             src={images[imageIndex]}
             width={480}
             height={480}
-            alt="Character carousel test"
+            alt="Team carousel test"
             className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
             draggable={false}
           />

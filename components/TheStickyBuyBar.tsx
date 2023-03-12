@@ -33,12 +33,12 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
         }`}
       >
         <div className="flex items-center gap-2">
-          {appCtx?.selectedCharacter && (
+          {appCtx?.selectedTeam && (
             <Image
-              src={`/images/characters/NSwitch-character-sketch-${appCtx?.selectedCharacter}.png`}
+              src={`/images/teams/NSwitch-character-sketch-${appCtx?.selectedTeam}.png`}
               width={48}
               height={48}
-              alt={`${appCtx?.selectedCharacter} sketch`}
+              alt={`${appCtx?.selectedTeam} sketch`}
             />
           )}
           <div className="grid">
@@ -61,8 +61,8 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
                         1
                       )} Edition`
                     : ""}
-                  {appCtx?.selectedCharacter
-                    ? ` – ${appCtx?.selectedCharacter.toUpperCase()}`
+                  {appCtx?.selectedTeam
+                    ? ` – ${appCtx?.selectedTeam.toUpperCase()}`
                     : ""}
                   {price ? ` – ${price}€` : ""}
                 </span>

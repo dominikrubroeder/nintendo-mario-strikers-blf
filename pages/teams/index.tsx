@@ -3,38 +3,36 @@ import React, { useContext } from "react";
 import Layout from "../../components/layout";
 import Heading from "../../components/Heading";
 import Accordion from "../../components/ui/Accordion";
-import characters from "../../data/characters";
+import teams from "../../data/teams";
 import AppContext from "../../store/appContext";
 import Image from "next/image";
 import Card from "../../components/ui/Card";
 import { motion } from "framer-motion";
 import SpringBounceWhenInView from "../../components/animation/SpringBounceWhenInView";
 import { useRouter } from "next/router";
-import { CharacterCardCarousel } from "../../components/CharacterCardCarousel";
+import { TeamCardCarousel } from "../../components/TeamCardCarousel";
 
-const CharacterPage: NextPage = () => {
+const TeamPage: NextPage = () => {
   const router = useRouter();
   const appCtx = useContext(AppContext);
-  const characterData =
-    characters.find(
-      (character) => character.id === appCtx?.selectedCharacter
-    ) ?? characters[0];
+  const teamData =
+    teams.find((team) => team.id === appCtx?.selectedTeam) ?? teams[0];
 
   return (
-    <Layout pageTitle="Characters">
+    <Layout pageTitle="Teams">
       {/**
-       * Push, "lift" the state up of current character to url to make it sharable
-       * Include character statistic, game insights
+       * Push, "lift" the state up of current team to url to make it sharable
+       * Include team statistic, game insights
        *
-       * When switching theme / character through carousel, play character Sound
+       * When switching theme / team through carousel, play team Sound
        *
-       * Move playing character sound to shared context when character / theme changed / is changing?
+       * Move playing team sound to shared context when team / theme changed / is changing?
        */}
 
       <div className="min-h-screen">
         <section className="gap gap-4">
           <div className="py-12">
-            <CharacterCardCarousel />
+            <TeamCardCarousel />
           </div>
 
           <div className="grid gap-16">
@@ -46,19 +44,19 @@ const CharacterPage: NextPage = () => {
               </div>
 
               <h1 className="text-center text-9xl font-bold uppercase">
-                {characterData.name}
+                {teamData.name}
               </h1>
 
               <div className="mx-auto grid max-w-lg gap-16">
                 <p className="text-center text-xl">
-                  &ldquo;{characterData.teamText}&rdquo;
+                  &ldquo;{teamData.teamText}&rdquo;
                 </p>
               </div>
             </header>
 
             <div className="grid gap-16">
               <Card className="mx-auto w-full max-w-lg p-8">
-                <p>{characterData.baseText}</p>
+                <p>{teamData.baseText}</p>
               </Card>
 
               <section className="grid gap-12">
@@ -70,7 +68,7 @@ const CharacterPage: NextPage = () => {
 
                 <p className="mx-auto grid max-w-md gap-2 px-4 md:px-0">
                   <Heading as="h2" className="font-bold uppercase">
-                    {characterData.name}&apos;s Ausrüstung und Statistik
+                    {teamData.name}&apos;s Ausrüstung und Statistik
                   </Heading>
                   Gestalte die Ausrüstung deines Teams ganz nach deinem
                   Geschmack. Sie verändert nicht nur das Aussehen, sondern auch
@@ -98,15 +96,15 @@ const CharacterPage: NextPage = () => {
 
               <div className="mx-auto w-full max-w-lg">
                 <Heading as="h2" className="mb-4 font-bold uppercase">
-                  Wähle {characterData.name} und du bekommst:
+                  Wähle {teamData.name} und du bekommst:
                 </Heading>
 
                 <div className="grid gap-2">
                   <Accordion
-                    title={`${characterData.name.toUpperCase()} – Merchandise`}
+                    title={`${teamData.name.toUpperCase()} – Merchandise`}
                   >
                     <div className="grid grid-cols-2 gap-4">
-                      {characterData.images.map((image, index) => (
+                      {teamData.images.map((image, index) => (
                         <div
                           key={index}
                           className="interactive h-64 cursor-pointer rounded-3xl bg-gray-100 themed:bg-accent"
@@ -122,7 +120,7 @@ const CharacterPage: NextPage = () => {
                         Strikers: Charged Football (Wii) und Mario Smash
                         Football (GameCube) frei
                       </li>
-                      <li>Mehr Content: Schalte das Geheimcharacter frei</li>
+                      <li>Mehr Content: Schalte das Geheimteam frei</li>
                       <li>...</li>
                     </ul>
                   </Accordion>
@@ -131,14 +129,14 @@ const CharacterPage: NextPage = () => {
 
               <div className="mx-auto w-full max-w-lg">
                 <Heading as="h3" className="mb-4 font-bold uppercase">
-                  {characterData.name}&apos;s Hyperstrike
+                  {teamData.name}&apos;s Hyperstrike
                 </Heading>
 
                 {/* <div className="rounded-xl bg-gray-100 p-8 themed:bg-accent-dark">
-                  All characters hyper strike https://www.youtube.com/watch?v=v2zQbRfwSVs
+                  All teams hyper strike https://www.youtube.com/watch?v=v2zQbRfwSVs
                   <iframe
                     className="w-full rounded-xl"
-                    src={characterData.specialAbilityVideoURL}
+                    src={teamData.specialAbilityVideoURL}
                     title="YouTube video player"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
@@ -154,4 +152,4 @@ const CharacterPage: NextPage = () => {
   );
 };
 
-export default CharacterPage;
+export default TeamPage;

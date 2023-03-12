@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
 import Image from "next/image";
 import AppContext from "../store/appContext";
-import characters, { characterImages } from "../data/characters";
+import teams, { teamImages } from "../data/teams";
 
 /** https://codesandbox.io/s/framer-motion-image-gallery-pqvx3?file=/src/index.tsx:106-128 */
 
@@ -41,34 +41,30 @@ const swipePower = (offset: number, velocity: number) => {
   return Math.abs(offset) * velocity;
 };
 
-export const CharacterCardCarousel: FC = () => {
+export const TeamCardCarousel: FC = () => {
   const appCtx = useContext(AppContext);
-  const selectedCharacterIndex = characters.findIndex(
-    (character) => character.id === appCtx?.selectedCharacter
+  const selectedTeamIndex = teams.findIndex(
+    (team) => team.id === appCtx?.selectedTeam
   );
-  const [[page, direction], setPage] = useState([selectedCharacterIndex, 0]);
+  const [[page, direction], setPage] = useState([selectedTeamIndex, 0]);
 
   // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
   // then wrap that within 0-2 to find our image ID in the array below. By passing an
   // absolute page index as the `motion` component's `key` prop, `AnimatePresence` will
   // detect it as an entirely new image. So you can infinitely paginate as few as 1 images.
-  const imageIndex = wrap(0, characterImages.length, page);
+  const imageIndex = wrap(0, teamImages.length, page);
 
   const paginate = (newDirection: number) => {
     setPage([page + newDirection, newDirection]);
 
     if (newDirection === 1)
-      appCtx?.setCharacter(
-        characters[
-          imageIndex + 1 > characterImages.length - 1 ? 0 : imageIndex + 1
-        ].id
+      appCtx?.setTeam(
+        teams[imageIndex + 1 > teamImages.length - 1 ? 0 : imageIndex + 1].id
       );
 
     if (newDirection === -1)
-      appCtx?.setCharacter(
-        characters[
-          imageIndex - 1 < 0 ? characterImages.length - 1 : imageIndex - 1
-        ].id
+      appCtx?.setTeam(
+        teams[imageIndex - 1 < 0 ? teamImages.length - 1 : imageIndex - 1].id
       );
   };
 
@@ -101,10 +97,10 @@ export const CharacterCardCarousel: FC = () => {
           className="absolute h-[50vh] w-full"
         >
           <motion.img
-            src={characterImages[selectedCharacterIndex]}
+            src={teamImages[selectedTeamIndex]}
             width={480}
             height={480}
-            alt="Character carousel test"
+            alt="Team carousel test"
             className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
             draggable={false}
           />

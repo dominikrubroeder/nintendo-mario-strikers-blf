@@ -6,7 +6,7 @@ import Heading from "./Heading";
 import { items } from "../data/items";
 import Button from "./ui/Button";
 import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
-import { CharacterCardCarousel } from "./CharacterCardCarousel";
+import { TeamCardCarousel } from "./TeamCardCarousel";
 
 const Features: React.FC = () => {
   const appCtx = useContext(AppContext);
@@ -26,7 +26,7 @@ const Features: React.FC = () => {
         </p>
       </section>
 
-      {appCtx?.selectedCharacter && (
+      {appCtx?.selectedTeam && (
         <section className="grid gap-12">
           <SpringBounceWhenInView>
             <Heading as="h2" className="headline--gradient">
@@ -35,16 +35,16 @@ const Features: React.FC = () => {
           </SpringBounceWhenInView>
 
           {/**
-           * List all characters as selectable teams
-           * Link to character detail page
+           * List all teams as selectable teams
+           * Link to team detail page
            * When in view do/show "hover" interaction, scale up image
            */}
 
-          <CharacterCardCarousel />
+          <TeamCardCarousel />
 
           <Button
             variant="text"
-            href={`/characters?character=${appCtx?.selectedCharacter}`}
+            href={`/teams?team=${appCtx?.selectedTeam}`}
             className="mx-auto justify-self-start"
           >
             Erhalte Vorschau zur Ausrüstung
@@ -68,7 +68,7 @@ const Features: React.FC = () => {
 
         <div className="relative mx-auto h-64 w-64">
           <Image
-            src="/images/characters/NSwitch-character-sketch-mario-bowser.png"
+            src="/images/teams/NSwitch-character-sketch-mario-bowser.png"
             alt="Mario Bowser duell in action"
             className="object-contain"
             layout="fill"

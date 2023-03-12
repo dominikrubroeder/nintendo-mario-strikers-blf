@@ -3,7 +3,7 @@ import { useContext } from "react";
 import AppContext from "../store/appContext";
 import SharpShape from "./svg/SharpShape";
 
-interface CharacterCardProps {
+interface TeamCardProps {
   id: string;
   name: string;
   sound: string;
@@ -11,17 +11,17 @@ interface CharacterCardProps {
   selectable?: boolean;
 }
 
-const CharacterCard: React.FC<CharacterCardProps> = ({
+const TeamCard: React.FC<TeamCardProps> = ({
   id,
   name,
   image,
   selectable = true,
 }) => {
   const appCtx = useContext(AppContext);
-  const isSelectedCharacter = appCtx?.selectedCharacter === id;
+  const isSelectedTeam = appCtx?.selectedTeam === id;
 
   const onMouseUpHandler = () => {
-    if (selectable) appCtx?.setCharacter(id);
+    if (selectable) appCtx?.setTeam(id);
   };
 
   return (
@@ -29,7 +29,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
       className="interactive group relative flex h-96 cursor-pointer items-center justify-center rounded-3xl transition-all"
       onMouseUp={onMouseUpHandler}
     >
-      {isSelectedCharacter && (
+      {isSelectedTeam && (
         <>
           <div className="absolute -right-4 bottom-1/4 z-10 rotate-[61deg] rounded-xl p-2 text-xl font-bold uppercase italic text-signal">
             Team Edition
@@ -53,7 +53,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
 
       <SharpShape
         className={`absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2 transition duration-200 ${
-          isSelectedCharacter
+          isSelectedTeam
             ? "scale-100 opacity-100"
             : "scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100"
         }`}
@@ -62,4 +62,4 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
   );
 };
 
-export default CharacterCard;
+export default TeamCard;
