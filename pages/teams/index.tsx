@@ -66,14 +66,14 @@ const TeamPage: NextPage = () => {
                   </Heading>
                 </SpringBounceWhenInView>
 
-                <p className="mx-auto grid max-w-md gap-2 px-4 md:px-0">
+                <div className="mx-auto grid max-w-md gap-2 px-4 md:px-0">
                   <Heading as="h2" className="font-bold uppercase">
                     {teamData.name}&apos;s Ausrüstung und Statistik
                   </Heading>
                   Gestalte die Ausrüstung deines Teams ganz nach deinem
                   Geschmack. Sie verändert nicht nur das Aussehen, sondern auch
                   Werte wie Tempo, Kraft und die Genauigkeit beim Passen.
-                </p>
+                </div>
               </section>
 
               <div>
@@ -132,17 +132,22 @@ const TeamPage: NextPage = () => {
                   {teamData.name}&apos;s Hyperstrike
                 </Heading>
 
-                {/* <div className="rounded-xl bg-gray-100 p-8 themed:bg-accent-dark">
-                  All teams hyper strike https://www.youtube.com/watch?v=v2zQbRfwSVs
-                  <iframe
-                    className="w-full rounded-xl"
-                    src={teamData.specialAbilityVideoURL}
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                </div>
-                 */}
+                <iframe
+                  src={teamData.specialAbilityVideoURL}
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="h-80 w-full rounded-xl"
+                ></iframe>
+              </div>
+
+              <div className="relative h-96 w-full">
+                <Image
+                  src="/gifs/mario-light-up-eyes-loop.gif"
+                  layout="fill"
+                  alt="Team Character Gif"
+                  className="object-contain"
+                />
               </div>
             </div>
           </div>
