@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Button from "./ui/Button";
+import RectangleShape from "./svg/RectangleShape";
 
 interface FloatingActionBarProps {
   shouldBeVisible?: boolean;
@@ -22,7 +23,7 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({ shouldBeVisible }) => {
         >
           <motion.div
             key="actionBar"
-            className="cursor-pointer rounded-full bg-accent p-4 transition-all active:scale-95 themed:bg-signal"
+            className="z-10 -rotate-[6deg] cursor-pointer rounded-full bg-accent p-4 transition-all active:scale-95 themed:bg-signal"
           >
             <motion.div
               key="actionBarContent"
@@ -37,11 +38,11 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({ shouldBeVisible }) => {
                 delay: 0.6,
               }}
             >
-              <div className="flex items-center justify-center gap-4">
+              <div className="flex items-center justify-center">
                 <Button
                   variant="plain"
                   href="/buy-mario-strikers-battle-league-football"
-                  className="z-50 whitespace-nowrap bg-accent p-0 text-white themed:bg-signal"
+                  className="z-50 whitespace-nowrap bg-accent p-0 font-bold uppercase text-white themed:bg-signal"
                   sound="coin"
                 >
                   Vorbestellen
@@ -49,6 +50,8 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({ shouldBeVisible }) => {
               </div>
             </motion.div>
           </motion.div>
+
+          <RectangleShape className="absolute bottom-0 left-1/2 z-0 -translate-x-1/2 opacity-90" />
         </motion.div>
       )}
     </AnimatePresence>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useContext } from "react";
 import AppContext from "../store/appContext";
+import SharpShape from "./svg/SharpShape";
 
 interface CharacterCardProps {
   id: string;
@@ -21,21 +22,28 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
 
   return (
     <div
-      className={`interactive group relative flex h-96 cursor-pointer items-center justify-center rounded-3xl transition-all hover:border-gray-300 hover:border-accent-dark hover:bg-gray-100 themed:hover:bg-accent-dark ${
-        isSelectedCharacter ? "bg-accent themed:bg-accent-dark" : ""
-      }`}
+      className="interactive group relative flex h-96 cursor-pointer items-center justify-center rounded-3xl transition-all"
       onMouseUp={onClick}
     >
       {isSelectedCharacter && (
-        <div className="absolute -right-4 top-0 z-50 -translate-y-1/2 rounded-xl bg-signal p-2 italic">
-          <span className="mr-1 uppercase">
-            {appCtx.selectedCharacter && appCtx.selectedCharacter}
-          </span>
+        <div className="absolute bottom-4 z-10 rounded-xl p-2 text-5xl font-bold uppercase italic text-signal">
           Team-Edition
         </div>
       )}
 
-      <div className="grid gap-2 text-center">
+      {isSelectedCharacter && (
+        <div className="absolute -left-8 top-1/4 z-10 -rotate-[64deg] rounded-xl p-2 text-xl font-bold uppercase italic text-signal">
+          Team Edition
+        </div>
+      )}
+
+      {isSelectedCharacter && (
+        <div className="absolute -right-4 bottom-1/4 z-10 rotate-[61deg] rounded-xl p-2 text-xl font-bold uppercase italic text-signal">
+          Team Edition
+        </div>
+      )}
+
+      <div className="z-10 grid gap-2 text-center">
         <div className="z-10 transition-all group-hover:scale-125">
           <Image src={image} alt={name} width={256} height={256} priority />
         </div>
@@ -44,6 +52,14 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
           {name}
         </h3>
       </div>
+
+      <SharpShape
+        className={`absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2 transition duration-200 ${
+          isSelectedCharacter
+            ? "scale-100 opacity-100"
+            : "scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100"
+        }`}
+      />
     </div>
   );
 };
