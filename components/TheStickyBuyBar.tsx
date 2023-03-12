@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
-import Image from 'next/image';
-import Button from './ui/Button';
-import AppContext from '../store/appContext';
-import { ChevronDoubleDownIcon } from '@heroicons/react/24/outline';
-import Heading from './Heading';
+import React, { useContext, useEffect, useState } from "react";
+import Image from "next/image";
+import Button from "./ui/Button";
+import AppContext from "../store/appContext";
+import { ChevronDoubleDownIcon } from "@heroicons/react/24/outline";
+import Heading from "./Heading";
 
 interface TheStickyBuyBarProps {
   price?: number;
@@ -26,19 +26,19 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
   return (
     <>
       <div
-        className={`fixed bottom-0 z-50 grid w-full gap-1 bg-gray-100 p-4 text-sm transition-all themed:bg-accent md:grid-cols-2 md:gap-2 ${
+        className={`fixed bottom-0 z-50 m-4 grid w-[calc(100%-2rem)] gap-1 rounded-3xl bg-gray-100 p-4 text-sm transition-all themed:bg-accent-dark md:grid-cols-2 md:gap-2 ${
           isVisible
-            ? 'visible translate-y-0 opacity-100'
-            : 'invisible translate-y-1/2 opacity-0'
+            ? "visible translate-y-0 opacity-100"
+            : "invisible translate-y-1/2 opacity-0"
         }`}
       >
         <div className="flex items-center gap-2">
-          {appCtx?.selectedCharacter && (
+          {appCtx?.selectedTeam && (
             <Image
-              src={`/images/characters/NSwitch-character-sketch-${appCtx?.selectedCharacter}.png`}
+              src={`/images/teams/NSwitch-character-sketch-${appCtx?.selectedTeam}.png`}
               width={48}
               height={48}
-              alt={`${appCtx?.selectedCharacter} sketch`}
+              alt={`${appCtx?.selectedTeam} sketch`}
             />
           )}
           <div className="grid">
@@ -51,7 +51,7 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
                 <span
                   className="cursor-pointer text-accent themed:text-white"
                   onClick={() =>
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                    window.scrollTo({ top: 0, behavior: "smooth" })
                   }
                 >
                   {appCtx?.selectedEdition
@@ -60,11 +60,11 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
                         .toUpperCase()}${appCtx?.selectedEdition.slice(
                         1
                       )} Edition`
-                    : ''}
-                  {appCtx?.selectedCharacter
-                    ? ` – ${appCtx?.selectedCharacter.toUpperCase()}`
-                    : ''}
-                  {price ? ` – ${price}€` : ''}
+                    : ""}
+                  {appCtx?.selectedTeam
+                    ? ` – ${appCtx?.selectedTeam.toUpperCase()}`
+                    : ""}
+                  {price ? ` – ${price}€` : ""}
                 </span>
               </div>
             )}
@@ -74,7 +74,7 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
           <div className="mr-16 flex gap-1">
             <Button
               variant="contained"
-              href={href || '/buy-mario-strikers-battle-league-football'}
+              href={href || "/buy-mario-strikers-battle-league-football"}
               sound="coin"
             >
               Jetzt vorbestellen
@@ -85,18 +85,18 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
 
       <Button
         variant="text"
-        className={`interactive group fixed right-4 bottom-4 z-50 md:bottom-5 md:left-auto md:right-4 ${
+        className={`interactive group fixed right-4 bottom-4 z-50 md:bottom-10 md:left-auto md:right-8 ${
           isVisible
-            ? 'bg-transparent hover:text-accent'
-            : 'bg-accent hover:bg-accent-dark themed:bg-signal themed:hover:bg-signal-dark'
+            ? "bg-transparent hover:text-accent"
+            : "bg-accent hover:bg-accent-dark themed:bg-signal themed:hover:bg-signal-dark"
         }`}
         onClick={() => setIsVisible((previousState) => !previousState)}
       >
         <ChevronDoubleDownIcon
           className={`icon text-white ${
             isVisible
-              ? 'rotate-0 text-accent group-hover:text-accent themed:text-white themed:group-hover:text-white'
-              : 'rotate-180'
+              ? "rotate-0 text-accent group-hover:text-accent themed:text-white themed:group-hover:text-white"
+              : "rotate-180"
           }`}
         />
       </Button>

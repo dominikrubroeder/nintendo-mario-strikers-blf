@@ -1,14 +1,28 @@
-import { AnimatePresence, motion } from 'framer-motion';
-import React, { useEffect, useRef } from 'react';
+import { AnimatePresence, motion } from "framer-motion";
+import React, { useContext, useEffect, useRef } from "react";
+import AppContext from "../../../store/appContext";
+import AudioContext from "../../../store/audioContext";
 
 const NintendoSwitchClick: React.FC = () => {
+  const appCtx = useContext(AppContext);
+  const audioCtx = useContext(AudioContext);
   const audioRef = useRef<null | HTMLAudioElement>(null);
 
   useEffect(() => {
-    setTimeout(() => {
-      audioRef.current?.play();
-    }, 600);
-  }, [audioRef]);
+    if (
+      (audioCtx?.sound || audioCtx?.soundtrack) &&
+      audioRef.current &&
+      audioCtx.interactiveAudioisEnabled
+    )
+      setTimeout(() => {
+        audioRef.current?.play();
+      }, 600);
+  }, [
+    audioRef,
+    audioCtx?.soundtrack,
+    audioCtx?.sound,
+    audioCtx?.interactiveAudioisEnabled,
+  ]);
 
   return (
     <div className="inline-flex gap-[.375rem]">
@@ -25,7 +39,7 @@ const NintendoSwitchClick: React.FC = () => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 0, opacity: 0 }}
           transition={{
-            type: 'spring',
+            type: "spring",
             damping: 16,
             stiffness: 300,
             delay: 0.6,
@@ -51,7 +65,7 @@ const NintendoSwitchClick: React.FC = () => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 0, opacity: 0 }}
           transition={{
-            type: 'spring',
+            type: "spring",
             damping: 12,
             stiffness: 300,
             delay: 0.6,

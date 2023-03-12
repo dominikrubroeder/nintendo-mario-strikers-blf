@@ -1,10 +1,10 @@
-import React, { createContext, useEffect, useState } from 'react';
-import { Constants } from '../data/constants';
-import { Editions } from '../data/editions';
+import React, { createContext, useEffect, useState } from "react";
+import { Constants } from "../data/constants";
+import { Editions } from "../data/editions";
 
 type AppContextType = {
-  selectedCharacter: null | string;
-  setCharacter: (character: string | null) => void;
+  selectedTeam: null | string;
+  setTeam: (team: string | null) => void;
   selectedEdition: null | string;
   validateEdition: (edition: string | null) => void;
   buyable: boolean;
@@ -19,28 +19,26 @@ interface AppContextProviderProps {
 export const AppContextProvider: React.FC<AppContextProviderProps> = ({
   children,
 }) => {
-  const [selectedCharacter, setSelectedCharacter] = useState<null | string>(
-    null
-  );
+  const [selectedTeam, setSelectedTeam] = useState<null | string>(null);
   const [selectedEdition, setSelectedEdition] = useState<null | string>(null);
   const [buyable, setBuyable] = useState(false);
 
   function initThemeHandler() {
     if (localStorage.getItem(Constants.Theme)) {
       const localStorageTheme = localStorage.getItem(Constants.Theme);
-      setSelectedCharacter(localStorageTheme);
+      setSelectedTeam(localStorageTheme);
       document.documentElement.className = `themed theme-${localStorageTheme}`;
-      document.documentElement.setAttribute('theme', String(localStorageTheme));
+      document.documentElement.setAttribute("theme", String(localStorageTheme));
     }
   }
 
-  function setThemeHandler(character: string | null) {
-    document.documentElement.className = `themed theme-${character}`;
-    document.documentElement.setAttribute('theme', String(character));
+  function setThemeHandler(team: string | null) {
+    document.documentElement.className = `themed theme-${team}`;
+    document.documentElement.setAttribute("theme", String(team));
 
-    localStorage.setItem(Constants.Theme, character ?? String(null));
+    localStorage.setItem(Constants.Theme, team ?? String(null));
 
-    setSelectedCharacter(character);
+    setSelectedTeam(team);
 
     setBuyable(true);
   }
@@ -54,11 +52,11 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
 
   function validateEditionHandler(edition: string | null) {
     if (edition === Editions.standardId) {
-      document.documentElement.className = '';
-      document.documentElement.removeAttribute('theme');
+      document.documentElement.className = "";
+      document.documentElement.removeAttribute("theme");
       localStorage.removeItem(Constants.Themed);
       localStorage.removeItem(Constants.Theme);
-      setSelectedCharacter(null);
+      setSelectedTeam(null);
       setBuyable(true);
     }
 
@@ -66,7 +64,7 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
       setBuyable(false);
     }
 
-    localStorage.setItem(Constants.Edition, edition ?? '');
+    localStorage.setItem(Constants.Edition, edition ?? "");
 
     setSelectedEdition(edition);
   }
@@ -92,7 +90,7 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
 
   useEffect(() => {
     initThemeHandler();
-  }, [selectedCharacter]);
+  }, [selectedTeam]);
 
   useEffect(() => {
     initBuyableHandler();
@@ -103,8 +101,8 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
   }, [selectedEdition]);
 
   const context = {
-    selectedCharacter: selectedCharacter,
-    setCharacter: setThemeHandler,
+    selectedTeam: selectedTeam,
+    setTeam: setThemeHandler,
     selectedEdition,
     validateEdition: validateEditionHandler,
     buyable,

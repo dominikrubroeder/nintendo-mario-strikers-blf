@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import AudioContext from '../store/audioContext';
-import { createPortal } from 'react-dom';
+import React, { useContext, useEffect, useRef, useState } from "react";
+import AudioContext from "../store/audioContext";
+import { soundtracks } from "../data/audio";
 
 const CurrentSoundtrack: React.FC = () => {
   const audioRef = useRef<null | HTMLAudioElement>(null);
@@ -12,18 +12,22 @@ const CurrentSoundtrack: React.FC = () => {
   useEffect(() => {
     setMounted(true);
 
-    if (audioCtx?.soundtrack && audioRef.current) {
+    if (
+      audioCtx?.soundtrack &&
+      audioRef.current &&
+      audioCtx.interactiveAudioisEnabled
+    ) {
       audioRef.current.play();
     }
 
     return () => setMounted(false);
-  }, [audioCtx?.soundtrack]);
+  }, [audioCtx?.soundtrack, audioCtx?.interactiveAudioisEnabled]);
 
   return mounted ? (
     <audio
       id="currentSoundtrack"
       ref={audioRef}
-      src={audioCtx?.soundtrack}
+      src={audioCtx?.soundtrack ?? soundtracks[0].src}
     ></audio>
   ) : null;
 };

@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
-import AudioContext from '../store/audioContext';
+import React, { useContext, useEffect, useRef, useState } from "react";
+import AudioContext from "../store/audioContext";
 
 const CurrentSound: React.FC = () => {
   const audioRef = useRef<null | HTMLAudioElement>(null);
@@ -11,17 +11,21 @@ const CurrentSound: React.FC = () => {
   useEffect(() => {
     setMounted(true);
 
-    if (audioCtx?.sound && audioRef.current) {
+    if (
+      audioCtx?.sound &&
+      audioRef.current &&
+      audioCtx.interactiveAudioisEnabled
+    ) {
       audioRef.current.play();
     }
 
     return () => setMounted(false);
-  }, [audioCtx?.sound]);
+  }, [audioCtx?.sound, audioCtx?.interactiveAudioisEnabled]);
 
   return mounted ? (
     <audio
       ref={audioRef}
-      src={audioCtx?.sound ?? '/audio/nintendo-switch-click.mp3'}
+      src={audioCtx?.sound ?? "/audio/nintendo-switch-click.mp3"}
     ></audio>
   ) : null;
 };

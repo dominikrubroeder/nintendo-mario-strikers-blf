@@ -1,11 +1,11 @@
-import { useContext } from 'react';
-import { useRouter } from 'next/router';
-import AppContext from '../store/appContext';
-import editions from '../data/editions';
-import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
-import EditionConfigOption from './EditionConfigOption';
-import Accordion from './ui/Accordion';
-import QuestionBlock from './img/QuestionBlock';
+import { useContext } from "react";
+import { useRouter } from "next/router";
+import AppContext from "../store/appContext";
+import editions from "../data/editions";
+import SpringBounceWhenInView from "./animation/SpringBounceWhenInView";
+import EditionConfigOption from "./EditionConfigOption";
+import Accordion from "./ui/Accordion";
+import QuestionBlock from "./img/QuestionBlock";
 
 const EditionSelection: React.FC = () => {
   const appCtx = useContext(AppContext);
@@ -48,7 +48,7 @@ const EditionSelection: React.FC = () => {
                         <QuestionBlock size={24} />
                       </div>
                     }
-                    className="mt-4 bg-transparent"
+                    className="mt-4 flex bg-transparent"
                     showFooter={false}
                   >
                     <ul>

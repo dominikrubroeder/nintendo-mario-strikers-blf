@@ -1,20 +1,15 @@
-import React, { useContext, useState } from 'react';
-import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
-import AppContext from '../store/appContext';
-import Image from 'next/image';
-import Heading from './Heading';
-import CharacterCard from './CharacterCard';
-import characters from '../data/characters';
-import { items } from '../data/items';
-import Button from './ui/Button';
-import { ArrowLongRightIcon } from '@heroicons/react/24/solid';
+import React, { useContext } from "react";
+import SpringBounceWhenInView from "./animation/SpringBounceWhenInView";
+import AppContext from "../store/appContext";
+import Image from "next/image";
+import Heading from "./Heading";
+import { items } from "../data/items";
+import Button from "./ui/Button";
+import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
+import { TeamCardCarousel } from "./TeamCardCarousel";
 
 const Features: React.FC = () => {
   const appCtx = useContext(AppContext);
-  const character =
-    characters.find(
-      (character) => character.id === appCtx?.selectedCharacter
-    ) ?? characters[0];
 
   return (
     <>
@@ -31,7 +26,7 @@ const Features: React.FC = () => {
         </p>
       </section>
 
-      {appCtx?.selectedCharacter && (
+      {appCtx?.selectedTeam && (
         <section className="grid gap-12">
           <SpringBounceWhenInView>
             <Heading as="h2" className="headline--gradient">
@@ -40,41 +35,21 @@ const Features: React.FC = () => {
           </SpringBounceWhenInView>
 
           {/**
-           * List all characters as selectable teams
-           * Link to character detail page
+           * List all teams as selectable teams
+           * Link to team detail page
            * When in view do/show "hover" interaction, scale up image
            */}
 
-          <div className="m-auto max-w-xl gap-4 text-center md:flex md:items-center md:justify-center md:gap-12">
-            <div className="mb-4 block md:order-2 md:mb-0 md:flex">
-              <CharacterCard
-                id={character.id}
-                name={character.name}
-                sound={character.sound[0]}
-                image={character.image}
-              />
-            </div>
+          <TeamCardCarousel />
 
-            <div className="relative mr-4 inline-block h-16 w-16 md:order-1 md:mr-0 md:h-24 md:w-24">
-              <Image
-                src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Left.png"
-                alt="Button left"
-                className="interactive object-contain"
-                layout="fill"
-                draggable={false}
-              />
-            </div>
-
-            <div className="relative inline-block h-16 w-16 md:order-3 md:h-24 md:w-24">
-              <Image
-                src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Right.png"
-                alt="Button right"
-                className="interactive object-contain"
-                layout="fill"
-                draggable={false}
-              />
-            </div>
-          </div>
+          <Button
+            variant="text"
+            href={`/teams?team=${appCtx?.selectedTeam}`}
+            className="mx-auto justify-self-start"
+          >
+            Erhalte Vorschau zur Ausrüstung
+            <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent themed:text-signal" />
+          </Button>
         </section>
       )}
 
@@ -93,7 +68,7 @@ const Features: React.FC = () => {
 
         <div className="relative mx-auto h-64 w-64">
           <Image
-            src="/images/characters/NSwitch-character-sketch-mario-bowser.png"
+            src="/images/teams/NSwitch-character-sketch-mario-bowser.png"
             alt="Mario Bowser duell in action"
             className="object-contain"
             layout="fill"
@@ -143,28 +118,6 @@ const Features: React.FC = () => {
           lade sie auf, während deine Gegner abgelenkt sind, um den Hyperschuss
           zu aktivieren – einen Spezialschuss, mit dem dir statt einem gleich
           zwei Tore angerechnet werden!
-        </p>
-      </section>
-
-      <section className="grid gap-12">
-        <SpringBounceWhenInView>
-          <Heading as="h2" className="headline--gradient">
-            Individualisiere Dein Team
-          </Heading>
-        </SpringBounceWhenInView>
-
-        <p className="mx-auto grid max-w-md gap-8 px-4 md:px-0">
-          Gestalte die Ausrüstung deines Teams ganz nach deinem Geschmack. Sie
-          verändert nicht nur das Aussehen, sondern auch Werte wie Tempo, Kraft
-          und die Genauigkeit beim Passen.
-          <Button
-            variant="text"
-            href="/characters"
-            className="justify-self-start"
-          >
-            Erhalte Vorschau zur Ausrüstung
-            <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent themed:text-signal" />
-          </Button>
         </p>
       </section>
     </>

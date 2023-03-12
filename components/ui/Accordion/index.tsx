@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Button from '../Button';
-import Image from 'next/image';
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Button from "../Button";
+import Image from "next/image";
 
 interface AccordionProps {
   title: string | JSX.Element;
   children: React.ReactNode;
   className?: string;
-  initalState?: 'opened' | 'closed';
+  initalState?: "opened" | "closed";
   showFooter?: boolean;
   onClick?: () => void;
 }
@@ -16,11 +16,11 @@ const Accordion: React.FC<AccordionProps> = ({
   title,
   children,
   className,
-  initalState = 'closed',
+  initalState = "closed",
   showFooter = true,
   onClick,
 }) => {
-  const isExpanded = initalState === 'closed' ? false : true;
+  const isExpanded = initalState === "closed" ? false : true;
   const [expanded, setExpanded] = useState(isExpanded);
 
   const onCloseHandler = () => {
@@ -31,8 +31,8 @@ const Accordion: React.FC<AccordionProps> = ({
   return (
     <div
       className={`min-w-[12rem] bg-gray-100 themed:bg-accent-dark ${
-        expanded ? 'rounded-xl' : 'interactive--suttle rounded-3xl'
-      } ${className ? className : ''}`}
+        expanded ? "rounded-xl" : "interactive--suttle rounded-3xl"
+      } ${className ? className : ""}`}
     >
       <header
         className="cursor-pointer py-3 px-4 themed:text-white"
@@ -45,15 +45,15 @@ const Accordion: React.FC<AccordionProps> = ({
         {expanded && (
           <motion.div
             key="content"
-            initial={{ opacity: 0, height: '0' }}
+            initial={{ opacity: 0, height: "0" }}
             animate={{
               opacity: 1,
-              height: 'auto',
+              height: "auto",
             }}
             exit={{
               opacity: 1,
-              height: '0',
-              overflow: 'hidden',
+              height: "0",
+              overflow: "hidden",
             }}
           >
             <div className="grid gap-4 py-3 px-4">
@@ -64,7 +64,7 @@ const Accordion: React.FC<AccordionProps> = ({
                   <Button
                     variant="text"
                     className="flex items-center gap-0.5 text-xs font-bold"
-                    sound="character"
+                    sound="team"
                     onClick={onCloseHandler}
                   >
                     <Image
