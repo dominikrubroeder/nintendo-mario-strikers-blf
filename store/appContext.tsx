@@ -41,6 +41,8 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
     setSelectedTeam(team);
 
     setBuyable(true);
+
+    validateEditionHandler(Editions.teamId);
   }
 
   function initEditionHandler() {

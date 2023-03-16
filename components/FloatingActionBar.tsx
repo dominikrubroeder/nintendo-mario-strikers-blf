@@ -61,10 +61,10 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({ shouldBeVisible }) => {
                     }}
                   >
                     <div
-                      className="interactive flex items-center justify-center rounded-full bg-accent-dark p-2"
+                      className="interactive flex items-center justify-center"
                       onClick={() => router.back()}
                     >
-                      <ArrowLongLeftIcon className="h-4 w-4 text-accent themed:text-white" />
+                      <ArrowLongLeftIcon className="h-4 w-4 text-white" />
                     </div>
                   </motion.div>
                 </AnimatePresence>
