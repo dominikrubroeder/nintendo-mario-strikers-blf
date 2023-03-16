@@ -15,10 +15,10 @@ const DetailPage: NextPage = () => {
   const [showStickyBuyBar, setShowStickyBuyBar] = useState(false);
 
   return (
-    <Layout pageTitle="Buy" withBackButton>
+    <Layout pageTitle="Buy">
       <BuyConfiguration setShowStickyBuyBar={setShowStickyBuyBar} />
 
-      <section className="mt-20">
+      <section className="mt-12">
         <div className="p-4">
           <Image
             src="/images/gallery/2x1_NSwitch_MarioStrikersBattleLeagueFootball_image1600w.jpeg"

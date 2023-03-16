@@ -17,7 +17,7 @@ const TeamPage: NextPage = () => {
     teams.find((team) => team.id === appCtx?.selectedTeam) ?? teams[0];
 
   return (
-    <Layout pageTitle="Teams" withBackButton>
+    <Layout pageTitle="Teams">
       {/**
        * Push, "lift" the state up of current team to url to make it sharable
        * Include team statistic, game insights
@@ -96,33 +96,6 @@ const TeamPage: NextPage = () => {
                 <Heading as="h2" className="mb-4 font-bold uppercase">
                   Wähle {teamData.name} und du bekommst:
                 </Heading>
-
-                <div className="grid gap-2">
-                  <Accordion
-                    title={`${teamData.name.toUpperCase()} – Merchandise`}
-                  >
-                    <div className="grid grid-cols-2 gap-4">
-                      {teamData.images.map((image, index) => (
-                        <div
-                          key={index}
-                          className="interactive h-64 cursor-pointer rounded-3xl bg-gray-100 themed:bg-accent"
-                        ></div>
-                      ))}
-                    </div>
-                  </Accordion>
-
-                  <Accordion title="Zusätzlicher Spiel-Content">
-                    <ul className="list-disc pl-8">
-                      <li>
-                        Mehr Content: Schalte die legacy Arenen aus Mario
-                        Strikers: Charged Football (Wii) und Mario Smash
-                        Football (GameCube) frei
-                      </li>
-                      <li>Mehr Content: Schalte das Geheimteam frei</li>
-                      <li>...</li>
-                    </ul>
-                  </Accordion>
-                </div>
               </div>
 
               <div className="mx-auto w-full max-w-lg">
