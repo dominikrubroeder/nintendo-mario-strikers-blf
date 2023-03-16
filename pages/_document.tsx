@@ -1,4 +1,4 @@
-import { Html, Head, Main, NextScript } from 'next/document';
+import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
@@ -13,7 +13,6 @@ export default function Document() {
       </Head>
       <div id="sound"></div>
       <div id="overlay"></div>
-      <div id="modal"></div>
 
       <body className="text-base themed:bg-accent themed:text-white">
         <Main />
