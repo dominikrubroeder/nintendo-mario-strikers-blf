@@ -23,7 +23,7 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
           className="interactive flex items-center justify-center rounded-full bg-accent-dark p-2"
           onClick={() => router.back()}
         >
-          <ArrowLongLeftIcon className="h-4 w-4 text-accent themed:text-white" />
+          <ArrowLongLeftIcon className="h-4 w-4 text-white" />
         </div>
       )}
 
@@ -38,7 +38,7 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
       {router.pathname != "/" && (
         <div className="absolute right-4 flex gap-2">
           <div
-            className="interactive flex cursor-pointer items-center gap-1 rounded-xl bg-accent-dark px-3 py-2 text-sm"
+            className="interactive flex cursor-pointer items-center gap-1 rounded-xl bg-accent-dark px-3 py-2 text-sm text-white"
             onClick={() => audioCtx?.toggleInteractiveAudio()}
           >
             <Item
@@ -55,7 +55,7 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
 
           {audioCtx?.interactiveAudioisEnabled && (
             <div
-              className="interactive flex cursor-pointer items-center gap-2 rounded-xl bg-accent-dark px-3 py-2 text-sm"
+              className="interactive flex cursor-pointer items-center gap-2 rounded-xl bg-accent-dark px-3 py-2 text-sm text-white"
               onClick={() => audioCtx?.toggleAudio()}
             >
               {audioCtx.isPlaying ? <PauseAudioButton /> : <PlayAudioButton />}
