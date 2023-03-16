@@ -9,17 +9,15 @@ import Image from "next/image";
 import Card from "../../components/ui/Card";
 import { motion } from "framer-motion";
 import SpringBounceWhenInView from "../../components/animation/SpringBounceWhenInView";
-import { useRouter } from "next/router";
 import { TeamCardCarousel } from "../../components/TeamCardCarousel";
 
 const TeamPage: NextPage = () => {
-  const router = useRouter();
   const appCtx = useContext(AppContext);
   const teamData =
     teams.find((team) => team.id === appCtx?.selectedTeam) ?? teams[0];
 
   return (
-    <Layout pageTitle="Teams">
+    <Layout pageTitle="Teams" withBackButton>
       {/**
        * Push, "lift" the state up of current team to url to make it sharable
        * Include team statistic, game insights
