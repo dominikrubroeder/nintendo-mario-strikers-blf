@@ -13,6 +13,7 @@ type AudioContextType = {
   setSoundtrack: (soundtrackURL: string) => void;
   playAudio: () => void;
   pauseAudio: () => void;
+  toggleAudio: () => void;
   isPlaying: boolean;
 };
 
@@ -73,6 +74,14 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
     setIsPlaying(false);
   }
 
+  function toggleAudio() {
+    const currentSoundtrack = document.getElementById(
+      "currentSoundtrack"
+    ) as HTMLAudioElement;
+
+    currentSoundtrack?.paused ? playAudio() : pauseAudio();
+  }
+
   function toggleInteractiveAudio() {
     setinteractiveAudioisEnabled((previousState) => !previousState);
   }
@@ -98,6 +107,7 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
     setSoundtrack,
     playAudio,
     pauseAudio,
+    toggleAudio,
     isPlaying,
   };
 

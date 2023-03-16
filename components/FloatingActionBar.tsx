@@ -1,13 +1,20 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Button from "./ui/Button";
-import RectangleShape from "./svg/RectangleShape";
+import AudioContext from "../store/audioContext";
+import PlayAudioButton from "./mini-audio-player/controls/PlayAudioButton";
+import PauseAudioButton from "./mini-audio-player/controls/PauseAudioButton";
+import { ArrowLongLeftIcon } from "@heroicons/react/24/solid";
+import { useRouter } from "next/router";
 
 interface FloatingActionBarProps {
   shouldBeVisible?: boolean;
 }
 
 const FloatingActionBar: FC<FloatingActionBarProps> = ({ shouldBeVisible }) => {
+  const audioCtx = useContext(AudioContext);
+  const router = useRouter();
+
   return (
     <AnimatePresence>
       {shouldBeVisible && (
@@ -39,6 +46,29 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({ shouldBeVisible }) => {
               }}
             >
               <div className="flex items-center justify-center">
+                <AnimatePresence>
+                  <motion.div
+                    key="backButton"
+                    className="absolute -z-10 flex h-12 w-12 items-center justify-center rounded-full bg-accent text-white drop-shadow-lg themed:bg-accent-dark"
+                    initial={{ x: 0, scale: 0.3 }}
+                    animate={{ x: -112, scale: 1 }}
+                    exit={{ x: 0, scale: 0.3 }}
+                    transition={{
+                      type: "spring",
+                      damping: 16,
+                      stiffness: 400,
+                      delay: 1,
+                    }}
+                  >
+                    <div
+                      className="interactive flex items-center justify-center rounded-full bg-accent-dark p-2"
+                      onClick={() => router.back()}
+                    >
+                      <ArrowLongLeftIcon className="h-4 w-4 text-accent themed:text-white" />
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+
                 <Button
                   variant="plain"
                   href="/buy-mario-strikers-battle-league-football"
@@ -47,6 +77,26 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({ shouldBeVisible }) => {
                 >
                   Vorbestellen
                 </Button>
+
+                <AnimatePresence>
+                  <motion.div
+                    key="audioControls"
+                    className="absolute -z-10 flex h-12 w-12 items-center justify-center rounded-full bg-accent text-white drop-shadow-lg themed:bg-accent-dark"
+                    initial={{ x: 0, scale: 0.3 }}
+                    animate={{ x: 112, scale: 1 }}
+                    exit={{ x: 0, scale: 0.3 }}
+                    transition={{
+                      type: "spring",
+                      damping: 16,
+                      stiffness: 400,
+                      delay: 1,
+                    }}
+                  >
+                    {!audioCtx?.isPlaying && <PlayAudioButton />}
+
+                    {audioCtx?.isPlaying && <PauseAudioButton />}
+                  </motion.div>
+                </AnimatePresence>
               </div>
             </motion.div>
           </motion.div>

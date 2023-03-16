@@ -11,7 +11,7 @@ import SpringBounceWhenInView from "../../components/animation/SpringBounceWhenI
 
 const InfoPage: NextPage = () => {
   return (
-    <Layout pageTitle="Discover">
+    <Layout pageTitle="Discover" withBackButton>
       <section className="mt-8 grid gap-32">
         <section className="m-auto grid w-full max-w-screen-xl gap-12 px-4 text-center">
           <header className="grid gap-2">
