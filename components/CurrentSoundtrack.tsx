@@ -28,6 +28,7 @@ const CurrentSoundtrack: React.FC = () => {
       id="currentSoundtrack"
       ref={audioRef}
       src={audioCtx?.soundtrack ?? soundtracks[0].src}
+      loop
     ></audio>
   ) : null;
 };

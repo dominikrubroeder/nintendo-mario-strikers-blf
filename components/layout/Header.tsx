@@ -19,9 +19,12 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
   return (
     <header className="relative z-[100] flex h-20 w-full items-center justify-between gap-4 p-4">
       {withBackButton && (
-        <button onClick={() => router.back()}>
+        <div
+          className="interactive flex items-center justify-center rounded-full bg-accent-dark p-2"
+          onClick={() => router.back()}
+        >
           <ArrowLongLeftIcon className="h-4 w-4 text-accent themed:text-white" />
-        </button>
+        </div>
       )}
 
       <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 transition active:scale-95">
