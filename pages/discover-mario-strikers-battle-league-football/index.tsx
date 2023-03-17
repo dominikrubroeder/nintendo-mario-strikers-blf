@@ -11,9 +11,12 @@ import SpringBounceWhenInView from "../../components/animation/SpringBounceWhenI
 import Tooltip from "../../components/ui/Tooltip";
 import AppContext from "../../store/appContext";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
+import teams from "../../data/teams";
 
 const InfoPage: NextPage = () => {
   const appCtx = useContext(AppContext);
+  const teamData = teams.find((team) => team.id === appCtx?.selectedTeam);
   const selectedTeam = appCtx?.selectedTeam?.toUpperCase();
 
   return (
@@ -25,7 +28,7 @@ const InfoPage: NextPage = () => {
               Wähle dein Team
             </Heading>
 
-            <p>
+            <div>
               Und erhalte Vorbesteller-Boni beim Kauf der Striker&apos;s
               <span className="relative mx-2 inline-flex items-center gap-1 rounded-xl bg-accent-soft p-2 italic text-accent themed:bg-accent-dark themed:text-white">
                 Team-Edition
@@ -47,7 +50,7 @@ const InfoPage: NextPage = () => {
                   Klicke auf einen Charakter, um ihn als dein Team auszuwählen.
                 </Tooltip>
               </div>
-            </p>
+            </div>
           </header>
 
           <TeamSelection className="sm:grid-cols-2 lg:grid-cols-3" />
@@ -59,12 +62,22 @@ const InfoPage: NextPage = () => {
 
         <CommunityQuotes />
 
-        <section>
+        <section className="grid justify-center gap-8">
           <SpringBounceWhenInView>
             <Heading as="h2" className="headline--gradient">
               Merch
             </Heading>
           </SpringBounceWhenInView>
+
+          {teamData?.merch && (
+            <Image
+              src={teamData?.merch[0]}
+              alt={teamData?.name}
+              width={596}
+              height={718}
+              className="mx-auto rounded-3xl"
+            />
+          )}
         </section>
 
         <section>

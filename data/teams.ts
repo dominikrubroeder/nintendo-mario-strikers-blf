@@ -7,6 +7,7 @@ export type Team = {
   videos: string[];
   gifs: string[];
   gear: string[];
+  merch?: string[];
   baseText: string;
   teamText: string;
   specialAbility: string;
@@ -33,6 +34,7 @@ export const teams: Team[] = [
     videos: [],
     gifs: [],
     gear: ["/images/teams/gear/mario.jpg"],
+    merch: ["/images/teams/tshirt/mario.jpg"],
     baseText:
       "Roter Hut, blaue Latzhose und der für ihn typische Schnurrbart. Mario ist immer fröhlich und gut gelaunt. Er liebt Prinzessin Peach und bildet mit seinem Zwillingsbruder Luigi ein tolles Team. Er ist ein guter Sportler und kann alles, von Tennis, Baseball und Fußball bis hin zu Kartrennen. Er ist von Beruf Klempner. Aber das ist nicht alles, was er tut. Sie nutzen ihre speziellen Sprünge und verschiedene Power-Ups, um ihren Erzfeind Bowser zu bekämpfen.",
     teamText:
@@ -60,6 +62,7 @@ export const teams: Team[] = [
     videos: [],
     gifs: [],
     gear: ["/images/teams/gear/peach.jpg"],
+    merch: ["/images/teams/tshirt/peach.jpg"],
     baseText:
       "Prinzessin des Pilzkönigreichs. Sie ist sehr freundlich und will immer, dass alle glücklich sind. Sie backt gerne Kuchen, kocht gerne und treibt alle möglichen Sportarten. Sie und Mario stehen sich sehr nahe und verlassen sich aufeinander. Sie sieht sehr hübsch aus in ihrem rosa Kleid.",
     teamText:
@@ -87,6 +90,7 @@ export const teams: Team[] = [
     videos: [],
     gifs: [],
     gear: ["/images/teams/gear/luigi.jpg"],
+    merch: ["/images/teams/tshirt/luigi.jpg"],
     baseText:
       "Der Zwillingsbruder von Mario. Er ist etwas schüchtern, hat aber ein freundliches Wesen. Seine größte Schwäche sind Geister. Eigentlich kann er alles genauso gut wie Mario. Außerdem sind Mario und Luigi eine Macht, mit der man rechnen muss, wenn sie zusammen sind. Sein Markenzeichen sind der grüne Hut und das grüne Hemd. Im Vergleich zu Mario ist Luigi etwas größer, und wenn du genau hinsiehst, kannst du sehen, dass auch sein Bart etwas anders aussieht.",
     teamText:

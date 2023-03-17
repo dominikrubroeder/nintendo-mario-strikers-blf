@@ -27,7 +27,6 @@ const DetailPage: NextPage = () => {
             width={1000}
             height={500}
             className="rounded-3xl"
-            priority
           />
         </div>
       </section>
