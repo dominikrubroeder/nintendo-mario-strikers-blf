@@ -6,6 +6,7 @@ export type Team = {
   images: string[];
   videos: string[];
   gifs: string[];
+  gear: string[];
   baseText: string;
   teamText: string;
   specialAbility: string;
@@ -31,6 +32,7 @@ export const teams: Team[] = [
     ],
     videos: [],
     gifs: [],
+    gear: ["/images/teams/gear/mario.jpg"],
     baseText:
       "Roter Hut, blaue Latzhose und der für ihn typische Schnurrbart. Mario ist immer fröhlich und gut gelaunt. Er liebt Prinzessin Peach und bildet mit seinem Zwillingsbruder Luigi ein tolles Team. Er ist ein guter Sportler und kann alles, von Tennis, Baseball und Fußball bis hin zu Kartrennen. Er ist von Beruf Klempner. Aber das ist nicht alles, was er tut. Sie nutzen ihre speziellen Sprünge und verschiedene Power-Ups, um ihren Erzfeind Bowser zu bekämpfen.",
     teamText:
@@ -57,6 +59,7 @@ export const teams: Team[] = [
     ],
     videos: [],
     gifs: [],
+    gear: ["/images/teams/gear/peach.jpg"],
     baseText:
       "Prinzessin des Pilzkönigreichs. Sie ist sehr freundlich und will immer, dass alle glücklich sind. Sie backt gerne Kuchen, kocht gerne und treibt alle möglichen Sportarten. Sie und Mario stehen sich sehr nahe und verlassen sich aufeinander. Sie sieht sehr hübsch aus in ihrem rosa Kleid.",
     teamText:
@@ -83,6 +86,7 @@ export const teams: Team[] = [
     ],
     videos: [],
     gifs: [],
+    gear: ["/images/teams/gear/luigi.jpg"],
     baseText:
       "Der Zwillingsbruder von Mario. Er ist etwas schüchtern, hat aber ein freundliches Wesen. Seine größte Schwäche sind Geister. Eigentlich kann er alles genauso gut wie Mario. Außerdem sind Mario und Luigi eine Macht, mit der man rechnen muss, wenn sie zusammen sind. Sein Markenzeichen sind der grüne Hut und das grüne Hemd. Im Vergleich zu Mario ist Luigi etwas größer, und wenn du genau hinsiehst, kannst du sehen, dass auch sein Bart etwas anders aussieht.",
     teamText:
@@ -109,6 +113,7 @@ export const teams: Team[] = [
     ],
     videos: [],
     gifs: [],
+    gear: ["/images/teams/gear/toad.jpg"],
     baseText:
       "Bewohner des Pilzkönigreichs, die für Prinzessin Peach arbeiten. Es gibt auch blaue, grüne und andere andersfarbige Freunde, die alle sehr fröhlich und fleißig sind. Sie versuchen ihr Bestes, um das Pilzkönigreich vor Bowser zu schützen, aber sie scheitern immer wieder... Manchmal helfen sie Mario und manchmal erleben sie gemeinsam Abenteuer.",
     teamText:
@@ -135,6 +140,7 @@ export const teams: Team[] = [
     ],
     videos: [],
     gifs: [],
+    gear: ["/images/teams/gear/bowser.jpg"],
     baseText:
       "Der große Dämonenkönig des Schildkröten-Clans, der den Weltfrieden stört und die ewige Nemesis von Mario und seinen Freunden ist. Er hat viele Untergebene, wie den Sägezahn, Kribo, Killer und Hey-Ho. Er greift das Pilzkönigreich mit seinen zahlreichen Schergen an. Mario und seine Freunde haben es immer versäumt, sie aufzuhalten... Er ist ein mächtiger Mann, und die Flammen, die er aus seinem Mund spuckt, sind mächtig.",
     teamText:
@@ -161,6 +167,7 @@ export const teams: Team[] = [
     ],
     videos: [],
     gifs: [],
+    gear: ["/images/teams/gear/rosalina.jpg"],
     baseText:
       "Eine geheimnisvolle Frau, die mit dem Sternenkind Chico durch den Weltraum reist. Sie sieht zwar cool aus, hat aber eine freundliche Persönlichkeit und ist die Mutterfigur für Chico und seine Freunde, die keine Eltern haben. Manchmal geht sie mit Mario und seinen Freunden auf Abenteuer.",
     teamText:
@@ -187,6 +194,7 @@ export const teams: Team[] = [
     ],
     videos: [],
     gifs: [],
+    gear: ["/images/teams/gear/yoshi.jpg"],
     baseText:
       "Marios treuer Begleiter von der Yoshi-Insel. Er hat ein sanftes, entspanntes Wesen. Mit seiner langen Zunge verschluckt er Früchte und feindliche Personen ganz und verwandelt sie in Eier. Neben dem grünen Yoshi gibt es auch rote, hellblaue, pinke und andere verschiedenfarbige Yoshi.",
     teamText:
@@ -213,6 +221,7 @@ export const teams: Team[] = [
     ],
     videos: [],
     gifs: [],
+    gear: ["/images/teams/gear/donkey-kong.jpg"],
     baseText:
       "Der König des Dschungels, dessen Markenzeichen eine rote Krawatte mit dem DK-Symbol ist. Er hat eine so ungeheure Kraft, dass er mit Leichtigkeit einen riesigen Teer vom Boden werfen und ein gewaltiges Beben verursachen kann, wenn er auf den Boden trifft. Er liebt Bananen und hat immer reichlich davon zu Hause.",
     teamText:
@@ -239,6 +248,7 @@ export const teams: Team[] = [
     ],
     videos: [],
     gifs: [],
+    gear: ["/images/teams/gear/wario.jpg"],
     baseText:
       "Selbsternannter Jugendfreund und größter Rivale von Mario. Er trägt einen gelben Hut, eine lila Latzhose und seinen typischen gezackten Schnurrbart. Er ist dynamisch und kümmert sich nicht um Details. Mag Knoblauch. Er verdient gerne Geld.",
     teamText:
@@ -265,36 +275,12 @@ export const teams: Team[] = [
     ],
     videos: [],
     gifs: [],
+    gear: ["/images/teams/gear/waluigi.jpg"],
     baseText:
       "Warios Handlanger. Er glaubt, dass Luigi sein Rivale ist. Um die Kraft für den Kampf gegen Mario und Luigi zu sammeln. Er hat eine fleißige Seite, die an versteckten Orten hart arbeitet, um die Kraft für den Kampf gegen Mario und Luigi zu sammeln. Manchmal benutzt er seine langen Arme und Beine, um Sport zu treiben.",
     teamText:
       "Waluigi ist ein geschickter Verteidiger, der mit hohem Tempo und guter Technik Gegenspieler verfolgen und ihnen den Ball abnehmen kann.",
     specialAbility: "Rosenkavallerie",
-    specialAbilityVideoURL:
-      "https://www.youtube-nocookie.com/embed/fmvzfwj85Vo",
-  },
-  {
-    id: "bumm-bumm",
-    name: "Bumm Bumm",
-    sound: [
-      "/audio/sound-mario-0.mp3",
-      "/audio/sound-mario-1.mp3",
-      "/audio/sound-mario-2.mp3",
-    ],
-    videos: [],
-    gifs: [],
-    image: "/images/teams/NSwitch-character-sketch-bumm-bumm.png",
-    images: [
-      "/images/teams/NSwitch-character-sketch-bumm-bumm.png",
-      "/images/teams/NSwitch-character-sketch-bumm-bumm.png",
-      "/images/teams/NSwitch-character-sketch-bumm-bumm.png",
-      "/images/teams/NSwitch-character-sketch-bumm-bumm.png",
-      "/images/teams/NSwitch-character-sketch-bumm-bumm.png",
-    ],
-    baseText: "TBD",
-    teamText:
-      "Bumm Bumm ist die letzte Verteidigungslinie in jedem Team. Er versucht mit aller Macht zu verhindern, dass der Ball die eigene Torlinie überschreitet.",
-    specialAbility: "Torwart",
     specialAbilityVideoURL:
       "https://www.youtube-nocookie.com/embed/fmvzfwj85Vo",
   },
@@ -316,6 +302,7 @@ export const teams: Team[] = [
     ],
     videos: [],
     gifs: [],
+    gear: ["/images/teams/gear/daisy.jpg"],
     baseText:
       "Sie hat zwar ein Kleid und eine Krone, aber diese freundliche Prinzessin ist ganz bodenständig. Daisy ist immer bereit für eine Herausforderung, ob sie nun Tennisbälle zerschlägt oder über Hürden springt. Die Herrscherin von Sarasaland liebt auch den Nervenkitzel bei Verfolgungsjagden - vor allem, wenn sie auf einem Gokart durch die Gegend saust.",
     teamText:
@@ -342,6 +329,7 @@ export const teams: Team[] = [
       "/images/teams/NSwitch-character-sketch-shy-guy.png",
       "/images/teams/NSwitch-character-sketch-shy-guy.png",
     ],
+    gear: ["/images/teams/gear/shy-guy.jpg"],
     baseText:
       "Wer sind diese maskierten Schurken, die Yoshi und Mario so viel Ärger machen? Es scheint, als wären die Shy Guys immer in der Nähe, egal ob du Kart fährst, einen Tennisball schlägst, eine Party feierst oder ein Baby vor einem bebrillten Magikoopa rettest.",
     teamText:
@@ -368,6 +356,7 @@ export const teams: Team[] = [
     ],
     videos: [],
     gifs: [],
+    gear: ["/images/teams/gear/pauline.jpg"],
     baseText: "TBD",
     teamText:
       "Kraft und Tempo - damit ist Pauline perfekt geeignet, um den Ball in der Verteidigung zu gewinnen und dann blitzschnell zu kontern.",
@@ -393,6 +382,7 @@ export const teams: Team[] = [
     ],
     videos: [],
     gifs: [],
+    gear: ["/images/teams/gear/diddy-kong.jpg"],
     baseText:
       "Für die Bösewichte des Dschungels sieht er vielleicht harmlos aus, aber dieser kleine Kong ist ein Erdnuss-Kraftpaket! Oft sitzt er auf dem Rücken von Donkey Kong, aber Diddy Kong ist keine Last - er kann seinen großen Kumpel mit seinem Rocket Barrel Boost in neue Höhen katapultieren! ",
     teamText:
