@@ -10,6 +10,7 @@ import Card from "../../components/ui/Card";
 import { motion } from "framer-motion";
 import SpringBounceWhenInView from "../../components/animation/SpringBounceWhenInView";
 import { TeamCardCarousel } from "../../components/TeamCardCarousel";
+import FloatingActionBar from "../../components/FloatingActionBar";
 
 const TeamPage: NextPage = () => {
   const appCtx = useContext(AppContext);
@@ -124,6 +125,8 @@ const TeamPage: NextPage = () => {
           </div>
         </section>
       </div>
+
+      <FloatingActionBar shouldBeVisible={true} />
     </Layout>
   );
 };
