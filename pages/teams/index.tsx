@@ -83,8 +83,8 @@ const TeamPage: NextPage = () => {
                   transition={{ ease: "easeOut", delay: 0.2 }}
                 >
                   <Image
-                    src="/images/in-game/CI_NSwitch_MarioStrikersBLF_Screen_GearSettings_deDE.png"
-                    alt="NSwitch Mario Strikers Battle League Football gear setting preview"
+                    src={teamData.gear[0]}
+                    alt={`${teamData.name}'s Ausrüstung und Statistik`}
                     className="max-w-full rounded-3xl transition-all duration-300"
                     width="1920"
                     height="1080"
