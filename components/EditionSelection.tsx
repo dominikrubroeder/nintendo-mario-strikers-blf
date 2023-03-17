@@ -42,12 +42,7 @@ const EditionSelection: React.FC = () => {
 
                 {edition.moreDetails && (
                   <Accordion
-                    title={
-                      <div className="flex items-center justify-end gap-2">
-                        Zeige mehr Infos
-                        <QuestionBlock size={24} />
-                      </div>
-                    }
+                    title={<QuestionBlock size={24} />}
                     className="mt-4 bg-transparent"
                     showFooter={false}
                   >
