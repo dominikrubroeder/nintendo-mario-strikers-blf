@@ -101,7 +101,7 @@ export const TeamCardCarousel: FC = () => {
             width={480}
             height={480}
             alt="Team carousel test"
-            className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
+            className="interactive absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
             draggable={false}
           />
         </motion.div>

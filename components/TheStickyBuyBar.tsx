@@ -35,7 +35,7 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
         <div className="flex items-center gap-2">
           {appCtx?.selectedTeam && (
             <Image
-              src={`/images/teams/NSwitch-character-sketch-${appCtx?.selectedTeam}.png`}
+              src={`/images/teams/${appCtx?.selectedTeam}.png`}
               width={48}
               height={48}
               alt={`${appCtx?.selectedTeam} sketch`}

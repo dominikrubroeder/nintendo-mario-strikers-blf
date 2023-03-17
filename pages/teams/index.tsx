@@ -10,6 +10,7 @@ import Card from "../../components/ui/Card";
 import { motion } from "framer-motion";
 import SpringBounceWhenInView from "../../components/animation/SpringBounceWhenInView";
 import { TeamCardCarousel } from "../../components/TeamCardCarousel";
+import FloatingActionBar from "../../components/FloatingActionBar";
 
 const TeamPage: NextPage = () => {
   const appCtx = useContext(AppContext);
@@ -17,7 +18,7 @@ const TeamPage: NextPage = () => {
     teams.find((team) => team.id === appCtx?.selectedTeam) ?? teams[0];
 
   return (
-    <Layout pageTitle="Teams" withBackButton>
+    <Layout pageTitle="Teams">
       {/**
        * Push, "lift" the state up of current team to url to make it sharable
        * Include team statistic, game insights
@@ -82,8 +83,8 @@ const TeamPage: NextPage = () => {
                   transition={{ ease: "easeOut", delay: 0.2 }}
                 >
                   <Image
-                    src="/images/in-game/CI_NSwitch_MarioStrikersBLF_Screen_GearSettings_deDE.png"
-                    alt="NSwitch Mario Strikers Battle League Football gear setting preview"
+                    src={teamData.gear[0]}
+                    alt={`${teamData.name}'s Ausrüstung und Statistik`}
                     className="max-w-full rounded-3xl transition-all duration-300"
                     width="1920"
                     height="1080"
@@ -96,33 +97,6 @@ const TeamPage: NextPage = () => {
                 <Heading as="h2" className="mb-4 font-bold uppercase">
                   Wähle {teamData.name} und du bekommst:
                 </Heading>
-
-                <div className="grid gap-2">
-                  <Accordion
-                    title={`${teamData.name.toUpperCase()} – Merchandise`}
-                  >
-                    <div className="grid grid-cols-2 gap-4">
-                      {teamData.images.map((image, index) => (
-                        <div
-                          key={index}
-                          className="interactive h-64 cursor-pointer rounded-3xl bg-gray-100 themed:bg-accent"
-                        ></div>
-                      ))}
-                    </div>
-                  </Accordion>
-
-                  <Accordion title="Zusätzlicher Spiel-Content">
-                    <ul className="list-disc pl-8">
-                      <li>
-                        Mehr Content: Schalte die legacy Arenen aus Mario
-                        Strikers: Charged Football (Wii) und Mario Smash
-                        Football (GameCube) frei
-                      </li>
-                      <li>Mehr Content: Schalte das Geheimteam frei</li>
-                      <li>...</li>
-                    </ul>
-                  </Accordion>
-                </div>
               </div>
 
               <div className="mx-auto w-full max-w-lg">
@@ -151,6 +125,8 @@ const TeamPage: NextPage = () => {
           </div>
         </section>
       </div>
+
+      <FloatingActionBar shouldBeVisible={true} />
     </Layout>
   );
 };

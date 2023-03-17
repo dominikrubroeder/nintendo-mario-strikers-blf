@@ -9,7 +9,7 @@ const Checkout: NextPage = () => {
     <Layout pageTitle="Checkout">
       <PageSwitchAnimation />
 
-      <section className="h-ful flex min-h-screen items-center justify-center">
+      <section className="h-ful -mt-20 flex min-h-screen items-center justify-center">
         <div className="mx-auto">
           <BouncingItems size={24} />
         </div>
