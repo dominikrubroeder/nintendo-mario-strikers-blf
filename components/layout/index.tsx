@@ -37,7 +37,7 @@ const Layout: React.FC<LayoutProps> = ({
           name="description"
           content="Mario Strikers: Battle League Football | Nintendo"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
       </Head>
 
       {withHeader && <Header withBackButton={withBackButton} />}

@@ -9,7 +9,7 @@ export default function Document() {
           content="Nintendo's Mario Strikers: Battle League Football jetzt kaufen"
         />
 
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
       </Head>
       <div id="sound"></div>
       <div id="overlay"></div>
