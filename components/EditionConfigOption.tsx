@@ -82,7 +82,7 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
                   <Image
                     width={80}
                     height={80}
-                    src={`/images/teams/NSwitch-character-sketch-${appCtx.selectedTeam}.png`}
+                    src={`/images/teams/${appCtx.selectedTeam}.png`}
                     alt={appCtx.selectedTeam}
                   />
 

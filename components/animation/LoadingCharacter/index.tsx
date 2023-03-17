@@ -34,14 +34,14 @@ const LoadingTeam: React.FC = () => {
         <motion.div
           className="absolute left-0 bottom-0 z-10 w-full rounded-xl bg-cover bg-bottom"
           style={{
-            backgroundImage: `url(/images/teams/NSwitch-character-sketch-mario-desaturated.png)`,
+            backgroundImage: `url(/images/teams/mario-desaturated.png)`,
           }}
           initial={{ height: "0" }}
           animate={controls1}
         ></motion.div>
 
         <Image
-          src="/images/teams/NSwitch-character-sketch-mario.png"
+          src="/images/teams/mario.png"
           alt="Team image animation"
           width="256"
           height="256"

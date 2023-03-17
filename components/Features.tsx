@@ -68,7 +68,7 @@ const Features: React.FC = () => {
 
         <div className="relative mx-auto h-64 w-64">
           <Image
-            src="/images/teams/NSwitch-character-sketch-mario-bowser.png"
+            src="/images/teams/mario-bowser.png"
             alt="Mario Bowser duell in action"
             className="object-contain"
             layout="fill"
