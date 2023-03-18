@@ -2,7 +2,6 @@ import { NextPage } from "next";
 import React, { useContext } from "react";
 import Layout from "../../components/layout";
 import Heading from "../../components/Heading";
-import Accordion from "../../components/ui/Accordion";
 import teams from "../../data/teams";
 import AppContext from "../../store/appContext";
 import Image from "next/image";
@@ -102,15 +101,13 @@ const TeamPage: NextPage = () => {
                   </p>
                 </SpringBounceWhenInView>
 
-                {teamData?.merch && (
-                  <Image
-                    src={teamData?.merch[0]}
-                    alt={teamData?.name}
-                    width={596}
-                    height={718}
-                    className="mx-auto rounded-3xl"
-                  />
-                )}
+                <Image
+                  src={teamData.merch[0]}
+                  alt={teamData.name}
+                  width={596}
+                  height={718}
+                  className="mx-auto rounded-3xl"
+                />
               </section>
 
               <div className="mx-auto w-full max-w-lg">
