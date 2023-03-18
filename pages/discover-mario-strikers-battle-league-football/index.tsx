@@ -12,6 +12,8 @@ import Tooltip from "../../components/ui/Tooltip";
 import AppContext from "../../store/appContext";
 import Image from "next/image";
 import teams from "../../data/teams";
+import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
+import Button from "../../components/ui/Button";
 
 const InfoPage: NextPage = () => {
   const appCtx = useContext(AppContext);
@@ -78,8 +80,8 @@ const InfoPage: NextPage = () => {
             <div className="mx-auto flex items-center justify-center gap-1.5 text-center">
               Hol dir dein
               <Image
-                src={teamData?.image}
-                alt={teamData?.name}
+                src={teamData.image}
+                alt={teamData.name}
                 width={48}
                 height={48}
                 className="object-contain"
@@ -91,12 +93,21 @@ const InfoPage: NextPage = () => {
           </SpringBounceWhenInView>
 
           <Image
-            src={teamData?.merch[0]}
-            alt={teamData?.name}
+            src={teamData.merch[0]}
+            alt={teamData.name}
             width={596}
             height={718}
             className="mx-auto rounded-3xl"
           />
+
+          <Button
+            variant="text"
+            href="/teams"
+            className="mx-auto justify-self-start"
+          >
+            Mehr zu Team {teamData.name}
+            <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent themed:text-signal" />
+          </Button>
         </section>
 
         <section>
@@ -108,9 +119,6 @@ const InfoPage: NextPage = () => {
         </section>
       </section>
 
-      {/**
-       * Hide on scroll down?
-       */}
       <FloatingActionBar shouldBeVisible={true} />
     </Layout>
   );

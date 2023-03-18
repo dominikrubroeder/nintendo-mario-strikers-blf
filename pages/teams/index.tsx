@@ -18,15 +18,6 @@ const TeamPage: NextPage = () => {
 
   return (
     <Layout pageTitle="Teams">
-      {/**
-       * Push, "lift" the state up of current team to url to make it sharable
-       * Include team statistic, game insights
-       *
-       * When switching theme / team through carousel, play team Sound
-       *
-       * Move playing team sound to shared context when team / theme changed / is changing?
-       */}
-
       <div className="min-h-screen">
         <section className="gap gap-4">
           <div className="py-12">
@@ -96,9 +87,19 @@ const TeamPage: NextPage = () => {
                   <Heading as="h2" className="headline--gradient">
                     Team {teamData.name}
                   </Heading>
-                  <p className="mx-auto grid max-w-md gap-2 px-4 md:px-0">
-                    Wähle {teamData.name} und du bekommst:
-                  </p>
+                  <div className="mx-auto flex items-center justify-center gap-1.5 text-center">
+                    Hol dir dein
+                    <Image
+                      src={teamData?.image}
+                      alt={teamData?.name}
+                      width={48}
+                      height={48}
+                      className="object-contain"
+                    />
+                    <span className="relative inline-flex items-center gap-1 rounded-xl bg-accent-soft p-2 italic text-accent themed:bg-accent-dark themed:text-white">
+                      Team-Shirt
+                    </span>
+                  </div>
                 </SpringBounceWhenInView>
 
                 <Image
@@ -107,6 +108,7 @@ const TeamPage: NextPage = () => {
                   width={596}
                   height={718}
                   className="mx-auto rounded-3xl"
+                  priority
                 />
               </section>
 

@@ -44,7 +44,7 @@ const Features: React.FC = () => {
 
           <Button
             variant="text"
-            href={`/teams?team=${appCtx?.selectedTeam}`}
+            href="/teams"
             className="mx-auto justify-self-start"
           >
             Erhalte Vorschau zur Ausrüstung
