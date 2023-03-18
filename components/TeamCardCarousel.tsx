@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, FC, useContext } from "react";
+import { useState, FC, useContext, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
 import Image from "next/image";
@@ -47,6 +47,27 @@ export const TeamCardCarousel: FC = () => {
     (team) => team.id === appCtx?.selectedTeam
   );
   const [[page, direction], setPage] = useState([selectedTeamIndex, 0]);
+
+  useEffect(() => {
+    const handleKeyDown: { (event: KeyboardEvent): void } = (
+      e: KeyboardEvent
+    ) => {
+      if (e.key === "ArrowRight") {
+        paginate(1);
+      }
+
+      if (e.key === "ArrowLeft") {
+        paginate(-1);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    // clean up
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  });
 
   // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
   // then wrap that within 0-2 to find our image ID in the array below. By passing an

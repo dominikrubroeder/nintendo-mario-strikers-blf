@@ -9,12 +9,14 @@ interface TheStickyBuyBarProps {
   price?: number;
   href?: string;
   shouldBeVisible: boolean | undefined;
+  fixed?: boolean;
 }
 
 const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
   price,
   href,
   shouldBeVisible,
+  fixed = true,
 }) => {
   const appCtx = useContext(AppContext);
   const [isVisible, setIsVisible] = useState(false);
@@ -26,7 +28,9 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
   return (
     <>
       <div
-        className={`fixed bottom-0 z-50 m-4 grid w-[calc(100%-2rem)] gap-1 rounded-3xl bg-gray-100 p-4 text-sm transition-all themed:bg-accent-dark md:grid-cols-2 md:gap-2 ${
+        className={`${
+          fixed ? "fixed bottom-0 z-50 m-4 w-[calc(100%-2rem)]" : ""
+        } grid  gap-1 rounded-3xl bg-gray-100 p-4 text-sm transition-all themed:bg-accent-dark md:grid-cols-2 md:gap-2 ${
           isVisible
             ? "visible translate-y-0 opacity-100"
             : "invisible translate-y-1/2 opacity-0"
@@ -71,7 +75,7 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
           </div>
         </div>
         <div className="flex flex-row items-center justify-between gap-1 pl-14 md:justify-end md:gap-4 md:pl-0">
-          <div className="mr-16 flex gap-1">
+          <div className={`${fixed ? "mr-16" : ""} flex gap-1`}>
             <Button
               variant="contained"
               href={href || "/buy-mario-strikers-battle-league-football"}
@@ -83,23 +87,25 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
         </div>
       </div>
 
-      <Button
-        variant="text"
-        className={`interactive group fixed right-4 bottom-4 z-50 md:bottom-10 md:left-auto md:right-8 ${
-          isVisible
-            ? "bg-transparent hover:text-accent"
-            : "bg-accent hover:bg-accent-dark themed:bg-signal themed:hover:bg-signal-dark"
-        }`}
-        onClick={() => setIsVisible((previousState) => !previousState)}
-      >
-        <ChevronDoubleDownIcon
-          className={`icon text-white ${
+      {fixed && (
+        <Button
+          variant="text"
+          className={`interactive group fixed right-4 bottom-4 z-50 md:bottom-10 md:left-auto md:right-8 ${
             isVisible
-              ? "rotate-0 text-accent group-hover:text-accent themed:text-white themed:group-hover:text-white"
-              : "rotate-180"
+              ? "bg-transparent hover:text-accent"
+              : "bg-accent hover:bg-accent-dark themed:bg-signal themed:hover:bg-signal-dark"
           }`}
-        />
-      </Button>
+          onClick={() => setIsVisible((previousState) => !previousState)}
+        >
+          <ChevronDoubleDownIcon
+            className={`icon text-white ${
+              isVisible
+                ? "rotate-0 text-accent group-hover:text-accent themed:text-white themed:group-hover:text-white"
+                : "rotate-180"
+            }`}
+          />
+        </Button>
+      )}
     </>
   );
 };

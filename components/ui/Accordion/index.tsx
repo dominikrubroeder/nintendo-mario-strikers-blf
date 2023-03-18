@@ -30,7 +30,7 @@ const Accordion: React.FC<AccordionProps> = ({
 
   return (
     <div
-      className={`min-w-[12rem] bg-gray-100 themed:bg-accent-dark ${
+      className={`min-w-[12rem] themed:bg-accent-dark ${
         expanded ? "rounded-xl" : "interactive--suttle rounded-3xl"
       } ${className ? className : ""}`}
     >

@@ -8,9 +8,15 @@ interface TooltipProps {
   title?: string | JSX.Element;
   children: React.ReactNode;
   className?: string;
+  icon?: string | JSX.Element;
 }
 
-const Tooltip: React.FC<TooltipProps> = ({ title, children, className }) => {
+const Tooltip: React.FC<TooltipProps> = ({
+  title,
+  children,
+  className,
+  icon,
+}) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -20,9 +26,14 @@ const Tooltip: React.FC<TooltipProps> = ({ title, children, className }) => {
         onClick={() => setExpanded((previousState) => !previousState)}
       >
         {title}
-        <ChevronUpIcon
-          className={`icon ${expanded ? "-rotate-180" : "rotate-0"}`}
-        ></ChevronUpIcon>
+
+        {icon ? (
+          icon
+        ) : (
+          <ChevronUpIcon
+            className={`icon ${expanded ? "-rotate-180" : "rotate-0"}`}
+          ></ChevronUpIcon>
+        )}
       </Button>
 
       {expanded && (

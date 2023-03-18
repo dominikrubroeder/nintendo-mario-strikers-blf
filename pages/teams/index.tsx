@@ -2,7 +2,6 @@ import { NextPage } from "next";
 import React, { useContext } from "react";
 import Layout from "../../components/layout";
 import Heading from "../../components/Heading";
-import Accordion from "../../components/ui/Accordion";
 import teams from "../../data/teams";
 import AppContext from "../../store/appContext";
 import Image from "next/image";
@@ -75,29 +74,41 @@ const TeamPage: NextPage = () => {
                 </div>
               </section>
 
-              <div>
-                <motion.section
-                  initial={{ paddingLeft: "16rem", paddingRight: "16rem" }}
-                  whileInView={{ paddingLeft: "3rem", paddingRight: "3rem" }}
-                  viewport={{ amount: 0.3 }}
-                  transition={{ ease: "easeOut", delay: 0.2 }}
-                >
-                  <Image
-                    src={teamData.gear[0]}
-                    alt={`${teamData.name}'s Ausrüstung und Statistik`}
-                    className="max-w-full rounded-3xl transition-all duration-300"
-                    width="1920"
-                    height="1080"
-                    draggable={false}
-                  />
-                </motion.section>
-              </div>
+              <motion.section
+                initial={{ paddingLeft: "16rem", paddingRight: "16rem" }}
+                whileInView={{ paddingLeft: "3rem", paddingRight: "3rem" }}
+                viewport={{ amount: 0.3 }}
+                transition={{ ease: "easeOut", delay: 0.2 }}
+                className="mx-auto max-w-screen-2xl"
+              >
+                <Image
+                  src={teamData.gear[0]}
+                  alt={`${teamData.name}'s Ausrüstung und Statistik`}
+                  className="max-w-full rounded-3xl transition-all duration-300"
+                  width="1920"
+                  height="1080"
+                  draggable={false}
+                />
+              </motion.section>
 
-              <div className="mx-auto w-full max-w-lg">
-                <Heading as="h2" className="mb-4 font-bold uppercase">
-                  Wähle {teamData.name} und du bekommst:
-                </Heading>
-              </div>
+              <section className="relative grid justify-center gap-8">
+                <SpringBounceWhenInView>
+                  <Heading as="h2" className="headline--gradient">
+                    Team {teamData.name}
+                  </Heading>
+                  <p className="mx-auto grid max-w-md gap-2 px-4 md:px-0">
+                    Wähle {teamData.name} und du bekommst:
+                  </p>
+                </SpringBounceWhenInView>
+
+                <Image
+                  src={teamData.merch[0]}
+                  alt={teamData.name}
+                  width={596}
+                  height={718}
+                  className="mx-auto rounded-3xl"
+                />
+              </section>
 
               <div className="mx-auto w-full max-w-lg">
                 <Heading as="h3" className="mb-4 font-bold uppercase">
@@ -113,14 +124,12 @@ const TeamPage: NextPage = () => {
                 ></iframe>
               </div>
 
-              <div className="relative h-96 w-full">
-                <Image
-                  src="/gifs/mario-light-up-eyes-loop.gif"
-                  layout="fill"
-                  alt="Team Character Gif"
-                  className="object-contain"
-                />
-              </div>
+              <Image
+                src="/gifs/mario-light-up-eyes-loop.gif"
+                alt="Team Character Gif"
+                width={1920}
+                height={1080}
+              />
             </div>
           </div>
         </section>

@@ -10,10 +10,13 @@ import FloatingActionBar from "../../components/FloatingActionBar";
 import SpringBounceWhenInView from "../../components/animation/SpringBounceWhenInView";
 import Tooltip from "../../components/ui/Tooltip";
 import AppContext from "../../store/appContext";
-import { InformationCircleIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
+import teams from "../../data/teams";
 
 const InfoPage: NextPage = () => {
   const appCtx = useContext(AppContext);
+  const teamData =
+    teams.find((team) => team.id === appCtx?.selectedTeam) ?? teams[0];
   const selectedTeam = appCtx?.selectedTeam?.toUpperCase();
 
   return (
@@ -25,9 +28,16 @@ const InfoPage: NextPage = () => {
               Wähle dein Team
             </Heading>
 
-            <p>
+            <div className="flex items-center justify-center gap-1.5">
               Und erhalte Vorbesteller-Boni beim Kauf der Striker&apos;s
-              <span className="relative mx-2 inline-flex items-center gap-1 rounded-xl bg-accent-soft p-2 italic text-accent themed:bg-accent-dark themed:text-white">
+              <Image
+                src={teamData.image}
+                alt={teamData.name}
+                width={48}
+                height={48}
+                className="object-contain"
+              />
+              <span className="relative inline-flex items-center gap-1 rounded-xl bg-accent-soft p-2 italic text-accent themed:bg-accent-dark themed:text-white">
                 Team-Edition
               </span>
               <div className="inline-block cursor-pointer text-left text-sm text-accent themed:text-white">
@@ -47,7 +57,7 @@ const InfoPage: NextPage = () => {
                   Klicke auf einen Charakter, um ihn als dein Team auszuwählen.
                 </Tooltip>
               </div>
-            </p>
+            </div>
           </header>
 
           <TeamSelection className="sm:grid-cols-2 lg:grid-cols-3" />
@@ -59,18 +69,40 @@ const InfoPage: NextPage = () => {
 
         <CommunityQuotes />
 
-        <section>
+        <section className="grid justify-center gap-8">
           <SpringBounceWhenInView>
             <Heading as="h2" className="headline--gradient">
               Merch
             </Heading>
+
+            <div className="mx-auto flex items-center justify-center gap-1.5 text-center">
+              Hol dir dein
+              <Image
+                src={teamData?.image}
+                alt={teamData?.name}
+                width={48}
+                height={48}
+                className="object-contain"
+              />
+              <span className="relative inline-flex items-center gap-1 rounded-xl bg-accent-soft p-2 italic text-accent themed:bg-accent-dark themed:text-white">
+                Team-Shirt
+              </span>
+            </div>
           </SpringBounceWhenInView>
+
+          <Image
+            src={teamData?.merch[0]}
+            alt={teamData?.name}
+            width={596}
+            height={718}
+            className="mx-auto rounded-3xl"
+          />
         </section>
 
         <section>
           <SpringBounceWhenInView>
             <Heading as="h2" className="headline--gradient">
-              Game trailer
+              Watch the Game trailer
             </Heading>
           </SpringBounceWhenInView>
         </section>
@@ -78,14 +110,6 @@ const InfoPage: NextPage = () => {
 
       {/**
        * Hide on scroll down?
-       * How to trigger animations when scroll direction changes
-       * https://www.youtube.com/watch?v=SLOBjhSJCi0
-       *
-       * Audio needs to be shared app globally to function page wide when switching pages
-       *
-       * Move this component to shared layout?
-       *
-       * Integrate back button into action bar?
        */}
       <FloatingActionBar shouldBeVisible={true} />
     </Layout>
