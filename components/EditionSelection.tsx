@@ -4,19 +4,17 @@ import AppContext from "../store/appContext";
 import editions from "../data/editions";
 import SpringBounceWhenInView from "./animation/SpringBounceWhenInView";
 import EditionConfigOption from "./EditionConfigOption";
-import Accordion from "./ui/Accordion";
-import QuestionBlock from "./img/QuestionBlock";
 
 const EditionSelection: React.FC = () => {
   const appCtx = useContext(AppContext);
-  const router = useRouter();
+  /* const router = useRouter(); */
 
   const selectedEditionHandler = (edition: string) => {
     appCtx?.validateEdition(edition);
 
-    router.push(`${router.pathname}/?edition=${edition}`, undefined, {
+    /* router.push(`${router.pathname}/?edition=${edition}`, undefined, {
       shallow: true,
-    });
+    }); */
   };
 
   return (
@@ -41,19 +39,13 @@ const EditionSelection: React.FC = () => {
                 </ul>
 
                 {edition.moreDetails && (
-                  <Accordion
-                    title={<QuestionBlock size={24} />}
-                    className="mt-4 bg-transparent"
-                    showFooter={false}
-                  >
-                    <ul>
-                      {edition.moreDetails.map((detail) => (
-                        <li className="star" key={detail}>
-                          {detail}
-                        </li>
-                      ))}
-                    </ul>
-                  </Accordion>
+                  <ul className="mt-4">
+                    {edition.moreDetails.map((detail) => (
+                      <li className="star" key={detail}>
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
                 )}
               </EditionConfigOption>
             </SpringBounceWhenInView>

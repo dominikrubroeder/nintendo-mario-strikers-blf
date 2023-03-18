@@ -313,7 +313,7 @@ export const teams: Team[] = [
     ],
     videos: [],
     gifs: [],
-    gear: ["/images/teams/gear/daisy.jpg"],
+    gear: ["/images/teams/gear/daisy.JPG"],
     merch: ["/images/teams/tshirt/daisy.jpg"],
     baseText:
       "Sie hat zwar ein Kleid und eine Krone, aber diese freundliche Prinzessin ist ganz bodenständig. Daisy ist immer bereit für eine Herausforderung, ob sie nun Tennisbälle zerschlägt oder über Hürden springt. Die Herrscherin von Sarasaland liebt auch den Nervenkitzel bei Verfolgungsjagden - vor allem, wenn sie auf einem Gokart durch die Gegend saust.",

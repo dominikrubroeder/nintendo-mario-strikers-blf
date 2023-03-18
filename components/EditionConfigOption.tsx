@@ -80,21 +80,31 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
               {edition.id === Editions.teamId && appCtx?.selectedTeam && (
                 <div className="flex flex-wrap items-center gap-2">
                   <Image
-                    width={80}
-                    height={80}
+                    width={64}
+                    height={64}
                     src={`/images/teams/${appCtx.selectedTeam}.png`}
                     alt={appCtx.selectedTeam}
                   />
 
-                  <span>+</span>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <Image
+                      width={53}
+                      height={64}
+                      src={`/images/teams/tshirt/${appCtx.selectedTeam}.jpg`}
+                      alt={appCtx.selectedTeam}
+                      className="rounded-xl"
+                    />
 
-                  <Image
-                    width={120}
-                    height={80}
-                    src="/images/logos/CI_NSwicth_Online_Logo.png"
-                    alt="Nintendo Switch Online Logo – 3 months"
-                    className="object-contain"
-                  />
+                    <span>+</span>
+
+                    <Image
+                      width={120}
+                      height={80}
+                      src="/images/logos/CI_NSwicth_Online_Logo.png"
+                      alt="Nintendo Switch Online Logo – 3 months"
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
               )}
 

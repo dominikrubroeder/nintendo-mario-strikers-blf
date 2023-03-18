@@ -26,14 +26,13 @@ const editions: Edition[] = [
     price: 89.99,
     details: [
       "Digitaler Download und Hardcover",
-      "3 Monate Nintendo Switch Online – Digitaler Downloadcode",
-      "amiibo™ Nintendo Charakter Tischfigur für extra freischaltbare Spielinhalte",
+      "3 Monate Nintendo Switch Online [Digitaler Downloadcode]",
+      "amiibo™ Tischfigur für extra freischaltbare Spielinhalte – [externer Link]",
+      "Merchandise: Team Shirt",
     ],
     moreDetails: [
       "Schalte das 'Geheimteam' frei",
       "Schalte die Legacy Arenen aus 'Mario Strikers: Charged Football (Wii)' und 'Mario Smash Football (GameCube)' frei",
-      "Merchandise: Hoodie",
-      "Merchandise: T-Shirt",
     ],
   },
 ];
