@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Features from "../../components/Features";
 import TeamSelection from "../../components/TeamSelection";
 import CommunityQuotes from "../../components/CommunityQuotes";
@@ -12,14 +12,42 @@ import Tooltip from "../../components/ui/Tooltip";
 import AppContext from "../../store/appContext";
 import Image from "next/image";
 import teams from "../../data/teams";
-import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
+import {
+  ArrowLeftIcon,
+  ArrowLongRightIcon,
+  ArrowRightIcon,
+} from "@heroicons/react/24/solid";
 import Button from "../../components/ui/Button";
+import QuestionBlock from "../../components/img/QuestionBlock";
+import { useScroll } from "framer-motion";
+import PauseAudioButton from "../../components/mini-audio-player/controls/PauseAudioButton";
+import PlayAudioButton from "../../components/mini-audio-player/controls/PlayAudioButton";
+import AudioContext from "../../store/audioContext";
 
 const InfoPage: NextPage = () => {
   const appCtx = useContext(AppContext);
   const teamData =
     teams.find((team) => team.id === appCtx?.selectedTeam) ?? teams[0];
   const selectedTeam = appCtx?.selectedTeam?.toUpperCase();
+  const audioCtx = useContext(AudioContext);
+
+  let { scrollY } = useScroll();
+  const [scrollDirection, setScrollDirection] = useState<"up" | "down">("up");
+
+  useEffect(() => {
+    return scrollY.onChange((latest) => {
+      if (latest < 0) return;
+
+      let isScrollingDown = scrollY.getPrevious() - latest < 0;
+      let currentScrollDirection: "down" | "up" = isScrollingDown
+        ? "down"
+        : "up";
+
+      if (scrollDirection !== currentScrollDirection) {
+        setScrollDirection(currentScrollDirection);
+      }
+    });
+  }, [scrollY, scrollDirection]);
 
   return (
     <Layout pageTitle="Discover">
@@ -50,13 +78,13 @@ const InfoPage: NextPage = () => {
                   <b className="mx-1">inviduelle Merch-Artrikel</b>
                   basierend auf deiner Team-Wahl! <br /> <br />
                   Wähle also beispielsweise
-                  <b className="ml-1">{selectedTeam}</b>, um einen Hoodie im
+                  <b className="ml-1">{selectedTeam}</b>, um ein T-Shirt im
                   <b className="ml-1">{selectedTeam}</b> Design zu erhalten oder
-                  deinen Schreibtisch mit der
-                  <b className="mx-1">{selectedTeam}</b>
-                  Tischfigar in der Sieger-Pose zu schmücken.
+                  deinen Schreibtisch und Spielinhalte mit der
+                  <b className="mx-1">{selectedTeam}</b>-amiibo™ Tischfigur zu
+                  bereichern.
                   <br /> <br />
-                  Klicke auf einen Charakter, um ihn als dein Team auszuwählen.
+                  Klicke auf einen Charakter, um dein Team zu wählen.
                 </Tooltip>
               </div>
             </div>
@@ -119,7 +147,42 @@ const InfoPage: NextPage = () => {
         </section>
       </section>
 
-      <FloatingActionBar shouldBeVisible={true} />
+      <div
+        className={`fixed bottom-4 right-4 z-[100] inline-flex justify-end text-left transition-all delay-700 duration-300 ${
+          scrollDirection === "up"
+            ? "invisible translate-y-full opacity-0"
+            : "visible translate-y-0 opacity-100"
+        } `}
+      >
+        <div className="interactive mr-2 flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white drop-shadow-lg themed:bg-accent-dark">
+          {!audioCtx?.isPlaying && <PlayAudioButton />}
+          {audioCtx?.isPlaying && <PauseAudioButton />}
+        </div>
+
+        <Tooltip
+          title={<QuestionBlock size={24} />}
+          boxPlacement="over"
+          className="drop-shadow-lg"
+        >
+          PSSSST...
+          <br />
+          <div className="inline-flex flex-wrap items-center gap-1.5 text-xs">
+            Drücke deine Pfeiltasten
+            <span className="relative inline-flex items-center gap-1 rounded-xl bg-accent-soft p-2 italic text-accent themed:bg-accent-soft themed:text-accent">
+              <ArrowLeftIcon className="h-4 w-4 text-accent" />
+            </span>
+            oder
+            <span className="relative inline-flex items-center gap-1 rounded-xl bg-accent-soft p-2 italic text-accent themed:bg-accent-soft themed:text-white">
+              <ArrowRightIcon className="h-4 w-4 text-accent" />
+            </span>
+            !
+          </div>
+        </Tooltip>
+      </div>
+
+      <FloatingActionBar
+        shouldBeVisible={scrollDirection === "up" ? true : false}
+      />
     </Layout>
   );
 };

@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import React, { useContext } from "react";
+import React, { useContext, useRef, useState } from "react";
 import Layout from "../../components/layout";
 import Heading from "../../components/Heading";
 import teams from "../../data/teams";
@@ -10,11 +10,19 @@ import { motion } from "framer-motion";
 import SpringBounceWhenInView from "../../components/animation/SpringBounceWhenInView";
 import { TeamCardCarousel } from "../../components/TeamCardCarousel";
 import FloatingActionBar from "../../components/FloatingActionBar";
+import Button from "../../components/ui/Button";
+import {
+  ArrowLongRightIcon,
+  ArrowRightCircleIcon,
+} from "@heroicons/react/24/solid";
+import useIsInView from "../../hooks/useIsInView";
 
 const TeamPage: NextPage = () => {
   const appCtx = useContext(AppContext);
   const teamData =
     teams.find((team) => team.id === appCtx?.selectedTeam) ?? teams[0];
+  const buttonRef = useRef<HTMLDivElement>(null);
+  const buttonIsInView = useIsInView(buttonRef);
 
   return (
     <Layout pageTitle="Teams">
@@ -110,6 +118,19 @@ const TeamPage: NextPage = () => {
                   className="mx-auto rounded-3xl"
                   priority
                 />
+
+                <div ref={buttonRef}>
+                  <SpringBounceWhenInView>
+                    <Button
+                      variant="text"
+                      href="/buy-mario-strikers-battle-league-football"
+                      className="mx-auto justify-self-start"
+                    >
+                      Team {teamData.name} Edition vorbestellen
+                      <ArrowRightCircleIcon className="h-5 w-5 font-bold text-accent themed:text-signal" />
+                    </Button>
+                  </SpringBounceWhenInView>
+                </div>
               </section>
 
               <div className="mx-auto w-full max-w-lg">
@@ -117,27 +138,16 @@ const TeamPage: NextPage = () => {
                   {teamData.name}&apos;s Hyperstrike
                 </Heading>
 
-                <iframe
-                  src={teamData.specialAbilityVideoURL}
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="h-80 w-full rounded-xl"
-                ></iframe>
+                <Heading as="h3" className="mb-4 font-bold uppercase">
+                  {teamData.name}&apos;s Hyperstrike Animation
+                </Heading>
               </div>
-
-              <Image
-                src="/gifs/mario-light-up-eyes-loop.gif"
-                alt="Team Character Gif"
-                width={1920}
-                height={1080}
-              />
             </div>
           </div>
         </section>
       </div>
 
-      <FloatingActionBar shouldBeVisible={true} />
+      <FloatingActionBar shouldBeVisible={!buttonIsInView} />
     </Layout>
   );
 };

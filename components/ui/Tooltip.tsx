@@ -9,6 +9,7 @@ interface TooltipProps {
   children: React.ReactNode;
   className?: string;
   icon?: string | JSX.Element;
+  boxPlacement?: "over" | "under";
 }
 
 const Tooltip: React.FC<TooltipProps> = ({
@@ -16,6 +17,7 @@ const Tooltip: React.FC<TooltipProps> = ({
   children,
   className,
   icon,
+  boxPlacement = "under",
 }) => {
   const [expanded, setExpanded] = useState(false);
 
@@ -37,7 +39,15 @@ const Tooltip: React.FC<TooltipProps> = ({
       </Button>
 
       {expanded && (
-        <SpringBounceWhenInView className="absolute right-0 top-12 z-50 w-max max-w-xs rounded-xl bg-gray-100 p-6 text-base themed:bg-white themed:text-accent">
+        <SpringBounceWhenInView
+          className={`absolute right-0  z-50 w-max max-w-xs rounded-xl bg-gray-100 p-6 text-base themed:bg-white themed:text-accent ${
+            boxPlacement === "under"
+              ? "top-12"
+              : boxPlacement === "over"
+              ? "bottom-12"
+              : ""
+          }`}
+        >
           {children}
 
           <Button

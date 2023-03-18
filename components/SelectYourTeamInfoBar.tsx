@@ -17,12 +17,11 @@ const SelectYourTeamInfoBar: React.FC = () => {
             Wähle ein Team und erhalte <b>zusätzlichen Spiel-Content</b> wie
             neue Arenen, das Geheimteam und <b>inviduelle Merch-Artrikel</b>
             basierend auf deiner Team-Wahl! <br /> <br />
-            Wähle also beispielsweise {selectedTeam}, um einen Hoodie im
+            Wähle also beispielsweise {selectedTeam}, um ein T-Shirt im
             {selectedTeam} Design zu erhalten oder deinen Schreibtisch mit der
-            {selectedTeam}
-            Tischfigar in der Sieger-Pose zu schmücken.
+            {selectedTeam}-amiibo™ Tischfigur zu bereichern.
             <br /> <br />
-            Klicke auf einen Charakter, um weitere Informationen zu erhalten.
+            Klicke auf einen Charakter, um dein Team zu wählen.
           </Tooltip>
         </div>
       </div>
