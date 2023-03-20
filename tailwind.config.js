@@ -50,7 +50,11 @@ module.exports = {
       },
       backgroundImage: {
         "accent-gradient": "linear-gradient(45deg, #FF6E1A, #FFDC00)",
-        "gradient-peach": "linear-gradient(45deg, red, blue)",
+        "gradient-peach": "linear-gradient(45deg, #FFDC00, #FFDC00)",
+        "gradient-bowser": "linear-gradient(45deg, #FF6E1A, #FF6E1A)",
+        "gradient-wario": "linear-gradient(45deg, #FF6E1A, #FF6E1A)",
+        "gradient-rosalina": "linear-gradient(45deg, #FF6E1A, #FF6E1A)",
+        "gradient-daisy": "linear-gradient(45deg, #FFDC00, #FFDC00)",
       },
       keyframes: {
         fadeUp: {

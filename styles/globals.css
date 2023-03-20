@@ -32,14 +32,14 @@
   }
 
   .headline--gradient {
-    @apply mx-auto bg-accent-gradient bg-clip-text px-4 text-center text-6xl font-bold leading-[1.125] text-fill-color-transparent theme-peach:bg-gradient-peach md:text-8xl md:leading-[1.125];
+    @apply mx-auto bg-accent-gradient bg-clip-text px-4 text-center text-6xl font-bold leading-[1.125] text-fill-color-transparent theme-bowser:bg-gradient-bowser theme-wario:bg-gradient-wario theme-peach:bg-gradient-peach theme-rosalina:bg-gradient-rosalina theme-daisy:bg-gradient-daisy md:text-8xl md:leading-[1.125];
   }
 
   input {
     @apply rounded-full bg-accent-soft px-3 py-2 focus:outline-none themed:bg-accent-dark;
   }
 
-  input[type='checkbox'] {
+  input[type="checkbox"] {
     @apply rounded-full themed:bg-accent-dark;
   }
 
@@ -49,6 +49,8 @@
 }
 
 :root {
+  --theme-nintendo: hsl(0, 75%, 50%);
+  --theme-nintendo-dark: hsl(0, 75%, 45%);
   --theme-accent: hsl(0, 75%, 50%);
   --theme-accent-dark: hsl(0, 75%, 45%);
   --theme-accent-soft: hsla(0, 75%, 50%, 0.1);
@@ -86,79 +88,87 @@
   --theme-diddy-kong-dark: hsl(18, 92%, 26%);
 }
 
-[theme='mario'] {
+[theme="mario"] {
   --theme-accent: var(--theme-mario);
   --theme-accent-dark: var(--theme-mario-dark);
 }
 
-[theme='peach'] {
+[theme="peach"] {
   --theme-accent: var(--theme-peach);
   --theme-accent-dark: var(--theme-peach-dark);
-  --theme-signal: hsl(43, 100%, 50%);
-  --theme-signal-dark: hsl(43, 100%, 45%);
+  --theme-signal: hsl(52, 100%, 50%);
+  --theme-signal-dark: hsl(52, 100%, 45%);
 }
 
-[theme='luigi'] {
+[theme="luigi"] {
   --theme-accent: var(--theme-luigi);
   --theme-accent-dark: var(--theme-luigi-dark);
 }
 
-[theme='toad'] {
+[theme="toad"] {
   --theme-accent: var(--theme-toad);
   --theme-accent-dark: var(--theme-toad-dark);
 }
 
-[theme='bowser'] {
+[theme="bowser"] {
   --theme-accent: var(--theme-bowser);
   --theme-accent-dark: var(--theme-bowser-dark);
+  --theme-signal: hsl(22, 100%, 55%);
+  --theme-signal-dark: hsl(22, 100%, 45%);
 }
 
-[theme='rosalina'] {
+[theme="rosalina"] {
   --theme-accent: var(--theme-rosalina);
   --theme-accent-dark: var(--theme-rosalina-dark);
+  --theme-signal: hsl(22, 100%, 55%);
+  --theme-signal-dark: hsl(22, 100%, 45%);
 }
 
-[theme='yoshi'] {
+[theme="yoshi"] {
   --theme-accent: var(--theme-yoshi);
   --theme-accent-dark: var(--theme-yoshi-dark);
 }
 
-[theme='donkey-kong'] {
+[theme="donkey-kong"] {
   --theme-accent: var(--theme-donkey-kong);
   --theme-accent-dark: var(--theme-donkey-kong-dark);
 }
 
-[theme='wario'] {
+[theme="wario"] {
   --theme-accent: var(--theme-wario);
   --theme-accent-dark: var(--theme-wario-dark);
+  --theme-signal: hsl(22, 100%, 55%);
+  --theme-signal-dark: hsl(22, 100%, 45%);
 }
 
-[theme='waluigi'] {
+[theme="waluigi"] {
   --theme-accent: var(--theme-waluigi);
   --theme-accent-dark: var(--theme-waluigi-dark);
 }
 
-[theme='bumm-bumm'] {
+[theme="bumm-bumm"] {
   --theme-accent: var(--theme-bumm-bumm);
   --theme-accent-dark: var(--theme-bumm-bumm-dark);
 }
 
-[theme='daisy'] {
+[theme="daisy"] {
   --theme-accent: var(--theme-daisy);
   --theme-accent-dark: var(--theme-daisy-dark);
+  --theme-signal: hsl(52, 100%, 50%);
+  --theme-signal-dark: hsl(52, 100%, 45%);
 }
 
-[theme='shy-guy'] {
+[theme="shy-guy"] {
   --theme-accent: var(--theme-shy-guy);
   --theme-accent-dark: var(--theme-shy-guy-dark);
 }
 
-[theme='pauline'] {
+[theme="pauline"] {
   --theme-accent: var(--theme-pauline);
   --theme-accent-dark: var(--theme-pauline-dark);
 }
 
-[theme='diddy-kong'] {
+[theme="diddy-kong"] {
   --theme-accent: var(--theme-diddy-kong);
   --theme-accent-dark: var(--theme-diddy-kong-dark);
 }
@@ -179,5 +189,5 @@
 }
 
 li::before {
-  background-image: url('/images/items/item-star.png');
+  background-image: url("/images/items/item-star.png");
 }

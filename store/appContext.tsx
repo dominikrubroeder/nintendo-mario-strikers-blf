@@ -90,17 +90,9 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
     initBuyableHandler();
   }, []);
 
-  useEffect(() => {
-    initThemeHandler();
-  }, [selectedTeam]);
-
-  useEffect(() => {
-    initBuyableHandler();
-  }, [buyable]);
-
-  useEffect(() => {
-    initEditionHandler();
-  }, [selectedEdition]);
+  useEffect(() => initEditionHandler(), [selectedEdition]);
+  useEffect(() => initThemeHandler(), [selectedTeam]);
+  useEffect(() => initBuyableHandler(), [buyable]);
 
   const context = {
     selectedTeam: selectedTeam,
