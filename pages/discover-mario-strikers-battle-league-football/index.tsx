@@ -58,34 +58,36 @@ const InfoPage: NextPage = () => {
               Wähle dein Team
             </Heading>
 
-            <div className="flex items-center justify-center gap-1.5">
+            <div className="grid gap-1.5 lg:flex lg:items-center lg:justify-center">
               Und erhalte Vorbesteller-Boni beim Kauf der Striker&apos;s
-              <Image
-                src={teamData.image}
-                alt={teamData.name}
-                width={48}
-                height={48}
-                className="object-contain"
-              />
-              <span className="relative inline-flex items-center gap-1 rounded-xl bg-accent-soft p-2 italic text-accent themed:bg-accent-dark themed:text-white">
-                Team-Edition
-              </span>
-              <div className="inline-block cursor-pointer text-left text-sm text-accent themed:text-white">
-                <Tooltip>
-                  Wähle ein Team und erhalte
-                  <b className="mx-1">zusätzlichen Spiel-Content</b>
-                  wie neue Arenen, das Geheimteam und
-                  <b className="mx-1">inviduelle Merch-Artrikel</b>
-                  basierend auf deiner Team-Wahl! <br /> <br />
-                  Wähle also beispielsweise
-                  <b className="ml-1">{selectedTeam}</b>, um ein T-Shirt im
-                  <b className="ml-1">{selectedTeam}</b> Design zu erhalten oder
-                  deinen Schreibtisch und Spielinhalte mit der
-                  <b className="mx-1">{selectedTeam}</b>-amiibo™ Tischfigur zu
-                  bereichern.
-                  <br /> <br />
-                  Klicke auf einen Charakter, um dein Team zu wählen.
-                </Tooltip>
+              <div className="flex items-center justify-center gap-1.5">
+                <Image
+                  src={teamData.image}
+                  alt={teamData.name}
+                  width={48}
+                  height={48}
+                  className="object-contain"
+                />
+                <span className="relative inline-flex items-center gap-1 rounded-xl bg-accent-soft p-2 italic text-accent themed:bg-accent-dark themed:text-white">
+                  Team-Edition
+                </span>
+                <div className="inline-block cursor-pointer text-left text-sm text-accent themed:text-white">
+                  <Tooltip>
+                    Wähle ein Team und erhalte
+                    <b className="mx-1">zusätzlichen Spiel-Content</b>
+                    wie neue Arenen, das Geheimteam und
+                    <b className="mx-1">inviduelle Merch-Artrikel</b>
+                    basierend auf deiner Team-Wahl! <br /> <br />
+                    Wähle also beispielsweise
+                    <b className="ml-1">{selectedTeam}</b>, um ein T-Shirt im
+                    <b className="ml-1">{selectedTeam}</b> Design zu erhalten
+                    oder deinen Schreibtisch und Spielinhalte mit der
+                    <b className="mx-1">{selectedTeam}</b>-amiibo™ Tischfigur zu
+                    bereichern.
+                    <br /> <br />
+                    Klicke auf einen Charakter, um dein Team zu wählen.
+                  </Tooltip>
+                </div>
               </div>
             </div>
           </header>
@@ -99,7 +101,7 @@ const InfoPage: NextPage = () => {
 
         <CommunityQuotes />
 
-        <section className="grid justify-center gap-8">
+        <section className="mx-4 grid justify-center gap-8 lg:mx-0">
           <SpringBounceWhenInView>
             <Heading as="h2" className="headline--gradient">
               Merch
@@ -141,7 +143,7 @@ const InfoPage: NextPage = () => {
         <section>
           <SpringBounceWhenInView>
             <Heading as="h2" className="headline--gradient">
-              Watch the Game trailer
+              Schau dir den Trailer an
             </Heading>
           </SpringBounceWhenInView>
         </section>
