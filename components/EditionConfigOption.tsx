@@ -60,7 +60,7 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
         </header>
 
         <AnimatePresence>
-          {appCtx?.teamSelected && edition.name === "team" && (
+          {appCtx?.hasTeam && edition.name === "team" && (
             <motion.div
               key="description"
               initial={{ opacity: 0, height: 0 }}
@@ -77,7 +77,7 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
                 stiffness: 400,
               }}
             >
-              {appCtx?.teamSelected && appCtx.selectedTeam && (
+              {appCtx?.hasTeam && appCtx.selectedTeam && (
                 <div className="flex flex-wrap items-center gap-2">
                   <Image
                     width={64}

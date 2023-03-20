@@ -74,7 +74,7 @@ const BuyConfiguration: React.FC = () => {
             <span className="rounded-xl bg-accent-dark py-2 px-3 text-center text-xs">
               Team
             </span>
-            {/*teamData.name*/} Mario
+            {appCtx.selectedTeam.toUpperCase()}
           </h1>
           <TeamCarousel />
         </section>

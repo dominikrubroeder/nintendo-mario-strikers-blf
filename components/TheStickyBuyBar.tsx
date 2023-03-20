@@ -50,7 +50,7 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
               Mario Strikers: Battle League Football | Nintendo Switch
             </Heading>
 
-            {appCtx?.teamSelected && (
+            {appCtx?.hasTeam && (
               <div className="flex items-center gap-1">
                 <span
                   className="cursor-pointer text-accent themed:text-white"
@@ -58,7 +58,7 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
                     window.scrollTo({ top: 0, behavior: "smooth" })
                   }
                 >
-                  {appCtx?.teamSelected ? `${Editions.team} Edition` : ""}
+                  {appCtx?.hasTeam ? `${Editions.team} Edition` : ""}
                   {appCtx?.selectedTeam
                     ? ` – ${appCtx?.selectedTeam.toUpperCase()}`
                     : ""}

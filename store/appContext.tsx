@@ -4,7 +4,7 @@ import { Editions } from "../data/editions";
 
 type AppContextType = {
   selectedTeam: null | string;
-  teamSelected: boolean;
+  hasTeam: boolean;
   setTeam: (team: string | null) => void;
   selectedEdition: string;
 };
@@ -59,7 +59,7 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
 
   const context = {
     selectedTeam: selectedTeam,
-    teamSelected: !!selectedTeam,
+    hasTeam: !!selectedTeam,
     setTeam: setThemeHandler,
     selectedEdition: selectedTeam ? "team" : "standard",
   };
