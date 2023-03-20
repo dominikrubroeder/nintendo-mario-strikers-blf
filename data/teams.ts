@@ -369,7 +369,7 @@ export const teams: Team[] = [
     ],
     videos: [],
     gifs: [],
-    gear: ["/images/teams/gear/pauline.jpg"],
+    gear: ["/images/teams/gear/pauline.JPG"],
     merch: ["/images/teams/tshirt/pauline.jpg"],
     baseText: "TBD",
     teamText:
