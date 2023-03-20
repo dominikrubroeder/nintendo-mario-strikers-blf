@@ -111,13 +111,13 @@ const TeamPage: NextPage = () => {
                   </div>
                 </SpringBounceWhenInView>
 
-                <div>
+                <div className="mx-auto">
                   <Image
                     src={teamData.merch[0]}
                     alt={teamData.name}
                     width={514}
                     height={620}
-                    className="mx-auto rounded-3xl"
+                    className="rounded-3xl"
                     priority
                   />
                 </div>
