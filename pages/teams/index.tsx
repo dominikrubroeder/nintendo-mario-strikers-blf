@@ -87,6 +87,7 @@ const TeamPage: NextPage = () => {
                   width="1920"
                   height="1080"
                   draggable={false}
+                  priority
                 />
               </motion.section>
 
