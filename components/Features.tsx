@@ -6,7 +6,7 @@ import Heading from "./Heading";
 import { items } from "../data/items";
 import Button from "./ui/Button";
 import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
-import { TeamCardCarousel } from "./TeamCardCarousel";
+import { TeamCarousel } from "./TeamCarousel";
 
 const Features: React.FC = () => {
   const appCtx = useContext(AppContext);
@@ -40,7 +40,7 @@ const Features: React.FC = () => {
            * When in view do/show "hover" interaction, scale up image
            */}
 
-          <TeamCardCarousel />
+          <TeamCarousel />
 
           <Button
             variant="text"

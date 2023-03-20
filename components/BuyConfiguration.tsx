@@ -7,7 +7,8 @@ import Heading from "./Heading";
 import Image from "next/image";
 import TheStickyBuyBar from "./TheStickyBuyBar";
 import SpringBounceWhenInView from "./animation/SpringBounceWhenInView";
-import { TeamCardCarousel } from "./TeamCardCarousel";
+import { TeamCarousel } from "./TeamCarousel";
+import SelectYourTeamInfoBar from "./SelectYourTeamInfoBar";
 
 const BuyConfiguration: React.FC = () => {
   const appCtx = useContext(AppContext);
@@ -72,7 +73,7 @@ const BuyConfiguration: React.FC = () => {
             </span>
             {/*teamData.name*/} Mario
           </h1>
-          <TeamCardCarousel />
+          <TeamCarousel />
         </section>
       )}
     </>
