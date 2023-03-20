@@ -48,6 +48,7 @@ const Hero: React.FC = () => {
           width="1920"
           height="454"
           draggable={false}
+          priority
         />
       </motion.div>
 
@@ -62,6 +63,7 @@ const Hero: React.FC = () => {
           layout="fill"
           className="object-contain"
           draggable={false}
+          priority
         />
       </motion.div>
 
@@ -79,11 +81,12 @@ const Hero: React.FC = () => {
                 width={48}
                 height={48}
                 className="object-contain"
+                priority
               />
             </div>
 
             <div className="interactive group relative">
-              <p className="absolute left-1/2 top-1/2 z-50 w-max -translate-x-1/2 -translate-y-1/2 -rotate-3 font-bold uppercase text-white">
+              <p className="absolute left-1/2 top-1/2 z-50 w-max -translate-x-1/2 -translate-y-1/2 -rotate-[3.5deg] font-bold uppercase text-white">
                 Jetzt vorbestellen
               </p>
 
@@ -93,6 +96,7 @@ const Hero: React.FC = () => {
                 width="250"
                 height="92"
                 className="skew-x-12"
+                priority
               />
 
               <div className="invisible absolute bottom-6 -right-14 translate-x-8 opacity-0 transition-all group-hover:visible group-hover:translate-x-0 group-hover:opacity-100">
@@ -102,6 +106,7 @@ const Hero: React.FC = () => {
                   height={60}
                   alt="Button right"
                   className="-rotate-6"
+                  priority
                 />
               </div>
             </div>
@@ -126,7 +131,19 @@ const Hero: React.FC = () => {
               width="250"
               height="92"
               className="skew-x-12"
+              priority
             />
+
+            <div className="invisible absolute bottom-6 right-4 z-50 translate-x-8 opacity-0 transition-all group-hover:visible group-hover:translate-x-0 group-hover:opacity-100">
+              <Image
+                src={teamData.image}
+                alt={teamData.name}
+                width={48}
+                height={48}
+                className="object-contain"
+                priority
+              />
+            </div>
 
             <div className="invisible absolute bottom-6 -right-14 translate-x-8 opacity-0 transition-all group-hover:visible group-hover:translate-x-0 group-hover:opacity-100">
               <Image
@@ -135,6 +152,7 @@ const Hero: React.FC = () => {
                 height={60}
                 alt="Button right"
                 className="-rotate-6"
+                priority
               />
             </div>
           </div>
@@ -161,6 +179,7 @@ const Hero: React.FC = () => {
             height="92"
             className="skew-x-12"
             draggable={false}
+            priority
           />
 
           <div className="invisible absolute bottom-6 -right-14 translate-x-8 opacity-0 transition-all group-hover:visible group-hover:translate-x-0 group-hover:opacity-100">
@@ -170,6 +189,7 @@ const Hero: React.FC = () => {
               height={60}
               alt="Button right"
               className="-rotate-6"
+              priority
             />
           </div>
         </div>
