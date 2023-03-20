@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import GameTrailer from "./GameTrailer";
+import AppContext from "../store/appContext";
+import teams from "../data/teams";
 
 const Hero: React.FC = () => {
   const [showYouTubeGameTrailer, setShowYoutubeGameTrailer] = useState(false);
+  const appCtx = useContext(AppContext);
+  const teamData =
+    teams.find((team) => team.id === appCtx?.selectedTeam) ?? teams[0];
 
   return (
     <>
@@ -66,27 +71,39 @@ const Hero: React.FC = () => {
         className="absolute bottom-[20rem] left-12 z-50 cursor-pointer hover:left-16"
       >
         <Link href="/buy-mario-strikers-battle-league-football">
-          <div className="interactive group relative">
-            <p className="absolute left-1/2 top-1/2 z-50 w-max -translate-x-1/2 -translate-y-1/2 -rotate-3 font-bold uppercase text-white">
-              Jetzt vorbestellen
-            </p>
-
-            <Image
-              src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_BG_Introducing_Header.png"
-              alt="Mario Strikers: Battle League Football Button Background"
-              width="250"
-              height="92"
-              className="skew-x-12"
-            />
-
-            <div className="invisible absolute bottom-6 -right-14 translate-x-8 opacity-0 transition-all group-hover:visible group-hover:translate-x-0 group-hover:opacity-100">
+          <div className="relative">
+            <div className="absolute -left-5 bottom-4 z-50 transition duration-500">
               <Image
-                src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Right.png"
-                width={90}
-                height={60}
-                alt="Button right"
-                className="-rotate-6"
+                src={teamData.image}
+                alt={teamData.name}
+                width={48}
+                height={48}
+                className="object-contain"
               />
+            </div>
+
+            <div className="interactive group relative">
+              <p className="absolute left-1/2 top-1/2 z-50 w-max -translate-x-1/2 -translate-y-1/2 -rotate-3 font-bold uppercase text-white">
+                Jetzt vorbestellen
+              </p>
+
+              <Image
+                src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_BG_Introducing_Header.png"
+                alt="Mario Strikers: Battle League Football Button Background"
+                width="250"
+                height="92"
+                className="skew-x-12"
+              />
+
+              <div className="invisible absolute bottom-6 -right-14 translate-x-8 opacity-0 transition-all group-hover:visible group-hover:translate-x-0 group-hover:opacity-100">
+                <Image
+                  src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Right.png"
+                  width={90}
+                  height={60}
+                  alt="Button right"
+                  className="-rotate-6"
+                />
+              </div>
             </div>
           </div>
         </Link>
