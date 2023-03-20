@@ -1,24 +1,15 @@
-import React, { Dispatch, SetStateAction, useContext } from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import AppContext from "../store/appContext";
 import ReleaseCountdown from "./ReleaseCountdown";
 import EditionSelection from "./EditionSelection";
-import TeamSelection from "./TeamSelection";
-import BuyContainer from "./BuyContainer";
 import Heading from "./Heading";
-import { Editions } from "../data/editions";
 import Image from "next/image";
-import SelectYourTeamInfoBar from "./SelectYourTeamInfoBar";
 import TheStickyBuyBar from "./TheStickyBuyBar";
 import SpringBounceWhenInView from "./animation/SpringBounceWhenInView";
+import { TeamCarousel } from "./TeamCarousel";
 
-interface BuyConfigurationProps {
-  setShowStickyBuyBar: Dispatch<SetStateAction<boolean>>;
-}
-
-const BuyConfiguration: React.FC<BuyConfigurationProps> = ({
-  setShowStickyBuyBar,
-}) => {
+const BuyConfiguration: React.FC = () => {
   const appCtx = useContext(AppContext);
 
   return (
@@ -40,7 +31,7 @@ const BuyConfiguration: React.FC<BuyConfigurationProps> = ({
           />
         </motion.div>
 
-        <div className="mx-auto grid w-full gap-12">
+        <div className="mx-auto grid w-full gap-4">
           <div className="hidden md:grid md:gap-1">
             <Heading
               as="h2"
@@ -60,22 +51,34 @@ const BuyConfiguration: React.FC<BuyConfigurationProps> = ({
 
           <EditionSelection />
 
-          {appCtx?.selectedEdition === Editions.teamId && (
-            <>
-              <SelectYourTeamInfoBar />
-              <TeamSelection />
-            </>
-          )}
-
-          <BuyContainer setShowStickyBuyBar={setShowStickyBuyBar} />
+          <SpringBounceWhenInView>
+            <TheStickyBuyBar
+              shouldBeVisible={true}
+              fixed={false}
+              href="/checkout"
+            />
+          </SpringBounceWhenInView>
         </div>
       </section>
 
-      <section className="px-4">
-        <SpringBounceWhenInView>
-          <TheStickyBuyBar shouldBeVisible={true} fixed={false} />
-        </SpringBounceWhenInView>
-      </section>
+      {appCtx?.selectedTeam && (
+        <section className="mt-32">
+          <h1 className="flex items-center justify-center gap-2 text-center text-xl font-bold uppercase">
+            <Image
+              src={`/images/teams/${appCtx?.selectedTeam}.png`}
+              width={48}
+              height={48}
+              alt={`Team ${appCtx?.selectedTeam}`}
+              className="object-contain"
+            />
+            <span className="rounded-xl bg-accent-dark py-2 px-3 text-center text-xs">
+              Team
+            </span>
+            {appCtx.selectedTeam.toUpperCase()}
+          </h1>
+          <TeamCarousel />
+        </section>
+      )}
     </>
   );
 };

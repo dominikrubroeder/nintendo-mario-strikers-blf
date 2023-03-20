@@ -1,9 +1,5 @@
 import { NextPage } from "next";
-import { useContext, useState } from "react";
-import AppContext from "../../store/appContext";
 import BuyConfiguration from "../../components/BuyConfiguration";
-import TheStickyBuyBar from "../../components/TheStickyBuyBar";
-import { Editions } from "../../data/editions";
 import Image from "next/image";
 import Layout from "../../components/layout";
 
@@ -11,12 +7,9 @@ import Layout from "../../components/layout";
 // https://mario.fandom.com/de/wiki/Mario_Strikers_Charged_Football
 
 const DetailPage: NextPage = () => {
-  const appCtx = useContext(AppContext);
-  const [showStickyBuyBar, setShowStickyBuyBar] = useState(false);
-
   return (
-    <Layout pageTitle="Buy">
-      <BuyConfiguration setShowStickyBuyBar={setShowStickyBuyBar} />
+    <Layout pageTitle="Buy" withFooter={false}>
+      <BuyConfiguration />
 
       <section className="mt-12">
         <div className="p-4">
@@ -30,12 +23,6 @@ const DetailPage: NextPage = () => {
           />
         </div>
       </section>
-
-      <TheStickyBuyBar
-        href="/checkout"
-        shouldBeVisible={showStickyBuyBar && appCtx?.buyable}
-        price={appCtx?.selectedEdition === Editions.standardId ? 59.99 : 89.99}
-      />
     </Layout>
   );
 };

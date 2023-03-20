@@ -29,7 +29,7 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
   return (
     <div
       className={`w-full rounded-3xl border p-8 hover:border-gray-300 ${
-        edition.id === appCtx?.selectedEdition
+        edition.name === appCtx?.selectedEdition
           ? "border-accent bg-accent text-white hover:border-accent themed:bg-accent-dark"
           : "interactive border-gray-300 themed:border-accent-dark themed:hover:border-white"
       }`}
@@ -41,13 +41,13 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
             Mario Strikers: Battle League Football
             <small
               className={`block font-normal ${
-                edition.id === appCtx?.selectedEdition
+                edition.team === appCtx?.selectedTeam
                   ? "text-current"
                   : "text-accent themed:text-white"
               }`}
             >
-              <span>{`${edition.title} Edition`}</span>
-              {edition.id === Editions.teamId && appCtx?.selectedTeam
+              <span>{`${edition.nameUppercase} Edition`}</span>
+              {edition.team && appCtx?.selectedTeam
                 ? ` – ${appCtx?.selectedTeam.toUpperCase()}`
                 : ""}
             </small>
@@ -60,7 +60,7 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
         </header>
 
         <AnimatePresence>
-          {appCtx?.selectedEdition === edition.id && (
+          {appCtx?.hasTeam && edition.name === "team" && (
             <motion.div
               key="description"
               initial={{ opacity: 0, height: 0 }}
@@ -77,7 +77,7 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
                 stiffness: 400,
               }}
             >
-              {edition.id === Editions.teamId && appCtx?.selectedTeam && (
+              {appCtx?.hasTeam && appCtx.selectedTeam && (
                 <div className="flex flex-wrap items-center gap-2">
                   <Image
                     width={64}

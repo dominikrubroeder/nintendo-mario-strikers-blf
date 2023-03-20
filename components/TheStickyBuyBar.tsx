@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import Button from "./ui/Button";
 import AppContext from "../store/appContext";
-import { ChevronDoubleDownIcon } from "@heroicons/react/24/outline";
 import Heading from "./Heading";
+import { Editions } from "../data/editions";
 
 interface TheStickyBuyBarProps {
   price?: number;
@@ -30,7 +30,7 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
       <div
         className={`${
           fixed ? "fixed bottom-0 z-50 m-4 w-[calc(100%-2rem)]" : ""
-        } grid  gap-1 rounded-3xl bg-gray-100 p-4 text-sm transition-all themed:bg-accent-dark md:grid-cols-2 md:gap-2 ${
+        } grid gap-1 rounded-3xl bg-gray-100 px-8 py-6 text-sm transition-all themed:bg-accent-dark md:grid-cols-2 md:gap-2 ${
           isVisible
             ? "visible translate-y-0 opacity-100"
             : "invisible translate-y-1/2 opacity-0"
@@ -50,7 +50,7 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
               Mario Strikers: Battle League Football | Nintendo Switch
             </Heading>
 
-            {appCtx?.selectedEdition && (
+            {appCtx?.hasTeam && (
               <div className="flex items-center gap-1">
                 <span
                   className="cursor-pointer text-accent themed:text-white"
@@ -58,13 +58,7 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
                     window.scrollTo({ top: 0, behavior: "smooth" })
                   }
                 >
-                  {appCtx?.selectedEdition
-                    ? `${appCtx?.selectedEdition
-                        .charAt(0)
-                        .toUpperCase()}${appCtx?.selectedEdition.slice(
-                        1
-                      )} Edition`
-                    : ""}
+                  {appCtx?.hasTeam ? `${Editions.team} Edition` : ""}
                   {appCtx?.selectedTeam
                     ? ` – ${appCtx?.selectedTeam.toUpperCase()}`
                     : ""}
@@ -86,26 +80,6 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
           </div>
         </div>
       </div>
-
-      {fixed && (
-        <Button
-          variant="text"
-          className={`interactive group fixed right-4 bottom-4 z-50 md:bottom-10 md:left-auto md:right-8 ${
-            isVisible
-              ? "bg-transparent hover:text-accent"
-              : "bg-accent hover:bg-accent-dark themed:bg-signal themed:hover:bg-signal-dark"
-          }`}
-          onClick={() => setIsVisible((previousState) => !previousState)}
-        >
-          <ChevronDoubleDownIcon
-            className={`icon text-white ${
-              isVisible
-                ? "rotate-0 text-accent group-hover:text-accent themed:text-white themed:group-hover:text-white"
-                : "rotate-180"
-            }`}
-          />
-        </Button>
-      )}
     </>
   );
 };

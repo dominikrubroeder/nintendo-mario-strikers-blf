@@ -159,25 +159,27 @@ const InfoPage: NextPage = () => {
           {audioCtx?.isPlaying && <PauseAudioButton />}
         </div>
 
-        <Tooltip
-          title={<QuestionBlock size={24} />}
-          boxPlacement="over"
-          className="drop-shadow-lg"
-        >
-          PSSSST...
-          <br />
-          <div className="inline-flex flex-wrap items-center gap-1.5 text-xs">
-            Drücke deine Pfeiltasten
-            <span className="relative inline-flex items-center gap-1 rounded-xl bg-accent-soft p-2 italic text-accent themed:bg-accent-soft themed:text-accent">
-              <ArrowLeftIcon className="h-4 w-4 text-accent" />
-            </span>
-            oder
-            <span className="relative inline-flex items-center gap-1 rounded-xl bg-accent-soft p-2 italic text-accent themed:bg-accent-soft themed:text-white">
-              <ArrowRightIcon className="h-4 w-4 text-accent" />
-            </span>
-            !
-          </div>
-        </Tooltip>
+        {appCtx?.selectedTeam && (
+          <Tooltip
+            title={<QuestionBlock size={24} />}
+            boxPlacement="over"
+            className="drop-shadow-lg"
+          >
+            PSSSST...
+            <br />
+            <div className="inline-flex flex-wrap items-center gap-1.5 text-xs">
+              Drücke deine Pfeiltasten
+              <span className="relative inline-flex items-center gap-1 rounded-xl bg-accent-soft p-2 italic text-accent themed:bg-accent-soft themed:text-accent">
+                <ArrowLeftIcon className="h-4 w-4 text-accent" />
+              </span>
+              oder
+              <span className="relative inline-flex items-center gap-1 rounded-xl bg-accent-soft p-2 italic text-accent themed:bg-accent-soft themed:text-white">
+                <ArrowRightIcon className="h-4 w-4 text-accent" />
+              </span>
+              !
+            </div>
+          </Tooltip>
+        )}
       </div>
 
       <FloatingActionBar

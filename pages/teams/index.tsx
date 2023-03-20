@@ -8,7 +8,7 @@ import Image from "next/image";
 import Card from "../../components/ui/Card";
 import { motion } from "framer-motion";
 import SpringBounceWhenInView from "../../components/animation/SpringBounceWhenInView";
-import { TeamCardCarousel } from "../../components/TeamCardCarousel";
+import { TeamCarousel } from "../../components/TeamCarousel";
 import FloatingActionBar from "../../components/FloatingActionBar";
 import Button from "../../components/ui/Button";
 import {
@@ -29,13 +29,13 @@ const TeamPage: NextPage = () => {
       <div className="min-h-screen">
         <section className="gap gap-4">
           <div className="py-12">
-            <TeamCardCarousel />
+            <TeamCarousel />
           </div>
 
           <div className="grid gap-16">
             <header>
               <div className="text-center">
-                <span className="rounded-xl bg-accent-dark py-2 px-3 text-center text-xs">
+                <span className="rounded-xl bg-accent-dark py-2 px-3 text-center text-xs text-white">
                   Team
                 </span>
               </div>
