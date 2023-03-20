@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import Button from "./ui/Button";
 import AppContext from "../store/appContext";
-import { ChevronDoubleDownIcon } from "@heroicons/react/24/outline";
 import Heading from "./Heading";
+import { Editions } from "../data/editions";
 
 interface TheStickyBuyBarProps {
   price?: number;
@@ -50,7 +50,7 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
               Mario Strikers: Battle League Football | Nintendo Switch
             </Heading>
 
-            {appCtx?.selectedEdition && (
+            {appCtx?.teamSelected && (
               <div className="flex items-center gap-1">
                 <span
                   className="cursor-pointer text-accent themed:text-white"
@@ -58,13 +58,7 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
                     window.scrollTo({ top: 0, behavior: "smooth" })
                   }
                 >
-                  {appCtx?.selectedEdition
-                    ? `${appCtx?.selectedEdition
-                        .charAt(0)
-                        .toUpperCase()}${appCtx?.selectedEdition.slice(
-                        1
-                      )} Edition`
-                    : ""}
+                  {appCtx?.teamSelected ? `${Editions.team} Edition` : ""}
                   {appCtx?.selectedTeam
                     ? ` – ${appCtx?.selectedTeam.toUpperCase()}`
                     : ""}

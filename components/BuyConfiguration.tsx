@@ -8,7 +8,6 @@ import Image from "next/image";
 import TheStickyBuyBar from "./TheStickyBuyBar";
 import SpringBounceWhenInView from "./animation/SpringBounceWhenInView";
 import { TeamCarousel } from "./TeamCarousel";
-import SelectYourTeamInfoBar from "./SelectYourTeamInfoBar";
 
 const BuyConfiguration: React.FC = () => {
   const appCtx = useContext(AppContext);
@@ -53,7 +52,11 @@ const BuyConfiguration: React.FC = () => {
           <EditionSelection />
 
           <SpringBounceWhenInView>
-            <TheStickyBuyBar shouldBeVisible={true} fixed={false} />
+            <TheStickyBuyBar
+              shouldBeVisible={true}
+              fixed={false}
+              href="/checkout"
+            />
           </SpringBounceWhenInView>
         </div>
       </section>

@@ -4,10 +4,9 @@ import { Editions } from "../data/editions";
 
 type AppContextType = {
   selectedTeam: null | string;
+  teamSelected: boolean;
   setTeam: (team: string | null) => void;
-  selectedEdition: null | string;
-  validateEdition: (edition: string | null) => void;
-  buyable: boolean;
+  selectedEdition: string;
 };
 
 const AppContext = createContext<null | AppContextType>(null);
@@ -19,18 +18,7 @@ interface AppContextProviderProps {
 export const AppContextProvider: React.FC<AppContextProviderProps> = ({
   children,
 }) => {
-  const [selectedTeam, setSelectedTeam] = useState<null | string>(null);
-  const [selectedEdition, setSelectedEdition] = useState<null | string>(null);
-  const [buyable, setBuyable] = useState(false);
-
-  function initThemeHandler() {
-    if (localStorage.getItem(Constants.Theme)) {
-      const localStorageTheme = localStorage.getItem(Constants.Theme);
-      setSelectedTeam(localStorageTheme);
-      document.documentElement.className = `themed theme-${localStorageTheme}`;
-      document.documentElement.setAttribute("theme", String(localStorageTheme));
-    }
-  }
+  const [selectedTeam, setSelectedTeam] = useState<null | string>("mario");
 
   function setThemeHandler(team: string | null) {
     document.documentElement.className = `themed theme-${team}`;
@@ -39,67 +27,41 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
     localStorage.setItem(Constants.Theme, team ?? String(null));
 
     setSelectedTeam(team);
-
-    setBuyable(true);
-
-    validateEditionHandler(Editions.teamId);
-  }
-
-  function initEditionHandler() {
-    if (localStorage.getItem(Constants.Edition)) {
-      const localStorageEdition = localStorage.getItem(Constants.Edition);
-      setSelectedEdition(localStorageEdition);
-    }
-  }
-
-  function validateEditionHandler(edition: string | null) {
-    if (edition === Editions.standardId) {
-      document.documentElement.className = "";
-      document.documentElement.removeAttribute("theme");
-      localStorage.removeItem(Constants.Themed);
-      localStorage.removeItem(Constants.Theme);
-      setSelectedTeam(null);
-      setBuyable(true);
-    }
-
-    if (edition === Editions.teamId) {
-      setBuyable(false);
-    }
-
-    localStorage.setItem(Constants.Edition, edition ?? "");
-
-    setSelectedEdition(edition);
-  }
-
-  function initBuyableHandler() {
-    const storedEdition = localStorage.getItem(Constants.Edition);
-    const hasTheme = localStorage.getItem(Constants.Theme);
-
-    if (!storedEdition || (storedEdition === Editions.teamId && !hasTheme)) {
-      setBuyable(false);
-      return;
-    }
-
-    setBuyable(true);
   }
 
   // Initial page load instructions
   useEffect(() => {
-    initEditionHandler();
-    initThemeHandler();
-    initBuyableHandler();
+    if (localStorage.getItem(Constants.Theme)) {
+      const localStorageTheme = localStorage.getItem(Constants.Theme);
+      setSelectedTeam(localStorageTheme);
+      document.documentElement.className = `themed theme-${localStorageTheme}`;
+      document.documentElement.setAttribute("theme", String(localStorageTheme));
+      return;
+    }
+
+    localStorage.setItem(Constants.Theme, "mario");
   }, []);
 
-  useEffect(() => initEditionHandler(), [selectedEdition]);
-  useEffect(() => initThemeHandler(), [selectedTeam]);
-  useEffect(() => initBuyableHandler(), [buyable]);
+  useEffect(() => {
+    if (selectedTeam === null) {
+      document.documentElement.className = "";
+      document.documentElement.removeAttribute("theme");
+      localStorage.removeItem(Constants.Themed);
+      localStorage.removeItem(Constants.Theme);
+      localStorage.setItem(Constants.Edition, Editions.standardId);
+      setSelectedTeam(null);
+    }
+
+    if (selectedTeam) {
+      localStorage.setItem(Constants.Edition, Editions.teamId);
+    }
+  }, [selectedTeam]);
 
   const context = {
     selectedTeam: selectedTeam,
+    teamSelected: !!selectedTeam,
     setTeam: setThemeHandler,
-    selectedEdition,
-    validateEdition: validateEditionHandler,
-    buyable,
+    selectedEdition: selectedTeam ? "team" : "standard",
   };
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;

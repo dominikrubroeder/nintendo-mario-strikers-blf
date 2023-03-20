@@ -43,9 +43,10 @@ const swipePower = (offset: number, velocity: number) => {
 
 export const TeamCarousel: FC = () => {
   const appCtx = useContext(AppContext);
-  const selectedTeamIndex = teams.findIndex(
-    (team) => team.id === appCtx?.selectedTeam
-  );
+  const selectedTeamIndex =
+    teams.findIndex((team) => team.id === appCtx?.selectedTeam) === -1
+      ? 0
+      : teams.findIndex((team) => team.id === appCtx?.selectedTeam);
   const [[page, direction], setPage] = useState([selectedTeamIndex, 0]);
 
   useEffect(() => {

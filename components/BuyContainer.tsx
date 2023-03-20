@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useRef } from 'react';
-import AppContext from '../store/appContext';
-import useIsInView from '../hooks/useIsInView';
-import SpringBounceWhenInView from './animation/SpringBounceWhenInView';
-import Button from './ui/Button';
+import React, { useContext, useEffect, useRef } from "react";
+import AppContext from "../store/appContext";
+import useIsInView from "../hooks/useIsInView";
+import SpringBounceWhenInView from "./animation/SpringBounceWhenInView";
+import Button from "./ui/Button";
 
 interface BuyContainerProps {
   setShowStickyBuyBar: (shouldBeVisible: boolean) => void;
@@ -28,16 +28,15 @@ const BuyContainer: React.FC<BuyContainerProps> = ({ setShowStickyBuyBar }) => {
         className="flex justify-between gap-2 rounded-3xl bg-gray-100 p-8 themed:bg-accent-dark"
         ref={buyBox}
       >
-        {appCtx?.buyable && (
-          <p>
-            Heute bestellen, Lieferung am
-            <br />
-            <b>Freitag, 10. Juni 2023</b>
-          </p>
-        )}
+        <p>
+          Heute bestellen, Lieferung am
+          <br />
+          <b>Freitag, 10. Juni 2023</b>
+        </p>
+
         <Button
           variant="contained"
-          disabled={appCtx?.buyable ? false : true}
+          disabled={false ? false : true}
           href="/checkout"
           sound="coin"
           className="justify-center"

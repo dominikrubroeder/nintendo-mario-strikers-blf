@@ -35,7 +35,7 @@ const TeamPage: NextPage = () => {
           <div className="grid gap-16">
             <header>
               <div className="text-center">
-                <span className="rounded-xl bg-accent-dark py-2 px-3 text-center text-xs">
+                <span className="rounded-xl bg-accent-dark py-2 px-3 text-center text-xs text-white">
                   Team
                 </span>
               </div>
