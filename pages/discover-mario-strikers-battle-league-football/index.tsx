@@ -19,7 +19,7 @@ import {
 } from "@heroicons/react/24/solid";
 import Button from "../../components/ui/Button";
 import QuestionBlock from "../../components/img/QuestionBlock";
-import { useScroll } from "framer-motion";
+import { AnimatePresence, useScroll, motion } from "framer-motion";
 import PauseAudioButton from "../../components/mini-audio-player/controls/PauseAudioButton";
 import PlayAudioButton from "../../components/mini-audio-player/controls/PlayAudioButton";
 import AudioContext from "../../store/audioContext";
@@ -30,6 +30,7 @@ const InfoPage: NextPage = () => {
     teams.find((team) => team.id === appCtx?.selectedTeam) ?? teams[0];
   const selectedTeam = appCtx?.selectedTeam?.toUpperCase();
   const audioCtx = useContext(AudioContext);
+  const [showCharacterMenu, setShowCharacterMenu] = useState(false);
 
   let { scrollY } = useScroll();
   const [scrollDirection, setScrollDirection] = useState<"up" | "down">("up");
@@ -160,6 +161,99 @@ const InfoPage: NextPage = () => {
           {!audioCtx?.isPlaying && <PlayAudioButton />}
           {audioCtx?.isPlaying && <PauseAudioButton />}
         </div>
+
+        {appCtx?.selectedTeam && (
+          <div
+            className="interactive mr-2 flex h-10 w-10 items-center justify-center rounded-full bg-accent-dark"
+            onClick={() =>
+              setShowCharacterMenu((previousState) => !previousState)
+            }
+          >
+            <Image
+              src={`/images/teams/${teamData.id}.png`}
+              alt={`${teamData.name} team thumbnail`}
+              width="32"
+              height="32"
+              draggable={false}
+              className="relative z-10"
+            />
+
+            <AnimatePresence>
+              {showCharacterMenu && (
+                <motion.div
+                  key="characterMenu"
+                  initial={{
+                    opacity: 0,
+                    visibility: "hidden",
+                    y: 0,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    visibility: "visible",
+                    y: -64,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    height: 0,
+                    overflow: "hidden",
+                    scale: 0,
+                    y: 0,
+                  }}
+                  className="absolute bottom-0 z-0 rounded-2xl bg-accent-dark p-4"
+                >
+                  <ul className="grid h-64 gap-2 overflow-hidden overflow-y-auto">
+                    <li className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full bg-accent p-2 font-bold uppercase transition">
+                      <Image
+                        src={`/images/teams/${teamData.id}.png`}
+                        width="24"
+                        height="24"
+                        alt={`${teamData.name} thumbnail`}
+                      />
+
+                      <span>{teamData.name}</span>
+                    </li>
+
+                    <li>
+                      <hr className="border-accent px-4" />
+                    </li>
+
+                    {teams.map((team) => (
+                      <li
+                        key={team.id}
+                        className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full p-2 font-bold uppercase transition hover:bg-accent"
+                        onClick={() => appCtx?.setTeam(team.id)}
+                      >
+                        <Image
+                          src={`/images/teams/${team.id}.png`}
+                          width="24"
+                          height="24"
+                          alt={`${team.name} thumbnail`}
+                        />
+
+                        <span>{team.name}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        )}
+
+        <Button
+          variant="plain"
+          href="/buy-mario-strikers-battle-league-football"
+          className="interactive mr-2 flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white drop-shadow-lg themed:bg-accent-dark"
+          sound="coin"
+        >
+          <Image
+            width={24}
+            height={24}
+            alt="Nintendo Mario Coin"
+            src="/images/items/coin.png"
+            className="object-contain"
+          />
+        </Button>
 
         {appCtx?.selectedTeam && (
           <Tooltip

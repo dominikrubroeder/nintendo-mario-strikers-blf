@@ -6,6 +6,7 @@ import PlayAudioButton from "./mini-audio-player/controls/PlayAudioButton";
 import PauseAudioButton from "./mini-audio-player/controls/PauseAudioButton";
 import { ArrowLongLeftIcon } from "@heroicons/react/24/solid";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 interface FloatingActionBarProps {
   shouldBeVisible?: boolean;
@@ -31,6 +32,9 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({ shouldBeVisible }) => {
           <motion.div
             key="actionBar"
             className="z-10 cursor-pointer rounded-full bg-accent p-4 drop-shadow-lg transition-all active:scale-95 themed:bg-signal"
+            onClick={() =>
+              router.push("/buy-mario-strikers-battle-league-football")
+            }
           >
             <motion.div
               key="actionBarContent"
@@ -51,7 +55,7 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({ shouldBeVisible }) => {
                     key="backButton"
                     className="absolute -z-10 flex h-12 w-12 items-center justify-center rounded-full bg-accent text-white drop-shadow-lg themed:bg-accent-dark"
                     initial={{ x: 0, scale: 0.3 }}
-                    animate={{ x: -112, scale: 1 }}
+                    animate={{ x: -128, scale: 1 }}
                     exit={{ x: 0, scale: 0.3 }}
                     transition={{
                       type: "spring",
@@ -71,10 +75,16 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({ shouldBeVisible }) => {
 
                 <Button
                   variant="plain"
-                  href="/buy-mario-strikers-battle-league-football"
-                  className="z-50 whitespace-nowrap bg-accent p-0 font-bold uppercase text-white themed:bg-signal"
+                  className="z-50 flex items-center gap-1 whitespace-nowrap bg-accent p-0 font-bold uppercase text-white themed:bg-signal"
                   sound="coin"
                 >
+                  <Image
+                    width={24}
+                    height={24}
+                    alt="Nintendo Mario Coin"
+                    src="/images/items/coin.png"
+                    className="object-contain"
+                  />
                   Vorbestellen
                 </Button>
 
@@ -83,7 +93,7 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({ shouldBeVisible }) => {
                     key="audioControls"
                     className="absolute -z-10 flex h-12 w-12 items-center justify-center rounded-full bg-accent text-white drop-shadow-lg themed:bg-accent-dark"
                     initial={{ x: 0, scale: 0.3 }}
-                    animate={{ x: 112, scale: 1 }}
+                    animate={{ x: 128, scale: 1 }}
                     exit={{ x: 0, scale: 0.3 }}
                     transition={{
                       type: "spring",
