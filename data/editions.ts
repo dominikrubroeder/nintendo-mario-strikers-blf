@@ -29,7 +29,7 @@ const editions: Edition[] = [
     details: [
       "Digitaler Download und Hardcover",
       "3 Monate Nintendo Switch Online [Digitaler Downloadcode]",
-      "amiibo™ Tischfigur für extra freischaltbare Spielinhalte – [externer Link]",
+      "amiibo™ Tischfigur für extra freischaltbare Spielinhalte [externer Link]",
       "Merchandise: Team Shirt",
     ],
     moreDetails: [

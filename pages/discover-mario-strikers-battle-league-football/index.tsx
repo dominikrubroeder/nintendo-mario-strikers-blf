@@ -30,7 +30,7 @@ const InfoPage: NextPage = () => {
     teams.find((team) => team.id === appCtx?.selectedTeam) ?? teams[0];
   const selectedTeam = appCtx?.selectedTeam?.toUpperCase();
   const audioCtx = useContext(AudioContext);
-  const [showCharacterMenu, setShowCharacterMenu] = useState(false);
+  const [showTeamMenu, setshowTeamMenu] = useState(false);
 
   let { scrollY } = useScroll();
   const [scrollDirection, setScrollDirection] = useState<"up" | "down">("up");
@@ -165,9 +165,7 @@ const InfoPage: NextPage = () => {
         {appCtx?.selectedTeam && (
           <div
             className="interactive mr-2 flex h-10 w-10 items-center justify-center rounded-full bg-accent-dark"
-            onClick={() =>
-              setShowCharacterMenu((previousState) => !previousState)
-            }
+            onClick={() => setshowTeamMenu((previousState) => !previousState)}
           >
             <Image
               src={`/images/teams/${teamData.id}.png`}
@@ -179,7 +177,7 @@ const InfoPage: NextPage = () => {
             />
 
             <AnimatePresence>
-              {showCharacterMenu && (
+              {showTeamMenu && (
                 <motion.div
                   key="characterMenu"
                   initial={{
