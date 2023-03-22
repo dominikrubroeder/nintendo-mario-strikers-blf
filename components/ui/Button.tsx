@@ -50,8 +50,10 @@ const Button: React.FC<ButtonProps> = ({
         break;
       case "nintendo-switch-click":
         audioCtx?.setSound("/audio/nintendo-switch-click.mp3");
+        break;
       case "team":
         audioCtx?.setSound(`/audio/sound-${appCtx?.selectedTeam}-0.mp3`);
+        break;
       default:
         audioCtx?.setSound("/audio/nintendo-switch-click.mp3");
     }

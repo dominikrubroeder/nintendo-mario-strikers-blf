@@ -215,9 +215,9 @@ export const teams: Team[] = [
     id: "donkey-kong",
     name: "Donkey Kong",
     sound: [
-      "/audio/sound-donkey-0.mp3",
-      "/audio/sound-donkey-1.mp3",
-      "/audio/sound-donkey-2.mp3",
+      "/audio/sound-donkey-kong-0.mp3",
+      "/audio/sound-donkey-kong-1.mp3",
+      "/audio/sound-donkey-kong-2.mp3",
     ],
     image: "/images/teams/donkey-kong.png",
     images: [
@@ -327,7 +327,7 @@ export const teams: Team[] = [
     id: "shy-guy",
     name: "Shy Guy",
     sound: [
-      "/audio/sound-mario-0.mp3",
+      "/audio/sound-kinopio-1.mp3",
       "/audio/sound-mario-1.mp3",
       "/audio/sound-mario-2.mp3",
     ],
@@ -355,9 +355,9 @@ export const teams: Team[] = [
     id: "pauline",
     name: "Pauline",
     sound: [
-      "/audio/sound-mario-0.mp3",
-      "/audio/sound-mario-1.mp3",
-      "/audio/sound-mario-2.mp3",
+      "/audio/sound-peach-2.mp3",
+      "/audio/sound-peach-1.mp3",
+      "/audio/sound-peach-2.mp3",
     ],
     image: "/images/teams/pauline.png",
     images: [
@@ -382,9 +382,9 @@ export const teams: Team[] = [
     id: "diddy-kong",
     name: "Diddy Kong",
     sound: [
-      "/audio/sound-diddy-0.mp3",
-      "/audio/sound-diddy-1.mp3",
-      "/audio/sound-diddy-2.mp3",
+      "/audio/sound-diddy-kong-0.mp3",
+      "/audio/sound-diddy-kong-1.mp3",
+      "/audio/sound-diddy-kong-2.mp3",
     ],
     image: "/images/teams/diddy-kong.png",
     images: [

@@ -46,6 +46,7 @@ const Features: React.FC = () => {
             variant="text"
             href="/teams"
             className="mx-auto justify-self-start"
+            sound="team"
           >
             Erhalte Vorschau zur Ausrüstung
             <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent group-hover:text-white themed:text-signal" />
