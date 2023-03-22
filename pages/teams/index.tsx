@@ -83,7 +83,7 @@ const TeamPage: NextPage = () => {
                 <Image
                   src={teamData.gear[0]}
                   alt={`${teamData.name}'s Ausrüstung und Statistik`}
-                  className="max-w-full rounded-3xl transition-all duration-300"
+                  className="object-fit max-w-full rounded-3xl transition-all duration-300"
                   width="1920"
                   height="1080"
                   draggable={false}
@@ -91,7 +91,7 @@ const TeamPage: NextPage = () => {
                 />
               </motion.section>
 
-              <section className="relative grid justify-center gap-8">
+              <section className="relative grid gap-8 text-center">
                 <SpringBounceWhenInView>
                   <Heading as="h2" className="headline--gradient">
                     Team {teamData.name}
@@ -111,14 +111,16 @@ const TeamPage: NextPage = () => {
                   </div>
                 </SpringBounceWhenInView>
 
-                <Image
-                  src={teamData.merch[0]}
-                  alt={teamData.name}
-                  width={596}
-                  height={718}
-                  className="mx-auto rounded-3xl"
-                  priority
-                />
+                <div className="mx-auto">
+                  <Image
+                    src={teamData.merch[0]}
+                    alt={teamData.name}
+                    width={514}
+                    height={620}
+                    className="rounded-3xl"
+                    priority
+                  />
+                </div>
 
                 <div ref={buttonRef}>
                   <SpringBounceWhenInView>
