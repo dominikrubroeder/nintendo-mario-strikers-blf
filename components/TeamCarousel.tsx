@@ -91,7 +91,7 @@ export const TeamCarousel: FC = () => {
   };
 
   return (
-    <div className="relative h-[50vh]">
+    <div className="relative h-[35vh] sm:h-[50vh]">
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={page}
@@ -116,21 +116,21 @@ export const TeamCarousel: FC = () => {
               paginate(-1);
             }
           }}
-          className="absolute h-[50vh] w-full"
+          className="absolute h-[35vh] w-full sm:h-[50vh]"
         >
           <motion.img
             src={teamImages[selectedTeamIndex]}
             width={480}
             height={480}
             alt="Team carousel test"
-            className="interactive absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
+            className="interactive absolute top-1/2 left-1/2 max-w-xs -translate-y-1/2 -translate-x-1/2 sm:max-w-none"
             draggable={false}
           />
         </motion.div>
       </AnimatePresence>
 
       <div
-        className="interactive absolute right-4 top-1/2 z-50 cursor-pointer"
+        className="interactive absolute right-4 top-1/2 z-50 hidden cursor-pointer lg:block"
         onClick={() => paginate(1)}
       >
         <Image
@@ -143,7 +143,7 @@ export const TeamCarousel: FC = () => {
       </div>
 
       <div
-        className="interactive absolute left-4 top-1/2 z-50 cursor-pointer"
+        className="interactive absolute left-4 top-1/2 z-50 hidden cursor-pointer lg:block"
         onClick={() => paginate(-1)}
       >
         <Image

@@ -13,7 +13,7 @@ const Features: React.FC = () => {
 
   return (
     <>
-      <section className="grid gap-12">
+      <section className="grid gap-4 sm:gap-12">
         <SpringBounceWhenInView>
           <Heading as="h2" className="headline--gradient">
             Hier ist alles erlaubt!
@@ -27,7 +27,7 @@ const Features: React.FC = () => {
       </section>
 
       {appCtx?.selectedTeam && (
-        <section className="grid gap-12">
+        <section className="grid gap-4 sm:gap-12">
           <SpringBounceWhenInView>
             <Heading as="h2" className="headline--gradient">
               Dein aktuelles Team
@@ -53,7 +53,7 @@ const Features: React.FC = () => {
         </section>
       )}
 
-      <section className="grid gap-12">
+      <section className="grid gap-4 sm:gap-12">
         <SpringBounceWhenInView>
           <Heading as="h2" className="headline--gradient">
             5 gegen 5
@@ -76,7 +76,7 @@ const Features: React.FC = () => {
         </div>
       </section>
 
-      <section className="grid gap-12">
+      <section className="grid gap-4 sm:gap-12">
         <SpringBounceWhenInView>
           <Heading as="h2" className="headline--gradient">
             Bis zu 8 Spieler
@@ -91,7 +91,7 @@ const Features: React.FC = () => {
         </p>
       </section>
 
-      <section className="grid gap-12">
+      <section className="grid gap-4 sm:gap-12">
         <SpringBounceWhenInView>
           <Heading as="h2" className="headline--gradient">
             Tacklings, Items und einzigartige Fähigkeiten
