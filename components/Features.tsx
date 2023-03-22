@@ -85,8 +85,8 @@ const Features: React.FC = () => {
 
         <p className="mx-auto max-w-md px-4 md:px-0">
           Bis zu acht Spieler, vier in jedem Team, können auf einer Nintendo
-          Switch-Konsole* gegeneinander spielen. Zusätzlich zu den Einzelspielen
-          wird es einen Online-Club-Modus** geben – Jedem Club können bis zu 20
+          Switch-Konsole gegeneinander spielen. Zusätzlich zu den Einzelspielen
+          wird es einen Online-Club-Modus geben – Jedem Club können bis zu 20
           Spieler beitreten. Versucht, zum besten Club der Welt aufzusteigen!
         </p>
       </section>

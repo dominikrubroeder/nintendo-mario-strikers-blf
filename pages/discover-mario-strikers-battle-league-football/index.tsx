@@ -142,14 +142,14 @@ const InfoPage: NextPage = () => {
           </Button>
         </section>
 
-        <section>
+        <section className="px-4 lg:px-0">
           <SpringBounceWhenInView>
             <Heading as="h2" className="headline--gradient">
               Kompatibel mit amiibo™
             </Heading>
           </SpringBounceWhenInView>
 
-          <div className="flex items-center justify-center gap-4">
+          <div className="mt-4 flex items-center justify-center gap-4 lg:mt-0">
             <AmiiboLogo className="inline-block h-8" />
             <Tooltip>
               <p>
@@ -165,15 +165,27 @@ const InfoPage: NextPage = () => {
             </Tooltip>
           </div>
 
-          <div className="mx-auto my-16 text-center">
-            <Image
-              src="/images/amiibo-lineup.png"
-              width="1280"
-              height="320"
-              alt="amiibo line-up"
-              className="rounded-xl"
-            />
-          </div>
+          {appCtx?.selectedTeam === "mario" ? (
+            <div className="relative mx-auto my-16 text-center">
+              <Image
+                src="/images/amiibo-mario-promo.png"
+                width="1000"
+                height="500"
+                alt="amiibo mario"
+                className="rounded-xl"
+              />
+            </div>
+          ) : (
+            <div className="mx-auto my-16 text-center">
+              <Image
+                src="/images/amiibo-lineup.png"
+                width="1280"
+                height="320"
+                alt="amiibo line-up"
+                className="rounded-xl"
+              />
+            </div>
+          )}
 
           {!appCtx?.hasTeam && (
             <Button
@@ -197,14 +209,6 @@ const InfoPage: NextPage = () => {
             </Button>
           )}
         </section>
-
-        <section>
-          <SpringBounceWhenInView>
-            <Heading as="h2" className="headline--gradient">
-              Schau dir den Trailer an
-            </Heading>
-          </SpringBounceWhenInView>
-        </section>
       </section>
 
       <div
@@ -221,7 +225,7 @@ const InfoPage: NextPage = () => {
 
         {appCtx?.selectedTeam && (
           <div
-            className="interactive mr-2 flex h-10 w-10 items-center justify-center rounded-full bg-accent-dark"
+            className="interactive mr-2 flex h-10 w-10 items-center justify-center rounded-full bg-accent-dark drop-shadow-lg"
             onClick={() => setshowTeamMenu((previousState) => !previousState)}
           >
             <Image
