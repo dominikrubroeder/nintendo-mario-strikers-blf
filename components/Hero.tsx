@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
       )}
 
       <motion.section
-        animate={{ opacity: [0, 1, 1], y: [-10, 0, 0], scale: [1, 1, 1.05] }}
+        animate={{ opacity: [0, 1], y: [-10, 0] }}
         exit={{ opacity: [1, 0] }}
         transition={{ delay: 1.5 }}
         className="absolute inset-0 z-40"
