@@ -20,14 +20,14 @@ const Features: React.FC = () => {
           </Heading>
         </SpringBounceWhenInView>
 
-        <p className="mx-auto max-w-md px-4 md:px-0">
+        <p className="mx-auto max-w-xs sm:max-w-md">
           Das neueste Spiel der Mario Strikers-Reihe erscheint für Nintendo
           Switch!
         </p>
       </section>
 
       {appCtx?.selectedTeam && (
-        <section className="grid gap-4 sm:gap-12">
+        <section className="grid gap-6 sm:gap-12">
           <SpringBounceWhenInView>
             <Heading as="h2" className="headline--gradient">
               Dein aktuelles Team
@@ -46,9 +46,10 @@ const Features: React.FC = () => {
             variant="text"
             href="/teams"
             className="mx-auto justify-self-start"
+            sound="team"
           >
             Erhalte Vorschau zur Ausrüstung
-            <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent themed:text-signal" />
+            <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent group-hover:text-white themed:text-signal" />
           </Button>
         </section>
       )}
@@ -60,7 +61,7 @@ const Features: React.FC = () => {
           </Heading>
         </SpringBounceWhenInView>
 
-        <p className="mx-auto max-w-md px-4 md:px-0">
+        <p className="mx-auto max-w-xs sm:max-w-md">
           Mach dich bereit für das 5-gegen-5-Spiel Strike – Wie Fußball, aber
           mit deutlich härterer Offensive! Schieß Tore, indem du dribbelst und
           deinen Teamkameraden die Bälle zuspielst.
@@ -83,7 +84,7 @@ const Features: React.FC = () => {
           </Heading>
         </SpringBounceWhenInView>
 
-        <p className="mx-auto max-w-md px-4 md:px-0">
+        <p className="mx-auto max-w-xs sm:max-w-md">
           Bis zu acht Spieler, vier in jedem Team, können auf einer Nintendo
           Switch-Konsole gegeneinander spielen. Zusätzlich zu den Einzelspielen
           wird es einen Online-Club-Modus geben – Jedem Club können bis zu 20
@@ -98,10 +99,10 @@ const Features: React.FC = () => {
           </Heading>
         </SpringBounceWhenInView>
 
-        <div className="mx-auto flex flex-wrap justify-center gap-4">
+        <div className="mx-auto flex flex-wrap gap-2">
           {/* Check for items audio sounds */}
           {items.map(({ title, src }) => (
-            <div key={title} className="relative h-32 w-32">
+            <div key={title} className="relative h-24 w-24 sm:h-32 sm:w-32">
               <Image
                 src={src}
                 alt={`${title} item`}
@@ -112,7 +113,7 @@ const Features: React.FC = () => {
           ))}
         </div>
 
-        <p className="mx-auto max-w-md px-4 md:px-0">
+        <p className="mx-auto max-w-xs sm:max-w-md">
           Benutze Tacklings, Items und einzigartige Fähigkeiten zum Auslösen von
           Spezialschüssen. Sammle eine der Hyperkugeln auf dem Spielfeld ein und
           lade sie auf, während deine Gegner abgelenkt sind, um den Hyperschuss

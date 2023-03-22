@@ -32,9 +32,6 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({ shouldBeVisible }) => {
           <motion.div
             key="actionBar"
             className="z-10 cursor-pointer rounded-full bg-accent p-4 drop-shadow-lg transition-all active:scale-95 themed:bg-signal"
-            onClick={() =>
-              router.push("/buy-mario-strikers-battle-league-football")
-            }
           >
             <motion.div
               key="actionBarContent"
@@ -77,6 +74,7 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({ shouldBeVisible }) => {
                   variant="plain"
                   className="z-50 flex items-center gap-1 whitespace-nowrap bg-accent p-0 font-bold uppercase text-white themed:bg-signal"
                   sound="coin"
+                  href="/buy-mario-strikers-battle-league-football"
                 >
                   <Image
                     width={24}

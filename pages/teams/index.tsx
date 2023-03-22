@@ -6,7 +6,6 @@ import teams from "../../data/teams";
 import AppContext from "../../store/appContext";
 import Image from "next/image";
 import Card from "../../components/ui/Card";
-import { motion } from "framer-motion";
 import SpringBounceWhenInView from "../../components/animation/SpringBounceWhenInView";
 import { TeamCarousel } from "../../components/TeamCarousel";
 import FloatingActionBar from "../../components/FloatingActionBar";
@@ -52,20 +51,37 @@ const TeamPage: NextPage = () => {
               <p>{teamData.baseText}</p>
             </Card>
 
-            <section className="grid gap-12">
+            <section className="grid gap-6 sm:gap-12">
               <SpringBounceWhenInView>
-                <Heading as="h2" className="headline--gradient">
+                <Heading
+                  as="h2"
+                  className="headline--gradient sm: max-w-xs sm:max-w-none"
+                >
                   Individualisiere Dein Team
                 </Heading>
               </SpringBounceWhenInView>
 
-              <div className="mx-auto grid max-w-md gap-2 px-4 md:px-0">
+              <div className="mx-auto grid gap-2 px-4 sm:max-w-md md:px-0">
                 <Heading as="h2" className="font-bold uppercase">
                   {teamData.name}&apos;s Ausrüstung und Statistik
                 </Heading>
                 Gestalte die Ausrüstung deines Teams ganz nach deinem Geschmack.
                 Sie verändert nicht nur das Aussehen, sondern auch Werte wie
                 Tempo, Kraft und die Genauigkeit beim Passen.
+              </div>
+
+              <div className="mx-auto max-w-screen-xl sm:px-8">
+                <SpringBounceWhenInView>
+                  <Image
+                    src={teamData.gear[0]}
+                    alt={`${teamData.name}'s Ausrüstung und Statistik`}
+                    className="rounded-3xl"
+                    width="1920"
+                    height="1080"
+                    draggable={false}
+                    priority
+                  />
+                </SpringBounceWhenInView>
               </div>
             </section>
 
@@ -108,7 +124,7 @@ const TeamPage: NextPage = () => {
                     className="mx-auto justify-self-start"
                   >
                     Team {teamData.name} Edition vorbestellen
-                    <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent themed:text-signal" />
+                    <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent group-hover:text-white themed:text-signal" />
                   </Button>
                 </SpringBounceWhenInView>
               </div>
