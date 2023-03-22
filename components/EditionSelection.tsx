@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import AppContext from "../store/appContext";
 import editions from "../data/editions";
-import SpringBounceWhenInView from "./animation/SpringBounceWhenInView";
 import EditionConfigOption from "./EditionConfigOption";
 
 const EditionSelection: React.FC = () => {
