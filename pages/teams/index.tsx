@@ -124,7 +124,7 @@ const TeamPage: NextPage = () => {
                     className="mx-auto justify-self-start"
                   >
                     Team {teamData.name} Edition vorbestellen
-                    <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent themed:text-signal" />
+                    <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent group-hover:text-white themed:text-signal" />
                   </Button>
                 </SpringBounceWhenInView>
               </div>

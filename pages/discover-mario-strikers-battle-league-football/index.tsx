@@ -138,9 +138,10 @@ const InfoPage: NextPage = () => {
             variant="text"
             href="/teams"
             className="mx-auto justify-self-start"
+            sound="team"
           >
             Mehr zu Team {teamData.name}
-            <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent themed:text-signal" />
+            <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent group-hover:text-white themed:text-signal" />
           </Button>
         </section>
 
@@ -178,7 +179,7 @@ const InfoPage: NextPage = () => {
               />
             </div>
           ) : (
-            <div className="mx-auto my-16 text-center">
+            <div className="mx-auto my-16 text-center sm:px-8">
               <Image
                 src="/images/amiibo-lineup.png"
                 width="1280"
@@ -196,7 +197,7 @@ const InfoPage: NextPage = () => {
               className="mx-auto justify-self-start"
             >
               Mehr zu Teams
-              <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent themed:text-signal" />
+              <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent group-hover:text-white themed:text-signal" />
             </Button>
           )}
 
@@ -205,9 +206,10 @@ const InfoPage: NextPage = () => {
               variant="text"
               href="/teams"
               className="mx-auto justify-self-start"
+              sound="team"
             >
               Mehr zu Team {teamData.name}
-              <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent themed:text-signal" />
+              <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent group-hover:text-white themed:text-signal" />
             </Button>
           )}
         </section>

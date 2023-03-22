@@ -48,7 +48,7 @@ const Features: React.FC = () => {
             className="mx-auto justify-self-start"
           >
             Erhalte Vorschau zur Ausrüstung
-            <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent themed:text-signal" />
+            <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent group-hover:text-white themed:text-signal" />
           </Button>
         </section>
       )}
@@ -60,7 +60,7 @@ const Features: React.FC = () => {
           </Heading>
         </SpringBounceWhenInView>
 
-        <p className="mx-auto max-w-xs sm:max-w-xs sm:max-w-md">
+        <p className="mx-auto max-w-xs sm:max-w-md">
           Mach dich bereit für das 5-gegen-5-Spiel Strike – Wie Fußball, aber
           mit deutlich härterer Offensive! Schieß Tore, indem du dribbelst und
           deinen Teamkameraden die Bälle zuspielst.
