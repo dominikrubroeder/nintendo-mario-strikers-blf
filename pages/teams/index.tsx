@@ -11,10 +11,7 @@ import SpringBounceWhenInView from "../../components/animation/SpringBounceWhenI
 import { TeamCarousel } from "../../components/TeamCarousel";
 import FloatingActionBar from "../../components/FloatingActionBar";
 import Button from "../../components/ui/Button";
-import {
-  ArrowLongRightIcon,
-  ArrowRightCircleIcon,
-} from "@heroicons/react/24/solid";
+import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
 import useIsInView from "../../hooks/useIsInView";
 
 const TeamPage: NextPage = () => {
@@ -130,21 +127,11 @@ const TeamPage: NextPage = () => {
                       className="mx-auto justify-self-start"
                     >
                       Team {teamData.name} Edition vorbestellen
-                      <ArrowRightCircleIcon className="h-5 w-5 font-bold text-accent themed:text-signal" />
+                      <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent themed:text-signal" />
                     </Button>
                   </SpringBounceWhenInView>
                 </div>
               </section>
-
-              <div className="mx-auto w-full max-w-lg">
-                <Heading as="h3" className="mb-4 font-bold uppercase">
-                  {teamData.name}&apos;s Hyperstrike
-                </Heading>
-
-                <Heading as="h3" className="mb-4 font-bold uppercase">
-                  {teamData.name}&apos;s Hyperstrike Animation
-                </Heading>
-              </div>
             </div>
           </div>
         </section>

@@ -1,6 +1,5 @@
 import { NextPage } from "next";
-import React, { useContext, useEffect, useRef, useState } from "react";
-import Features from "../../components/Features";
+import React, { useContext, useEffect, useState } from "react";
 import TeamSelection from "../../components/TeamSelection";
 import CommunityQuotes from "../../components/CommunityQuotes";
 import GameGallery from "../../components/GameGallery";
@@ -19,10 +18,12 @@ import {
 } from "@heroicons/react/24/solid";
 import Button from "../../components/ui/Button";
 import QuestionBlock from "../../components/img/QuestionBlock";
-import { useScroll } from "framer-motion";
+import { AnimatePresence, useScroll, motion } from "framer-motion";
 import PauseAudioButton from "../../components/mini-audio-player/controls/PauseAudioButton";
 import PlayAudioButton from "../../components/mini-audio-player/controls/PlayAudioButton";
 import AudioContext from "../../store/audioContext";
+import AmiiboLogo from "../../components/svg/AmiiboLogo";
+import Features from "../../components/Features";
 
 const InfoPage: NextPage = () => {
   const appCtx = useContext(AppContext);
@@ -30,6 +31,7 @@ const InfoPage: NextPage = () => {
     teams.find((team) => team.id === appCtx?.selectedTeam) ?? teams[0];
   const selectedTeam = appCtx?.selectedTeam?.toUpperCase();
   const audioCtx = useContext(AudioContext);
+  const [showTeamMenu, setshowTeamMenu] = useState(false);
 
   let { scrollY } = useScroll();
   const [scrollDirection, setScrollDirection] = useState<"up" | "down">("up");
@@ -58,34 +60,36 @@ const InfoPage: NextPage = () => {
               Wähle dein Team
             </Heading>
 
-            <div className="flex items-center justify-center gap-1.5">
+            <div className="grid gap-1.5 lg:flex lg:items-center lg:justify-center">
               Und erhalte Vorbesteller-Boni beim Kauf der Striker&apos;s
-              <Image
-                src={teamData.image}
-                alt={teamData.name}
-                width={48}
-                height={48}
-                className="object-contain"
-              />
-              <span className="relative inline-flex items-center gap-1 rounded-xl bg-accent-soft p-2 italic text-accent themed:bg-accent-dark themed:text-white">
-                Team-Edition
-              </span>
-              <div className="inline-block cursor-pointer text-left text-sm text-accent themed:text-white">
-                <Tooltip>
-                  Wähle ein Team und erhalte
-                  <b className="mx-1">zusätzlichen Spiel-Content</b>
-                  wie neue Arenen, das Geheimteam und
-                  <b className="mx-1">inviduelle Merch-Artrikel</b>
-                  basierend auf deiner Team-Wahl! <br /> <br />
-                  Wähle also beispielsweise
-                  <b className="ml-1">{selectedTeam}</b>, um ein T-Shirt im
-                  <b className="ml-1">{selectedTeam}</b> Design zu erhalten oder
-                  deinen Schreibtisch und Spielinhalte mit der
-                  <b className="mx-1">{selectedTeam}</b>-amiibo™ Tischfigur zu
-                  bereichern.
-                  <br /> <br />
-                  Klicke auf einen Charakter, um dein Team zu wählen.
-                </Tooltip>
+              <div className="flex items-center justify-center gap-1.5">
+                <Image
+                  src={teamData.image}
+                  alt={teamData.name}
+                  width={48}
+                  height={48}
+                  className="object-contain"
+                />
+                <span className="relative inline-flex items-center gap-1 rounded-xl bg-accent-soft p-2 italic text-accent themed:bg-accent-dark themed:text-white">
+                  Team-Edition
+                </span>
+                <div className="inline-block cursor-pointer text-left text-sm text-accent themed:text-white">
+                  <Tooltip>
+                    Wähle ein Team und erhalte
+                    <b className="mx-1">zusätzlichen Spiel-Content</b>
+                    wie neue Arenen, das Geheimteam und
+                    <b className="mx-1">inviduelle Merch-Artrikel</b>
+                    basierend auf deiner Team-Wahl! <br /> <br />
+                    Wähle also beispielsweise
+                    <b className="ml-1">{selectedTeam}</b>, um ein T-Shirt im
+                    <b className="ml-1">{selectedTeam}</b> Design zu erhalten
+                    oder deinen Schreibtisch und Spielinhalte mit der
+                    <b className="mx-1">{selectedTeam}</b>-amiibo™ Tischfigur zu
+                    bereichern.
+                    <br /> <br />
+                    Klicke auf einen Charakter, um dein Team zu wählen.
+                  </Tooltip>
+                </div>
               </div>
             </div>
           </header>
@@ -99,7 +103,7 @@ const InfoPage: NextPage = () => {
 
         <CommunityQuotes />
 
-        <section className="grid justify-center gap-8">
+        <section className="mx-4 grid justify-center gap-8 lg:mx-0">
           <SpringBounceWhenInView>
             <Heading as="h2" className="headline--gradient">
               Merch
@@ -138,12 +142,72 @@ const InfoPage: NextPage = () => {
           </Button>
         </section>
 
-        <section>
+        <section className="px-4 lg:px-0">
           <SpringBounceWhenInView>
             <Heading as="h2" className="headline--gradient">
-              Watch the Game trailer
+              Kompatibel mit amiibo™
             </Heading>
           </SpringBounceWhenInView>
+
+          <div className="mt-4 flex items-center justify-center gap-4 lg:mt-0">
+            <AmiiboLogo className="inline-block h-8" />
+            <Tooltip>
+              <p>
+                Diese Mario amiibo™-Figur wird zusammen mit dem Spiel am 10. Mai
+                erscheinen. Wenn du diesen amiibo antippst, kannst du Arenen und
+                Materialien sowie einen spezielles Ausrüstung für Mario
+                Gleitschirm erhalten.
+                <br />
+                Wenn du ein amiibo aus der Mario Strikers-Serie scannst, kannst
+                du hilfreiche Materialien, Arenen oder einen Gleitschirmstoff
+                erhalten, der auf dem gescannten amiibo basiert.
+              </p>
+            </Tooltip>
+          </div>
+
+          {appCtx?.selectedTeam === "mario" ? (
+            <div className="relative mx-auto my-16 text-center">
+              <Image
+                src="/images/amiibo-mario-promo.png"
+                width="1000"
+                height="500"
+                alt="amiibo mario"
+                className="rounded-xl"
+              />
+            </div>
+          ) : (
+            <div className="mx-auto my-16 text-center">
+              <Image
+                src="/images/amiibo-lineup.png"
+                width="1280"
+                height="320"
+                alt="amiibo line-up"
+                className="rounded-xl"
+              />
+            </div>
+          )}
+
+          {!appCtx?.hasTeam && (
+            <Button
+              variant="text"
+              href="/teams"
+              className="mx-auto justify-self-start"
+            >
+              Mehr zu Teams
+              <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent themed:text-signal" />
+            </Button>
+          )}
+
+          {appCtx?.hasTeam && (
+            <Button
+              variant="text"
+              href="/teams"
+              className="mx-auto justify-self-start"
+            >
+              Mehr zu Team {teamData.name}
+              <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent themed:text-signal" />
+            </Button>
+          )}
         </section>
       </section>
 
@@ -158,6 +222,97 @@ const InfoPage: NextPage = () => {
           {!audioCtx?.isPlaying && <PlayAudioButton />}
           {audioCtx?.isPlaying && <PauseAudioButton />}
         </div>
+
+        {appCtx?.selectedTeam && (
+          <div
+            className="interactive mr-2 flex h-10 w-10 items-center justify-center rounded-full bg-accent-dark drop-shadow-lg"
+            onClick={() => setshowTeamMenu((previousState) => !previousState)}
+          >
+            <Image
+              src={`/images/teams/${teamData.id}.png`}
+              alt={`${teamData.name} team thumbnail`}
+              width="32"
+              height="32"
+              draggable={false}
+              className="relative z-10"
+            />
+
+            <AnimatePresence>
+              {showTeamMenu && (
+                <motion.div
+                  key="characterMenu"
+                  initial={{
+                    opacity: 0,
+                    visibility: "hidden",
+                    y: 0,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    visibility: "visible",
+                    y: -64,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    height: 0,
+                    overflow: "hidden",
+                    scale: 0,
+                    y: 0,
+                  }}
+                  className="absolute bottom-0 z-0 rounded-2xl bg-accent-dark p-4"
+                >
+                  <ul className="grid h-64 gap-2 overflow-hidden overflow-y-auto">
+                    <li className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full bg-accent p-2 font-bold uppercase transition">
+                      <Image
+                        src={`/images/teams/${teamData.id}.png`}
+                        width="24"
+                        height="24"
+                        alt={`${teamData.name} thumbnail`}
+                      />
+
+                      <span>{teamData.name}</span>
+                    </li>
+
+                    <li>
+                      <hr className="border-accent px-4" />
+                    </li>
+
+                    {teams.map((team) => (
+                      <li
+                        key={team.id}
+                        className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full p-2 font-bold uppercase transition hover:bg-accent"
+                        onClick={() => appCtx?.setTeam(team.id)}
+                      >
+                        <Image
+                          src={`/images/teams/${team.id}.png`}
+                          width="24"
+                          height="24"
+                          alt={`${team.name} thumbnail`}
+                        />
+
+                        <span>{team.name}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        )}
+
+        <Button
+          variant="plain"
+          href="/buy-mario-strikers-battle-league-football"
+          className="interactive mr-2 flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white drop-shadow-lg themed:bg-accent-dark"
+          sound="coin"
+        >
+          <Image
+            width={24}
+            height={24}
+            alt="Nintendo Mario Coin"
+            src="/images/items/coin.png"
+            className="object-contain"
+          />
+        </Button>
 
         {appCtx?.selectedTeam && (
           <Tooltip

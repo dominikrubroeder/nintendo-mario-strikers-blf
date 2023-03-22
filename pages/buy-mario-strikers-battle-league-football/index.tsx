@@ -3,10 +3,7 @@ import BuyConfiguration from "../../components/BuyConfiguration";
 import Image from "next/image";
 import Layout from "../../components/layout";
 
-// https://mario.fandom.com/de/wiki/Mario_Smash_Football
-// https://mario.fandom.com/de/wiki/Mario_Strikers_Charged_Football
-
-const DetailPage: NextPage = () => {
+const BuyPage: NextPage = () => {
   return (
     <Layout pageTitle="Buy" withFooter={false}>
       <BuyConfiguration />
@@ -27,4 +24,4 @@ const DetailPage: NextPage = () => {
   );
 };
 
-export default DetailPage;
+export default BuyPage;

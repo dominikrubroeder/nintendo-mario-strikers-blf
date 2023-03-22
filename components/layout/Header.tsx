@@ -38,7 +38,7 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
       {router.pathname != "/" && (
         <div className="absolute right-4 flex gap-2">
           <div
-            className="interactive flex cursor-pointer items-center gap-1 rounded-xl bg-accent-dark px-3 py-2 text-sm text-white"
+            className="interactive flex cursor-pointer items-center gap-1 break-words rounded-full bg-accent-dark px-3 py-2 text-xs text-white lg:rounded-xl lg:text-sm"
             onClick={() => audioCtx?.toggleInteractiveAudio()}
           >
             <Item
@@ -54,12 +54,11 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
           </div>
 
           {audioCtx?.interactiveAudioisEnabled && (
-            <div
-              className="interactive flex cursor-pointer items-center gap-2 rounded-xl bg-accent-dark px-3 py-2 text-sm text-white"
-              onClick={() => audioCtx?.toggleAudio()}
-            >
+            <div className="interactive hidden cursor-pointer items-center gap-2 rounded-xl bg-accent-dark px-3 py-2 text-xs text-white lg:flex lg:text-sm">
               {audioCtx.isPlaying ? <PauseAudioButton /> : <PlayAudioButton />}
-              Song abspielen
+              <div onClick={() => audioCtx?.toggleAudio()}>
+                Song {audioCtx.isPlaying ? "stoppen" : "abspielen"}
+              </div>
             </div>
           )}
         </div>

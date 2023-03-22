@@ -92,7 +92,7 @@ export const GameGallery = ({ images = galleryData }) => {
   };
 
   return (
-    <div className="relative my-32 h-[50vh]">
+    <div className="relative h-[25vh] lg:my-32 lg:h-[50vh]">
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={page}
@@ -117,19 +117,19 @@ export const GameGallery = ({ images = galleryData }) => {
               paginate(-1);
             }
           }}
-          className="absolute h-[50vh] w-full"
+          className="absolute h-[25vh] w-full lg:h-[50vh]"
         >
           <motion.img
             src={images[imageIndex].src}
             alt="Team image"
-            className="interactive absolute top-1/2 left-1/2 w-3/4 -translate-y-1/2 -translate-x-1/2 rounded-3xl"
+            className="interactive absolute top-1/2 left-1/2 w-[95%] -translate-y-1/2 -translate-x-1/2 rounded-3xl lg:w-3/4"
             draggable={false}
           />
         </motion.div>
       </AnimatePresence>
 
       <div
-        className="interactive absolute right-4 top-1/2 z-50 cursor-pointer"
+        className="interactive absolute right-4 top-1/2 z-50 -translate-y-1/2 cursor-pointer"
         onClick={() => paginate(1)}
       >
         <Image
@@ -142,7 +142,7 @@ export const GameGallery = ({ images = galleryData }) => {
       </div>
 
       <div
-        className="interactive absolute left-4 top-1/2 z-50 cursor-pointer"
+        className="interactive absolute left-4 top-1/2 z-50 -translate-y-1/2 cursor-pointer"
         onClick={() => paginate(-1)}
       >
         <Image
