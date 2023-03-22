@@ -1,6 +1,5 @@
 import { NextPage } from "next";
-import React, { useContext, useEffect, useRef, useState } from "react";
-import Features from "../../components/Features";
+import React, { useContext, useEffect, useState } from "react";
 import TeamSelection from "../../components/TeamSelection";
 import CommunityQuotes from "../../components/CommunityQuotes";
 import GameGallery from "../../components/GameGallery";
@@ -23,6 +22,8 @@ import { AnimatePresence, useScroll, motion } from "framer-motion";
 import PauseAudioButton from "../../components/mini-audio-player/controls/PauseAudioButton";
 import PlayAudioButton from "../../components/mini-audio-player/controls/PlayAudioButton";
 import AudioContext from "../../store/audioContext";
+import AmiiboLogo from "../../components/svg/AmiiboLogo";
+import Features from "../../components/Features";
 
 const InfoPage: NextPage = () => {
   const appCtx = useContext(AppContext);
@@ -139,6 +140,62 @@ const InfoPage: NextPage = () => {
             Mehr zu Team {teamData.name}
             <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent themed:text-signal" />
           </Button>
+        </section>
+
+        <section>
+          <SpringBounceWhenInView>
+            <Heading as="h2" className="headline--gradient">
+              Kompatibel mit amiibo™
+            </Heading>
+          </SpringBounceWhenInView>
+
+          <div className="flex items-center justify-center gap-4">
+            <AmiiboLogo className="inline-block h-8" />
+            <Tooltip>
+              <p>
+                Diese Mario amiibo™-Figur wird zusammen mit dem Spiel am 10. Mai
+                erscheinen. Wenn du diesen amiibo antippst, kannst du Arenen und
+                Materialien sowie einen spezielles Ausrüstung für Mario
+                Gleitschirm erhalten.
+                <br />
+                Wenn du ein amiibo aus der Mario Strikers-Serie scannst, kannst
+                du hilfreiche Materialien, Arenen oder einen Gleitschirmstoff
+                erhalten, der auf dem gescannten amiibo basiert.
+              </p>
+            </Tooltip>
+          </div>
+
+          <div className="mx-auto my-16 text-center">
+            <Image
+              src="/images/amiibo-lineup.png"
+              width="1280"
+              height="320"
+              alt="amiibo line-up"
+              className="rounded-xl"
+            />
+          </div>
+
+          {!appCtx?.hasTeam && (
+            <Button
+              variant="text"
+              href="/teams"
+              className="mx-auto justify-self-start"
+            >
+              Mehr zu Teams
+              <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent themed:text-signal" />
+            </Button>
+          )}
+
+          {appCtx?.hasTeam && (
+            <Button
+              variant="text"
+              href="/teams"
+              className="mx-auto justify-self-start"
+            >
+              Mehr zu Team {teamData.name}
+              <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent themed:text-signal" />
+            </Button>
+          )}
         </section>
 
         <section>
