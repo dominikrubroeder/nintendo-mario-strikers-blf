@@ -32,7 +32,7 @@
   }
 
   .headline--gradient {
-    @apply mx-auto bg-accent-gradient bg-clip-text px-4 text-center text-6xl font-bold leading-[1.125] text-fill-color-transparent theme-bowser:bg-gradient-bowser theme-wario:bg-gradient-wario theme-peach:bg-gradient-peach theme-rosalina:bg-gradient-rosalina theme-daisy:bg-gradient-daisy md:text-8xl md:leading-[1.125];
+    @apply mx-auto bg-accent-gradient bg-clip-text text-center text-4xl font-bold leading-[1.125] text-fill-color-transparent theme-bowser:bg-gradient-bowser theme-wario:bg-gradient-wario theme-peach:bg-gradient-peach theme-rosalina:bg-gradient-rosalina theme-daisy:bg-gradient-daisy sm:text-6xl md:text-8xl md:leading-[1.125];
   }
 
   input {

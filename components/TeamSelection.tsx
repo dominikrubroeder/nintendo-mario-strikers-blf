@@ -9,7 +9,7 @@ interface TeamSelectionProps {
 
 const TeamSelection: React.FC<TeamSelectionProps> = ({ className }) => {
   return (
-    <div className={`grid gap-4 ${className ? className : ""}`}>
+    <div className={`grid gap-0 sm:gap-4 ${className ? className : ""}`}>
       {teams.map((team) => {
         return (
           <SpringBounceWhenInView key={team.id}>
