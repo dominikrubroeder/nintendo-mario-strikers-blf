@@ -53,7 +53,7 @@ const InfoPage: NextPage = () => {
 
   return (
     <Layout pageTitle="Discover">
-      <section className="mt-8 grid gap-32">
+      <section className="mt-8 grid gap-32 px-4 sm:px-0">
         <section className="m-auto grid w-full max-w-screen-xl gap-12 px-4 text-center">
           <header className="grid gap-2">
             <Heading as="h2" className="headline--gradient">
@@ -97,13 +97,15 @@ const InfoPage: NextPage = () => {
           <TeamSelection className="sm:grid-cols-2 lg:grid-cols-3" />
         </section>
 
-        <GameGallery />
+        <section>
+          <GameGallery />
+        </section>
 
         <Features />
 
         <CommunityQuotes />
 
-        <section className="mx-4 grid justify-center gap-8 lg:mx-0">
+        <section className="grid justify-center gap-8">
           <SpringBounceWhenInView>
             <Heading as="h2" className="headline--gradient">
               Merch

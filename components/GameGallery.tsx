@@ -122,7 +122,7 @@ export const GameGallery = ({ images = galleryData }) => {
           <motion.img
             src={images[imageIndex].src}
             alt="Team image"
-            className="interactive absolute top-1/2 left-1/2 w-[95%] -translate-y-1/2 -translate-x-1/2 rounded-3xl lg:w-3/4"
+            className="interactive absolute top-1/2 left-1/2 w-full -translate-y-1/2 -translate-x-1/2 rounded-3xl sm:w-3/4"
             draggable={false}
           />
         </motion.div>

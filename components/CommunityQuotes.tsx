@@ -19,7 +19,7 @@ export default function CommunityQuotes() {
         })}
       </div>
 
-      <div className="m-auto grid w-full max-w-3xl gap-8 px-4">
+      <div className="m-auto grid w-full max-w-3xl gap-8">
         {communityQuotes.map((communityQuote, index) => {
           if (!communityQuote.isHighlight) {
             return (
