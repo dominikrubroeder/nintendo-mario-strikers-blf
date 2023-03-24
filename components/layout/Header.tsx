@@ -57,7 +57,7 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
             <div className="interactive hidden cursor-pointer items-center gap-2 rounded-xl bg-accent-dark px-3 py-2 text-xs text-white lg:flex lg:text-sm">
               {audioCtx.isPlaying ? <PauseAudioButton /> : <PlayAudioButton />}
               <div onClick={() => audioCtx?.toggleAudio()}>
-                Song {audioCtx.isPlaying ? "stoppen" : "abspielen"}
+                Soundtrack {audioCtx.isPlaying ? "stoppen" : "abspielen"}
               </div>
             </div>
           )}

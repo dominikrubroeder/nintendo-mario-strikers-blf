@@ -105,6 +105,30 @@ const InfoPage: NextPage = () => {
 
         <CommunityQuotes />
 
+        <motion.iframe
+          width="916"
+          height="515"
+          src="https://www.youtube.com/embed/0uh01uQuPfk?autoplay=0&rel=0"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+          allowFullScreen
+          className="mx-auto rounded-xl border-8 border-black"
+          initial="hidden"
+          whileInView="visible"
+          transition={{
+            duration: 0.6,
+            type: "spring",
+            stiffness: 400,
+            damping: 15,
+          }}
+          variants={{
+            visible: { opacity: 1, y: 0 },
+            hidden: { opacity: 0, y: 160 },
+          }}
+          viewport={{ amount: 0.7, once: true }}
+        ></motion.iframe>
+
         <section className="grid justify-center gap-8">
           <SpringBounceWhenInView>
             <Heading as="h2" className="headline--gradient">

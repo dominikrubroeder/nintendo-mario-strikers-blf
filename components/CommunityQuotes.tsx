@@ -1,5 +1,4 @@
 import SpringBounceWhenInView from "./animation/SpringBounceWhenInView";
-import BouncingItems from "./BouncingItems";
 import { communityQuotes } from "../data/communityquotes";
 
 export default function CommunityQuotes() {
