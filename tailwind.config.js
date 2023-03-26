@@ -104,6 +104,25 @@ module.exports = {
           "90%": { transform: "translate(1px, 2px) rotate(0deg)" },
           "100%": { transform: "translate(1px, -2px) rotate(-1deg)" },
         },
+        shakeScale: {
+          "0%": { transform: "translate(1px, 1px) rotate(0deg) scale(1)" },
+          "10%": {
+            transform: "translate(-1px, -2px) rotate(-1deg) scale(1.05)",
+          },
+          "20%": {
+            transform: "translate(-3px, 0px) rotate(1deg) scale(1.025)",
+          },
+          "30%": { transform: "translate(3px, 2px) rotate(0deg) scale(1.05)" },
+          "40%": { transform: "translate(1px, -1px) rotate(1deg) scale(1.25)" },
+          "50%": { transform: "translate(-1px, 2px) rotate(-1deg) scale(1)" },
+          "60%": { transform: "translate(-3px, 1px) rotate(0deg) scale(1)" },
+          "70%": {
+            transform: "transform: translate(3px, 1px) rotate(-1deg) scale(1)",
+          },
+          "80%": { transform: "translate(-1px, -1px) rotate(1deg) scale(1)" },
+          "90%": { transform: "translate(1px, 2px) rotate(0deg) scale(1)" },
+          "100%": { transform: "translate(1px, -2px) rotate(-1deg) scale(1)" },
+        },
       },
       animation: {
         fadeUp: "fadeUp 1s ease-out forwards",
@@ -111,6 +130,7 @@ module.exports = {
         audioWave2: "audioWave2 2.2s infinite ease-in-out",
         growthHeight: "growthHeight 1s infinite ease-in-out",
         shake: "shake 0.5s infinite",
+        shakeScale: "shakeScale 0.5s infinite",
       },
     },
   },
