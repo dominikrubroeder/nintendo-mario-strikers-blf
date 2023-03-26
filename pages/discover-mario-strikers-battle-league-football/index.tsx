@@ -45,20 +45,19 @@ const InfoPage: NextPage = () => {
   };
 
   useEffect(() => {
-    console.log("run...");
     if (playSoundtrackOnce && scrollToRef) {
       setShowLoadingBar(true);
 
       setTimeout(() => setShowLoadingBar(false), 3000);
 
-      setTimeout(() => {
-        // smooth scroll to element and align it at the bottom
-        scrollToRef.current?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }, 3200);
-      console.log("run true...");
+      setTimeout(
+        () =>
+          scrollToRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          }),
+        3200
+      );
     }
   }, [scrollToRef, playSoundtrackOnce]);
 
@@ -116,7 +115,7 @@ const InfoPage: NextPage = () => {
                           damping: 15,
                         }}
                       >
-                        <div className="relative -mb-2 flex items-center gap-2">
+                        <div className="relative -mb-3 flex items-center gap-2">
                           <BouncingItems size={24} />
                         </div>
                       </motion.div>
