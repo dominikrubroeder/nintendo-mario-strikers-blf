@@ -7,6 +7,7 @@ import AudioContext from "../../store/audioContext";
 import Item from "../img/Item";
 import PauseAudioButton from "../mini-audio-player/controls/PauseAudioButton";
 import PlayAudioButton from "../mini-audio-player/controls/PlayAudioButton";
+import Image from "next/image";
 
 interface HeaderProps {
   withBackButton?: boolean;
@@ -17,7 +18,7 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
   const audioCtx = useContext(AudioContext);
 
   return (
-    <header className="relative z-[100] flex h-20 w-full items-center justify-between gap-4 p-4">
+    <header className="relative z-[100] flex h-32 w-full items-center justify-between gap-4 p-4">
       {withBackButton && (
         <div
           className="interactive flex items-center justify-center rounded-full bg-accent-dark p-2"
@@ -30,7 +31,13 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
       <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 transition active:scale-95">
         <Link href="/">
           <a>
-            <Logo />
+            <Image
+              src="/images/logos/mario-strikers-blf-logo.png"
+              width={112}
+              height={112}
+              className="object-contain"
+              alt="Mario Strikers: Battle League Football Logo"
+            />
           </a>
         </Link>
       </div>
@@ -52,15 +59,6 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
             />
             Interaktives Audio
           </div>
-
-          {audioCtx?.interactiveAudioisEnabled && (
-            <div className="interactive hidden cursor-pointer items-center gap-2 rounded-full bg-accent-dark px-3 py-2 text-xs text-white lg:flex lg:text-sm">
-              {audioCtx.isPlaying ? <PauseAudioButton /> : <PlayAudioButton />}
-              <div onClick={() => audioCtx?.toggleAudio()}>
-                Soundtrack {audioCtx.isPlaying ? "stoppen" : "abspielen"}
-              </div>
-            </div>
-          )}
         </div>
       )}
     </header>

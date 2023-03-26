@@ -13,19 +13,6 @@ const Features: React.FC = () => {
 
   return (
     <>
-      <section className="grid gap-4 sm:gap-12">
-        <SpringBounceWhenInView>
-          <Heading as="h2" className="headline--gradient">
-            Hier ist alles erlaubt!
-          </Heading>
-        </SpringBounceWhenInView>
-
-        <p className="mx-auto max-w-xs sm:max-w-md">
-          Das neueste Spiel der Mario Strikers-Reihe erscheint für Nintendo
-          Switch!
-        </p>
-      </section>
-
       {appCtx?.selectedTeam && (
         <section className="grid gap-6 sm:gap-12">
           <SpringBounceWhenInView>
