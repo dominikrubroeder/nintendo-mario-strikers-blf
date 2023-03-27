@@ -5,9 +5,7 @@ import { useRouter } from "next/router";
 import { ArrowLongLeftIcon } from "@heroicons/react/24/solid";
 import AudioContext from "../../store/audioContext";
 import Item from "../img/Item";
-import PauseAudioButton from "../mini-audio-player/controls/PauseAudioButton";
-import PlayAudioButton from "../mini-audio-player/controls/PlayAudioButton";
-import Image from "next/image";
+import { motion } from "framer-motion";
 
 interface HeaderProps {
   withBackButton?: boolean;
@@ -18,7 +16,11 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
   const audioCtx = useContext(AudioContext);
 
   return (
-    <header className="relative z-[100] flex h-32 w-full items-center justify-between gap-4 p-4">
+    <motion.header
+      key="pageHeader"
+      animate={{ x: [100, 0] }}
+      className="relative z-[100] flex h-32 w-full items-center justify-between gap-4 p-4"
+    >
       {withBackButton && (
         <div
           className="interactive flex items-center justify-center rounded-full bg-accent-dark p-2"
@@ -31,13 +33,7 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
       <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 transition active:scale-95">
         <Link href="/">
           <a>
-            <Image
-              src="/images/logos/mario-strikers-blf-logo.png"
-              width={112}
-              height={112}
-              className="object-contain"
-              alt="Mario Strikers: Battle League Football Logo"
-            />
+            <Logo variant="Mario Strikers" />
           </a>
         </Link>
       </div>
@@ -61,7 +57,7 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
           </div>
         </div>
       )}
-    </header>
+    </motion.header>
   );
 };
 
