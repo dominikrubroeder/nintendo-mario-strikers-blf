@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
       <motion.div
         animate={{ opacity: [0, 1], y: ["100%", "0%"] }}
         transition={{ delay: 2.6 }}
-        className="absolute bottom-[20rem] left-12 z-50 cursor-pointer hover:left-16"
+        className="absolute bottom-[16rem] left-12 z-50 cursor-pointer hover:left-16"
       >
         <Link href="/buy-mario-strikers-battle-league-football">
           <div className="relative">
@@ -76,7 +76,7 @@ const Hero: React.FC = () => {
       <motion.div
         animate={{ opacity: [0, 1], y: ["100%", "0%"] }}
         transition={{ ease: "easeOut", delay: 2.3 }}
-        className="absolute bottom-[14rem] left-12 z-50 cursor-pointer hover:left-16"
+        className="absolute bottom-[10rem] left-12 z-50 cursor-pointer hover:left-16"
       >
         <Link href="/discover-mario-strikers-battle-league-football">
           <div className="interactive group relative">
@@ -121,7 +121,7 @@ const Hero: React.FC = () => {
       <motion.div
         animate={{ opacity: [0, 1], y: ["100%", "0%"] }}
         transition={{ ease: "easeOut", delay: 2.2 }}
-        className="absolute bottom-[8rem] left-12 z-50 cursor-pointer hover:left-16"
+        className="absolute bottom-[4rem] left-12 z-50 cursor-pointer hover:left-16"
       >
         <div
           className="interactive group relative"
