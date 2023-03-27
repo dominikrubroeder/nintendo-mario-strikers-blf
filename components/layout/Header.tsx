@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { FC, useContext } from "react";
+import { FC, useContext, useEffect, useRef } from "react";
 import Logo from "../svg/Logo";
 import { useRouter } from "next/router";
 import { ArrowLongLeftIcon } from "@heroicons/react/24/solid";
 import AudioContext from "../../store/audioContext";
 import Item from "../img/Item";
-import { motion } from "framer-motion";
+import useIsInView from "../../hooks/useIsInView";
+import AppContext from "../../store/appContext";
 
 interface HeaderProps {
   withBackButton?: boolean;
@@ -14,12 +15,22 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
   const router = useRouter();
   const audioCtx = useContext(AudioContext);
+  const headerRef = useRef<HTMLElement | null>(null);
+  const headerIsInView = useIsInView(headerRef);
+  const appCtx = useContext(AppContext);
+
+  useEffect(
+    () =>
+      headerIsInView
+        ? appCtx?.setHeaderIsInView(true)
+        : appCtx?.setHeaderIsInView(false),
+    [headerIsInView, appCtx]
+  );
 
   return (
-    <motion.header
-      key="pageHeader"
-      animate={{ x: [100, 0] }}
-      className="relative z-[100] flex h-32 w-full items-center justify-between gap-4 p-4"
+    <header
+      ref={headerRef}
+      className="relative flex h-32 w-full items-center justify-between gap-4 p-4"
     >
       {withBackButton && (
         <div
@@ -57,7 +68,7 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
           </div>
         </div>
       )}
-    </motion.header>
+    </header>
   );
 };
 

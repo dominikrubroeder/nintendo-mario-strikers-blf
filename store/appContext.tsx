@@ -7,6 +7,8 @@ type AppContextType = {
   hasTeam: boolean;
   setTeam: (team: string | null) => void;
   selectedEdition: string;
+  headerIsInView: boolean;
+  setHeaderIsInView: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const AppContext = createContext<null | AppContextType>(null);
@@ -19,6 +21,7 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
   children,
 }) => {
   const [selectedTeam, setSelectedTeam] = useState<null | string>("mario");
+  const [headerIsInView, setHeaderIsInView] = useState<boolean>(true);
 
   function setThemeHandler(team: string | null) {
     document.documentElement.className = `themed theme-${team}`;
@@ -62,6 +65,8 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
     hasTeam: !!selectedTeam,
     setTeam: setThemeHandler,
     selectedEdition: selectedTeam ? "team" : "standard",
+    headerIsInView,
+    setHeaderIsInView,
   };
 
   return <AppContext.Provider value={context}>{children}</AppContext.Provider>;
