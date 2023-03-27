@@ -98,9 +98,9 @@ export const GameGallery = ({ images = galleryData }) => {
     setPage([page + newDirection, newDirection]);
   };
 
-  useEffect(() => {
-    audioCtx?.setSound(teamData.sound[Math.floor(Math.random() * 3)]);
-  }, [page, audioCtx, teamData.sound]);
+  // useEffect(() => {
+  //   audioCtx?.setSound(teamData.sound[Math.floor(Math.random() * 3)]);
+  // }, [page, audioCtx, teamData.sound]);
 
   return (
     <div className="relative h-[25vh] lg:my-32 lg:h-[50vh]">
@@ -133,7 +133,7 @@ export const GameGallery = ({ images = galleryData }) => {
           <motion.img
             src={images[imageIndex].src}
             alt="Team image"
-            className="interactive absolute top-1/2 left-1/2 w-full -translate-y-1/2 -translate-x-1/2 rounded-3xl sm:w-3/4"
+            className="interactive absolute top-1/2 left-1/2 w-full -translate-y-1/2 -translate-x-1/2 rounded-3xl border-8 border-black sm:w-3/4"
             draggable={false}
           />
         </motion.div>
