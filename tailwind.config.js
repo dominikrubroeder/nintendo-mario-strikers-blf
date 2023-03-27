@@ -99,7 +99,7 @@ module.exports = {
           "40%": { transform: "translate(1px, -1px) rotate(1deg)" },
           "50%": { transform: "translate(-1px, 2px) rotate(-1deg)" },
           "60%": { transform: "translate(-3px, 1px) rotate(0deg)" },
-          "70%": { transform: "transform: translate(3px, 1px) rotate(-1deg)" },
+          "70%": { transform: "translate(3px, 1px) rotate(-1deg)" },
           "80%": { transform: "translate(-1px, -1px) rotate(1deg)" },
           "90%": { transform: "translate(1px, 2px) rotate(0deg)" },
           "100%": { transform: "translate(1px, -2px) rotate(-1deg)" },
@@ -117,7 +117,7 @@ module.exports = {
           "50%": { transform: "translate(-1px, 2px) rotate(-1deg) scale(1)" },
           "60%": { transform: "translate(-3px, 1px) rotate(0deg) scale(1)" },
           "70%": {
-            transform: "transform: translate(3px, 1px) rotate(-1deg) scale(1)",
+            transform: "translate(3px, 1px) rotate(-1deg) scale(1)",
           },
           "80%": { transform: "translate(-1px, -1px) rotate(1deg) scale(1)" },
           "90%": { transform: "translate(1px, 2px) rotate(0deg) scale(1)" },
