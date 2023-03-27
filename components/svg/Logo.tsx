@@ -1,7 +1,12 @@
 import React from "react";
+import Image from "next/image";
 
-const Logo: React.FC = () => {
-  return (
+interface Props {
+  variant: "Nintendo" | "Mario Strikers";
+}
+
+const Logo: React.FC<Props> = ({ variant = "Mario Strikers" }) => {
+  return variant === "Nintendo" ? (
     <svg
       viewBox="0 0 406 101"
       fill="none"
@@ -73,6 +78,14 @@ const Logo: React.FC = () => {
         </clipPath>
       </defs>
     </svg>
+  ) : (
+    <Image
+      src="/images/logos/mario-strikers-blf-logo.png"
+      width={112}
+      height={112}
+      className="object-contain"
+      alt="Mario Strikers: Battle League Football Logo"
+    />
   );
 };
 

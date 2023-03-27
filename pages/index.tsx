@@ -5,7 +5,7 @@ import PageSwitchAnimation from "../components/PageSwitchAnimation";
 
 const Home: NextPage = () => {
   return (
-    <Layout withFooter={false} withBackButton={false}>
+    <Layout withFooter={false} withHeader={false}>
       <PageSwitchAnimation />
       <Hero />
     </Layout>

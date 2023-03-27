@@ -7,25 +7,13 @@ import { items } from "../data/items";
 import Button from "./ui/Button";
 import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
 import { TeamCarousel } from "./TeamCarousel";
+import { motion } from "framer-motion";
 
 const Features: React.FC = () => {
   const appCtx = useContext(AppContext);
 
   return (
     <>
-      <section className="grid gap-4 sm:gap-12">
-        <SpringBounceWhenInView>
-          <Heading as="h2" className="headline--gradient">
-            Hier ist alles erlaubt!
-          </Heading>
-        </SpringBounceWhenInView>
-
-        <p className="mx-auto max-w-xs sm:max-w-md">
-          Das neueste Spiel der Mario Strikers-Reihe erscheint für Nintendo
-          Switch!
-        </p>
-      </section>
-
       {appCtx?.selectedTeam && (
         <section className="grid gap-6 sm:gap-12">
           <SpringBounceWhenInView>
@@ -101,15 +89,31 @@ const Features: React.FC = () => {
 
         <div className="mx-auto flex flex-wrap gap-2">
           {/* Check for items audio sounds */}
-          {items.map(({ title, src }) => (
-            <div key={title} className="relative h-24 w-24 sm:h-32 sm:w-32">
+          {items.map(({ title, src }, index) => (
+            <motion.div
+              key={title}
+              initial="hidden"
+              whileInView="visible"
+              variants={{
+                visible: { scale: 1 },
+                hidden: { scale: 0 },
+              }}
+              transition={{
+                duration: 0.6,
+                type: "spring",
+                stiffness: 400,
+                delay: 0.1 * index,
+                damping: 15,
+              }}
+              className="relative h-24 w-24 sm:h-32 sm:w-32"
+            >
               <Image
                 src={src}
                 alt={`${title} item`}
                 layout="fill"
                 className="object-contain"
               />
-            </div>
+            </motion.div>
           ))}
         </div>
 

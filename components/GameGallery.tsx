@@ -1,8 +1,11 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
 import Image from "next/image";
+import AudioContext from "../store/audioContext";
+import AppContext from "../store/appContext";
+import teams from "../data/teams";
 
 const galleryData = [
   {
@@ -80,6 +83,10 @@ const swipePower = (offset: number, velocity: number) => {
 
 export const GameGallery = ({ images = galleryData }) => {
   const [[page, direction], setPage] = useState([0, 0]);
+  const audioCtx = useContext(AudioContext);
+  const appCtx = useContext(AppContext);
+  const teamData =
+    teams.find((team) => team.id === appCtx?.selectedTeam) ?? teams[0];
 
   // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
   // then wrap that within 0-2 to find our image ID in the array below. By passing an
@@ -90,6 +97,10 @@ export const GameGallery = ({ images = galleryData }) => {
   const paginate = (newDirection: number) => {
     setPage([page + newDirection, newDirection]);
   };
+
+  // useEffect(() => {
+  //   audioCtx?.setSound(teamData.sound[Math.floor(Math.random() * 3)]);
+  // }, [page, audioCtx, teamData.sound]);
 
   return (
     <div className="relative h-[25vh] lg:my-32 lg:h-[50vh]">
@@ -122,7 +133,7 @@ export const GameGallery = ({ images = galleryData }) => {
           <motion.img
             src={images[imageIndex].src}
             alt="Team image"
-            className="interactive absolute top-1/2 left-1/2 w-full -translate-y-1/2 -translate-x-1/2 rounded-3xl sm:w-3/4"
+            className="interactive absolute top-1/2 left-1/2 w-full -translate-y-1/2 -translate-x-1/2 rounded-3xl border-8 border-black sm:w-3/4"
             draggable={false}
           />
         </motion.div>

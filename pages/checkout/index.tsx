@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import React from "react";
-import BouncingItems from "../../components/BouncingItems";
+import ThrillingStarAnimation from "../../components/animation/ThrillingStarAnimation";
 import Layout from "../../components/layout";
 import PageSwitchAnimation from "../../components/PageSwitchAnimation";
 
@@ -9,9 +9,9 @@ const Checkout: NextPage = () => {
     <Layout pageTitle="Checkout">
       <PageSwitchAnimation />
 
-      <section className="h-ful -mt-20 flex min-h-screen items-center justify-center">
+      <section className="h-ful -mt-32 flex min-h-screen items-center justify-center">
         <div className="mx-auto">
-          <BouncingItems size={24} />
+          <ThrillingStarAnimation />
         </div>
       </section>
     </Layout>

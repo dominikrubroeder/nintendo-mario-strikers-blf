@@ -1,6 +1,12 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import { Constants } from "../data/constants";
-import { soundtracks } from "../data/audio";
 import AppContext from "./appContext";
 import teams from "../data/teams";
 
@@ -11,6 +17,8 @@ type AudioContextType = {
   setSound: (soundURL: string) => void;
   soundtrack: null | string;
   setSoundtrack: (soundtrackURL: string) => void;
+  playSoundtrackOnce: boolean;
+  setPlaySoundtrackOnce: Dispatch<SetStateAction<boolean>>;
   playAudio: () => void;
   pauseAudio: () => void;
   toggleAudio: () => void;
@@ -31,6 +39,7 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
   >(null);
   const [sound, setSound] = useState<null | string>(null);
   const [soundtrack, setSoundtrack] = useState<null | string>(null);
+  const [playSoundtrackOnce, setPlaySoundtrackOnce] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const appCtx = useContext(AppContext);
 
@@ -59,6 +68,7 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
   };
 
   function playAudio() {
+    setPlaySoundtrackOnce(true);
     const currentSoundtrack = document.getElementById(
       "currentSoundtrack"
     ) as HTMLAudioElement;
@@ -105,6 +115,8 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
     setSound,
     soundtrack,
     setSoundtrack,
+    playSoundtrackOnce,
+    setPlaySoundtrackOnce,
     playAudio,
     pauseAudio,
     toggleAudio,
