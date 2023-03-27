@@ -123,6 +123,12 @@ module.exports = {
           "90%": { transform: "translate(1px, 2px) rotate(0deg) scale(1)" },
           "100%": { transform: "translate(1px, -2px) rotate(-1deg) scale(1)" },
         },
+        scaleAndRotate: {
+          "0%": { transform: "scale(1) rotate(0deg)" },
+          "40%": { transform: "scale(1.6) rotate(0deg)" },
+          "60%": { transform: "scale(0.4) rotate(-180deg)" },
+          "100%": { transform: "scale(1) rotate(0)" },
+        },
       },
       animation: {
         fadeUp: "fadeUp 1s ease-out forwards",
@@ -131,6 +137,7 @@ module.exports = {
         growthHeight: "growthHeight 1s infinite ease-in-out",
         shake: "shake 0.5s infinite",
         shakeScale: "shakeScale 0.5s infinite",
+        scaleAndRotate: "scaleAndRotate 1.6s infinite",
       },
     },
   },
