@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import GameTrailer from "./GameTrailer";
 import AppContext from "../store/appContext";
 import teams from "../data/teams";
+import Logo from "./svg/Logo";
 
 const Hero: React.FC = () => {
   const [showYouTubeGameTrailer, setShowYoutubeGameTrailer] = useState(false);
@@ -20,7 +21,6 @@ const Hero: React.FC = () => {
 
       <motion.section
         animate={{ opacity: [0, 1], y: [-10, 0] }}
-        exit={{ opacity: [1, 0] }}
         transition={{ delay: 1.5 }}
         className="absolute inset-0 z-40"
       >
@@ -31,16 +31,24 @@ const Hero: React.FC = () => {
               alt="Mario Strikers: Battle League Football Wallpaper"
               layout="fill"
               priority
-              className="cursor-pointer object-cover"
+              className="cursor-pointer object-cover object-[28%_50%] xl:object-center"
             />
           </a>
         </Link>
       </motion.section>
 
       <motion.div
+        animate={{ opacity: [0, 1], y: [-10, 0] }}
+        transition={{ delay: 1.75 }}
+        className="absolute top-4 left-[40%] z-50 sm:left-8"
+      >
+        <Logo variant="Mario Strikers" />
+      </motion.div>
+
+      <motion.div
         animate={{ opacity: [0, 1], y: ["100%", "0%"] }}
         transition={{ delay: 2.6 }}
-        className="absolute bottom-[16rem] left-12 z-50 cursor-pointer hover:left-16"
+        className="absolute bottom-[14rem] left-12 z-50 cursor-pointer hover:left-16 sm:bottom-[16rem]"
       >
         <Link href="/buy-mario-strikers-battle-league-football">
           <div className="relative">
@@ -76,7 +84,7 @@ const Hero: React.FC = () => {
       <motion.div
         animate={{ opacity: [0, 1], y: ["100%", "0%"] }}
         transition={{ ease: "easeOut", delay: 2.3 }}
-        className="absolute bottom-[10rem] left-12 z-50 cursor-pointer hover:left-16"
+        className="absolute bottom-[8rem] left-12 z-50 cursor-pointer hover:left-16 sm:bottom-[10rem]"
       >
         <Link href="/discover-mario-strikers-battle-league-football">
           <div className="interactive group relative">
@@ -121,7 +129,7 @@ const Hero: React.FC = () => {
       <motion.div
         animate={{ opacity: [0, 1], y: ["100%", "0%"] }}
         transition={{ ease: "easeOut", delay: 2.2 }}
-        className="absolute bottom-[4rem] left-12 z-50 cursor-pointer hover:left-16"
+        className="absolute bottom-[2rem] left-12 z-50 cursor-pointer hover:left-16 sm:bottom-[4rem]"
       >
         <div
           className="interactive group relative"
