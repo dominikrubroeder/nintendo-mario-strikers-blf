@@ -19,15 +19,15 @@ import {
 } from "@heroicons/react/24/solid";
 import Button from "../../components/ui/Button";
 import QuestionBlock from "../../components/img/QuestionBlock";
-import { AnimatePresence, useScroll, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import PauseAudioButton from "../../components/mini-audio-player/controls/PauseAudioButton";
 import PlayAudioButton from "../../components/mini-audio-player/controls/PlayAudioButton";
 import AudioContext from "../../store/audioContext";
 import AmiiboLogo from "../../components/svg/AmiiboLogo";
 import Features from "../../components/Features";
-import BouncingItems from "../../components/BouncingItems";
-import Accordion from "../../components/ui/Accordion";
 import AnimatedSoundbarsIcon from "../../components/AnimatedSoundbarsIcon";
+import FadeUpWhenInView from "../../components/animation/FadeUpWhenInView";
+import ThrillingStarAnimation from "../../components/animation/ThrillingStarAnimation";
 
 const InfoPage: NextPage = () => {
   const appCtx = useContext(AppContext);
@@ -57,7 +57,7 @@ const InfoPage: NextPage = () => {
   }, [scrollToRef, audioCtx?.playSoundtrackOnce]);
 
   return (
-    <Layout pageTitle="Discover" withFooter={false}>
+    <Layout pageTitle="Discover">
       {audioCtx?.interactiveAudioisEnabled && (
         <>
           <section className="relative mx-auto min-h-[calc(100vh-8rem)] w-full max-w-screen-lg overflow-hidden border-b-2 border-accent-dark">
@@ -74,11 +74,9 @@ const InfoPage: NextPage = () => {
                         key="playSoundtrack"
                         initial={{ y: 100 }}
                         animate={{ y: 0 }}
-                        exit={{ y: 0 }}
                         className={`interactive relative z-50 mx-auto inline-flex cursor-pointer items-center gap-2 rounded-full bg-accent-dark p-4 ${
                           audioCtx?.playSoundtrackOnce ? "" : "animate-shake"
                         }`}
-                        onClick={() => audioCtx.setPlaySoundtrackOnce(true)}
                       >
                         {audioCtx.isPlaying ? (
                           <PauseAudioButton />
@@ -86,8 +84,8 @@ const InfoPage: NextPage = () => {
                           <PlayAudioButton />
                         )}
                         <div
-                          className="flex items-center gap-1"
-                          onClick={() => audioCtx?.toggleAudio()}
+                          className="z-50 flex items-center gap-1"
+                          onClick={() => audioCtx.toggleAudio()}
                         >
                           <span>Soundtrack</span>
                           {audioCtx.isPlaying ? "stoppen" : "abspielen"}
@@ -111,7 +109,7 @@ const InfoPage: NextPage = () => {
                         }}
                       >
                         <div className="relative -mb-3 flex items-center gap-2">
-                          <BouncingItems size={24} />
+                          <ThrillingStarAnimation />
                         </div>
                       </motion.div>
                     )}
@@ -127,6 +125,7 @@ const InfoPage: NextPage = () => {
                     className="object-contain"
                     layout="fill"
                     draggable="false"
+                    priority
                   />
 
                   <svg
@@ -253,108 +252,22 @@ const InfoPage: NextPage = () => {
         </>
       )}
 
-      <section className="mt-8 grid gap-32 px-4 sm:px-0">
-        <div id="scrollTo" ref={scrollToRef}>
-          {audioCtx?.playSoundtrackOnce && (
-            <>
-              <section className="m-auto mt-8 grid w-full max-w-screen-xl gap-12 px-4 text-center">
-                <header className="grid gap-2">
-                  <Heading as="h2" className="headline--gradient mt-8">
-                    Und wähle dein Team
-                  </Heading>
+      <div
+        className="mt-8 grid gap-32 px-4 sm:px-0"
+        id="scrollTo"
+        ref={scrollToRef}
+      >
+        {audioCtx?.playSoundtrackOnce && (
+          <>
+            <section className="m-auto mt-8 grid w-full max-w-screen-xl gap-12 px-4 text-center">
+              <header className="grid gap-2">
+                <Heading as="h2" className="headline--gradient mt-8">
+                  Und wähle dein Team
+                </Heading>
 
-                  <div className="grid gap-1.5 lg:flex lg:items-center lg:justify-center">
-                    Erhalte Vorbesteller-Boni beim Kauf der Striker&apos;s
-                    <div className="flex items-center justify-center gap-1.5">
-                      <Image
-                        src={teamData.image}
-                        alt={teamData.name}
-                        width={48}
-                        height={48}
-                        className="object-contain"
-                      />
-                      <span className="relative inline-flex items-center gap-1 rounded-xl bg-accent-soft p-2 italic text-accent themed:bg-accent-dark themed:text-white">
-                        Team-Edition
-                      </span>
-                      <div className="inline-block cursor-pointer text-left text-sm text-accent themed:text-white">
-                        <Tooltip>
-                          Wähle ein Team und erhalte
-                          <b className="mx-1">zusätzlichen Spiel-Content</b>
-                          wie neue Arenen, das Geheimteam und
-                          <b className="mx-1">inviduelle Merch-Artrikel</b>
-                          basierend auf deiner Team-Wahl! <br /> <br />
-                          Wähle also beispielsweise
-                          <b className="ml-1">{selectedTeam}</b>, um ein T-Shirt
-                          im
-                          <b className="ml-1">{selectedTeam}</b> Design zu
-                          erhalten oder deinen Schreibtisch und Spielinhalte mit
-                          der
-                          <b className="mx-1">{selectedTeam}</b>-amiibo™
-                          Tischfigur zu bereichern.
-                          <br /> <br />
-                          Klicke auf einen Charakter, um dein Team zu wählen.
-                        </Tooltip>
-                      </div>
-                    </div>
-                  </div>
-                </header>
-
-                <TeamSelection className="sm:grid-cols-2 lg:grid-cols-3" />
-              </section>
-
-              <section className="grid gap-4 sm:gap-12">
-                <SpringBounceWhenInView>
-                  <Heading as="h2" className="headline--gradient">
-                    Hier ist alles erlaubt!
-                  </Heading>
-                </SpringBounceWhenInView>
-
-                <p className="mx-auto max-w-xs sm:max-w-md">
-                  Das neueste Spiel der Mario Strikers-Reihe erscheint für
-                  Nintendo Switch!
-                </p>
-              </section>
-
-              <section>
-                <GameGallery />
-              </section>
-
-              <Features />
-
-              <CommunityQuotes />
-
-              <motion.iframe
-                width="916"
-                height="515"
-                src="https://www.youtube.com/embed/0uh01uQuPfk?autoplay=0&rel=0"
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-                allowFullScreen
-                className="mx-auto rounded-xl border-8 border-black"
-                initial="hidden"
-                whileInView="visible"
-                transition={{
-                  duration: 0.6,
-                  type: "spring",
-                  stiffness: 400,
-                  damping: 15,
-                }}
-                variants={{
-                  visible: { opacity: 1, y: 0 },
-                  hidden: { opacity: 0, y: 160 },
-                }}
-                viewport={{ amount: 0.7, once: true }}
-              ></motion.iframe>
-
-              <section className="grid justify-center gap-8">
-                <SpringBounceWhenInView>
-                  <Heading as="h2" className="headline--gradient">
-                    Merch
-                  </Heading>
-
-                  <div className="mx-auto flex items-center justify-center gap-1.5 text-center">
-                    Hol dir dein
+                <div className="grid gap-1.5 lg:flex lg:items-center lg:justify-center">
+                  Erhalte Vorbesteller-Boni beim Kauf der Striker&apos;s
+                  <div className="flex items-center justify-center gap-1.5">
                     <Image
                       src={teamData.image}
                       alt={teamData.name}
@@ -363,11 +276,97 @@ const InfoPage: NextPage = () => {
                       className="object-contain"
                     />
                     <span className="relative inline-flex items-center gap-1 rounded-xl bg-accent-soft p-2 italic text-accent themed:bg-accent-dark themed:text-white">
-                      Team-Shirt
+                      Team-Edition
                     </span>
+                    <div className="inline-block cursor-pointer text-left text-sm text-accent themed:text-white">
+                      <Tooltip>
+                        Wähle ein Team und erhalte
+                        <b className="mx-1">zusätzlichen Spiel-Content</b>
+                        wie neue Arenen, das Geheimteam und
+                        <b className="mx-1">inviduelle Merch-Artrikel</b>
+                        basierend auf deiner Team-Wahl! <br /> <br />
+                        Wähle also beispielsweise
+                        <b className="ml-1">{selectedTeam}</b>, um ein T-Shirt
+                        im
+                        <b className="ml-1">{selectedTeam}</b> Design zu
+                        erhalten oder deinen Schreibtisch und Spielinhalte mit
+                        der
+                        <b className="mx-1">{selectedTeam}</b>-amiibo™
+                        Tischfigur zu bereichern.
+                        <br /> <br />
+                        Klicke auf einen Charakter, um dein Team zu wählen.
+                      </Tooltip>
+                    </div>
                   </div>
-                </SpringBounceWhenInView>
+                </div>
+              </header>
 
+              <TeamSelection className="sm:grid-cols-2 lg:grid-cols-3" />
+            </section>
+
+            <section className="grid gap-4 sm:gap-12">
+              <SpringBounceWhenInView>
+                <Heading as="h2" className="headline--gradient">
+                  Hier ist alles erlaubt!
+                </Heading>
+              </SpringBounceWhenInView>
+
+              <p className="mx-auto max-w-xs sm:max-w-md">
+                Das neueste Spiel der Mario Strikers-Reihe erscheint für
+                Nintendo Switch!
+              </p>
+            </section>
+
+            <section>
+              <GameGallery />
+            </section>
+
+            <Features />
+
+            <CommunityQuotes />
+
+            <motion.iframe
+              src="https://www.youtube.com/embed/0uh01uQuPfk?autoplay=0&rel=0"
+              title="YouTube video player"
+              allowFullScreen
+              className="mx-auto h-[10rem] w-[19rem] rounded-xl border-8 border-black sm:h-[21rem] sm:w-[37.5rem] md:w-[37.5rem]"
+              initial="hidden"
+              whileInView="visible"
+              transition={{
+                duration: 0.6,
+                type: "spring",
+                stiffness: 400,
+                damping: 15,
+              }}
+              variants={{
+                visible: { opacity: 1, y: 0 },
+                hidden: { opacity: 0, y: 160 },
+              }}
+              viewport={{ amount: 0.7, once: true }}
+            ></motion.iframe>
+
+            <section className="grid justify-center gap-8">
+              <SpringBounceWhenInView>
+                <Heading as="h2" className="headline--gradient">
+                  Merch
+                </Heading>
+
+                <div className="mx-auto flex items-center justify-center gap-1.5 text-center">
+                  Hol dir dein
+                  <Image
+                    src={teamData.image}
+                    alt={teamData.name}
+                    width={48}
+                    height={48}
+                    className="object-contain"
+                  />
+                  <span className="relative inline-flex items-center gap-1 rounded-xl bg-accent-soft p-2 italic text-accent themed:bg-accent-dark themed:text-white">
+                    Team-Shirt
+                  </span>
+                </div>
+              </SpringBounceWhenInView>
+
+              <FadeUpWhenInView>
                 <Image
                   src={teamData.merch[0]}
                   alt={teamData.name}
@@ -375,7 +374,81 @@ const InfoPage: NextPage = () => {
                   height={718}
                   className="mx-auto rounded-3xl"
                 />
+              </FadeUpWhenInView>
 
+              <Button
+                variant="text"
+                href="/teams"
+                className="mx-auto justify-self-start"
+                sound="team"
+              >
+                Mehr zu Team {teamData.name}
+                <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent group-hover:text-white themed:text-signal" />
+              </Button>
+            </section>
+
+            <section className="mb-16 px-4 lg:px-0">
+              <SpringBounceWhenInView>
+                <Heading as="h2" className="headline--gradient">
+                  Kompatibel mit amiibo™
+                </Heading>
+              </SpringBounceWhenInView>
+
+              <div className="mt-4 flex items-center justify-center gap-4 lg:mt-0">
+                <AmiiboLogo className="inline-block h-8" />
+                <Tooltip>
+                  <p>
+                    Diese Mario amiibo™-Figur wird zusammen mit dem Spiel am 10.
+                    Mai erscheinen. Wenn du diesen amiibo antippst, kannst du
+                    Arenen und Materialien sowie einen spezielles Ausrüstung für
+                    Mario Gleitschirm erhalten.
+                    <br />
+                    Wenn du ein amiibo aus der Mario Strikers-Serie scannst,
+                    kannst du hilfreiche Materialien, Arenen oder einen
+                    Gleitschirmstoff erhalten, der auf dem gescannten amiibo
+                    basiert.
+                  </p>
+                </Tooltip>
+              </div>
+
+              {appCtx?.selectedTeam === "mario" ? (
+                <div className="relative mx-auto my-16 text-center">
+                  <FadeUpWhenInView>
+                    <Image
+                      src="/images/amiibo-mario-promo.png"
+                      width="1000"
+                      height="500"
+                      alt="amiibo mario"
+                      className="rounded-xl"
+                    />
+                  </FadeUpWhenInView>
+                </div>
+              ) : (
+                <div className="mx-auto my-16 text-center sm:px-8">
+                  <FadeUpWhenInView>
+                    <Image
+                      src="/images/amiibo-lineup.png"
+                      width="1280"
+                      height="320"
+                      alt="amiibo line-up"
+                      className="rounded-xl"
+                    />
+                  </FadeUpWhenInView>
+                </div>
+              )}
+
+              {!appCtx?.hasTeam && (
+                <Button
+                  variant="text"
+                  href="/teams"
+                  className="mx-auto justify-self-start"
+                >
+                  Mehr zu Teams
+                  <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent group-hover:text-white themed:text-signal" />
+                </Button>
+              )}
+
+              {appCtx?.hasTeam && (
                 <Button
                   variant="text"
                   href="/teams"
@@ -385,96 +458,11 @@ const InfoPage: NextPage = () => {
                   Mehr zu Team {teamData.name}
                   <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent group-hover:text-white themed:text-signal" />
                 </Button>
-              </section>
-
-              <section className="px-4 lg:px-0">
-                <SpringBounceWhenInView>
-                  <Heading as="h2" className="headline--gradient">
-                    Kompatibel mit amiibo™
-                  </Heading>
-                </SpringBounceWhenInView>
-
-                <div className="mt-4 flex items-center justify-center gap-4 lg:mt-0">
-                  <AmiiboLogo className="inline-block h-8" />
-                  <Tooltip>
-                    <p>
-                      Diese Mario amiibo™-Figur wird zusammen mit dem Spiel am
-                      10. Mai erscheinen. Wenn du diesen amiibo antippst, kannst
-                      du Arenen und Materialien sowie einen spezielles
-                      Ausrüstung für Mario Gleitschirm erhalten.
-                      <br />
-                      Wenn du ein amiibo aus der Mario Strikers-Serie scannst,
-                      kannst du hilfreiche Materialien, Arenen oder einen
-                      Gleitschirmstoff erhalten, der auf dem gescannten amiibo
-                      basiert.
-                    </p>
-                  </Tooltip>
-                </div>
-
-                {appCtx?.selectedTeam === "mario" ? (
-                  <div className="relative mx-auto my-16 text-center">
-                    <Image
-                      src="/images/amiibo-mario-promo.png"
-                      width="1000"
-                      height="500"
-                      alt="amiibo mario"
-                      className="rounded-xl"
-                    />
-                  </div>
-                ) : (
-                  <div className="mx-auto my-16 text-center sm:px-8">
-                    <Image
-                      src="/images/amiibo-lineup.png"
-                      width="1280"
-                      height="320"
-                      alt="amiibo line-up"
-                      className="rounded-xl"
-                    />
-                  </div>
-                )}
-
-                {!appCtx?.hasTeam && (
-                  <Button
-                    variant="text"
-                    href="/teams"
-                    className="mx-auto justify-self-start"
-                  >
-                    Mehr zu Teams
-                    <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent group-hover:text-white themed:text-signal" />
-                  </Button>
-                )}
-
-                {appCtx?.hasTeam && (
-                  <Button
-                    variant="text"
-                    href="/teams"
-                    className="mx-auto justify-self-start"
-                    sound="team"
-                  >
-                    Mehr zu Team {teamData.name}
-                    <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent group-hover:text-white themed:text-signal" />
-                  </Button>
-                )}
-              </section>
-
-              <section className="my-12 mx-auto">
-                <Button variant="text" className="mx-auto">
-                  <SpeakerXMarkIcon className="h-4 w-4 text-white" /> Ohne
-                  Soundtrack starten
-                </Button>
-              </section>
-
-              <section className="my-12 mx-auto">
-                <AnimatedSoundbarsIcon />
-              </section>
-
-              <section className="my-12 mx-auto">
-                <BouncingItems size={48} />
-              </section>
-            </>
-          )}
-        </div>
-      </section>
+              )}
+            </section>
+          </>
+        )}
+      </div>
 
       {/** <div
         className={`left-1/2 -translate-x-1/2 rounded-full px-6 pt-4 text-sm transition-all themed:bg-accent-dark ${
@@ -497,102 +485,82 @@ const InfoPage: NextPage = () => {
             : "visible translate-y-0 opacity-100"
         } `}
       >
-        <div className="interactive mr-2 flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white drop-shadow-lg themed:bg-accent-dark">
-          {!audioCtx?.isPlaying && <PlayAudioButton />}
-          {audioCtx?.isPlaying && <PauseAudioButton />}
-        </div>
 
-        {appCtx?.selectedTeam && (
-          <div
-            className="interactive mr-2 flex h-10 w-10 items-center justify-center rounded-full bg-accent-dark drop-shadow-lg"
-            onClick={() => setshowTeamMenu((previousState) => !previousState)}
-          >
-            <Image
-              src={`/images/teams/${teamData.id}.png`}
-              alt={`${teamData.name} team thumbnail`}
-              width="32"
-              height="32"
-              draggable={false}
-              className="relative z-10"
-            />
+      {appCtx?.selectedTeam && (
+  <div
+    className="interactive mr-2 flex h-10 w-10 items-center justify-center rounded-full bg-accent-dark drop-shadow-lg"
+    onClick={() => setshowTeamMenu((previousState) => !previousState)}
+  >
+    <Image
+      src={`/images/teams/${teamData.id}.png`}
+      alt={`${teamData.name} team thumbnail`}
+      width="32"
+      height="32"
+      draggable={false}
+      className="relative z-10"
+    />
 
-            <AnimatePresence>
-              {showTeamMenu && (
-                <motion.div
-                  key="characterMenu"
-                  initial={{
-                    opacity: 0,
-                    visibility: "hidden",
-                    y: 0,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    visibility: "visible",
-                    y: -64,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    height: 0,
-                    overflow: "hidden",
-                    scale: 0,
-                    y: 0,
-                  }}
-                  className="absolute bottom-0 z-0 rounded-2xl bg-accent-dark p-4"
-                >
-                  <ul className="grid h-64 gap-2 overflow-hidden overflow-y-auto">
-                    <li className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full bg-accent p-2 font-bold uppercase transition">
-                      <Image
-                        src={`/images/teams/${teamData.id}.png`}
-                        width="24"
-                        height="24"
-                        alt={`${teamData.name} thumbnail`}
-                      />
-
-                      <span>{teamData.name}</span>
-                    </li>
-
-                    <li>
-                      <hr className="border-accent px-4" />
-                    </li>
-
-                    {teams.map((team) => (
-                      <li
-                        key={team.id}
-                        className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full p-2 font-bold uppercase transition hover:bg-accent"
-                        onClick={() => appCtx?.setTeam(team.id)}
-                      >
-                        <Image
-                          src={`/images/teams/${team.id}.png`}
-                          width="24"
-                          height="24"
-                          alt={`${team.name} thumbnail`}
-                        />
-
-                        <span>{team.name}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        )}
-
-        <Button
-          variant="plain"
-          href="/buy-mario-strikers-battle-league-football"
-          className="interactive mr-2 flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white drop-shadow-lg themed:bg-accent-dark"
-          sound="coin"
+    <AnimatePresence>
+      {showTeamMenu && (
+        <motion.div
+          key="characterMenu"
+          initial={{
+            opacity: 0,
+            visibility: "hidden",
+            y: 0,
+          }}
+          animate={{
+            opacity: 1,
+            visibility: "visible",
+            y: -64,
+          }}
+          exit={{
+            opacity: 0,
+            height: 0,
+            overflow: "hidden",
+            scale: 0,
+            y: 0,
+          }}
+          className="absolute bottom-0 z-0 rounded-2xl bg-accent-dark p-4"
         >
-          <Image
-            width={24}
-            height={24}
-            alt="Nintendo Mario Coin"
-            src="/images/items/coin.png"
-            className="object-contain"
-          />
-        </Button>
+          <ul className="grid h-64 gap-2 overflow-hidden overflow-y-auto">
+            <li className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full bg-accent p-2 font-bold uppercase transition">
+              <Image
+                src={`/images/teams/${teamData.id}.png`}
+                width="24"
+                height="24"
+                alt={`${teamData.name} thumbnail`}
+              />
 
+              <span>{teamData.name}</span>
+            </li>
+
+            <li>
+              <hr className="border-accent px-4" />
+            </li>
+
+            {teams.map((team) => (
+              <li
+                key={team.id}
+                className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full p-2 font-bold uppercase transition hover:bg-accent"
+                onClick={() => appCtx?.setTeam(team.id)}
+              >
+                <Image
+                  src={`/images/teams/${team.id}.png`}
+                  width="24"
+                  height="24"
+                  alt={`${team.name} thumbnail`}
+                />
+
+                <span>{team.name}</span>
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </div>
+)}
         {appCtx?.selectedTeam && (
           <Tooltip
             title={<QuestionBlock size={24} />}
@@ -616,11 +584,7 @@ const InfoPage: NextPage = () => {
         )}
         </div> */}
 
-      {
-        <FloatingActionBar
-          shouldBeVisible={!showLoadingBar && audioCtx?.playSoundtrackOnce}
-        />
-      }
+      <FloatingActionBar />
     </Layout>
   );
 };
