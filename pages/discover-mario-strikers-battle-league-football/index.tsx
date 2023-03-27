@@ -36,16 +36,11 @@ const InfoPage: NextPage = () => {
   const selectedTeam = appCtx?.selectedTeam?.toUpperCase();
   const audioCtx = useContext(AudioContext);
   const [showTeamMenu, setshowTeamMenu] = useState(false);
-  const [playSoundtrackOnce, setPlaySoundtrackOnce] = useState(false);
   const [showLoadingBar, setShowLoadingBar] = useState(false);
   const scrollToRef = useRef<HTMLDivElement | null>(null);
 
-  const onClickSoundtrackHandler = () => {
-    setPlaySoundtrackOnce(true);
-  };
-
   useEffect(() => {
-    if (playSoundtrackOnce && scrollToRef) {
+    if (audioCtx?.playSoundtrackOnce && scrollToRef) {
       setShowLoadingBar(true);
 
       setTimeout(() => setShowLoadingBar(false), 3000);
@@ -59,7 +54,7 @@ const InfoPage: NextPage = () => {
         3200
       );
     }
-  }, [scrollToRef, playSoundtrackOnce]);
+  }, [scrollToRef, audioCtx?.playSoundtrackOnce]);
 
   return (
     <Layout pageTitle="Discover" withFooter={false}>
@@ -81,9 +76,9 @@ const InfoPage: NextPage = () => {
                         animate={{ y: 0 }}
                         exit={{ y: 0 }}
                         className={`interactive relative z-50 mx-auto inline-flex cursor-pointer items-center gap-2 rounded-full bg-accent-dark p-4 ${
-                          playSoundtrackOnce ? "" : "animate-shake"
+                          audioCtx?.playSoundtrackOnce ? "" : "animate-shake"
                         }`}
-                        onClick={() => onClickSoundtrackHandler()}
+                        onClick={() => audioCtx.setPlaySoundtrackOnce(true)}
                       >
                         {audioCtx.isPlaying ? (
                           <PauseAudioButton />
@@ -101,7 +96,7 @@ const InfoPage: NextPage = () => {
                       </motion.div>
                     )}
 
-                    {playSoundtrackOnce && showLoadingBar && (
+                    {audioCtx?.playSoundtrackOnce && showLoadingBar && (
                       <motion.div
                         key="loadingBar"
                         initial={{ y: 100 }}
@@ -141,7 +136,7 @@ const InfoPage: NextPage = () => {
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                     className={`absolute left-[84px] -z-10 ${
-                      playSoundtrackOnce ? "animate-shakeScale" : ""
+                      audioCtx?.playSoundtrackOnce ? "animate-shakeScale" : ""
                     }`}
                   >
                     <g filter="url(#filter0_d_669_1198)">
@@ -200,7 +195,7 @@ const InfoPage: NextPage = () => {
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                     className={`absolute right-[84px] -z-10 rotate-12 ${
-                      playSoundtrackOnce ? "animate-shakeScale" : ""
+                      audioCtx?.playSoundtrackOnce ? "animate-shakeScale" : ""
                     }`}
                   >
                     <g filter="url(#filter0_d_669_1198)">
@@ -260,7 +255,7 @@ const InfoPage: NextPage = () => {
 
       <section className="mt-8 grid gap-32 px-4 sm:px-0">
         <div id="scrollTo" ref={scrollToRef}>
-          {playSoundtrackOnce && (
+          {audioCtx?.playSoundtrackOnce && (
             <>
               <section className="m-auto mt-8 grid w-full max-w-screen-xl gap-12 px-4 text-center">
                 <header className="grid gap-2">
@@ -623,7 +618,7 @@ const InfoPage: NextPage = () => {
 
       {
         <FloatingActionBar
-          shouldBeVisible={!showLoadingBar && playSoundtrackOnce}
+          shouldBeVisible={!showLoadingBar && audioCtx?.playSoundtrackOnce}
         />
       }
     </Layout>
