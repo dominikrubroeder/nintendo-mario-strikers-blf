@@ -68,6 +68,7 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
   };
 
   function playAudio() {
+    setPlaySoundtrackOnce(true);
     const currentSoundtrack = document.getElementById(
       "currentSoundtrack"
     ) as HTMLAudioElement;
