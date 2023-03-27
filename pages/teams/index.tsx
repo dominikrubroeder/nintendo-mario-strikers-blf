@@ -11,14 +11,12 @@ import { TeamCarousel } from "../../components/TeamCarousel";
 import FloatingActionBar from "../../components/FloatingActionBar";
 import Button from "../../components/ui/Button";
 import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
-import useIsInView from "../../hooks/useIsInView";
+import FadeUpWhenInView from "../../components/animation/FadeUpWhenInView";
 
 const TeamPage: NextPage = () => {
   const appCtx = useContext(AppContext);
   const teamData =
     teams.find((team) => team.id === appCtx?.selectedTeam) ?? teams[0];
-  const buttonRef = useRef<HTMLDivElement>(null);
-  const buttonIsInView = useIsInView(buttonRef);
 
   return (
     <Layout pageTitle="Teams">
@@ -106,34 +104,34 @@ const TeamPage: NextPage = () => {
               </SpringBounceWhenInView>
 
               <div className="mx-auto">
-                <Image
-                  src={teamData.merch[0]}
-                  alt={teamData.name}
-                  width={514}
-                  height={620}
-                  className="rounded-3xl"
-                  priority
-                />
+                <FadeUpWhenInView>
+                  <Image
+                    src={teamData.merch[0]}
+                    alt={teamData.name}
+                    width={514}
+                    height={620}
+                    className="rounded-3xl"
+                    priority
+                  />
+                </FadeUpWhenInView>
               </div>
 
-              <div ref={buttonRef}>
-                <SpringBounceWhenInView>
-                  <Button
-                    variant="text"
-                    href="/buy-mario-strikers-battle-league-football"
-                    className="mx-auto justify-self-start"
-                  >
-                    Team {teamData.name} Edition vorbestellen
-                    <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent group-hover:text-white themed:text-signal" />
-                  </Button>
-                </SpringBounceWhenInView>
-              </div>
+              <SpringBounceWhenInView>
+                <Button
+                  variant="text"
+                  href="/buy-mario-strikers-battle-league-football"
+                  className="mx-auto justify-self-start"
+                >
+                  Team {teamData.name} Edition vorbestellen
+                  <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent group-hover:text-white themed:text-signal" />
+                </Button>
+              </SpringBounceWhenInView>
             </section>
           </div>
         </div>
       </section>
 
-      <FloatingActionBar shouldBeVisible={!buttonIsInView} />
+      <FloatingActionBar shouldBeVisible />
     </Layout>
   );
 };
