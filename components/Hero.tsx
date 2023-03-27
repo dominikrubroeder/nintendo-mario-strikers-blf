@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
       <motion.div
         animate={{ opacity: [0, 1], y: [-10, 0] }}
         transition={{ delay: 1.75 }}
-        className="absolute top-4 left-[40%] z-50 sm:left-8"
+        className="absolute top-4 left-[40%] z-[60] lg:hidden"
       >
         <Logo variant="Mario Strikers" />
       </motion.div>
@@ -53,6 +53,10 @@ const Hero: React.FC = () => {
         <Link href="/buy-mario-strikers-battle-league-football">
           <div className="relative">
             <div className="interactive relative">
+              <div className="absolute -top-[68%] z-[60] hidden lg:block">
+                <Logo variant="Mario Strikers" />
+              </div>
+
               <p className="absolute left-1/2 top-1/2 z-50 w-max -translate-x-1/2 -translate-y-1/2 -rotate-[3.5deg] font-bold uppercase text-white">
                 Jetzt vorbestellen
               </p>
