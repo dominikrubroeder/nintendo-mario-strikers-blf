@@ -65,7 +65,7 @@ const InfoPage: NextPage = () => {
 
   useEffect(() => {
     controls.start({ y: [-100, 0] });
-  }, [appCtx?.selectedTeam]);
+  }, [controls, appCtx?.selectedTeam]);
 
   return (
     <Layout pageTitle="Discover">
