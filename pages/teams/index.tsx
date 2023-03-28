@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 import Layout from "../../components/layout";
 import Heading from "../../components/Heading";
 import teams from "../../data/teams";
@@ -28,7 +28,7 @@ const TeamPage: NextPage = () => {
         <div className="grid gap-16">
           <header className="grid gap-4">
             <div className="text-center">
-              <span className="rounded-xl bg-accent-dark py-2 px-3 text-center text-xs text-white">
+              <span className="rounded-xl bg-accent py-2 px-3 text-center text-xs text-white themed:bg-accent-dark">
                 Team
               </span>
             </div>
@@ -108,8 +108,8 @@ const TeamPage: NextPage = () => {
                   <Image
                     src={teamData.merch[0]}
                     alt={teamData.name}
-                    width={514}
-                    height={620}
+                    width="566"
+                    height="680"
                     className="rounded-3xl"
                     priority
                   />

@@ -3,9 +3,19 @@ import Image from "next/image";
 
 interface Props {
   variant: "Nintendo" | "Mario Strikers";
+  size?: number;
+  onClick?: () => void;
 }
 
-const Logo: React.FC<Props> = ({ variant = "Mario Strikers" }) => {
+const Logo: React.FC<Props> = ({
+  variant = "Mario Strikers",
+  size = 112,
+  onClick,
+}) => {
+  function onClickHandler() {
+    if (onClick) onClick();
+  }
+
   return variant === "Nintendo" ? (
     <svg
       viewBox="0 0 406 101"
@@ -81,10 +91,11 @@ const Logo: React.FC<Props> = ({ variant = "Mario Strikers" }) => {
   ) : (
     <Image
       src="/images/logos/mario-strikers-blf-logo.png"
-      width={112}
-      height={112}
+      width={size}
+      height={size}
       className="object-contain"
       alt="Mario Strikers: Battle League Football Logo"
+      onClick={() => onClickHandler()}
     />
   );
 };
