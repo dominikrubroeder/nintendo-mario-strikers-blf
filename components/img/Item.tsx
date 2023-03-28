@@ -73,6 +73,7 @@ export default function Item({ item = "Star", size = 32, className }: Props) {
           width={size}
           height={size}
           className={className ? className : ""}
+          priority
         />
       );
 
