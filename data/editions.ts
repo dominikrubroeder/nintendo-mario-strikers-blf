@@ -10,7 +10,6 @@ export type Edition = {
   nameUppercase: "Standard" | "Team";
   price: number;
   details: string[];
-  moreDetails?: string[];
   team: null | string;
 };
 
@@ -29,12 +28,8 @@ const editions: Edition[] = [
     details: [
       "Digitaler Download und Hardcover",
       "3 Monate Nintendo Switch Online [Digitaler Downloadcode]",
-      "amiibo™ Tischfigur für extra freischaltbare Spielinhalte [externer Link]",
+      "amiibo™ Figur für extra freischaltbare Spielinhalte",
       "Merchandise: Team Shirt",
-    ],
-    moreDetails: [
-      "Schalte das 'Geheimteam' frei",
-      "Schalte die Legacy Arenen aus 'Mario Strikers: Charged Football (Wii)' und 'Mario Smash Football (GameCube)' frei",
     ],
     team: "mario",
   },
