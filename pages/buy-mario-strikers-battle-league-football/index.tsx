@@ -18,7 +18,7 @@ const BuyPage: NextPage = () => {
           hidden: { opacity: 0, y: 100 },
         }}
       >
-        <div className="px-4">
+        <div className="mt-8 px-4">
           <Image
             src="/images/gallery/2x1_NSwitch_MarioStrikersBattleLeagueFootball_image1600w.jpeg"
             alt="Mario Strikers Battle League Football"
