@@ -1,7 +1,7 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useContext } from "react";
-import { Edition, Editions } from "../data/editions";
+import { Edition } from "../data/editions";
 import AppContext from "../store/appContext";
 import AudioContext from "../store/audioContext";
 
@@ -59,59 +59,55 @@ const EditionConfigOption: React.FC<EditionConfigOptionProps> = ({
           </div>
         </header>
 
-        <AnimatePresence>
-          {appCtx?.hasTeam && edition.name === "team" && (
-            <motion.div
-              key="description"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{
-                opacity: 1,
-                height: "auto",
-              }}
-              exit={{
-                opacity: 1,
-                overflow: "hidden",
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 400,
-              }}
-            >
-              {appCtx?.hasTeam && appCtx.selectedTeam && (
-                <div className="flex flex-wrap items-center gap-2">
-                  <Image
-                    width={64}
-                    height={64}
-                    src={`/images/teams/${appCtx.selectedTeam}.png`}
-                    alt={appCtx.selectedTeam}
-                  />
+        {appCtx?.hasTeam && edition.name === "team" && (
+          <motion.div
+            key="editionDescription"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{
+              opacity: 1,
+              height: "auto",
+            }}
+            exit={{
+              opacity: 1,
+              overflow: "hidden",
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 400,
+            }}
+          >
+            <div className="flex flex-wrap items-center gap-2">
+              <Image
+                width={64}
+                height={64}
+                src={`/images/teams/${appCtx.selectedTeam}.png`}
+                alt="Team image"
+              />
 
-                  <div className="flex flex-wrap items-center gap-2">
-                    <Image
-                      width={53}
-                      height={64}
-                      src={`/images/teams/tshirt/${appCtx.selectedTeam}.jpg`}
-                      alt={appCtx.selectedTeam}
-                      className="rounded-xl"
-                    />
+              <div className="flex flex-wrap items-center gap-2">
+                <Image
+                  width={53}
+                  height={64}
+                  src={`/images/teams/tshirt/${appCtx.selectedTeam}.jpg`}
+                  alt="Team image"
+                  className="rounded-xl"
+                />
 
-                    <span>+</span>
+                <span>+</span>
 
-                    <Image
-                      width={120}
-                      height={80}
-                      src="/images/logos/CI_NSwicth_Online_Logo.png"
-                      alt="Nintendo Switch Online Logo – 3 months"
-                      className="object-contain"
-                    />
-                  </div>
-                </div>
-              )}
+                <Image
+                  width={120}
+                  height={80}
+                  src="/images/logos/CI_NSwicth_Online_Logo.png"
+                  alt="Nintendo Switch Online Logo – 3 months"
+                  className="object-contain"
+                />
+              </div>
+            </div>
 
-              {children}
-            </motion.div>
-          )}
-        </AnimatePresence>
+            {children}
+          </motion.div>
+        )}
       </div>
     </div>
   );

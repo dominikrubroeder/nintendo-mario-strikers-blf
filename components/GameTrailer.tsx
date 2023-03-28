@@ -18,12 +18,13 @@ const GameTrailer: React.FC<GameTrailerProps> = ({ closeOverlay }) => {
   };
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex cursor-pointer items-center justify-center bg-black/70"
+    <motion.div
+      className="fixed inset-0 z-50 flex cursor-pointer items-start justify-center bg-black/80 px-8 pt-40 sm:items-center sm:px-0 sm:pt-0"
       onClick={closeOverlayHandler}
+      animate={{ opacity: [0, 1] }}
     >
       <motion.iframe
-        animate={{ scale: [0.4, 1.3, 1] }}
+        animate={{ y: [-100, 0] }}
         transition={{
           duration: 0.6,
           type: "spring",
@@ -37,13 +38,7 @@ const GameTrailer: React.FC<GameTrailerProps> = ({ closeOverlay }) => {
         allowFullScreen
         className="h-full max-h-[430px] w-full max-w-[768px] rounded-2xl border-8 border-black"
       ></motion.iframe>
-
-      <motion.div animate={{}}>
-        <Button variant="text">
-          <XMarkIcon className="h-5 w-5 text-white" />
-        </Button>
-      </motion.div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -72,6 +72,7 @@ export const AudioContextProvider: React.FC<AudioContextProviderProps> = ({
     const currentSoundtrack = document.getElementById(
       "currentSoundtrack"
     ) as HTMLAudioElement;
+    currentSoundtrack.volume = 0.6;
     currentSoundtrack?.play();
     setIsPlaying(true);
   }

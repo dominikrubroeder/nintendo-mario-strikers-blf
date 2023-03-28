@@ -48,7 +48,7 @@ const Hero: React.FC = () => {
       <motion.div
         animate={{ opacity: [0, 1], y: ["100%", "0%"] }}
         transition={{ delay: 2.6 }}
-        className="absolute bottom-[14rem] left-12 z-50 cursor-pointer hover:left-16 sm:bottom-[16rem]"
+        className="absolute bottom-[13rem] left-8 z-50 cursor-pointer hover:left-16 sm:left-12 sm:bottom-[14rem]"
       >
         <Link href="/buy-mario-strikers-battle-league-football">
           <div className="relative">
@@ -73,8 +73,8 @@ const Hero: React.FC = () => {
               <div className="absolute bottom-[1.75rem] -right-8 translate-x-8 transition-all">
                 <Image
                   src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Right.png"
-                  width={90}
-                  height={60}
+                  width="90"
+                  height="60"
                   alt="Button right"
                   className="-rotate-6"
                   priority
@@ -88,7 +88,7 @@ const Hero: React.FC = () => {
       <motion.div
         animate={{ opacity: [0, 1], y: ["100%", "0%"] }}
         transition={{ ease: "easeOut", delay: 2.3 }}
-        className="absolute bottom-[8rem] left-12 z-50 cursor-pointer hover:left-16 sm:bottom-[10rem]"
+        className="absolute bottom-[7rem] left-8 z-50 cursor-pointer hover:left-16 sm:left-12 sm:bottom-[8rem]"
       >
         <Link href="/discover-mario-strikers-battle-league-football">
           <div className="interactive group relative">
@@ -133,7 +133,7 @@ const Hero: React.FC = () => {
       <motion.div
         animate={{ opacity: [0, 1], y: ["100%", "0%"] }}
         transition={{ ease: "easeOut", delay: 2.2 }}
-        className="absolute bottom-[2rem] left-12 z-50 cursor-pointer hover:left-16 sm:bottom-[4rem]"
+        className="absolute bottom-[1rem] left-8 z-50 cursor-pointer hover:left-16 sm:bottom-[2rem] sm:left-12"
       >
         <div
           className="interactive group relative"

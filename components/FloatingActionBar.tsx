@@ -1,6 +1,5 @@
-import { FC, useContext } from "react";
+import { FC, useContext, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import Button from "./ui/Button";
 import AudioContext from "../store/audioContext";
 import PlayAudioButton from "./mini-audio-player/controls/PlayAudioButton";
 import PauseAudioButton from "./mini-audio-player/controls/PauseAudioButton";
@@ -8,6 +7,28 @@ import { ArrowLongLeftIcon } from "@heroicons/react/24/solid";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import AppContext from "../store/appContext";
+import teams from "../data/teams";
+import Link from "next/link";
+import Logo from "./svg/Logo";
+
+const pages = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "Discover",
+    href: "/discover-mario-strikers-battle-league-football",
+  },
+  {
+    name: "Buy",
+    href: "/buy-mario-strikers-battle-league-football",
+  },
+  {
+    name: "Team",
+    href: "/teams",
+  },
+];
 
 interface FloatingActionBarProps {
   shouldBeVisible?: boolean;
@@ -19,13 +40,16 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({
   const appCtx = useContext(AppContext);
   const audioCtx = useContext(AudioContext);
   const router = useRouter();
+  const [showTeamMenu, setshowTeamMenu] = useState(false);
+  const teamData =
+    teams.find((team) => team.id === appCtx?.selectedTeam) ?? teams[0];
 
   return (
     <AnimatePresence>
       {shouldBeVisible && !appCtx?.headerIsInView && (
         <motion.div
           key="actionBarWrapper"
-          className="fixed left-0 right-0 bottom-4 z-50 flex w-full items-center justify-center gap-4 transition lg:bottom-auto lg:top-4"
+          className="fixed left-0 right-0 top-4 z-50 mx-auto flex w-96 items-center justify-center gap-4 transition"
           initial={{ y: -100 }}
           animate={{ y: 0 }}
           exit={{ y: [10, -100] }}
@@ -54,7 +78,7 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({
                 <motion.div
                   key="backButton"
                   className="absolute -z-10 flex h-12 w-12 items-center justify-center rounded-full bg-accent text-white drop-shadow-lg themed:bg-accent-dark"
-                  animate={{ x: [0, -128], scale: [0.3, 1] }}
+                  animate={{ x: [0, -72], scale: [0.3, 1] }}
                   exit={{ x: 0, scale: 0.3 }}
                   transition={{
                     type: "spring",
@@ -64,35 +88,128 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({
                   }}
                 >
                   <div
-                    className="interactive flex items-center justify-center"
+                    className="flex items-center justify-center"
                     onClick={() => router.back()}
                   >
                     <ArrowLongLeftIcon className="h-4 w-4 text-white" />
                   </div>
                 </motion.div>
 
-                <motion.div exit={{ opacity: 0 }}>
-                  <Button
-                    variant="plain"
-                    className="z-50 flex items-center gap-1 whitespace-nowrap bg-accent p-0 font-bold uppercase text-white themed:bg-signal"
-                    sound="coin"
-                    href="/buy-mario-strikers-battle-league-football"
-                  >
-                    <Image
-                      width={24}
-                      height={24}
-                      alt="Nintendo Mario Coin"
-                      src="/images/items/coin.png"
-                      className="object-contain"
+                {!appCtx?.headerIsInView && (
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full drop-shadow-lg">
+                    <Logo
+                      variant="Mario Strikers"
+                      size={56}
+                      onClick={() =>
+                        setshowTeamMenu((previousState) => !previousState)
+                      }
                     />
-                    Vorbestellen
-                  </Button>
-                </motion.div>
+
+                    {showTeamMenu && (
+                      <motion.div
+                        key="navigationMenu"
+                        animate={{
+                          opacity: [0, 1],
+                          visibility: ["hidden", "visible"],
+                          y: [0, 72],
+                        }}
+                        exit={{
+                          opacity: 0,
+                          height: 0,
+                          overflow: "hidden",
+                          scale: 0,
+                          y: 0,
+                        }}
+                        className="absolute top-0 z-0 rounded-2xl bg-accent p-4 text-white themed:bg-accent-dark"
+                      >
+                        <ul className="grid h-64 gap-2 overflow-hidden overflow-y-auto">
+                          {pages.map(({ name, href }, index) => {
+                            return href === router.pathname ? (
+                              <li
+                                key={index}
+                                className="flex items-center gap-2 rounded-full bg-accent p-2 pl-4 font-bold uppercase"
+                              >
+                                <Image
+                                  src="/images/logos/mario-strikers-blf-logo.png"
+                                  width="24"
+                                  height="24"
+                                  alt="Mario Strikers: Battle League Football Logo"
+                                  className="object-contain"
+                                />
+                                {name}
+                              </li>
+                            ) : null;
+                          })}
+
+                          <li>
+                            <hr className="border-accent px-4" />
+                          </li>
+
+                          {pages.map(({ name, href }, index) => {
+                            return href === router.pathname ? null : (
+                              <li
+                                key={index}
+                                className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full p-2 pl-4 font-bold uppercase transition hover:bg-accent"
+                              >
+                                <Link href={href}>
+                                  <a className="flex w-full items-center justify-between">
+                                    {name}
+
+                                    <Image
+                                      src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Right.png"
+                                      width="24"
+                                      height="24"
+                                      alt="Arrow right"
+                                      draggable={false}
+                                      className="object-contain"
+                                    />
+                                  </a>
+                                </Link>
+                              </li>
+                            );
+                          })}
+
+                          <li>
+                            <hr className="border-accent px-4" />
+                          </li>
+
+                          <li className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full bg-accent p-2 font-bold uppercase transition">
+                            <Image
+                              src={`/images/teams/${teamData.id}.png`}
+                              width="24"
+                              height="24"
+                              alt={`${teamData.name} thumbnail`}
+                            />
+
+                            <span>{teamData.name}</span>
+                          </li>
+
+                          {teams.map((team) => (
+                            <li
+                              key={team.id}
+                              className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full p-2 font-bold uppercase transition hover:bg-accent"
+                              onClick={() => appCtx?.setTeam(team.id)}
+                            >
+                              <Image
+                                src={`/images/teams/${team.id}.png`}
+                                width="24"
+                                height="24"
+                                alt={`${team.name} thumbnail`}
+                              />
+
+                              <span>{team.name}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </motion.div>
+                    )}
+                  </div>
+                )}
 
                 <motion.div
                   key="audioControls"
                   className="absolute -z-10 flex h-12 w-12 items-center justify-center rounded-full bg-accent text-white drop-shadow-lg themed:bg-accent-dark"
-                  animate={{ x: [0, 128], scale: [0.3, 1] }}
+                  animate={{ x: [0, 72], scale: [0.3, 1] }}
                   exit={{ x: 0, scale: 0.3 }}
                   transition={{
                     type: "spring",

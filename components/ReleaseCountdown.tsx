@@ -37,11 +37,11 @@ const ReleaseCountdown: React.FC = () => {
 
   return (
     <span className="text-accent themed:text-white">
-      Release in: {days && days < 10 ? "0" : ""}
-      {days}:{hours && hours < 10 ? "0" : ""}
-      {hours}:{minutes && minutes < 10 ? "0" : ""}
-      {minutes}:{seconds && seconds < 10 ? "0" : ""}
-      {seconds}
+      Release in {days && days < 10 ? "0" : ""}
+      {days}T {hours && hours < 10 ? "0" : ""}
+      {hours}S {minutes && minutes < 10 ? "0" : ""}
+      {minutes}M {seconds && seconds < 10 ? "0" : ""}
+      {seconds}s
     </span>
   );
 };

@@ -30,11 +30,11 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
   return (
     <header
       ref={headerRef}
-      className="relative flex h-32 w-full items-center justify-between gap-4 p-4"
+      className="relative z-40 flex h-32 w-full items-center justify-between gap-4 p-4"
     >
       {withBackButton && (
         <div
-          className="interactive flex items-center justify-center rounded-full bg-accent-dark p-2"
+          className="interactive flex items-center justify-center rounded-full bg-accent p-2 themed:bg-accent-dark"
           onClick={() => router.back()}
         >
           <ArrowLongLeftIcon className="h-4 w-4 text-white" />
@@ -52,7 +52,7 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
       {router.pathname != "/" && (
         <div className="absolute right-4 flex gap-2">
           <div
-            className="interactive flex cursor-pointer items-center gap-1 break-words rounded-full bg-accent-dark px-3 py-2 text-xs text-white lg:text-sm"
+            className="interactive flex cursor-pointer items-center gap-1 break-words rounded-full bg-accent px-3 py-2 text-xs text-white themed:bg-accent-dark lg:text-sm"
             onClick={() => audioCtx?.toggleInteractiveAudio()}
           >
             <Item
@@ -64,7 +64,7 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
                   : "scale-90 opacity-20"
               }`}
             />
-            Interaktives Audio
+            <span>Interaktives Audio</span>
           </div>
         </div>
       )}

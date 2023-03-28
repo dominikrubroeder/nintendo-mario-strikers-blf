@@ -19,7 +19,7 @@ import {
 } from "@heroicons/react/24/solid";
 import Button from "../../components/ui/Button";
 import QuestionBlock from "../../components/img/QuestionBlock";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
 import PauseAudioButton from "../../components/mini-audio-player/controls/PauseAudioButton";
 import PlayAudioButton from "../../components/mini-audio-player/controls/PlayAudioButton";
 import AudioContext from "../../store/audioContext";
@@ -28,19 +28,26 @@ import Features from "../../components/Features";
 import AnimatedSoundbarsIcon from "../../components/AnimatedSoundbarsIcon";
 import FadeUpWhenInView from "../../components/animation/FadeUpWhenInView";
 import ThrillingStarAnimation from "../../components/animation/ThrillingStarAnimation";
+import { items } from "../../data/items";
+import { TeamCarousel } from "../../components/TeamCarousel";
+import { useRouter } from "next/router";
+import LightningShape from "../../components/svg/LightningShape";
 
 const InfoPage: NextPage = () => {
+  const router = useRouter();
   const appCtx = useContext(AppContext);
   const teamData =
     teams.find((team) => team.id === appCtx?.selectedTeam) ?? teams[0];
   const selectedTeam = appCtx?.selectedTeam?.toUpperCase();
   const audioCtx = useContext(AudioContext);
-  const [showTeamMenu, setshowTeamMenu] = useState(false);
   const [showLoadingBar, setShowLoadingBar] = useState(false);
   const scrollToRef = useRef<HTMLDivElement | null>(null);
+  const controls = useAnimationControls();
 
-  useEffect(() => {
-    if (audioCtx?.playSoundtrackOnce && scrollToRef) {
+  const onClickHandler = () => {
+    audioCtx?.toggleAudio();
+
+    if (!audioCtx?.playSoundtrackOnce) {
       setShowLoadingBar(true);
 
       setTimeout(() => setShowLoadingBar(false), 3000);
@@ -54,7 +61,11 @@ const InfoPage: NextPage = () => {
         3200
       );
     }
-  }, [scrollToRef, audioCtx?.playSoundtrackOnce]);
+  };
+
+  useEffect(() => {
+    controls.start({ y: [-100, 0] });
+  }, [controls, appCtx?.selectedTeam]);
 
   return (
     <Layout pageTitle="Discover">
@@ -74,7 +85,7 @@ const InfoPage: NextPage = () => {
                         key="playSoundtrack"
                         initial={{ y: 100 }}
                         animate={{ y: 0 }}
-                        className={`interactive relative z-50 mx-auto inline-flex cursor-pointer items-center gap-2 rounded-full bg-accent-dark p-4 ${
+                        className={`interactive relative z-50 mx-auto inline-flex cursor-pointer items-center gap-2 rounded-full bg-accent p-4 themed:bg-accent-dark ${
                           audioCtx?.playSoundtrackOnce ? "" : "animate-shake"
                         }`}
                       >
@@ -84,8 +95,8 @@ const InfoPage: NextPage = () => {
                           <PlayAudioButton />
                         )}
                         <div
-                          className="z-50 flex items-center gap-1"
-                          onClick={() => audioCtx.toggleAudio()}
+                          className="z-50 flex items-center gap-1 text-white"
+                          onClick={() => onClickHandler()}
                         >
                           <span>Soundtrack</span>
                           {audioCtx.isPlaying ? "stoppen" : "abspielen"}
@@ -100,7 +111,7 @@ const InfoPage: NextPage = () => {
                         initial={{ y: 100 }}
                         animate={{ y: 0 }}
                         exit={{ opacity: 0, y: -100 }}
-                        className="relative z-[60] mx-auto inline-flex cursor-pointer items-center gap-2 rounded-full bg-accent-dark px-0 pt-1 before:absolute before:inset-0 before:-z-10 before:block before:h-full before:w-full before:animate-audioWave1 before:rounded-full before:bg-accent-dark before:content-[''] after:absolute after:inset-0  after:-z-10 after:block after:h-full after:w-full after:animate-audioWave2 after:rounded-full after:bg-accent-dark after:content-[''] themed:before:bg-white/20 themed:after:bg-white/20"
+                        className="relative z-[60] mx-auto inline-flex cursor-pointer items-center gap-2 rounded-full bg-accent px-0 pt-1 before:absolute before:inset-0 before:-z-10 before:block before:h-full before:w-full before:animate-audioWave1 before:rounded-full before:bg-accent-dark before:content-[''] after:absolute after:inset-0 after:-z-10  after:block after:h-full after:w-full after:animate-audioWave2 after:rounded-full after:bg-accent-dark after:content-[''] themed:bg-accent-dark themed:before:bg-white/20 themed:after:bg-white/20"
                         transition={{
                           duration: 0.6,
                           type: "spring",
@@ -128,123 +139,8 @@ const InfoPage: NextPage = () => {
                     priority
                   />
 
-                  <svg
-                    width="206"
-                    height="614"
-                    viewBox="0 0 206 614"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className={`absolute left-[84px] -z-10 ${
-                      audioCtx?.playSoundtrackOnce ? "animate-shakeScale" : ""
-                    }`}
-                  >
-                    <g filter="url(#filter0_d_669_1198)">
-                      <path
-                        d="M117.42 137.613L127.97 105.961L100.714 82.2221L105.11 62L112.144 71.6714V82.2221L141.159 105.961L127.97 137.613C126.212 138.346 121.64 149.922 117.42 190.366C113.199 230.811 112.144 257.627 112.144 265.979L109.507 284.883L115.222 343.79C111.705 343.79 106.429 349.945 104.231 353.022L79.1734 387.752V392.587L75.2169 418.524V442.703L79.1734 545.572L70.8208 442.703L65.1059 418.524H68.1832L70.8208 429.515L73.0189 431.713V397.423L70.8208 392.587L75.2169 387.752V383.795V375.003H79.1734V383.795L107.309 343.79L104.231 336.757V265.979L107.309 268.177L115.222 190.366L112.144 183.772V162.671L117.42 137.613Z"
-                        fill="#FBF7AD"
-                      />
-                      <path
-                        d="M117.42 137.613L127.97 105.961L100.714 82.2221L105.11 62L112.144 71.6714V82.2221L141.159 105.961L127.97 137.613M117.42 137.613H127.97M117.42 137.613L112.144 162.671V183.772L115.222 190.366L107.309 268.177L104.231 265.979V336.757L107.309 343.79L79.1734 383.795V375.003H75.2169V383.795V387.752L70.8208 392.587L73.0189 397.423V431.713L70.8208 429.515L68.1832 418.524H65.1059L70.8208 442.703L79.1734 545.572L75.2169 442.703V418.524L79.1734 392.587V387.752L104.231 353.022C106.429 349.945 111.705 343.79 115.222 343.79L109.507 284.883L112.144 265.979C112.144 257.627 113.199 230.811 117.42 190.366C121.64 149.922 126.212 138.346 127.97 137.613"
-                        stroke="#FBF7AD"
-                      />
-                    </g>
-                    <defs>
-                      <filter
-                        id="filter0_d_669_1198"
-                        x="0.473938"
-                        y="0.803711"
-                        width="205.289"
-                        height="612.809"
-                        filterUnits="userSpaceOnUse"
-                        colorInterpolationFilters="sRGB"
-                      >
-                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                        <feColorMatrix
-                          in="SourceAlpha"
-                          type="matrix"
-                          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                          result="hardAlpha"
-                        />
-                        <feOffset dy="4" />
-                        <feGaussianBlur stdDeviation="32" />
-                        <feComposite in2="hardAlpha" operator="out" />
-                        <feColorMatrix
-                          type="matrix"
-                          values="0 0 0 0 1 0 0 0 0 0.960784 0 0 0 0 0.65098 0 0 0 1 0"
-                        />
-                        <feBlend
-                          mode="normal"
-                          in2="BackgroundImageFix"
-                          result="effect1_dropShadow_669_1198"
-                        />
-                        <feBlend
-                          mode="normal"
-                          in="SourceGraphic"
-                          in2="effect1_dropShadow_669_1198"
-                          result="shape"
-                        />
-                      </filter>
-                    </defs>
-                  </svg>
-
-                  <svg
-                    width="206"
-                    height="614"
-                    viewBox="0 0 206 614"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className={`absolute right-[84px] -z-10 rotate-12 ${
-                      audioCtx?.playSoundtrackOnce ? "animate-shakeScale" : ""
-                    }`}
-                  >
-                    <g filter="url(#filter0_d_669_1198)">
-                      <path
-                        d="M117.42 137.613L127.97 105.961L100.714 82.2221L105.11 62L112.144 71.6714V82.2221L141.159 105.961L127.97 137.613C126.212 138.346 121.64 149.922 117.42 190.366C113.199 230.811 112.144 257.627 112.144 265.979L109.507 284.883L115.222 343.79C111.705 343.79 106.429 349.945 104.231 353.022L79.1734 387.752V392.587L75.2169 418.524V442.703L79.1734 545.572L70.8208 442.703L65.1059 418.524H68.1832L70.8208 429.515L73.0189 431.713V397.423L70.8208 392.587L75.2169 387.752V383.795V375.003H79.1734V383.795L107.309 343.79L104.231 336.757V265.979L107.309 268.177L115.222 190.366L112.144 183.772V162.671L117.42 137.613Z"
-                        fill="#FBF7AD"
-                      />
-                      <path
-                        d="M117.42 137.613L127.97 105.961L100.714 82.2221L105.11 62L112.144 71.6714V82.2221L141.159 105.961L127.97 137.613M117.42 137.613H127.97M117.42 137.613L112.144 162.671V183.772L115.222 190.366L107.309 268.177L104.231 265.979V336.757L107.309 343.79L79.1734 383.795V375.003H75.2169V383.795V387.752L70.8208 392.587L73.0189 397.423V431.713L70.8208 429.515L68.1832 418.524H65.1059L70.8208 442.703L79.1734 545.572L75.2169 442.703V418.524L79.1734 392.587V387.752L104.231 353.022C106.429 349.945 111.705 343.79 115.222 343.79L109.507 284.883L112.144 265.979C112.144 257.627 113.199 230.811 117.42 190.366C121.64 149.922 126.212 138.346 127.97 137.613"
-                        stroke="#FBF7AD"
-                      />
-                    </g>
-                    <defs>
-                      <filter
-                        id="filter0_d_669_1198"
-                        x="0.473938"
-                        y="0.803711"
-                        width="205.289"
-                        height="612.809"
-                        filterUnits="userSpaceOnUse"
-                        colorInterpolationFilters="sRGB"
-                      >
-                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                        <feColorMatrix
-                          in="SourceAlpha"
-                          type="matrix"
-                          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                          result="hardAlpha"
-                        />
-                        <feOffset dy="4" />
-                        <feGaussianBlur stdDeviation="32" />
-                        <feComposite in2="hardAlpha" operator="out" />
-                        <feColorMatrix
-                          type="matrix"
-                          values="0 0 0 0 1 0 0 0 0 0.960784 0 0 0 0 0.65098 0 0 0 1 0"
-                        />
-                        <feBlend
-                          mode="normal"
-                          in2="BackgroundImageFix"
-                          result="effect1_dropShadow_669_1198"
-                        />
-                        <feBlend
-                          mode="normal"
-                          in="SourceGraphic"
-                          in2="effect1_dropShadow_669_1198"
-                          result="shape"
-                        />
-                      </filter>
-                    </defs>
-                  </svg>
+                  <LightningShape className="absolute left-[84px] -z-10" />
+                  <LightningShape className="absolute right-[84px] -z-10 rotate-12" />
                 </div>
               </div>
             </div>
@@ -253,7 +149,7 @@ const InfoPage: NextPage = () => {
       )}
 
       <div
-        className="mt-8 grid gap-32 px-4 sm:px-0"
+        className="mt-12 grid gap-32 px-4 sm:px-0"
         id="scrollTo"
         ref={scrollToRef}
       >
@@ -302,26 +198,159 @@ const InfoPage: NextPage = () => {
               </header>
 
               <TeamSelection className="sm:grid-cols-2 lg:grid-cols-3" />
+
+              <div
+                className="interactive sticky bottom-4 z-50 mx-auto flex items-center gap-2 rounded-full bg-signal py-3 px-4 font-bold uppercase text-white drop-shadow-lg hover:px-6"
+                onClick={() =>
+                  router.push("/buy-mario-strikers-battle-league-football")
+                }
+              >
+                {appCtx?.hasTeam && (
+                  <motion.div key="preorderTeam" animate={controls}>
+                    <Image
+                      src={teamData.image}
+                      alt={teamData.name}
+                      width={48}
+                      height={48}
+                      className="rounded-full bg-signal-dark object-contain"
+                    />
+                  </motion.div>
+                )}
+                Jetzt vorbestellen
+              </div>
+            </section>
+
+            <section>
+              <div className="grid gap-2">
+                <SpringBounceWhenInView>
+                  <Heading as="h2" className="headline--gradient leading-1">
+                    Hier ist alles erlaubt!
+                  </Heading>
+                </SpringBounceWhenInView>
+
+                <p className="mx-auto rounded-2xl bg-accent p-4 themed:bg-accent-dark">
+                  Das neueste Spiel der Mario Strikers-Reihe erscheint für
+                  Nintendo Switch!
+                </p>
+              </div>
+
+              <GameGallery />
+            </section>
+
+            {appCtx?.selectedTeam && (
+              <section className="grid gap-6 sm:gap-12">
+                <SpringBounceWhenInView>
+                  <Heading as="h2" className="headline--gradient">
+                    Dein aktuelles Team
+                  </Heading>
+                </SpringBounceWhenInView>
+
+                <TeamCarousel />
+
+                <Button
+                  variant="text"
+                  href="/teams"
+                  className="mx-auto justify-self-start"
+                  sound="team"
+                >
+                  {appCtx?.hasTeam && (
+                    <motion.div key="previewTeamGear" animate={controls}>
+                      <Image
+                        src={teamData.image}
+                        alt={teamData.name}
+                        width={48}
+                        height={48}
+                        className="object-contain"
+                      />
+                    </motion.div>
+                  )}
+                  Erhalte Vorschau zur Ausrüstung
+                  <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent group-hover:text-white themed:text-signal" />
+                </Button>
+              </section>
+            )}
+
+            <section className="mx-auto grid min-h-[50vh] max-w-screen-xl items-center justify-center gap-4 sm:gap-12">
+              <FadeUpWhenInView>
+                <div className="grid gap-8 rounded-2xl p-8 pb-16 themed:bg-accent-dark">
+                  <Heading as="h2" className="headline--gradient">
+                    5 gegen 5
+                  </Heading>
+
+                  <p className="mx-auto max-w-xs sm:max-w-md">
+                    Mach dich bereit für das 5-gegen-5-Spiel Strike – Wie
+                    Fußball, aber mit deutlich härterer Offensive! Schieß Tore,
+                    indem du dribbelst und deinen Teamkameraden die Bälle
+                    zuspielst.
+                  </p>
+                </div>
+              </FadeUpWhenInView>
+            </section>
+
+            <section className="mx-auto grid min-h-[50vh] max-w-screen-xl items-center justify-center gap-4 sm:gap-12">
+              <FadeUpWhenInView>
+                <div className="grid gap-8 rounded-2xl p-8 pb-16 themed:bg-accent-dark">
+                  <Heading as="h2" className="headline--gradient">
+                    Bis zu 8 Spieler
+                  </Heading>
+
+                  <p className="mx-auto max-w-xs sm:max-w-md">
+                    Bis zu acht Spieler, vier in jedem Team, können auf einer
+                    Nintendo Switch-Konsole gegeneinander spielen. Zusätzlich zu
+                    den Einzelspielen wird es einen Online-Club-Modus geben –
+                    Jedem Club können bis zu 20 Spieler beitreten. Versucht, zum
+                    besten Club der Welt aufzusteigen!
+                  </p>
+                </div>
+              </FadeUpWhenInView>
             </section>
 
             <section className="grid gap-4 sm:gap-12">
               <SpringBounceWhenInView>
                 <Heading as="h2" className="headline--gradient">
-                  Hier ist alles erlaubt!
+                  Tacklings, Items und einzigartige Fähigkeiten
                 </Heading>
               </SpringBounceWhenInView>
 
+              <div className="mx-auto flex flex-wrap gap-2">
+                {/* Check for items audio sounds */}
+                {items.map(({ title, src }, index) => (
+                  <motion.div
+                    key={title}
+                    initial="hidden"
+                    whileInView="visible"
+                    variants={{
+                      visible: { scale: 1 },
+                      hidden: { scale: 0 },
+                    }}
+                    transition={{
+                      duration: 0.6,
+                      type: "spring",
+                      stiffness: 400,
+                      delay: 0.1 * index,
+                      damping: 15,
+                    }}
+                    className="relative h-24 w-24 sm:h-32 sm:w-32"
+                  >
+                    <Image
+                      src={src}
+                      alt={`${title} item`}
+                      layout="fill"
+                      className="object-contain"
+                    />
+                  </motion.div>
+                ))}
+              </div>
+
               <p className="mx-auto max-w-xs sm:max-w-md">
-                Das neueste Spiel der Mario Strikers-Reihe erscheint für
-                Nintendo Switch!
+                Benutze Tacklings, Items und einzigartige Fähigkeiten zum
+                Auslösen von Spezialschüssen. Sammle eine der Hyperkugeln auf
+                dem Spielfeld ein und lade sie auf, während deine Gegner
+                abgelenkt sind, um den Hyperschuss zu aktivieren – einen
+                Spezialschuss, mit dem dir statt einem gleich zwei Tore
+                angerechnet werden!
               </p>
             </section>
-
-            <section>
-              <GameGallery />
-            </section>
-
-            <Features />
 
             <CommunityQuotes />
 
@@ -370,8 +399,8 @@ const InfoPage: NextPage = () => {
                 <Image
                   src={teamData.merch[0]}
                   alt={teamData.name}
-                  width={596}
-                  height={718}
+                  width="566"
+                  height="680"
                   className="mx-auto rounded-3xl"
                 />
               </FadeUpWhenInView>
@@ -382,8 +411,19 @@ const InfoPage: NextPage = () => {
                 className="mx-auto justify-self-start"
                 sound="team"
               >
+                {appCtx?.hasTeam && (
+                  <motion.div key="previewTeam" animate={controls}>
+                    <Image
+                      src={teamData.image}
+                      alt={teamData.name}
+                      width={48}
+                      height={48}
+                      className="object-contain"
+                    />
+                  </motion.div>
+                )}
                 Mehr zu Team {teamData.name}
-                <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent group-hover:text-white themed:text-signal" />
+                <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent themed:text-signal themed:group-hover:text-white" />
               </Button>
             </section>
 
@@ -443,7 +483,7 @@ const InfoPage: NextPage = () => {
                   href="/teams"
                   className="mx-auto justify-self-start"
                 >
-                  Mehr zu Teams
+                  Mehr zu den Teams
                   <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent group-hover:text-white themed:text-signal" />
                 </Button>
               )}
@@ -455,6 +495,17 @@ const InfoPage: NextPage = () => {
                   className="mx-auto justify-self-start"
                   sound="team"
                 >
+                  {appCtx?.hasTeam && (
+                    <motion.div key="previewTeamAmiibo" animate={controls}>
+                      <Image
+                        src={teamData.image}
+                        alt={teamData.name}
+                        width={48}
+                        height={48}
+                        className="object-contain"
+                      />
+                    </motion.div>
+                  )}
                   Mehr zu Team {teamData.name}
                   <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent group-hover:text-white themed:text-signal" />
                 </Button>
@@ -485,82 +536,6 @@ const InfoPage: NextPage = () => {
             : "visible translate-y-0 opacity-100"
         } `}
       >
-
-      {appCtx?.selectedTeam && (
-  <div
-    className="interactive mr-2 flex h-10 w-10 items-center justify-center rounded-full bg-accent-dark drop-shadow-lg"
-    onClick={() => setshowTeamMenu((previousState) => !previousState)}
-  >
-    <Image
-      src={`/images/teams/${teamData.id}.png`}
-      alt={`${teamData.name} team thumbnail`}
-      width="32"
-      height="32"
-      draggable={false}
-      className="relative z-10"
-    />
-
-    <AnimatePresence>
-      {showTeamMenu && (
-        <motion.div
-          key="characterMenu"
-          initial={{
-            opacity: 0,
-            visibility: "hidden",
-            y: 0,
-          }}
-          animate={{
-            opacity: 1,
-            visibility: "visible",
-            y: -64,
-          }}
-          exit={{
-            opacity: 0,
-            height: 0,
-            overflow: "hidden",
-            scale: 0,
-            y: 0,
-          }}
-          className="absolute bottom-0 z-0 rounded-2xl bg-accent-dark p-4"
-        >
-          <ul className="grid h-64 gap-2 overflow-hidden overflow-y-auto">
-            <li className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full bg-accent p-2 font-bold uppercase transition">
-              <Image
-                src={`/images/teams/${teamData.id}.png`}
-                width="24"
-                height="24"
-                alt={`${teamData.name} thumbnail`}
-              />
-
-              <span>{teamData.name}</span>
-            </li>
-
-            <li>
-              <hr className="border-accent px-4" />
-            </li>
-
-            {teams.map((team) => (
-              <li
-                key={team.id}
-                className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full p-2 font-bold uppercase transition hover:bg-accent"
-                onClick={() => appCtx?.setTeam(team.id)}
-              >
-                <Image
-                  src={`/images/teams/${team.id}.png`}
-                  width="24"
-                  height="24"
-                  alt={`${team.name} thumbnail`}
-                />
-
-                <span>{team.name}</span>
-              </li>
-            ))}
-          </ul>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  </div>
-)}
         {appCtx?.selectedTeam && (
           <Tooltip
             title={<QuestionBlock size={24} />}
