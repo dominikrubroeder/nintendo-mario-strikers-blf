@@ -32,10 +32,10 @@ const BuyConfiguration: React.FC = () => {
         </motion.div>
 
         <div className="mx-auto grid w-full gap-4">
-          <div className="hidden md:grid md:gap-1">
+          <div className="hidden md:grid">
             <Heading
               as="h2"
-              className="flex flex-wrap items-center gap-2 text-accent themed:text-white"
+              className="leading-1 flex flex-wrap items-center gap-2 text-accent themed:text-white"
             >
               Nintendo Switch | 10. Juni 2022
               <span className="hidden md:inline-block"> | </span>
@@ -44,7 +44,7 @@ const BuyConfiguration: React.FC = () => {
               </span>
             </Heading>
 
-            <Heading as="h1">
+            <Heading as="h1" className="leading-1">
               Mario Strikers: Battle League Football kaufen
             </Heading>
           </div>
@@ -64,6 +64,10 @@ const BuyConfiguration: React.FC = () => {
       {appCtx?.selectedTeam && (
         <section className="mt-32">
           <h1 className="flex items-center justify-center gap-2 text-center text-xl font-bold uppercase">
+            <span className="rounded-xl bg-accent py-2 px-3 text-center text-xs themed:bg-accent-dark">
+              Team
+            </span>
+            {appCtx.selectedTeam.toUpperCase()}
             <Image
               src={`/images/teams/${appCtx?.selectedTeam}.png`}
               width={48}
@@ -71,10 +75,6 @@ const BuyConfiguration: React.FC = () => {
               alt={`Team ${appCtx?.selectedTeam}`}
               className="object-contain"
             />
-            <span className="rounded-xl bg-accent-dark py-2 px-3 text-center text-xs">
-              Team
-            </span>
-            {appCtx.selectedTeam.toUpperCase()}
           </h1>
           <TeamCarousel />
         </section>
