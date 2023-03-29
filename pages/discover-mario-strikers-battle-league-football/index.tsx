@@ -113,7 +113,7 @@ const InfoPage: NextPage = () => {
                           {audioCtx?.isPlaying ? "stoppen" : "abspielen"}
                         </div>
 
-                        <AnimatedSoundbarsIcon />
+                        <AnimatedSoundbarsIcon className="bg-white" />
                       </div>
                     </motion.div>
                   )}
@@ -246,7 +246,7 @@ const InfoPage: NextPage = () => {
                   </Heading>
                 </SpringBounceWhenInView>
 
-                <p className="mx-auto rounded-2xl bg-accent p-4 themed:bg-accent-dark">
+                <p className="mx-auto rounded-2xl bg-accent p-4 text-white themed:bg-accent-dark">
                   Das neueste Spiel der Mario Strikers-Reihe erscheint für
                   Nintendo Switch!
                 </p>
