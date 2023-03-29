@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { motion } from "framer-motion";
+import React, { useContext, useEffect } from "react";
+import { motion, useAnimationControls } from "framer-motion";
 import AppContext from "../store/appContext";
 import ReleaseCountdown from "./ReleaseCountdown";
 import EditionSelection from "./EditionSelection";
@@ -11,6 +11,11 @@ import { TeamCarousel } from "./TeamCarousel";
 
 const BuyConfiguration: React.FC = () => {
   const appCtx = useContext(AppContext);
+  const controls = useAnimationControls();
+
+  useEffect(() => {
+    controls.start({ y: [-100, 0] });
+  }, [controls, appCtx?.selectedTeam]);
 
   return (
     <>
@@ -68,13 +73,16 @@ const BuyConfiguration: React.FC = () => {
               Team
             </span>
             {appCtx.selectedTeam.toUpperCase()}
-            <Image
-              src={`/images/teams/${appCtx?.selectedTeam}.png`}
-              width={48}
-              height={48}
-              alt={`Team ${appCtx?.selectedTeam}`}
-              className="object-contain"
-            />
+
+            <motion.div key="selectedTeam" animate={controls}>
+              <Image
+                src={`/images/teams/${appCtx.selectedTeam}.png`}
+                width="48"
+                height="48"
+                alt={`Team ${appCtx?.selectedTeam}`}
+                className="object-contain"
+              />
+            </motion.div>
           </h1>
           <TeamCarousel />
         </section>
