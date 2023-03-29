@@ -7,6 +7,10 @@ import AudioContext from "../../store/audioContext";
 import Item from "../img/Item";
 import useIsInView from "../../hooks/useIsInView";
 import AppContext from "../../store/appContext";
+import PauseAudioButton from "../mini-audio-player/controls/PauseAudioButton";
+import PlayAudioButton from "../mini-audio-player/controls/PlayAudioButton";
+import { AnimatePresence, motion } from "framer-motion";
+import AnimatedSoundbarsIcon from "../AnimatedSoundbarsIcon";
 
 interface HeaderProps {
   withBackButton?: boolean;
@@ -41,7 +45,7 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
         </div>
       )}
 
-      <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 transition active:scale-95">
+      <div className="absolute left-1/2 top-1/2 z-[100] flex -translate-x-1/2 -translate-y-1/2 transition active:scale-95">
         <Link href="/">
           <a>
             <Logo variant="Mario Strikers" />
@@ -49,10 +53,30 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
         </Link>
       </div>
 
-      {router.pathname != "/" && (
-        <div className="absolute right-4 flex gap-2">
+      <div className="flex items-center justify-end gap-2">
+        {router.pathname !==
+          "/discover-mario-strikers-battle-league-football" && (
+          <div className="relative">
+            <div className="interactive flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-accent text-xs text-white themed:bg-accent-dark lg:text-sm">
+              {audioCtx?.isPlaying ? <PauseAudioButton /> : <PlayAudioButton />}
+            </div>
+            <AnimatePresence>
+              {audioCtx?.isPlaying && (
+                <motion.div
+                  key="buyPageAnimatedSoundbars"
+                  animate={{ x: [32, 0] }}
+                  className="absolute -left-8 top-4"
+                >
+                  <AnimatedSoundbarsIcon />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        )}
+
+        {router.pathname != "/" && (
           <div
-            className="interactive flex cursor-pointer items-center gap-1 break-words rounded-full bg-accent px-3 py-2 text-xs text-white themed:bg-accent-dark lg:text-sm"
+            className="interactive flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-accent px-3 py-2 text-xs text-white themed:bg-accent-dark sm:h-auto sm:w-auto sm:justify-end sm:gap-1 lg:text-sm"
             onClick={() => audioCtx?.toggleInteractiveAudio()}
           >
             <Item
@@ -64,10 +88,10 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
                   : "scale-90 opacity-20"
               }`}
             />
-            <span>Interaktives Audio</span>
+            <span className="hidden sm:inline-block">Interaktives Audio</span>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </header>
   );
 };
