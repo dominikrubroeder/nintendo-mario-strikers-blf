@@ -1,8 +1,9 @@
 import * as React from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
 import Image from "next/image";
+import AudioContext from "../store/audioContext";
 
 const galleryData = [
   {
@@ -66,12 +67,6 @@ const variants = {
   },
 };
 
-/**
- * Experimenting with distilling swipe offset and velocity into a single variable, so the
- * less distance a user has swiped, the more velocity they need to register as a swipe.
- * Should accomodate longer swipes and short flicks without having binary checks on
- * just distance thresholds and velocity > 0.
- */
 const swipeConfidenceThreshold = 10000;
 
 const swipePower = (offset: number, velocity: number) => {
@@ -79,13 +74,9 @@ const swipePower = (offset: number, velocity: number) => {
 };
 
 export const GameGallery = ({ images = galleryData }) => {
+  const audioCtx = useContext(AudioContext);
   const [[page, direction], setPage] = useState([0, 0]);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
-  // then wrap that within 0-2 to find our image ID in the array below. By passing an
-  // absolute page index as the `motion` component's `key` prop, `AnimatePresence` will
-  // detect it as an entirely new image. So you can infinitely paginate as few as 1 images.
   const imageIndex = wrap(0, images.length, page);
 
   const paginate = (newDirection: number) => {
@@ -93,11 +84,12 @@ export const GameGallery = ({ images = galleryData }) => {
   };
 
   useEffect(() => {
-    if (audioRef) audioRef.current?.play();
-  }, [page, audioRef]);
+    if (audioRef && audioCtx?.interactiveAudioisEnabled)
+      audioRef.current?.play();
+  }, [page, audioRef, audioCtx?.interactiveAudioisEnabled]);
 
   return (
-    <div className="relative h-[25vh] lg:my-40 lg:h-[45vh]">
+    <div className="relative my-20 h-[25vh] md:my-32 xl:my-40 xl:h-[45vh]">
       <audio ref={audioRef}>
         <source src="audio/blib.wav" type="audio/wav" />
       </audio>
@@ -126,12 +118,12 @@ export const GameGallery = ({ images = galleryData }) => {
               paginate(-1);
             }
           }}
-          className="absolute h-[25vh] w-full lg:h-[45vh]"
+          className="absolute h-[25vh] w-full xl:h-[45vh]"
         >
           <motion.img
             src={images[imageIndex].src}
             alt="Team image"
-            className="interactive absolute top-1/2 left-1/2 w-full -translate-y-1/2 -translate-x-1/2 rounded-3xl border-8 border-black sm:w-3/4"
+            className="interactive absolute top-1/2 left-1/2 w-full -translate-y-1/2 -translate-x-1/2 rounded-3xl border-8 border-black sm:w-3/4 2xl:w-[60%]"
             draggable={false}
           />
         </motion.div>

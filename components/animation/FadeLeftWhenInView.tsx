@@ -1,11 +1,13 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-interface FadeUpWhenInViewProps {
+interface FadeLeftWhenInViewProps {
   children: React.ReactNode;
 }
 
-const FadeUpWhenInView: React.FC<FadeUpWhenInViewProps> = ({ children }) => {
+const FadeLeftWhenInView: React.FC<FadeLeftWhenInViewProps> = ({
+  children,
+}) => {
   return (
     <AnimatePresence>
       <motion.div
@@ -13,8 +15,8 @@ const FadeUpWhenInView: React.FC<FadeUpWhenInViewProps> = ({ children }) => {
         whileInView="visible"
         viewport={{ amount: 0.6 }}
         variants={{
-          visible: { opacity: 1, y: 0 },
-          hidden: { opacity: 0, y: 100 },
+          visible: { opacity: 1, x: 0 },
+          hidden: { opacity: 0, x: 100 },
         }}
       >
         {children}
@@ -23,4 +25,4 @@ const FadeUpWhenInView: React.FC<FadeUpWhenInViewProps> = ({ children }) => {
   );
 };
 
-export default FadeUpWhenInView;
+export default FadeLeftWhenInView;

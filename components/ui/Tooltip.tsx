@@ -40,7 +40,7 @@ const Tooltip: React.FC<TooltipProps> = ({
 
       {expanded && (
         <SpringBounceWhenInView
-          className={`absolute right-0  z-50 w-max max-w-xs rounded-xl bg-gray-100 p-6 text-base themed:bg-white themed:text-accent ${
+          className={`absolute right-0 z-50 w-[18.75rem] rounded-xl bg-gray-100 p-6 text-base themed:bg-white themed:text-accent ${
             boxPlacement === "under"
               ? "top-12"
               : boxPlacement === "over"

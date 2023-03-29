@@ -9,6 +9,9 @@ module.exports = {
     hoverOnlyWhenSupported: true,
   },
   theme: {
+    fontWeight: {
+      bold: "900",
+    },
     extend: {
       colors: {
         // accent: 'rgb(var(--theme-accent) / <alpha-value>)',
