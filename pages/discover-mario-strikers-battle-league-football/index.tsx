@@ -1,37 +1,47 @@
 import { NextPage } from "next";
 import React, { useContext, useEffect, useRef, useState } from "react";
-import TeamSelection from "../../components/TeamSelection";
-import CommunityQuotes from "../../components/CommunityQuotes";
-import GameGallery from "../../components/GameGallery";
-import Heading from "../../components/Heading";
-import Layout from "../../components/layout";
-import FloatingActionBar from "../../components/FloatingActionBar";
-import SpringBounceWhenInView from "../../components/animation/SpringBounceWhenInView";
-import Tooltip from "../../components/ui/Tooltip";
-import AppContext from "../../store/appContext";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
+
+import Layout from "../../components/layout";
+
 import teams from "../../data/teams";
+import { items } from "../../data/items";
+
+import AppContext from "../../store/appContext";
+import AudioContext from "../../store/audioContext";
+
+import Heading from "../../components/Heading";
+import Button from "../../components/ui/Button";
+import Tooltip from "../../components/ui/Tooltip";
 import {
   ArrowLeftIcon,
   ArrowLongRightIcon,
   ArrowRightIcon,
   SpeakerXMarkIcon,
 } from "@heroicons/react/24/solid";
-import Button from "../../components/ui/Button";
-import QuestionBlock from "../../components/img/QuestionBlock";
-import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
-import PauseAudioButton from "../../components/mini-audio-player/controls/PauseAudioButton";
-import PlayAudioButton from "../../components/mini-audio-player/controls/PlayAudioButton";
-import AudioContext from "../../store/audioContext";
-import AmiiboLogo from "../../components/svg/AmiiboLogo";
-import Features from "../../components/Features";
-import AnimatedSoundbarsIcon from "../../components/AnimatedSoundbarsIcon";
+
+import SpringBounceWhenInView from "../../components/animation/SpringBounceWhenInView";
 import FadeUpWhenInView from "../../components/animation/FadeUpWhenInView";
+import FadeRightWhenInView from "../../components/animation/FadeRightWhenInView";
+import FadeLeftWhenInView from "../../components/animation/FadeLeftWhenInView";
+
+import PlayAudioButton from "../../components/mini-audio-player/controls/PlayAudioButton";
+import PauseAudioButton from "../../components/mini-audio-player/controls/PauseAudioButton";
+import AnimatedSoundbarsIcon from "../../components/AnimatedSoundbarsIcon";
 import ThrillingStarAnimation from "../../components/animation/ThrillingStarAnimation";
-import { items } from "../../data/items";
+
+import QuestionBlock from "../../components/img/QuestionBlock";
+import AmiiboLogo from "../../components/svg/AmiiboLogo";
 import { TeamCarousel } from "../../components/TeamCarousel";
-import { useRouter } from "next/router";
 import LightningShape from "../../components/svg/LightningShape";
+
+import TeamSelection from "../../components/TeamSelection";
+import GameGallery from "../../components/GameGallery";
+import CommunityQuotes from "../../components/CommunityQuotes";
+
+import FloatingActionBar from "../../components/FloatingActionBar";
 
 const InfoPage: NextPage = () => {
   const router = useRouter();
@@ -69,27 +79,28 @@ const InfoPage: NextPage = () => {
 
   return (
     <Layout pageTitle="Discover">
-      {audioCtx?.interactiveAudioisEnabled && (
-        <>
-          <section className="relative mx-auto min-h-[calc(100vh-8rem)] w-full max-w-screen-lg overflow-hidden border-b-2 border-accent-dark">
-            <div className="mx-auto flex flex-col items-center justify-center">
-              <SpringBounceWhenInView>
-                <div className="z-50 text-center">
-                  <Heading as="h2" className="headline--gradient mb-8 sm:mb-2">
-                    Starte den Soundtrack
-                  </Heading>
+      <section className="border-b-1 relative mx-auto min-h-[calc(100vh-8rem)] w-full max-w-screen-lg overflow-hidden border-gray-100 themed:border-b-2 themed:border-accent-dark">
+        <div className="mx-auto flex flex-col items-center justify-center">
+          <div className="z-50 ">
+            <SpringBounceWhenInView>
+              <div className="text-center">
+                <Heading as="h2" className="headline--gradient mb-8 sm:mb-2">
+                  Starte den Soundtrack
+                </Heading>
 
-                  <AnimatePresence mode="popLayout">
-                    {!showLoadingBar && (
-                      <motion.div
-                        key="playSoundtrack"
-                        initial={{ y: 100 }}
-                        animate={{ y: 0 }}
-                        className={`interactive relative z-50 mx-auto inline-flex cursor-pointer items-center gap-2 rounded-full bg-accent p-4 themed:bg-accent-dark ${
+                <AnimatePresence mode="popLayout">
+                  {!showLoadingBar && (
+                    <motion.div
+                      key="playSoundtrack"
+                      initial={{ y: 100 }}
+                      animate={{ y: 0 }}
+                    >
+                      <div
+                        className={`interactive relative z-50 mx-auto inline-flex cursor-pointer items-center gap-2 rounded-full bg-accent p-4 hover:px-6 themed:bg-accent-dark ${
                           audioCtx?.playSoundtrackOnce ? "" : "animate-shake"
                         }`}
                       >
-                        {audioCtx.isPlaying ? (
+                        {audioCtx?.isPlaying ? (
                           <PauseAudioButton />
                         ) : (
                           <PlayAudioButton />
@@ -99,54 +110,55 @@ const InfoPage: NextPage = () => {
                           onClick={() => onClickHandler()}
                         >
                           <span>Soundtrack</span>
-                          {audioCtx.isPlaying ? "stoppen" : "abspielen"}
+                          {audioCtx?.isPlaying ? "stoppen" : "abspielen"}
                         </div>
+
                         <AnimatedSoundbarsIcon />
-                      </motion.div>
-                    )}
+                      </div>
+                    </motion.div>
+                  )}
 
-                    {audioCtx?.playSoundtrackOnce && showLoadingBar && (
-                      <motion.div
-                        key="loadingBar"
-                        initial={{ y: 100 }}
-                        animate={{ y: 0 }}
-                        exit={{ opacity: 0, y: -100 }}
-                        className="relative z-[60] mx-auto inline-flex cursor-pointer items-center gap-2 rounded-full bg-accent px-0 pt-1 before:absolute before:inset-0 before:-z-10 before:block before:h-full before:w-full before:animate-audioWave1 before:rounded-full before:bg-accent-dark before:content-[''] after:absolute after:inset-0 after:-z-10  after:block after:h-full after:w-full after:animate-audioWave2 after:rounded-full after:bg-accent-dark after:content-[''] themed:bg-accent-dark themed:before:bg-white/20 themed:after:bg-white/20"
-                        transition={{
-                          duration: 0.6,
-                          type: "spring",
-                          stiffness: 400,
-                          damping: 15,
-                        }}
-                      >
-                        <div className="relative -mb-3 flex items-center gap-2">
-                          <ThrillingStarAnimation />
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              </SpringBounceWhenInView>
-
-              <div className="absolute bottom-0 z-0 translate-y-1/4">
-                <div className="relative h-[48rem] w-[48rem]">
-                  <Image
-                    src="/images/teams/mario-bowser.png"
-                    alt="Mario Bowser duell in action"
-                    className="object-contain"
-                    layout="fill"
-                    draggable="false"
-                    priority
-                  />
-
-                  <LightningShape className="absolute left-[84px] -z-10" />
-                  <LightningShape className="absolute right-[84px] -z-10 rotate-12" />
-                </div>
+                  {audioCtx?.playSoundtrackOnce && showLoadingBar && (
+                    <motion.div
+                      key="loadingBar"
+                      initial={{ y: 100 }}
+                      animate={{ y: 0 }}
+                      exit={{ opacity: 0, y: -100 }}
+                      className="relative z-[60] mx-auto inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-accent px-0 pt-1 before:absolute before:inset-0 before:-z-10 before:block before:h-full before:w-full before:animate-audioWave1 before:rounded-full before:bg-accent-dark before:content-[''] after:absolute after:inset-0 after:-z-10  after:block after:h-full after:w-full after:animate-audioWave2 after:rounded-full after:bg-accent-dark after:content-[''] themed:bg-accent-dark themed:before:bg-white/20 themed:after:bg-white/20"
+                      transition={{
+                        duration: 0.6,
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 15,
+                      }}
+                    >
+                      <div className="relative -mb-3 flex items-center gap-2">
+                        <ThrillingStarAnimation />
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
+            </SpringBounceWhenInView>
+          </div>
+
+          <div className="absolute bottom-0 z-0 translate-y-1/4">
+            <div className="relative h-[48rem] w-[48rem]">
+              <Image
+                src="/images/teams/mario-bowser.png"
+                alt="Mario Bowser duell in action"
+                className="object-contain"
+                layout="fill"
+                draggable="false"
+                priority
+              />
+
+              <LightningShape className="absolute left-[84px] -z-10" />
+              <LightningShape className="absolute right-[84px] -z-10 rotate-12" />
             </div>
-          </section>
-        </>
-      )}
+          </div>
+        </div>
+      </section>
 
       <div
         className="mt-12 grid gap-32 px-4 sm:px-0"
@@ -167,8 +179,8 @@ const InfoPage: NextPage = () => {
                     <Image
                       src={teamData.image}
                       alt={teamData.name}
-                      width={48}
-                      height={48}
+                      width="48"
+                      height="48"
                       className="object-contain"
                     />
                     <span className="relative inline-flex items-center gap-1 rounded-xl bg-accent-soft p-2 italic text-accent themed:bg-accent-dark themed:text-white">
@@ -180,7 +192,9 @@ const InfoPage: NextPage = () => {
                         <b className="mx-1">zusätzlichen Spiel-Content</b>
                         wie neue Arenen, das Geheimteam und
                         <b className="mx-1">inviduelle Merch-Artrikel</b>
-                        basierend auf deiner Team-Wahl! <br /> <br />
+                        basierend auf deiner Team-Wahl!
+                        <br />
+                        <br />
                         Wähle also beispielsweise
                         <b className="ml-1">{selectedTeam}</b>, um ein T-Shirt
                         im
@@ -200,18 +214,22 @@ const InfoPage: NextPage = () => {
               <TeamSelection className="sm:grid-cols-2 lg:grid-cols-3" />
 
               <div
-                className="interactive sticky bottom-4 z-50 mx-auto flex items-center gap-2 rounded-full bg-signal py-3 px-4 font-bold uppercase text-white drop-shadow-lg hover:px-6"
+                className="interactive sticky bottom-4 z-50 mx-auto flex items-center justify-center gap-2 rounded-full bg-signal py-2 px-4 font-bold uppercase text-white drop-shadow-lg hover:px-6"
                 onClick={() =>
                   router.push("/buy-mario-strikers-battle-league-football")
                 }
               >
                 {appCtx?.hasTeam && (
-                  <motion.div key="preorderTeam" animate={controls}>
+                  <motion.div
+                    key="preorderTeam"
+                    animate={controls}
+                    className="mt-1"
+                  >
                     <Image
                       src={teamData.image}
                       alt={teamData.name}
-                      width={48}
-                      height={48}
+                      width="48"
+                      height="48"
                       className="rounded-full bg-signal-dark object-contain"
                     />
                   </motion.div>
@@ -258,8 +276,8 @@ const InfoPage: NextPage = () => {
                       <Image
                         src={teamData.image}
                         alt={teamData.name}
-                        width={48}
-                        height={48}
+                        width="48"
+                        height="48"
                         className="object-contain"
                       />
                     </motion.div>
@@ -270,8 +288,8 @@ const InfoPage: NextPage = () => {
               </section>
             )}
 
-            <section className="mx-auto grid min-h-[50vh] max-w-screen-xl items-center justify-center gap-4 sm:gap-12">
-              <FadeUpWhenInView>
+            <section className="mx-auto grid min-h-[60vh] max-w-screen-xl items-center justify-center gap-4 sm:gap-12">
+              <FadeRightWhenInView>
                 <div className="grid gap-8 rounded-2xl p-8 pb-16 themed:bg-accent-dark">
                   <Heading as="h2" className="headline--gradient">
                     5 gegen 5
@@ -284,11 +302,11 @@ const InfoPage: NextPage = () => {
                     zuspielst.
                   </p>
                 </div>
-              </FadeUpWhenInView>
+              </FadeRightWhenInView>
             </section>
 
-            <section className="mx-auto grid min-h-[50vh] max-w-screen-xl items-center justify-center gap-4 sm:gap-12">
-              <FadeUpWhenInView>
+            <section className="mx-auto grid min-h-[60vh] max-w-screen-xl items-center justify-center gap-4 sm:gap-12">
+              <FadeLeftWhenInView>
                 <div className="grid gap-8 rounded-2xl p-8 pb-16 themed:bg-accent-dark">
                   <Heading as="h2" className="headline--gradient">
                     Bis zu 8 Spieler
@@ -302,7 +320,7 @@ const InfoPage: NextPage = () => {
                     besten Club der Welt aufzusteigen!
                   </p>
                 </div>
-              </FadeUpWhenInView>
+              </FadeLeftWhenInView>
             </section>
 
             <section className="grid gap-4 sm:gap-12">
@@ -385,8 +403,8 @@ const InfoPage: NextPage = () => {
                   <Image
                     src={teamData.image}
                     alt={teamData.name}
-                    width={48}
-                    height={48}
+                    width="48"
+                    height="48"
                     className="object-contain"
                   />
                   <span className="relative inline-flex items-center gap-1 rounded-xl bg-accent-soft p-2 italic text-accent themed:bg-accent-dark themed:text-white">
@@ -416,8 +434,8 @@ const InfoPage: NextPage = () => {
                     <Image
                       src={teamData.image}
                       alt={teamData.name}
-                      width={48}
-                      height={48}
+                      width="48"
+                      height="48"
                       className="object-contain"
                     />
                   </motion.div>
@@ -438,15 +456,28 @@ const InfoPage: NextPage = () => {
                 <AmiiboLogo className="inline-block h-8" />
                 <Tooltip>
                   <p>
-                    Diese Mario amiibo™-Figur wird zusammen mit dem Spiel am 10.
-                    Mai erscheinen. Wenn du diesen amiibo antippst, kannst du
-                    Arenen und Materialien sowie einen spezielles Ausrüstung für
-                    Mario Gleitschirm erhalten.
+                    <b>Team {teamData.name}</b>
                     <br />
-                    Wenn du ein amiibo aus der Mario Strikers-Serie scannst,
-                    kannst du hilfreiche Materialien, Arenen oder einen
-                    Gleitschirmstoff erhalten, der auf dem gescannten amiibo
-                    basiert.
+                    Diese {teamData.name} amiibo™-Figur wird zusammen mit dem
+                    Spiel am 10. Juni erscheinen. Scannst du einen amiibo aus
+                    der Mario Strikers Serie, erhälst du extra freischaltbare
+                    Spielinhalte, die auf deinem gescannten amiibo basieren.
+                    <br />
+                    <br />
+                    Mit {teamData.name} erhälst du:
+                    <ul>
+                      <li>
+                        Spezielles Ausrüstung-Set <i>Flash</i> für
+                        <span className="mx-1">{teamData.name}&apos;s</span>
+                        Team
+                      </li>
+                      <li>Schalte das &apos;Geheimteam&apos; frei</li>
+                      <li>
+                        Schalte die Legacy Arenen aus &apos;Mario Strikers:
+                        Charged Football (Wii)&apos; und &apos;Mario Smash
+                        Football (GameCube)&apos; frei
+                      </li>
+                    </ul>
                   </p>
                 </Tooltip>
               </div>
@@ -500,8 +531,8 @@ const InfoPage: NextPage = () => {
                       <Image
                         src={teamData.image}
                         alt={teamData.name}
-                        width={48}
-                        height={48}
+                        width="48"
+                        height="48"
                         className="object-contain"
                       />
                     </motion.div>
