@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import Layout from "../../components/layout";
 import Heading from "../../components/Heading";
 import teams from "../../data/teams";
@@ -12,14 +12,29 @@ import FloatingActionBar from "../../components/FloatingActionBar";
 import Button from "../../components/ui/Button";
 import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
 import FadeUpWhenInView from "../../components/animation/FadeUpWhenInView";
+import AudioContext from "../../store/audioContext";
 
 const TeamPage: NextPage = () => {
   const appCtx = useContext(AppContext);
+  const audioCtx = useContext(AudioContext);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const teamData =
     teams.find((team) => team.id === appCtx?.selectedTeam) ?? teams[0];
 
+  useEffect(() => {
+    if (audioRef && audioCtx?.interactiveAudioisEnabled)
+      audioRef.current?.play();
+  }, [audioRef, audioCtx?.interactiveAudioisEnabled]);
+
   return (
     <Layout pageTitle="Teams">
+      <audio ref={audioRef}>
+        <source
+          src={`/audio/sound-${appCtx?.selectedTeam}-0.mp3`}
+          type="audio/mp3"
+        />
+      </audio>
+
       <section className="gap gap-4 px-8 sm:px-0">
         <div className="py-12">
           <TeamCarousel />
