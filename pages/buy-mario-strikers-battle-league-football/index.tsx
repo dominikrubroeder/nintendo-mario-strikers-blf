@@ -3,10 +3,24 @@ import BuyConfiguration from "../../components/BuyConfiguration";
 import Image from "next/image";
 import Layout from "../../components/layout";
 import { motion } from "framer-motion";
+import { useContext, useEffect, useRef } from "react";
+import AudioContext from "../../store/audioContext";
 
 const BuyPage: NextPage = () => {
+  const audioCtx = useContext(AudioContext);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    if (audioRef && audioCtx?.interactiveAudioisEnabled)
+      audioRef.current?.play();
+  }, [audioRef, audioCtx?.interactiveAudioisEnabled]);
+
   return (
     <Layout pageTitle="Buy">
+      <audio ref={audioRef}>
+        <source src="/audio/nintendo-super-mario-coin.wav" type="audio/wav" />
+      </audio>
+
       <BuyConfiguration />
 
       <motion.section
