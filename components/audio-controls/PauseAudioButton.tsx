@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import AudioContext from "../../../store/audioContext";
+import AudioContext from "../../store/audioContext";
 import { PauseIcon } from "@heroicons/react/24/solid";
 
 const PauseAudioButton: React.FC = () => {

@@ -1,17 +1,19 @@
-import '../styles/globals.css';
-import type { AppProps } from 'next/app';
-import { AppContextProvider } from '../store/appContext';
-import { AudioContextProvider } from '../store/audioContext';
-import { AnimatePresence } from 'framer-motion';
-import CurrentSound from '../components/CurrentSound';
-import CurrentSoundtrack from '../components/CurrentSoundtrack';
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+import { AppContextProvider } from "../store/appContext";
+import { AudioContextProvider } from "../store/audioContext";
+import { AnimatePresence } from "framer-motion";
+import CurrentSound from "../components/CurrentSound";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AppContextProvider>
       <AudioContextProvider>
         <CurrentSound />
-        <CurrentSoundtrack />
+        <audio id="currentSoundtrack" loop>
+          <source src="/audio/soundtracks/main-menu.mp3" type="audio/mp3" />
+        </audio>
+
         <AnimatePresence
           mode="wait"
           initial={false}

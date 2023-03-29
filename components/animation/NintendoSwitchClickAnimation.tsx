@@ -1,28 +1,17 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useContext, useEffect, useRef } from "react";
-import AppContext from "../../../store/appContext";
-import AudioContext from "../../../store/audioContext";
+import AudioContext from "../../store/audioContext";
 
 const NintendoSwitchClick: React.FC = () => {
-  const appCtx = useContext(AppContext);
   const audioCtx = useContext(AudioContext);
   const audioRef = useRef<null | HTMLAudioElement>(null);
 
   useEffect(() => {
-    if (
-      (audioCtx?.sound || audioCtx?.soundtrack) &&
-      audioRef.current &&
-      audioCtx.interactiveAudioisEnabled
-    )
+    if (audioRef && audioCtx?.interactiveAudioisEnabled)
       setTimeout(() => {
         audioRef.current?.play();
       }, 600);
-  }, [
-    audioRef,
-    audioCtx?.soundtrack,
-    audioCtx?.sound,
-    audioCtx?.interactiveAudioisEnabled,
-  ]);
+  }, [audioRef, audioCtx?.interactiveAudioisEnabled]);
 
   return (
     <div className="inline-flex gap-[.375rem]">

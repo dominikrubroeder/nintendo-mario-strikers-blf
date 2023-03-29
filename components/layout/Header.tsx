@@ -7,8 +7,8 @@ import AudioContext from "../../store/audioContext";
 import Item from "../img/Item";
 import useIsInView from "../../hooks/useIsInView";
 import AppContext from "../../store/appContext";
-import PauseAudioButton from "../mini-audio-player/controls/PauseAudioButton";
-import PlayAudioButton from "../mini-audio-player/controls/PlayAudioButton";
+import PauseAudioButton from "../audio-controls/PauseAudioButton";
+import PlayAudioButton from "../audio-controls/PlayAudioButton";
 import { AnimatePresence, motion } from "framer-motion";
 import AnimatedSoundbarsIcon from "../AnimatedSoundbarsIcon";
 
@@ -58,7 +58,8 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
           "/discover-mario-strikers-battle-league-football" && (
           <div className="relative">
             <div className="interactive flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-accent text-xs text-white themed:bg-accent-dark lg:text-sm">
-              {audioCtx?.isPlaying ? <PauseAudioButton /> : <PlayAudioButton />}
+              <PauseAudioButton />
+              <PlayAudioButton />
             </div>
             <AnimatePresence>
               {audioCtx?.isPlaying && (

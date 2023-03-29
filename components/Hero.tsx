@@ -7,7 +7,7 @@ import AppContext from "../store/appContext";
 import teams from "../data/teams";
 import Logo from "./svg/Logo";
 import AudioContext from "../store/audioContext";
-import PauseAudioButton from "./mini-audio-player/controls/PauseAudioButton";
+import PauseAudioButton from "./audio-controls/PauseAudioButton";
 
 const Hero: React.FC = () => {
   const [showYouTubeGameTrailer, setShowYoutubeGameTrailer] = useState(false);

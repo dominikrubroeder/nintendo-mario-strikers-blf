@@ -1,8 +1,8 @@
-import { FC, useContext, useState } from "react";
+import { FC, useContext, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import AudioContext from "../store/audioContext";
-import PlayAudioButton from "./mini-audio-player/controls/PlayAudioButton";
-import PauseAudioButton from "./mini-audio-player/controls/PauseAudioButton";
+import PlayAudioButton from "./audio-controls/PlayAudioButton";
+import PauseAudioButton from "./audio-controls/PauseAudioButton";
 import { ArrowLongLeftIcon } from "@heroicons/react/24/solid";
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -40,12 +40,22 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({
   const appCtx = useContext(AppContext);
   const audioCtx = useContext(AudioContext);
   const router = useRouter();
-  const [showTeamMenu, setshowTeamMenu] = useState(false);
+  const [showNavigationMenu, setShowNavigationMenu] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const teamData =
     teams.find((team) => team.id === appCtx?.selectedTeam) ?? teams[0];
 
+  useEffect(() => {
+    if (showNavigationMenu && audioRef && audioCtx?.interactiveAudioisEnabled)
+      audioRef.current?.play();
+  }, [audioRef, showNavigationMenu, audioCtx?.interactiveAudioisEnabled]);
+
   return (
     <AnimatePresence>
+      <audio ref={audioRef}>
+        <source src="/audio/blib.wav" type="audio/wav" />
+      </audio>
+
       {shouldBeVisible && !appCtx?.headerIsInView && (
         <motion.div
           key="actionBarWrapper"
@@ -101,11 +111,11 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({
                       variant="Mario Strikers"
                       size={56}
                       onClick={() =>
-                        setshowTeamMenu((previousState) => !previousState)
+                        setShowNavigationMenu((previousState) => !previousState)
                       }
                     />
 
-                    {showTeamMenu && (
+                    {showNavigationMenu && (
                       <motion.div
                         key="navigationMenu"
                         animate={{
@@ -218,9 +228,8 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({
                     delay: 1,
                   }}
                 >
-                  {!audioCtx?.isPlaying && <PlayAudioButton />}
-
-                  {audioCtx?.isPlaying && <PauseAudioButton />}
+                  <PlayAudioButton />
+                  <PauseAudioButton />
                 </motion.div>
               </div>
             </motion.div>

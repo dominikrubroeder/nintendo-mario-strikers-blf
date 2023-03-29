@@ -27,8 +27,8 @@ import FadeUpWhenInView from "../../components/animation/FadeUpWhenInView";
 import FadeRightWhenInView from "../../components/animation/FadeRightWhenInView";
 import FadeLeftWhenInView from "../../components/animation/FadeLeftWhenInView";
 
-import PlayAudioButton from "../../components/mini-audio-player/controls/PlayAudioButton";
-import PauseAudioButton from "../../components/mini-audio-player/controls/PauseAudioButton";
+import PlayAudioButton from "../../components/audio-controls/PlayAudioButton";
+import PauseAudioButton from "../../components/audio-controls/PauseAudioButton";
 import AnimatedSoundbarsIcon from "../../components/AnimatedSoundbarsIcon";
 import ThrillingStarAnimation from "../../components/animation/ThrillingStarAnimation";
 
@@ -100,11 +100,8 @@ const InfoPage: NextPage = () => {
                           audioCtx?.playSoundtrackOnce ? "" : "animate-shake"
                         }`}
                       >
-                        {audioCtx?.isPlaying ? (
-                          <PauseAudioButton />
-                        ) : (
-                          <PlayAudioButton />
-                        )}
+                        <PauseAudioButton />
+                        <PlayAudioButton />
                         <div
                           className="z-50 flex items-center gap-1 text-white"
                           onClick={() => onClickHandler()}
