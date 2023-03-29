@@ -103,9 +103,9 @@ export const teams: Team[] = [
     id: "toad",
     name: "Toad",
     sound: [
-      "/audio/sound-kinopio-0.mp3",
-      "/audio/sound-kinopio-1.mp3",
-      "/audio/sound-kinopio-2.mp3",
+      "/audio/sound-toad-0.mp3",
+      "/audio/sound-toad-1.mp3",
+      "/audio/sound-toad-2.mp3",
     ],
     image: "/images/teams/toad.png",
     images: [
@@ -131,9 +131,9 @@ export const teams: Team[] = [
     id: "bowser",
     name: "Bowser",
     sound: [
-      "/audio/sound-koopa-0.mp3",
-      "/audio/sound-koopa-1.mp3",
-      "/audio/sound-koopa-2.mp3",
+      "/audio/sound-bowser-0.mp3",
+      "/audio/sound-bowser-1.mp3",
+      "/audio/sound-bowser-2.mp3",
     ],
     image: "/images/teams/bowser.png",
     images: [
@@ -159,9 +159,9 @@ export const teams: Team[] = [
     id: "rosalina",
     name: "Rosalina",
     sound: [
-      "/audio/sound-rosetta-0.mp3",
-      "/audio/sound-rosetta-1.mp3",
-      "/audio/sound-rosetta-2.mp3",
+      "/audio/sound-rosalina-0.mp3",
+      "/audio/sound-rosalina-1.mp3",
+      "/audio/sound-rosalina-2.mp3",
     ],
     image: "/images/teams/rosalina.png",
     images: [
@@ -327,7 +327,7 @@ export const teams: Team[] = [
     id: "shy-guy",
     name: "Shy Guy",
     sound: [
-      "/audio/sound-kinopio-1.mp3",
+      "/audio/sound-toad-1.mp3",
       "/audio/sound-mario-1.mp3",
       "/audio/sound-mario-2.mp3",
     ],
