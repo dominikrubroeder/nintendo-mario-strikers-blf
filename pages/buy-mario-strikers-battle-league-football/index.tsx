@@ -5,8 +5,12 @@ import Layout from "../../components/layout";
 import { motion } from "framer-motion";
 import { useContext, useEffect, useRef } from "react";
 import AudioContext from "../../store/audioContext";
+import Button from "../../components/ui/Button";
+import Logo from "../../components/svg/Logo";
+import AppContext from "../../store/appContext";
 
 const BuyPage: NextPage = () => {
+  const appCtx = useContext(AppContext);
   const audioCtx = useContext(AudioContext);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -42,6 +46,31 @@ const BuyPage: NextPage = () => {
             className="rounded-3xl"
           />
         </div>
+
+        <Button
+          variant="contained"
+          href="/checkout"
+          sound="coin"
+          className="z-100 sticky bottom-4 mx-auto mt-8 py-4 px-4 font-bold uppercase drop-shadow-lg"
+        >
+          {appCtx?.selectedTeam ? (
+            <Image
+              src={`/images/teams/${appCtx?.selectedTeam}.png`}
+              width="32"
+              height="32"
+              alt={`${appCtx?.selectedTeam} sketch`}
+            />
+          ) : (
+            <Logo variant="Mario Strikers" size={48} />
+          )}
+          Jetzt vorbestellen
+          <Image
+            src="/images/items/coin.png"
+            alt="Nintendo coin"
+            width="24"
+            height="24"
+          />
+        </Button>
       </motion.section>
     </Layout>
   );

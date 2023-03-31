@@ -1,8 +1,8 @@
-import { FC, useContext, useState } from "react";
+import { FC, useContext, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import AudioContext from "../store/audioContext";
-import PlayAudioButton from "./mini-audio-player/controls/PlayAudioButton";
-import PauseAudioButton from "./mini-audio-player/controls/PauseAudioButton";
+import PlayAudioButton from "./audio-controls/PlayAudioButton";
+import PauseAudioButton from "./audio-controls/PauseAudioButton";
 import { ArrowLongLeftIcon } from "@heroicons/react/24/solid";
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -30,26 +30,30 @@ const pages = [
   },
 ];
 
-interface FloatingActionBarProps {
-  shouldBeVisible?: boolean;
-}
-
-const FloatingActionBar: FC<FloatingActionBarProps> = ({
-  shouldBeVisible = true,
-}) => {
+const FloatingActionBar: FC = () => {
   const appCtx = useContext(AppContext);
   const audioCtx = useContext(AudioContext);
   const router = useRouter();
-  const [showTeamMenu, setshowTeamMenu] = useState(false);
+  const [showNavigationMenu, setShowNavigationMenu] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const teamData =
     teams.find((team) => team.id === appCtx?.selectedTeam) ?? teams[0];
 
+  useEffect(() => {
+    if (showNavigationMenu && audioRef && audioCtx?.interactiveAudioisEnabled)
+      audioRef.current?.play();
+  }, [audioRef, showNavigationMenu, audioCtx?.interactiveAudioisEnabled]);
+
   return (
     <AnimatePresence>
-      {shouldBeVisible && !appCtx?.headerIsInView && (
+      <audio ref={audioRef}>
+        <source src="/audio/blib.wav" type="audio/wav" />
+      </audio>
+
+      {!appCtx?.headerIsInView && (
         <motion.div
           key="actionBarWrapper"
-          className="fixed left-0 right-0 top-4 z-50 mx-auto flex w-96 items-center justify-center gap-4 transition"
+          className="fixed left-0 right-0 top-4 z-[100] mx-auto flex w-96 items-center justify-center gap-4 transition"
           initial={{ y: -100 }}
           animate={{ y: 0 }}
           exit={{ y: [10, -100] }}
@@ -101,11 +105,11 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({
                       variant="Mario Strikers"
                       size={56}
                       onClick={() =>
-                        setshowTeamMenu((previousState) => !previousState)
+                        setShowNavigationMenu((previousState) => !previousState)
                       }
                     />
 
-                    {showTeamMenu && (
+                    {showNavigationMenu && (
                       <motion.div
                         key="navigationMenu"
                         animate={{
@@ -153,7 +157,13 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({
                               >
                                 <Link href={href}>
                                   <a className="flex w-full items-center justify-between">
-                                    {name}
+                                    <span className="flex items-center gap-1">
+                                      <Logo
+                                        variant="Mario Strikers"
+                                        size={24}
+                                      />
+                                      {name}
+                                    </span>
 
                                     <Image
                                       src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Right.png"
@@ -218,9 +228,8 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({
                     delay: 1,
                   }}
                 >
-                  {!audioCtx?.isPlaying && <PlayAudioButton />}
-
-                  {audioCtx?.isPlaying && <PauseAudioButton />}
+                  <PlayAudioButton />
+                  <PauseAudioButton />
                 </motion.div>
               </div>
             </motion.div>

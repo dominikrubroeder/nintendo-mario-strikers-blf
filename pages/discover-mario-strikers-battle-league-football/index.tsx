@@ -27,8 +27,8 @@ import FadeUpWhenInView from "../../components/animation/FadeUpWhenInView";
 import FadeRightWhenInView from "../../components/animation/FadeRightWhenInView";
 import FadeLeftWhenInView from "../../components/animation/FadeLeftWhenInView";
 
-import PlayAudioButton from "../../components/mini-audio-player/controls/PlayAudioButton";
-import PauseAudioButton from "../../components/mini-audio-player/controls/PauseAudioButton";
+import PlayAudioButton from "../../components/audio-controls/PlayAudioButton";
+import PauseAudioButton from "../../components/audio-controls/PauseAudioButton";
 import AnimatedSoundbarsIcon from "../../components/AnimatedSoundbarsIcon";
 import ThrillingStarAnimation from "../../components/animation/ThrillingStarAnimation";
 
@@ -40,8 +40,7 @@ import LightningShape from "../../components/svg/LightningShape";
 import TeamSelection from "../../components/TeamSelection";
 import GameGallery from "../../components/GameGallery";
 import CommunityQuotes from "../../components/CommunityQuotes";
-
-import FloatingActionBar from "../../components/FloatingActionBar";
+import Logo from "../../components/svg/Logo";
 
 const InfoPage: NextPage = () => {
   const router = useRouter();
@@ -79,12 +78,15 @@ const InfoPage: NextPage = () => {
 
   return (
     <Layout pageTitle="Discover">
-      <section className="border-b-1 relative mx-auto min-h-[calc(100vh-8rem)] w-full max-w-screen-lg overflow-hidden border-gray-100 themed:border-b-2 themed:border-accent-dark">
+      <section className="border-b-1 relative mx-auto mt-8 min-h-[calc(100vh-8rem)] w-full max-w-screen-lg overflow-hidden border-gray-100 themed:border-b-2 themed:border-accent-dark lg:mt-4">
         <div className="mx-auto flex flex-col items-center justify-center">
-          <div className="z-50 ">
+          <div className="z-50">
             <SpringBounceWhenInView>
               <div className="text-center">
-                <Heading as="h2" className="headline--gradient mb-8 sm:mb-2">
+                <Heading
+                  as="h2"
+                  className="headline--gradient mb-8 text-5xl sm:mb-2 lg:text-8xl"
+                >
                   Starte den Soundtrack
                 </Heading>
 
@@ -100,11 +102,8 @@ const InfoPage: NextPage = () => {
                           audioCtx?.playSoundtrackOnce ? "" : "animate-shake"
                         }`}
                       >
-                        {audioCtx?.isPlaying ? (
-                          <PauseAudioButton />
-                        ) : (
-                          <PlayAudioButton />
-                        )}
+                        <PauseAudioButton />
+                        <PlayAudioButton />
                         <div
                           className="z-50 flex items-center gap-1 text-white"
                           onClick={() => onClickHandler()}
@@ -113,7 +112,7 @@ const InfoPage: NextPage = () => {
                           {audioCtx?.isPlaying ? "stoppen" : "abspielen"}
                         </div>
 
-                        <AnimatedSoundbarsIcon />
+                        <AnimatedSoundbarsIcon className="bg-white" />
                       </div>
                     </motion.div>
                   )}
@@ -246,7 +245,7 @@ const InfoPage: NextPage = () => {
                   </Heading>
                 </SpringBounceWhenInView>
 
-                <p className="mx-auto rounded-2xl bg-accent p-4 themed:bg-accent-dark">
+                <p className="mx-auto rounded-2xl bg-accent p-4 text-white themed:bg-accent-dark">
                   Das neueste Spiel der Mario Strikers-Reihe erscheint für
                   Nintendo Switch!
                 </p>
@@ -306,7 +305,7 @@ const InfoPage: NextPage = () => {
             </section>
 
             <section className="mx-auto grid min-h-[60vh] max-w-screen-xl items-center justify-center gap-4 sm:gap-12">
-              <FadeLeftWhenInView>
+              <FadeRightWhenInView>
                 <div className="grid gap-8 rounded-2xl p-8 pb-16 themed:bg-accent-dark">
                   <Heading as="h2" className="headline--gradient">
                     Bis zu 8 Spieler
@@ -320,7 +319,7 @@ const InfoPage: NextPage = () => {
                     besten Club der Welt aufzusteigen!
                   </p>
                 </div>
-              </FadeLeftWhenInView>
+              </FadeRightWhenInView>
             </section>
 
             <section className="grid gap-4 sm:gap-12">
@@ -589,8 +588,6 @@ const InfoPage: NextPage = () => {
           </Tooltip>
         )}
         </div> */}
-
-      <FloatingActionBar />
     </Layout>
   );
 };

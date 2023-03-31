@@ -57,7 +57,12 @@ const TheStickyBuyBar: React.FC<TheStickyBuyBarProps> = ({
 
             <div className="flex items-center gap-1">
               <span className=" text-accent themed:text-white">
-                {`${appCtx?.selectedEdition} Edition`}
+                <span>
+                  <span className="mr-1 uppercase">
+                    {appCtx?.selectedEdition}
+                  </span>
+                  Edition
+                </span>
                 {appCtx?.selectedTeam
                   ? ` – ${appCtx?.selectedTeam.toUpperCase()}`
                   : ""}

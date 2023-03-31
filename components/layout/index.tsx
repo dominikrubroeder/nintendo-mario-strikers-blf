@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Header from "./Header";
 import Head from "next/head";
 import Footer from "./Footer";
+import FloatingActionBar from "../FloatingActionBar";
 
 const variants = {
   hidden: { opacity: 0, x: -200, y: 0 },
@@ -49,6 +50,7 @@ const Layout: React.FC<LayoutProps> = ({
         exit="exit" // Exit state (used later) to variants.exit
         transition={{ type: "linear" }} // Set the transition to linear
       >
+        <FloatingActionBar />
         {children}
       </motion.main>
 

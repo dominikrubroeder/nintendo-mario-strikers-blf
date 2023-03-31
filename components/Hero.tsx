@@ -6,6 +6,8 @@ import GameTrailer from "./GameTrailer";
 import AppContext from "../store/appContext";
 import teams from "../data/teams";
 import Logo from "./svg/Logo";
+import AudioContext from "../store/audioContext";
+import PauseAudioButton from "./audio-controls/PauseAudioButton";
 
 const Hero: React.FC = () => {
   const [showYouTubeGameTrailer, setShowYoutubeGameTrailer] = useState(false);
@@ -43,6 +45,14 @@ const Hero: React.FC = () => {
         className="absolute top-4 left-[40%] z-[60] lg:hidden"
       >
         <Logo variant="Mario Strikers" />
+      </motion.div>
+
+      <motion.div
+        className="absolute bottom-8 right-8 z-50 lg:left-[10.5rem] lg:bottom-[20.5rem]"
+        animate={{ opacity: [0, 1], y: ["100%", "0%"] }}
+        transition={{ delay: 2.6 }}
+      >
+        <PauseAudioButton />
       </motion.div>
 
       <motion.div

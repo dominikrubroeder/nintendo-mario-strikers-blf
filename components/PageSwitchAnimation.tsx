@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import NintendoSwitchClick from './animation/NintendoSwitchClick';
+import React, { useState, useEffect } from "react";
+import NintendoSwitchClickAnimation from "./animation/NintendoSwitchClickAnimation";
 
 const PageSwitchAnimation: React.FC = () => {
   const [mounted, setMounted] = useState(false);
@@ -16,7 +16,7 @@ const PageSwitchAnimation: React.FC = () => {
 
   return mounted ? (
     <div className="fixed top-0 left-0 bottom-0 right-0 z-50 flex items-center justify-center bg-accent">
-      <NintendoSwitchClick />
+      <NintendoSwitchClickAnimation />
     </div>
   ) : null;
 };

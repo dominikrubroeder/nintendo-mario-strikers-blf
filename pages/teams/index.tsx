@@ -8,16 +8,19 @@ import Image from "next/image";
 import Card from "../../components/ui/Card";
 import SpringBounceWhenInView from "../../components/animation/SpringBounceWhenInView";
 import { TeamCarousel } from "../../components/TeamCarousel";
-import FloatingActionBar from "../../components/FloatingActionBar";
-import Button from "../../components/ui/Button";
 import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
 import FadeUpWhenInView from "../../components/animation/FadeUpWhenInView";
 import AudioContext from "../../store/audioContext";
+import { useRouter } from "next/router";
+import { useAnimationControls } from "framer-motion";
+import { motion } from "framer-motion";
 
 const TeamPage: NextPage = () => {
   const appCtx = useContext(AppContext);
   const audioCtx = useContext(AudioContext);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const router = useRouter();
+  const controls = useAnimationControls();
   const teamData =
     teams.find((team) => team.id === appCtx?.selectedTeam) ?? teams[0];
 
@@ -25,6 +28,10 @@ const TeamPage: NextPage = () => {
     if (audioRef && audioCtx?.interactiveAudioisEnabled)
       audioRef.current?.play();
   }, [audioRef, audioCtx?.interactiveAudioisEnabled]);
+
+  useEffect(() => {
+    controls.start({ y: [-100, 0] });
+  }, [controls, appCtx?.selectedTeam]);
 
   return (
     <Layout pageTitle="Teams">
@@ -131,22 +138,37 @@ const TeamPage: NextPage = () => {
                 </FadeUpWhenInView>
               </div>
 
-              <SpringBounceWhenInView>
-                <Button
-                  variant="text"
-                  href="/buy-mario-strikers-battle-league-football"
-                  className="mx-auto justify-self-start"
-                >
-                  Team {teamData.name} Edition vorbestellen
-                  <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent group-hover:text-white themed:text-signal" />
-                </Button>
-              </SpringBounceWhenInView>
+              <div
+                className="interactive sticky bottom-4 z-50 mx-auto flex w-max items-center justify-center gap-4 rounded-full bg-signal px-4 py-2 uppercase text-white drop-shadow-lg hover:px-6"
+                onClick={() =>
+                  router.push("/buy-mario-strikers-battle-league-football")
+                }
+              >
+                <span className="flex items-center gap-1">
+                  {appCtx?.hasTeam && (
+                    <motion.div
+                      key="preorderTeam"
+                      animate={controls}
+                      className="mt-1 mr-1"
+                    >
+                      <Image
+                        src={teamData.image}
+                        alt={teamData.name}
+                        width="48"
+                        height="48"
+                        className="rounded-full bg-signal-dark object-contain"
+                      />
+                    </motion.div>
+                  )}
+                  <span className="font-bold">Team {teamData.name}</span>
+                  vorbestellen
+                </span>
+                <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent themed:text-white" />
+              </div>
             </section>
           </div>
         </div>
       </section>
-
-      <FloatingActionBar shouldBeVisible />
     </Layout>
   );
 };
