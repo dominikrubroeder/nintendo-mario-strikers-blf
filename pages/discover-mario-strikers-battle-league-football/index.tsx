@@ -40,6 +40,7 @@ import LightningShape from "../../components/svg/LightningShape";
 import TeamSelection from "../../components/TeamSelection";
 import GameGallery from "../../components/GameGallery";
 import CommunityQuotes from "../../components/CommunityQuotes";
+import Logo from "../../components/svg/Logo";
 
 const InfoPage: NextPage = () => {
   const router = useRouter();

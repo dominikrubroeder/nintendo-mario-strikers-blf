@@ -8,7 +8,6 @@ import Image from "next/image";
 import Card from "../../components/ui/Card";
 import SpringBounceWhenInView from "../../components/animation/SpringBounceWhenInView";
 import { TeamCarousel } from "../../components/TeamCarousel";
-import Button from "../../components/ui/Button";
 import { ArrowLongRightIcon } from "@heroicons/react/24/solid";
 import FadeUpWhenInView from "../../components/animation/FadeUpWhenInView";
 import AudioContext from "../../store/audioContext";
@@ -164,7 +163,7 @@ const TeamPage: NextPage = () => {
                   <span className="font-bold">Team {teamData.name}</span>
                   vorbestellen
                 </span>
-                <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent group-hover:text-white themed:text-accent" />
+                <ArrowLongRightIcon className="h-5 w-5 font-bold text-accent themed:text-white" />
               </div>
             </section>
           </div>

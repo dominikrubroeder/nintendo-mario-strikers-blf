@@ -53,7 +53,7 @@ const FloatingActionBar: FC = () => {
       {!appCtx?.headerIsInView && (
         <motion.div
           key="actionBarWrapper"
-          className="fixed left-0 right-0 top-4 z-50 mx-auto flex w-96 items-center justify-center gap-4 transition"
+          className="fixed left-0 right-0 top-4 z-[100] mx-auto flex w-96 items-center justify-center gap-4 transition"
           initial={{ y: -100 }}
           animate={{ y: 0 }}
           exit={{ y: [10, -100] }}
