@@ -30,13 +30,7 @@ const pages = [
   },
 ];
 
-interface FloatingActionBarProps {
-  shouldBeVisible?: boolean;
-}
-
-const FloatingActionBar: FC<FloatingActionBarProps> = ({
-  shouldBeVisible = true,
-}) => {
+const FloatingActionBar: FC = () => {
   const appCtx = useContext(AppContext);
   const audioCtx = useContext(AudioContext);
   const router = useRouter();
@@ -56,7 +50,7 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({
         <source src="/audio/blib.wav" type="audio/wav" />
       </audio>
 
-      {shouldBeVisible && !appCtx?.headerIsInView && (
+      {!appCtx?.headerIsInView && (
         <motion.div
           key="actionBarWrapper"
           className="fixed left-0 right-0 top-4 z-50 mx-auto flex w-96 items-center justify-center gap-4 transition"
@@ -163,7 +157,13 @@ const FloatingActionBar: FC<FloatingActionBarProps> = ({
                               >
                                 <Link href={href}>
                                   <a className="flex w-full items-center justify-between">
-                                    {name}
+                                    <span className="flex items-center gap-1">
+                                      <Logo
+                                        variant="Mario Strikers"
+                                        size={24}
+                                      />
+                                      {name}
+                                    </span>
 
                                     <Image
                                       src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Right.png"

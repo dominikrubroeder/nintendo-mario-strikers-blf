@@ -41,8 +41,6 @@ import TeamSelection from "../../components/TeamSelection";
 import GameGallery from "../../components/GameGallery";
 import CommunityQuotes from "../../components/CommunityQuotes";
 
-import FloatingActionBar from "../../components/FloatingActionBar";
-
 const InfoPage: NextPage = () => {
   const router = useRouter();
   const appCtx = useContext(AppContext);
@@ -589,8 +587,6 @@ const InfoPage: NextPage = () => {
           </Tooltip>
         )}
         </div> */}
-
-      <FloatingActionBar />
     </Layout>
   );
 };
