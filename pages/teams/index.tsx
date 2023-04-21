@@ -110,7 +110,7 @@ const TeamPage: NextPage = () => {
               <div className='relative'>
                 <div className='absolute left-0 top-0 z-10 h-full w-[1px] bg-accent-dark'></div>
 
-                <div className='relative max-w-screen-lg overflow-y-hidden overflow-x-scroll whitespace-nowrap px-4'>
+                <div className='relative w-full max-w-screen-lg overflow-y-visible overflow-x-scroll whitespace-nowrap px-4'>
                   {teams.map((team, i) => (
                     <div
                       key={i}
@@ -129,6 +129,7 @@ const TeamPage: NextPage = () => {
                           width={48}
                           height={48}
                           className='object-contain'
+                          draggable='false'
                         />
                       </div>
 
@@ -136,6 +137,7 @@ const TeamPage: NextPage = () => {
                     </div>
                   ))}
                 </div>
+
                 <div className='absolute right-0 top-0 h-full w-[1px] bg-accent-dark'></div>
               </div>
 
