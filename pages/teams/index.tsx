@@ -106,7 +106,7 @@ const TeamPage: NextPage = () => {
               </div>
             </section>
 
-            <section className='mx-auto grid w-full max-w-screen-lg gap-4'>
+            <section className='relative mx-auto grid w-full max-w-screen-lg gap-4'>
               <div className='relative'>
                 <div className='absolute left-0 top-0 z-10 h-full w-[1px] bg-accent-dark'></div>
 
@@ -114,14 +114,16 @@ const TeamPage: NextPage = () => {
                   {teams.map((team, i) => (
                     <div
                       key={i}
-                      className={`interactive mr-4 inline-flex items-center gap-2 rounded-full px-4 py-1 hover:bg-accent-dark ${
-                        teams.findIndex((team) => team.id === teamData?.id) ===
-                        i
-                          ? 'bg-accent-dark'
-                          : 'bg-accent'
-                      }`}
+                      className='interactive relative mr-4 inline-flex items-center gap-2 rounded-full px-4 py-1'
                       onClick={() => appCtx?.setTeam(team.id)}
                     >
+                      {teams.findIndex((team) => team.id === teamData?.id) ===
+                        i && (
+                        <motion.div
+                          layoutId='active-tab--team-stats'
+                          className='absolute inset-0 rounded-full bg-accent-dark'
+                        ></motion.div>
+                      )}
                       <div className='mt-2 shrink-0'>
                         <Image
                           src={team.image}
@@ -133,7 +135,9 @@ const TeamPage: NextPage = () => {
                         />
                       </div>
 
-                      <div className='font-bold uppercase'>{team.name}</div>
+                      <div className='z-10 font-bold uppercase'>
+                        {team.name}
+                      </div>
                     </div>
                   ))}
                 </div>
