@@ -106,8 +106,8 @@ const TeamPage: NextPage = () => {
               </div>
             </section>
 
-            <section className='relative mx-auto grid w-full max-w-screen-lg gap-4'>
-              <div className='relative'>
+            <section className='relative mx-auto grid w-full max-w-screen-lg gap-8 lg:gap-4'>
+              <div className='relative mx-4 overflow-hidden sm:mx-8 lg:mx-0'>
                 <div className='absolute left-0 top-0 z-10 h-full w-[1px] bg-accent-dark'></div>
 
                 <div className='relative w-full max-w-screen-lg overflow-y-visible overflow-x-scroll whitespace-nowrap px-4'>
@@ -145,9 +145,13 @@ const TeamPage: NextPage = () => {
                 <div className='absolute right-0 top-0 h-full w-[1px] bg-accent-dark'></div>
               </div>
 
-              {['Kraft', 'Tempo', 'Schuss', 'Passen', 'Technik'].map((stat) => (
-                <TeamStatsBar key={stat} label={stat} />
-              ))}
+              <div className='grid gap-4 px-4 sm:px-8 lg:px-0'>
+                {['Kraft', 'Tempo', 'Schuss', 'Passen', 'Technik'].map(
+                  (stat) => (
+                    <TeamStatsBar key={stat} label={stat} />
+                  )
+                )}
+              </div>
             </section>
 
             <section className='relative grid gap-8 text-center'>
