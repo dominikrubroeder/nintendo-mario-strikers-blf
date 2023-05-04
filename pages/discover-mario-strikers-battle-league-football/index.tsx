@@ -557,7 +557,7 @@ const InfoPage: NextPage = () => {
               type: 'spring',
               duration: 1,
             }}
-            className='fixed bottom-4 z-50 flex h-20 w-full cursor-pointer items-center p-4 text-sm drop-shadow-lg themed:bg-accent-dark sm:w-auto sm:rounded-full'
+            className='fixed bottom-4 z-50 hidden h-20 w-full cursor-pointer items-center p-4 text-sm drop-shadow-lg themed:bg-accent-dark sm:w-auto sm:rounded-full md:flex'
             whileHover={{ scale: 1.04 }}
           >
             <div className='flex items-center gap-2'>
