@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 type CardProps = {
   children: React.ReactNode;
@@ -6,7 +6,7 @@ type CardProps = {
 };
 
 const Card: React.FC<CardProps> = ({ children, className }) => {
-  const externalClassName = className ? className : '';
+  const externalClassName = className ? className : "";
 
   return (
     <div

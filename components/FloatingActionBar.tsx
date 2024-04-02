@@ -155,25 +155,23 @@ const FloatingActionBar: FC = () => {
                                 key={index}
                                 className="flex w-full min-w-max cursor-pointer items-center gap-1 rounded-full p-2 pl-4 font-bold uppercase transition hover:bg-accent"
                               >
-                                <Link href={href}>
-                                  <a className="flex w-full items-center justify-between">
-                                    <span className="flex items-center gap-1">
-                                      <Logo
-                                        variant="Mario Strikers"
-                                        size={24}
-                                      />
-                                      {name}
-                                    </span>
+                                <Link
+                                  href={href}
+                                  className="flex w-full items-center justify-between"
+                                >
+                                  <span className="flex items-center gap-1">
+                                    <Logo variant="Mario Strikers" size={24} />
+                                    {name}
+                                  </span>
 
-                                    <Image
-                                      src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Right.png"
-                                      width="24"
-                                      height="24"
-                                      alt="Arrow right"
-                                      draggable={false}
-                                      className="object-contain"
-                                    />
-                                  </a>
+                                  <Image
+                                    src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Right.png"
+                                    width="24"
+                                    height="24"
+                                    alt="Arrow right"
+                                    draggable={false}
+                                    className="object-contain"
+                                  />
                                 </Link>
                               </li>
                             );

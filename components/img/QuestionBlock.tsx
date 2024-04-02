@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import React from 'react';
+import Image from "next/image";
+import React from "react";
 
 interface QuestionBlockProps {
   /** Width and height size of the rendered image */

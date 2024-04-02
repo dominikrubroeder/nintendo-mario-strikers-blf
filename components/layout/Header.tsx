@@ -47,9 +47,7 @@ const Header: FC<HeaderProps> = ({ withBackButton = false }) => {
 
       <div className="absolute left-1/2 top-1/2 z-[100] flex -translate-x-1/2 -translate-y-1/2 transition active:scale-95">
         <Link href="/">
-          <a>
-            <Logo variant="Mario Strikers" />
-          </a>
+          <Logo variant="Mario Strikers" />
         </Link>
       </div>
 

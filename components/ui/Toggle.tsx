@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 interface ToggleProps {
   enabled?: boolean;
@@ -27,7 +27,7 @@ const Toggle: React.FC<ToggleProps> = ({
   return (
     <div
       className={`flex cursor-pointer items-center gap-1 text-xs text-accent ${
-        className ? className : ''
+        className ? className : ""
       }`}
       onClick={onClickHandler}
     >
@@ -35,12 +35,12 @@ const Toggle: React.FC<ToggleProps> = ({
 
       <div
         className={`flex w-10 rounded-full p-1 transition-all ${
-          isEnabled ? 'bg-accent' : 'bg-accent themed:bg-accent'
+          isEnabled ? "bg-accent" : "bg-accent themed:bg-accent"
         }`}
       >
         <span
           className={`flex h-4 w-4 items-center justify-center rounded-full bg-white transition-all ${
-            isEnabled ? 'translate-x-full' : ''
+            isEnabled ? "translate-x-full" : ""
           }`}
         >
           {enabledIcon && disabledIcon && (

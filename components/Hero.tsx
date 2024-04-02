@@ -26,16 +26,17 @@ const Hero: React.FC = () => {
         transition={{ delay: 1.5 }}
         className="absolute inset-0 z-40"
       >
-        <Link href="/buy-mario-strikers-battle-league-football">
-          <a className="relative inline-block h-full w-full">
-            <Image
-              src="/images/gallery/2x1_NSwitch_MarioStrikersBattleLeagueFootball_image1600w.jpeg"
-              alt="Mario Strikers: Battle League Football Wallpaper"
-              layout="fill"
-              priority
-              className="cursor-pointer object-cover object-[28%_50%] xl:object-center"
-            />
-          </a>
+        <Link
+          href="/buy-mario-strikers-battle-league-football"
+          className="relative inline-block h-full w-full"
+        >
+          <Image
+            src="/images/gallery/2x1_NSwitch_MarioStrikersBattleLeagueFootball_image1600w.jpeg"
+            alt="Mario Strikers: Battle League Football Wallpaper"
+            layout="fill"
+            priority
+            className="cursor-pointer object-cover object-[28%_50%] xl:object-center"
+          />
         </Link>
       </motion.section>
 
@@ -60,36 +61,37 @@ const Hero: React.FC = () => {
         transition={{ delay: 2.6 }}
         className="absolute bottom-[13rem] left-8 z-50 cursor-pointer hover:left-16 sm:left-12 sm:bottom-[14rem]"
       >
-        <Link href="/buy-mario-strikers-battle-league-football">
-          <div className="relative">
-            <div className="interactive relative">
-              <div className="absolute -top-[68%] z-[60] hidden lg:block">
-                <Logo variant="Mario Strikers" />
-              </div>
+        <Link
+          href="/buy-mario-strikers-battle-league-football"
+          className="relative"
+        >
+          <div className="interactive relative">
+            <div className="absolute -top-[68%] z-[60] hidden lg:block">
+              <Logo variant="Mario Strikers" />
+            </div>
 
-              <p className="absolute left-1/2 top-1/2 z-50 w-max -translate-x-1/2 -translate-y-1/2 -rotate-[3.5deg] font-bold uppercase text-white">
-                Jetzt vorbestellen
-              </p>
+            <p className="absolute left-1/2 top-1/2 z-50 w-max -translate-x-1/2 -translate-y-1/2 -rotate-[3.5deg] font-bold uppercase text-white">
+              Jetzt vorbestellen
+            </p>
 
+            <Image
+              src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_BG_Introducing_Header.png"
+              alt="Mario Strikers: Battle League Football Button Background"
+              width="250"
+              height="92"
+              className="skew-x-12"
+              priority
+            />
+
+            <div className="absolute bottom-[1.75rem] -right-8 translate-x-8 transition-all">
               <Image
-                src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_BG_Introducing_Header.png"
-                alt="Mario Strikers: Battle League Football Button Background"
-                width="250"
-                height="92"
-                className="skew-x-12"
+                src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Right.png"
+                width="90"
+                height="60"
+                alt="Button right"
+                className="-rotate-6"
                 priority
               />
-
-              <div className="absolute bottom-[1.75rem] -right-8 translate-x-8 transition-all">
-                <Image
-                  src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Right.png"
-                  width="90"
-                  height="60"
-                  alt="Button right"
-                  className="-rotate-6"
-                  priority
-                />
-              </div>
             </div>
           </div>
         </Link>

@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { useState, FC, useContext, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { wrap } from 'popmotion';
-import Image from 'next/image';
-import AppContext from '../store/appContext';
-import teams, { teamImages } from '../data/teams';
+import * as React from "react";
+import { useState, FC, useContext, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { wrap } from "popmotion";
+import Image from "next/image";
+import AppContext from "../store/appContext";
+import teams, { teamImages } from "../data/teams";
 
 /** https://codesandbox.io/s/framer-motion-image-gallery-pqvx3?file=/src/index.tsx:106-128 */
 
@@ -53,22 +53,22 @@ export const TeamCarousel: FC = () => {
     const handleKeyDown: { (event: KeyboardEvent): void } = (
       e: KeyboardEvent
     ) => {
-      if (e.key === 'ArrowRight') {
+      if (e.key === "ArrowRight") {
         paginate(1);
       }
 
-      if (e.key === 'ArrowLeft') {
+      if (e.key === "ArrowLeft") {
         paginate(-1);
       }
 
       appCtx?.setShowPromo(true);
     };
 
-    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown);
 
     // clean up
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   });
 
@@ -93,20 +93,20 @@ export const TeamCarousel: FC = () => {
   };
 
   return (
-    <div className='relative h-[35vh] sm:h-[50vh]'>
+    <div className="relative h-[35vh] sm:h-[50vh]">
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={page}
           custom={direction}
           variants={variants}
-          initial='enter'
-          animate='center'
-          exit='exit'
+          initial="enter"
+          animate="center"
+          exit="exit"
           transition={{
-            x: { type: 'spring', stiffness: 300, damping: 30 },
+            x: { type: "spring", stiffness: 300, damping: 30 },
             opacity: { duration: 0.2 },
           }}
-          drag='x'
+          drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={1}
           onDragEnd={(e, { offset, velocity }) => {
@@ -118,41 +118,41 @@ export const TeamCarousel: FC = () => {
               paginate(-1);
             }
           }}
-          className='absolute h-[35vh] w-full sm:h-[50vh]'
+          className="absolute h-[35vh] w-full sm:h-[50vh]"
         >
           <motion.img
             src={teamImages[selectedTeamIndex]}
             width={480}
             height={480}
-            alt='Team carousel test'
-            className='interactive absolute top-1/2 left-1/2 max-w-xs -translate-y-1/2 -translate-x-1/2 sm:max-w-none'
+            alt="Team carousel test"
+            className="interactive absolute top-1/2 left-1/2 max-w-xs -translate-y-1/2 -translate-x-1/2 sm:max-w-none"
             draggable={false}
           />
         </motion.div>
       </AnimatePresence>
 
       <div
-        className='interactive absolute right-4 top-1/2 z-50 hidden cursor-pointer lg:block'
+        className="interactive absolute right-4 top-1/2 z-50 hidden cursor-pointer lg:block"
         onClick={() => paginate(1)}
       >
         <Image
-          src='/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Right.png'
+          src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Right.png"
           width={90}
           height={60}
-          alt='Carousel arrow right'
+          alt="Carousel arrow right"
           draggable={false}
         />
       </div>
 
       <div
-        className='interactive absolute left-4 top-1/2 z-50 hidden cursor-pointer lg:block'
+        className="interactive absolute left-4 top-1/2 z-50 hidden cursor-pointer lg:block"
         onClick={() => paginate(-1)}
       >
         <Image
-          src='/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Left.png'
+          src="/images/backgrounds/CI_NSwitch_MarioStrikersBLF_AW_TheSquad_Button_Left.png"
           width={90}
           height={60}
-          alt='Carousel arrow right'
+          alt="Carousel arrow right"
           draggable={false}
         />
       </div>
