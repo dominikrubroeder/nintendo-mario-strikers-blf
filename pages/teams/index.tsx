@@ -124,7 +124,7 @@ const TeamPage: NextPage = () => {
                           className="absolute inset-0 rounded-full bg-accent-dark"
                         ></motion.div>
                       )}
-                      <div className="mt-2 shrink-0">
+                      <div className="mt-2 shrink-0 z-10">
                         <Image
                           src={team.image}
                           alt={team.name}
